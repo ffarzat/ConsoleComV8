@@ -49,11 +49,9 @@ D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\underscore.js
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\underscoreTests.Js
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\util.js
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\NLog.config
-D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\package.json
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ConsoleComV8.exe
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ConsoleComV8.pdb
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ClearScript.dll
-D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Esprima.NET.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Newtonsoft.Json.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\NLog.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Newtonsoft.Json.xml

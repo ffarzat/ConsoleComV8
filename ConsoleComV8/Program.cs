@@ -87,7 +87,9 @@ namespace ConsoleComV8
             var esprimaParse = string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, comment: true }});", JavascriptHelper.EncodeJsString(scriptCode));
             engine.Execute(esprimaParse);
             engine.Execute("JavascriptHelper.Syntax = JSON.stringify(syntax);");
-            
+            //engine.Execute("console.log('{0}', JavascriptHelper.Syntax);");            
+
+            JavascriptHelper.AST = JsonConvert.DeserializeObject<dynamic>(JavascriptHelper.Syntax);
             
             //engine.Execute(string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, comment: true }});", JavascriptHelper.EncodeJsString("var testeFabio = 34; //teste")));
             
@@ -96,6 +98,7 @@ namespace ConsoleComV8
             engine.Execute("syntax = ObjEscodegen.attachComments(syntax, syntax.comments, syntax.tokens);");
             engine.Execute("var code = ObjEscodegen.generate(syntax, option);");
             engine.Execute("JavascriptHelper.Codigo = code;");
+
             
             //end
 
@@ -186,6 +189,8 @@ namespace ConsoleComV8
 
         public static string Syntax {get; set; }
 
+        public static dynamic AST { get; set; }
+
         /// <summary>
         /// Codigo regerado pelo Escodegen
         /// </summary>
@@ -260,8 +265,5 @@ namespace ConsoleComV8
             return sb.ToString();
         }
     }
-
-
-
 
 }
