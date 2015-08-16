@@ -90,8 +90,10 @@ namespace ConsoleComV8
             //engine.Execute("console.log('{0}', JavascriptHelper.Syntax);");            
 
             JavascriptHelper.AST = JsonConvert.DeserializeObject<dynamic>(JavascriptHelper.Syntax);
+
+            Console.WriteLine(JavascriptHelper.AST.type);
+
             
-            //engine.Execute(string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, comment: true }});", JavascriptHelper.EncodeJsString("var testeFabio = 34; //teste")));
             
             
             
