@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ClearScript.V8;
 using NLog;
+using Newtonsoft.Json;
 
 namespace ConsoleComV8
 {
@@ -85,6 +86,7 @@ namespace ConsoleComV8
 
             var esprimaParse = string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, comment: true }});", JavascriptHelper.EncodeJsString(scriptCode));
             engine.Execute(esprimaParse);
+            engine.Execute("JavascriptHelper.Syntax = JSON.stringify(syntax);");
             
             
             //engine.Execute(string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, comment: true }});", JavascriptHelper.EncodeJsString("var testeFabio = 34; //teste")));
@@ -181,6 +183,9 @@ namespace ConsoleComV8
 
     public static class JavascriptHelper
     {
+
+        public static string Syntax {get; set; }
+
         /// <summary>
         /// Codigo regerado pelo Escodegen
         /// </summary>
