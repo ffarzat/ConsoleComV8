@@ -18,6 +18,7 @@ namespace ConsoleComV8
             var sw = new Stopwatch();
             sw.Start();
 
+            #region Ler arquivos Js
             var scriptCode = File.ReadAllText("global.js");
             var scriptTestCode = File.ReadAllText("core-test.js");
             var qunit = File.ReadAllText("qunit-1.18.0.js");
@@ -28,14 +29,16 @@ namespace ConsoleComV8
             var ast = File.ReadAllText("ast.js");
             var code = File.ReadAllText("code.js");
             var keyword = File.ReadAllText("keyword.js");
-            
+            #endregion
 
+            #region Cria a Engine e configura com o JavascriptHelper e Console
             var engine = new V8ScriptEngine();
             engine.AddHostType("JavascriptHelper", typeof(JavascriptHelper));
             engine.Execute(console);
             engine.Execute("var console = new console();");
-            
-            //engine.Execute(require);
+            #endregion
+
+            #region Congigura o Escodegen e o Esprima
             engine.Execute(@"   var ObjEstraverse = {};
                                 var ObjEscodegen = {};
                                 var ObjCode = {};
@@ -60,19 +63,7 @@ namespace ConsoleComV8
 
 
             engine.Execute(escodegen);
-            
-            
-            //engine.Execute(entry_point);
-            
-            
-            
-            
-            
-            
             engine.Execute(esprima);
-            
-            
-            //do the modification!
             engine.Execute(@"        option = {
                                                 comment: true,
                                                 format: {
@@ -87,7 +78,7 @@ namespace ConsoleComV8
             var esprimaParse = string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, comment: true }});", JavascriptHelper.EncodeJsString(scriptCode));
             engine.Execute(esprimaParse);
             engine.Execute("JavascriptHelper.Syntax = JSON.stringify(syntax);");
-            //engine.Execute("console.log('{0}', JavascriptHelper.Syntax);");            
+          
 
             JavascriptHelper.AST = JsonConvert.DeserializeObject<dynamic>(JavascriptHelper.Syntax);
 
@@ -101,14 +92,12 @@ namespace ConsoleComV8
             engine.Execute("var code = ObjEscodegen.generate(syntax, option);");
             engine.Execute("JavascriptHelper.Codigo = code;");
 
-            
-            //end
+            #endregion
 
+            #region Configura o QUnit
 
             engine.Execute(qunit);
 
-
-            #region registra os retornos dos testes
             engine.Execute(@"   
                                     var total, sucesso, falha;
 
@@ -165,21 +154,21 @@ namespace ConsoleComV8
                         ");
             #endregion
 
-
-
+            #region Carrega o individuo
             engine.Execute(JavascriptHelper.Codigo);
+            #endregion
 
-            //engine.Execute("console.log('{0}', _);");
-
+            #region Carrega e executa os Testes
             engine.Execute(scriptTestCode);
 
             engine.Execute(@"   QUnit.load();
                                 QUnit.start();
                 ");
-
+            #endregion
 
             sw.Stop();
-            Console.WriteLine(sw.Elapsed.Seconds);
+            
+            Console.WriteLine("{0} segundos totais", sw.Elapsed.Seconds);
             Console.Read();
 
         }
