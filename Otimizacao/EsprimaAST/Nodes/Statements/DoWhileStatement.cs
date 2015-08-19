@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Otimizacao.EsprimaAST.Nodes.Clauses;
 
 namespace Otimizacao.EsprimaAST.Nodes.Statements
 {
+
     /// <summary>
-    /// Representa um Switch
+    /// A do/while statement
     /// </summary>
-    public class SwitchStatement: Statement
+    public class DoWhileStatement:Statement
     {
         /// <summary>
-        /// Variável ou valor de controle
+        /// Condição
         /// </summary>
-        public Expression Discriminant { get; set; }
-        
+        public Expression Test { get; set; }
+
         /// <summary>
-        /// Lista dos cases do Switch
+        /// Corpo
         /// </summary>
-        public List<SwitchCase> Cases { get; set; }
+        public Statement Body { get; set; }
     }
 }

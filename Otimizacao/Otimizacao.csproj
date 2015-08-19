@@ -40,6 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EsprimaAST\Node.cs" />
+    <Compile Include="EsprimaAST\Nodes\Clauses\CatchClause.cs" />
+    <Compile Include="EsprimaAST\Nodes\Clauses\SwitchCase.cs" />
+    <Compile Include="EsprimaAST\Nodes\Declarations\VariableDeclaration.cs" />
+    <Compile Include="EsprimaAST\Nodes\Declarations\VariableDeclarator.cs" />
     <Compile Include="EsprimaAST\Nodes\Expression.cs" />
     <Compile Include="EsprimaAST\Nodes\ExpressionStatement.cs" />
     <Compile Include="EsprimaAST\Nodes\Function.cs" />
@@ -51,17 +55,27 @@
     <Compile Include="EsprimaAST\Nodes\Statements\BlockStatement.cs" />
     <Compile Include="EsprimaAST\Nodes\Statements\BreakStatement.cs" />
     <Compile Include="EsprimaAST\Nodes\Statements\ContinueStatement.cs" />
+    <Compile Include="EsprimaAST\Nodes\Statements\DoWhileStatement.cs" />
     <Compile Include="EsprimaAST\Nodes\Statements\EmptyStatement.cs" />
     <Compile Include="EsprimaAST\Nodes\Statements\ExpressionStatement.cs" />
+    <Compile Include="EsprimaAST\Nodes\Statements\ForInStatement.cs" />
+    <Compile Include="EsprimaAST\Nodes\Statements\ForStatement.cs" />
     <Compile Include="EsprimaAST\Nodes\Statements\IfStatement.cs" />
     <Compile Include="EsprimaAST\Nodes\Statements\LabeledStatement.cs" />
+    <Compile Include="EsprimaAST\Nodes\Statements\ReturnStatement.cs" />
+    <Compile Include="EsprimaAST\Nodes\Statements\SwitchStatement.cs" />
+    <Compile Include="EsprimaAST\Nodes\Statements\ThrowStatement.cs" />
+    <Compile Include="EsprimaAST\Nodes\Statements\TryStatement.cs" />
+    <Compile Include="EsprimaAST\Nodes\Statements\WhileStatement.cs" />
     <Compile Include="EsprimaAST\Nodes\Statements\WithStatement.cs" />
     <Compile Include="EsprimaAST\Position.cs" />
     <Compile Include="EsprimaAST\SourceLocation.cs" />
     <Compile Include="Populacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="EsprimaAST\spec.md" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
