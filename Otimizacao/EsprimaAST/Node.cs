@@ -70,6 +70,14 @@ namespace Otimizacao.EsprimaAST
         /// <summary>
         /// Representa a localização do nó no código fonte. Pode ficar com valor nulo
         /// </summary>
-        public SourceLocation Loc { get; set; } 
+        public SourceLocation Loc { get; set; }
+
+        /// <summary>
+        /// Construtor default
+        /// </summary>
+        public Node()
+        {
+            this.Type = this.GetType().Name;
+        }
     }
 }

@@ -15,13 +15,5 @@ namespace Otimizacao.EsprimaAST.Nodes
         /// Representa o Corpo do Programa
         /// </summary>
         public Statement Body { get; set; }
-
-        /// <summary>
-        /// Construtor
-        /// </summary>
-        public Program()
-        {
-            this.Type = "Program";
-        }
     }
 }
