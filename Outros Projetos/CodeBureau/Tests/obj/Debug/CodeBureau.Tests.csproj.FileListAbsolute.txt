@@ -1,0 +1,10 @@
+C:\Users\Fabio\Downloads\StringEnum_src\CodeBureau\Tests\obj\Debug\CodeBureau.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Fabio\Downloads\StringEnum_src\CodeBureau\Tests\bin\Debug\CodeBureauTests.dll
+C:\Users\Fabio\Downloads\StringEnum_src\CodeBureau\Tests\bin\Debug\CodeBureauTests.pdb
+C:\Users\Fabio\Downloads\StringEnum_src\CodeBureau\Tests\bin\Debug\CodeBureau.dll
+C:\Users\Fabio\Downloads\StringEnum_src\CodeBureau\Tests\bin\Debug\nunit.framework.dll
+C:\Users\Fabio\Downloads\StringEnum_src\CodeBureau\Tests\bin\Debug\CodeBureau.pdb
+C:\Users\Fabio\Downloads\StringEnum_src\CodeBureau\Tests\bin\Debug\CodeBureau.xml
+C:\Users\Fabio\Downloads\StringEnum_src\CodeBureau\Tests\bin\Debug\nunit.framework.xml
+C:\Users\Fabio\Downloads\StringEnum_src\CodeBureau\Tests\obj\Debug\CodeBureauTests.dll
+C:\Users\Fabio\Downloads\StringEnum_src\CodeBureau\Tests\obj\Debug\CodeBureauTests.pdb

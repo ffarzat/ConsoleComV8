@@ -1,0 +1,6 @@
+C:\Users\Fabio\Downloads\StringEnum_src\CodeBureau\bin\Debug\CodeBureau.dll
+C:\Users\Fabio\Downloads\StringEnum_src\CodeBureau\bin\Debug\CodeBureau.pdb
+C:\Users\Fabio\Downloads\StringEnum_src\CodeBureau\bin\Debug\CodeBureau.xml
+C:\Users\Fabio\Downloads\StringEnum_src\CodeBureau\obj\Debug\CodeBureau.csprojResolveAssemblyReference.cache
+C:\Users\Fabio\Downloads\StringEnum_src\CodeBureau\obj\Debug\CodeBureau.dll
+C:\Users\Fabio\Downloads\StringEnum_src\CodeBureau\obj\Debug\CodeBureau.pdb

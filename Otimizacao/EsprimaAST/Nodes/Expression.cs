@@ -9,7 +9,7 @@ namespace Otimizacao.EsprimaAST.Nodes
     /// <summary>
     /// Representa uma expressão
     /// </summary>
-    public class Expression :Node
+    public abstract class Expression :Node
     {
     }
 }

@@ -15,13 +15,5 @@ namespace Otimizacao.EsprimaAST.Nodes
         /// Nome para identificar
         /// </summary>
         public string Name { get; set; }
-
-        /// <summary>
-        /// Construtor
-        /// </summary>
-        public Identifier()
-        {
-            this.Name = "Identifier";
-        }
     }
 }

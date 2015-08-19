@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CodeBureau">
+      <HintPath>..\Refs\CodeBureau.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,6 +45,14 @@
     <Compile Include="EsprimaAST\Node.cs" />
     <Compile Include="EsprimaAST\Nodes\Clauses\CatchClause.cs" />
     <Compile Include="EsprimaAST\Nodes\Clauses\SwitchCase.cs" />
+    <Compile Include="EsprimaAST\Nodes\Declarations\FunctionDeclaration.cs" />
+    <Compile Include="EsprimaAST\Nodes\Expressions\ArrayExpression.cs" />
+    <Compile Include="EsprimaAST\Nodes\Expressions\FunctionExpression.cs" />
+    <Compile Include="EsprimaAST\Nodes\Expressions\ObjectExpression.cs" />
+    <Compile Include="EsprimaAST\Nodes\Expressions\SequenceExpression.cs" />
+    <Compile Include="EsprimaAST\Nodes\Expressions\ThisExpression.cs" />
+    <Compile Include="EsprimaAST\Nodes\Expressions\UnaryExpression.cs" />
+    <Compile Include="EsprimaAST\Nodes\IDeclaration.cs" />
     <Compile Include="EsprimaAST\Nodes\Declarations\VariableDeclaration.cs" />
     <Compile Include="EsprimaAST\Nodes\Declarations\VariableDeclarator.cs" />
     <Compile Include="EsprimaAST\Nodes\Expression.cs" />
@@ -51,10 +62,12 @@
     <Compile Include="EsprimaAST\Nodes\IPattern.cs" />
     <Compile Include="EsprimaAST\Nodes\Pattern.cs" />
     <Compile Include="EsprimaAST\Nodes\Program.cs" />
+    <Compile Include="EsprimaAST\Nodes\Property.cs" />
     <Compile Include="EsprimaAST\Nodes\Statement.cs" />
     <Compile Include="EsprimaAST\Nodes\Statements\BlockStatement.cs" />
     <Compile Include="EsprimaAST\Nodes\Statements\BreakStatement.cs" />
     <Compile Include="EsprimaAST\Nodes\Statements\ContinueStatement.cs" />
+    <Compile Include="EsprimaAST\Nodes\Statements\DebuggerStatement.cs" />
     <Compile Include="EsprimaAST\Nodes\Statements\DoWhileStatement.cs" />
     <Compile Include="EsprimaAST\Nodes\Statements\EmptyStatement.cs" />
     <Compile Include="EsprimaAST\Nodes\Statements\ExpressionStatement.cs" />
@@ -76,6 +89,7 @@
   <ItemGroup>
     <None Include="EsprimaAST\spec.md" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

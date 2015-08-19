@@ -10,7 +10,7 @@ namespace Otimizacao.EsprimaAST.Nodes.Declarations
     /// <summary>
     /// A variable declaration.
     /// </summary>
-    public class VariableDeclaration: Statement
+    public class VariableDeclaration : Node, IDeclaration
     {
         public List<VariableDeclarator> Declarations { get; set; }
 
