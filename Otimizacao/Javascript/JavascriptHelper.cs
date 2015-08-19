@@ -21,7 +21,7 @@ namespace Otimizacao.Javascript
         /// <summary>
         /// Árvore tipada do Esprima
         /// </summary>
-        public Program Program { get; set; }
+        public dynamic Program { get; set; }
 
         /// <summary>
         /// Codigo regerado pelo Escodegen

@@ -14,6 +14,6 @@ namespace Otimizacao.EsprimaAST.Nodes
         /// <summary>
         /// Representa o Corpo do Programa
         /// </summary>
-        public Statement Body { get; set; }
+       public List<Statement> Body { get; set; }
     }
 }

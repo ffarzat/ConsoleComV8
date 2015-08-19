@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Otimizacao.EsprimaAST.Nodes;
+using Otimizacao.EsprimaAST.Nodes.Expressions;
+using Otimizacao.EsprimaAST.Nodes.Statements;
+using ExpressionStatement = Otimizacao.EsprimaAST.Nodes.ExpressionStatement;
 
 namespace Otimizacao.EsprimaAST
 {
@@ -18,17 +21,17 @@ namespace Otimizacao.EsprimaAST
         /// </summary>
         /// <param name="jsonObject"></param>
         /// <returns></returns>
-        public Program Construir(JObject jsonObject)
+        public Node Construir(JObject jsonObject)
         {
             return PreencherNoPrograma(jsonObject);
         }
 
         /// <summary>
-        /// 
+        /// Cria o nó Program
         /// </summary>
         /// <param name="jsonObject"></param>
         /// <returns></returns>
-        private Program PreencherNoPrograma(JObject jsonObject)
+        private Node PreencherNoPrograma(JObject jsonObject)
         {
             #region Dbc
             if(!PropriedadeExiste("type", jsonObject))
@@ -37,38 +40,73 @@ namespace Otimizacao.EsprimaAST
             if(ValorDaPropriedadeComoString("type", jsonObject) != "Program")
                throw new ArgumentOutOfRangeException("jsonObject", string.Format("Type inválido {0}", ValorDaPropriedadeComoString("type", jsonObject)));
             #endregion
-
-            var program = new Program();
-            program.Body = ProcessarNo<Statement>(jsonObject);
-            program.Loc = ProcessarNo<SourceLocation>(jsonObject);
-
-            return program;
-        }
-
-        /// <summary>
-        /// Cria o nó específico
-        /// </summary>
-        /// <typeparam name="T">Tipo do Nó</typeparam>
-        /// <param name="jsonObject">Json com os valores para o nó</param>
-        /// <returns></returns>
-        private T ProcessarNo<T>(JObject jsonObject) where T : new()
-        {
-            var nodeType = ValorDaPropriedadeComoString("type", jsonObject);
-            var noProcessado = new T();
             
-            //switch (nodeType)
-            //{
-            //    case "Statement":
-            //        noProcessado = CriarStatement(jsonObject);
-            //        break;
-
-            //}
+            var noProcessado = new Program();
+            noProcessado.Body = PreencherListaStatements(jsonObject["body"]);
 
             return noProcessado;
         }
 
+        /// <summary>
+        /// Cria o nó Body do Program
+        /// </summary>
+        /// <param name="jToken"></param>
+        /// <returns></returns>
+        private List<Statement> PreencherListaStatements(JToken jToken)
+        {
+            return jToken.Select(PreencherStatement).ToList();
+        }
+
+       /// <summary>
+        /// Cria o Statement
+        /// </summary>
+        /// <param name="jToken"></param>
+        /// <returns></returns>
+        private Statement PreencherStatement(JToken jToken)
+       {
+           var statement = new Statement();
+           var stType = ValorDaPropriedadeComoString("type", jToken as JObject);
+           switch (stType)
+           {
+               case "BlockStatement" :
+                   statement = new BlockStatement();
+                   break;
+               case "EmptyStatement":
+                   statement = new EmptyStatement();
+                   break;
+               case "ExpressionStatement":
+                   statement = new ExpressionStatement()
+                       {
+                           Expression = PreencherExpressao(jToken["Expression"])
+                       };
+                   break;
+           }
+
+           return statement;
+       }
 
         /// <summary>
+        /// Cria as Expressões
+        /// </summary>
+        /// <param name="jToken"></param>
+        /// <returns></returns>
+       private Expression PreencherExpressao(JToken jToken)
+       {
+           var stType = ValorDaPropriedadeComoString("type", jToken as JObject);
+           Node retorno = null;
+
+           switch (stType)
+           {
+               case "CallExpression":
+                   retorno = new CallExpression();
+                   break;
+           }
+
+            return (Expression) retorno;
+       }
+
+
+       /// <summary>
         /// Determina se o campo existe
         /// </summary>
         /// <param name="nome"></param>

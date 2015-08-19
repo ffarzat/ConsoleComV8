@@ -14,6 +14,6 @@ namespace Otimizacao.EsprimaAST.Nodes.Statements
         /// <summary>
         /// Representa o Corpo do Bloco
         /// </summary>
-        public Statement Body { get; set; }
+        public List<Statement> Body { get; set; }
     }
 }

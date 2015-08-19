@@ -86,7 +86,8 @@ namespace ConsoleComV8
             engine.Execute(esprimaParse);
             engine.Execute("javascriptHelper.JsonAst = JSON.stringify(syntax);"); //Passo para o c#
 
-            helper.Program = JsonConvert.DeserializeObject<Otimizacao.EsprimaAST.Nodes.Program>(helper.JsonAst, new EsprimaAstConverter());
+            //helper.Program = JsonConvert.DeserializeObject<Otimizacao.EsprimaAST.Nodes.Program>(helper.JsonAst, new EsprimaAstConverter());
+            helper.Program = JsonConvert.DeserializeObject<dynamic>(helper.JsonAst);
 
             engine.Execute("syntax = ObjEscodegen.attachComments(syntax, syntax.comments, syntax.tokens);");
             engine.Execute("var code = ObjEscodegen.generate(syntax, option);");
