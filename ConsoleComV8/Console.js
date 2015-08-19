@@ -7,7 +7,7 @@ function console() {
 }
 
 console.prototype.log = function(args, args1, args2) {
-  JavascriptHelper.Escrever(args, args1, args2);
+  javascriptHelper.Escrever(args, args1, args2);
 };
 
 /*

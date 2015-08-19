@@ -9,7 +9,7 @@ namespace Otimizacao.EsprimaAST
     /// <summary>
     /// Reprenta uma localização de código na árvore
     /// </summary>
-    public abstract class SourceLocation
+    public class SourceLocation
     {
         /// <summary>
         /// Código fonte

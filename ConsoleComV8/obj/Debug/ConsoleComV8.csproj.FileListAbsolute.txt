@@ -57,3 +57,6 @@ D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\NLog.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Newtonsoft.Json.xml
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\NLog.xml
 D:\GitHub\ConsoleComV8\ConsoleComV8\obj\Debug\ConsoleComV8.csprojResolveAssemblyReference.cache
+D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Otimizacao.dll
+D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\CodeBureau.dll
+D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Otimizacao.pdb

@@ -33,6 +33,12 @@
     <Reference Include="CodeBureau">
       <HintPath>..\Refs\CodeBureau.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\ConsoleComV8\bin\Debug\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EsprimaAST\Fabrica.cs" />
+    <Compile Include="EsprimaAST\Json\EsprimaAstConverter.cs" />
     <Compile Include="EsprimaAST\Node.cs" />
     <Compile Include="EsprimaAST\Nodes\Clauses\CatchClause.cs" />
     <Compile Include="EsprimaAST\Nodes\Clauses\SwitchCase.cs" />
@@ -93,7 +101,7 @@
     <Compile Include="EsprimaAST\Nodes\Statements\WithStatement.cs" />
     <Compile Include="EsprimaAST\Position.cs" />
     <Compile Include="EsprimaAST\SourceLocation.cs" />
-    <Compile Include="Populacao.cs" />
+    <Compile Include="Javascript\JavascriptHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

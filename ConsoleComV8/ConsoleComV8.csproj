@@ -121,6 +121,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Otimizacao\Otimizacao.csproj">
+      <Project>{C87CBD07-1172-425C-8541-616546FA7A78}</Project>
+      <Name>Otimizacao</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
