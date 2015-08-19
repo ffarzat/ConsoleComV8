@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using Microsoft.ClearScript.V8;
 using NLog;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Otimizacao.EsprimaAST.Json;
+using Otimizacao.Javascript;
 
 namespace ConsoleComV8
 {
@@ -15,6 +18,8 @@ namespace ConsoleComV8
     {
         static void Main(string[] args)
         {
+
+
             var sw = new Stopwatch();
             sw.Start();
 
@@ -33,7 +38,8 @@ namespace ConsoleComV8
 
             #region Cria a Engine e configura com o JavascriptHelper e Console
             var engine = new V8ScriptEngine();
-            engine.AddHostType("JavascriptHelper", typeof(JavascriptHelper));
+            var helper = new JavascriptHelper();
+            engine.AddHostObject("javascriptHelper", helper);
             engine.Execute(console);
             engine.Execute("var console = new console();");
             #endregion
@@ -64,6 +70,7 @@ namespace ConsoleComV8
 
             engine.Execute(escodegen);
             engine.Execute(esprima);
+
             engine.Execute(@"        option = {
                                                 comment: true,
                                                 format: {
@@ -75,22 +82,15 @@ namespace ConsoleComV8
                                             };");
 
 
-            var esprimaParse = string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, comment: true }});", JavascriptHelper.EncodeJsString(scriptCode));
+            var esprimaParse = string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, comment: true }});", helper.EncodeJsString(scriptCode));
             engine.Execute(esprimaParse);
-            engine.Execute("JavascriptHelper.Syntax = JSON.stringify(syntax);");
-          
+            engine.Execute("javascriptHelper.JsonAst = JSON.stringify(syntax);"); //Passo para o c#
 
-            JavascriptHelper.AST = JsonConvert.DeserializeObject<dynamic>(JavascriptHelper.Syntax);
+            helper.Program = JsonConvert.DeserializeObject<Otimizacao.EsprimaAST.Nodes.Program>(helper.JsonAst, new EsprimaAstConverter());
 
-            Console.WriteLine(JavascriptHelper.AST.type);
-
-            
-            
-            
-            
             engine.Execute("syntax = ObjEscodegen.attachComments(syntax, syntax.comments, syntax.tokens);");
             engine.Execute("var code = ObjEscodegen.generate(syntax, option);");
-            engine.Execute("JavascriptHelper.Codigo = code;");
+            engine.Execute("javascriptHelper.Codigo = code;");
 
             #endregion
 
@@ -155,7 +155,7 @@ namespace ConsoleComV8
             #endregion
 
             #region Carrega o individuo
-            engine.Execute(JavascriptHelper.Codigo);
+            engine.Execute(helper.Codigo);
             #endregion
 
             #region Carrega e executa os Testes
@@ -175,86 +175,8 @@ namespace ConsoleComV8
 
     }
 
-    public static class JavascriptHelper
-    {
 
-        public static string Syntax {get; set; }
 
-        public static dynamic AST { get; set; }
 
-        /// <summary>
-        /// Codigo regerado pelo Escodegen
-        /// </summary>
-        public static string Codigo;
-
-        /// <summary>
-        /// NLog Logger
-        /// </summary>
-        private static Logger _logger = LogManager.GetCurrentClassLogger();
-
-        public static void Escrever(string arg, object args1 = null, object args2 = null)
-        {
-            var consoleOut = arg.Replace("%s", "{0}");
-            string one = args1 == null ? "" : args1.ToString();
-            string two = args2 == null ? "" : args2.ToString();
-            _logger.Info(consoleOut, one, two);
-        }
-
-        /// <summary>
-        /// Encodes a string to be represented as a string literal. The format
-        /// is essentially a JSON string.
-        /// 
-        /// The string returned includes outer quotes 
-        /// Example Output: "Hello \"Rick\"!\r\nRock on"
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        public static string EncodeJsString(string s)
-        {
-            var sb = new StringBuilder();
-            sb.Append("\"");
-            foreach (char c in s)
-            {
-                switch (c)
-                {
-                    case '\"':
-                        sb.Append("\\\"");
-                        break;
-                    case '\\':
-                        sb.Append("\\\\");
-                        break;
-                    case '\b':
-                        sb.Append("\\b");
-                        break;
-                    case '\f':
-                        sb.Append("\\f");
-                        break;
-                    case '\n':
-                        sb.Append("\\n");
-                        break;
-                    case '\r':
-                        sb.Append("\\r");
-                        break;
-                    case '\t':
-                        sb.Append("\\t");
-                        break;
-                    default:
-                        int i = (int)c;
-                        if (i < 32 || i > 127)
-                        {
-                            sb.AppendFormat("\\u{0:X04}", i);
-                        }
-                        else
-                        {
-                            sb.Append(c);
-                        }
-                        break;
-                }
-            }
-            sb.Append("\"");
-
-            return sb.ToString();
-        }
-    }
 
 }
