@@ -48,7 +48,14 @@
     <Compile Include="EsprimaAST\Nodes\Pattern.cs" />
     <Compile Include="EsprimaAST\Nodes\Program.cs" />
     <Compile Include="EsprimaAST\Nodes\Statement.cs" />
+    <Compile Include="EsprimaAST\Nodes\Statements\BlockStatement.cs" />
+    <Compile Include="EsprimaAST\Nodes\Statements\BreakStatement.cs" />
+    <Compile Include="EsprimaAST\Nodes\Statements\ContinueStatement.cs" />
     <Compile Include="EsprimaAST\Nodes\Statements\EmptyStatement.cs" />
+    <Compile Include="EsprimaAST\Nodes\Statements\ExpressionStatement.cs" />
+    <Compile Include="EsprimaAST\Nodes\Statements\IfStatement.cs" />
+    <Compile Include="EsprimaAST\Nodes\Statements\LabeledStatement.cs" />
+    <Compile Include="EsprimaAST\Nodes\Statements\WithStatement.cs" />
     <Compile Include="EsprimaAST\Position.cs" />
     <Compile Include="EsprimaAST\SourceLocation.cs" />
     <Compile Include="Populacao.cs" />
