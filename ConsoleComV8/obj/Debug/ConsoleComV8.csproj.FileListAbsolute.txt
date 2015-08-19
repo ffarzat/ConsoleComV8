@@ -60,3 +60,4 @@ D:\GitHub\ConsoleComV8\ConsoleComV8\obj\Debug\ConsoleComV8.csprojResolveAssembly
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Otimizacao.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\CodeBureau.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Otimizacao.pdb
+D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ast-traverse.js

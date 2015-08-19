@@ -66,6 +66,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ast-traverse.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ast.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

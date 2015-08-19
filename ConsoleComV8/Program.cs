@@ -34,6 +34,7 @@ namespace ConsoleComV8
             var ast = File.ReadAllText("ast.js");
             var code = File.ReadAllText("code.js");
             var keyword = File.ReadAllText("keyword.js");
+            var astTraverse = File.ReadAllText("ast-traverse.js");
             #endregion
 
             #region Cria a Engine e configura com o JavascriptHelper e Console
@@ -87,7 +88,16 @@ namespace ConsoleComV8
             engine.Execute("javascriptHelper.JsonAst = JSON.stringify(syntax);"); //Passo para o c#
 
             //helper.Program = JsonConvert.DeserializeObject<Otimizacao.EsprimaAST.Nodes.Program>(helper.JsonAst, new EsprimaAstConverter());
-            helper.Program = JsonConvert.DeserializeObject<dynamic>(helper.JsonAst);
+            //helper.Program = JsonConvert.DeserializeObject<dynamic>(helper.JsonAst);
+            engine.Execute(astTraverse);
+            engine.Execute(@"traverse(syntax, {
+    pre: function(node) {
+        console.log(node.type);
+    },
+    skipProperty: function(prop, node) {
+        return prop === ""parent"" || prop === ""expression"";
+    }
+});");
 
             engine.Execute("syntax = ObjEscodegen.attachComments(syntax, syntax.comments, syntax.tokens);");
             engine.Execute("var code = ObjEscodegen.generate(syntax, option);");
