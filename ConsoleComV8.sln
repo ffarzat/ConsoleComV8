@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleComV8", "ConsoleComV8\ConsoleComV8.csproj", "{CDA435F3-A8E8-40B1-AC54-1B61C99EE198}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otimizacao", "Otimizacao\Otimizacao.csproj", "{C87CBD07-1172-425C-8541-616546FA7A78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{CDA435F3-A8E8-40B1-AC54-1B61C99EE198}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDA435F3-A8E8-40B1-AC54-1B61C99EE198}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDA435F3-A8E8-40B1-AC54-1B61C99EE198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C87CBD07-1172-425C-8541-616546FA7A78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C87CBD07-1172-425C-8541-616546FA7A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C87CBD07-1172-425C-8541-616546FA7A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C87CBD07-1172-425C-8541-616546FA7A78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
