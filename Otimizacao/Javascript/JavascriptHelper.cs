@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Timers;
 using Microsoft.ClearScript.V8;
 using NLog;
-using Otimizacao.EsprimaAST.Nodes;
 
 namespace Otimizacao.Javascript
 {
@@ -245,6 +244,8 @@ namespace Otimizacao.Javascript
 
             Log(string.Format("Total:{0}, Sucesso: {1}, Falha: {2}", this.TotalTestes, this.TestesComSucesso, this.TestesComFalha));
             Log(string.Format("{0} segundos para avaliar o individuo {1}", sw.Elapsed.Seconds, nomeArquivoIndividuo));
+
+            this.FalhasDosTestes.ForEach(this.Log);
 
             return true;
         }

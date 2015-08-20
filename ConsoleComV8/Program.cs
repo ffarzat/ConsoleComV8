@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NLog;
-using Otimizacao.EsprimaAST.Json;
 using Otimizacao.Javascript;
 
 namespace ConsoleComV8
