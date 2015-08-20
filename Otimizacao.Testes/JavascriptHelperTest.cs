@@ -39,9 +39,12 @@ namespace Otimizacao.Testes
 
             helper.ExecutarTestes("global.js", "core-test.js");
 
+            helper.Escrever("Acaba aqui...");
+
             helper.FalhasDosTestes.ForEach(Console.WriteLine);
             Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");
             Assert.AreEqual(helper.TestesComSucesso, 57982);
+            
         }
 
         /// <summary>
@@ -99,7 +102,7 @@ namespace Otimizacao.Testes
                 await Task.Delay(10);
             }
 
-            Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
+            //Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
             callback();
         }
     }

@@ -568,7 +568,6 @@ function synchronize( callback, last ) {
 function process( last ) {
 	function next() {
 		process( last );
-		javascriptHelper.Escrever('Não passou aqui??');
 	}
 	var start = now();
 	config.depth = ( config.depth || 0 ) + 1;
@@ -635,6 +634,9 @@ function resumeProcessing() {
 	// A slight delay to allow this iteration of the event loop to finish (more assertions, etc.)
 	if ( defined.setTimeout ) {
 		setTimeout(function() {
+			
+			javascriptHelper.Escrever('Fabio');
+			
 			if ( config.current && config.current.semaphore > 0 ) {
 				return;
 			}

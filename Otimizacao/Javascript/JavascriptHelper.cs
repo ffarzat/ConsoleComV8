@@ -4,10 +4,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using Microsoft.ClearScript.V8;
 using NLog;
+using Timer = System.Timers.Timer;
 
 namespace Otimizacao.Javascript
 {
@@ -276,12 +278,19 @@ namespace Otimizacao.Javascript
         /// <param name="miliseconds">tempo em ms</param>
         public string SetTimeout(int miliseconds)
         {
-            var id = _timers.Count;
-            var t = new Timer(miliseconds);
-            t.Elapsed += JavascriptHelper_Elapsed;
-            t.Start();
-            
-            _timers.Add(id, t);
+            int id = 0;
+            var tTimer = new Thread(() =>
+                {
+                    id = _timers.Count;
+                    var t = new Timer(miliseconds);
+                    t.Elapsed += JavascriptHelper_Elapsed;
+                    t.Start();
+
+                    _timers.Add(id, t);
+                });
+
+            tTimer.Start();
+            tTimer.Join();
 
             return id.ToString();
         }
