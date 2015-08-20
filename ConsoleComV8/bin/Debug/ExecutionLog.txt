@@ -1,265 +1,5 @@
-2015-08-20 10:54:18.0107|Info|=============================================
-2015-08-20 10:54:18.0478|Info|FAILED: lodash.debounce: should debounce a function: expected: 0, actual: 3,     at Script Document [18]:1907:13
-    at Object.<anonymous> (Script Document [21]:2709:9)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at begin (Script Document [18]:628:2)
-2015-08-20 10:54:18.1478|Info|=============================================
-2015-08-20 10:54:18.1478|Info|FAILED: lodash.debounce: should debounce a function: expected: 1, actual: 3,     at Script Document [18]:1907:13
-    at Script Document [21]:2712:11
-    at setTimeout (Script Document [3]:1:85)
-    at Object.<anonymous> (Script Document [21]:2711:9)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-2015-08-20 10:54:18.2989|Info|=============================================
-2015-08-20 10:54:18.2989|Info|FAILED: lodash.debounce: subsequent debounced calls return the last `func` result: expected: y, actual: y,     at Script Document [18]:1907:13
-    at Script Document [21]:2728:20
-    at setTimeout (Script Document [3]:1:85)
-    at Object.<anonymous> (Script Document [21]:2727:9)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-2015-08-20 10:54:18.4650|Info|=============================================
-2015-08-20 10:54:18.4670|Info|FAILED: lodash.debounce: subsequent debounced calls return the last `func` result: expected: z, actual: z,     at Script Document [18]:1907:13
-    at Script Document [21]:2732:20
-    at setTimeout (Script Document [3]:1:85)
-    at Object.<anonymous> (Script Document [21]:2731:9)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-2015-08-20 10:54:18.5521|Info|=============================================
-2015-08-20 10:54:18.5521|Info|FAILED: lodash.debounce: subsequent "immediate" debounced calls return the last `func` result: expected: x,x, actual: x,y,     at Script Document [18]:1907:13
-    at Object.<anonymous> (Script Document [21]:2747:19)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at begin (Script Document [18]:628:2)
-2015-08-20 10:54:18.6882|Info|=============================================
-2015-08-20 10:54:18.6882|Info|FAILED: lodash.debounce: subsequent "immediate" debounced calls return the last `func` result: expected: a,a, actual: a,b,     at Script Document [18]:1907:13
-    at Script Document [21]:2751:21
-    at setTimeout (Script Document [3]:1:85)
-    at Object.<anonymous> (Script Document [21]:2749:9)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-2015-08-20 10:54:18.7453|Info|=============================================
-2015-08-20 10:54:18.7472|Info|FAILED: lodash.debounce: should apply default options: expected: undefined, actual: x,     at Script Document [18]:1907:13
-    at Object.<anonymous> (Script Document [21]:2770:21)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at begin (Script Document [18]:628:2)
-2015-08-20 10:54:18.9003|Info|=============================================
-2015-08-20 10:54:18.9003|Info|FAILED: lodash.debounce: should support a `leading` option: expected: undefined, actual: x,     at Script Document [18]:1907:13
-    at Object.<anonymous> (Script Document [21]:2795:21)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at begin (Script Document [18]:628:2)
-2015-08-20 10:54:18.9734|Info|=============================================
-2015-08-20 10:54:18.9734|Info|FAILED: lodash.debounce: should support a `leading` option: expected: 1, actual: 2,     at Script Document [18]:1907:13
-    at Object.<anonymous> (Script Document [21]:2804:31)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at begin (Script Document [18]:628:2)
-2015-08-20 10:54:19.1275|Info|=============================================
-2015-08-20 10:54:19.1275|Info|FAILED: lodash.debounce: should support a `trailing` option: expected: undefined, actual: x,     at Script Document [18]:1907:13
-    at Object.<anonymous> (Script Document [21]:2836:21)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at begin (Script Document [18]:628:2)
-2015-08-20 10:54:19.8330|Info|=============================================
-2015-08-20 10:54:19.8330|Info|FAILED: lodash.debounce: should support a `maxWait` option: expected: true,false, actual: true,true,     at Script Document [18]:1907:13
-    at Script Document [21]:2873:21
-    at setTimeout (Script Document [3]:1:85)
-    at Object.<anonymous> (Script Document [21]:2872:9)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-2015-08-20 10:54:20.3964|Info|=============================================
-2015-08-20 10:54:20.3964|Info|FAILED: lodash.defer: should be cancelable: Died on test #1     at extend.asyncTest (Script Document [18]:248:9)
-    at Script Document [21]:3089:5
-    at Script Document [21]:3109:4
-    at Script Document [21]:17426:3: clearTimeout is not defined, , ReferenceError: clearTimeout is not defined
-    at Object.<anonymous> (Script Document [21]:3097:9)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at begin (Script Document [18]:628:2)
-    at Script Document [18]:644:4
-    at setTimeout (Script Document [3]:1:85)
-    at resumeProcessing (Script Document [18]:636:3)
-    at Object.extend.start (Script Document [18]:321:3)
-    at Script Document [21]:3080:17
-2015-08-20 10:54:20.4585|Info|=============================================
-2015-08-20 10:54:20.4585|Info|FAILED: lodash.delay: should delay `func` execution: failed, expected argument to be truthy, was: false, ,     at Script Document [18]:1907:13
-    at Script Document [21]:3122:15
-    at setTimeout (Script Document [3]:1:85)
-    at Object.<anonymous> (Script Document [21]:3121:9)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-2015-08-20 10:54:20.6936|Info|=============================================
-2015-08-20 10:54:20.6936|Info|FAILED: lodash.delay: should be cancelable: Died on test #1     at extend.asyncTest (Script Document [18]:248:9)
-    at Script Document [21]:3155:5
-    at Script Document [21]:3175:4
-    at Script Document [21]:17426:3: clearTimeout is not defined, , ReferenceError: clearTimeout is not defined
-    at Object.<anonymous> (Script Document [21]:3163:9)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at begin (Script Document [18]:628:2)
-    at Script Document [18]:644:4
-    at setTimeout (Script Document [3]:1:85)
-    at resumeProcessing (Script Document [18]:636:3)
-    at Object.extend.start (Script Document [18]:321:3)
-    at Script Document [21]:3146:17
-2015-08-20 10:54:22.4098|Info|=============================================
-2015-08-20 10:54:22.4098|Info|FAILED: lodash.isNil: should work with nulls from another realm: Expected 2 assertions, but 1 were run, ,     at Script Document [21]:7767:5
-    at Script Document [21]:7776:4
-    at Script Document [21]:17426:3
-2015-08-20 10:54:22.4529|Info|=============================================
-2015-08-20 10:54:22.4529|Info|FAILED: lodash.memoize: should throw a TypeError if `resolve` is truthy and not a function: Died on test #1     at Script Document [21]:9963:5
-    at Script Document [21]:10159:4
-    at Script Document [21]:17426:3: raises is not defined, , ReferenceError: raises is not defined
-    at Object.<anonymous> (Script Document [21]:9964:7)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at next (Script Document [18]:570:3)
-    at setTimeout (Script Document [3]:1:85)
-    at process (Script Document [18]:585:4)
-    at begin (Script Document [18]:628:2)
-    at Script Document [18]:644:4
-    at setTimeout (Script Document [3]:1:85)
-2015-08-20 10:54:22.6190|Info|=============================================
-2015-08-20 10:54:22.6190|Info|FAILED: lodash.once: should not throw more than once: Died on test #1     at Script Document [21]:11279:5
-    at Script Document [21]:11295:4
-    at Script Document [21]:17426:3: raises is not defined, , ReferenceError: raises is not defined
-    at Object.<anonymous> (Script Document [21]:11286:7)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at begin (Script Document [18]:628:2)
-    at Script Document [18]:644:4
-    at setTimeout (Script Document [3]:1:85)
-    at resumeProcessing (Script Document [18]:636:3)
-    at Object.extend.start (Script Document [18]:321:3)
-    at Script Document [21]:11145:17
-2015-08-20 10:54:22.6260|Info|=============================================
-2015-08-20 10:54:22.6260|Info|FAILED: lodash.once: should not throw more than once: Expected 2 assertions, but 1 were run, ,     at Script Document [21]:11279:5
-    at Script Document [21]:11295:4
-    at Script Document [21]:17426:3
-2015-08-20 10:54:22.7571|Info|=============================================
-2015-08-20 10:54:22.7571|Info|FAILED: lodash.spread: should throw a TypeError when receiving a non-array `array` argument: Died on test #1     at Script Document [21]:14288:5
-    at Script Document [21]:14311:4
-    at Script Document [21]:17426:3: raises is not defined, , ReferenceError: raises is not defined
-    at Object.<anonymous> (Script Document [21]:14289:7)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at begin (Script Document [18]:628:2)
-    at Script Document [18]:644:4
-    at setTimeout (Script Document [3]:1:85)
-    at resumeProcessing (Script Document [18]:636:3)
-    at Object.extend.start (Script Document [18]:321:3)
-    at Script Document [21]:11145:17
-2015-08-20 10:54:22.9172|Info|=============================================
-2015-08-20 10:54:22.9202|Info|FAILED: lodash.throttle: should throttle a function: failed, expected argument to be truthy, was: false, ,     at Script Document [18]:1907:13
-    at Script Document [21]:14986:24
-    at setTimeout (Script Document [3]:1:85)
-    at Object.<anonymous> (Script Document [21]:14985:9)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-2015-08-20 10:54:22.9743|Info|=============================================
-2015-08-20 10:54:22.9743|Info|FAILED: lodash.throttle: subsequent calls should return the result of the first call: expected: a,a, actual: a,b,     at Script Document [18]:1907:13
-    at Object.<anonymous> (Script Document [21]:15001:19)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at begin (Script Document [18]:628:2)
-2015-08-20 10:54:23.0803|Info|=============================================
-2015-08-20 10:54:23.0803|Info|FAILED: lodash.throttle: subsequent calls should return the result of the first call: expected: y, actual: y,     at Script Document [18]:1907:13
-    at Script Document [21]:15008:26
-    at setTimeout (Script Document [3]:1:85)
-    at Object.<anonymous> (Script Document [21]:15003:9)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-2015-08-20 10:54:23.2504|Info|=============================================
-2015-08-20 10:54:23.2504|Info|FAILED: lodash.throttle: should clear timeout when `func` is called: expected: 2, actual: 3,     at Script Document [18]:1907:13
-    at Script Document [21]:15045:11
-    at setTimeout (Script Document [3]:1:85)
-    at Object.<anonymous> (Script Document [21]:15044:9)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-2015-08-20 10:54:24.0830|Info|=============================================
-2015-08-20 10:54:24.0830|Info|FAILED: lodash.throttle: should apply default options: expected: a, actual: b,     at Script Document [18]:1907:13
-    at Object.<anonymous> (Script Document [21]:15113:21)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at begin (Script Document [18]:628:2)
-2015-08-20 10:54:24.2662|Info|=============================================
-2015-08-20 10:54:24.2662|Info|FAILED: lodash.throttle: should support a `leading` option: expected: undefined, actual: a,     at Script Document [18]:1907:13
-    at Object.<anonymous> (Script Document [21]:15132:21)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at begin (Script Document [18]:628:2)
-2015-08-20 10:54:24.3402|Info|=============================================
-2015-08-20 10:54:24.3422|Info|FAILED: lodash.throttle: should support a `trailing` option: expected: a, actual: b,     at Script Document [18]:1907:13
-    at Object.<anonymous> (Script Document [21]:15155:21)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at begin (Script Document [18]:628:2)
-2015-08-20 10:54:25.1538|Info|=============================================
-2015-08-20 10:54:25.1538|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce should have a default `wait` of `0`: expected: 1, actual: 2,     at Script Document [18]:1907:13
-    at Script Document [21]:15231:34
-    at setTimeout (Script Document [3]:1:85)
-    at Object.<anonymous> (Script Document [21]:15229:9)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-2015-08-20 10:54:25.3909|Info|=============================================
-2015-08-20 10:54:25.3909|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce supports recursive calls: expected: , actual: [object Object],a,[object Object],b,[object Object],c,     at Script Document [18]:1907:13
-    at Object.<anonymous> (Script Document [21]:15285:36)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at begin (Script Document [18]:628:2)
-2015-08-20 10:54:25.8183|Info|=============================================
-2015-08-20 10:54:25.8183|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce should work if the system time is set backwards: expected: 1, actual: 2,     at Script Document [18]:1907:13
-    at Script Document [21]:15323:34
-    at setTimeout (Script Document [3]:1:85)
-    at Object.<anonymous> (Script Document [21]:15321:9)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-2015-08-20 10:54:25.9394|Info|=============================================
-2015-08-20 10:54:25.9394|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce should support cancelling delayed calls: expected: 0, actual: 1,     at Script Document [18]:1907:13
-    at Script Document [21]:15345:11
-    at setTimeout (Script Document [3]:1:85)
-    at Object.<anonymous> (Script Document [21]:15344:9)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-2015-08-20 10:54:26.3346|Info|=============================================
-2015-08-20 10:54:26.3346|Info|FAILED: lodash.debounce and lodash.throttle: _.throttle supports recursive calls: expected: [object Object],a, actual: [object Object],a,[object Object],b,[object Object],c,     at Script Document [18]:1907:13
-    at Object.<anonymous> (Script Document [21]:15285:36)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-    at process (Script Document [18]:583:24)
-    at begin (Script Document [18]:628:2)
-2015-08-20 10:54:26.8060|Info|=============================================
-2015-08-20 10:54:26.8060|Info|FAILED: lodash.debounce and lodash.throttle: _.throttle should support cancelling delayed calls: expected: 0, actual: 1,     at Script Document [18]:1907:13
-    at Script Document [21]:15345:11
-    at setTimeout (Script Document [3]:1:85)
-    at Object.<anonymous> (Script Document [21]:15344:9)
-    at Object.Test.run (Script Document [18]:895:28)
-    at Script Document [18]:1024:11
-2015-08-20 10:54:27.0651|Info|=============================================
-2015-08-20 10:54:27.0651|Info|Total:4451
-2015-08-20 10:54:27.0651|Info|Falha:32
-2015-08-20 10:54:27.0651|Info|Sucesso:4419
-2015-08-20 10:54:27.0651|Info|Tempo:9272
-2015-08-20 11:48:49.0649|Info|=============================================
-2015-08-20 11:48:49.0800|Info|FAILED: lodash.debounce: should debounce a function: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.5657|Info|=============================================
+2015-08-20 12:00:56.5807|Info|FAILED: lodash.debounce: should debounce a function: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:2698:5
     at Script Document [6]:2930:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -273,13 +13,13 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.<anonymous> (Script Document [6]:594:15)
     at Object.Test.run (Script Document [3]:895:28)
-2015-08-20 11:48:49.0800|Info|=============================================
-2015-08-20 11:48:49.0800|Info|FAILED: lodash.debounce: should debounce a function: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.5807|Info|=============================================
+2015-08-20 12:00:56.5807|Info|FAILED: lodash.debounce: should debounce a function: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:2698:5
     at Script Document [6]:2930:4
     at Script Document [6]:17424:3
-2015-08-20 11:48:49.0800|Info|=============================================
-2015-08-20 11:48:49.0800|Info|FAILED: lodash.debounce: subsequent debounced calls return the last `func` result: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.5807|Info|=============================================
+2015-08-20 12:00:56.5807|Info|FAILED: lodash.debounce: subsequent debounced calls return the last `func` result: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:2720:5
     at Script Document [6]:2930:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -293,13 +33,13 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:49.0800|Info|=============================================
-2015-08-20 11:48:49.0800|Info|FAILED: lodash.debounce: subsequent debounced calls return the last `func` result: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.5807|Info|=============================================
+2015-08-20 12:00:56.5807|Info|FAILED: lodash.debounce: subsequent debounced calls return the last `func` result: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:2720:5
     at Script Document [6]:2930:4
     at Script Document [6]:17424:3
-2015-08-20 11:48:49.0800|Info|=============================================
-2015-08-20 11:48:49.0800|Info|FAILED: lodash.debounce: subsequent "immediate" debounced calls return the last `func` result: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.5807|Info|=============================================
+2015-08-20 12:00:56.5807|Info|FAILED: lodash.debounce: subsequent "immediate" debounced calls return the last `func` result: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:2740:5
     at Script Document [6]:2930:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -313,13 +53,13 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:49.1080|Info|=============================================
-2015-08-20 11:48:49.1080|Info|FAILED: lodash.debounce: subsequent "immediate" debounced calls return the last `func` result: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.5807|Info|=============================================
+2015-08-20 12:00:56.5917|Info|FAILED: lodash.debounce: subsequent "immediate" debounced calls return the last `func` result: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:2740:5
     at Script Document [6]:2930:4
     at Script Document [6]:17424:3
-2015-08-20 11:48:49.1260|Info|=============================================
-2015-08-20 11:48:49.1260|Info|FAILED: lodash.debounce: should apply default options: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.5917|Info|=============================================
+2015-08-20 12:00:56.5917|Info|FAILED: lodash.debounce: should apply default options: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:2759:5
     at Script Document [6]:2930:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -333,13 +73,13 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:49.1410|Info|=============================================
-2015-08-20 11:48:49.1410|Info|FAILED: lodash.debounce: should apply default options: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.5917|Info|=============================================
+2015-08-20 12:00:56.5917|Info|FAILED: lodash.debounce: should apply default options: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:2759:5
     at Script Document [6]:2930:4
     at Script Document [6]:17424:3
-2015-08-20 11:48:49.1410|Info|=============================================
-2015-08-20 11:48:49.1410|Info|FAILED: lodash.debounce: should support a `leading` option: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.5917|Info|=============================================
+2015-08-20 12:00:56.5917|Info|FAILED: lodash.debounce: should support a `leading` option: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:2781:5
     at Script Document [6]:2930:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -353,13 +93,13 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:49.1410|Info|=============================================
-2015-08-20 11:48:49.1410|Info|FAILED: lodash.debounce: should support a `leading` option: Expected 5 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.5917|Info|=============================================
+2015-08-20 12:00:56.5917|Info|FAILED: lodash.debounce: should support a `leading` option: Expected 5 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:2781:5
     at Script Document [6]:2930:4
     at Script Document [6]:17424:3
-2015-08-20 11:48:49.1410|Info|=============================================
-2015-08-20 11:48:49.1410|Info|FAILED: lodash.debounce: should support a `trailing` option: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.6067|Info|=============================================
+2015-08-20 12:00:56.6067|Info|FAILED: lodash.debounce: should support a `trailing` option: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:2819:5
     at Script Document [6]:2930:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -373,13 +113,13 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:49.1560|Info|=============================================
-2015-08-20 11:48:49.1560|Info|FAILED: lodash.debounce: should support a `trailing` option: Expected 4 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.6067|Info|=============================================
+2015-08-20 12:00:56.6067|Info|FAILED: lodash.debounce: should support a `trailing` option: Expected 4 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:2819:5
     at Script Document [6]:2930:4
     at Script Document [6]:17424:3
-2015-08-20 11:48:49.1560|Info|=============================================
-2015-08-20 11:48:49.1560|Info|FAILED: lodash.debounce: should support a `maxWait` option: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.6067|Info|=============================================
+2015-08-20 12:00:56.6067|Info|FAILED: lodash.debounce: should support a `maxWait` option: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:2849:5
     at Script Document [6]:2930:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -393,8 +133,8 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:49.1560|Info|=============================================
-2015-08-20 11:48:49.1560|Info|FAILED: lodash.debounce: should cancel `maxDelayed` when `delayed` is invoked: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.6067|Info|=============================================
+2015-08-20 12:00:56.6067|Info|FAILED: lodash.debounce: should cancel `maxDelayed` when `delayed` is invoked: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:2881:5
     at Script Document [6]:2930:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -408,8 +148,8 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:49.1560|Info|=============================================
-2015-08-20 11:48:49.1560|Info|FAILED: lodash.debounce: should invoke the `trailing` call with the correct arguments and `this` binding: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.6067|Info|=============================================
+2015-08-20 12:00:56.6067|Info|FAILED: lodash.debounce: should invoke the `trailing` call with the correct arguments and `this` binding: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:2902:5
     at Script Document [6]:2930:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -423,13 +163,13 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:49.1560|Info|=============================================
-2015-08-20 11:48:49.1700|Info|FAILED: lodash.debounce: should invoke the `trailing` call with the correct arguments and `this` binding: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.6237|Info|=============================================
+2015-08-20 12:00:56.6237|Info|FAILED: lodash.debounce: should invoke the `trailing` call with the correct arguments and `this` binding: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:2902:5
     at Script Document [6]:2930:4
     at Script Document [6]:17424:3
-2015-08-20 11:48:49.1700|Info|=============================================
-2015-08-20 11:48:49.1700|Info|FAILED: lodash.defer: should defer `func` execution: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.6237|Info|=============================================
+2015-08-20 12:00:56.6237|Info|FAILED: lodash.defer: should defer `func` execution: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:3052:5
     at Script Document [6]:3107:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -443,8 +183,8 @@
     at begin (Script Document [3]:628:2)
     at resumeProcessing (Script Document [3]:647:3)
     at Object.extend.start (Script Document [3]:321:3)
-2015-08-20 11:48:49.1700|Info|=============================================
-2015-08-20 11:48:49.1700|Info|FAILED: lodash.defer: should provide additional arguments to `func`: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.6237|Info|=============================================
+2015-08-20 12:00:56.6237|Info|FAILED: lodash.defer: should provide additional arguments to `func`: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:3068:5
     at Script Document [6]:3107:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -458,8 +198,8 @@
     at begin (Script Document [3]:628:2)
     at resumeProcessing (Script Document [3]:647:3)
     at Object.extend.start (Script Document [3]:321:3)
-2015-08-20 11:48:49.1850|Info|=============================================
-2015-08-20 11:48:49.1850|Info|FAILED: lodash.defer: should be cancelable: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.6387|Info|=============================================
+2015-08-20 12:00:56.6387|Info|FAILED: lodash.defer: should be cancelable: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:3087:5
     at Script Document [6]:3107:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -473,8 +213,8 @@
     at begin (Script Document [3]:628:2)
     at resumeProcessing (Script Document [3]:647:3)
     at Object.extend.start (Script Document [3]:321:3)
-2015-08-20 11:48:49.1850|Info|=============================================
-2015-08-20 11:48:49.1850|Info|FAILED: lodash.delay: should delay `func` execution: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.6387|Info|=============================================
+2015-08-20 12:00:56.6387|Info|FAILED: lodash.delay: should delay `func` execution: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:3114:5
     at Script Document [6]:3173:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -488,13 +228,13 @@
     at begin (Script Document [3]:628:2)
     at resumeProcessing (Script Document [3]:647:3)
     at Object.extend.start (Script Document [3]:321:3)
-2015-08-20 11:48:49.1850|Info|=============================================
-2015-08-20 11:48:49.1850|Info|FAILED: lodash.delay: should delay `func` execution: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.6387|Info|=============================================
+2015-08-20 12:00:56.6387|Info|FAILED: lodash.delay: should delay `func` execution: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:3114:5
     at Script Document [6]:3173:4
     at Script Document [6]:17424:3
-2015-08-20 11:48:49.1850|Info|=============================================
-2015-08-20 11:48:49.1850|Info|FAILED: lodash.delay: should provide additional arguments to `func`: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.6387|Info|=============================================
+2015-08-20 12:00:56.6387|Info|FAILED: lodash.delay: should provide additional arguments to `func`: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:3134:5
     at Script Document [6]:3173:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -508,8 +248,8 @@
     at begin (Script Document [3]:628:2)
     at resumeProcessing (Script Document [3]:647:3)
     at Object.extend.start (Script Document [3]:321:3)
-2015-08-20 11:48:49.1850|Info|=============================================
-2015-08-20 11:48:49.1850|Info|FAILED: lodash.delay: should be cancelable: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:56.6387|Info|=============================================
+2015-08-20 12:00:56.6387|Info|FAILED: lodash.delay: should be cancelable: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:3153:5
     at Script Document [6]:3173:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -523,12 +263,12 @@
     at begin (Script Document [3]:628:2)
     at resumeProcessing (Script Document [3]:647:3)
     at Object.extend.start (Script Document [3]:321:3)
-2015-08-20 11:48:50.8862|Info|=============================================
-2015-08-20 11:48:50.8862|Info|FAILED: lodash.isNil: should work with nulls from another realm: Expected 2 assertions, but 1 were run, ,     at Script Document [6]:7765:5
+2015-08-20 12:00:58.3429|Info|=============================================
+2015-08-20 12:00:58.3429|Info|FAILED: lodash.isNil: should work with nulls from another realm: Expected 2 assertions, but 1 were run, ,     at Script Document [6]:7765:5
     at Script Document [6]:7774:4
     at Script Document [6]:17424:3
-2015-08-20 11:48:50.9263|Info|=============================================
-2015-08-20 11:48:50.9263|Info|FAILED: lodash.memoize: should throw a TypeError if `resolve` is truthy and not a function: Died on test #1     at Script Document [6]:9961:5
+2015-08-20 12:00:58.3859|Info|=============================================
+2015-08-20 12:00:58.3859|Info|FAILED: lodash.memoize: should throw a TypeError if `resolve` is truthy and not a function: Died on test #1     at Script Document [6]:9961:5
     at Script Document [6]:10157:4
     at Script Document [6]:17424:3: raises is not defined, , ReferenceError: raises is not defined
     at Object.<anonymous> (Script Document [6]:9962:7)
@@ -541,8 +281,8 @@
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
     at process (Script Document [3]:583:24)
-2015-08-20 11:48:51.0333|Info|=============================================
-2015-08-20 11:48:51.0333|Info|FAILED: lodash.now: should return the number of milliseconds that have elapsed since the Unix epoch: Died on test #2     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.4940|Info|=============================================
+2015-08-20 12:00:58.4940|Info|FAILED: lodash.now: should return the number of milliseconds that have elapsed since the Unix epoch: Died on test #2     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:11134:5
     at Script Document [6]:11151:4
     at Script Document [6]:17424:3: setTimeout is not defined, , ReferenceError: setTimeout is not defined
@@ -556,8 +296,8 @@
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
     at process (Script Document [3]:583:24)
-2015-08-20 11:48:51.0333|Info|=============================================
-2015-08-20 11:48:51.0333|Info|FAILED: lodash.once: should not throw more than once: Died on test #1     at Script Document [6]:11277:5
+2015-08-20 12:00:58.5010|Info|=============================================
+2015-08-20 12:00:58.5010|Info|FAILED: lodash.once: should not throw more than once: Died on test #1     at Script Document [6]:11277:5
     at Script Document [6]:11293:4
     at Script Document [6]:17424:3: raises is not defined, , ReferenceError: raises is not defined
     at Object.<anonymous> (Script Document [6]:11284:7)
@@ -570,12 +310,12 @@
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
     at process (Script Document [3]:583:24)
-2015-08-20 11:48:51.0333|Info|=============================================
-2015-08-20 11:48:51.0333|Info|FAILED: lodash.once: should not throw more than once: Expected 2 assertions, but 1 were run, ,     at Script Document [6]:11277:5
+2015-08-20 12:00:58.5010|Info|=============================================
+2015-08-20 12:00:58.5010|Info|FAILED: lodash.once: should not throw more than once: Expected 2 assertions, but 1 were run, ,     at Script Document [6]:11277:5
     at Script Document [6]:11293:4
     at Script Document [6]:17424:3
-2015-08-20 11:48:51.1715|Info|=============================================
-2015-08-20 11:48:51.1715|Info|FAILED: lodash.spread: should throw a TypeError when receiving a non-array `array` argument: Died on test #1     at Script Document [6]:14286:5
+2015-08-20 12:00:58.6371|Info|=============================================
+2015-08-20 12:00:58.6381|Info|FAILED: lodash.spread: should throw a TypeError when receiving a non-array `array` argument: Died on test #1     at Script Document [6]:14286:5
     at Script Document [6]:14309:4
     at Script Document [6]:17424:3: raises is not defined, , ReferenceError: raises is not defined
     at Object.<anonymous> (Script Document [6]:14287:7)
@@ -588,8 +328,8 @@
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
     at process (Script Document [3]:583:24)
-2015-08-20 11:48:51.1965|Info|=============================================
-2015-08-20 11:48:51.1965|Info|FAILED: lodash.throttle: should throttle a function: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.6631|Info|=============================================
+2015-08-20 12:00:58.6631|Info|FAILED: lodash.throttle: should throttle a function: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:14971:5
     at Script Document [6]:15196:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -603,13 +343,13 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.1965|Info|=============================================
-2015-08-20 11:48:51.1965|Info|FAILED: lodash.throttle: should throttle a function: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.6631|Info|=============================================
+2015-08-20 12:00:58.6631|Info|FAILED: lodash.throttle: should throttle a function: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:14971:5
     at Script Document [6]:15196:4
     at Script Document [6]:17424:3
-2015-08-20 11:48:51.2005|Info|=============================================
-2015-08-20 11:48:51.2005|Info|FAILED: lodash.throttle: subsequent calls should return the result of the first call: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.6631|Info|=============================================
+2015-08-20 12:00:58.6631|Info|FAILED: lodash.throttle: subsequent calls should return the result of the first call: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:14994:5
     at Script Document [6]:15196:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -623,13 +363,13 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.2005|Info|=============================================
-2015-08-20 11:48:51.2005|Info|FAILED: lodash.throttle: subsequent calls should return the result of the first call: Expected 5 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.6692|Info|=============================================
+2015-08-20 12:00:58.6692|Info|FAILED: lodash.throttle: subsequent calls should return the result of the first call: Expected 5 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:14994:5
     at Script Document [6]:15196:4
     at Script Document [6]:17424:3
-2015-08-20 11:48:51.2005|Info|=============================================
-2015-08-20 11:48:51.2005|Info|FAILED: lodash.throttle: should clear timeout when `func` is called: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.6692|Info|=============================================
+2015-08-20 12:00:58.6692|Info|FAILED: lodash.throttle: should clear timeout when `func` is called: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15017:5
     at Script Document [6]:15196:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -643,8 +383,8 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.2005|Info|=============================================
-2015-08-20 11:48:51.2005|Info|FAILED: lodash.throttle: should not trigger a trailing call when invoked once: Died on test #2     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.6692|Info|=============================================
+2015-08-20 12:00:58.6692|Info|FAILED: lodash.throttle: should not trigger a trailing call when invoked once: Died on test #2     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15053:5
     at Script Document [6]:15196:4
     at Script Document [6]:17424:3: setTimeout is not defined, , ReferenceError: setTimeout is not defined
@@ -658,8 +398,8 @@
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
     at process (Script Document [3]:583:24)
-2015-08-20 11:48:51.2005|Info|=============================================
-2015-08-20 11:48:51.2005|Info|FAILED: lodash.throttle: should trigger a call when invoked repeatedly: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.6692|Info|=============================================
+2015-08-20 12:00:58.6692|Info|FAILED: lodash.throttle: should trigger a call when invoked repeatedly: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15073:106
     at Function.times (Script Document [5]:11077:27)
     at Script Document [6]:15072:7
@@ -675,8 +415,8 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.2175|Info|=============================================
-2015-08-20 11:48:51.2175|Info|FAILED: lodash.throttle: should trigger a call when invoked repeatedly and `leading` is `false`: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.6862|Info|=============================================
+2015-08-20 12:00:58.6862|Info|FAILED: lodash.throttle: should trigger a call when invoked repeatedly and `leading` is `false`: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15073:106
     at Function.times (Script Document [5]:11077:27)
     at Script Document [6]:15072:7
@@ -692,8 +432,8 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.2175|Info|=============================================
-2015-08-20 11:48:51.2175|Info|FAILED: lodash.throttle: should apply default options: Died on test #2     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.6862|Info|=============================================
+2015-08-20 12:00:58.6862|Info|FAILED: lodash.throttle: should apply default options: Died on test #2     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15101:5
     at Script Document [6]:15196:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -707,13 +447,13 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.2175|Info|=============================================
-2015-08-20 11:48:51.2175|Info|FAILED: lodash.throttle: should apply default options: Expected 3 assertions, but 2 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.6862|Info|=============================================
+2015-08-20 12:00:58.6862|Info|FAILED: lodash.throttle: should apply default options: Expected 3 assertions, but 2 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15101:5
     at Script Document [6]:15196:4
     at Script Document [6]:17424:3
-2015-08-20 11:48:51.2175|Info|=============================================
-2015-08-20 11:48:51.2175|Info|FAILED: lodash.throttle: should support a `leading` option: Died on test #2     at Script Document [6]:15124:5
+2015-08-20 12:00:58.6862|Info|=============================================
+2015-08-20 12:00:58.6862|Info|FAILED: lodash.throttle: should support a `leading` option: Died on test #2     at Script Document [6]:15124:5
     at Script Document [6]:15196:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
     at debounced (Script Document [5]:7097:28)
@@ -726,8 +466,8 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.2175|Info|=============================================
-2015-08-20 11:48:51.2175|Info|FAILED: lodash.throttle: should support a `trailing` option: Died on test #2     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.6862|Info|=============================================
+2015-08-20 12:00:58.6862|Info|FAILED: lodash.throttle: should support a `trailing` option: Died on test #2     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15137:5
     at Script Document [6]:15196:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -741,13 +481,13 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.2175|Info|=============================================
-2015-08-20 11:48:51.2175|Info|FAILED: lodash.throttle: should support a `trailing` option: Expected 6 assertions, but 2 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.6862|Info|=============================================
+2015-08-20 12:00:58.6862|Info|FAILED: lodash.throttle: should support a `trailing` option: Expected 6 assertions, but 2 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15137:5
     at Script Document [6]:15196:4
     at Script Document [6]:17424:3
-2015-08-20 11:48:51.2175|Info|=============================================
-2015-08-20 11:48:51.2175|Info|FAILED: lodash.throttle: should not update `lastCalled`, at the end of the timeout, when `trailing` is `false`: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.7022|Info|=============================================
+2015-08-20 12:00:58.7022|Info|FAILED: lodash.throttle: should not update `lastCalled`, at the end of the timeout, when `trailing` is `false`: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15170:5
     at Script Document [6]:15196:4
     at Script Document [6]:17424:3: setTimeout is not a function, , TypeError: setTimeout is not a function
@@ -761,8 +501,8 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.2345|Info|=============================================
-2015-08-20 11:48:51.2345|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce should have a default `wait` of `0`: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.7022|Info|=============================================
+2015-08-20 12:00:58.7022|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce should have a default `wait` of `0`: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15217:33
     at arrayEach (Script Document [5]:1267:13)
     at Function.forEach (Script Document [5]:6020:11)
@@ -778,8 +518,8 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.2345|Info|=============================================
-2015-08-20 11:48:51.2345|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce should invoke `func` with the correct `this` binding: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.7022|Info|=============================================
+2015-08-20 12:00:58.7022|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce should invoke `func` with the correct `this` binding: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15239:33
     at arrayEach (Script Document [5]:1267:13)
     at Function.forEach (Script Document [5]:6020:11)
@@ -795,8 +535,8 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.2345|Info|=============================================
-2015-08-20 11:48:51.2345|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce supports recursive calls: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.7022|Info|=============================================
+2015-08-20 12:00:58.7022|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce supports recursive calls: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15263:33
     at arrayEach (Script Document [5]:1267:13)
     at Function.forEach (Script Document [5]:6020:11)
@@ -812,15 +552,15 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.2345|Info|=============================================
-2015-08-20 11:48:51.2345|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce supports recursive calls: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.7022|Info|=============================================
+2015-08-20 12:00:58.7022|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce supports recursive calls: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15263:33
     at arrayEach (Script Document [5]:1267:13)
     at Function.forEach (Script Document [5]:6020:11)
     at Script Document [6]:15202:5
     at Script Document [6]:17424:3
-2015-08-20 11:48:51.2485|Info|=============================================
-2015-08-20 11:48:51.2485|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce should work if the system time is set backwards: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.7212|Info|=============================================
+2015-08-20 12:00:58.7212|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce should work if the system time is set backwards: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15296:33
     at arrayEach (Script Document [5]:1267:13)
     at Function.forEach (Script Document [5]:6020:11)
@@ -836,8 +576,8 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.2485|Info|=============================================
-2015-08-20 11:48:51.2485|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce should support cancelling delayed calls: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.7212|Info|=============================================
+2015-08-20 12:00:58.7212|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce should support cancelling delayed calls: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15331:33
     at arrayEach (Script Document [5]:1267:13)
     at Function.forEach (Script Document [5]:6020:11)
@@ -853,8 +593,8 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.2485|Info|=============================================
-2015-08-20 11:48:51.2485|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce should reset `lastCalled` after cancelling: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.7212|Info|=============================================
+2015-08-20 12:00:58.7212|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce should reset `lastCalled` after cancelling: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15353:33
     at arrayEach (Script Document [5]:1267:13)
     at Function.forEach (Script Document [5]:6020:11)
@@ -870,15 +610,15 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.2485|Info|=============================================
-2015-08-20 11:48:51.2485|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce should reset `lastCalled` after cancelling: Expected 3 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.7212|Info|=============================================
+2015-08-20 12:00:58.7212|Info|FAILED: lodash.debounce and lodash.throttle: _.debounce should reset `lastCalled` after cancelling: Expected 3 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15353:33
     at arrayEach (Script Document [5]:1267:13)
     at Function.forEach (Script Document [5]:6020:11)
     at Script Document [6]:15202:5
     at Script Document [6]:17424:3
-2015-08-20 11:48:51.2485|Info|=============================================
-2015-08-20 11:48:51.2485|Info|FAILED: lodash.debounce and lodash.throttle: _.throttle should have a default `wait` of `0`: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.7212|Info|=============================================
+2015-08-20 12:00:58.7322|Info|FAILED: lodash.debounce and lodash.throttle: _.throttle should have a default `wait` of `0`: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15217:33
     at arrayEach (Script Document [5]:1267:13)
     at Function.forEach (Script Document [5]:6020:11)
@@ -894,8 +634,8 @@
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
     at process (Script Document [3]:583:24)
-2015-08-20 11:48:51.2485|Info|=============================================
-2015-08-20 11:48:51.2485|Info|FAILED: lodash.debounce and lodash.throttle: _.throttle should invoke `func` with the correct `this` binding: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.7322|Info|=============================================
+2015-08-20 12:00:58.7322|Info|FAILED: lodash.debounce and lodash.throttle: _.throttle should invoke `func` with the correct `this` binding: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15239:33
     at arrayEach (Script Document [5]:1267:13)
     at Function.forEach (Script Document [5]:6020:11)
@@ -911,8 +651,8 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.2645|Info|=============================================
-2015-08-20 11:48:51.2645|Info|FAILED: lodash.debounce and lodash.throttle: _.throttle supports recursive calls: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.7322|Info|=============================================
+2015-08-20 12:00:58.7322|Info|FAILED: lodash.debounce and lodash.throttle: _.throttle supports recursive calls: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15263:33
     at arrayEach (Script Document [5]:1267:13)
     at Function.forEach (Script Document [5]:6020:11)
@@ -928,15 +668,15 @@
     at begin (Script Document [3]:628:2)
     at resumeProcessing (Script Document [3]:647:3)
     at Object.extend.start (Script Document [3]:321:3)
-2015-08-20 11:48:51.2645|Info|=============================================
-2015-08-20 11:48:51.2645|Info|FAILED: lodash.debounce and lodash.throttle: _.throttle supports recursive calls: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.7322|Info|=============================================
+2015-08-20 12:00:58.7322|Info|FAILED: lodash.debounce and lodash.throttle: _.throttle supports recursive calls: Expected 2 assertions, but 1 were run, ,     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15263:33
     at arrayEach (Script Document [5]:1267:13)
     at Function.forEach (Script Document [5]:6020:11)
     at Script Document [6]:15202:5
     at Script Document [6]:17424:3
-2015-08-20 11:48:51.2645|Info|=============================================
-2015-08-20 11:48:51.2645|Info|FAILED: lodash.debounce and lodash.throttle: _.throttle should work if the system time is set backwards: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.7482|Info|=============================================
+2015-08-20 12:00:58.7482|Info|FAILED: lodash.debounce and lodash.throttle: _.throttle should work if the system time is set backwards: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15296:33
     at arrayEach (Script Document [5]:1267:13)
     at Function.forEach (Script Document [5]:6020:11)
@@ -952,8 +692,8 @@
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
     at process (Script Document [3]:583:24)
-2015-08-20 11:48:51.2645|Info|=============================================
-2015-08-20 11:48:51.2645|Info|FAILED: lodash.debounce and lodash.throttle: _.throttle should support cancelling delayed calls: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.7482|Info|=============================================
+2015-08-20 12:00:58.7482|Info|FAILED: lodash.debounce and lodash.throttle: _.throttle should support cancelling delayed calls: Died on test #1     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15331:33
     at arrayEach (Script Document [5]:1267:13)
     at Function.forEach (Script Document [5]:6020:11)
@@ -969,8 +709,8 @@
     at Object.extend.start (Script Document [3]:321:3)
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
-2015-08-20 11:48:51.2795|Info|=============================================
-2015-08-20 11:48:51.2795|Info|FAILED: lodash.debounce and lodash.throttle: _.throttle should reset `lastCalled` after cancelling: Died on test #3     at extend.asyncTest (Script Document [3]:248:9)
+2015-08-20 12:00:58.7482|Info|=============================================
+2015-08-20 12:00:58.7482|Info|FAILED: lodash.debounce and lodash.throttle: _.throttle should reset `lastCalled` after cancelling: Died on test #3     at extend.asyncTest (Script Document [3]:248:9)
     at Script Document [6]:15353:33
     at arrayEach (Script Document [5]:1267:13)
     at Function.forEach (Script Document [5]:6020:11)
@@ -986,8 +726,8 @@
     at Object.Test.run (Script Document [3]:906:11)
     at Script Document [3]:1024:11
     at process (Script Document [3]:583:24)
-2015-08-20 11:48:51.3976|Info|=============================================
-2015-08-20 11:48:51.3976|Info|Total:4439
-2015-08-20 11:48:51.3976|Info|Falha:58
-2015-08-20 11:48:51.3976|Info|Sucesso:4381
-2015-08-20 11:48:51.3976|Info|Tempo:2526
+2015-08-20 12:00:58.8913|Info|=============================================
+2015-08-20 12:00:58.8913|Info|Total:4439
+2015-08-20 12:00:58.8913|Info|Falha:58
+2015-08-20 12:00:58.8913|Info|Sucesso:4381
+2015-08-20 12:00:58.8913|Info|Tempo:2472

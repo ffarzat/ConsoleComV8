@@ -5,10 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.ClearScript.V8;
 using NLog;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Otimizacao.EsprimaAST.Json;
 using Otimizacao.Javascript;
 
