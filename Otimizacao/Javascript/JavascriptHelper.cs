@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Timers;
 using Microsoft.ClearScript.V8;
 using NLog;
@@ -21,6 +20,22 @@ namespace Otimizacao.Javascript
     /// </remarks>
     public class JavascriptHelper
     {
+        /// <summary>
+        /// Para testes
+        /// </summary>
+        public string CurrentThreadId {
+            get
+            {
+                Console.WriteLine("ENGINE_ThreadId : {0}", Thread.CurrentThread.ManagedThreadId);
+               return Thread.CurrentThread.ManagedThreadId.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Para fazer o lock do SetTimeout
+        /// </summary>
+        private object _timerLock = new object();
+
         /// <summary>
         /// Armazena os Javascripts carregados
         /// </summary>
@@ -119,6 +134,7 @@ namespace Otimizacao.Javascript
             _engine.Execute(@"var stFunctionsCallBack = new Array();");
 
             _engine.Execute(@"var setTimeout = function (funcToCall, millis) {
+                                                var textoId = javascriptHelper.CurrentThreadId;
                                                 var idlocal = javascriptHelper.SetTimeout(millis);
                                                 stFunctionsCallBack.push(funcToCall);
                                                 return idlocal;
@@ -200,6 +216,7 @@ namespace Otimizacao.Javascript
         /// <returns></returns>
         public bool ExecutarTestes(string nomeArquivoIndividuo, string nomeDoArquivoTestes)
         {
+           
             var sw = new Stopwatch();
             sw.Start();
 
@@ -269,7 +286,9 @@ namespace Otimizacao.Javascript
 
             this.FalhasDosTestes.ForEach(this.Log);
 
-            return true;
+            bool gotLock = Monitor.TryEnter(_timerLock, TimeSpan.FromSeconds(60)); // consegue o lock? Pode sair
+
+            return gotLock;
         }
 
         /// <summary>
@@ -278,20 +297,19 @@ namespace Otimizacao.Javascript
         /// <param name="miliseconds">tempo em ms</param>
         public string SetTimeout(int miliseconds)
         {
-            int id = 0;
-            var tTimer = new Thread(() =>
-                {
-                    id = _timers.Count;
-                    var t = new Timer(miliseconds);
-                    t.Elapsed += JavascriptHelper_Elapsed;
-                    t.Start();
+            Console.WriteLine("Helper_ThreadId : {0}", Thread.CurrentThread.ManagedThreadId);
 
-                    _timers.Add(id, t);
-                });
+                   
+            int id = _timers.Count;
+            var t = new Timer(miliseconds);
+            
+            t.Elapsed += JavascriptHelper_Elapsed;
+            
+            t.Start();
 
-            tTimer.Start();
-            tTimer.Join();
+            _timers.Add(id, t);
 
+           
             return id.ToString();
         }
 
@@ -302,18 +320,32 @@ namespace Otimizacao.Javascript
         /// <param name="e"></param>
         void JavascriptHelper_Elapsed(object sender, ElapsedEventArgs e)
         {
-            var item = _timers.Where(kp => kp.Value == (Timer) sender);
-            
-            if (item.Any())
+            if (!Monitor.TryEnter(_timerLock))
             {
-                var id = item.First().Key;
-                var timer = item.First().Value;
-                timer.Stop();
+                return;
+            }
 
-                _engine.Execute(string.Format("javascriptHelper.Escrever('deveria ter dispado: ' + stFunctionsCallBack[{0}]);", id));
-                _engine.Execute(string.Format("stFunctionsCallBack[{0}]();", id));
+            try
+            {
+                Console.WriteLine("Timer_ThreadId : {0}", Thread.CurrentThread.ManagedThreadId);
 
-                
+                var item = _timers.Where(kp => kp.Value == (Timer)sender);
+
+                if (item.Any())
+                {
+                    var id = item.First().Key;
+                    var timer = item.First().Value;
+                    timer.Stop();
+
+                    _engine.Execute(string.Format("javascriptHelper.Escrever('deveria ter dispado: ' + stFunctionsCallBack[{0}]);", id));
+                    _engine.Execute(string.Format("stFunctionsCallBack[{0}]();", id));
+
+
+                }
+            }
+            finally
+            {
+                Monitor.Exit(_timerLock);
             }
         }
 

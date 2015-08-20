@@ -1,0 +1,80 @@
+2015-08-20 19:03:46.8952|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-20 19:03:46.9172|Info|0 segundos para avaliar o individuo global.js
+2015-08-20 19:03:46.9192|Info|Acaba aqui...
+2015-08-20 19:03:46.9442|Info|deveria ter dispado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+
+			begin();
+		}
+2015-08-20 19:07:05.1337|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-20 19:07:05.1538|Info|0 segundos para avaliar o individuo global.js
+2015-08-20 19:07:05.1538|Info|Acaba aqui...
+2015-08-20 19:07:05.1748|Info|deveria ter dispado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+
+			begin();
+		}
+2015-08-20 19:07:30.4917|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-20 19:07:30.5137|Info|0 segundos para avaliar o individuo global.js
+2015-08-20 19:07:30.5137|Info|Acaba aqui...
+2015-08-20 19:07:30.5377|Info|deveria ter dispado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+
+			begin();
+		}
+2015-08-20 19:08:53.9809|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-20 19:08:54.0039|Info|0 segundos para avaliar o individuo global.js
+2015-08-20 19:08:54.0039|Info|Acaba aqui...
+2015-08-20 19:08:54.0279|Info|deveria ter dispado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+
+			begin();
+		}
+2015-08-20 19:25:01.0935|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-20 19:25:01.1165|Info|0 segundos para avaliar o individuo global.js
+2015-08-20 19:25:01.1165|Info|Acaba aqui...
+2015-08-20 19:27:24.5281|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-20 19:27:24.5521|Info|0 segundos para avaliar o individuo lodash.js
+2015-08-20 19:27:27.8715|Info|deveria ter dispado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+
+			begin();
+		}
+2015-08-20 19:28:02.5861|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-20 19:28:02.6071|Info|0 segundos para avaliar o individuo global.js
+2015-08-20 19:28:02.6292|Info|deveria ter dispado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+
+			begin();
+		}
+2015-08-20 19:28:03.6359|Info|Acaba aqui...

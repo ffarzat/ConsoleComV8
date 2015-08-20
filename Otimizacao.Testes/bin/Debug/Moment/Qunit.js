@@ -634,9 +634,6 @@ function resumeProcessing() {
 	// A slight delay to allow this iteration of the event loop to finish (more assertions, etc.)
 	if ( defined.setTimeout ) {
 		setTimeout(function() {
-			
-			javascriptHelper.Escrever('Fabio');
-			
 			if ( config.current && config.current.semaphore > 0 ) {
 				return;
 			}
