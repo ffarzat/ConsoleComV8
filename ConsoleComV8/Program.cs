@@ -22,7 +22,7 @@ namespace ConsoleComV8
 
             var helper = new JavascriptHelper(Environment.CurrentDirectory);
 
-            helper.ExecutarTestes();
+            helper.ExecutarTestes("lodash.js", "lodashTest.js");
 
             sw.Stop();
             

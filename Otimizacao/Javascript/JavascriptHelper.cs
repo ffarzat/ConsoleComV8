@@ -140,7 +140,13 @@ namespace Otimizacao.Javascript
             #endregion
         }
 
-        public bool ExecutarTestes()
+        /// <summary>
+        /// Executa os testes unitário para o individuo
+        /// </summary>
+        /// <param name="nomeArquivoIndividuo">Nome do arquivo.js que representa o individuo</param>
+        /// <param name="nomeDoArquivoTestes">Nome do arquivo.js que representa a lista de testes para executar</param>
+        /// <returns></returns>
+        public bool ExecutarTestes(string nomeArquivoIndividuo, string nomeDoArquivoTestes)
         {
             #region Configura o QUnit
 
@@ -203,11 +209,11 @@ namespace Otimizacao.Javascript
             #endregion
 
             #region Carrega o individuo
-            _engine.Execute(_javascripts["lodash.js"]);
+            _engine.Execute(_javascripts[nomeArquivoIndividuo]);
             #endregion
 
             #region Carrega e executa os Testes
-            _engine.Execute(_javascripts["lodashTest.js"]);
+            _engine.Execute(_javascripts[nomeDoArquivoTestes]);
 
             _engine.Execute(@"   QUnit.load();
                                 QUnit.start();
