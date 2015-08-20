@@ -1,5 +1,5 @@
 (function() {
-  var _ = typeof require == 'function' ? require('..') : window._;
+  var _ = typeof require == 'function' ? require('..') : this._;
   
   QUnit.module('Arrays');
 
@@ -539,7 +539,7 @@
 
 
 (function() {
-  var _ = typeof require == 'function' ? require('..') : window._;
+  var _ = typeof require == 'function' ? require('..') : this._;
 
   QUnit.module('Chaining');
 
@@ -641,7 +641,7 @@
 
 
 (function() {
-  var _ = typeof require == 'function' ? require('..') : window._;
+  var _ = typeof require == 'function' ? require('..') : this._;
 
   QUnit.module('Collections');
 
@@ -1502,7 +1502,7 @@
 (function() {
   if (typeof document == 'undefined') return;
 
-  var _ = typeof require == 'function' ? require('..') : window._;
+  var _ = typeof require == 'function' ? require('..') : this._;
 
   QUnit.module('Cross Document');
   /* global iObject, iElement, iArguments, iFunction, iArray, iError, iString, iNumber, iBoolean, iDate, iRegExp, iNaN, iNull, iUndefined, ActiveXObject */
@@ -1644,7 +1644,7 @@
 
 
 (function() {
-  var _ = typeof require == 'function' ? require('..') : window._;
+  var _ = typeof require == 'function' ? require('..') : this._;
 
   QUnit.module('Functions');
   QUnit.config.asyncRetries = 3;
@@ -2230,7 +2230,7 @@
 
 
 (function() {
-  var _ = typeof require == 'function' ? require('..') : window._;
+  var _ = typeof require == 'function' ? require('..') : this._;
 
   QUnit.module('Objects');
 
@@ -3252,7 +3252,7 @@
 
 
 (function() {
-  var _ = typeof require == 'function' ? require('..') : window._;
+  var _ = typeof require == 'function' ? require('..') : this._;
   var templateSettings;
 
   QUnit.module('Utility', {

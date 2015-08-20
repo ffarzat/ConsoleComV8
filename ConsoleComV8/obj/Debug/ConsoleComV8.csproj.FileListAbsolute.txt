@@ -43,7 +43,6 @@ D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\global.js
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\keyword.js
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\moment.js
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\momentTests.js
-D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\qunit-1.18.0.js
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\require.js
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\underscore.js
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\underscoreTests.Js
@@ -61,3 +60,7 @@ D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Otimizacao.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\CodeBureau.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Otimizacao.pdb
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ast-traverse.js
+D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\lodash.js
+D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\lodashTest.js
+D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\FakeTimers.js
+D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Qunit.js

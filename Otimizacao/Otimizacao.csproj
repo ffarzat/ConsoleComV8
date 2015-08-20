@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClearScript">
+      <HintPath>..\ConsoleComV8\bin\Debug\ClearScript.dll</HintPath>
+    </Reference>
     <Reference Include="CodeBureau">
       <HintPath>..\Refs\CodeBureau.dll</HintPath>
     </Reference>

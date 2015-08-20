@@ -12,3 +12,4 @@ D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Newtonsoft.Json.dll
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\NLog.dll
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Newtonsoft.Json.xml
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\NLog.xml
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\ClearScript.dll
