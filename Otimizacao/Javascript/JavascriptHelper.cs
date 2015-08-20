@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -148,6 +149,9 @@ namespace Otimizacao.Javascript
         /// <returns></returns>
         public bool ExecutarTestes(string nomeArquivoIndividuo, string nomeDoArquivoTestes)
         {
+            var sw = new Stopwatch();
+            sw.Start();
+
             #region Configura o QUnit
 
             _engine.Execute(_javascripts["Qunit.js"]);
@@ -219,6 +223,9 @@ namespace Otimizacao.Javascript
                                 QUnit.start();
                 ");
             #endregion
+            sw.Stop();
+
+            _logger.Info( string.Format("{0} segundos totais", sw.Elapsed.Seconds));
 
             return true;
         }

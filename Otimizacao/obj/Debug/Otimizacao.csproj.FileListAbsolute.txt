@@ -7,3 +7,4 @@ D:\GitHub\ConsoleComV8\Otimizacao\obj\Debug\Otimizacao.csprojResolveAssemblyRefe
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\NLog.dll
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\NLog.xml
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\ClearScript.dll
+D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\NLog.config

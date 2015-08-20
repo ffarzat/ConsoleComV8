@@ -15,20 +15,8 @@ namespace ConsoleComV8
     {
         static void Main(string[] args)
         {
-
-
-            var sw = new Stopwatch();
-            sw.Start();
-
             var helper = new JavascriptHelper(Environment.CurrentDirectory);
-
             helper.ExecutarTestes("lodash.js", "lodashTest.js");
-
-            sw.Stop();
-            
-            Console.WriteLine("{0} segundos totais", sw.Elapsed.Seconds);
-            Console.Read();
-
         }
 
     }
