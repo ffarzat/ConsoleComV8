@@ -25,6 +25,24 @@ namespace Otimizacao.Testes
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Moment"));
 
             helper.ExecutarTestes("global.js", "core-test.js");
+
+            helper.FalhasDosTestes.ForEach(Console.WriteLine);
+            Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");
+        }
+
+        /// <summary>
+        /// Executa os testes do Loadsh
+        /// </summary>
+        [Test]
+        public void ExecutarTestesDoLoadsh()
+        {
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Lodash"));
+
+            helper.ExecutarTestes("lodash.js", "lodashTest.js");
+
+            helper.FalhasDosTestes.ForEach(Console.WriteLine);
+            Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");
+            
         }
     }
 }

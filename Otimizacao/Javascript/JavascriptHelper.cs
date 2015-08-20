@@ -46,6 +46,26 @@ namespace Otimizacao.Javascript
         public string Codigo { get; set; }
 
         /// <summary>
+        /// Total de testes unitários passados para otimização
+        /// </summary>
+        public int TotalTestes { get; set; }
+
+        /// <summary>
+        /// Testes que falharam na execução
+        /// </summary>
+        public int TestesComFalha { get; set; }
+
+        /// <summary>
+        /// Testes que passaram na execução
+        /// </summary>
+        public int TestesComSucesso { get; set; }
+
+        /// <summary>
+        /// Lista com os detalhes dos erros na execução
+        /// </summary>
+        public List<string> FalhasDosTestes { get; internal set; }
+
+        /// <summary>
         /// NLog Logger
         /// </summary>
         private static Logger _logger = LogManager.GetCurrentClassLogger();
@@ -67,7 +87,7 @@ namespace Otimizacao.Javascript
 
             #region Cria a Engine e configura com o JavascriptHelper e Console
             _engine = new V8ScriptEngine();
-
+            FalhasDosTestes = new List<string>();
             _engine.AddHostObject("javascriptHelper", this);
             _engine.Execute(@"'use strict';
                         function console() {
@@ -170,32 +190,17 @@ namespace Otimizacao.Javascript
                                     var total, sucesso, falha;
 
                                     QUnit.done(function( details ) {
-                                    console.log('=============================================');
-                                    console.log('Total:' + details.total);
-                                    console.log('Falha:' + details.failed);
-                                    console.log('Sucesso:' + details.passed);
-                                    console.log('Tempo:' + details.runtime);
+                                    //console.log('=============================================');
+                                    //console.log('Total:' + details.total);
+                                    //console.log('Falha:' + details.failed);
+                                    //console.log('Sucesso:' + details.passed);
+                                    //console.log('Tempo:' + details.runtime);
                                        
-                                    total = details.total;
-                                    sucesso = details.passed;
-                                    falha = details.failed;
+                                    javascriptHelper.TotalTestes = details.total;
+                                    javascriptHelper.TestesComSucesso = details.passed;
+                                    javascriptHelper.TestesComFalha = details.failed;
 
                                 });
-
-/*
-
-                                QUnit.testDone(function( details ) {
-                                    if(details.failed > 0)
-                                    {
-                                        console.log('=============================================');
-                                        console.log('Modulo:' + details.module);
-                                        console.log('Teste:' + details.name);
-                                        console.log(' Falha:' + details.failed);
-                                        console.log(' Total:' + details.total);
-                                        console.log(' Tempo:' + details.duration);
-                                    }
-                                });
-*/
 
                                 QUnit.log(function( details ) {
                                   if ( details.result ) {
@@ -211,8 +216,10 @@ namespace Otimizacao.Javascript
                                     output += ', ' + details.source;
                                   }
 
-                                    console.log('=============================================');
-                                    console.log( output );
+                                    //console.log('=============================================');
+                                    //console.log( output );
+
+                                    javascriptHelper.AdicionarDetalheDeFalha(output);
                                 });
 
 
@@ -233,9 +240,11 @@ namespace Otimizacao.Javascript
                                 QUnit.start();
                 ");
             #endregion
+            
             sw.Stop();
 
-            _logger.Info( string.Format("{0} segundos totais", sw.Elapsed.Seconds));
+            Log(string.Format("Total:{0}, Sucesso: {1}, Falha: {2}", this.TotalTestes, this.TestesComSucesso, this.TestesComFalha));
+            Log(string.Format("{0} segundos para avaliar o individuo {1}", sw.Elapsed.Seconds, nomeArquivoIndividuo));
 
             return true;
         }
@@ -249,6 +258,12 @@ namespace Otimizacao.Javascript
             System.Threading.Thread.Sleep(miliseconds);
         }
 
+        /// <summary>
+        /// Simula o comportamento do Console.log do javascript
+        /// </summary>
+        /// <param name="arg"></param>
+        /// <param name="args1"></param>
+        /// <param name="args2"></param>
         public void Escrever(string arg, object args1 = null, object args2 = null)
         {
             var consoleOut = arg.Replace("%s", "{0}");
@@ -260,7 +275,7 @@ namespace Otimizacao.Javascript
         /// <summary>
         /// Grava um Log do tipo Info direto no arquivo
         /// </summary>
-        public static void Log(string mensagem)
+        public void Log(string mensagem)
         {
             _logger.Info(mensagem);
         }
@@ -319,6 +334,15 @@ namespace Otimizacao.Javascript
             sb.Append("\"");
 
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Adiciona uma falha a lista
+        /// </summary>
+        /// <param name="detalhes"></param>
+        public void AdicionarDetalheDeFalha(string detalhes)
+        {
+            this.FalhasDosTestes.Add(detalhes);
         }
     }
 }

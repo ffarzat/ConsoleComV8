@@ -72,13 +72,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Loadsh\lodash.js">
+    <Content Include="Lodash\lodash.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Loadsh\lodashTest.js">
+    <Content Include="Lodash\lodashTest.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Loadsh\Qunit.js">
+    <Content Include="Lodash\Qunit.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Moment\core-test.js">

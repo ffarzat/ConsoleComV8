@@ -16,6 +16,6 @@ D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Moment\core-test.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Moment\global.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Moment\Qunit.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\NLog.config
-D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Loadsh\lodash.js
-D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Loadsh\lodashTest.js
-D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Loadsh\Qunit.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lodash\lodash.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lodash\lodashTest.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lodash\Qunit.js
