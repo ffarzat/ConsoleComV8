@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.ClearScript.V8;
 using NUnit.Framework;
 using Otimizacao.Javascript;
 
@@ -16,6 +18,17 @@ namespace Otimizacao.Testes
     [TestFixture]
     public class JavascriptHelperTest
     {
+
+        /// <summary>
+        /// Engine do v8 para testes simultaneos
+        /// </summary>
+        private V8ScriptEngine _engine;
+
+        /// <summary>
+        /// Para o teste do timeout
+        /// </summary>
+        public int Global { get; set; }
+
         /// <summary>
         /// Executa os testes do MomentJs
         /// </summary>
@@ -45,6 +58,49 @@ namespace Otimizacao.Testes
             Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");
             Assert.Greater(helper.TestesComSucesso, 1);
             
+        }
+
+        /// <summary>
+        /// Testa se é possível executar a engine "ao mesmo tempo" para simular um timeout
+        /// </summary>
+        [Test]
+        public void Testa_engine_assync()
+        {
+            var host = new JavascriptHelperTest();
+            _engine= new V8ScriptEngine();
+            _engine.AddHostType("Console", typeof(Console));
+            _engine.AddHostObject("JavascriptHelperTest", host);
+            _engine.Execute("JavascriptHelperTest.Global = 0;");
+
+            SetTimeout(100, () => _engine.Execute("JavascriptHelperTest.Global = 1;"));
+
+            //_engine.Execute("Console.WriteLine('valor:{0}', JavascriptHelperTest.Global);");
+            
+            Assert.AreEqual(0, host.Global);
+            
+            Thread.Sleep(200);
+
+            Assert.AreEqual(1, host.Global);
+
+        }
+
+        /// <summary>
+        /// Para emular o TSetTimeout
+        /// </summary>
+        /// <param name="ms"></param>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        async void SetTimeout(int ms, Action callback)
+        {
+            var startTime = DateTime.UtcNow;
+            
+            while ((DateTime.UtcNow - startTime).TotalMilliseconds < ms)
+            {
+                await Task.Delay(10);
+            }
+
+            Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
+            callback();
         }
     }
 }
