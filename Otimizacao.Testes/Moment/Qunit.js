@@ -568,6 +568,7 @@ function synchronize( callback, last ) {
 function process( last ) {
 	function next() {
 		process( last );
+		javascriptHelper.Escrever('Não passou aqui??');
 	}
 	var start = now();
 	config.depth = ( config.depth || 0 ) + 1;

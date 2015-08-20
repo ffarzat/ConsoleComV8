@@ -28,6 +28,7 @@ namespace Otimizacao.Testes
 
             helper.FalhasDosTestes.ForEach(Console.WriteLine);
             Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");
+            Assert.AreEqual(helper.TestesComSucesso, 57982);
         }
 
         /// <summary>
@@ -42,6 +43,7 @@ namespace Otimizacao.Testes
 
             helper.FalhasDosTestes.ForEach(Console.WriteLine);
             Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");
+            Assert.Greater(helper.TestesComSucesso, 1);
             
         }
     }

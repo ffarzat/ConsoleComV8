@@ -65,6 +65,16 @@ namespace Otimizacao.Javascript
         public List<string> FalhasDosTestes { get; internal set; }
 
         /// <summary>
+        /// Guarda os timers para simular o SetTimeout;
+        /// </summary>
+        private Dictionary<int, Timer> _timers;
+
+        /// <summary>
+        /// Funções para futura execução via SetTimout
+        /// </summary>
+        private Dictionary<int, object> _timeOutCodes; 
+
+        /// <summary>
         /// NLog Logger
         /// </summary>
         private static Logger _logger = LogManager.GetCurrentClassLogger();
@@ -85,8 +95,11 @@ namespace Otimizacao.Javascript
             #endregion
 
             #region Cria a Engine e configura com o JavascriptHelper e Console
+            
             _engine = new V8ScriptEngine();
             FalhasDosTestes = new List<string>();
+            _timers = new Dictionary<int, Timer>();
+
             _engine.AddHostObject("javascriptHelper", this);
             _engine.Execute(@"'use strict';
                         function console() {
@@ -100,7 +113,14 @@ namespace Otimizacao.Javascript
                         };");
 
             _engine.Execute("var console = new console();");
-            //Engine.Execute("var setTimeout = function (funcToCall, millis) { javascriptHelper.Esperar(millis);  funcToCall(); };");
+
+            _engine.Execute(@"var stFunctionsCallBack = new Array();");
+
+            _engine.Execute(@"var setTimeout = function (funcToCall, millis) {
+                                                var idlocal = javascriptHelper.SetTimeout(millis);
+                                                stFunctionsCallBack.push(funcToCall);
+                                                return idlocal;
+                            };");
 
             #endregion
         }
@@ -253,10 +273,39 @@ namespace Otimizacao.Javascript
         /// <summary>
         /// Simula o timeout
         /// </summary>
-        /// <param name="miliseconds"></param>
-        public void Esperar(int miliseconds)
+        /// <param name="miliseconds">tempo em ms</param>
+        public string SetTimeout(int miliseconds)
         {
-            System.Threading.Thread.Sleep(miliseconds);
+            var id = _timers.Count;
+            var t = new Timer(miliseconds);
+            t.Elapsed += JavascriptHelper_Elapsed;
+            t.Start();
+            
+            _timers.Add(id, t);
+
+            return id.ToString();
+        }
+
+        /// <summary>
+        /// Quando o timer dispara
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void JavascriptHelper_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            var item = _timers.Where(kp => kp.Value == (Timer) sender);
+            
+            if (item.Any())
+            {
+                var id = item.First().Key;
+                var timer = item.First().Value;
+                timer.Stop();
+
+                _engine.Execute(string.Format("javascriptHelper.Escrever('deveria ter dispado: ' + stFunctionsCallBack[{0}]);", id));
+                _engine.Execute(string.Format("stFunctionsCallBack[{0}]();", id));
+
+                
+            }
         }
 
         /// <summary>
