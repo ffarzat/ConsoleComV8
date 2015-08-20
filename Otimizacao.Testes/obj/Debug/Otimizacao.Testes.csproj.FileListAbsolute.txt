@@ -12,8 +12,10 @@ D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Newtonsoft.Json.dll
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\NLog.dll
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\NLog.xml
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\ClearScript.dll
-D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Moment\Console.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Moment\core-test.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Moment\global.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Moment\Qunit.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\NLog.config
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Loadsh\lodash.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Loadsh\lodashTest.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Loadsh\Qunit.js

@@ -69,7 +69,17 @@ namespace Otimizacao.Javascript
             _engine = new V8ScriptEngine();
 
             _engine.AddHostObject("javascriptHelper", this);
-            _engine.Execute(_javascripts["Console.js"]);
+            _engine.Execute(@"'use strict';
+                        function console() {
+                          if (!(this instanceof console)) {
+                            return new Console();
+                          }
+                        }
+
+                        console.prototype.log = function(args, args1, args2) {
+                          javascriptHelper.Escrever(args, args1, args2);
+                        };");
+
             _engine.Execute("var console = new console();");
             //Engine.Execute("var setTimeout = function (funcToCall, millis) { javascriptHelper.Esperar(millis);  funcToCall(); };");
 
