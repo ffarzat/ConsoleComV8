@@ -569,3 +569,133 @@
 2015-08-21 11:32:25.9708|Info|Encerrando os testes
 2015-08-21 11:32:25.9708|Info|Total:0, Sucesso: 0, Falha: 0
 2015-08-21 11:32:25.9708|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-21 11:35:08.3321|Info|Iniciando os testes
+2015-08-21 11:35:08.6643|Info|  Settimeout: id:0, (13) ms
+2015-08-21 11:35:08.6643|Info|      Executando timer: id:0, (11:35:08.6784)
+2015-08-21 11:35:08.7434|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-21 11:35:08.7944|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:35:08.8455|Info|      Encerrado timer: id:0, (11:35:08.8455)
+2015-08-21 11:35:08.8455|Info|      Executando timer: id:1, (11:35:08.8455)
+2015-08-21 11:35:08.8455|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-21 11:35:08.9205|Info|  Settimeout: id:1, (32) ms
+2015-08-21 11:35:08.9706|Info|  Settimeout: id:2, (96) ms
+2015-08-21 11:35:09.0356|Info|      Encerrado timer: id:1, (11:35:09.0356)
+2015-08-21 11:35:09.0356|Info|      Executando timer: id:1, (11:35:09.0356)
+2015-08-21 11:35:09.0356|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-21 11:35:09.0356|Info|      Encerrado timer: id:1, (11:35:09.0376)
+2015-08-21 11:35:09.0827|Info|      Executando timer: id:2, (11:35:09.0827)
+2015-08-21 11:35:09.0827|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        if (remaining <= 0 || remaining > wait) {
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-21 11:35:09.0827|Info|      Encerrado timer: id:2, (11:35:09.0846)
+2015-08-21 11:35:09.1157|Info|Encerrando os testes
+2015-08-21 11:35:09.1216|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:35:09.1216|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-21 11:40:35.7265|Info|Iniciando os testes
+2015-08-21 11:40:36.0598|Info|  Settimeout: id:0, (13) ms
+2015-08-21 11:40:36.0758|Info|      Executando timer: id:0, (11:40:36.0748)
+2015-08-21 11:40:36.1559|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-21 11:40:36.1939|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:40:36.2450|Info|      Encerrado timer: id:0, (11:40:36.2450)
+2015-08-21 11:40:36.2450|Info|      Executando timer: id:1, (11:40:36.2450)
+2015-08-21 11:40:36.2450|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-21 11:40:36.3230|Info|  Settimeout: id:1, (32) ms
+2015-08-21 11:40:36.3730|Info|  Settimeout: id:2, (96) ms
+2015-08-21 11:40:36.4241|Info|      Encerrado timer: id:1, (11:40:36.4241)
+2015-08-21 11:40:36.4241|Info|      Executando timer: id:1, (11:40:36.4260)
+2015-08-21 11:40:36.4241|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-21 11:40:36.4310|Info|      Encerrado timer: id:1, (11:40:36.4310)
+2015-08-21 11:40:36.4711|Info|      Executando timer: id:2, (11:40:36.4711)
+2015-08-21 11:40:36.4711|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        if (remaining <= 0 || remaining > wait) {
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-21 11:40:36.4761|Info|      Encerrado timer: id:2, (11:40:36.4761)
+2015-08-21 11:40:36.5121|Info|Encerrando os testes
+2015-08-21 11:40:36.5121|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:40:36.5121|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-21 11:40:48.0913|Info|Iniciando os testes
+2015-08-21 11:40:48.4156|Info|  Settimeout: id:0, (13) ms
+2015-08-21 11:40:48.4306|Info|      Executando timer: id:0, (11:40:48.4306)
+2015-08-21 11:40:48.5056|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-21 11:40:49.5103|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:40:49.5614|Info|      Encerrado timer: id:0, (11:40:49.5614)
+2015-08-21 11:40:49.5614|Info|      Executando timer: id:1, (11:40:49.5634)
+2015-08-21 11:40:49.5734|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-21 11:40:50.5781|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:40:50.6292|Info|      Encerrado timer: id:1, (11:40:50.6292)
+2015-08-21 11:40:50.6292|Info|      Executando timer: id:1, (11:40:50.6292)
+2015-08-21 11:40:50.6292|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-21 11:40:50.8453|Info|      Encerrado timer: id:1, (11:40:50.8453)
+2015-08-21 11:40:50.8724|Info|Encerrando os testes
+2015-08-21 11:40:50.8724|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-21 11:40:50.8724|Info|3 segundos para avaliar o individuo global.js

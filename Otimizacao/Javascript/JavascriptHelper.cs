@@ -142,6 +142,8 @@ namespace Otimizacao.Javascript
                                                 return idlocal;
                             };");
 
+            _engine.Execute(@"var clearTimeout = function(id) { javascriptHelper.ClearTimeout(id);};");
+
             #endregion
         }
 
@@ -303,6 +305,20 @@ namespace Otimizacao.Javascript
             
 
             return true;
+        }
+
+        /// <summary>
+        /// Cancela a execução de um timeout
+        /// </summary>
+        /// <param name="id"></param>
+        public void ClearTimeout(string id)
+        {
+            int idLocal = int.Parse(id);
+
+            lock (_timers)
+            {
+                _timers.Remove(idLocal);
+            }
         }
 
         /// <summary>

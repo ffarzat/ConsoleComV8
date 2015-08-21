@@ -582,8 +582,7 @@ function process( last ) {
 			}
 			config.queue.shift()();
 		} else {
-			//setTimeout( next, 13 );
-			next();
+			setTimeout( next, 13 );
 			break;
 		}
 	}
