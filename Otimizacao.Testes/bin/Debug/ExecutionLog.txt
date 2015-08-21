@@ -280,3 +280,292 @@
 2015-08-21 11:06:23.0040|Info|Total:57982, Sucesso: 57982, Falha: 0
 2015-08-21 11:06:23.0040|Info|3 segundos para avaliar o individuo global.js
 2015-08-21 11:06:23.0070|Info|Método ExecutarTestes encerrado!
+2015-08-21 11:08:22.3608|Info|Iniciando os testes
+2015-08-21 11:08:23.1083|Info|Encerrando os testes
+2015-08-21 11:08:23.1083|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:08:23.1083|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-21 11:09:09.4642|Info|Iniciando os testes
+2015-08-21 11:09:10.1877|Info|Encerrando os testes
+2015-08-21 11:09:10.1877|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:09:10.1877|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-21 11:09:30.7944|Info|Iniciando os testes
+2015-08-21 11:09:31.5028|Info|Encerrando os testes
+2015-08-21 11:09:31.5068|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:09:31.5068|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-21 11:10:06.9640|Info|Iniciando os testes
+2015-08-21 11:10:07.6895|Info|Encerrando os testes
+2015-08-21 11:10:07.6945|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:10:07.6945|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-21 11:11:36.9699|Info|Iniciando os testes
+2015-08-21 11:11:37.7145|Info|Encerrando os testes
+2015-08-21 11:11:37.7145|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:11:37.7145|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-21 11:15:34.7918|Info|Iniciando os testes
+2015-08-21 11:15:45.8106|Info|Encerrando os testes
+2015-08-21 11:15:52.0471|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:15:52.5504|Info|27 segundos para avaliar o individuo lodash.js
+2015-08-21 11:16:44.4072|Info|Iniciando os testes
+2015-08-21 11:16:44.7535|Info|      Executando timer: id:0, (11:16:44.7535)
+2015-08-21 11:16:44.8886|Info|      Encerrado timer: id:0, (11:16:44.8886)
+2015-08-21 11:16:44.8886|Info|      Executando timer: id:1, (11:16:44.8896)
+2015-08-21 11:16:45.0948|Info|      Encerrado timer: id:1, (11:16:45.0948)
+2015-08-21 11:16:45.0948|Info|      Executando timer: id:1, (11:16:45.0957)
+2015-08-21 11:16:45.0948|Info|      Encerrado timer: id:1, (11:16:45.0967)
+2015-08-21 11:16:45.1418|Info|      Executando timer: id:2, (11:16:45.1418)
+2015-08-21 11:16:45.1418|Info|      Encerrado timer: id:2, (11:16:45.1437)
+2015-08-21 11:16:45.1908|Info|Encerrando os testes
+2015-08-21 11:16:45.1948|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:16:45.1948|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-21 11:18:36.2547|Info|Iniciando os testes
+2015-08-21 11:19:52.9141|Info|Iniciando os testes
+2015-08-21 11:19:53.2554|Info|      Executando timer: id:0, (11:19:53.2554)
+2015-08-21 11:19:54.3441|Info|      Encerrado timer: id:0, (11:19:54.3441)
+2015-08-21 11:19:54.3441|Info|      Executando timer: id:1, (11:19:54.3441)
+2015-08-21 11:19:55.3999|Info|      Encerrado timer: id:1, (11:19:55.3999)
+2015-08-21 11:19:55.3999|Info|      Executando timer: id:1, (11:19:55.3999)
+2015-08-21 11:19:55.7091|Info|      Encerrado timer: id:1, (11:19:55.7091)
+2015-08-21 11:19:55.7951|Info|Encerrando os testes
+2015-08-21 11:19:55.7951|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-21 11:19:55.7951|Info|3 segundos para avaliar o individuo global.js
+2015-08-21 11:20:01.5542|Info|Iniciando os testes
+2015-08-21 11:20:01.8925|Info|      Executando timer: id:0, (11:20:01.8925)
+2015-08-21 11:20:02.0046|Info|      Encerrado timer: id:0, (11:20:02.0046)
+2015-08-21 11:20:02.0046|Info|      Executando timer: id:1, (11:20:02.0055)
+2015-08-21 11:20:02.1927|Info|      Encerrado timer: id:1, (11:20:02.1927)
+2015-08-21 11:20:02.1947|Info|      Executando timer: id:1, (11:20:02.1947)
+2015-08-21 11:20:02.1947|Info|      Encerrado timer: id:1, (11:20:02.1967)
+2015-08-21 11:20:02.2397|Info|      Executando timer: id:2, (11:20:02.2397)
+2015-08-21 11:20:02.2417|Info|      Encerrado timer: id:2, (11:20:02.2417)
+2015-08-21 11:20:02.3298|Info|Encerrando os testes
+2015-08-21 11:20:02.3298|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:20:02.3358|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-21 11:21:01.8790|Info|Iniciando os testes
+2015-08-21 11:21:02.2223|Info|      Executando timer: id:0, (11:21:02.2223)
+2015-08-21 11:21:02.2223|Info|            stFunctionsCallBack[0];
+2015-08-21 11:21:02.3344|Info|      Encerrado timer: id:0, (11:21:02.3344)
+2015-08-21 11:21:02.3344|Info|      Executando timer: id:1, (11:21:02.3344)
+2015-08-21 11:21:02.3354|Info|            stFunctionsCallBack[1];
+2015-08-21 11:21:02.5056|Info|      Encerrado timer: id:1, (11:21:02.5056)
+2015-08-21 11:21:02.5056|Info|      Executando timer: id:1, (11:21:02.5065)
+2015-08-21 11:21:02.5075|Info|            stFunctionsCallBack[1];
+2015-08-21 11:21:02.5075|Info|      Encerrado timer: id:1, (11:21:02.5085)
+2015-08-21 11:21:02.5526|Info|      Executando timer: id:2, (11:21:02.5526)
+2015-08-21 11:21:02.5526|Info|            stFunctionsCallBack[2];
+2015-08-21 11:21:02.5555|Info|      Encerrado timer: id:2, (11:21:02.5555)
+2015-08-21 11:21:02.5555|Info|Encerrando os testes
+2015-08-21 11:21:02.5555|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:21:02.5555|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-21 11:21:32.6999|Info|Iniciando os testes
+2015-08-21 11:21:33.0452|Info|      Executando timer: id:0, (11:21:33.0452)
+2015-08-21 11:21:33.1583|Info|      Encerrado timer: id:0, (11:21:33.1583)
+2015-08-21 11:21:33.1583|Info|      Executando timer: id:1, (11:21:33.1603)
+2015-08-21 11:21:33.3965|Info|      Encerrado timer: id:1, (11:21:33.3965)
+2015-08-21 11:21:33.3985|Info|      Executando timer: id:1, (11:21:33.3985)
+2015-08-21 11:21:33.3985|Info|      Encerrado timer: id:1, (11:21:33.4004)
+2015-08-21 11:21:33.4435|Info|      Executando timer: id:2, (11:21:33.4435)
+2015-08-21 11:21:33.4455|Info|      Encerrado timer: id:2, (11:21:33.4455)
+2015-08-21 11:21:33.4835|Info|Encerrando os testes
+2015-08-21 11:21:33.4835|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:21:33.4835|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-21 11:22:55.2606|Info|Iniciando os testes
+2015-08-21 11:22:55.6089|Info|      Executando timer: id:0, (11:22:55.6089)
+2015-08-21 11:23:34.6115|Info|Iniciando os testes
+2015-08-21 11:23:34.9667|Info|      Executando timer: id:0, (11:23:34.9667)
+2015-08-21 11:23:35.0538|Info|Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:23:35.1419|Info|      Encerrado timer: id:0, (11:23:35.1419)
+2015-08-21 11:23:35.1419|Info|      Executando timer: id:1, (11:23:35.1439)
+2015-08-21 11:23:35.1479|Info|Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:23:35.3600|Info|      Encerrado timer: id:1, (11:23:35.3600)
+2015-08-21 11:23:35.3600|Info|      Executando timer: id:1, (11:23:35.3610)
+2015-08-21 11:23:35.3600|Info|Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:23:35.3600|Info|      Encerrado timer: id:1, (11:23:35.3640)
+2015-08-21 11:23:35.4071|Info|      Executando timer: id:2, (11:23:35.4071)
+2015-08-21 11:23:35.4071|Info|Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:23:35.4071|Info|      Encerrado timer: id:2, (11:23:35.4101)
+2015-08-21 11:23:35.5052|Info|Encerrando os testes
+2015-08-21 11:23:35.5081|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:23:35.5081|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-21 11:25:06.7079|Info|Iniciando os testes
+2015-08-21 11:25:07.0411|Info|  Settimeout: id:0, (13) ms
+2015-08-21 11:25:07.0571|Info|      Executando timer: id:0, (11:25:07.0562)
+2015-08-21 11:25:07.1202|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:25:07.1572|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:25:07.2083|Info|      Encerrado timer: id:0, (11:25:07.2083)
+2015-08-21 11:25:07.2083|Info|      Executando timer: id:1, (11:25:07.2083)
+2015-08-21 11:25:07.2083|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:25:07.2843|Info|  Settimeout: id:1, (32) ms
+2015-08-21 11:25:07.3354|Info|  Settimeout: id:2, (96) ms
+2015-08-21 11:25:07.3864|Info|      Encerrado timer: id:1, (11:25:07.3864)
+2015-08-21 11:25:07.3864|Info|      Executando timer: id:1, (11:25:07.3864)
+2015-08-21 11:25:07.3864|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:25:07.3864|Info|      Encerrado timer: id:1, (11:25:07.3884)
+2015-08-21 11:25:07.4334|Info|      Executando timer: id:2, (11:25:07.4334)
+2015-08-21 11:25:07.4334|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:25:07.4334|Info|      Encerrado timer: id:2, (11:25:07.4384)
+2015-08-21 11:25:07.4935|Info|Encerrando os testes
+2015-08-21 11:25:07.4935|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:25:07.5215|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-21 11:28:31.8235|Info|Iniciando os testes
+2015-08-21 11:28:32.1588|Info|  Settimeout: id:0, (13) ms
+2015-08-21 11:28:32.1738|Info|      Executando timer: id:0, (11:28:32.1738)
+2015-08-21 11:28:32.2598|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:28:32.2989|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:28:32.3500|Info|      Encerrado timer: id:0, (11:28:32.3500)
+2015-08-21 11:28:32.3519|Info|      Executando timer: id:1, (11:28:32.3519)
+2015-08-21 11:28:32.3519|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:28:32.4690|Info|  Settimeout: id:1, (32) ms
+2015-08-21 11:28:32.5201|Info|  Settimeout: id:2, (96) ms
+2015-08-21 11:28:32.5711|Info|      Encerrado timer: id:1, (11:28:32.5711)
+2015-08-21 11:28:32.5711|Info|      Executando timer: id:1, (11:28:32.5711)
+2015-08-21 11:28:32.5711|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:28:32.5711|Info|      Encerrado timer: id:1, (11:28:32.5731)
+2015-08-21 11:28:32.6181|Info|      Executando timer: id:2, (11:28:32.6181)
+2015-08-21 11:28:32.6181|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:28:32.6181|Info|      Encerrado timer: id:2, (11:28:32.6201)
+2015-08-21 11:28:32.7122|Info|Encerrando os testes
+2015-08-21 11:28:32.7122|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:28:32.7122|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-21 11:28:39.0457|Info|Iniciando os testes
+2015-08-21 11:28:39.3889|Info|  Settimeout: id:0, (13) ms
+2015-08-21 11:28:39.4039|Info|      Executando timer: id:0, (11:28:39.4039)
+2015-08-21 11:28:39.4860|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:28:39.5230|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:28:39.5741|Info|      Encerrado timer: id:0, (11:28:39.5741)
+2015-08-21 11:28:39.5741|Info|      Executando timer: id:1, (11:28:39.5760)
+2015-08-21 11:28:39.5741|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:28:39.6811|Info|  Settimeout: id:1, (32) ms
+2015-08-21 11:28:39.7332|Info|  Settimeout: id:2, (96) ms
+2015-08-21 11:28:39.7852|Info|      Encerrado timer: id:1, (11:28:39.7852)
+2015-08-21 11:28:39.7852|Info|      Executando timer: id:1, (11:28:39.7872)
+2015-08-21 11:28:39.7902|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:28:39.7902|Info|      Encerrado timer: id:1, (11:28:39.7922)
+2015-08-21 11:28:39.8313|Info|      Executando timer: id:2, (11:28:39.8313)
+2015-08-21 11:28:39.8313|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:28:39.8362|Info|      Encerrado timer: id:2, (11:28:39.8362)
+2015-08-21 11:28:39.9424|Info|Encerrando os testes
+2015-08-21 11:28:39.9473|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:28:39.9473|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-21 11:28:40.6908|Info|Iniciando os testes
+2015-08-21 11:28:40.6908|Info|  Settimeout: id:0, (13) ms
+2015-08-21 11:28:40.7079|Info|      Executando timer: id:0, (11:28:40.7079)
+2015-08-21 11:28:40.7439|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:28:41.7446|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:28:41.7957|Info|      Encerrado timer: id:0, (11:28:41.7957)
+2015-08-21 11:28:41.7957|Info|      Executando timer: id:1, (11:28:41.7957)
+2015-08-21 11:28:41.7957|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:28:42.7983|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:28:42.8494|Info|      Encerrado timer: id:1, (11:28:42.8494)
+2015-08-21 11:28:42.8494|Info|      Executando timer: id:1, (11:28:42.8494)
+2015-08-21 11:28:42.8494|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:28:43.0065|Info|      Encerrado timer: id:1, (11:28:43.0065)
+2015-08-21 11:28:43.0476|Info|Encerrando os testes
+2015-08-21 11:28:43.0476|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-21 11:28:43.0476|Info|2 segundos para avaliar o individuo global.js
+2015-08-21 11:29:32.6137|Info|Iniciando os testes
+2015-08-21 11:29:32.9479|Info|  Settimeout: id:0, (13) ms
+2015-08-21 11:29:32.9630|Info|      Executando timer: id:0, (11:29:32.9630)
+2015-08-21 11:29:33.0170|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:29:34.0207|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:29:34.0718|Info|      Encerrado timer: id:0, (11:29:34.0718)
+2015-08-21 11:29:34.0718|Info|      Executando timer: id:1, (11:29:34.0718)
+2015-08-21 11:29:34.0718|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:29:35.0885|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:29:35.1395|Info|      Encerrado timer: id:1, (11:29:35.1395)
+2015-08-21 11:29:35.1395|Info|      Executando timer: id:1, (11:29:35.1395)
+2015-08-21 11:29:35.1395|Info|          Microsoft.ClearScript.V8.V8ScriptItem
+2015-08-21 11:29:35.3717|Info|      Encerrado timer: id:1, (11:29:35.3717)
+2015-08-21 11:29:35.4047|Info|Encerrando os testes
+2015-08-21 11:29:35.4047|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-21 11:29:35.4047|Info|3 segundos para avaliar o individuo global.js
+2015-08-21 11:30:08.9515|Info|Iniciando os testes
+2015-08-21 11:30:09.2907|Info|  Settimeout: id:0, (13) ms
+2015-08-21 11:30:09.3058|Info|      Executando timer: id:0, (11:30:09.3058)
+2015-08-21 11:30:10.3445|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:30:10.3956|Info|      Encerrado timer: id:0, (11:30:10.3956)
+2015-08-21 11:30:10.3956|Info|      Executando timer: id:1, (11:30:10.3956)
+2015-08-21 11:30:11.3982|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:30:11.4493|Info|      Encerrado timer: id:1, (11:30:11.4493)
+2015-08-21 11:30:11.4493|Info|      Executando timer: id:1, (11:30:11.4523)
+2015-08-21 11:30:11.6664|Info|      Encerrado timer: id:1, (11:30:11.6664)
+2015-08-21 11:30:11.7445|Info|Encerrando os testes
+2015-08-21 11:30:11.7445|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-21 11:30:11.7445|Info|3 segundos para avaliar o individuo global.js
+2015-08-21 11:32:06.6911|Info|Iniciando os testes
+2015-08-21 11:32:07.0604|Info|  Settimeout: id:0, (13) ms
+2015-08-21 11:32:07.0754|Info|      Executando timer: id:0, (11:32:07.0754)
+2015-08-21 11:32:07.1304|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-21 11:32:08.1401|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:32:08.1912|Info|      Encerrado timer: id:0, (11:32:08.1912)
+2015-08-21 11:32:08.1912|Info|      Executando timer: id:1, (11:32:08.1912)
+2015-08-21 11:32:08.1952|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-21 11:32:09.1959|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:32:09.2469|Info|      Encerrado timer: id:1, (11:32:09.2469)
+2015-08-21 11:32:09.2469|Info|      Executando timer: id:1, (11:32:09.2469)
+2015-08-21 11:32:09.2469|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-21 11:32:09.5771|Info|      Encerrado timer: id:1, (11:32:09.5771)
+2015-08-21 11:32:09.6142|Info|Encerrando os testes
+2015-08-21 11:32:09.6142|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-21 11:32:09.6162|Info|3 segundos para avaliar o individuo global.js
+2015-08-21 11:32:25.1562|Info|Iniciando os testes
+2015-08-21 11:32:25.5175|Info|  Settimeout: id:0, (13) ms
+2015-08-21 11:32:25.5335|Info|      Executando timer: id:0, (11:32:25.5325)
+2015-08-21 11:32:25.5865|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-21 11:32:25.6165|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:32:25.6676|Info|      Encerrado timer: id:0, (11:32:25.6676)
+2015-08-21 11:32:25.6676|Info|      Executando timer: id:1, (11:32:25.6696)
+2015-08-21 11:32:25.6676|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-21 11:32:25.7647|Info|  Settimeout: id:1, (32) ms
+2015-08-21 11:32:25.8157|Info|  Settimeout: id:2, (96) ms
+2015-08-21 11:32:25.8667|Info|      Encerrado timer: id:1, (11:32:25.8667)
+2015-08-21 11:32:25.8667|Info|      Executando timer: id:1, (11:32:25.8667)
+2015-08-21 11:32:25.8667|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-21 11:32:25.8667|Info|      Encerrado timer: id:1, (11:32:25.8697)
+2015-08-21 11:32:25.9138|Info|      Executando timer: id:2, (11:32:25.9138)
+2015-08-21 11:32:25.9138|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        if (remaining <= 0 || remaining > wait) {
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-21 11:32:25.9138|Info|      Encerrado timer: id:2, (11:32:25.9148)
+2015-08-21 11:32:25.9708|Info|Encerrando os testes
+2015-08-21 11:32:25.9708|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-21 11:32:25.9708|Info|1 segundos para avaliar o individuo lodash.js

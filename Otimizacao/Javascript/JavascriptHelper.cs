@@ -286,7 +286,7 @@ namespace Otimizacao.Javascript
             //Escrever("_timers.Count {0}", _timers.Count);
             while (_timers.Count > 0)
             {
-                Thread.Sleep(5);
+                Thread.Sleep(100);
             }
 
             Escrever("Encerrando os testes");
@@ -312,7 +312,7 @@ namespace Otimizacao.Javascript
         public string SetTimeout(int miliseconds)
         {
             int id = _timers.Count;
-            //Escrever("  Settimeout: id:{0}, ({1}) ms", id, miliseconds);
+            Escrever("  Settimeout: id:{0}, ({1}) ms", id, miliseconds);
 
             lock (_timers)
             {
@@ -348,16 +348,13 @@ namespace Otimizacao.Javascript
             {
                 if (_timers.Contains(id))
                 {
-
-                    
-
-                    //Escrever("      Executando timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
-
+                    Escrever("      Executando timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
+                    _engine.Execute(string.Format("javascriptHelper.Escrever('          Deveria ter disparado: ' + stFunctionsCallBack[{0}]);", id));
 
                     _engine.Execute(string.Format("stFunctionsCallBack[{0}]();", id));
                 }
                 
-                //Escrever("      Encerrado timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
+                Escrever("      Encerrado timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
                 _timers.Remove(id);
             }
         }

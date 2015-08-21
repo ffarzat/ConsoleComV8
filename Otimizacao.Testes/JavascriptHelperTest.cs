@@ -46,8 +46,6 @@ namespace Otimizacao.Testes
 
             helper.ExecutarTestes("global.js", "core-test.js");
 
-            helper.Escrever("Método ExecutarTestes encerrado!");
-
             helper.FalhasDosTestes.ForEach(Console.WriteLine);
             Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");
             Assert.AreEqual(helper.TestesComSucesso, 57982);
@@ -58,13 +56,14 @@ namespace Otimizacao.Testes
         /// Executa os testes do Loadsh
         /// </summary>
         [Test]
-        public void ExecutarTestesDoLoadsh()
+        public void ExecutarTestesDoLodash()
         {
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Lodash"));
 
             helper.ExecutarTestes("lodash.js", "lodashTest.js");
 
             helper.FalhasDosTestes.ForEach(Console.WriteLine);
+
             Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");
             Assert.Greater(helper.TestesComSucesso, 1);
             
