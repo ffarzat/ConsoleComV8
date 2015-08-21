@@ -277,10 +277,17 @@ namespace Otimizacao.Javascript
             _engine.Execute(_javascripts[nomeDoArquivoTestes]);
 
             Escrever("Iniciando os testes");
+            Escrever("_timers.Count {0}", _timers.Count);
 
             _engine.Execute(@"   QUnit.load();
                                 QUnit.start();
                 ");
+
+            Escrever("_timers.Count {0}", _timers.Count);
+            while (_timers.Count > 0)
+            {
+                Thread.Sleep(100);
+            }
 
             Escrever("Encerrando os testes");
 
@@ -307,7 +314,11 @@ namespace Otimizacao.Javascript
             int id = _timers.Count;
             Escrever("  Settimeout: id:{0}, ({1}) ms", id, miliseconds);
 
-            _timers.Add(id);
+            lock (_timers)
+            {
+                _timers.Add(id);
+                Escrever("_timers.Count {0}", _timers.Count);
+            }
 
             Escrever("  ManagedThreadId : [{0}]", Thread.CurrentThread.ManagedThreadId.ToString());
 
@@ -317,8 +328,9 @@ namespace Otimizacao.Javascript
                     JavascriptHelper_Elapsed(id);
                 });
 
+            th.Priority = ThreadPriority.Highest;
+            th.IsBackground = false;
             th.Start();
-            Thread.SpinWait(50);
             th.Join(50);
 
             return id.ToString();
@@ -332,22 +344,21 @@ namespace Otimizacao.Javascript
             Escrever("      Executar timer: id:{0}:", id);
             Escrever("      ManagedThreadId : [{0}]", Thread.CurrentThread.ManagedThreadId.ToString());
 
-            if (_timers.Contains(id))
+            lock (_timers)
             {
+                if (_timers.Contains(id))
+                {
+
+                    
+
+                    Escrever("      Executando timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
+
+
+                    _engine.Execute(string.Format("stFunctionsCallBack[{0}]();", id));
+                }
+                Escrever("      Encerrado timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
                 _timers.Remove(id);
-                Escrever("      Executando timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
-                
-                
-                _engine.Execute(string.Format("stFunctionsCallBack[{0}]();", id));
-           
-                Monitor.Exit(_engine);
-                
-               
             }
-            
-            Escrever("      Encerrado timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
-            
-            
         }
 
         /// <summary>

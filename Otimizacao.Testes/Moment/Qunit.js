@@ -595,13 +595,17 @@ function process( last ) {
 function begin() {
 	var i, l,
 		modulesLog = [];
-
+		
+		javascriptHelper.Escrever('inside begin: !config.started -> {0}', !config.started);
+		
 	// If the test run hasn't officially begun yet
 	if ( !config.started ) {
 
 		// Record the time of the test run's beginning
 		config.started = now();
 
+		//javascriptHelper.Escrever('inside begin: config.started -> {0}', config.started);
+		
 		verifyLoggingCallbacks();
 
 		// Delete the loose unnamed module if unused.
@@ -617,6 +621,8 @@ function begin() {
 			});
 		}
 
+		//javascriptHelper.Escrever('inside begin: modulesLog {0}', modulesLog.length);
+		
 		// The test run is officially beginning now
 		runLoggingCallbacks( "begin", {
 			totalTests: Test.count,
@@ -640,7 +646,6 @@ function resumeProcessing() {
 			if ( config.timeout ) {
 				clearTimeout( config.timeout );
 			}
-			javascriptHelper.Escrever('Aqui Fabio');
 			begin();
 			
 		}, 13 );
@@ -3579,8 +3584,6 @@ function appendTest( name, testId, moduleName ) {
 
 // HTML Reporter initialization and load
 QUnit.begin(function( details ) {
-	
-	javascriptHelper.Escrever('inside begin {0}', '1');
 	
 	/*
 	var qunit = id( "qunit" );
