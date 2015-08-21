@@ -277,16 +277,16 @@ namespace Otimizacao.Javascript
             _engine.Execute(_javascripts[nomeDoArquivoTestes]);
 
             Escrever("Iniciando os testes");
-            Escrever("_timers.Count {0}", _timers.Count);
+            //Escrever("_timers.Count {0}", _timers.Count);
 
             _engine.Execute(@"   QUnit.load();
                                 QUnit.start();
                 ");
 
-            Escrever("_timers.Count {0}", _timers.Count);
+            //Escrever("_timers.Count {0}", _timers.Count);
             while (_timers.Count > 0)
             {
-                Thread.Sleep(100);
+                Thread.Sleep(5);
             }
 
             Escrever("Encerrando os testes");
@@ -312,15 +312,15 @@ namespace Otimizacao.Javascript
         public string SetTimeout(int miliseconds)
         {
             int id = _timers.Count;
-            Escrever("  Settimeout: id:{0}, ({1}) ms", id, miliseconds);
+            //Escrever("  Settimeout: id:{0}, ({1}) ms", id, miliseconds);
 
             lock (_timers)
             {
                 _timers.Add(id);
-                Escrever("_timers.Count {0}", _timers.Count);
+                //Escrever("_timers.Count {0}", _timers.Count);
             }
 
-            Escrever("  ManagedThreadId : [{0}]", Thread.CurrentThread.ManagedThreadId.ToString());
+            //Escrever("  ManagedThreadId : [{0}]", Thread.CurrentThread.ManagedThreadId.ToString());
 
             var th = new Thread(() =>
                 {
@@ -341,8 +341,8 @@ namespace Otimizacao.Javascript
         /// </summary>
         void JavascriptHelper_Elapsed(int id)
         {
-            Escrever("      Executar timer: id:{0}:", id);
-            Escrever("      ManagedThreadId : [{0}]", Thread.CurrentThread.ManagedThreadId.ToString());
+            //Escrever("      Executar timer: id:{0}:", id);
+            //Escrever("      ManagedThreadId : [{0}]", Thread.CurrentThread.ManagedThreadId.ToString());
 
             lock (_timers)
             {
@@ -351,12 +351,13 @@ namespace Otimizacao.Javascript
 
                     
 
-                    Escrever("      Executando timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
+                    //Escrever("      Executando timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
 
 
                     _engine.Execute(string.Format("stFunctionsCallBack[{0}]();", id));
                 }
-                Escrever("      Encerrado timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
+                
+                //Escrever("      Encerrado timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
                 _timers.Remove(id);
             }
         }

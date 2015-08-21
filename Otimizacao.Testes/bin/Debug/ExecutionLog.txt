@@ -241,3 +241,42 @@
 2015-08-21 11:03:15.2727|Info|Total:57982, Sucesso: 57982, Falha: 0
 2015-08-21 11:03:15.2727|Info|2 segundos para avaliar o individuo global.js
 2015-08-21 11:03:15.2727|Info|Método ExecutarTestes encerrado!
+2015-08-21 11:03:55.5723|Info|Iniciando os testes
+2015-08-21 11:03:55.5943|Info|_timers.Count 0
+2015-08-21 11:03:55.9035|Info|  Settimeout: id:0, (13) ms
+2015-08-21 11:03:55.9035|Info|_timers.Count 1
+2015-08-21 11:03:55.9035|Info|  ManagedThreadId : [7]
+2015-08-21 11:03:55.9236|Info|      Executar timer: id:0:
+2015-08-21 11:03:55.9236|Info|      ManagedThreadId : [9]
+2015-08-21 11:03:55.9236|Info|      Executando timer: id:0, (11:03:55.9246)
+2015-08-21 11:03:55.9596|Info|_timers.Count 1
+2015-08-21 11:03:55.9866|Info|inside begin: !config.started -> True
+2015-08-21 11:03:56.9913|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:03:56.9913|Info|_timers.Count 2
+2015-08-21 11:03:56.9913|Info|  ManagedThreadId : [9]
+2015-08-21 11:03:57.0074|Info|      Executar timer: id:1:
+2015-08-21 11:03:57.0074|Info|      ManagedThreadId : [10]
+2015-08-21 11:03:57.0433|Info|      Encerrado timer: id:0, (11:03:57.0433)
+2015-08-21 11:03:57.0433|Info|      Executando timer: id:1, (11:03:57.0433)
+2015-08-21 11:03:58.0441|Info|  Settimeout: id:1, (13) ms
+2015-08-21 11:03:58.0441|Info|_timers.Count 2
+2015-08-21 11:03:58.0441|Info|  ManagedThreadId : [10]
+2015-08-21 11:03:58.0661|Info|      Executar timer: id:1:
+2015-08-21 11:03:58.0661|Info|      ManagedThreadId : [11]
+2015-08-21 11:03:58.1021|Info|      Encerrado timer: id:1, (11:03:58.1021)
+2015-08-21 11:03:58.1021|Info|      Executando timer: id:1, (11:03:58.1031)
+2015-08-21 11:03:58.3773|Info|      Encerrado timer: id:1, (11:03:58.3773)
+2015-08-21 11:03:58.4654|Info|Encerrando os testes
+2015-08-21 11:03:58.4654|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-21 11:03:58.4654|Info|3 segundos para avaliar o individuo global.js
+2015-08-21 11:03:58.4654|Info|Método ExecutarTestes encerrado!
+2015-08-21 11:05:42.2430|Info|Iniciando os testes
+2015-08-21 11:05:45.0210|Info|Encerrando os testes
+2015-08-21 11:05:45.0210|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-21 11:05:45.0230|Info|3 segundos para avaliar o individuo global.js
+2015-08-21 11:05:45.0230|Info|Método ExecutarTestes encerrado!
+2015-08-21 11:06:20.2871|Info|Iniciando os testes
+2015-08-21 11:06:23.0040|Info|Encerrando os testes
+2015-08-21 11:06:23.0040|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-21 11:06:23.0040|Info|3 segundos para avaliar o individuo global.js
+2015-08-21 11:06:23.0070|Info|Método ExecutarTestes encerrado!
