@@ -7051,8 +7051,14 @@
         maxTimeoutId = timeoutId = trailingCall = undefined;
         if (isCalled) {
           lastCalled = now();
-          result = func.apply(thisArg, args);
-          if (!timeoutId && !maxTimeoutId) {
+          
+		  javascriptHelper.Escrever('thisArg ' + thisArg);
+		  javascriptHelper.Escrever('args ' + args);
+		  javascriptHelper.Escrever('func ' + func);
+		  
+		  result = func.apply(thisArg, args);
+          
+		  if (!timeoutId && !maxTimeoutId) {
             args = thisArg = undefined;
           }
         }
@@ -7060,7 +7066,10 @@
 
       function delayed() {
         var remaining = wait - (now() - stamp);
-        if (remaining <= 0 || remaining > wait) {
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
           complete(trailingCall, maxTimeoutId);
         } else {
           timeoutId = setTimeout(delayed, remaining);
