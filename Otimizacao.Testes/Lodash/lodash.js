@@ -7052,12 +7052,15 @@
         if (isCalled) {
           lastCalled = now();
           
-		  javascriptHelper.Escrever('thisArg ' + thisArg);
-		  javascriptHelper.Escrever('args ' + args);
-		  javascriptHelper.Escrever('func ' + func);
+		  //javascriptHelper.Escrever('thisArg ' + thisArg);
+		  //javascriptHelper.Escrever('args ' + args);
+		  //javascriptHelper.Escrever('func ' + func);
 		  
 		  result = func.apply(thisArg, args);
           
+		  //javascriptHelper.Escrever('result ' + result);
+		  javascriptHelper.Escrever('!timeoutId && !maxTimeoutId ' + (!timeoutId && !maxTimeoutId));
+		  
 		  if (!timeoutId && !maxTimeoutId) {
             args = thisArg = undefined;
           }
