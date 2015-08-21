@@ -640,7 +640,7 @@ function resumeProcessing() {
 			if ( config.timeout ) {
 				clearTimeout( config.timeout );
 			}
-
+			javascriptHelper.Escrever('Aqui Fabio');
 			begin();
 		}, 13 );
 	} else {

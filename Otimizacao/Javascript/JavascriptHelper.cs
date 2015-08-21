@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Timers;
 using Microsoft.ClearScript.V8;
 using NLog;
@@ -277,6 +278,9 @@ namespace Otimizacao.Javascript
             _engine.Execute(@"   QUnit.load();
                                 QUnit.start();
                 ");
+
+            Monitor.Enter(_timerLock);
+
             #endregion
             
             sw.Stop();
@@ -286,9 +290,9 @@ namespace Otimizacao.Javascript
 
             this.FalhasDosTestes.ForEach(this.Log);
 
-            bool gotLock = Monitor.TryEnter(_timerLock, TimeSpan.FromSeconds(60)); // consegue o lock? Pode sair
+            
 
-            return gotLock;
+            return true;
         }
 
         /// <summary>
@@ -298,55 +302,84 @@ namespace Otimizacao.Javascript
         public string SetTimeout(int miliseconds)
         {
             Console.WriteLine("Helper_ThreadId : {0}", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine(DateTime.Now.ToString("HH:mm:ss.ffff"));
+            //Monitor.Enter(_timerLock);
+            
 
-                   
             int id = _timers.Count;
-            var t = new Timer(miliseconds);
+            //var t = new Timer(miliseconds);
             
-            t.Elapsed += JavascriptHelper_Elapsed;
+            //t.Elapsed += JavascriptHelper_Elapsed;
             
-            t.Start();
+            //t.Start();
 
-            _timers.Add(id, t);
+            _timers.Add(id, new Timer());
 
-           
+            var th = new Thread(() =>
+                {
+                    Console.WriteLine("Criando a nova!! ThreadId : {0}", Thread.CurrentThread.ManagedThreadId);
+                    Console.WriteLine(DateTime.Now.ToString("HH:mm:ss.ffff"));    
+                    
+                    Thread.Sleep(miliseconds);
+                    JavascriptHelper_Elapsed(id);
+                });
+
+            th.Start();
+            th.Join(TimeSpan.FromSeconds(3));
+
+            //SetTimeout(miliseconds, () =>
+            //    {
+            //        Monitor.Enter(_timerLock);
+            //        JavascriptHelper_Elapsed(id);
+            //    });
+
             return id.ToString();
         }
 
         /// <summary>
         /// Quando o timer dispara
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void JavascriptHelper_Elapsed(object sender, ElapsedEventArgs e)
+        void JavascriptHelper_Elapsed(int id)
         {
-            if (!Monitor.TryEnter(_timerLock))
-            {
-                return;
-            }
-
             try
             {
-                Console.WriteLine("Timer_ThreadId : {0}", Thread.CurrentThread.ManagedThreadId);
+                Console.WriteLine("Disparando o callback! ThreadId : {0}", Thread.CurrentThread.ManagedThreadId);
+                Console.WriteLine(DateTime.Now.ToString("HH:mm:ss.ffff"));
 
-                var item = _timers.Where(kp => kp.Value == (Timer)sender);
-
-                if (item.Any())
+                if (_timers.ContainsKey(id))
                 {
-                    var id = item.First().Key;
-                    var timer = item.First().Value;
-                    timer.Stop();
-
-                    _engine.Execute(string.Format("javascriptHelper.Escrever('deveria ter dispado: ' + stFunctionsCallBack[{0}]);", id));
+                    _engine.Execute(string.Format("javascriptHelper.Escrever('deveria ter disparado: ' + stFunctionsCallBack[{0}]);", id));
                     _engine.Execute(string.Format("stFunctionsCallBack[{0}]();", id));
-
-
+                    _engine.Execute("javascriptHelper.Escrever('certeza');");
                 }
+            }
+            catch (Exception ex)
+            {
+                Escrever(ex.ToString());
             }
             finally
             {
-                Monitor.Exit(_timerLock);
+                Escrever(string.Format("Fez o release na JavascriptHelper_Elapsed"));
             }
+        }
+
+        /// <summary>
+        /// Para emular o TSetTimeout
+        /// </summary>
+        /// <param name="ms"></param>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        async void SetTimeout(int ms, Action callback)
+        {
+            var startTime = DateTime.UtcNow;
+
+            while ((DateTime.UtcNow - startTime).TotalMilliseconds < ms)
+            {
+                await Task.Delay(10);
+            }
+
+            //Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
+            callback();
         }
 
         /// <summary>

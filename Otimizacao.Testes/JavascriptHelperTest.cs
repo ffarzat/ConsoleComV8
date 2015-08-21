@@ -5,9 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using Microsoft.ClearScript.V8;
 using NUnit.Framework;
 using Otimizacao.Javascript;
+using Timer = System.Timers.Timer;
 
 namespace Otimizacao.Testes
 {
@@ -28,6 +30,11 @@ namespace Otimizacao.Testes
         /// Para o teste do timeout
         /// </summary>
         public int Global { get; set; }
+
+        /// <summary>
+        /// Para os testes do timeout
+        /// </summary>
+        public string Nome { get; set; }
 
         /// <summary>
         /// Executa os testes do MomentJs
@@ -73,18 +80,41 @@ namespace Otimizacao.Testes
             _engine= new V8ScriptEngine();
             _engine.AddHostType("Console", typeof(Console));
             _engine.AddHostObject("JavascriptHelperTest", host);
-            _engine.Execute("JavascriptHelperTest.Global = 0;");
+            _engine.Execute("JavascriptHelperTest.Global = 0; var teste = 'Fabio'; ");
 
-            SetTimeout(100, () => _engine.Execute("JavascriptHelperTest.Global = 1;"));
+            Assert.AreEqual(true, string.IsNullOrEmpty(host.Nome));
 
-            //_engine.Execute("Console.WriteLine('valor:{0}', JavascriptHelperTest.Global);");
-            
-            Assert.AreEqual(0, host.Global);
+            _engine.Execute("JavascriptHelperTest.setTimeoutFromJs(50);");
             
             Thread.Sleep(200);
+            _engine.Execute("JavascriptHelperTest.Nome = teste;");
+            Assert.AreEqual("Fabio Farzat", host.Nome);
 
-            Assert.AreEqual(1, host.Global);
+        }
 
+        /// <summary>
+        /// Para os testes com a Engine
+        /// </summary>
+        /// <param name="ms"></param>
+        /// <returns></returns>
+        public string setTimeoutFromJs(int ms)
+        {
+            SetTimeout(ms, () =>
+                {
+                    var t = new Timer(ms);
+
+                    t.Elapsed += (sender, args) => TimerCallBack(sender, args, _engine);
+
+                    t.Start();
+                });
+
+            int id = 1;
+            return id.ToString();
+        }
+
+        private void TimerCallBack(object sender, ElapsedEventArgs elapsedEventArgs, V8ScriptEngine engine)
+        {
+            _engine.Execute("teste = += 'Farzat';");
         }
 
         /// <summary>

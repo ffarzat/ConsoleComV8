@@ -640,7 +640,6 @@ function resumeProcessing() {
 			if ( config.timeout ) {
 				clearTimeout( config.timeout );
 			}
-
 			begin();
 		}, 13 );
 	} else {
