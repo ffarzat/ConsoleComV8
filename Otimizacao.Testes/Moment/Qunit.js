@@ -640,7 +640,9 @@ function resumeProcessing() {
 			if ( config.timeout ) {
 				clearTimeout( config.timeout );
 			}
+			javascriptHelper.Escrever('Aqui Fabio');
 			begin();
+			
 		}, 13 );
 	} else {
 		begin();
@@ -3578,8 +3580,9 @@ function appendTest( name, testId, moduleName ) {
 // HTML Reporter initialization and load
 QUnit.begin(function( details ) {
 	
-	/*
+	javascriptHelper.Escrever('inside begin {0}', '1');
 	
+	/*
 	var qunit = id( "qunit" );
 
 	// Fixture is the only one necessary to run without the #qunit element
@@ -3605,6 +3608,7 @@ QUnit.begin(function( details ) {
 	if ( qunit && config.hidepassed ) {
 		addClass( qunit.lastChild, "hidepass" );
 	}
+	
 	*/
 });
 

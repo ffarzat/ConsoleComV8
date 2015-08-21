@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,7 @@ namespace Otimizacao.Javascript
         public string CurrentThreadId {
             get
             {
-                Console.WriteLine("ENGINE_ThreadId : {0}", Thread.CurrentThread.ManagedThreadId);
+                //Console.WriteLine("ENGINE_ThreadId : {0}", Thread.CurrentThread.ManagedThreadId);
                return Thread.CurrentThread.ManagedThreadId.ToString();
             }
         }
@@ -85,7 +86,7 @@ namespace Otimizacao.Javascript
         /// <summary>
         /// Guarda os timers para simular o SetTimeout;
         /// </summary>
-        private Dictionary<int, Timer> _timers;
+        private List<int> _timers;
 
         /// <summary>
         /// Funções para futura execução via SetTimout
@@ -116,7 +117,7 @@ namespace Otimizacao.Javascript
             
             _engine = new V8ScriptEngine();
             FalhasDosTestes = new List<string>();
-            _timers = new Dictionary<int, Timer>();
+            _timers = new List<int>();
 
             _engine.AddHostObject("javascriptHelper", this);
             _engine.Execute(@"'use strict';
@@ -275,11 +276,13 @@ namespace Otimizacao.Javascript
             #region Carrega e executa os Testes
             _engine.Execute(_javascripts[nomeDoArquivoTestes]);
 
+            Escrever("Iniciando os testes");
+
             _engine.Execute(@"   QUnit.load();
                                 QUnit.start();
                 ");
 
-            Monitor.Enter(_timerLock);
+            Escrever("Encerrando os testes");
 
             #endregion
             
@@ -301,37 +304,22 @@ namespace Otimizacao.Javascript
         /// <param name="miliseconds">tempo em ms</param>
         public string SetTimeout(int miliseconds)
         {
-            Console.WriteLine("Helper_ThreadId : {0}", Thread.CurrentThread.ManagedThreadId);
-            Console.WriteLine(DateTime.Now.ToString("HH:mm:ss.ffff"));
-            //Monitor.Enter(_timerLock);
-            
-
             int id = _timers.Count;
-            //var t = new Timer(miliseconds);
-            
-            //t.Elapsed += JavascriptHelper_Elapsed;
-            
-            //t.Start();
+            Escrever("  Settimeout: id:{0}, ({1}) ms", id, miliseconds);
 
-            _timers.Add(id, new Timer());
+            _timers.Add(id);
+
+            Escrever("  ManagedThreadId : [{0}]", Thread.CurrentThread.ManagedThreadId.ToString());
 
             var th = new Thread(() =>
                 {
-                    Console.WriteLine("Criando a nova!! ThreadId : {0}", Thread.CurrentThread.ManagedThreadId);
-                    Console.WriteLine(DateTime.Now.ToString("HH:mm:ss.ffff"));    
-                    
                     Thread.Sleep(miliseconds);
                     JavascriptHelper_Elapsed(id);
                 });
 
             th.Start();
-            th.Join(TimeSpan.FromSeconds(3));
-
-            //SetTimeout(miliseconds, () =>
-            //    {
-            //        Monitor.Enter(_timerLock);
-            //        JavascriptHelper_Elapsed(id);
-            //    });
+            Thread.SpinWait(50);
+            th.Join(50);
 
             return id.ToString();
         }
@@ -341,45 +329,25 @@ namespace Otimizacao.Javascript
         /// </summary>
         void JavascriptHelper_Elapsed(int id)
         {
-            try
-            {
-                Console.WriteLine("Disparando o callback! ThreadId : {0}", Thread.CurrentThread.ManagedThreadId);
-                Console.WriteLine(DateTime.Now.ToString("HH:mm:ss.ffff"));
+            Escrever("      Executar timer: id:{0}:", id);
+            Escrever("      ManagedThreadId : [{0}]", Thread.CurrentThread.ManagedThreadId.ToString());
 
-                if (_timers.ContainsKey(id))
-                {
-                    _engine.Execute(string.Format("javascriptHelper.Escrever('deveria ter disparado: ' + stFunctionsCallBack[{0}]);", id));
-                    _engine.Execute(string.Format("stFunctionsCallBack[{0}]();", id));
-                    _engine.Execute("javascriptHelper.Escrever('certeza');");
-                }
-            }
-            catch (Exception ex)
+            if (_timers.Contains(id))
             {
-                Escrever(ex.ToString());
+                _timers.Remove(id);
+                Escrever("      Executando timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
+                
+                
+                _engine.Execute(string.Format("stFunctionsCallBack[{0}]();", id));
+           
+                Monitor.Exit(_engine);
+                
+               
             }
-            finally
-            {
-                Escrever(string.Format("Fez o release na JavascriptHelper_Elapsed"));
-            }
-        }
-
-        /// <summary>
-        /// Para emular o TSetTimeout
-        /// </summary>
-        /// <param name="ms"></param>
-        /// <param name="callback"></param>
-        /// <returns></returns>
-        async void SetTimeout(int ms, Action callback)
-        {
-            var startTime = DateTime.UtcNow;
-
-            while ((DateTime.UtcNow - startTime).TotalMilliseconds < ms)
-            {
-                await Task.Delay(10);
-            }
-
-            //Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
-            callback();
+            
+            Escrever("      Encerrado timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
+            
+            
         }
 
         /// <summary>

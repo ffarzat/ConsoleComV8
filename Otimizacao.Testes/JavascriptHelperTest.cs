@@ -46,7 +46,7 @@ namespace Otimizacao.Testes
 
             helper.ExecutarTestes("global.js", "core-test.js");
 
-            helper.Escrever("Acaba aqui...");
+            helper.Escrever("Método ExecutarTestes encerrado!");
 
             helper.FalhasDosTestes.ForEach(Console.WriteLine);
             Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");

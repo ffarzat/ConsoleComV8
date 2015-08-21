@@ -1,10 +1,10 @@
+D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\NLog.config
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\Otimizacao.dll
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\Otimizacao.pdb
-D:\GitHub\ConsoleComV8\Otimizacao\obj\Debug\Otimizacao.dll
-D:\GitHub\ConsoleComV8\Otimizacao\obj\Debug\Otimizacao.pdb
+D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\ClearScript.dll
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\CodeBureau.dll
-D:\GitHub\ConsoleComV8\Otimizacao\obj\Debug\Otimizacao.csprojResolveAssemblyReference.cache
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\NLog.dll
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\NLog.xml
-D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\ClearScript.dll
-D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\NLog.config
+D:\GitHub\ConsoleComV8\Otimizacao\obj\Debug\Otimizacao.dll
+D:\GitHub\ConsoleComV8\Otimizacao\obj\Debug\Otimizacao.pdb
+D:\GitHub\ConsoleComV8\Otimizacao\obj\Debug\Otimizacao.csprojResolveAssemblyReference.cache
