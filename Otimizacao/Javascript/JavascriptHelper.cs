@@ -227,6 +227,9 @@ namespace Otimizacao.Javascript
             #region Configura o QUnit
 
             _engine.Execute(_javascripts["Qunit.js"]);
+            
+            if (_javascripts.ContainsKey("qunit-extras.js"))
+                _engine.Execute(_javascripts["qunit-extras.js"]);
 
             _engine.Execute(@"   
                                     var total, sucesso, falha;
