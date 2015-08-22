@@ -1,7 +1,7 @@
-2015-08-21 11:58:35.6113|Info|Iniciando os testes
-2015-08-21 11:58:35.9436|Info|  Settimeout: id:0, (13) ms
-2015-08-21 11:58:35.9586|Info|      Executando timer: id:0, (11:58:35.9586)
-2015-08-21 11:58:36.0376|Info|          Deveria ter disparado: function () {
+2015-08-22 12:08:20.3262|Info|Iniciando os testes
+2015-08-22 12:08:20.6544|Info|  Settimeout: id:0, (13) ms
+2015-08-22 12:08:20.6695|Info|      Executando timer: id:0, (12:08:20.6695)
+2015-08-22 12:08:20.7535|Info|          Deveria ter disparado: function () {
 			if ( config.current && config.current.semaphore > 0 ) {
 				return;
 			}
@@ -10,10 +10,10 @@
 			}
 			begin();
 		}
-2015-08-21 11:58:36.0747|Info|  Settimeout: id:1, (13) ms
-2015-08-21 11:58:36.1257|Info|      Encerrado timer: id:0, (11:58:36.1257)
-2015-08-21 11:58:36.1257|Info|      Executando timer: id:1, (11:58:36.1257)
-2015-08-21 11:58:36.1257|Info|          Deveria ter disparado: function () {
+2015-08-22 12:08:20.7915|Info|  Settimeout: id:1, (13) ms
+2015-08-22 12:08:20.8475|Info|      Encerrado timer: id:0, (12:08:20.8475)
+2015-08-22 12:08:20.8485|Info|      Executando timer: id:1, (12:08:20.8485)
+2015-08-22 12:08:20.8485|Info|          Deveria ter disparado: function () {
 			if ( config.current && config.current.semaphore > 0 ) {
 				return;
 			}
@@ -22,11 +22,11 @@
 			}
 			begin();
 		}
-2015-08-21 11:58:36.2047|Info|  Settimeout: id:1, (32) ms
-2015-08-21 11:58:36.2568|Info|  Settimeout: id:2, (96) ms
-2015-08-21 11:58:36.3089|Info|      Encerrado timer: id:1, (11:58:36.3089)
-2015-08-21 11:58:36.3089|Info|      Executando timer: id:1, (11:58:36.3108)
-2015-08-21 11:58:36.3089|Info|          Deveria ter disparado: function () {
+2015-08-22 12:08:20.9266|Info|  Settimeout: id:1, (32) ms
+2015-08-22 12:08:20.9777|Info|  Settimeout: id:2, (96) ms
+2015-08-22 12:08:21.0287|Info|      Encerrado timer: id:1, (12:08:21.0287)
+2015-08-22 12:08:21.0287|Info|      Executando timer: id:1, (12:08:21.0307)
+2015-08-22 12:08:21.0287|Info|          Deveria ter disparado: function () {
 			if ( config.current && config.current.semaphore > 0 ) {
 				return;
 			}
@@ -35,9 +35,9 @@
 			}
 			begin();
 		}
-2015-08-21 11:58:36.3089|Info|      Encerrado timer: id:1, (11:58:36.3158)
-2015-08-21 11:58:36.3559|Info|      Executando timer: id:2, (11:58:36.3559)
-2015-08-21 11:58:36.3559|Info|          Deveria ter disparado: function delayed() {
+2015-08-22 12:08:21.0287|Info|      Encerrado timer: id:1, (12:08:21.0357)
+2015-08-22 12:08:21.0758|Info|      Executando timer: id:2, (12:08:21.0758)
+2015-08-22 12:08:21.0758|Info|          Deveria ter disparado: function delayed() {
         var remaining = wait - (now() - stamp);
         //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
 		if (remaining <= 0 || remaining > wait) {
@@ -48,8 +48,36 @@
           timeoutId = setTimeout(delayed, remaining);
         }
       }
-2015-08-21 11:58:36.3559|Info|!timeoutId && !maxTimeoutId true
-2015-08-21 11:58:36.3559|Info|      Encerrado timer: id:2, (11:58:36.3609)
-2015-08-21 11:58:36.3969|Info|Encerrando os testes
-2015-08-21 11:58:36.4019|Info|Total:0, Sucesso: 0, Falha: 0
-2015-08-21 11:58:36.4019|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-22 12:08:21.0758|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:08:21.0758|Info|      Encerrado timer: id:2, (12:08:21.0827)
+2015-08-22 12:08:21.1068|Info|Encerrando os testes
+2015-08-22 12:08:21.1068|Info|Total:0, Sucesso: 0, Falha: 0
+2015-08-22 12:08:21.1068|Info|1 segundos para avaliar o individuo lodash.js
+2015-08-22 12:22:45.0515|Info|Iniciando os testes
+2015-08-22 12:22:45.3937|Info|  Settimeout: id:0, (13) ms
+2015-08-22 12:22:45.4127|Info|      Executando timer: id:0, (12:22:45.4127)
+2015-08-22 12:22:45.4668|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:22:46.4705|Info|  Settimeout: id:1, (13) ms
+2015-08-22 12:22:46.5215|Info|      Encerrado timer: id:0, (12:22:46.5215)
+2015-08-22 12:22:46.5215|Info|      Executando timer: id:1, (12:22:46.5225)
+2015-08-22 12:22:46.5215|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-22 12:22:47.5292|Info|  Settimeout: id:2, (13) ms
+2015-08-22 12:22:47.5803|Info|      Encerrado timer: id:1, (12:22:47.5803)
+2015-08-22 12:22:47.5803|Info|      Executando timer: id:2, (12:22:47.5803)
+2015-08-22 12:22:47.5803|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-22 12:22:47.8645|Info|      Encerrado timer: id:2, (12:22:47.8645)
+2015-08-22 12:22:47.9536|Info|Encerrando os testes
+2015-08-22 12:22:47.9536|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-22 12:22:47.9536|Info|3 segundos para avaliar o individuo global.js

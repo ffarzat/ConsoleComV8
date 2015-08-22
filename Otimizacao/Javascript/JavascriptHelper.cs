@@ -86,7 +86,7 @@ namespace Otimizacao.Javascript
         /// <summary>
         /// Guarda os timers para simular o SetTimeout;
         /// </summary>
-        private List<int> _timers;
+        private Dictionary<int, bool> _timers;
 
         /// <summary>
         /// Funções para futura execução via SetTimout
@@ -117,7 +117,7 @@ namespace Otimizacao.Javascript
             
             _engine = new V8ScriptEngine();
             FalhasDosTestes = new List<string>();
-            _timers = new List<int>();
+            _timers = new Dictionary<int, bool>();
 
             _engine.AddHostObject("javascriptHelper", this);
             _engine.Execute(@"'use strict';
@@ -286,7 +286,7 @@ namespace Otimizacao.Javascript
                 ");
 
             //Escrever("_timers.Count {0}", _timers.Count);
-            while (_timers.Count > 0)
+            while (_timers.Count(pair => pair.Value) > 0)
             {
                 Thread.Sleep(100);
             }
@@ -317,7 +317,7 @@ namespace Otimizacao.Javascript
 
             lock (_timers)
             {
-                _timers.Remove(idLocal);
+                _timers[idLocal] = false;
             }
         }
 
@@ -332,7 +332,7 @@ namespace Otimizacao.Javascript
 
             lock (_timers)
             {
-                _timers.Add(id);
+                _timers.Add(id, true);
                 //Escrever("_timers.Count {0}", _timers.Count);
             }
 
@@ -362,16 +362,18 @@ namespace Otimizacao.Javascript
 
             lock (_timers)
             {
-                if (_timers.Contains(id))
+                if (_timers[id])
                 {
                     Escrever("      Executando timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
                     _engine.Execute(string.Format("javascriptHelper.Escrever('          Deveria ter disparado: ' + stFunctionsCallBack[{0}]);", id));
 
                     _engine.Execute(string.Format("stFunctionsCallBack[{0}]();", id));
+
+                    Escrever("      Encerrado timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
+                    _timers[id] = false;
                 }
                 
-                Escrever("      Encerrado timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
-                _timers.Remove(id);
+                
             }
         }
 
