@@ -144,6 +144,16 @@ namespace Otimizacao.Javascript
 
             _engine.Execute(@"var clearTimeout = function(id) { javascriptHelper.ClearTimeout(id);};");
 
+            _engine.Execute(@"var setInterval = function (funcToCall, millis) {
+                                                
+                                                var idlocal = javascriptHelper.SetTimeout(millis);
+                                                var funcaoTimeout = function() { funcToCall(); setTimeout(funcToCall, millis); };
+                                                stFunctionsCallBack.push(funcaoTimeout);
+                                                return idlocal;
+                            };");
+
+            _engine.Execute(@"var clearInterval = function(id) { javascriptHelper.ClearTimeout(id);};");
+
             #endregion
         }
 
