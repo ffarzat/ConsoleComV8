@@ -286,11 +286,16 @@ namespace Otimizacao.Javascript
                 ");
 
             //Escrever("_timers.Count {0}", _timers.Count);
-            while (_timers.Count(pair => pair.Value) > 0)
+            
+            
+            while (getTimersCount() > 0)
             {
-                Thread.Sleep(100);
+                Thread.Sleep(5);
             }
+    
+            
 
+            
             Escrever("Encerrando os testes");
 
             #endregion
@@ -305,6 +310,22 @@ namespace Otimizacao.Javascript
             
 
             return true;
+        }
+
+        /// <summary>
+        /// Retorno o total de Timers ainda para executar
+        /// </summary>
+        /// <returns></returns>
+        private int getTimersCount()
+        {
+            int retorno = 0;
+            
+            lock (_timers)
+            {
+                retorno = _timers.Count(pair => pair.Value);
+            }
+            
+            return retorno;
         }
 
         /// <summary>

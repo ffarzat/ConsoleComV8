@@ -1,7 +1,7 @@
-2015-08-22 12:08:20.3262|Info|Iniciando os testes
-2015-08-22 12:08:20.6544|Info|  Settimeout: id:0, (13) ms
-2015-08-22 12:08:20.6695|Info|      Executando timer: id:0, (12:08:20.6695)
-2015-08-22 12:08:20.7535|Info|          Deveria ter disparado: function () {
+2015-08-22 12:26:31.1784|Info|Iniciando os testes
+2015-08-22 12:26:31.5597|Info|  Settimeout: id:0, (13) ms
+2015-08-22 12:26:31.5777|Info|      Executando timer: id:0, (12:26:31.5777)
+2015-08-22 12:26:31.6307|Info|          Deveria ter disparado: function () {
 			if ( config.current && config.current.semaphore > 0 ) {
 				return;
 			}
@@ -10,10 +10,10 @@
 			}
 			begin();
 		}
-2015-08-22 12:08:20.7915|Info|  Settimeout: id:1, (13) ms
-2015-08-22 12:08:20.8475|Info|      Encerrado timer: id:0, (12:08:20.8475)
-2015-08-22 12:08:20.8485|Info|      Executando timer: id:1, (12:08:20.8485)
-2015-08-22 12:08:20.8485|Info|          Deveria ter disparado: function () {
+2015-08-22 12:26:31.6638|Info|  Settimeout: id:1, (13) ms
+2015-08-22 12:26:31.7149|Info|      Encerrado timer: id:0, (12:26:31.7149)
+2015-08-22 12:26:31.7149|Info|      Executando timer: id:1, (12:26:31.7158)
+2015-08-22 12:26:31.7149|Info|          Deveria ter disparado: function () {
 			if ( config.current && config.current.semaphore > 0 ) {
 				return;
 			}
@@ -22,22 +22,11 @@
 			}
 			begin();
 		}
-2015-08-22 12:08:20.9266|Info|  Settimeout: id:1, (32) ms
-2015-08-22 12:08:20.9777|Info|  Settimeout: id:2, (96) ms
-2015-08-22 12:08:21.0287|Info|      Encerrado timer: id:1, (12:08:21.0287)
-2015-08-22 12:08:21.0287|Info|      Executando timer: id:1, (12:08:21.0307)
-2015-08-22 12:08:21.0287|Info|          Deveria ter disparado: function () {
-			if ( config.current && config.current.semaphore > 0 ) {
-				return;
-			}
-			if ( config.timeout ) {
-				clearTimeout( config.timeout );
-			}
-			begin();
-		}
-2015-08-22 12:08:21.0287|Info|      Encerrado timer: id:1, (12:08:21.0357)
-2015-08-22 12:08:21.0758|Info|      Executando timer: id:2, (12:08:21.0758)
-2015-08-22 12:08:21.0758|Info|          Deveria ter disparado: function delayed() {
+2015-08-22 12:26:31.8159|Info|  Settimeout: id:2, (32) ms
+2015-08-22 12:26:31.8669|Info|  Settimeout: id:3, (96) ms
+2015-08-22 12:26:31.9190|Info|      Encerrado timer: id:1, (12:26:31.9190)
+2015-08-22 12:26:31.9190|Info|      Executando timer: id:2, (12:26:31.9190)
+2015-08-22 12:26:31.9190|Info|          Deveria ter disparado: function delayed() {
         var remaining = wait - (now() - stamp);
         //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
 		if (remaining <= 0 || remaining > wait) {
@@ -48,15 +37,17 @@
           timeoutId = setTimeout(delayed, remaining);
         }
       }
-2015-08-22 12:08:21.0758|Info|!timeoutId && !maxTimeoutId true
-2015-08-22 12:08:21.0758|Info|      Encerrado timer: id:2, (12:08:21.0827)
-2015-08-22 12:08:21.1068|Info|Encerrando os testes
-2015-08-22 12:08:21.1068|Info|Total:0, Sucesso: 0, Falha: 0
-2015-08-22 12:08:21.1068|Info|1 segundos para avaliar o individuo lodash.js
-2015-08-22 12:22:45.0515|Info|Iniciando os testes
-2015-08-22 12:22:45.3937|Info|  Settimeout: id:0, (13) ms
-2015-08-22 12:22:45.4127|Info|      Executando timer: id:0, (12:22:45.4127)
-2015-08-22 12:22:45.4668|Info|          Deveria ter disparado: function () {
+2015-08-22 12:26:31.9190|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:26:31.9190|Info|      Encerrado timer: id:2, (12:26:31.9239)
+2015-08-22 12:26:31.9660|Info|      Executando timer: id:3, (12:26:31.9660)
+2015-08-22 12:26:31.9660|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 1);
+          QUnit.start();
+        }
+2015-08-22 12:26:31.9660|Info|  Settimeout: id:4, (13) ms
+2015-08-22 12:26:32.0180|Info|      Encerrado timer: id:3, (12:26:32.0180)
+2015-08-22 12:26:32.0180|Info|      Executando timer: id:4, (12:26:32.0190)
+2015-08-22 12:26:32.0220|Info|          Deveria ter disparado: function () {
 			if ( config.current && config.current.semaphore > 0 ) {
 				return;
 			}
@@ -65,19 +56,2355 @@
 			}
 			begin();
 		}
-2015-08-22 12:22:46.4705|Info|  Settimeout: id:1, (13) ms
-2015-08-22 12:22:46.5215|Info|      Encerrado timer: id:0, (12:22:46.5215)
-2015-08-22 12:22:46.5215|Info|      Executando timer: id:1, (12:22:46.5225)
-2015-08-22 12:22:46.5215|Info|          Deveria ter disparado: function next() {
+2015-08-22 12:26:32.0220|Info|  Settimeout: id:5, (32) ms
+2015-08-22 12:26:32.0791|Info|  Settimeout: id:6, (64) ms
+2015-08-22 12:26:32.1301|Info|  Settimeout: id:7, (128) ms
+2015-08-22 12:26:32.1811|Info|      Encerrado timer: id:4, (12:26:32.1811)
+2015-08-22 12:26:32.1811|Info|      Executando timer: id:5, (12:26:32.1811)
+2015-08-22 12:26:32.1811|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:26:32.1811|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:26:32.1811|Info|      Encerrado timer: id:5, (12:26:32.1841)
+2015-08-22 12:26:32.1811|Info|      Executando timer: id:6, (12:26:32.1841)
+2015-08-22 12:26:32.1811|Info|          Deveria ter disparado: function () {
+          notEqual(debounced('y'), 'y');
+        }
+2015-08-22 12:26:32.1811|Info|  Settimeout: id:8, (32) ms
+2015-08-22 12:26:32.2372|Info|      Encerrado timer: id:6, (12:26:32.2372)
+2015-08-22 12:26:32.2372|Info|      Executando timer: id:8, (12:26:32.2382)
+2015-08-22 12:26:32.2402|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:26:32.2402|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:26:32.2402|Info|      Encerrado timer: id:8, (12:26:32.2432)
+2015-08-22 12:26:32.2602|Info|      Executando timer: id:7, (12:26:32.2602)
+2015-08-22 12:26:32.2602|Info|          Deveria ter disparado: function () {
+          notEqual(debounced('z'), 'z');
+          QUnit.start();
+        }
+2015-08-22 12:26:32.2602|Info|  Settimeout: id:9, (32) ms
+2015-08-22 12:26:32.3142|Info|  Settimeout: id:10, (13) ms
+2015-08-22 12:26:32.3653|Info|      Encerrado timer: id:7, (12:26:32.3653)
+2015-08-22 12:26:32.3653|Info|      Executando timer: id:9, (12:26:32.3653)
+2015-08-22 12:26:32.3653|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:26:32.3653|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:26:32.3653|Info|      Encerrado timer: id:9, (12:26:32.3683)
+2015-08-22 12:26:32.3653|Info|      Executando timer: id:10, (12:26:32.3693)
+2015-08-22 12:26:32.3653|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:26:32.3653|Info|  Settimeout: id:11, (32) ms
+2015-08-22 12:26:32.4223|Info|  Settimeout: id:12, (64) ms
+2015-08-22 12:26:32.4733|Info|      Encerrado timer: id:10, (12:26:32.4733)
+2015-08-22 12:26:32.4733|Info|      Executando timer: id:11, (12:26:32.4733)
+2015-08-22 12:26:32.4743|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:26:32.4743|Info|      Encerrado timer: id:11, (12:26:32.4753)
+2015-08-22 12:26:32.4743|Info|      Executando timer: id:12, (12:26:32.4884)
+2015-08-22 12:26:32.4894|Info|          Deveria ter disparado: function () {
+          var result = [debounced('a'), debounced('b')];
+          deepEqual(result, ['a', 'a']);
+          QUnit.start();
+        }
+2015-08-22 12:26:32.4894|Info|  Settimeout: id:13, (32) ms
+2015-08-22 12:26:32.5424|Info|  Settimeout: id:14, (13) ms
+2015-08-22 12:26:32.5944|Info|      Encerrado timer: id:12, (12:26:32.5944)
+2015-08-22 12:26:32.5944|Info|      Executando timer: id:13, (12:26:32.5964)
+2015-08-22 12:26:32.6014|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:26:32.6014|Info|      Encerrado timer: id:13, (12:26:32.6064)
+2015-08-22 12:26:32.6014|Info|      Executando timer: id:14, (12:26:32.6074)
+2015-08-22 12:26:32.6014|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:26:32.6014|Info|  Settimeout: id:15, (32) ms
+2015-08-22 12:26:32.6625|Info|  Settimeout: id:16, (64) ms
+2015-08-22 12:26:32.7136|Info|      Encerrado timer: id:14, (12:26:32.7136)
+2015-08-22 12:26:32.7136|Info|      Executando timer: id:15, (12:26:32.7136)
+2015-08-22 12:26:32.7136|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:26:32.7136|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:26:32.7136|Info|      Encerrado timer: id:15, (12:26:32.7165)
+2015-08-22 12:26:32.7286|Info|      Executando timer: id:16, (12:26:32.7286)
+2015-08-22 12:26:32.7286|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 1);
+          QUnit.start();
+        }
+2015-08-22 12:26:32.7286|Info|  Settimeout: id:17, (13) ms
+2015-08-22 12:26:32.7816|Info|      Encerrado timer: id:16, (12:26:32.7816)
+2015-08-22 12:26:32.7816|Info|      Executando timer: id:17, (12:26:32.7826)
+2015-08-22 12:26:32.7816|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:26:32.7876|Info|  Settimeout: id:18, (32) ms
+2015-08-22 12:26:32.8396|Info|  Settimeout: id:19, (32) ms
+2015-08-22 12:26:32.8907|Info|  Settimeout: id:20, (32) ms
+2015-08-22 12:26:32.9447|Info|  Settimeout: id:21, (64) ms
+2015-08-22 12:26:32.9958|Info|      Encerrado timer: id:17, (12:26:32.9958)
+2015-08-22 12:26:32.9958|Info|      Executando timer: id:18, (12:26:32.9967)
+2015-08-22 12:26:32.9958|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:26:32.9958|Info|      Encerrado timer: id:18, (12:26:32.9997)
+2015-08-22 12:26:32.9958|Info|      Executando timer: id:19, (12:26:33.0007)
+2015-08-22 12:26:32.9958|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:26:32.9958|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:26:33.0057|Info|      Encerrado timer: id:19, (12:26:33.0057)
+2015-08-22 12:26:33.0057|Info|      Executando timer: id:20, (12:26:33.0067)
+2015-08-22 12:26:33.0057|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:26:33.0057|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:26:33.0057|Info|      Encerrado timer: id:20, (12:26:33.0117)
+2015-08-22 12:26:33.0057|Info|      Executando timer: id:21, (12:26:33.0127)
+2015-08-22 12:26:33.0057|Info|          Deveria ter disparado: function () {
+          deepEqual(callCounts, [1, 2]);
+
+          withLeading('x');
+          strictEqual(callCounts[0], 2);
+
+          QUnit.start();
+        }
+2015-08-22 12:26:33.0057|Info|  Settimeout: id:22, (32) ms
+2015-08-22 12:26:33.0698|Info|  Settimeout: id:23, (13) ms
+2015-08-22 12:26:33.1218|Info|      Encerrado timer: id:21, (12:26:33.1218)
+2015-08-22 12:26:33.1218|Info|      Executando timer: id:22, (12:26:33.1238)
+2015-08-22 12:26:33.1218|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:26:33.1298|Info|      Encerrado timer: id:22, (12:26:33.1298)
+2015-08-22 12:26:33.1298|Info|      Executando timer: id:23, (12:26:33.1318)
+2015-08-22 12:26:33.1298|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:26:33.1298|Info|  Settimeout: id:24, (32) ms
+2015-08-22 12:26:33.1908|Info|  Settimeout: id:25, (32) ms
+2015-08-22 12:26:33.2429|Info|  Settimeout: id:26, (64) ms
+2015-08-22 12:26:33.2939|Info|      Encerrado timer: id:23, (12:26:33.2939)
+2015-08-22 12:26:33.2939|Info|      Executando timer: id:24, (12:26:33.2939)
+2015-08-22 12:26:33.2939|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:26:33.2939|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:26:33.2939|Info|      Encerrado timer: id:24, (12:26:33.2989)
+2015-08-22 12:26:33.2939|Info|      Executando timer: id:25, (12:26:33.2999)
+2015-08-22 12:26:33.2939|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:26:33.2939|Info|      Encerrado timer: id:25, (12:26:33.3009)
+2015-08-22 12:26:33.3090|Info|      Executando timer: id:26, (12:26:33.3090)
+2015-08-22 12:26:33.3090|Info|          Deveria ter disparado: function () {
+          strictEqual(withCount, 1);
+          strictEqual(withoutCount, 0);
+          QUnit.start();
+        }
+2015-08-22 12:26:33.3090|Info|  Settimeout: id:27, (13) ms
+2015-08-22 12:26:33.3610|Info|      Encerrado timer: id:26, (12:26:33.3610)
+2015-08-22 12:26:33.3610|Info|      Executando timer: id:27, (12:26:33.3610)
+2015-08-22 12:26:33.3610|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:26:33.3610|Info|  Settimeout: id:28, (128) ms
+2015-08-22 12:26:33.4150|Info|  Settimeout: id:29, (64) ms
+2015-08-22 12:26:33.4691|Info|  Settimeout: id:30, (96) ms
+2015-08-22 12:26:33.5261|Info|  Settimeout: id:31, (128) ms
+2015-08-22 12:26:33.5792|Info|  Settimeout: id:32, (64) ms
+2015-08-22 12:26:33.6542|Info|  Settimeout: id:33, (128) ms
+2015-08-22 12:26:33.7053|Info|  Settimeout: id:34, (64) ms
+2015-08-22 12:26:33.7573|Info|  Settimeout: id:35, (1) ms
+2015-08-22 12:26:33.8093|Info|      Encerrado timer: id:27, (12:26:33.8093)
+2015-08-22 12:26:33.8093|Info|      Executando timer: id:30, (12:26:33.8103)
+2015-08-22 12:26:33.8093|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:26:33.8093|Info|  Settimeout: id:36, (39) ms
+2015-08-22 12:26:33.8653|Info|      Encerrado timer: id:30, (12:26:33.8653)
+2015-08-22 12:26:33.8653|Info|      Executando timer: id:35, (12:26:33.8653)
+2015-08-22 12:26:33.8653|Info|          Deveria ter disparado: function () {
+          deepEqual(actual, [true, false]);
+          QUnit.start();
+        }
+2015-08-22 12:26:33.8653|Info|  Settimeout: id:37, (13) ms
+2015-08-22 12:26:33.9184|Info|      Encerrado timer: id:35, (12:26:33.9184)
+2015-08-22 12:26:33.9184|Info|      Executando timer: id:34, (12:26:33.9184)
+2015-08-22 12:26:33.9184|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:26:33.9184|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:26:33.9284|Info|      Encerrado timer: id:34, (12:26:33.9284)
+2015-08-22 12:26:33.9284|Info|      Executando timer: id:36, (12:26:33.9294)
+2015-08-22 12:26:33.9284|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:26:33.9284|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:26:33.9284|Info|      Encerrado timer: id:36, (12:26:33.9374)
+2015-08-22 12:26:33.9284|Info|      Executando timer: id:37, (12:26:33.9384)
+2015-08-22 12:26:33.9284|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:26:33.9454|Info|  Settimeout: id:38, (64) ms
+2015-08-22 12:26:33.9984|Info|  Settimeout: id:39, (32) ms
+2015-08-22 12:26:34.0515|Info|  Settimeout: id:40, (128) ms
+2015-08-22 12:26:34.1035|Info|      Encerrado timer: id:37, (12:26:34.1035)
+2015-08-22 12:26:34.1035|Info|      Executando timer: id:38, (12:26:34.1035)
+2015-08-22 12:26:34.1035|Info|          Deveria ter disparado: function maxDelayed() {
+        complete(trailing, timeoutId);
+      }
+2015-08-22 12:26:34.1035|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:26:34.1035|Info|      Encerrado timer: id:38, (12:26:34.1075)
+2015-08-22 12:26:34.1825|Info|      Executando timer: id:40, (12:26:34.1825)
+2015-08-22 12:26:34.1825|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 1);
+          QUnit.start();
+        }
+2015-08-22 12:26:34.1825|Info|  Settimeout: id:41, (13) ms
+2015-08-22 12:26:34.2386|Info|      Encerrado timer: id:40, (12:26:34.2386)
+2015-08-22 12:26:34.2386|Info|      Executando timer: id:41, (12:26:34.2386)
+2015-08-22 12:26:34.2406|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:26:34.2406|Info|  Settimeout: id:42, (32) ms
+2015-08-22 12:26:34.2946|Info|  Settimeout: id:43, (12) ms
+2015-08-22 12:26:34.3477|Info|  Settimeout: id:44, (64) ms
+2015-08-22 12:26:34.3988|Info|      Encerrado timer: id:41, (12:26:34.3988)
+2015-08-22 12:26:34.4138|Info|      Executando timer: id:44, (12:26:34.4138)
+2015-08-22 12:26:34.4138|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 2);
+          deepEqual(actual, [object, 'a']);
+          QUnit.start();
+        }
+2015-08-22 12:26:34.4138|Info|  Settimeout: id:45, (13) ms
+2015-08-22 12:26:34.4658|Info|      Encerrado timer: id:44, (12:26:34.4658)
+2015-08-22 12:26:34.4658|Info|      Executando timer: id:45, (12:26:34.4668)
+2015-08-22 12:26:34.4658|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:26:34.4658|Info|  Settimeout: id:46, (1) ms
+2015-08-22 12:26:34.5278|Info|  Settimeout: id:47, (32) ms
+2015-08-22 12:26:34.5798|Info|      Encerrado timer: id:45, (12:26:34.5798)
+2015-08-22 12:26:34.5798|Info|      Executando timer: id:46, (12:26:34.5808)
+2015-08-22 12:26:34.5798|Info|          Deveria ter disparado: function () { func.apply(undefined, args); }
+2015-08-22 12:26:34.5838|Info|      Encerrado timer: id:46, (12:26:34.5838)
+2015-08-22 12:26:34.5838|Info|      Executando timer: id:47, (12:26:34.5848)
+2015-08-22 12:26:34.5838|Info|          Deveria ter disparado: function () {
+          ok(pass);
+          QUnit.start();
+        }
+2015-08-22 12:26:34.5838|Info|  Settimeout: id:48, (13) ms
+2015-08-22 12:26:34.6429|Info|      Encerrado timer: id:47, (12:26:34.6429)
+2015-08-22 12:26:34.6429|Info|      Executando timer: id:48, (12:26:34.6429)
+2015-08-22 12:26:34.6429|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:26:34.6459|Info|  Settimeout: id:49, (1) ms
+2015-08-22 12:26:34.6960|Info|  Settimeout: id:50, (32) ms
+2015-08-22 12:26:34.7470|Info|      Encerrado timer: id:48, (12:26:34.7470)
+2015-08-22 12:26:34.7470|Info|      Executando timer: id:49, (12:26:34.7490)
+2015-08-22 12:26:34.7470|Info|          Deveria ter disparado: function () { func.apply(undefined, args); }
+2015-08-22 12:26:34.7470|Info|      Encerrado timer: id:49, (12:26:34.7540)
+2015-08-22 12:26:34.7550|Info|      Executando timer: id:50, (12:26:34.7550)
+2015-08-22 12:26:34.7550|Info|          Deveria ter disparado: function () {
+          deepEqual(args, [1, 2]);
+          QUnit.start();
+        }
+2015-08-22 12:26:34.7550|Info|  Settimeout: id:51, (13) ms
+2015-08-22 12:26:34.8130|Info|      Encerrado timer: id:50, (12:26:34.8130)
+2015-08-22 12:26:34.8130|Info|      Executando timer: id:51, (12:26:34.8150)
+2015-08-22 12:26:34.8190|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:26:34.8190|Info|  Settimeout: id:52, (1) ms
+2015-08-22 12:26:34.8721|Info|  Settimeout: id:53, (32) ms
+2015-08-22 12:26:34.9231|Info|      Encerrado timer: id:51, (12:26:34.9231)
+2015-08-22 12:26:34.9231|Info|      Executando timer: id:53, (12:26:34.9251)
+2015-08-22 12:26:34.9271|Info|          Deveria ter disparado: function () {
+          ok(pass);
+          QUnit.start();
+        }
+2015-08-22 12:26:34.9271|Info|  Settimeout: id:54, (13) ms
+2015-08-22 12:26:34.9841|Info|      Encerrado timer: id:53, (12:26:34.9841)
+2015-08-22 12:26:34.9841|Info|      Executando timer: id:54, (12:26:34.9861)
+2015-08-22 12:26:34.9841|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:26:34.9921|Info|  Settimeout: id:55, (32) ms
+2015-08-22 12:26:35.0452|Info|  Settimeout: id:56, (1) ms
+2015-08-22 12:27:30.1992|Info|Iniciando os testes
+2015-08-22 12:27:30.5295|Info|  Settimeout: id:0, (13) ms
+2015-08-22 12:27:30.5465|Info|      Executando timer: id:0, (12:27:30.5465)
+2015-08-22 12:27:30.6015|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:27:30.6325|Info|  Settimeout: id:1, (13) ms
+2015-08-22 12:27:30.6836|Info|      Encerrado timer: id:0, (12:27:30.6836)
+2015-08-22 12:27:30.6836|Info|      Executando timer: id:1, (12:27:30.6856)
+2015-08-22 12:27:30.6836|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:27:30.7867|Info|  Settimeout: id:2, (32) ms
+2015-08-22 12:27:30.8387|Info|  Settimeout: id:3, (96) ms
+2015-08-22 12:27:30.8918|Info|      Encerrado timer: id:1, (12:27:30.8918)
+2015-08-22 12:27:30.8918|Info|      Executando timer: id:2, (12:27:30.8937)
+2015-08-22 12:27:30.8967|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:27:30.8967|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:27:30.8967|Info|      Encerrado timer: id:2, (12:27:30.9017)
+2015-08-22 12:27:30.9387|Info|      Executando timer: id:3, (12:27:30.9387)
+2015-08-22 12:27:30.9387|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 1);
+          QUnit.start();
+        }
+2015-08-22 12:27:30.9447|Info|  Settimeout: id:4, (13) ms
+2015-08-22 12:27:30.9978|Info|      Encerrado timer: id:3, (12:27:30.9978)
+2015-08-22 12:27:30.9978|Info|      Executando timer: id:4, (12:27:30.9988)
+2015-08-22 12:27:30.9978|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:27:30.9978|Info|  Settimeout: id:5, (32) ms
+2015-08-22 12:27:31.0558|Info|  Settimeout: id:6, (64) ms
+2015-08-22 12:27:31.1089|Info|  Settimeout: id:7, (128) ms
+2015-08-22 12:27:31.1610|Info|      Encerrado timer: id:4, (12:27:31.1610)
+2015-08-22 12:27:31.1629|Info|      Executando timer: id:5, (12:27:31.1629)
+2015-08-22 12:27:31.1629|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:27:31.1629|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:27:31.1629|Info|      Encerrado timer: id:5, (12:27:31.1719)
+2015-08-22 12:27:31.1629|Info|      Executando timer: id:6, (12:27:31.1729)
+2015-08-22 12:27:31.1629|Info|          Deveria ter disparado: function () {
+          notEqual(debounced('y'), 'y');
+        }
+2015-08-22 12:27:31.1789|Info|  Settimeout: id:8, (32) ms
+2015-08-22 12:27:31.2310|Info|      Encerrado timer: id:6, (12:27:31.2310)
+2015-08-22 12:27:31.2310|Info|      Executando timer: id:8, (12:27:31.2320)
+2015-08-22 12:27:31.2310|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:27:31.2310|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:27:31.2310|Info|      Encerrado timer: id:8, (12:27:31.2360)
+2015-08-22 12:27:31.2400|Info|      Executando timer: id:7, (12:27:31.2400)
+2015-08-22 12:27:31.2400|Info|          Deveria ter disparado: function () {
+          notEqual(debounced('z'), 'z');
+          QUnit.start();
+        }
+2015-08-22 12:27:31.2400|Info|  Settimeout: id:9, (32) ms
+2015-08-22 12:27:31.2960|Info|  Settimeout: id:10, (13) ms
+2015-08-22 12:27:31.3481|Info|      Encerrado timer: id:7, (12:27:31.3481)
+2015-08-22 12:27:31.3500|Info|      Executando timer: id:9, (12:27:31.3500)
+2015-08-22 12:27:31.3500|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:27:31.3500|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:27:31.3500|Info|      Encerrado timer: id:9, (12:27:31.3591)
+2015-08-22 12:27:31.3500|Info|      Executando timer: id:10, (12:27:31.3600)
+2015-08-22 12:27:31.3500|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:27:31.3680|Info|  Settimeout: id:11, (32) ms
+2015-08-22 12:27:31.4211|Info|  Settimeout: id:12, (64) ms
+2015-08-22 12:27:31.4732|Info|      Encerrado timer: id:10, (12:27:31.4732)
+2015-08-22 12:27:31.4741|Info|      Executando timer: id:11, (12:27:31.4741)
+2015-08-22 12:27:31.4741|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:27:31.4741|Info|      Encerrado timer: id:11, (12:27:31.4781)
+2015-08-22 12:27:31.4741|Info|      Executando timer: id:12, (12:27:31.4882)
+2015-08-22 12:27:31.4992|Info|          Deveria ter disparado: function () {
+          var result = [debounced('a'), debounced('b')];
+          deepEqual(result, ['a', 'a']);
+          QUnit.start();
+        }
+2015-08-22 12:27:31.4992|Info|  Settimeout: id:13, (32) ms
+2015-08-22 12:27:31.5522|Info|  Settimeout: id:14, (13) ms
+2015-08-22 12:27:31.6043|Info|      Encerrado timer: id:12, (12:27:31.6043)
+2015-08-22 12:27:31.6043|Info|      Executando timer: id:13, (12:27:31.6052)
+2015-08-22 12:27:31.6043|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:27:31.6043|Info|      Encerrado timer: id:13, (12:27:31.6102)
+2015-08-22 12:27:31.6043|Info|      Executando timer: id:14, (12:27:31.6112)
+2015-08-22 12:27:31.6043|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:27:31.6152|Info|  Settimeout: id:15, (32) ms
+2015-08-22 12:27:31.6673|Info|  Settimeout: id:16, (64) ms
+2015-08-22 12:27:31.7193|Info|      Encerrado timer: id:14, (12:27:31.7193)
+2015-08-22 12:27:31.7193|Info|      Executando timer: id:15, (12:27:31.7203)
+2015-08-22 12:27:31.7193|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:27:31.7243|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:27:31.7243|Info|      Encerrado timer: id:15, (12:27:31.7253)
+2015-08-22 12:27:31.7243|Info|      Executando timer: id:16, (12:27:31.7343)
+2015-08-22 12:27:31.7243|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 1);
+          QUnit.start();
+        }
+2015-08-22 12:27:31.7243|Info|  Settimeout: id:17, (13) ms
+2015-08-22 12:27:31.7864|Info|      Encerrado timer: id:16, (12:27:31.7864)
+2015-08-22 12:27:31.7864|Info|      Executando timer: id:17, (12:27:31.7873)
+2015-08-22 12:27:31.7864|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:27:31.7864|Info|  Settimeout: id:18, (32) ms
+2015-08-22 12:27:31.8454|Info|  Settimeout: id:19, (32) ms
+2015-08-22 12:27:31.8974|Info|  Settimeout: id:20, (32) ms
+2015-08-22 12:27:31.9525|Info|  Settimeout: id:21, (64) ms
+2015-08-22 12:27:32.0036|Info|      Encerrado timer: id:17, (12:27:32.0036)
+2015-08-22 12:27:32.0055|Info|      Executando timer: id:18, (12:27:32.0055)
+2015-08-22 12:27:32.0055|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:27:32.0055|Info|      Encerrado timer: id:18, (12:27:32.0115)
+2015-08-22 12:27:32.0055|Info|      Executando timer: id:19, (12:27:32.0135)
+2015-08-22 12:27:32.0055|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:27:32.0055|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:27:32.0205|Info|      Encerrado timer: id:19, (12:27:32.0205)
+2015-08-22 12:27:32.0205|Info|      Executando timer: id:20, (12:27:32.0225)
+2015-08-22 12:27:32.0205|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:27:32.0205|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:27:32.0205|Info|      Encerrado timer: id:20, (12:27:32.0295)
+2015-08-22 12:27:32.0205|Info|      Executando timer: id:21, (12:27:32.0305)
+2015-08-22 12:27:32.0205|Info|          Deveria ter disparado: function () {
+          deepEqual(callCounts, [1, 2]);
+
+          withLeading('x');
+          strictEqual(callCounts[0], 2);
+
+          QUnit.start();
+        }
+2015-08-22 12:27:32.0205|Info|  Settimeout: id:22, (32) ms
+2015-08-22 12:27:32.0866|Info|  Settimeout: id:23, (13) ms
+2015-08-22 12:27:32.1376|Info|      Encerrado timer: id:21, (12:27:32.1376)
+2015-08-22 12:27:32.1376|Info|      Executando timer: id:22, (12:27:32.1386)
+2015-08-22 12:27:32.1376|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:27:32.1376|Info|      Encerrado timer: id:22, (12:27:32.1416)
+2015-08-22 12:27:32.1376|Info|      Executando timer: id:23, (12:27:32.1426)
+2015-08-22 12:27:32.1376|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:27:32.1466|Info|  Settimeout: id:24, (32) ms
+2015-08-22 12:27:32.2007|Info|  Settimeout: id:25, (32) ms
+2015-08-22 12:27:32.2537|Info|  Settimeout: id:26, (64) ms
+2015-08-22 12:27:32.3047|Info|      Encerrado timer: id:23, (12:27:32.3047)
+2015-08-22 12:27:32.3047|Info|      Executando timer: id:24, (12:27:32.3057)
+2015-08-22 12:27:32.3047|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:27:32.3047|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:27:32.3047|Info|      Encerrado timer: id:24, (12:27:32.3137)
+2015-08-22 12:27:32.3047|Info|      Executando timer: id:25, (12:27:32.3157)
+2015-08-22 12:27:32.3177|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:27:32.3177|Info|      Encerrado timer: id:25, (12:27:32.3207)
+2015-08-22 12:27:32.3177|Info|      Executando timer: id:26, (12:27:32.3227)
+2015-08-22 12:27:32.3177|Info|          Deveria ter disparado: function () {
+          strictEqual(withCount, 1);
+          strictEqual(withoutCount, 0);
+          QUnit.start();
+        }
+2015-08-22 12:27:32.3177|Info|  Settimeout: id:27, (13) ms
+2015-08-22 12:27:32.3808|Info|      Encerrado timer: id:26, (12:27:32.3808)
+2015-08-22 12:27:32.3808|Info|      Executando timer: id:27, (12:27:32.3828)
+2015-08-22 12:27:32.3808|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:27:32.3808|Info|  Settimeout: id:28, (128) ms
+2015-08-22 12:27:32.4428|Info|  Settimeout: id:29, (64) ms
+2015-08-22 12:27:32.4958|Info|  Settimeout: id:30, (96) ms
+2015-08-22 12:27:32.5499|Info|  Settimeout: id:31, (128) ms
+2015-08-22 12:27:32.6029|Info|  Settimeout: id:32, (64) ms
+2015-08-22 12:27:32.6830|Info|  Settimeout: id:33, (128) ms
+2015-08-22 12:27:32.7361|Info|  Settimeout: id:34, (64) ms
+2015-08-22 12:27:32.7881|Info|  Settimeout: id:35, (1) ms
+2015-08-22 12:27:32.8401|Info|      Encerrado timer: id:27, (12:27:32.8401)
+2015-08-22 12:27:32.8401|Info|      Executando timer: id:30, (12:27:32.8401)
+2015-08-22 12:27:32.8401|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:27:32.8401|Info|  Settimeout: id:36, (41) ms
+2015-08-22 12:27:32.8932|Info|      Encerrado timer: id:30, (12:27:32.8932)
+2015-08-22 12:27:32.8932|Info|      Executando timer: id:35, (12:27:32.8932)
+2015-08-22 12:27:32.8932|Info|          Deveria ter disparado: function () {
+          deepEqual(actual, [true, false]);
+          QUnit.start();
+        }
+2015-08-22 12:27:32.8932|Info|  Settimeout: id:37, (13) ms
+2015-08-22 12:27:32.9462|Info|      Encerrado timer: id:35, (12:27:32.9462)
+2015-08-22 12:27:32.9462|Info|      Executando timer: id:34, (12:27:32.9462)
+2015-08-22 12:27:32.9462|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:27:32.9462|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:27:32.9462|Info|      Encerrado timer: id:34, (12:27:32.9532)
+2015-08-22 12:27:32.9462|Info|      Executando timer: id:36, (12:27:32.9542)
+2015-08-22 12:27:32.9462|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:27:32.9462|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:27:32.9462|Info|      Encerrado timer: id:36, (12:27:32.9562)
+2015-08-22 12:27:32.9462|Info|      Executando timer: id:37, (12:27:32.9562)
+2015-08-22 12:27:32.9462|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:27:32.9592|Info|  Settimeout: id:38, (64) ms
+2015-08-22 12:27:33.0093|Info|  Settimeout: id:39, (32) ms
+2015-08-22 12:27:33.0603|Info|  Settimeout: id:40, (128) ms
+2015-08-22 12:27:33.1113|Info|      Encerrado timer: id:37, (12:27:33.1113)
+2015-08-22 12:27:33.1113|Info|      Executando timer: id:38, (12:27:33.1113)
+2015-08-22 12:27:33.1113|Info|          Deveria ter disparado: function maxDelayed() {
+        complete(trailing, timeoutId);
+      }
+2015-08-22 12:27:33.1113|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:27:33.1143|Info|      Encerrado timer: id:38, (12:27:33.1143)
+2015-08-22 12:27:33.1904|Info|      Executando timer: id:40, (12:27:33.1904)
+2015-08-22 12:27:33.1904|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 1);
+          QUnit.start();
+        }
+2015-08-22 12:27:33.1923|Info|  Settimeout: id:41, (13) ms
+2015-08-22 12:27:33.2434|Info|      Encerrado timer: id:40, (12:27:33.2434)
+2015-08-22 12:27:33.2434|Info|      Executando timer: id:41, (12:27:33.2434)
+2015-08-22 12:27:33.2434|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:27:33.2434|Info|  Settimeout: id:42, (32) ms
+2015-08-22 12:27:33.2975|Info|  Settimeout: id:43, (13) ms
+2015-08-22 12:27:33.3485|Info|  Settimeout: id:44, (64) ms
+2015-08-22 12:27:33.4005|Info|      Encerrado timer: id:41, (12:27:33.4005)
+2015-08-22 12:27:33.4155|Info|      Executando timer: id:44, (12:27:33.4155)
+2015-08-22 12:27:33.4155|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 2);
+          deepEqual(actual, [object, 'a']);
+          QUnit.start();
+        }
+2015-08-22 12:27:33.4155|Info|  Settimeout: id:45, (13) ms
+2015-08-22 12:27:33.4686|Info|      Encerrado timer: id:44, (12:27:33.4686)
+2015-08-22 12:27:33.4686|Info|      Executando timer: id:45, (12:27:33.4695)
+2015-08-22 12:27:33.4686|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:27:33.4746|Info|  Settimeout: id:46, (1) ms
+2015-08-22 12:27:33.5266|Info|  Settimeout: id:47, (32) ms
+2015-08-22 12:27:33.5777|Info|      Encerrado timer: id:45, (12:27:33.5777)
+2015-08-22 12:27:33.5777|Info|      Executando timer: id:46, (12:27:33.5796)
+2015-08-22 12:27:33.5777|Info|          Deveria ter disparado: function () { func.apply(undefined, args); }
+2015-08-22 12:27:33.5846|Info|      Encerrado timer: id:46, (12:27:33.5846)
+2015-08-22 12:27:33.5846|Info|      Executando timer: id:47, (12:27:33.5866)
+2015-08-22 12:27:33.5846|Info|          Deveria ter disparado: function () {
+          ok(pass);
+          QUnit.start();
+        }
+2015-08-22 12:27:33.5846|Info|  Settimeout: id:48, (13) ms
+2015-08-22 12:27:33.6467|Info|      Encerrado timer: id:47, (12:27:33.6467)
+2015-08-22 12:27:33.6467|Info|      Executando timer: id:48, (12:27:33.6477)
+2015-08-22 12:27:33.6467|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:27:33.6467|Info|  Settimeout: id:49, (1) ms
+2015-08-22 12:27:33.7058|Info|  Settimeout: id:50, (32) ms
+2015-08-22 12:27:33.7577|Info|      Encerrado timer: id:48, (12:27:33.7577)
+2015-08-22 12:27:33.7577|Info|      Executando timer: id:49, (12:27:33.7597)
+2015-08-22 12:27:33.7577|Info|          Deveria ter disparado: function () { func.apply(undefined, args); }
+2015-08-22 12:27:33.7577|Info|      Encerrado timer: id:49, (12:27:33.7668)
+2015-08-22 12:27:33.7577|Info|      Executando timer: id:50, (12:27:33.7688)
+2015-08-22 12:27:33.7708|Info|          Deveria ter disparado: function () {
+          deepEqual(args, [1, 2]);
+          QUnit.start();
+        }
+2015-08-22 12:27:33.7708|Info|  Settimeout: id:51, (13) ms
+2015-08-22 12:27:33.8259|Info|      Encerrado timer: id:50, (12:27:33.8259)
+2015-08-22 12:27:33.8259|Info|      Executando timer: id:51, (12:27:33.8268)
+2015-08-22 12:27:33.8259|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:27:33.8259|Info|  Settimeout: id:52, (1) ms
+2015-08-22 12:27:33.8839|Info|  Settimeout: id:53, (32) ms
+2015-08-22 12:27:33.9359|Info|      Encerrado timer: id:51, (12:27:33.9359)
+2015-08-22 12:27:33.9359|Info|      Executando timer: id:53, (12:27:33.9369)
+2015-08-22 12:27:33.9359|Info|          Deveria ter disparado: function () {
+          ok(pass);
+          QUnit.start();
+        }
+2015-08-22 12:27:33.9359|Info|  Settimeout: id:54, (13) ms
+2015-08-22 12:27:33.9909|Info|      Encerrado timer: id:53, (12:27:33.9909)
+2015-08-22 12:27:33.9909|Info|      Executando timer: id:54, (12:27:33.9909)
+2015-08-22 12:27:33.9909|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:27:33.9909|Info|  Settimeout: id:55, (32) ms
+2015-08-22 12:27:34.0449|Info|  Settimeout: id:56, (1) ms
+2015-08-22 12:27:34.0980|Info|  Settimeout: id:57, (64) ms
+2015-08-22 12:27:34.1510|Info|      Encerrado timer: id:54, (12:27:34.1510)
+2015-08-22 12:27:34.1510|Info|      Executando timer: id:55, (12:27:34.1520)
+2015-08-22 12:27:34.1510|Info|          Deveria ter disparado: function () { func.apply(undefined, args); }
+2015-08-22 12:27:34.1510|Info|      Encerrado timer: id:55, (12:27:34.1550)
+2015-08-22 12:27:34.1510|Info|      Executando timer: id:56, (12:27:34.1560)
+2015-08-22 12:27:34.1510|Info|          Deveria ter disparado: function () {
+          ok(!pass);
+        }
+2015-08-22 12:27:34.1620|Info|      Encerrado timer: id:56, (12:27:34.1620)
+2015-08-22 12:27:34.1620|Info|      Executando timer: id:57, (12:27:34.1660)
+2015-08-22 12:27:34.1620|Info|          Deveria ter disparado: function () {
+          ok(pass);
+          QUnit.start();
+        }
+2015-08-22 12:27:34.1620|Info|  Settimeout: id:58, (13) ms
+2015-08-22 12:31:07.7131|Info|Iniciando os testes
+2015-08-22 12:31:08.0474|Info|  Settimeout: id:0, (13) ms
+2015-08-22 12:31:08.0644|Info|      Executando timer: id:0, (12:31:08.0644)
+2015-08-22 12:31:08.1174|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:09.1221|Info|  Settimeout: id:1, (13) ms
+2015-08-22 12:31:09.1732|Info|      Encerrado timer: id:0, (12:31:09.1732)
+2015-08-22 12:31:09.1732|Info|      Executando timer: id:1, (12:31:09.1752)
+2015-08-22 12:31:09.1832|Info|          Deveria ter disparado: function next() {
 		process( last );
 	}
-2015-08-22 12:22:47.5292|Info|  Settimeout: id:2, (13) ms
-2015-08-22 12:22:47.5803|Info|      Encerrado timer: id:1, (12:22:47.5803)
-2015-08-22 12:22:47.5803|Info|      Executando timer: id:2, (12:22:47.5803)
-2015-08-22 12:22:47.5803|Info|          Deveria ter disparado: function next() {
+2015-08-22 12:31:10.1849|Info|  Settimeout: id:2, (13) ms
+2015-08-22 12:31:10.2360|Info|      Encerrado timer: id:1, (12:31:10.2360)
+2015-08-22 12:31:10.2360|Info|      Executando timer: id:2, (12:31:10.2360)
+2015-08-22 12:31:10.2360|Info|          Deveria ter disparado: function next() {
 		process( last );
 	}
-2015-08-22 12:22:47.8645|Info|      Encerrado timer: id:2, (12:22:47.8645)
-2015-08-22 12:22:47.9536|Info|Encerrando os testes
-2015-08-22 12:22:47.9536|Info|Total:57982, Sucesso: 57982, Falha: 0
-2015-08-22 12:22:47.9536|Info|3 segundos para avaliar o individuo global.js
+2015-08-22 12:31:10.4130|Info|      Encerrado timer: id:2, (12:31:10.4130)
+2015-08-22 12:31:10.4130|Info|Encerrando os testes
+2015-08-22 12:31:10.4130|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-22 12:31:10.4130|Info|3 segundos para avaliar o individuo global.js
+2015-08-22 12:31:29.5463|Info|Iniciando os testes
+2015-08-22 12:31:29.8796|Info|  Settimeout: id:0, (13) ms
+2015-08-22 12:31:29.8966|Info|      Executando timer: id:0, (12:31:29.8966)
+2015-08-22 12:31:29.9697|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:30.0087|Info|  Settimeout: id:1, (13) ms
+2015-08-22 12:31:30.0598|Info|      Encerrado timer: id:0, (12:31:30.0598)
+2015-08-22 12:31:30.0598|Info|      Executando timer: id:1, (12:31:30.0617)
+2015-08-22 12:31:30.0598|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:30.1378|Info|  Settimeout: id:2, (32) ms
+2015-08-22 12:31:30.1889|Info|  Settimeout: id:3, (96) ms
+2015-08-22 12:31:30.2409|Info|      Encerrado timer: id:1, (12:31:30.2409)
+2015-08-22 12:31:30.2409|Info|      Executando timer: id:2, (12:31:30.2428)
+2015-08-22 12:31:30.2409|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:30.2409|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:30.2409|Info|      Encerrado timer: id:2, (12:31:30.2509)
+2015-08-22 12:31:30.2879|Info|      Executando timer: id:3, (12:31:30.2879)
+2015-08-22 12:31:30.2879|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 1);
+          QUnit.start();
+        }
+2015-08-22 12:31:30.2879|Info|  Settimeout: id:4, (13) ms
+2015-08-22 12:31:30.3429|Info|      Encerrado timer: id:3, (12:31:30.3429)
+2015-08-22 12:31:30.3429|Info|      Executando timer: id:4, (12:31:30.3449)
+2015-08-22 12:31:30.3429|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:30.3529|Info|  Settimeout: id:5, (32) ms
+2015-08-22 12:31:30.4050|Info|  Settimeout: id:6, (64) ms
+2015-08-22 12:31:30.4570|Info|  Settimeout: id:7, (128) ms
+2015-08-22 12:31:30.5091|Info|      Encerrado timer: id:4, (12:31:30.5091)
+2015-08-22 12:31:30.5091|Info|      Executando timer: id:5, (12:31:30.5111)
+2015-08-22 12:31:30.5091|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:30.5091|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:30.5091|Info|      Encerrado timer: id:5, (12:31:30.5190)
+2015-08-22 12:31:30.5091|Info|      Executando timer: id:6, (12:31:30.5200)
+2015-08-22 12:31:30.5230|Info|          Deveria ter disparado: function () {
+          notEqual(debounced('y'), 'y');
+        }
+2015-08-22 12:31:30.5230|Info|  Settimeout: id:8, (32) ms
+2015-08-22 12:31:30.5781|Info|      Encerrado timer: id:6, (12:31:30.5781)
+2015-08-22 12:31:30.5781|Info|      Executando timer: id:8, (12:31:30.5801)
+2015-08-22 12:31:30.5781|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:30.5861|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:30.5861|Info|      Encerrado timer: id:8, (12:31:30.5881)
+2015-08-22 12:31:30.5861|Info|      Executando timer: id:7, (12:31:30.5891)
+2015-08-22 12:31:30.5861|Info|          Deveria ter disparado: function () {
+          notEqual(debounced('z'), 'z');
+          QUnit.start();
+        }
+2015-08-22 12:31:30.5861|Info|  Settimeout: id:9, (32) ms
+2015-08-22 12:31:30.6452|Info|  Settimeout: id:10, (13) ms
+2015-08-22 12:31:30.6962|Info|      Encerrado timer: id:7, (12:31:30.6962)
+2015-08-22 12:31:30.6962|Info|      Executando timer: id:9, (12:31:30.6972)
+2015-08-22 12:31:30.6962|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:30.6962|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:30.6962|Info|      Encerrado timer: id:9, (12:31:30.7002)
+2015-08-22 12:31:30.6962|Info|      Executando timer: id:10, (12:31:30.7012)
+2015-08-22 12:31:30.6962|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:30.6962|Info|  Settimeout: id:11, (32) ms
+2015-08-22 12:31:30.7562|Info|  Settimeout: id:12, (64) ms
+2015-08-22 12:31:30.8193|Info|      Encerrado timer: id:10, (12:31:30.8193)
+2015-08-22 12:31:30.8193|Info|      Executando timer: id:11, (12:31:30.8203)
+2015-08-22 12:31:30.8193|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:30.8193|Info|      Encerrado timer: id:11, (12:31:30.8233)
+2015-08-22 12:31:30.8343|Info|      Executando timer: id:12, (12:31:30.8343)
+2015-08-22 12:31:30.8343|Info|          Deveria ter disparado: function () {
+          var result = [debounced('a'), debounced('b')];
+          deepEqual(result, ['a', 'a']);
+          QUnit.start();
+        }
+2015-08-22 12:31:30.8343|Info|  Settimeout: id:13, (32) ms
+2015-08-22 12:31:30.8943|Info|  Settimeout: id:14, (13) ms
+2015-08-22 12:31:30.9464|Info|      Encerrado timer: id:12, (12:31:30.9464)
+2015-08-22 12:31:30.9464|Info|      Executando timer: id:13, (12:31:30.9483)
+2015-08-22 12:31:30.9464|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:30.9464|Info|      Encerrado timer: id:13, (12:31:30.9564)
+2015-08-22 12:31:30.9464|Info|      Executando timer: id:14, (12:31:30.9574)
+2015-08-22 12:31:30.9604|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:30.9604|Info|  Settimeout: id:15, (32) ms
+2015-08-22 12:31:31.0164|Info|  Settimeout: id:16, (64) ms
+2015-08-22 12:31:31.0685|Info|      Encerrado timer: id:14, (12:31:31.0685)
+2015-08-22 12:31:31.0685|Info|      Executando timer: id:15, (12:31:31.0694)
+2015-08-22 12:31:31.0685|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:31.0685|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:31.0685|Info|      Encerrado timer: id:15, (12:31:31.0734)
+2015-08-22 12:31:31.0835|Info|      Executando timer: id:16, (12:31:31.0835)
+2015-08-22 12:31:31.0835|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 1);
+          QUnit.start();
+        }
+2015-08-22 12:31:31.0835|Info|  Settimeout: id:17, (13) ms
+2015-08-22 12:31:31.1375|Info|      Encerrado timer: id:16, (12:31:31.1375)
+2015-08-22 12:31:31.1375|Info|      Executando timer: id:17, (12:31:31.1395)
+2015-08-22 12:31:31.1375|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:31.1455|Info|  Settimeout: id:18, (32) ms
+2015-08-22 12:31:31.1985|Info|  Settimeout: id:19, (32) ms
+2015-08-22 12:31:31.2526|Info|  Settimeout: id:20, (32) ms
+2015-08-22 12:31:31.3116|Info|  Settimeout: id:21, (64) ms
+2015-08-22 12:31:31.3627|Info|      Encerrado timer: id:17, (12:31:31.3627)
+2015-08-22 12:31:31.3627|Info|      Executando timer: id:18, (12:31:31.3637)
+2015-08-22 12:31:31.3646|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:31.3646|Info|      Encerrado timer: id:18, (12:31:31.3657)
+2015-08-22 12:31:31.3646|Info|      Executando timer: id:19, (12:31:31.3666)
+2015-08-22 12:31:31.3646|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:31.3646|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:31.3646|Info|      Encerrado timer: id:19, (12:31:31.3706)
+2015-08-22 12:31:31.3646|Info|      Executando timer: id:20, (12:31:31.3716)
+2015-08-22 12:31:31.3646|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:31.3646|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:31.3646|Info|      Encerrado timer: id:20, (12:31:31.3756)
+2015-08-22 12:31:31.3646|Info|      Executando timer: id:21, (12:31:31.3777)
+2015-08-22 12:31:31.3646|Info|          Deveria ter disparado: function () {
+          deepEqual(callCounts, [1, 2]);
+
+          withLeading('x');
+          strictEqual(callCounts[0], 2);
+
+          QUnit.start();
+        }
+2015-08-22 12:31:31.3807|Info|  Settimeout: id:22, (32) ms
+2015-08-22 12:31:31.4327|Info|  Settimeout: id:23, (13) ms
+2015-08-22 12:31:31.4848|Info|      Encerrado timer: id:21, (12:31:31.4848)
+2015-08-22 12:31:31.4848|Info|      Executando timer: id:22, (12:31:31.4867)
+2015-08-22 12:31:31.4848|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:31.4907|Info|      Encerrado timer: id:22, (12:31:31.4907)
+2015-08-22 12:31:31.4907|Info|      Executando timer: id:23, (12:31:31.4928)
+2015-08-22 12:31:31.4907|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:31.4907|Info|  Settimeout: id:24, (32) ms
+2015-08-22 12:31:31.5528|Info|  Settimeout: id:25, (32) ms
+2015-08-22 12:31:31.6048|Info|  Settimeout: id:26, (64) ms
+2015-08-22 12:31:31.6569|Info|      Encerrado timer: id:23, (12:31:31.6569)
+2015-08-22 12:31:31.6569|Info|      Executando timer: id:24, (12:31:31.6578)
+2015-08-22 12:31:31.6619|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:31.6619|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:31.6619|Info|      Encerrado timer: id:24, (12:31:31.6669)
+2015-08-22 12:31:31.6619|Info|      Executando timer: id:25, (12:31:31.6689)
+2015-08-22 12:31:31.6619|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:31.6619|Info|      Encerrado timer: id:25, (12:31:31.6719)
+2015-08-22 12:31:31.6619|Info|      Executando timer: id:26, (12:31:31.6729)
+2015-08-22 12:31:31.6619|Info|          Deveria ter disparado: function () {
+          strictEqual(withCount, 1);
+          strictEqual(withoutCount, 0);
+          QUnit.start();
+        }
+2015-08-22 12:31:31.6619|Info|  Settimeout: id:27, (13) ms
+2015-08-22 12:31:31.7280|Info|      Encerrado timer: id:26, (12:31:31.7280)
+2015-08-22 12:31:31.7280|Info|      Executando timer: id:27, (12:31:31.7289)
+2015-08-22 12:31:31.7280|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:31.7280|Info|  Settimeout: id:28, (128) ms
+2015-08-22 12:31:31.7899|Info|  Settimeout: id:29, (64) ms
+2015-08-22 12:31:31.8430|Info|  Settimeout: id:30, (96) ms
+2015-08-22 12:31:31.8970|Info|  Settimeout: id:31, (128) ms
+2015-08-22 12:31:31.9491|Info|  Settimeout: id:32, (64) ms
+2015-08-22 12:31:32.0251|Info|  Settimeout: id:33, (128) ms
+2015-08-22 12:31:32.0762|Info|  Settimeout: id:34, (64) ms
+2015-08-22 12:31:32.1292|Info|  Settimeout: id:35, (1) ms
+2015-08-22 12:31:32.1803|Info|      Encerrado timer: id:27, (12:31:32.1803)
+2015-08-22 12:31:32.1803|Info|      Executando timer: id:30, (12:31:32.1812)
+2015-08-22 12:31:32.1803|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:32.1803|Info|  Settimeout: id:36, (41) ms
+2015-08-22 12:31:32.2343|Info|      Encerrado timer: id:30, (12:31:32.2343)
+2015-08-22 12:31:32.2343|Info|      Executando timer: id:35, (12:31:32.2363)
+2015-08-22 12:31:32.2393|Info|          Deveria ter disparado: function () {
+          deepEqual(actual, [true, false]);
+          QUnit.start();
+        }
+2015-08-22 12:31:32.2393|Info|  Settimeout: id:37, (13) ms
+2015-08-22 12:31:32.2944|Info|      Encerrado timer: id:35, (12:31:32.2944)
+2015-08-22 12:31:32.2944|Info|      Executando timer: id:34, (12:31:32.2953)
+2015-08-22 12:31:32.2944|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:32.2944|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:32.2944|Info|      Encerrado timer: id:34, (12:31:32.2993)
+2015-08-22 12:31:32.2944|Info|      Executando timer: id:36, (12:31:32.3003)
+2015-08-22 12:31:32.2944|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:32.3023|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:32.3023|Info|      Encerrado timer: id:36, (12:31:32.3033)
+2015-08-22 12:31:32.3023|Info|      Executando timer: id:37, (12:31:32.3043)
+2015-08-22 12:31:32.3023|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:32.3023|Info|  Settimeout: id:38, (64) ms
+2015-08-22 12:31:32.3644|Info|  Settimeout: id:39, (32) ms
+2015-08-22 12:31:32.4174|Info|  Settimeout: id:40, (128) ms
+2015-08-22 12:31:32.4695|Info|      Encerrado timer: id:37, (12:31:32.4695)
+2015-08-22 12:31:32.4695|Info|      Executando timer: id:38, (12:31:32.4704)
+2015-08-22 12:31:32.4695|Info|          Deveria ter disparado: function maxDelayed() {
+        complete(trailing, timeoutId);
+      }
+2015-08-22 12:31:32.4695|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:32.4695|Info|      Encerrado timer: id:38, (12:31:32.4734)
+2015-08-22 12:31:32.5485|Info|      Executando timer: id:40, (12:31:32.5485)
+2015-08-22 12:31:32.5485|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 1);
+          QUnit.start();
+        }
+2015-08-22 12:31:32.5545|Info|  Settimeout: id:41, (13) ms
+2015-08-22 12:31:32.6066|Info|      Encerrado timer: id:40, (12:31:32.6066)
+2015-08-22 12:31:32.6066|Info|      Executando timer: id:41, (12:31:32.6085)
+2015-08-22 12:31:32.6066|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:32.6175|Info|  Settimeout: id:42, (32) ms
+2015-08-22 12:31:32.6696|Info|  Settimeout: id:43, (10) ms
+2015-08-22 12:31:32.7226|Info|  Settimeout: id:44, (64) ms
+2015-08-22 12:31:32.7737|Info|      Encerrado timer: id:41, (12:31:32.7737)
+2015-08-22 12:31:32.7887|Info|      Executando timer: id:44, (12:31:32.7887)
+2015-08-22 12:31:32.7887|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 2);
+          deepEqual(actual, [object, 'a']);
+          QUnit.start();
+        }
+2015-08-22 12:31:32.7887|Info|  Settimeout: id:45, (13) ms
+2015-08-22 12:31:32.8417|Info|      Encerrado timer: id:44, (12:31:32.8417)
+2015-08-22 12:31:32.8417|Info|      Executando timer: id:45, (12:31:32.8437)
+2015-08-22 12:31:32.8417|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:32.8637|Info|  Settimeout: id:46, (1) ms
+2015-08-22 12:31:32.9158|Info|  Settimeout: id:47, (32) ms
+2015-08-22 12:31:32.9678|Info|      Encerrado timer: id:45, (12:31:32.9678)
+2015-08-22 12:31:32.9678|Info|      Executando timer: id:46, (12:31:32.9678)
+2015-08-22 12:31:32.9678|Info|          Deveria ter disparado: function () { func.apply(undefined, args); }
+2015-08-22 12:31:32.9678|Info|      Encerrado timer: id:46, (12:31:32.9698)
+2015-08-22 12:31:32.9678|Info|      Executando timer: id:47, (12:31:32.9708)
+2015-08-22 12:31:32.9678|Info|          Deveria ter disparado: function () {
+          ok(pass);
+          QUnit.start();
+        }
+2015-08-22 12:31:32.9678|Info|  Settimeout: id:48, (13) ms
+2015-08-22 12:31:33.0239|Info|      Encerrado timer: id:47, (12:31:33.0239)
+2015-08-22 12:31:33.0239|Info|      Executando timer: id:48, (12:31:33.0248)
+2015-08-22 12:31:33.0239|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:33.0239|Info|  Settimeout: id:49, (1) ms
+2015-08-22 12:31:33.0819|Info|  Settimeout: id:50, (32) ms
+2015-08-22 12:31:33.1340|Info|      Encerrado timer: id:48, (12:31:33.1340)
+2015-08-22 12:31:33.1340|Info|      Executando timer: id:49, (12:31:33.1359)
+2015-08-22 12:31:33.1340|Info|          Deveria ter disparado: function () { func.apply(undefined, args); }
+2015-08-22 12:31:33.1340|Info|      Encerrado timer: id:49, (12:31:33.1409)
+2015-08-22 12:31:33.1340|Info|      Executando timer: id:50, (12:31:33.1419)
+2015-08-22 12:31:33.1340|Info|          Deveria ter disparado: function () {
+          deepEqual(args, [1, 2]);
+          QUnit.start();
+        }
+2015-08-22 12:31:33.1489|Info|  Settimeout: id:51, (13) ms
+2015-08-22 12:31:33.2010|Info|      Encerrado timer: id:50, (12:31:33.2010)
+2015-08-22 12:31:33.2010|Info|      Executando timer: id:51, (12:31:33.2020)
+2015-08-22 12:31:33.2080|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:33.2080|Info|  Settimeout: id:52, (1) ms
+2015-08-22 12:31:33.2630|Info|  Settimeout: id:53, (32) ms
+2015-08-22 12:31:33.3151|Info|      Encerrado timer: id:51, (12:31:33.3151)
+2015-08-22 12:31:33.3151|Info|      Executando timer: id:53, (12:31:33.3171)
+2015-08-22 12:31:33.3190|Info|          Deveria ter disparado: function () {
+          ok(pass);
+          QUnit.start();
+        }
+2015-08-22 12:31:33.3190|Info|  Settimeout: id:54, (13) ms
+2015-08-22 12:31:33.3761|Info|      Encerrado timer: id:53, (12:31:33.3761)
+2015-08-22 12:31:33.3761|Info|      Executando timer: id:54, (12:31:33.3771)
+2015-08-22 12:31:33.3761|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:33.3811|Info|  Settimeout: id:55, (32) ms
+2015-08-22 12:31:33.4324|Info|  Settimeout: id:56, (1) ms
+2015-08-22 12:31:33.4848|Info|  Settimeout: id:57, (64) ms
+2015-08-22 12:31:33.5375|Info|      Encerrado timer: id:54, (12:31:33.5375)
+2015-08-22 12:31:33.5375|Info|      Executando timer: id:55, (12:31:33.5385)
+2015-08-22 12:31:33.5375|Info|          Deveria ter disparado: function () { func.apply(undefined, args); }
+2015-08-22 12:31:33.5375|Info|      Encerrado timer: id:55, (12:31:33.5405)
+2015-08-22 12:31:33.5375|Info|      Executando timer: id:56, (12:31:33.5415)
+2015-08-22 12:31:33.5375|Info|          Deveria ter disparado: function () {
+          ok(!pass);
+        }
+2015-08-22 12:31:33.5375|Info|      Encerrado timer: id:56, (12:31:33.5465)
+2015-08-22 12:31:33.5375|Info|      Executando timer: id:57, (12:31:33.5515)
+2015-08-22 12:31:33.5525|Info|          Deveria ter disparado: function () {
+          ok(pass);
+          QUnit.start();
+        }
+2015-08-22 12:31:33.5525|Info|  Settimeout: id:58, (13) ms
+2015-08-22 12:31:33.6066|Info|      Encerrado timer: id:57, (12:31:33.6066)
+2015-08-22 12:31:33.6066|Info|      Executando timer: id:58, (12:31:33.6075)
+2015-08-22 12:31:33.6066|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:33.6066|Info|  Settimeout: id:59, (32) ms
+2015-08-22 12:31:33.6632|Info|  Settimeout: id:60, (64) ms
+2015-08-22 12:31:33.7143|Info|      Encerrado timer: id:58, (12:31:33.7143)
+2015-08-22 12:31:33.7143|Info|      Executando timer: id:59, (12:31:33.7162)
+2015-08-22 12:31:33.7143|Info|          Deveria ter disparado: function () { func.apply(undefined, args); }
+2015-08-22 12:31:33.7143|Info|      Encerrado timer: id:59, (12:31:33.7202)
+2015-08-22 12:31:33.7293|Info|      Executando timer: id:60, (12:31:33.7293)
+2015-08-22 12:31:33.7293|Info|          Deveria ter disparado: function () {
+          deepEqual(args, [1, 2]);
+          QUnit.start();
+        }
+2015-08-22 12:31:33.7293|Info|  Settimeout: id:61, (13) ms
+2015-08-22 12:31:33.7903|Info|      Encerrado timer: id:60, (12:31:33.7903)
+2015-08-22 12:31:33.7903|Info|      Executando timer: id:61, (12:31:33.7923)
+2015-08-22 12:31:33.7903|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:33.7903|Info|  Settimeout: id:62, (32) ms
+2015-08-22 12:31:33.8544|Info|  Settimeout: id:63, (64) ms
+2015-08-22 12:31:33.9064|Info|      Encerrado timer: id:61, (12:31:33.9064)
+2015-08-22 12:31:33.9214|Info|      Executando timer: id:63, (12:31:33.9214)
+2015-08-22 12:31:33.9214|Info|          Deveria ter disparado: function () {
+          ok(pass);
+          QUnit.start();
+        }
+2015-08-22 12:31:33.9274|Info|  Settimeout: id:64, (13) ms
+2015-08-22 12:31:33.9795|Info|      Encerrado timer: id:63, (12:31:33.9795)
+2015-08-22 12:31:33.9795|Info|      Executando timer: id:64, (12:31:33.9814)
+2015-08-22 12:31:33.9795|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:35.5345|Info|  Settimeout: id:65, (13) ms
+2015-08-22 12:31:35.5856|Info|      Encerrado timer: id:64, (12:31:35.5856)
+2015-08-22 12:31:35.5856|Info|      Executando timer: id:65, (12:31:35.5866)
+2015-08-22 12:31:35.5856|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-22 12:31:35.8217|Info|  Settimeout: id:66, (32) ms
+2015-08-22 12:31:35.8728|Info|      Encerrado timer: id:65, (12:31:35.8728)
+2015-08-22 12:31:35.8728|Info|      Executando timer: id:66, (12:31:35.8728)
+2015-08-22 12:31:35.8728|Info|          Deveria ter disparado: function () {
+          ok(_.now() > actual);
+          QUnit.start();
+        }
+2015-08-22 12:31:35.8728|Info|  Settimeout: id:67, (13) ms
+2015-08-22 12:31:35.9258|Info|      Encerrado timer: id:66, (12:31:35.9258)
+2015-08-22 12:31:35.9278|Info|      Executando timer: id:67, (12:31:35.9278)
+2015-08-22 12:31:35.9278|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:36.1049|Info|  Settimeout: id:68, (32) ms
+2015-08-22 12:31:36.1570|Info|  Settimeout: id:69, (64) ms
+2015-08-22 12:31:36.2081|Info|      Encerrado timer: id:67, (12:31:36.2081)
+2015-08-22 12:31:36.2081|Info|      Executando timer: id:69, (12:31:36.2231)
+2015-08-22 12:31:36.2260|Info|          Deveria ter disparado: function () {
+          ok(callCount > lastCount);
+          QUnit.start();
+        }
+2015-08-22 12:31:36.2260|Info|  Settimeout: id:70, (13) ms
+2015-08-22 12:31:36.2851|Info|      Encerrado timer: id:69, (12:31:36.2851)
+2015-08-22 12:31:36.2861|Info|      Executando timer: id:70, (12:31:36.2861)
+2015-08-22 12:31:36.2861|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:36.2861|Info|  Settimeout: id:71, (32) ms
+2015-08-22 12:31:36.3441|Info|  Settimeout: id:72, (64) ms
+2015-08-22 12:31:36.3962|Info|      Encerrado timer: id:70, (12:31:36.3962)
+2015-08-22 12:31:36.3962|Info|      Executando timer: id:71, (12:31:36.3971)
+2015-08-22 12:31:36.3962|Info|          Deveria ter disparado: function maxDelayed() {
+        complete(trailing, timeoutId);
+      }
+2015-08-22 12:31:36.3962|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:36.3962|Info|      Encerrado timer: id:71, (12:31:36.3991)
+2015-08-22 12:31:36.4112|Info|      Executando timer: id:72, (12:31:36.4112)
+2015-08-22 12:31:36.4112|Info|          Deveria ter disparado: function () {
+          var result = [throttled('x'), throttled('y')];
+          notEqual(result[0], 'a');
+          notStrictEqual(result[0], undefined);
+
+          notEqual(result[1], 'y');
+          notStrictEqual(result[1], undefined);
+          QUnit.start();
+        }
+2015-08-22 12:31:36.4112|Info|  Settimeout: id:73, (14) ms
+2015-08-22 12:31:36.4712|Info|  Settimeout: id:74, (13) ms
+2015-08-22 12:31:36.5223|Info|      Encerrado timer: id:72, (12:31:36.5223)
+2015-08-22 12:31:36.5223|Info|      Executando timer: id:74, (12:31:36.5242)
+2015-08-22 12:31:36.5223|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:36.5452|Info|  Settimeout: id:75, (31) ms
+2015-08-22 12:31:36.5973|Info|  Settimeout: id:76, (64) ms
+2015-08-22 12:31:36.6493|Info|      Encerrado timer: id:74, (12:31:36.6493)
+2015-08-22 12:31:36.6634|Info|      Executando timer: id:76, (12:31:36.6634)
+2015-08-22 12:31:36.6634|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 2);
+          QUnit.start();
+        }
+2015-08-22 12:31:36.6634|Info|  Settimeout: id:77, (13) ms
+2015-08-22 12:31:36.7214|Info|      Encerrado timer: id:76, (12:31:36.7214)
+2015-08-22 12:31:36.7214|Info|      Executando timer: id:77, (12:31:36.7234)
+2015-08-22 12:31:36.7254|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:36.7254|Info|  Settimeout: id:78, (64) ms
+2015-08-22 12:31:36.7824|Info|      Encerrado timer: id:77, (12:31:36.7824)
+2015-08-22 12:31:36.7974|Info|      Executando timer: id:78, (12:31:36.7974)
+2015-08-22 12:31:36.7974|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 1);
+          QUnit.start();
+        }
+2015-08-22 12:31:36.8024|Info|  Settimeout: id:79, (13) ms
+2015-08-22 12:31:36.8545|Info|      Encerrado timer: id:78, (12:31:36.8545)
+2015-08-22 12:31:36.8545|Info|      Executando timer: id:79, (12:31:36.8545)
+2015-08-22 12:31:36.8545|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:36.8545|Info|  Settimeout: id:80, (32) ms
+2015-08-22 12:31:36.9075|Info|  Settimeout: id:81, (32) ms
+2015-08-22 12:31:36.9586|Info|  Settimeout: id:82, (32) ms
+2015-08-22 12:31:37.0106|Info|  Settimeout: id:83, (32) ms
+2015-08-22 12:31:37.0647|Info|  Settimeout: id:84, (32) ms
+2015-08-22 12:31:37.1177|Info|  Settimeout: id:85, (31) ms
+2015-08-22 12:31:37.1717|Info|  Settimeout: id:86, (31) ms
+2015-08-22 12:31:37.2247|Info|  Settimeout: id:87, (1) ms
+2015-08-22 12:31:37.2768|Info|      Encerrado timer: id:79, (12:31:37.2768)
+2015-08-22 12:31:37.2768|Info|      Executando timer: id:86, (12:31:37.2778)
+2015-08-22 12:31:37.2768|Info|          Deveria ter disparado: function maxDelayed() {
+        complete(trailing, timeoutId);
+      }
+2015-08-22 12:31:37.2768|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:37.2768|Info|      Encerrado timer: id:86, (12:31:37.2848)
+2015-08-22 12:31:37.2868|Info|      Executando timer: id:87, (12:31:37.2868)
+2015-08-22 12:31:37.2868|Info|          Deveria ter disparado: function () {
+            ok(actual);
+            QUnit.start();
+          }
+2015-08-22 12:31:37.2868|Info|  Settimeout: id:88, (13) ms
+2015-08-22 12:31:37.3469|Info|      Encerrado timer: id:87, (12:31:37.3469)
+2015-08-22 12:31:37.3469|Info|      Executando timer: id:88, (12:31:37.3478)
+2015-08-22 12:31:37.3488|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:37.3488|Info|  Settimeout: id:89, (32) ms
+2015-08-22 12:31:37.4039|Info|  Settimeout: id:90, (32) ms
+2015-08-22 12:31:37.4589|Info|  Settimeout: id:91, (32) ms
+2015-08-22 12:31:37.5129|Info|  Settimeout: id:92, (32) ms
+2015-08-22 12:31:37.5670|Info|  Settimeout: id:93, (32) ms
+2015-08-22 12:31:37.6210|Info|  Settimeout: id:94, (32) ms
+2015-08-22 12:31:37.6741|Info|  Settimeout: id:95, (1) ms
+2015-08-22 12:31:37.7261|Info|      Encerrado timer: id:88, (12:31:37.7261)
+2015-08-22 12:31:37.7261|Info|      Executando timer: id:94, (12:31:37.7281)
+2015-08-22 12:31:37.7261|Info|          Deveria ter disparado: function maxDelayed() {
+        complete(trailing, timeoutId);
+      }
+2015-08-22 12:31:37.7261|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:37.7261|Info|      Encerrado timer: id:94, (12:31:37.7371)
+2015-08-22 12:31:37.7261|Info|      Executando timer: id:95, (12:31:37.7391)
+2015-08-22 12:31:37.7431|Info|          Deveria ter disparado: function () {
+            ok(actual);
+            QUnit.start();
+          }
+2015-08-22 12:31:37.7431|Info|  Settimeout: id:96, (13) ms
+2015-08-22 12:31:37.7992|Info|      Encerrado timer: id:95, (12:31:37.7992)
+2015-08-22 12:31:37.7992|Info|      Executando timer: id:96, (12:31:37.8001)
+2015-08-22 12:31:37.7992|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:37.8042|Info|  Settimeout: id:97, (32) ms
+2015-08-22 12:31:37.8562|Info|  Settimeout: id:98, (128) ms
+2015-08-22 12:31:37.9083|Info|      Encerrado timer: id:96, (12:31:37.9083)
+2015-08-22 12:31:37.9083|Info|      Executando timer: id:97, (12:31:37.9102)
+2015-08-22 12:31:37.9112|Info|          Deveria ter disparado: function maxDelayed() {
+        complete(trailing, timeoutId);
+      }
+2015-08-22 12:31:37.9112|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:37.9112|Info|      Encerrado timer: id:97, (12:31:37.9132)
+2015-08-22 12:31:37.9873|Info|      Executando timer: id:98, (12:31:37.9873)
+2015-08-22 12:31:37.9873|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 2);
+          QUnit.start();
+        }
+2015-08-22 12:31:37.9893|Info|  Settimeout: id:99, (13) ms
+2015-08-22 12:31:38.0393|Info|      Encerrado timer: id:98, (12:31:38.0393)
+2015-08-22 12:31:38.0393|Info|      Executando timer: id:99, (12:31:38.0503)
+2015-08-22 12:31:38.0533|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:38.0533|Info|  Settimeout: id:100, (32) ms
+2015-08-22 12:31:38.1114|Info|  Settimeout: id:101, (64) ms
+2015-08-22 12:31:38.1644|Info|  Settimeout: id:102, (64) ms
+2015-08-22 12:31:38.2164|Info|  Settimeout: id:103, (256) ms
+2015-08-22 12:31:38.2675|Info|      Encerrado timer: id:99, (12:31:38.2675)
+2015-08-22 12:31:38.2675|Info|      Executando timer: id:100, (12:31:38.2675)
+2015-08-22 12:31:38.2675|Info|          Deveria ter disparado: function maxDelayed() {
+        complete(trailing, timeoutId);
+      }
+2015-08-22 12:31:38.2715|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:38.2715|Info|      Encerrado timer: id:100, (12:31:38.2735)
+2015-08-22 12:31:38.2715|Info|      Executando timer: id:101, (12:31:38.2745)
+2015-08-22 12:31:38.2715|Info|          Deveria ter disparado: function maxDelayed() {
+        complete(trailing, timeoutId);
+      }
+2015-08-22 12:31:38.2715|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:38.2715|Info|      Encerrado timer: id:101, (12:31:38.2835)
+2015-08-22 12:31:38.2715|Info|      Executando timer: id:102, (12:31:38.2845)
+2015-08-22 12:31:38.2875|Info|          Deveria ter disparado: function maxDelayed() {
+        complete(trailing, timeoutId);
+      }
+2015-08-22 12:31:38.2875|Info|      Encerrado timer: id:102, (12:31:38.2895)
+2015-08-22 12:31:38.4746|Info|      Executando timer: id:103, (12:31:38.4746)
+2015-08-22 12:31:38.4746|Info|          Deveria ter disparado: function () {
+          strictEqual(withCount, 2);
+          strictEqual(withoutCount, 1);
+          QUnit.start();
+        }
+2015-08-22 12:31:38.4746|Info|  Settimeout: id:104, (13) ms
+2015-08-22 12:31:38.5277|Info|      Encerrado timer: id:103, (12:31:38.5277)
+2015-08-22 12:31:38.5277|Info|      Executando timer: id:104, (12:31:38.5277)
+2015-08-22 12:31:38.5277|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:38.5277|Info|  Settimeout: id:105, (64) ms
+2015-08-22 12:31:38.5817|Info|  Settimeout: id:106, (96) ms
+2015-08-22 12:31:38.6337|Info|  Settimeout: id:107, (192) ms
+2015-08-22 12:31:38.6858|Info|      Encerrado timer: id:104, (12:31:38.6858)
+2015-08-22 12:31:38.6858|Info|      Executando timer: id:105, (12:31:38.6878)
+2015-08-22 12:31:38.6858|Info|          Deveria ter disparado: function maxDelayed() {
+        complete(trailing, timeoutId);
+      }
+2015-08-22 12:31:38.6928|Info|      Encerrado timer: id:105, (12:31:38.6928)
+2015-08-22 12:31:38.6928|Info|      Executando timer: id:106, (12:31:38.6948)
+2015-08-22 12:31:38.6928|Info|          Deveria ter disparado: function () {
+          throttled();
+          throttled();
+        }
+2015-08-22 12:31:38.6928|Info|  Settimeout: id:108, (63) ms
+2015-08-22 12:31:38.7579|Info|      Encerrado timer: id:106, (12:31:38.7579)
+2015-08-22 12:31:38.7718|Info|      Executando timer: id:108, (12:31:38.7718)
+2015-08-22 12:31:38.7718|Info|          Deveria ter disparado: function maxDelayed() {
+        complete(trailing, timeoutId);
+      }
+2015-08-22 12:31:38.7718|Info|      Encerrado timer: id:108, (12:31:38.7768)
+2015-08-22 12:31:38.8289|Info|      Executando timer: id:107, (12:31:38.8289)
+2015-08-22 12:31:38.8289|Info|          Deveria ter disparado: function () {
+          ok(callCount > 1);
+          QUnit.start();
+        }
+2015-08-22 12:31:38.8349|Info|  Settimeout: id:109, (13) ms
+2015-08-22 12:31:38.8870|Info|      Encerrado timer: id:107, (12:31:38.8870)
+2015-08-22 12:31:38.8870|Info|      Executando timer: id:109, (12:31:38.8889)
+2015-08-22 12:31:38.8870|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:38.8959|Info|  Settimeout: id:110, (0) ms
+2015-08-22 12:31:38.9480|Info|  Settimeout: id:111, (32) ms
+2015-08-22 12:31:38.9990|Info|      Encerrado timer: id:109, (12:31:38.9990)
+2015-08-22 12:31:38.9990|Info|      Executando timer: id:110, (12:31:39.0000)
+2015-08-22 12:31:38.9990|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:38.9990|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:38.9990|Info|      Encerrado timer: id:110, (12:31:39.0030)
+2015-08-22 12:31:38.9990|Info|      Executando timer: id:111, (12:31:39.0030)
+2015-08-22 12:31:39.0050|Info|          Deveria ter disparado: function () {
+          funced();
+          strictEqual(callCount, isDebounce ? 1 : 2);
+          QUnit.start();
+        }
+2015-08-22 12:31:39.0050|Info|  Settimeout: id:112, (0) ms
+2015-08-22 12:31:39.0590|Info|  Settimeout: id:113, (13) ms
+2015-08-22 12:31:39.1111|Info|      Encerrado timer: id:111, (12:31:39.1111)
+2015-08-22 12:31:39.1111|Info|      Executando timer: id:112, (12:31:39.1131)
+2015-08-22 12:31:39.1151|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:39.1151|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:39.1151|Info|      Encerrado timer: id:112, (12:31:39.1201)
+2015-08-22 12:31:39.1151|Info|      Executando timer: id:113, (12:31:39.1221)
+2015-08-22 12:31:39.1151|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:39.1151|Info|  Settimeout: id:114, (32) ms
+2015-08-22 12:31:39.1811|Info|  Settimeout: id:115, (64) ms
+2015-08-22 12:31:39.2332|Info|      Encerrado timer: id:113, (12:31:39.2332)
+2015-08-22 12:31:39.2332|Info|      Executando timer: id:114, (12:31:39.2341)
+2015-08-22 12:31:39.2332|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:39.2332|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:39.2332|Info|      Encerrado timer: id:114, (12:31:39.2381)
+2015-08-22 12:31:39.2482|Info|      Executando timer: id:115, (12:31:39.2482)
+2015-08-22 12:31:39.2482|Info|          Deveria ter disparado: function () {
+          deepEqual(actual, expected);
+          QUnit.start();
+        }
+2015-08-22 12:31:39.2482|Info|  Settimeout: id:116, (13) ms
+2015-08-22 12:31:39.3023|Info|      Encerrado timer: id:115, (12:31:39.3023)
+2015-08-22 12:31:39.3023|Info|      Executando timer: id:116, (12:31:39.3042)
+2015-08-22 12:31:39.3023|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:39.3023|Info|  Settimeout: id:117, (32) ms
+2015-08-22 12:31:39.3662|Info|  Settimeout: id:118, (256) ms
+2015-08-22 12:31:39.4183|Info|      Encerrado timer: id:116, (12:31:39.4183)
+2015-08-22 12:31:39.4183|Info|      Executando timer: id:117, (12:31:39.4193)
+2015-08-22 12:31:39.4183|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:39.4183|Info|  Settimeout: id:119, (32) ms
+2015-08-22 12:31:39.4724|Info|!timeoutId && !maxTimeoutId false
+2015-08-22 12:31:39.4724|Info|      Encerrado timer: id:117, (12:31:39.4733)
+2015-08-22 12:31:39.4724|Info|      Executando timer: id:119, (12:31:39.4733)
+2015-08-22 12:31:39.4743|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:39.4743|Info|  Settimeout: id:120, (32) ms
+2015-08-22 12:31:39.5264|Info|!timeoutId && !maxTimeoutId false
+2015-08-22 12:31:39.5264|Info|      Encerrado timer: id:119, (12:31:39.5274)
+2015-08-22 12:31:39.5264|Info|      Executando timer: id:120, (12:31:39.5274)
+2015-08-22 12:31:39.5264|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:39.5264|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:39.5264|Info|      Encerrado timer: id:120, (12:31:39.5314)
+2015-08-22 12:31:39.6255|Info|      Executando timer: id:118, (12:31:39.6255)
+2015-08-22 12:31:39.6255|Info|          Deveria ter disparado: function () {
+          deepEqual(actual, expected.slice(0, actual.length));
+          QUnit.start();
+        }
+2015-08-22 12:31:39.6314|Info|  Settimeout: id:121, (13) ms
+2015-08-22 12:31:39.6838|Info|      Encerrado timer: id:118, (12:31:39.6838)
+2015-08-22 12:31:39.6838|Info|      Executando timer: id:121, (12:31:39.6858)
+2015-08-22 12:31:39.6838|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:39.7030|Info|  Settimeout: id:122, (32) ms
+2015-08-22 12:31:39.7560|Info|  Settimeout: id:123, (64) ms
+2015-08-22 12:31:39.8081|Info|      Encerrado timer: id:121, (12:31:39.8081)
+2015-08-22 12:31:39.8081|Info|      Executando timer: id:122, (12:31:39.8100)
+2015-08-22 12:31:39.8081|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:39.8081|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:39.8081|Info|      Encerrado timer: id:122, (12:31:39.8170)
+2015-08-22 12:31:39.8231|Info|      Executando timer: id:123, (12:31:39.8231)
+2015-08-22 12:31:39.8231|Info|          Deveria ter disparado: function () {
+          funced();
+          strictEqual(callCount, isDebounce ? 1 : 2);
+          QUnit.start();
+        }
+2015-08-22 12:31:39.8231|Info|  Settimeout: id:124, (32) ms
+2015-08-22 12:31:39.8822|Info|  Settimeout: id:125, (13) ms
+2015-08-22 12:31:39.9343|Info|      Encerrado timer: id:123, (12:31:39.9343)
+2015-08-22 12:31:39.9343|Info|      Executando timer: id:124, (12:31:39.9352)
+2015-08-22 12:31:39.9343|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:39.9343|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:39.9343|Info|      Encerrado timer: id:124, (12:31:39.9392)
+2015-08-22 12:31:39.9343|Info|      Executando timer: id:125, (12:31:39.9402)
+2015-08-22 12:31:39.9422|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:39.9422|Info|  Settimeout: id:126, (32) ms
+2015-08-22 12:31:39.9993|Info|  Settimeout: id:127, (64) ms
+2015-08-22 12:31:40.0514|Info|      Encerrado timer: id:125, (12:31:40.0514)
+2015-08-22 12:31:40.0664|Info|      Executando timer: id:127, (12:31:40.0664)
+2015-08-22 12:31:40.0693|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 0);
+          QUnit.start();
+        }
+2015-08-22 12:31:40.0693|Info|  Settimeout: id:128, (13) ms
+2015-08-22 12:31:40.1244|Info|      Encerrado timer: id:127, (12:31:40.1244)
+2015-08-22 12:31:40.1244|Info|      Executando timer: id:128, (12:31:40.1254)
+2015-08-22 12:31:40.1244|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:40.1244|Info|  Settimeout: id:129, (32) ms
+2015-08-22 12:31:40.1814|Info|  Settimeout: id:130, (32) ms
+2015-08-22 12:31:40.2344|Info|  Settimeout: id:131, (64) ms
+2015-08-22 12:31:40.2865|Info|      Encerrado timer: id:128, (12:31:40.2865)
+2015-08-22 12:31:40.2865|Info|      Executando timer: id:130, (12:31:40.2885)
+2015-08-22 12:31:40.2865|Info|          Deveria ter disparado: function delayed() {
+        var remaining = wait - (now() - stamp);
+        //javascriptHelper.Escrever('Entra? {0}', remaining <= 0 || remaining > wait);
+		if (remaining <= 0 || remaining > wait) {
+			 //javascriptHelper.Escrever('trailingCall {0}', trailingCall);
+			 //javascriptHelper.Escrever('maxTimeoutId {0}', maxTimeoutId);
+          complete(trailingCall, maxTimeoutId);
+        } else {
+          timeoutId = setTimeout(delayed, remaining);
+        }
+      }
+2015-08-22 12:31:40.2865|Info|      Encerrado timer: id:130, (12:31:40.2935)
+2015-08-22 12:31:40.2865|Info|      Executando timer: id:131, (12:31:40.3015)
+2015-08-22 12:31:40.3045|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 2);
+          QUnit.start();
+        }
+2015-08-22 12:31:40.3045|Info|  Settimeout: id:132, (13) ms
+2015-08-22 12:31:40.3596|Info|      Encerrado timer: id:131, (12:31:40.3596)
+2015-08-22 12:31:40.3596|Info|      Executando timer: id:132, (12:31:40.3616)
+2015-08-22 12:31:40.3655|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:40.3655|Info|  Settimeout: id:133, (32) ms
+2015-08-22 12:31:40.4226|Info|      Encerrado timer: id:132, (12:31:40.4226)
+2015-08-22 12:31:40.4226|Info|      Executando timer: id:133, (12:31:40.4246)
+2015-08-22 12:31:40.4286|Info|          Deveria ter disparado: function () {
+          funced();
+          strictEqual(callCount, isDebounce ? 1 : 2);
+          QUnit.start();
+        }
+2015-08-22 12:31:40.4286|Info|  Settimeout: id:134, (13) ms
+2015-08-22 12:31:40.4847|Info|      Encerrado timer: id:133, (12:31:40.4847)
+2015-08-22 12:31:40.4847|Info|      Executando timer: id:134, (12:31:40.4856)
+2015-08-22 12:31:40.4847|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:40.4896|Info|  Settimeout: id:135, (32) ms
+2015-08-22 12:31:40.5407|Info|  Settimeout: id:136, (64) ms
+2015-08-22 12:31:40.5917|Info|      Encerrado timer: id:134, (12:31:40.5917)
+2015-08-22 12:31:40.5917|Info|      Executando timer: id:135, (12:31:40.5937)
+2015-08-22 12:31:40.5917|Info|          Deveria ter disparado: function maxDelayed() {
+        complete(trailing, timeoutId);
+      }
+2015-08-22 12:31:40.5987|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:40.5987|Info|      Encerrado timer: id:135, (12:31:40.6007)
+2015-08-22 12:31:40.5987|Info|      Executando timer: id:136, (12:31:40.6068)
+2015-08-22 12:31:40.5987|Info|          Deveria ter disparado: function () {
+          deepEqual(actual, expected);
+          QUnit.start();
+        }
+2015-08-22 12:31:40.5987|Info|  Settimeout: id:137, (13) ms
+2015-08-22 12:31:40.6648|Info|      Encerrado timer: id:136, (12:31:40.6648)
+2015-08-22 12:31:40.6648|Info|      Executando timer: id:137, (12:31:40.6657)
+2015-08-22 12:31:40.6648|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:40.6648|Info|  Settimeout: id:138, (32) ms
+2015-08-22 12:31:40.7208|Info|  Settimeout: id:139, (256) ms
+2015-08-22 12:31:40.7728|Info|      Encerrado timer: id:137, (12:31:40.7728)
+2015-08-22 12:31:40.7728|Info|      Executando timer: id:138, (12:31:40.7748)
+2015-08-22 12:31:40.7728|Info|          Deveria ter disparado: function maxDelayed() {
+        complete(trailing, timeoutId);
+      }
+2015-08-22 12:31:40.7728|Info|  Settimeout: id:140, (32) ms
+2015-08-22 12:31:40.8349|Info|!timeoutId && !maxTimeoutId false
+2015-08-22 12:31:40.8349|Info|      Encerrado timer: id:138, (12:31:40.8359)
+2015-08-22 12:31:40.8349|Info|      Executando timer: id:140, (12:31:40.8379)
+2015-08-22 12:31:40.8349|Info|          Deveria ter disparado: function maxDelayed() {
+        complete(trailing, timeoutId);
+      }
+2015-08-22 12:31:40.8349|Info|!timeoutId && !maxTimeoutId true
+2015-08-22 12:31:40.8349|Info|      Encerrado timer: id:140, (12:31:40.8459)
+2015-08-22 12:31:40.9800|Info|      Executando timer: id:139, (12:31:40.9800)
+2015-08-22 12:31:40.9800|Info|          Deveria ter disparado: function () {
+          deepEqual(actual, expected.slice(0, actual.length));
+          QUnit.start();
+        }
+2015-08-22 12:31:40.9800|Info|  Settimeout: id:141, (13) ms
+2015-08-22 12:31:41.0381|Info|      Encerrado timer: id:139, (12:31:41.0381)
+2015-08-22 12:31:41.0381|Info|      Executando timer: id:141, (12:31:41.0390)
+2015-08-22 12:31:41.0381|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:41.0381|Info|  Settimeout: id:142, (64) ms
+2015-08-22 12:31:41.1001|Info|      Encerrado timer: id:141, (12:31:41.1001)
+2015-08-22 12:31:41.1151|Info|      Executando timer: id:142, (12:31:41.1151)
+2015-08-22 12:31:41.1151|Info|          Deveria ter disparado: function () {
+          funced();
+          strictEqual(callCount, isDebounce ? 1 : 2);
+          QUnit.start();
+        }
+2015-08-22 12:31:41.1151|Info|  Settimeout: id:143, (13) ms
+2015-08-22 12:31:41.1691|Info|      Encerrado timer: id:142, (12:31:41.1691)
+2015-08-22 12:31:41.1691|Info|      Executando timer: id:143, (12:31:41.1701)
+2015-08-22 12:31:41.1691|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:41.1771|Info|  Settimeout: id:144, (32) ms
+2015-08-22 12:31:41.2291|Info|  Settimeout: id:145, (64) ms
+2015-08-22 12:31:41.2802|Info|      Encerrado timer: id:143, (12:31:41.2802)
+2015-08-22 12:31:41.2952|Info|      Executando timer: id:145, (12:31:41.2952)
+2015-08-22 12:31:41.2952|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 0);
+          QUnit.start();
+        }
+2015-08-22 12:31:41.2952|Info|  Settimeout: id:146, (13) ms
+2015-08-22 12:31:41.3483|Info|      Encerrado timer: id:145, (12:31:41.3483)
+2015-08-22 12:31:41.3492|Info|      Executando timer: id:146, (12:31:41.3492)
+2015-08-22 12:31:41.3492|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:41.3492|Info|  Settimeout: id:147, (64) ms
+2015-08-22 12:31:41.4053|Info|      Encerrado timer: id:146, (12:31:41.4053)
+2015-08-22 12:31:41.4203|Info|      Executando timer: id:147, (12:31:41.4203)
+2015-08-22 12:31:41.4203|Info|          Deveria ter disparado: function () {
+          strictEqual(callCount, 2);
+          QUnit.start();
+        }
+2015-08-22 12:31:41.4203|Info|  Settimeout: id:148, (13) ms
+2015-08-22 12:31:41.4794|Info|      Encerrado timer: id:147, (12:31:41.4794)
+2015-08-22 12:31:41.4794|Info|      Executando timer: id:148, (12:31:41.4813)
+2015-08-22 12:31:41.4794|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-22 12:31:41.6114|Info|      Encerrado timer: id:148, (12:31:41.6114)
+2015-08-22 12:31:41.6114|Info|Encerrando os testes
+2015-08-22 12:31:41.6114|Info|Total:4451, Sucesso: 4443, Falha: 8
+2015-08-22 12:31:41.6144|Info|12 segundos para avaliar o individuo lodash.js
+2015-08-22 12:31:41.6144|Info|FAILED: lodash.delay: should delay `func` execution: failed, expected argument to be truthy, was: false, ,     at Script Document [6]:1906:13
+    at Array.<anonymous> (Script Document [9]:3120:15)
+    at Script Document [106]:1:24
+2015-08-22 12:31:41.6144|Info|FAILED: lodash.isNil: should work with nulls from another realm: Expected 2 assertions, but 1 were run, ,     at Script Document [9]:7765:5
+    at Script Document [9]:7774:4
+    at Script Document [9]:17424:3
+2015-08-22 12:31:41.6144|Info|FAILED: lodash.memoize: should throw a TypeError if `resolve` is truthy and not a function: Died on test #1     at Script Document [9]:9961:5
+    at Script Document [9]:10157:4
+    at Script Document [9]:17424:3: raises is not defined, , ReferenceError: raises is not defined
+    at Object.<anonymous> (Script Document [9]:9962:7)
+    at Object.Test.run (Script Document [6]:894:28)
+    at Script Document [6]:1023:11
+    at process (Script Document [6]:583:24)
+    at Array.next (Script Document [6]:570:3)
+    at Script Document [122]:1:24
+2015-08-22 12:31:41.6144|Info|FAILED: lodash.once: should not throw more than once: Died on test #1     at Script Document [9]:11277:5
+    at Script Document [9]:11293:4
+    at Script Document [9]:17424:3: raises is not defined, , ReferenceError: raises is not defined
+    at Object.<anonymous> (Script Document [9]:11284:7)
+    at Object.Test.run (Script Document [6]:894:28)
+    at Script Document [6]:1023:11
+    at process (Script Document [6]:583:24)
+    at begin (Script Document [6]:628:2)
+    at Array.<anonymous> (Script Document [6]:643:4)
+    at Script Document [126]:1:24
+2015-08-22 12:31:41.6144|Info|FAILED: lodash.once: should not throw more than once: Expected 2 assertions, but 1 were run, ,     at Script Document [9]:11277:5
+    at Script Document [9]:11293:4
+    at Script Document [9]:17424:3
+2015-08-22 12:31:41.6144|Info|FAILED: lodash.spread: should throw a TypeError when receiving a non-array `array` argument: Died on test #1     at Script Document [9]:14286:5
+    at Script Document [9]:14309:4
+    at Script Document [9]:17424:3: raises is not defined, , ReferenceError: raises is not defined
+    at Object.<anonymous> (Script Document [9]:14287:7)
+    at Object.Test.run (Script Document [6]:894:28)
+    at Script Document [6]:1023:11
+    at process (Script Document [6]:583:24)
+    at begin (Script Document [6]:628:2)
+    at Array.<anonymous> (Script Document [6]:643:4)
+    at Script Document [126]:1:24
+2015-08-22 12:31:41.6144|Info|FAILED: lodash.throttle: should throttle a function: failed, expected argument to be truthy, was: false, ,     at Script Document [6]:1906:13
+    at Array.<anonymous> (Script Document [9]:14984:24)
+    at Script Document [128]:1:24
+2015-08-22 12:31:41.6144|Info|FAILED: lodash.throttle: subsequent calls should return the result of the first call: expected: y, actual: y,     at Script Document [6]:1906:13
+    at Array.<anonymous> (Script Document [9]:15006:26)
+    at Script Document [134]:1:24
