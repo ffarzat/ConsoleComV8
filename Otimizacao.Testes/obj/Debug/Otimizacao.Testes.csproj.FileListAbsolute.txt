@@ -1,10 +1,15 @@
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\NLog.config
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lodash\lodash.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lodash\lodashTest.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lodash\qunit-extras.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lodash\Qunit.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Moment\core-test.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Moment\global.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Moment\Qunit.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\underscore\qunit-extras.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\underscore\Qunit.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\underscore\underscore.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\underscore\underscoreTests.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Otimizacao.Testes.dll
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Otimizacao.Testes.pdb
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\ClearScript.dll
@@ -18,4 +23,3 @@ D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\NLog.xml
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\obj\Debug\Otimizacao.Testes.csprojResolveAssemblyReference.cache
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\obj\Debug\Otimizacao.Testes.dll
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\obj\Debug\Otimizacao.Testes.pdb
-D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lodash\qunit-extras.js

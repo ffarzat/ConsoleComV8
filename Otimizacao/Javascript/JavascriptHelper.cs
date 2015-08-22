@@ -101,20 +101,43 @@ namespace Otimizacao.Javascript
         /// <summary>
         /// Construtor, configura o Helper para posterior execuçao
         /// </summary>
+        /// <param name="diretorioJavascripts">Diretório onde estão os arquivos em js</param>
         public JavascriptHelper(string diretorioJavascripts)
+        {
+            Carregar(diretorioJavascripts, false, false);
+        }
+
+        /// <summary>
+        /// Construtor, configura o Helper para posterior execuçao
+        /// </summary>
+        /// <param name="diretorioJavascripts">Diretório onde estão os arquivos em js</param>
+        /// <param name="setTimeout">Habilitar a função global setTimeout</param>
+        /// <param name="setInterval">Habilitar a função global setInterval</param>
+        public JavascriptHelper(string diretorioJavascripts, bool setTimeout, bool setInterval)
+        {
+            Carregar(diretorioJavascripts, setInterval, setInterval);
+        }
+
+        /// <summary>
+        /// configura o Helper para posterior execuçao
+        /// </summary>
+        /// <param name="diretorioJavascripts">Diretório onde estão os arquivos em js</param>
+        /// <param name="setTimeout">Habilitar a função global setTimeout</param>
+        /// <param name="setInterval">Habilitar a função global setInterval</param>
+        private void Carregar(string diretorioJavascripts, bool setTimeout, bool setInterval)
         {
             #region Ler arquivos Js
             _javascripts = new Dictionary<string, string>();
 
             foreach (var enumerateFile in Directory.EnumerateFiles(diretorioJavascripts, "*.js"))
             {
-                _javascripts.Add(Path.GetFileName(enumerateFile) , File.ReadAllText(enumerateFile));    
+                _javascripts.Add(Path.GetFileName(enumerateFile), File.ReadAllText(enumerateFile));
             }
 
             #endregion
 
             #region Cria a Engine e configura com o JavascriptHelper e Console
-            
+
             _engine = new V8ScriptEngine();
             FalhasDosTestes = new List<string>();
             _timers = new Dictionary<int, bool>();
@@ -135,16 +158,21 @@ namespace Otimizacao.Javascript
 
             _engine.Execute(@"var stFunctionsCallBack = new Array();");
 
-            _engine.Execute(@"var setTimeout = function (funcToCall, millis) {
+            if (setTimeout)
+            {
+                _engine.Execute(@"var setTimeout = function (funcToCall, millis) {
                                                 var textoId = javascriptHelper.CurrentThreadId;
                                                 var idlocal = javascriptHelper.SetTimeout(millis);
                                                 stFunctionsCallBack.push(funcToCall);
                                                 return idlocal;
                             };");
 
-            _engine.Execute(@"var clearTimeout = function(id) { javascriptHelper.ClearTimeout(id);};");
+                _engine.Execute(@"var clearTimeout = function(id) { javascriptHelper.ClearTimeout(id);};");
+            }
 
-            _engine.Execute(@"var setInterval = function (funcToCall, millis) {
+            if (setInterval)
+            {
+                _engine.Execute(@"var setInterval = function (funcToCall, millis) {
                                                 
                                                 var idlocal = javascriptHelper.SetTimeout(millis);
                                                 var funcaoTimeout = function() { funcToCall(); setTimeout(funcToCall, millis); };
@@ -152,7 +180,9 @@ namespace Otimizacao.Javascript
                                                 return idlocal;
                             };");
 
-            _engine.Execute(@"var clearInterval = function(id) { javascriptHelper.ClearTimeout(id);};");
+                _engine.Execute(@"var clearInterval = function(id) { javascriptHelper.ClearTimeout(id);};");
+            }
+
 
             #endregion
         }

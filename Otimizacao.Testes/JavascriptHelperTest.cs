@@ -58,7 +58,7 @@ namespace Otimizacao.Testes
         [Test]
         public void ExecutarTestesDoLodash()
         {
-            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Lodash"));
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Lodash"), true, true);
 
             helper.ExecutarTestes("lodash.js", "lodashTest.js");
 
@@ -67,6 +67,23 @@ namespace Otimizacao.Testes
             Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");
             Assert.Greater(helper.TestesComSucesso, 1);
             
+        }
+
+        /// <summary>
+        /// Executa os testes do underscore
+        /// </summary>
+        [Test]
+        public void ExecutarTestesDounderscore()
+        {
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "underscore"), true, true);
+
+            helper.ExecutarTestes("underscore.js", "underscoreTests.js");
+
+            helper.FalhasDosTestes.ForEach(Console.WriteLine);
+
+            Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");
+            Assert.Greater(helper.TestesComSucesso, 1);
+
         }
     }
 }
