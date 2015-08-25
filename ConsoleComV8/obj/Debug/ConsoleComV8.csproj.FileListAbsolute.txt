@@ -61,3 +61,11 @@ D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\NLog.xml
 D:\GitHub\ConsoleComV8\ConsoleComV8\obj\Debug\ConsoleComV8.csprojResolveAssemblyReference.cache
 D:\GitHub\ConsoleComV8\ConsoleComV8\obj\Debug\ConsoleComV8.exe
 D:\GitHub\ConsoleComV8\ConsoleComV8\obj\Debug\ConsoleComV8.pdb
+D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ClearScriptV8-32.dll
+D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ClearScriptV8-32.pdb
+D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ClearScriptV8-64.dll
+D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ClearScriptV8-64.pdb
+D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\v8-ia32.dll
+D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\v8-ia32.pdb
+D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\v8-x64.dll
+D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\v8-x64.pdb

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ClearScript.Manager.Http</name>
+    </assembly>
+    <members>
+        <member name="T:ClearScript.Manager.Http.Loaders.HttpScriptLoader">
+            <summary>
+            Loads scripts if they are file-system based scripts.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.Http.Packages.PackageHelpers">
+            <summary>
+            Helpers for registering packages.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Http.Packages.PackageHelpers.RegisterRequestPackages">
+            <summary>
+            Registers packages needed for using the request include.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,1134 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ClearScript.Manager</name>
+    </assembly>
+    <members>
+        <member name="T:ClearScript.Manager.Caching.KeyValueUpdate`2">
+            <summary> Provides a delegate that performs an atomic update of a key/value pair </summary>
+        </member>
+        <member name="T:ClearScript.Manager.Caching.KeyValuePredicate`2">
+            <summary> Provides a delegate that performs a test on key/value pair </summary>
+        </member>
+        <member name="T:ClearScript.Manager.Caching.ICreateValue`2">
+            <summary>
+            An interface to provide conditional or custom creation logic to a concurrent dictionary.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.ICreateValue`2.CreateValue(`0,`1@)">
+            <summary>
+            Called when the key was not found within the dictionary to produce a new value that can be added.
+            Return true to continue with the insertion, or false to prevent the key/value from being inserted.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.Caching.IUpdateValue`2">
+            <summary>
+            An interface to provide conditional or custom update logic to a concurrent dictionary.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.IUpdateValue`2.UpdateValue(`0,`1@)">
+            <summary>
+            Called when the key was found within the dictionary to produce a modified value to update the item
+            to. Return true to continue with the update, or false to prevent the key/value from being updated.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.Caching.ICreateOrUpdateValue`2">
+            <summary>
+            An interface to provide conditional or custom creation or update logic to a concurrent dictionary.
+            </summary>
+            <remarks>
+            Generally implemented as a struct and passed by ref to save stack space and to retrieve the values
+            that where inserted or updated.
+            </remarks>
+        </member>
+        <member name="T:ClearScript.Manager.Caching.IRemoveValue`2">
+            <summary>
+            An interface to provide conditional removal of an item from a concurrent dictionary.
+            </summary>
+            <remarks>
+            Generally implemented as a struct and passed by ref to save stack space and to retrieve the values
+            that where inserted or updated.
+            </remarks>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.IRemoveValue`2.RemoveValue(`0,`1)">
+            <summary>
+            Called when the dictionary is about to remove the key/value pair provided, return true to allow
+            it's removal, or false to prevent it from being removed.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.Caching.IConcurrentDictionary`2">
+            <summary>
+            Extends the IDictionaryEx interface to encompass concurrent/atomic operations
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.IConcurrentDictionary`2.GetOrAdd(`0,System.Converter{`0,`1})">
+            <summary>
+            Adds a key/value pair to the  <see cref="T:System.Collections.Generic.IDictionary`2"/> if the key does not already exist.
+            </summary>
+            <param name="key">The key of the element to add.</param>
+            <param name="fnCreate">Constructs a new value for the key.</param>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.IDictionary`2"/> is read-only.</exception>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.IConcurrentDictionary`2.AddOrUpdate(`0,`1,ClearScript.Manager.Caching.KeyValueUpdate{`0,`1})">
+            <summary>
+            Adds a key/value pair to the <see cref="T:System.Collections.Generic.IDictionary`2"/> if the key does not already exist, 
+            or updates a key/value pair if the key already exists.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.IConcurrentDictionary`2.AddOrUpdate(`0,System.Converter{`0,`1},ClearScript.Manager.Caching.KeyValueUpdate{`0,`1})">
+            <summary>
+            Adds a key/value pair to the <see cref="T:System.Collections.Generic.IDictionary`2"/> if the key does not already exist, 
+            or updates a key/value pair if the key already exists.
+            </summary>
+            <remarks>
+            Adds or modifies an element with the provided key and value.  If the key does not exist in the collection,
+            the factory method fnCreate will be called to produce the new value, if the key exists, the converter method
+            fnUpdate will be called to create an updated value.
+            </remarks>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.IConcurrentDictionary`2.AddOrUpdate``1(`0,``0@)">
+            <summary>
+            Add, update, or fetche a key/value pair from the dictionary via an implementation of the
+            <see cref="T:ClearScript.Manager.Caching.ICreateOrUpdateValue`2"/> interface.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.IConcurrentDictionary`2.TryAdd(`0,System.Converter{`0,`1})">
+            <summary>
+            Adds an element with the provided key and value to the <see cref="T:System.Collections.Generic.IDictionary`2"/>
+            by calling the provided factory method to construct the value if the key is not already present in the collection.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.IConcurrentDictionary`2.TryUpdate(`0,ClearScript.Manager.Caching.KeyValueUpdate{`0,`1})">
+            <summary>
+            Modify the value associated with the result of the provided update method
+            as an atomic operation, Allows for reading/writing a single record within
+            the tree lock.  Be cautious about the behavior and performance of the code 
+            provided as it can cause a dead-lock to occur.  If the method returns an
+            instance who .Equals the original, no update is applied.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.IConcurrentDictionary`2.TryRemove(`0,ClearScript.Manager.Caching.KeyValuePredicate{`0,`1})">
+            <summary>
+            Removes the element with the specified key from the <see cref="T:System.Collections.Generic.IDictionary`2"/>
+            if the fnCondition predicate is null or returns true.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.IConcurrentDictionary`2.TryRemove``1(`0,``0@)">
+            <summary>
+            Conditionally removes a key/value pair from the dictionary via an implementation of the
+            <see cref="T:ClearScript.Manager.Caching.IRemoveValue`2"/> interface.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.Caching.IDictionaryEx`2">
+            <summary>
+            Extends the IDictionary interface to encompass the TryXxxx operations
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.IDictionaryEx`2.GetOrAdd(`0,`1)">
+            <summary>
+            Adds a key/value pair to the  <see cref="T:System.Collections.Generic.IDictionary`2"/> if the key does not already exist.
+            </summary>
+            <param name="key">The key of the element to add.</param>
+            <param name="value">The value to be added, if the key does not already exist.</param>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.IDictionary`2"/> is read-only.</exception>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.IDictionaryEx`2.TryAdd(`0,`1)">
+            <summary>
+            Adds an element with the provided key and value to the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            </summary>
+            <param name="key">The object to use as the key of the element to add.</param>
+            <param name="value">The object to use as the value of the element to add.</param>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.IDictionary`2"/> is read-only.</exception>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.IDictionaryEx`2.TryUpdate(`0,`1)">
+            <summary>
+            Updates an element with the provided key to the value if it exists.
+            </summary>
+            <returns>Returns true if the key provided was found and updated to the value.</returns>
+            <param name="key">The object to use as the key of the element to update.</param>
+            <param name="value">The new value for the key if found.</param>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.IDictionary`2"/> is read-only.</exception>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.IDictionaryEx`2.TryUpdate(`0,`1,`1)">
+            <summary>
+            Updates an element with the provided key to the value if it exists.
+            </summary>
+            <returns>Returns true if the key provided was found and updated to the value.</returns>
+            <param name="key">The object to use as the key of the element to update.</param>
+            <param name="value">The new value for the key if found.</param>
+            <param name="comparisonValue">The value that is compared to the value of the element with key.</param>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.IDictionary`2"/> is read-only.</exception>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.IDictionaryEx`2.TryRemove(`0,`1@)">
+            <summary>
+            Removes the element with the specified key from the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            </summary>
+            <returns>
+            true if the element is successfully removed; otherwise, false.  This method also returns false if <paramref name="key"/> was not found in the original <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            </returns>
+            <param name="key">The key of the element to remove.</param>
+            <param name="value">The value that was removed.</param>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.IDictionary`2"/> is read-only.</exception>
+        </member>
+        <member name="T:ClearScript.Manager.Caching.LurchTableOrder">
+            <summary>
+            Defines if and how items added to a LurchTable are linked together, this defines
+            the value returned from Peek/Dequeue as the oldest entry of the specified operation.
+            </summary>
+        </member>
+        <member name="F:ClearScript.Manager.Caching.LurchTableOrder.None">
+            <summary> No linking </summary>
+        </member>
+        <member name="F:ClearScript.Manager.Caching.LurchTableOrder.Insertion">
+            <summary> Linked in insertion order </summary>
+        </member>
+        <member name="F:ClearScript.Manager.Caching.LurchTableOrder.Modified">
+            <summary> Linked by most recently inserted or updated </summary>
+        </member>
+        <member name="F:ClearScript.Manager.Caching.LurchTableOrder.Access">
+            <summary> Linked by most recently inserted, updated, or fetched </summary>
+        </member>
+        <member name="T:ClearScript.Manager.Caching.LruCache`2">
+            <summary>
+            LurchTable stands for "Least Used Recently Concurrent Hash Table" and has definate
+            similarities to both the .NET 4 ConcurrentDictionary as well as Java's LinkedHashMap.
+            This gives you a thread-safe dictionary/hashtable that stores element ordering by
+            insertion, updates, or access.  In addition it can be configured to use a 'hard-limit'
+            count of items that will automatically 'pop' the oldest item in the collection.
+            </summary>
+            <typeparam name="TKey">The type of keys in the dictionary.</typeparam>
+            <typeparam name="TValue">The type of values in the dictionary.</typeparam>
+        </member>
+        <member name="T:ClearScript.Manager.Caching.LruCache`2.ItemUpdatedMethod">
+            <summary> Method signature for the ItemUpdated event </summary>
+        </member>
+        <member name="E:ClearScript.Manager.Caching.LruCache`2.ItemRemoved">
+            <summary> Event raised after an item is removed from the collection </summary>
+        </member>
+        <member name="E:ClearScript.Manager.Caching.LruCache`2.ItemUpdated">
+            <summary> Event raised after an item is updated in the collection </summary>
+        </member>
+        <member name="E:ClearScript.Manager.Caching.LruCache`2.ItemAdded">
+            <summary> Event raised after an item is added to the collection </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.#ctor(System.Int32)">
+            <summary>Creates a LurchTable that can store up to (capacity) items efficiently.</summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.#ctor(System.Int32,ClearScript.Manager.Caching.LurchTableOrder)">
+            <summary>Creates a LurchTable that can store up to (capacity) items efficiently.</summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.#ctor(System.Int32,ClearScript.Manager.Caching.LurchTableOrder,System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>Creates a LurchTable that can store up to (capacity) items efficiently.</summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.#ctor(ClearScript.Manager.Caching.LurchTableOrder,System.Int32)">
+            <summary>Creates a LurchTable that orders items by (ordering) and removes items once the specified (limit) is reached.</summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.#ctor(ClearScript.Manager.Caching.LurchTableOrder,System.Int32,System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>Creates a LurchTable that orders items by (ordering) and removes items once the specified (limit) is reached.</summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.#ctor(ClearScript.Manager.Caching.LurchTableOrder,System.Int32,System.Int32,System.Int32,System.Int32,System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Creates a LurchTable that orders items by (ordering) and removes items once the specified (limit) is reached.
+            </summary>
+            <param name="ordering">The type of linking for the items</param>
+            <param name="limit">The maximum allowable number of items, or int.MaxValue for unlimited</param>
+            <param name="hashSize">The number of hash buckets to use for the collection, usually 1/2 estimated capacity</param>
+            <param name="allocSize">The number of entries to allocate at a time, usually 1/16 estimated capacity</param>
+            <param name="lockSize">The number of concurrency locks to preallocate, usually 1/256 estimated capacity</param>
+            <param name="comparer">The element hash generator for keys</param>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.Dispose">
+            <summary>
+            Clears references to all objects and invalidates the collection
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Caching.LruCache`2.Count">
+            <summary>
+            Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Caching.LruCache`2.Ordering">
+            <summary>
+            Retrieves the LurchTableOrder Ordering enumeration this instance was created with.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Caching.LruCache`2.Comparer">
+            <summary>
+            Retrives the key comparer being used by this instance.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Caching.LruCache`2.Limit">
+            <summary>
+            Retrives the record limit allowed in this instance.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.Initialize">
+            <summary>
+            WARNING: not thread-safe, reinitializes all internal structures.  Use Clear() for a thread-safe
+            delete all.  If you have externally provided exclusive access this method may be used to more
+            efficiently clear the collection.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.Clear">
+            <summary>
+            Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.ContainsKey(`0)">
+            <summary>
+            Determines whether the <see cref="T:System.Collections.Generic.IDictionary`2"/> contains an element with the specified key.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Caching.LruCache`2.Item(`0)">
+            <summary>
+            Gets or sets the element with the specified key.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.TryGetValue(`0,`1@)">
+            <summary>
+            Gets the value associated with the specified key.
+            </summary>
+            <returns>
+            true if the object that implements <see cref="T:System.Collections.Generic.IDictionary`2"/> contains an element with the specified key; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.Add(`0,`1)">
+            <summary>
+            Adds an element with the provided key and value to the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.Remove(`0)">
+            <summary>
+            Removes the element with the specified key from the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            </summary>
+            <returns>
+            true if the element is successfully removed; otherwise, false.  This method also returns false if <paramref name="key"/> was not found in the original <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            </returns>
+            <param name="key">The key of the element to remove.</param>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.GetOrAdd(`0,`1)">
+            <summary>
+            Adds a key/value pair to the  <see cref="T:System.Collections.Generic.IDictionary`2"/> if the key does not already exist.
+            </summary>
+            <param name="key">The key of the element to add.</param>
+            <param name="value">The value to be added, if the key does not already exist.</param>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.TryAdd(`0,`1)">
+            <summary>
+            Adds an element with the provided key and value to the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            </summary>
+            <param name="key">The object to use as the key of the element to add.</param>
+            <param name="value">The object to use as the value of the element to add.</param>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.TryUpdate(`0,`1)">
+            <summary>
+            Updates an element with the provided key to the value if it exists.
+            </summary>
+            <returns>Returns true if the key provided was found and updated to the value.</returns>
+            <param name="key">The object to use as the key of the element to update.</param>
+            <param name="value">The new value for the key if found.</param>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.TryUpdate(`0,`1,`1)">
+            <summary>
+            Updates an element with the provided key to the value if it exists.
+            </summary>
+            <returns>Returns true if the key provided was found and updated to the value.</returns>
+            <param name="key">The object to use as the key of the element to update.</param>
+            <param name="value">The new value for the key if found.</param>
+            <param name="comparisonValue">The value that is compared to the value of the element with key.</param>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.TryRemove(`0,`1@)">
+            <summary>
+            Removes the element with the specified key from the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            </summary>
+            <returns>
+            true if the element is successfully removed; otherwise, false.  This method also returns false if <paramref name="key"/> was not found in the original <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            </returns>
+            <param name="key">The key of the element to remove.</param>
+            <param name="value">The value that was removed.</param>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.GetOrAdd(`0,System.Converter{`0,`1})">
+            <summary>
+            Adds a key/value pair to the  <see cref="T:System.Collections.Generic.IDictionary`2"/> if the key does not already exist.
+            </summary>
+            <param name="key">The key of the element to add.</param>
+            <param name="fnCreate">Constructs a new value for the key.</param>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.AddOrUpdate(`0,`1,ClearScript.Manager.Caching.KeyValueUpdate{`0,`1})">
+            <summary>
+            Adds a key/value pair to the <see cref="T:System.Collections.Generic.IDictionary`2"/> if the key does not already exist, 
+            or updates a key/value pair if the key already exists.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.AddOrUpdate(`0,System.Converter{`0,`1},ClearScript.Manager.Caching.KeyValueUpdate{`0,`1})">
+            <summary>
+            Adds a key/value pair to the <see cref="T:System.Collections.Generic.IDictionary`2"/> if the key does not already exist, 
+            or updates a key/value pair if the key already exists.
+            </summary>
+            <remarks>
+            Adds or modifies an element with the provided key and value.  If the key does not exist in the collection,
+            the factory method fnCreate will be called to produce the new value, if the key exists, the converter method
+            fnUpdate will be called to create an updated value.
+            </remarks>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.AddOrUpdate``1(`0,``0@)">
+            <summary>
+            Add, update, or fetche a key/value pair from the dictionary via an implementation of the
+            <see cref="T:CSharpTest.Net.Collections.ICreateOrUpdateValue`2"/> interface.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.TryAdd(`0,System.Converter{`0,`1})">
+            <summary>
+            Adds an element with the provided key and value to the <see cref="T:System.Collections.Generic.IDictionary`2"/>
+            by calling the provided factory method to construct the value if the key is not already present in the collection.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.TryUpdate(`0,ClearScript.Manager.Caching.KeyValueUpdate{`0,`1})">
+            <summary>
+            Modify the value associated with the result of the provided update method
+            as an atomic operation, Allows for reading/writing a single record within
+            the syncronization lock.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.TryRemove(`0,ClearScript.Manager.Caching.KeyValuePredicate{`0,`1})">
+            <summary>
+            Removes the element with the specified key from the <see cref="T:System.Collections.Generic.IDictionary`2"/>
+            if the fnCondition predicate is null or returns true.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.TryRemove``1(`0,``0@)">
+            <summary>
+            Conditionally removes a key/value pair from the dictionary via an implementation of the
+            <see cref="T:CSharpTest.Net.Collections.IRemoveValue`2"/> interface.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.Caching.LruCache`2.Enumerator">
+            <summary>
+            Provides an enumerator that iterates through the collection.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.Enumerator.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Caching.LruCache`2.Enumerator.Current">
+            <summary>
+            Gets the element in the collection at the current position of the enumerator.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.Enumerator.MoveNext">
+            <summary>
+            Advances the enumerator to the next element of the collection.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.Enumerator.Reset">
+            <summary>
+            Sets the enumerator to its initial position, which is before the first element in the collection.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.Caching.LruCache`2.KeyCollection">
+            <summary>
+            Provides the collection of Keys for the LurchTable
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.KeyCollection.Contains(`0)">
+            <summary>
+            Determines whether the <see cref="T:System.Collections.Generic.ICollection`1"/> contains a specific value.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.KeyCollection.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"/> to an <see cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Caching.LruCache`2.KeyCollection.Count">
+            <summary>
+            Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.KeyCollection.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.Caching.LruCache`2.KeyCollection.Enumerator">
+            <summary>
+            Provides an enumerator that iterates through the collection.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.KeyCollection.Enumerator.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Caching.LruCache`2.KeyCollection.Enumerator.Current">
+            <summary>
+            Gets the element in the collection at the current position of the enumerator.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.KeyCollection.Enumerator.MoveNext">
+            <summary>
+            Advances the enumerator to the next element of the collection.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.KeyCollection.Enumerator.Reset">
+            <summary>
+            Sets the enumerator to its initial position, which is before the first element in the collection.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Caching.LruCache`2.Keys">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.ICollection`1"/> containing the keys of the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.Caching.LruCache`2.ValueCollection">
+            <summary>
+            Provides the collection of Values for the LurchTable
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.ValueCollection.Contains(`1)">
+            <summary>
+            Determines whether the <see cref="T:System.Collections.Generic.ICollection`1"/> contains a specific value.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.ValueCollection.CopyTo(`1[],System.Int32)">
+            <summary>
+            Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"/> to an <see cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Caching.LruCache`2.ValueCollection.Count">
+            <summary>
+            Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.ValueCollection.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.Caching.LruCache`2.ValueCollection.Enumerator">
+            <summary>
+            Provides an enumerator that iterates through the collection.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.ValueCollection.Enumerator.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Caching.LruCache`2.ValueCollection.Enumerator.Current">
+            <summary>
+            Gets the element in the collection at the current position of the enumerator.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.ValueCollection.Enumerator.MoveNext">
+            <summary>
+            Advances the enumerator to the next element of the collection.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.ValueCollection.Enumerator.Reset">
+            <summary>
+            Sets the enumerator to its initial position, which is before the first element in the collection.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Caching.LruCache`2.Values">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.ICollection`1"/> containing the values in the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.Peek(System.Collections.Generic.KeyValuePair{`0,`1}@)">
+            <summary>
+            Retrieves the oldest entry in the collection based on the ordering supplied to the constructor.
+            </summary>
+            <returns>True if the out parameter value was set.</returns>
+            <exception cref="T:System.InvalidOperationException">Raised if the table is unordered</exception>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.Dequeue">
+            <summary>
+            Removes the oldest entry in the collection based on the ordering supplied to the constructor.
+            If an item is not available a busy-wait loop is used to wait for for an item.
+            </summary>
+            <returns>The Key/Value pair removed.</returns>
+            <exception cref="T:System.InvalidOperationException">Raised if the table is unordered</exception>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.TryDequeue(System.Collections.Generic.KeyValuePair{`0,`1}@)">
+            <summary>
+            Removes the oldest entry in the collection based on the ordering supplied to the constructor.
+            </summary>
+            <returns>False if no item was available</returns>
+            <exception cref="T:System.InvalidOperationException">Raised if the table is unordered</exception>
+        </member>
+        <member name="M:ClearScript.Manager.Caching.LruCache`2.TryDequeue(System.Predicate{System.Collections.Generic.KeyValuePair{`0,`1}},System.Collections.Generic.KeyValuePair{`0,`1}@)">
+            <summary>
+            Removes the oldest entry in the collection based on the ordering supplied to the constructor.
+            </summary>
+            <returns>False if no item was available</returns>
+            <exception cref="T:System.InvalidOperationException">Raised if the table is unordered</exception>
+        </member>
+        <member name="T:ClearScript.Manager.ExecutionOptions">
+            <summary>
+            Options for execution of of scripts by the Runtime Manager
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.ExecutionOptions.HostObjects">
+            <summary>
+            Objects to inject into the JavaScript runtime.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.ExecutionOptions.HostTypes">
+            <summary>
+            Types to make available to the JavaScript runtime.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.ExecutionOptions.AddToCache">
+            <summary>
+            Indicates that this script should be added to the script cache once compiled.  Default is True.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.ExecutionOptions.CacheExpirationSeconds">
+            <summary>
+            Indicates the duration that a script should be cached.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.ExecutionOptions.Scripts">
+            <summary>
+            External JavaScripts to import before executing the current script.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.Extensions.DynamicExtensions">
+            <summary>
+            Extension methods to get properties of dynamic objects.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Extensions.DynamicExtensions.GetProperty(System.Object,System.String)">
+            <summary>
+            Gets a property of the dynamic object.
+            </summary>
+            <param name="source">Source object.</param>
+            <param name="member">Member to retrieve.</param>
+            <returns>The requested property value.</returns>
+            <exception cref="T:System.ArgumentNullException">If source or member are null.</exception>
+        </member>
+        <member name="T:ClearScript.Manager.Loaders.FileScriptLoader">
+            <summary>
+            Loads scripts if they are file-system based scripts.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.Loaders.RequiredPackage">
+            <summary>
+            Provides a definition for a required package. Must contain a script or a hostobject.  
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Loaders.RequiredPackage.PackageId">
+            <summary>
+            The ID of the package.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Loaders.RequiredPackage.ScriptUri">
+            <summary>
+            A script URI of a package javascript.  The export from the package is returned from the require call.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Loaders.RequiredPackage.HostObjects">
+            <summary>
+            Host objects needed for the package.  If a script is not included, the first host object is returned when the package is required.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Loaders.RequiredPackage.HostTypes">
+            <summary>
+            Host types needed for the package.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.Loaders.IScriptLoader">
+            <summary>
+            Interface for all classes that load scripts from a path or URI
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.Loaders.IScriptLoader.Name">
+            <summary>
+            Name of the script loader.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Loaders.IScriptLoader.ShouldUse(ClearScript.Manager.IncludeScript)">
+            <summary>
+            Determines if this script loader should be used at all.
+            </summary>
+            <param name="script">Script to evaluate.</param>
+            <returns>Bool indicating if this loader should be used.</returns>
+        </member>
+        <member name="M:ClearScript.Manager.Loaders.IScriptLoader.LoadCode(ClearScript.Manager.IncludeScript)">
+            <summary>
+            Loads the scripts Code property from the other available properties of the IncludeScript, typically using hte Uri.
+            </summary>
+            <param name="script">Script to load</param>
+        </member>
+        <member name="T:ClearScript.Manager.Loaders.RequireManager">
+            <summary>
+            Manages Require packages.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Loaders.RequireManager.RegisterPackage(ClearScript.Manager.Loaders.RequiredPackage)">
+            <summary>
+            Register a packaged for potential requirement.
+            </summary>
+            <param name="package">The package to register.</param>
+        </member>
+        <member name="M:ClearScript.Manager.Loaders.RequireManager.TryGetPackage(System.String,ClearScript.Manager.Loaders.RequiredPackage@)">
+            <summary>
+            Try to get the package from the registered packages.
+            </summary>
+            <param name="packageId">Id of the package to retrieve.</param>
+            <param name="package">Package to return.</param>
+            <returns>Bool indicating if package was found.</returns>
+        </member>
+        <member name="M:ClearScript.Manager.Loaders.RequireManager.ClearPackages">
+            <summary>
+            Clears all registered packages.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Loaders.RequireManager.BuildRequirer(ClearScript.Manager.ScriptCompiler,Microsoft.ClearScript.V8.V8ScriptEngine)">
+            <summary>
+            Builds and returns a requirer to include with an engine.
+            </summary>
+            <param name="compiler">Compiles the required scripts if needed.</param>
+            <param name="engine">The engine that will run the required script.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ClearScript.Manager.Loaders.Requirer">
+            <summary>
+            Used to register require packages and also provided to scripts to return required resources via the "require" call.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Loaders.Requirer.Require(System.String)">
+            <summary>
+            Called via a javascript to require and return the requested package.
+            </summary>
+            <param name="packageId">ID of the RequirePackage to require.</param>
+            <returns>The return object to use for the require. Either the export from the require script or the returned HostObject if not script is present.</returns>
+        </member>
+        <member name="M:ClearScript.Manager.Loaders.Requirer.Require(System.String,System.String)">
+            <summary>
+            Called via a javascript to require and return the requested package.
+            </summary>
+            <param name="packageId">ID of the RequirePackage to require.</param>
+            <param name="scriptUri">A script uri.  This is only needed if the packageId doesn't meet the script convention name and the package is not a registered package.</param>
+            <returns>The return object to use for the require. Either the export from the require script or the returned HostObject if not script is present.</returns>
+        </member>
+        <member name="T:ClearScript.Manager.Loaders.ScriptLoadManager">
+            <summary>
+            Manages the loading of scripts for the runtime manager.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.Loaders.ScriptLoadManager.RegisterLoader(ClearScript.Manager.Loaders.IScriptLoader)">
+            <summary>
+            Register a script loader with the manager.
+            </summary>
+            <param name="loader">The script loader to register.</param>
+        </member>
+        <member name="M:ClearScript.Manager.Loaders.ScriptLoadManager.LoadScript(ClearScript.Manager.IncludeScript)">
+            <summary>
+            Uses the manager to load a script.
+            </summary>
+            <param name="script">The script to load.</param>
+        </member>
+        <member name="T:ClearScript.Manager.IncludeScript">
+            <summary>
+            Script to include in the execution of another script.  This script is executed first.  Can contain functions, libraries etc...
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.IncludeScript.ScriptId">
+            <summary>
+            Unique name of the script to execute.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.IncludeScript.Uri">
+            <summary>
+            Uri (file or Url) of the script to execute.  Need to include script code or script Url.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.IncludeScript.PrependCode">
+            <summary>
+            This code is prepended to the created code.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.IncludeScript.AppendCode">
+            <summary>
+            This code is appended to the created code.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.IncludeScript.Code">
+            <summary>
+            Code of the script to include.  Need to include script code or script Url.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.IncludeScript.EnsureScriptId">
+            <summary>
+            Sets the script Id if it is not set.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.HostObject">
+            <summary>
+            A specific object instance to inject into the javascript to execute.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.HostObject.Name">
+            <summary>
+            Name of the object used to access the object in the JavaScript.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.HostObject.Flags">
+            <summary>
+            HostItemFlags to apply to the HostType.  Limits the scope of the type and which type members are available.
+            See ClearScript documentation for more information.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.HostObject.Target">
+            <summary>
+            The target object to inject into the JavaScript.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.HostType">
+            <summary>
+            A type to make available in JavaScript.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.HostType.Name">
+            <summary>
+            Name of the type that is used to reference the type within the JavaScript.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.HostType.Flags">
+            <summary>
+            HostItemFlags to apply to the HostType.  Limits the scope of the type and which type members are available.
+            See ClearScript documentation for more information.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.HostType.HostTypeCollection">
+            <summary>
+            Host type collections provide convenient scriptable access to all the types defined in one or more host assemblies. 
+            They are hierarchical collections where leaf nodes represent types and parent nodes represent namespaces. 
+            See ClearScript documentation for more information.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.HostType.Type">
+            <summary>
+            An individual type to make available to the script.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.IRuntimeManager">
+            <summary>
+            Runtime Manager used to execute scripts within a runtime.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.IRuntimeManager.AddConsoleReference">
+            <summary>
+            If True, automatically adds a reference to the .Net Console.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.IRuntimeManager.ExecuteAsync(System.String,System.String,System.Action{Microsoft.ClearScript.V8.V8ScriptEngine},System.Boolean)">
+            <summary>
+            Executes the provided script.
+            </summary>
+            <param name="scriptId">Id of the script for caching purposes.</param>
+            <param name="code">Script text to execute.</param>
+            <param name="configAction">An action that accepts the V8 script engine before it's use and configures it.</param>
+            <param name="addToCache">Indicates that this script should be added to the script cache once compiled.  Default is True.</param>
+            <returns>Task to await.</returns>
+        </member>
+        <member name="M:ClearScript.Manager.IRuntimeManager.ExecuteAsync(System.String,System.String,System.Collections.Generic.IList{ClearScript.Manager.HostObject},System.Collections.Generic.IList{ClearScript.Manager.HostType},System.Boolean)">
+            <summary>
+            Executes the provided script.
+            </summary>
+            <param name="scriptId">Id of the script for caching purposes.</param>
+            <param name="code">Script text to execute.</param>
+            <param name="addToCache">Indicates that this script should be added to the script cache once compiled.  Default is True.</param>
+            <param name="hostObjects">Objects to inject into the JavaScript runtime.</param>
+            <param name="hostTypes">Types to make available to the JavaScript runtime.</param>
+            <returns>Task to await.</returns>
+        </member>
+        <member name="M:ClearScript.Manager.IRuntimeManager.ExecuteAsync(System.Collections.Generic.IEnumerable{ClearScript.Manager.IncludeScript},System.Action{Microsoft.ClearScript.V8.V8ScriptEngine},ClearScript.Manager.ExecutionOptions)">
+            <summary>
+            Executes the provided script.
+            </summary>
+            <param name="scripts">A list of include scripts to run.</param>
+            <param name="configAction">An action that accepts the V8 script engine before it's use and configures it.</param>
+            <param name="options">Options to apply to script execution.  HostObjects and HostTypes are ignored by this call.</param>
+            <returns>Task to await.</returns>
+        </member>
+        <member name="M:ClearScript.Manager.IRuntimeManager.ExecuteAsync(System.Collections.Generic.IEnumerable{ClearScript.Manager.IncludeScript},ClearScript.Manager.ExecutionOptions)">
+            <summary>
+            Executes the provided script.
+            </summary>
+            <param name="scripts">A list of include scripts to run.</param>
+            <param name="options">Options to apply to script execution.  HostObjects and HostTypes are ignored by this call.</param>
+            <returns>Task to await.</returns>
+        </member>
+        <member name="M:ClearScript.Manager.IRuntimeManager.ExecuteAsync(System.String,System.String,System.Action{Microsoft.ClearScript.V8.V8ScriptEngine},ClearScript.Manager.ExecutionOptions)">
+            <summary>
+            Executes the provided script.
+            </summary>
+            <param name="scriptId">Id of the script for caching purposes.</param>
+            <param name="code">Script text to execute.</param>
+            <param name="configAction">An action that accepts the V8 script engine before it's use and configures it.</param>
+            <param name="options">Options to apply to script execution.  HostObjects and HostTypes are ignored by this call.</param>
+            <returns>Task to await.</returns>
+        </member>
+        <member name="M:ClearScript.Manager.IRuntimeManager.ExecuteAsync(System.String,System.String,ClearScript.Manager.ExecutionOptions)">
+            <summary>
+            Executes the provided script.
+            </summary>
+            <param name="scriptId">Id of the script for caching purposes.</param>
+            <param name="code">Script text to execute.</param>
+            <param name="options">Options to apply to script execution.  HostObjects and HostTypes are ignored by this call.</param>
+            <returns>Task to await.</returns>
+        </member>
+        <member name="M:ClearScript.Manager.IRuntimeManager.Compile(System.String,System.String,System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            Compiles the provided script.
+            </summary>
+            <param name="scriptId">Id of the script for caching purposes.</param>
+            <param name="code">Script text to execute.</param>
+            <param name="addToCache">Indicates that this script should be added to the script cache once compiled.  Default is True.</param>
+            <param name="cacheExpirationSeconds">Number of seconds that the V8 Script will be cached.</param>
+            <returns>Compiled V8 script.</returns>
+        </member>
+        <member name="M:ClearScript.Manager.IRuntimeManager.TryGetCached(System.String,ClearScript.Manager.Caching.CachedV8Script@)">
+            <summary>
+            Attempts to get the cached script by Id.
+            </summary>
+            <param name="scriptId">Id to search on.</param>
+            <param name="script">Cached script (output)</param>
+            <returns>Bool indicating that cached script was located.</returns>
+        </member>
+        <member name="M:ClearScript.Manager.IRuntimeManager.GetEngine">
+            <summary>
+            Retrieves the script engine for the current runtime manager.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClearScript.Manager.IRuntimeManager.Cleanup">
+            <summary>
+            Cleans up resources in the current runtime.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.RuntimeManager">
+            <summary>
+            Runtime Manager used to execute scripts within a runtime.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.RuntimeManager.#ctor(ClearScript.Manager.IManagerSettings)">
+            <summary>
+            Creates a new Runtime Manager.
+            </summary>
+            <param name="settings">Settings to apply to the Runtime Manager and the scripts it runs.</param>
+        </member>
+        <member name="M:ClearScript.Manager.RuntimeManager.GetEngine">
+            <summary>
+            Retrieves the script engine for the current runtime manager.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClearScript.Manager.RuntimeManager.Dispose(System.Boolean)">
+            <summary>
+            Disposing the current object.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="T:ClearScript.Manager.IManagerPool">
+            <summary>
+            Defines a pool from which Runtime Managers are requested.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.IManagerPool.GetRuntime">
+            <summary>
+            Gets a runtime from the pool.  Blocks until a manager becomes available.
+            </summary>
+            <returns>The next available IRuntimeManager.</returns>
+        </member>
+        <member name="M:ClearScript.Manager.IManagerPool.ReturnToPool(ClearScript.Manager.IRuntimeManager)">
+            <summary>
+            Returns a Runtime Manager to the pool.
+            </summary>
+            <param name="runtimeManager">The Runtime Manager to return to the pool.</param>
+        </member>
+        <member name="T:ClearScript.Manager.ManagerPool">
+            <summary>
+            Defines a pool from which Runtime Managers are requested.
+            </summary>
+        </member>
+        <member name="F:ClearScript.Manager.ManagerPool.CurrentPool">
+            <summary>
+            Static reference to the current pool of Runtime Managers.
+            </summary>
+        </member>
+        <member name="F:ClearScript.Manager.ManagerPool.RuntimeCurrentCount">
+            <summary>
+            Current count of Runtimes within the pool.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.ManagerPool.#ctor(ClearScript.Manager.IManagerSettings)">
+            <summary>
+            Creates a new Runtime Manager Pool.
+            </summary>
+            <param name="settings">Settings to apply to the Runtime Manager.</param>
+        </member>
+        <member name="M:ClearScript.Manager.ManagerPool.InitializeCurrentPool(ClearScript.Manager.IManagerSettings)">
+            <summary>
+            Initializes the CurrentPool with the provided settings.  
+            </summary>
+            <param name="settings">Settings to apply.</param>
+        </member>
+        <member name="T:ClearScript.Manager.ManagerScope">
+            <summary>
+            Scope in which a Runtime Manager is requested from the pool and returned upon completion.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.ManagerScope.#ctor">
+            <summary>
+            Creates a new ManagerScope and requests a RuntimeManager.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.ManagerScope.RuntimeManager">
+            <summary>
+            Allows access to the allocated Runtime Manager from within this scope.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.ManagerScope.Dispose">
+            <summary>
+            Disposed the object and returns the Runtime Manager to the pool.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.IManagerSettings">
+            <summary>
+            Settings to apply to the RuntimeManager and to created runtimes.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.IManagerSettings.MaxExecutableBytes">
+            <summary>
+            V8 Max Executable Size in bytes.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.IManagerSettings.MaxNewSpaceBytes">
+            <summary>
+            V8 Max New Space in bytes.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.IManagerSettings.MaxYoungSpaceBytes">
+            <summary>
+            V8 Max Young Space in bytes.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.IManagerSettings.MaxOldSpaceBytes">
+            <summary>
+            V8 Max Old Space in bytes.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.IManagerSettings.ScriptTimeoutMilliSeconds">
+            <summary>
+            Default script timeout in ms.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.IManagerSettings.RuntimeMaxCount">
+            <summary>
+            Max number of simultaneous V8 Runtimes.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.IManagerSettings.ScriptCacheMaxCount">
+            <summary>
+            Per Runtime, the maximum number of cached scripts.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.IManagerSettings.ScriptCacheExpirationSeconds">
+            <summary>
+            The default script cache expiration in seconds.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.IManagerSettings.V8DebugEnabled">
+            <summary>
+            Is debugging enabled.
+            </summary>
+        </member>
+        <member name="P:ClearScript.Manager.IManagerSettings.V8DebugPort">
+            <summary>
+            What is the debug port.
+            </summary>
+        </member>
+        <member name="T:ClearScript.Manager.ManagerSettings">
+            <summary>
+            Settings to apply to the RuntimeManager and to created runtimes.
+            </summary>
+        </member>
+        <member name="F:ClearScript.Manager.ManagerSettings.DefaultMaxExecutableBytes">
+            <summary>
+            Default MaxExecutableBytes if not present in settings.
+            </summary>
+        </member>
+        <member name="F:ClearScript.Manager.ManagerSettings.DefaultMaxNewSpaceBytes">
+            <summary>
+            Default MaxNewSpaceBytes if not present in settings.
+            </summary>
+        </member>
+        <member name="F:ClearScript.Manager.ManagerSettings.DefaultMaxOldSpaceBytes">
+            <summary>
+            Default tMaxOldSpaceBytes if not present in settings.
+            </summary>
+        </member>
+        <member name="F:ClearScript.Manager.ManagerSettings.DefaultScriptTimeoutMilliSeconds">
+            <summary>
+            Default ScriptTimeoutMilliSeconds if not present in settings.
+            </summary>
+        </member>
+        <member name="F:ClearScript.Manager.ManagerSettings.DefaultRuntimeMaxCount">
+            <summary>
+            Default RuntimeMaxCount if not present in settings.
+            </summary>
+        </member>
+        <member name="F:ClearScript.Manager.ManagerSettings.DefaultScriptCacheMaxCount">
+            <summary>
+            Default ScriptCacheMaxCount if not present in settings.
+            </summary>
+        </member>
+        <member name="F:ClearScript.Manager.ManagerSettings.DefaultScriptCacheExpirationSeconds">
+            <summary>
+            Default ScriptCacheExpirationSeconds if not present in settings.
+            </summary>
+        </member>
+        <member name="F:ClearScript.Manager.ManagerSettings.DefaultDebugPort">
+            <summary>
+            Default ScriptCacheExpirationSeconds if not present in settings.
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.ManagerSettings.SettingToInt(System.String,System.Int32)">
+            <summary>
+            Parses the setting and converts it to an int or sets the default value if the setting is not present.
+            </summary>
+            <param name="settingName">Name of the setting to check.</param>
+            <param name="defaultValue">Default value if setting is not present.</param>
+            <returns>Setting or default value.</returns>
+        </member>
+        <member name="M:ClearScript.Manager.ManagerSettings.SettingToBool(System.String,System.Boolean)">
+            <summary>
+            Parses the setting and converts it to a bool or sets the default value if the setting is not present.
+            </summary>
+            <param name="settingName">Name of the setting to check.</param>
+            <param name="defaultValue">Default value if setting is not present.</param>
+            <returns>Setting or default value.</returns>
+        </member>
+        <member name="T:ClearScript.Manager.ManualManagerSettings">
+            <summary>
+            This settings class is mainly for testing scenarios
+            </summary>
+        </member>
+        <member name="M:ClearScript.Manager.ManualManagerSettings.#ctor">
+            <summary>
+            Creates a ManualManagerSettings.
+            </summary>
+        </member>
+    </members>
+</doc>

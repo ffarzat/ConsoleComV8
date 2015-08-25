@@ -15,7 +15,7 @@ namespace ConsoleComV8
         static void Main(string[] args)
         {
             var helper = new JavascriptHelper(Environment.CurrentDirectory);
-            helper.ExecutarTestes("lodash.js", "lodashTest.js");
+            helper.ExecutarTestes("global.js", "core-test.js");
         }
 
     }
