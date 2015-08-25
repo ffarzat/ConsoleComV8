@@ -7375,3 +7375,2383 @@
     at Script Document [12]:2053:25
     at Array.<anonymous> (Script Document [11]:768:19)
     at Script Document [397]:1:25
+2015-08-24 22:05:53.8978|Info|  Settimeout: id:0, (500) ms
+2015-08-24 22:05:54.4447|Info|      Executando timer: id:0, (22:05:54.4447)
+2015-08-24 22:05:54.6634|Info|Iniciando os testes
+2015-08-24 22:05:54.6790|Info|          Deveria ter disparado: function () { funcToCall(); setTimeout(funcToCall, millis); }
+2015-08-24 22:05:54.6790|Info|  Settimeout: id:1, (13) ms
+2015-08-24 22:06:37.1741|Info|Iniciando os testes
+2015-08-24 22:06:39.2992|Info|Encerrando os testes
+2015-08-24 22:06:39.2992|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-24 22:06:39.2992|Info|2 segundos para avaliar o individuo global.js
+2015-08-24 22:06:43.9502|Info|  Settimeout: id:0, (500) ms
+2015-08-24 22:06:44.1365|Info|Iniciando os testes
+2015-08-24 22:06:44.1365|Info|  Settimeout: id:1, (13) ms
+2015-08-24 22:06:44.1678|Info|      Executando timer: id:1, (22:06:44.1678)
+2015-08-24 22:06:44.2303|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:44.2772|Info|----------------------------------------
+2015-08-24 22:06:44.2772|Info|Arrays
+2015-08-24 22:06:44.2772|Info|----------------------------------------
+2015-08-24 22:06:44.2772|Info| PASS - first
+2015-08-24 22:06:44.2928|Info| PASS - head
+2015-08-24 22:06:44.3084|Info| PASS - take
+2015-08-24 22:06:44.3084|Info| PASS - rest
+2015-08-24 22:06:44.3084|Info| PASS - tail
+2015-08-24 22:06:44.3084|Info| PASS - drop
+2015-08-24 22:06:44.3084|Info| PASS - initial
+2015-08-24 22:06:44.3084|Info| PASS - last
+2015-08-24 22:06:44.3084|Info| PASS - compact
+2015-08-24 22:06:44.4803|Info| PASS - flatten
+2015-08-24 22:06:44.4803|Info| PASS - without
+2015-08-24 22:06:44.4803|Info| PASS - sortedIndex
+2015-08-24 22:06:44.4803|Info| PASS - uniq
+2015-08-24 22:06:44.4803|Info| PASS - unique
+2015-08-24 22:06:44.4803|Info| PASS - intersection
+2015-08-24 22:06:44.4803|Info| PASS - union
+2015-08-24 22:06:44.4803|Info| PASS - difference
+2015-08-24 22:06:44.4803|Info| PASS - zip
+2015-08-24 22:06:44.4959|Info| PASS - unzip
+2015-08-24 22:06:44.4959|Info| PASS - object
+2015-08-24 22:06:44.4959|Info| PASS - indexOf
+2015-08-24 22:06:44.4959|Info| PASS - indexOf with NaN
+2015-08-24 22:06:44.4959|Info| PASS - indexOf with +- 0
+2015-08-24 22:06:44.4959|Info| PASS - lastIndexOf
+2015-08-24 22:06:44.4959|Info| PASS - lastIndexOf with NaN
+2015-08-24 22:06:44.4959|Info| PASS - lastIndexOf with +- 0
+2015-08-24 22:06:44.4959|Info| PASS - findIndex
+2015-08-24 22:06:44.4959|Info| PASS - findLastIndex
+2015-08-24 22:06:44.4959|Info| PASS - range
+2015-08-24 22:06:44.5115|Info|----------------------------------------
+2015-08-24 22:06:44.5115|Info|Chaining
+2015-08-24 22:06:44.5115|Info|----------------------------------------
+2015-08-24 22:06:44.5115|Info| PASS - map/flatten/reduce
+2015-08-24 22:06:44.5115|Info| PASS - select/reject/sortBy
+2015-08-24 22:06:44.5115|Info| PASS - select/reject/sortBy in functional style
+2015-08-24 22:06:44.5115|Info| PASS - reverse/concat/unshift/pop/map
+2015-08-24 22:06:44.5115|Info| PASS - splice
+2015-08-24 22:06:44.5115|Info| PASS - shift
+2015-08-24 22:06:44.5115|Info| PASS - pop
+2015-08-24 22:06:44.5115|Info| PASS - chaining works in small stages
+2015-08-24 22:06:44.5115|Info| PASS - #1562: Engine proxies for chained functions
+2015-08-24 22:06:44.5115|Info|----------------------------------------
+2015-08-24 22:06:44.5115|Info|Collections
+2015-08-24 22:06:44.5115|Info|----------------------------------------
+2015-08-24 22:06:44.5272|Info| PASS - each
+2015-08-24 22:06:44.5272|Info| PASS - forEach
+2015-08-24 22:06:44.5272|Info| PASS - lookupIterator with contexts
+2015-08-24 22:06:44.5272|Info| PASS - Iterating objects with sketchy length properties
+2015-08-24 22:06:44.5272|Info| PASS - Resistant to collection length and properties changing while iterating
+2015-08-24 22:06:44.5272|Info| PASS - map
+2015-08-24 22:06:44.5272|Info| PASS - collect
+2015-08-24 22:06:44.5272|Info| PASS - reduce
+2015-08-24 22:06:44.5272|Info| PASS - foldl
+2015-08-24 22:06:44.5272|Info| PASS - reduceRight
+2015-08-24 22:06:44.5428|Info| PASS - foldr
+2015-08-24 22:06:44.5428|Info| PASS - find
+2015-08-24 22:06:44.5428|Info| PASS - detect
+2015-08-24 22:06:44.5428|Info| PASS - filter
+2015-08-24 22:06:44.5428|Info| PASS - select
+2015-08-24 22:06:44.5428|Info| PASS - reject
+2015-08-24 22:06:44.5428|Info| PASS - every
+2015-08-24 22:06:44.5428|Info| PASS - all
+2015-08-24 22:06:44.5428|Info| PASS - some
+2015-08-24 22:06:44.5428|Info| PASS - any
+2015-08-24 22:06:44.5428|Info| PASS - includes
+2015-08-24 22:06:44.5428|Info| PASS - include
+2015-08-24 22:06:44.5428|Info| PASS - contains
+2015-08-24 22:06:44.5428|Info| PASS - includes with NaN
+2015-08-24 22:06:44.5584|Info| PASS - includes with +- 0
+2015-08-24 22:06:44.5584|Info| PASS - invoke
+2015-08-24 22:06:44.5584|Info| PASS - invoke w/ function reference
+2015-08-24 22:06:44.5584|Info| PASS - invoke when strings have a call method
+2015-08-24 22:06:44.5584|Info| PASS - pluck
+2015-08-24 22:06:44.5584|Info| PASS - where
+2015-08-24 22:06:44.5584|Info| PASS - findWhere
+2015-08-24 22:06:44.5755|Info| PASS - max
+2015-08-24 22:06:44.5755|Info| PASS - min
+2015-08-24 22:06:44.5835|Info| PASS - sortBy
+2015-08-24 22:06:44.5835|Info| PASS - groupBy
+2015-08-24 22:06:44.5835|Info| PASS - indexBy
+2015-08-24 22:06:44.5835|Info| PASS - countBy
+2015-08-24 22:06:44.5835|Info| PASS - shuffle
+2015-08-24 22:06:44.5835|Info| PASS - sample
+2015-08-24 22:06:44.5835|Info| PASS - toArray
+2015-08-24 22:06:44.5835|Info| PASS - size
+2015-08-24 22:06:44.5835|Info| PASS - partition
+2015-08-24 22:06:44.5995|Info|----------------------------------------
+2015-08-24 22:06:44.5995|Info|Functions
+2015-08-24 22:06:44.5995|Info|----------------------------------------
+2015-08-24 22:06:44.5995|Info| PASS - bind
+2015-08-24 22:06:44.5995|Info| PASS - partial
+2015-08-24 22:06:44.5995|Info| PASS - bindAll
+2015-08-24 22:06:44.5995|Info| PASS - memoize
+2015-08-24 22:06:44.5995|Info|  Settimeout: id:2, (100) ms
+2015-08-24 22:06:44.6621|Info|  Settimeout: id:3, (50) ms
+2015-08-24 22:06:44.7246|Info|  Settimeout: id:4, (150) ms
+2015-08-24 22:06:44.7871|Info|      Encerrado timer: id:1, (22:06:44.7871)
+2015-08-24 22:06:44.7871|Info|      Executando timer: id:0, (22:06:44.7871)
+2015-08-24 22:06:44.7871|Info|          Deveria ter disparado: function () { funcToCall(); setTimeout(funcToCall, millis); }
+2015-08-24 22:06:44.8964|Info|  Settimeout: id:5, (500) ms
+2015-08-24 22:06:44.9590|Info|      Encerrado timer: id:0, (22:06:44.9590)
+2015-08-24 22:06:44.9590|Info|      Executando timer: id:2, (22:06:44.9590)
+2015-08-24 22:06:44.9590|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:44.9590|Info|      Encerrado timer: id:2, (22:06:44.9590)
+2015-08-24 22:06:44.9590|Info|      Executando timer: id:3, (22:06:44.9590)
+2015-08-24 22:06:44.9590|Info|          Deveria ter disparado: function (){ ok(!delayed, "didn't delay the function quite yet"); }
+2015-08-24 22:06:44.9746|Info|      Encerrado timer: id:3, (22:06:44.9746)
+2015-08-24 22:06:44.9746|Info|      Executando timer: id:4, (22:06:44.9746)
+2015-08-24 22:06:44.9746|Info|          Deveria ter disparado: function (){ ok(delayed, 'delayed the function'); start(); }
+2015-08-24 22:06:44.9746|Info|  Settimeout: id:6, (13) ms
+2015-08-24 22:06:45.0371|Info|      Encerrado timer: id:4, (22:06:45.0371)
+2015-08-24 22:06:45.0371|Info|      Executando timer: id:6, (22:06:45.0371)
+2015-08-24 22:06:45.0371|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:45.0371|Info|  Settimeout: id:7, (1) ms
+2015-08-24 22:06:45.0996|Info|  Settimeout: id:8, (50) ms
+2015-08-24 22:06:45.1621|Info|      Encerrado timer: id:6, (22:06:45.1621)
+2015-08-24 22:06:45.1621|Info|      Executando timer: id:7, (22:06:45.1621)
+2015-08-24 22:06:45.1621|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:45.1621|Info|      Encerrado timer: id:7, (22:06:45.1621)
+2015-08-24 22:06:45.1621|Info|      Executando timer: id:8, (22:06:45.1621)
+2015-08-24 22:06:45.1621|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:45.1777|Info|  Settimeout: id:9, (13) ms
+2015-08-24 22:06:45.2402|Info|      Encerrado timer: id:8, (22:06:45.2402)
+2015-08-24 22:06:45.2402|Info|      Executando timer: id:9, (22:06:45.2402)
+2015-08-24 22:06:45.2402|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:45.2402|Info| PASS - defer
+2015-08-24 22:06:45.2402|Info|  Settimeout: id:10, (32) ms
+2015-08-24 22:06:45.3027|Info|  Settimeout: id:11, (64) ms
+2015-08-24 22:06:45.3652|Info|      Encerrado timer: id:9, (22:06:45.3652)
+2015-08-24 22:06:45.3652|Info|      Executando timer: id:10, (22:06:45.3652)
+2015-08-24 22:06:45.3652|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:45.3652|Info|      Encerrado timer: id:10, (22:06:45.3652)
+2015-08-24 22:06:45.3809|Info|      Executando timer: id:11, (22:06:45.3809)
+2015-08-24 22:06:45.3809|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:45.3809|Info|  Settimeout: id:12, (13) ms
+2015-08-24 22:06:45.4434|Info|      Encerrado timer: id:11, (22:06:45.4434)
+2015-08-24 22:06:45.4434|Info|      Executando timer: id:5, (22:06:45.4434)
+2015-08-24 22:06:45.4434|Info|          Deveria ter disparado: function logThrobber() {
+      logInline('Please wait' + repeat('.', (++waitCount % 3) + 1));
+    }
+2015-08-24 22:06:45.4434|Info|      Encerrado timer: id:5, (22:06:45.4434)
+2015-08-24 22:06:45.4434|Info|      Executando timer: id:12, (22:06:45.4434)
+2015-08-24 22:06:45.4434|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:45.4434|Info| PASS - throttle
+2015-08-24 22:06:45.4589|Info|  Settimeout: id:13, (32) ms
+2015-08-24 22:06:45.5215|Info|  Settimeout: id:14, (64) ms
+2015-08-24 22:06:45.5840|Info|  Settimeout: id:15, (96) ms
+2015-08-24 22:06:45.6465|Info|      Encerrado timer: id:12, (22:06:45.6465)
+2015-08-24 22:06:45.6465|Info|      Executando timer: id:13, (22:06:45.6465)
+2015-08-24 22:06:45.6465|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:45.6465|Info|      Encerrado timer: id:13, (22:06:45.6465)
+2015-08-24 22:06:45.6465|Info|      Executando timer: id:14, (22:06:45.6465)
+2015-08-24 22:06:45.6465|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:45.6465|Info|  Settimeout: id:16, (32) ms
+2015-08-24 22:06:45.7246|Info|      Encerrado timer: id:14, (22:06:45.7246)
+2015-08-24 22:06:45.7246|Info|      Executando timer: id:15, (22:06:45.7246)
+2015-08-24 22:06:45.7246|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:45.7246|Info|  Settimeout: id:17, (13) ms
+2015-08-24 22:06:45.7871|Info|      Encerrado timer: id:15, (22:06:45.7871)
+2015-08-24 22:06:45.7871|Info|      Executando timer: id:16, (22:06:45.7871)
+2015-08-24 22:06:45.7871|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:45.7871|Info|      Encerrado timer: id:16, (22:06:45.7871)
+2015-08-24 22:06:45.7871|Info|      Executando timer: id:17, (22:06:45.7871)
+2015-08-24 22:06:45.7871|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:45.7871|Info|  Settimeout: id:18, (64) ms
+2015-08-24 22:06:45.8808|Info|      Encerrado timer: id:17, (22:06:45.8808)
+2015-08-24 22:06:45.8965|Info|      Executando timer: id:18, (22:06:45.8965)
+2015-08-24 22:06:45.8965|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:45.8965|Info|  Settimeout: id:19, (13) ms
+2015-08-24 22:06:45.9595|Info|      Encerrado timer: id:18, (22:06:45.9595)
+2015-08-24 22:06:45.9595|Info|      Executando timer: id:19, (22:06:45.9599)
+2015-08-24 22:06:45.9595|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:45.9595|Info| PASS - throttle once
+2015-08-24 22:06:45.9595|Info|  Settimeout: id:20, (32) ms
+2015-08-24 22:06:46.0225|Info|  Settimeout: id:21, (64) ms
+2015-08-24 22:06:46.0850|Info|      Encerrado timer: id:19, (22:06:46.0850)
+2015-08-24 22:06:46.0850|Info|      Executando timer: id:20, (22:06:46.0850)
+2015-08-24 22:06:46.0850|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:46.0850|Info|      Encerrado timer: id:20, (22:06:46.0850)
+2015-08-24 22:06:46.1005|Info|      Executando timer: id:21, (22:06:46.1005)
+2015-08-24 22:06:46.1005|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:46.1005|Info|  Settimeout: id:22, (13) ms
+2015-08-24 22:06:46.1631|Info|      Encerrado timer: id:21, (22:06:46.1631)
+2015-08-24 22:06:46.1631|Info|      Executando timer: id:22, (22:06:46.1631)
+2015-08-24 22:06:46.1631|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:46.1631|Info| PASS - throttle twice
+2015-08-24 22:06:46.1631|Info|  Settimeout: id:23, (30) ms
+2015-08-24 22:06:46.2256|Info|  Settimeout: id:24, (85) ms
+2015-08-24 22:06:46.2881|Info|      Encerrado timer: id:22, (22:06:46.2881)
+2015-08-24 22:06:46.2881|Info|      Executando timer: id:23, (22:06:46.2881)
+2015-08-24 22:06:46.2881|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:46.2881|Info|      Encerrado timer: id:23, (22:06:46.2881)
+2015-08-24 22:06:46.3193|Info|      Executando timer: id:24, (22:06:46.3193)
+2015-08-24 22:06:46.3193|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:46.3193|Info|  Settimeout: id:25, (13) ms
+2015-08-24 22:06:46.3819|Info|      Encerrado timer: id:24, (22:06:46.3819)
+2015-08-24 22:06:46.3819|Info|      Executando timer: id:25, (22:06:46.3819)
+2015-08-24 22:06:46.3819|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:46.3974|Info| PASS - more throttling
+2015-08-24 22:06:46.3974|Info|  Settimeout: id:26, (100) ms
+2015-08-24 22:06:46.4600|Info|  Settimeout: id:27, (50) ms
+2015-08-24 22:06:46.5225|Info|  Settimeout: id:28, (150) ms
+2015-08-24 22:06:46.5850|Info|  Settimeout: id:29, (160) ms
+2015-08-24 22:06:46.6475|Info|  Settimeout: id:30, (230) ms
+2015-08-24 22:06:46.7100|Info|  Settimeout: id:31, (300) ms
+2015-08-24 22:06:46.7725|Info|      Encerrado timer: id:25, (22:06:46.7725)
+2015-08-24 22:06:46.7725|Info|      Executando timer: id:26, (22:06:46.7725)
+2015-08-24 22:06:46.7725|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:46.7725|Info|      Encerrado timer: id:26, (22:06:46.7725)
+2015-08-24 22:06:46.7725|Info|      Executando timer: id:27, (22:06:46.7725)
+2015-08-24 22:06:46.7725|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:46.7881|Info|  Settimeout: id:32, (100) ms
+2015-08-24 22:06:46.8506|Info|      Encerrado timer: id:27, (22:06:46.8506)
+2015-08-24 22:06:46.8506|Info|      Executando timer: id:28, (22:06:46.8506)
+2015-08-24 22:06:46.8506|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:46.8506|Info|      Encerrado timer: id:28, (22:06:46.8506)
+2015-08-24 22:06:46.8506|Info|      Executando timer: id:29, (22:06:46.8506)
+2015-08-24 22:06:46.8506|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:46.8506|Info|      Encerrado timer: id:29, (22:06:46.8506)
+2015-08-24 22:06:46.8819|Info|      Executando timer: id:30, (22:06:46.8819)
+2015-08-24 22:06:46.8819|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:46.8819|Info|      Encerrado timer: id:30, (22:06:46.8819)
+2015-08-24 22:06:47.0225|Info|      Executando timer: id:31, (22:06:47.0225)
+2015-08-24 22:06:47.0225|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:47.0225|Info|  Settimeout: id:33, (13) ms
+2015-08-24 22:06:47.0850|Info|      Encerrado timer: id:31, (22:06:47.0850)
+2015-08-24 22:06:47.0850|Info|      Executando timer: id:33, (22:06:47.0850)
+2015-08-24 22:06:47.0850|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:47.0850|Info|  Settimeout: id:34, (32) ms
+2015-08-24 22:06:47.1475|Info|  Settimeout: id:35, (96) ms
+2015-08-24 22:06:47.2100|Info|      Encerrado timer: id:33, (22:06:47.2100)
+2015-08-24 22:06:47.2100|Info|      Executando timer: id:34, (22:06:47.2100)
+2015-08-24 22:06:47.2100|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:47.2100|Info|      Encerrado timer: id:34, (22:06:47.2100)
+2015-08-24 22:06:47.2568|Info|      Executando timer: id:35, (22:06:47.2568)
+2015-08-24 22:06:47.2568|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:47.2568|Info|  Settimeout: id:36, (13) ms
+2015-08-24 22:06:47.3194|Info|      Encerrado timer: id:35, (22:06:47.3194)
+2015-08-24 22:06:47.3194|Info|      Executando timer: id:36, (22:06:47.3194)
+2015-08-24 22:06:47.3194|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:47.3194|Info|  Settimeout: id:37, (60) ms
+2015-08-24 22:06:47.3819|Info|  Settimeout: id:38, (96) ms
+2015-08-24 22:06:47.4444|Info|      Encerrado timer: id:36, (22:06:47.4444)
+2015-08-24 22:06:47.4912|Info|      Executando timer: id:38, (22:06:47.4912)
+2015-08-24 22:06:47.4912|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:47.4912|Info|  Settimeout: id:39, (13) ms
+2015-08-24 22:06:47.5537|Info|      Encerrado timer: id:38, (22:06:47.5537)
+2015-08-24 22:06:47.5537|Info|      Executando timer: id:39, (22:06:47.5537)
+2015-08-24 22:06:47.5537|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:47.5537|Info|  Settimeout: id:40, (100) ms
+2015-08-24 22:06:47.6162|Info|  Settimeout: id:41, (50) ms
+2015-08-24 22:06:47.6787|Info|  Settimeout: id:42, (60) ms
+2015-08-24 22:06:47.7412|Info|  Settimeout: id:43, (200) ms
+2015-08-24 22:06:47.8037|Info|  Settimeout: id:44, (250) ms
+2015-08-24 22:06:47.8662|Info|  Settimeout: id:45, (350) ms
+2015-08-24 22:06:47.9287|Info|      Encerrado timer: id:39, (22:06:47.9287)
+2015-08-24 22:06:47.9287|Info|      Executando timer: id:40, (22:06:47.9287)
+2015-08-24 22:06:47.9287|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:47.9287|Info|      Encerrado timer: id:40, (22:06:47.9287)
+2015-08-24 22:06:47.9287|Info|      Executando timer: id:41, (22:06:47.9287)
+2015-08-24 22:06:47.9287|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:47.9287|Info|  Settimeout: id:46, (100) ms
+2015-08-24 22:06:48.0077|Info|      Encerrado timer: id:41, (22:06:48.0077)
+2015-08-24 22:06:48.0077|Info|      Executando timer: id:42, (22:06:48.0077)
+2015-08-24 22:06:48.0077|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:48.0077|Info|      Encerrado timer: id:42, (22:06:48.0077)
+2015-08-24 22:06:48.0077|Info|      Executando timer: id:43, (22:06:48.0077)
+2015-08-24 22:06:48.0077|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:48.0077|Info|      Encerrado timer: id:43, (22:06:48.0077)
+2015-08-24 22:06:48.0546|Info|      Executando timer: id:46, (22:06:48.0546)
+2015-08-24 22:06:48.0546|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:48.0546|Info|      Encerrado timer: id:46, (22:06:48.0546)
+2015-08-24 22:06:48.0702|Info|      Executando timer: id:44, (22:06:48.0702)
+2015-08-24 22:06:48.0702|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:48.0702|Info|      Encerrado timer: id:44, (22:06:48.0702)
+2015-08-24 22:06:48.2264|Info|      Executando timer: id:45, (22:06:48.2264)
+2015-08-24 22:06:48.2264|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:48.2264|Info|  Settimeout: id:47, (13) ms
+2015-08-24 22:06:48.2889|Info|      Encerrado timer: id:45, (22:06:48.2889)
+2015-08-24 22:06:48.2889|Info|      Executando timer: id:47, (22:06:48.2889)
+2015-08-24 22:06:48.2889|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:48.2889|Info|  Settimeout: id:48, (100) ms
+2015-08-24 22:06:48.3983|Info|  Settimeout: id:49, (100) ms
+2015-08-24 22:06:48.5077|Info|  Settimeout: id:50, (100) ms
+2015-08-24 22:06:48.6170|Info|  Settimeout: id:51, (100) ms
+2015-08-24 22:06:48.6796|Info|  Settimeout: id:52, (200) ms
+2015-08-24 22:06:48.7421|Info|      Encerrado timer: id:47, (22:06:48.7421)
+2015-08-24 22:06:48.7421|Info|      Executando timer: id:51, (22:06:48.7421)
+2015-08-24 22:06:48.7421|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:48.7421|Info|      Encerrado timer: id:51, (22:06:48.7421)
+2015-08-24 22:06:48.8983|Info|      Executando timer: id:52, (22:06:48.8983)
+2015-08-24 22:06:48.8983|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:48.8983|Info|  Settimeout: id:53, (13) ms
+2015-08-24 22:06:48.9610|Info|      Encerrado timer: id:52, (22:06:48.9610)
+2015-08-24 22:06:48.9610|Info|      Executando timer: id:53, (22:06:48.9613)
+2015-08-24 22:06:48.9610|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:48.9770|Info| PASS - one more throttle with leading: false test
+2015-08-24 22:06:48.9770|Info|  Settimeout: id:54, (96) ms
+2015-08-24 22:06:49.0395|Info|      Encerrado timer: id:53, (22:06:49.0395)
+2015-08-24 22:06:49.0864|Info|      Executando timer: id:54, (22:06:49.0864)
+2015-08-24 22:06:49.0864|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:49.0864|Info|  Settimeout: id:55, (96) ms
+2015-08-24 22:06:49.1489|Info|      Encerrado timer: id:54, (22:06:49.1489)
+2015-08-24 22:06:49.1957|Info|      Executando timer: id:55, (22:06:49.1957)
+2015-08-24 22:06:49.1957|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:49.1957|Info|  Settimeout: id:56, (13) ms
+2015-08-24 22:06:49.2583|Info|      Encerrado timer: id:55, (22:06:49.2583)
+2015-08-24 22:06:49.2583|Info|      Executando timer: id:56, (22:06:49.2583)
+2015-08-24 22:06:49.2583|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:49.2583|Info| PASS - throttle does not trigger trailing call when trailing is set to false
+2015-08-24 22:06:49.2583|Info|  Settimeout: id:57, (200) ms
+2015-08-24 22:06:49.3208|Info|      Encerrado timer: id:56, (22:06:49.3208)
+2015-08-24 22:06:49.4770|Info|      Executando timer: id:57, (22:06:49.4770)
+2015-08-24 22:06:49.4770|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:49.4770|Info|  Settimeout: id:58, (13) ms
+2015-08-24 22:06:49.5395|Info|      Encerrado timer: id:57, (22:06:49.5395)
+2015-08-24 22:06:49.5395|Info|      Executando timer: id:58, (22:06:49.5395)
+2015-08-24 22:06:49.5395|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:49.5395|Info| PASS - throttle continues to function after system time is set backwards
+2015-08-24 22:06:49.5395|Info|  Settimeout: id:59, (32) ms
+2015-08-24 22:06:49.6020|Info|  Settimeout: id:60, (100) ms
+2015-08-24 22:06:49.6645|Info|      Encerrado timer: id:58, (22:06:49.6645)
+2015-08-24 22:06:49.6645|Info|      Executando timer: id:59, (22:06:49.6645)
+2015-08-24 22:06:49.6645|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:49.6645|Info|  Settimeout: id:61, (32) ms
+2015-08-24 22:06:49.7270|Info|      Encerrado timer: id:59, (22:06:49.7270)
+2015-08-24 22:06:49.7270|Info|      Executando timer: id:61, (22:06:49.7270)
+2015-08-24 22:06:49.7270|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:49.7270|Info|      Encerrado timer: id:61, (22:06:49.7270)
+2015-08-24 22:06:49.7270|Info|      Executando timer: id:60, (22:06:49.7270)
+2015-08-24 22:06:49.7270|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:49.7426|Info|  Settimeout: id:62, (13) ms
+2015-08-24 22:06:49.8052|Info|      Encerrado timer: id:60, (22:06:49.8052)
+2015-08-24 22:06:49.8052|Info|      Executando timer: id:62, (22:06:49.8052)
+2015-08-24 22:06:49.8052|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:49.8052|Info| PASS - throttle re-entrant
+2015-08-24 22:06:49.8052|Info|  Settimeout: id:63, (32) ms
+2015-08-24 22:06:49.8676|Info|  Settimeout: id:64, (16) ms
+2015-08-24 22:06:49.9301|Info|  Settimeout: id:65, (96) ms
+2015-08-24 22:06:49.9938|Info|      Encerrado timer: id:62, (22:06:49.9938)
+2015-08-24 22:06:49.9938|Info|      Executando timer: id:63, (22:06:49.9938)
+2015-08-24 22:06:49.9938|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:49.9938|Info|      Encerrado timer: id:63, (22:06:49.9938)
+2015-08-24 22:06:49.9938|Info|      Executando timer: id:64, (22:06:49.9938)
+2015-08-24 22:06:49.9938|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:50.0094|Info|  Settimeout: id:66, (32) ms
+2015-08-24 22:06:50.0720|Info|      Encerrado timer: id:64, (22:06:50.0720)
+2015-08-24 22:06:50.0720|Info|      Executando timer: id:65, (22:06:50.0720)
+2015-08-24 22:06:50.0720|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:50.0720|Info|  Settimeout: id:67, (13) ms
+2015-08-24 22:06:50.1345|Info|      Encerrado timer: id:65, (22:06:50.1345)
+2015-08-24 22:06:50.1345|Info|      Executando timer: id:66, (22:06:50.1345)
+2015-08-24 22:06:50.1345|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:50.1345|Info|      Encerrado timer: id:66, (22:06:50.1345)
+2015-08-24 22:06:50.1345|Info|      Executando timer: id:67, (22:06:50.1345)
+2015-08-24 22:06:50.1345|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:50.1501|Info| PASS - debounce
+2015-08-24 22:06:50.1501|Info|  Settimeout: id:68, (64) ms
+2015-08-24 22:06:50.2126|Info|  Settimeout: id:69, (16) ms
+2015-08-24 22:06:50.2751|Info|  Settimeout: id:70, (32) ms
+2015-08-24 22:06:50.3376|Info|  Settimeout: id:71, (48) ms
+2015-08-24 22:06:50.4001|Info|  Settimeout: id:72, (128) ms
+2015-08-24 22:06:50.4594|Info|      Encerrado timer: id:67, (22:06:50.4594)
+2015-08-24 22:06:50.4594|Info|      Executando timer: id:68, (22:06:50.4594)
+2015-08-24 22:06:50.4594|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:50.4594|Info|      Encerrado timer: id:68, (22:06:50.4594)
+2015-08-24 22:06:50.4594|Info|      Executando timer: id:69, (22:06:50.4594)
+2015-08-24 22:06:50.4594|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:50.4594|Info|  Settimeout: id:73, (64) ms
+2015-08-24 22:06:50.5375|Info|      Encerrado timer: id:69, (22:06:50.5375)
+2015-08-24 22:06:50.5375|Info|      Executando timer: id:70, (22:06:50.5375)
+2015-08-24 22:06:50.5375|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:50.5375|Info|      Encerrado timer: id:70, (22:06:50.5375)
+2015-08-24 22:06:50.5375|Info|      Executando timer: id:71, (22:06:50.5375)
+2015-08-24 22:06:50.5375|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:50.5375|Info|      Encerrado timer: id:71, (22:06:50.5375)
+2015-08-24 22:06:50.5531|Info|      Executando timer: id:72, (22:06:50.5531)
+2015-08-24 22:06:50.5531|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:50.5531|Info|  Settimeout: id:74, (13) ms
+2015-08-24 22:06:50.6156|Info|      Encerrado timer: id:72, (22:06:50.6156)
+2015-08-24 22:06:50.6156|Info|      Executando timer: id:73, (22:06:50.6156)
+2015-08-24 22:06:50.6156|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:50.6156|Info|      Encerrado timer: id:73, (22:06:50.6156)
+2015-08-24 22:06:50.6156|Info|      Executando timer: id:74, (22:06:50.6156)
+2015-08-24 22:06:50.6156|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:50.6156|Info|  Settimeout: id:75, (32) ms
+2015-08-24 22:06:50.6781|Info|  Settimeout: id:76, (96) ms
+2015-08-24 22:06:50.7406|Info|      Encerrado timer: id:74, (22:06:50.7406)
+2015-08-24 22:06:50.7406|Info|      Executando timer: id:75, (22:06:50.7406)
+2015-08-24 22:06:50.7406|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:50.7406|Info|      Encerrado timer: id:75, (22:06:50.7406)
+2015-08-24 22:06:50.7875|Info|      Executando timer: id:76, (22:06:50.7875)
+2015-08-24 22:06:50.7875|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:50.7875|Info|  Settimeout: id:77, (13) ms
+2015-08-24 22:06:50.8500|Info|      Encerrado timer: id:76, (22:06:50.8500)
+2015-08-24 22:06:50.8500|Info|      Executando timer: id:77, (22:06:50.8500)
+2015-08-24 22:06:50.8500|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:50.8500|Info| PASS - debounce asap recursively
+2015-08-24 22:06:50.8500|Info|  Settimeout: id:78, (100) ms
+2015-08-24 22:06:50.9125|Info|  Settimeout: id:79, (200) ms
+2015-08-24 22:06:50.9750|Info|      Encerrado timer: id:77, (22:06:50.9750)
+2015-08-24 22:06:50.9750|Info|      Executando timer: id:78, (22:06:50.9750)
+2015-08-24 22:06:50.9750|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:50.9750|Info|      Encerrado timer: id:78, (22:06:50.9750)
+2015-08-24 22:06:51.1156|Info|      Executando timer: id:79, (22:06:51.1156)
+2015-08-24 22:06:51.1156|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:51.1156|Info|  Settimeout: id:80, (100) ms
+2015-08-24 22:06:51.1938|Info|  Settimeout: id:81, (13) ms
+2015-08-24 22:06:51.2563|Info|      Encerrado timer: id:79, (22:06:51.2563)
+2015-08-24 22:06:51.2563|Info|      Executando timer: id:81, (22:06:51.2563)
+2015-08-24 22:06:51.2563|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:51.2563|Info| PASS - debounce after system time is set backwards
+2015-08-24 22:06:51.2563|Info|  Settimeout: id:82, (32) ms
+2015-08-24 22:06:51.3188|Info|  Settimeout: id:83, (100) ms
+2015-08-24 22:06:51.3813|Info|      Encerrado timer: id:81, (22:06:51.3813)
+2015-08-24 22:06:51.3813|Info|      Executando timer: id:80, (22:06:51.3813)
+2015-08-24 22:06:51.3813|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:51.3813|Info|      Encerrado timer: id:80, (22:06:51.3813)
+2015-08-24 22:06:51.3813|Info|      Executando timer: id:82, (22:06:51.3813)
+2015-08-24 22:06:51.3813|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:51.3813|Info|  Settimeout: id:84, (32) ms
+2015-08-24 22:06:51.4594|Info|      Encerrado timer: id:82, (22:06:51.4594)
+2015-08-24 22:06:51.4594|Info|      Executando timer: id:83, (22:06:51.4594)
+2015-08-24 22:06:51.4594|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:51.4594|Info|  Settimeout: id:85, (13) ms
+2015-08-24 22:06:51.5219|Info|      Encerrado timer: id:83, (22:06:51.5219)
+2015-08-24 22:06:51.5219|Info|      Executando timer: id:84, (22:06:51.5219)
+2015-08-24 22:06:51.5219|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:51.5219|Info|      Encerrado timer: id:84, (22:06:51.5219)
+2015-08-24 22:06:51.5219|Info|      Executando timer: id:85, (22:06:51.5219)
+2015-08-24 22:06:51.5219|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:51.5219|Info| PASS - once
+2015-08-24 22:06:51.5375|Info| PASS - Recursive onced function.
+2015-08-24 22:06:51.5375|Info| PASS - wrap
+2015-08-24 22:06:51.5375|Info| PASS - negate
+2015-08-24 22:06:51.5531|Info| PASS - compose
+2015-08-24 22:06:51.5531|Info| PASS - after
+2015-08-24 22:06:51.5531|Info| PASS - before
+2015-08-24 22:06:51.5531|Info| PASS - iteratee
+2015-08-24 22:06:51.5531|Info|----------------------------------------
+2015-08-24 22:06:51.5687|Info|Objects
+2015-08-24 22:06:51.5687|Info|----------------------------------------
+2015-08-24 22:06:51.5687|Info| PASS - keys
+2015-08-24 22:06:51.5687|Info| PASS - allKeys
+2015-08-24 22:06:51.5687|Info| PASS - values
+2015-08-24 22:06:51.5844|Info| PASS - pairs
+2015-08-24 22:06:51.5844|Info| PASS - invert
+2015-08-24 22:06:51.5844|Info| PASS - functions
+2015-08-24 22:06:51.5844|Info| PASS - methods
+2015-08-24 22:06:51.5844|Info| PASS - extend
+2015-08-24 22:06:51.6000|Info| PASS - extendOwn
+2015-08-24 22:06:51.6000|Info| PASS - pick
+2015-08-24 22:06:51.6156|Info| PASS - omit
+2015-08-24 22:06:51.6156|Info| PASS - defaults
+2015-08-24 22:06:51.6156|Info| PASS - clone
+2015-08-24 22:06:51.6156|Info| PASS - create
+2015-08-24 22:06:51.6312|Info| PASS - isEqual
+2015-08-24 22:06:51.6468|Info| PASS - isEmpty
+2015-08-24 22:06:51.6468|Info| PASS - isArguments
+2015-08-24 22:06:51.6468|Info| PASS - isObject
+2015-08-24 22:06:51.6468|Info| PASS - isArray
+2015-08-24 22:06:51.6625|Info| PASS - isString
+2015-08-24 22:06:51.6625|Info| PASS - isNumber
+2015-08-24 22:06:51.6625|Info| PASS - isBoolean
+2015-08-24 22:06:51.6625|Info| PASS - isFunction
+2015-08-24 22:06:51.6625|Info| FAIL - #1929 Typed Array constructors are functions
+2015-08-24 22:06:51.6625|Info|    PASS | EQ | can extract the keys from an object
+2015-08-24 22:06:51.6625|Info|    PASS | EQ | is not fooled by sparse arrays; see issue #95
+2015-08-24 22:06:51.6781|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.6781|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.6781|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.6781|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.6781|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.6781|Info|    PASS | EQ | matches non-enumerable properties
+2015-08-24 22:06:51.6781|Info|    PASS | EQ | can extract the allKeys from an object
+2015-08-24 22:06:51.6781|Info|    PASS | EQ | is not fooled by sparse arrays; see issue #95
+2015-08-24 22:06:51.6937|Info|    PASS | EQ | is not fooled by sparse arrays with additional properties
+2015-08-24 22:06:51.6937|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.6937|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.6937|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.6937|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.6937|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.6937|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.6937|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.6937|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.6937|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.7093|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.7093|Info|    PASS | EQ | matches non-enumerable properties
+2015-08-24 22:06:51.7093|Info|    PASS | EQ | should include inherited keys
+2015-08-24 22:06:51.7093|Info|    PASS | EQ | should get keys from constructor
+2015-08-24 22:06:51.7093|Info|    PASS | EQ | can extract the values from an object
+2015-08-24 22:06:51.7093|Info|    PASS | EQ | ... even when one of them is "length"
+2015-08-24 22:06:51.7093|Info|    PASS | EQ | can convert an object into pairs
+2015-08-24 22:06:51.7093|Info|    PASS | EQ | ... even when one of them is "length"
+2015-08-24 22:06:51.7093|Info|    PASS | EQ | can invert an object
+2015-08-24 22:06:51.7093|Info|    PASS | EQ | two inverts gets you back where you started
+2015-08-24 22:06:51.7250|Info|    PASS | EQ | can invert an object with "length"
+2015-08-24 22:06:51.7250|Info|    PASS | EQ | can grab the function names of any passed-in object
+2015-08-24 22:06:51.7250|Info|    PASS | EQ | also looks up functions on the prototype
+2015-08-24 22:06:51.7250|Info|    PASS | EQ | alias for functions
+2015-08-24 22:06:51.7250|Info|    PASS | EQ | can extend an object with the attributes of another
+2015-08-24 22:06:51.7250|Info|    PASS | EQ | properties in source override destination
+2015-08-24 22:06:51.7250|Info|    PASS | EQ | properties not in source don't get overriden
+2015-08-24 22:06:51.7250|Info|    PASS | EQ | can extend from multiple source objects
+2015-08-24 22:06:51.7250|Info|    PASS | EQ | extending from multiple source objects last property trumps
+2015-08-24 22:06:51.7250|Info|    PASS | EQ | extend copies undefined values
+2015-08-24 22:06:51.7406|Info|    PASS | EQ | extend copies all properties from source
+2015-08-24 22:06:51.7406|Info|    PASS | EQ | extend does not convert destination object's 'in' properties to 'own' properties
+2015-08-24 22:06:51.7406|Info|    PASS | EQ | should not error on `null` or `undefined` sources
+2015-08-24 22:06:51.7406|Info|    PASS | EQ | extending null results in null
+2015-08-24 22:06:51.7406|Info|    PASS | OK | extending undefined results in undefined
+2015-08-24 22:06:51.7406|Info|    PASS | EQ | can assign an object with the attributes of another
+2015-08-24 22:06:51.7406|Info|    PASS | EQ | properties in source override destination
+2015-08-24 22:06:51.7406|Info|    PASS | EQ | properties not in source don't get overriden
+2015-08-24 22:06:51.7406|Info|    PASS | EQ | can assign from multiple source objects
+2015-08-24 22:06:51.7562|Info|    PASS | EQ | assigning from multiple source objects last property trumps
+2015-08-24 22:06:51.7562|Info|    PASS | EQ | assign copies undefined values
+2015-08-24 22:06:51.7562|Info|    PASS | EQ | assign copies own properties from source
+2015-08-24 22:06:51.7562|Info|    PASS | EQ | should not error on `null` or `undefined` sources
+2015-08-24 22:06:51.7562|Info|    PASS | EQ | assigning non-objects results in returning the non-object value
+2015-08-24 22:06:51.7562|Info|    PASS | EQ | assigning non-objects results in returning the non-object value
+2015-08-24 22:06:51.7562|Info|    PASS | EQ | assigning non-objects results in returning the non-object value
+2015-08-24 22:06:51.7562|Info|    PASS | EQ | assigning non-objects results in returning the non-object value
+2015-08-24 22:06:51.7562|Info|    PASS | OK | assigning undefined results in undefined
+2015-08-24 22:06:51.7562|Info|    PASS | EQ | assign should treat array-like objects like normal objects
+2015-08-24 22:06:51.7562|Info|    PASS | EQ | can restrict properties to those named
+2015-08-24 22:06:51.7562|Info|    PASS | EQ | can restrict properties to those named in an array
+2015-08-24 22:06:51.7718|Info|    PASS | EQ | can restrict properties to those named in mixed args
+2015-08-24 22:06:51.7718|Info|    PASS | EQ | can pick numeric properties
+2015-08-24 22:06:51.7718|Info|    PASS | EQ | Called with null/undefined
+2015-08-24 22:06:51.7718|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.7718|Info|    PASS | EQ | Called with null/undefined
+2015-08-24 22:06:51.7718|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.7718|Info|    PASS | EQ | can iterate primitives
+2015-08-24 22:06:51.7718|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.7718|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.7718|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.7718|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.7718|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.7875|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.7875|Info|    PASS | EQ | can accept a predicate and context
+2015-08-24 22:06:51.7875|Info|    PASS | EQ | include prototype props
+2015-08-24 22:06:51.7875|Info|    PASS | EQ | function is given context
+2015-08-24 22:06:51.7875|Info|    PASS | EQ | does not set own property if property not in object
+2015-08-24 22:06:51.7875|Info|    PASS | EQ | passes same object as third parameter of iteratee
+2015-08-24 22:06:51.7875|Info|    PASS | EQ | passes same object as third parameter of iteratee
+2015-08-24 22:06:51.7875|Info|    PASS | EQ | passes same object as third parameter of iteratee
+2015-08-24 22:06:51.7875|Info|    PASS | EQ | can omit a single named property
+2015-08-24 22:06:51.7875|Info|    PASS | EQ | can omit several named properties
+2015-08-24 22:06:51.7875|Info|    PASS | EQ | can omit properties named in an array
+2015-08-24 22:06:51.7875|Info|    PASS | EQ | can omit numeric properties
+2015-08-24 22:06:51.8031|Info|    PASS | EQ | non objects return empty object
+2015-08-24 22:06:51.8031|Info|    PASS | EQ | null/undefined return empty object
+2015-08-24 22:06:51.8031|Info|    PASS | EQ | returns empty object for primitives
+2015-08-24 22:06:51.8031|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.8031|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.8031|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.8031|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.8031|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.8031|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.8031|Info|    PASS | EQ | can accept a predicate
+2015-08-24 22:06:51.8031|Info|    PASS | EQ | include prototype props
+2015-08-24 22:06:51.8187|Info|    PASS | EQ | function is given context
+2015-08-24 22:06:51.8187|Info|    PASS | EQ | value exists
+2015-08-24 22:06:51.8187|Info|    PASS | EQ | value exists
+2015-08-24 22:06:51.8187|Info|    PASS | EQ | default applied
+2015-08-24 22:06:51.8187|Info|    PASS | EQ | null isn't overridden
+2015-08-24 22:06:51.8187|Info|    PASS | EQ | value exists
+2015-08-24 22:06:51.8187|Info|    PASS | EQ | NaN isn't overridden
+2015-08-24 22:06:51.8187|Info|    PASS | EQ | new value is added, first one wins
+2015-08-24 22:06:51.8187|Info|    PASS | EQ | should not error on `null` or `undefined` sources
+2015-08-24 22:06:51.8187|Info|    PASS | EQ | result is null if destination is null
+2015-08-24 22:06:51.8187|Info|    PASS | OK | result is undefined if destination is undefined
+2015-08-24 22:06:51.8187|Info|    PASS | EQ | the clone as the attributes of the original
+2015-08-24 22:06:51.8343|Info|    PASS | EQ | clones can change shallow attributes without affecting the original
+2015-08-24 22:06:51.8343|Info|    PASS | EQ | changes to deep attributes are shared with the original
+2015-08-24 22:06:51.8343|Info|    PASS | OK | non objects should not be changed by clone
+2015-08-24 22:06:51.8343|Info|    PASS | EQ | non objects should not be changed by clone
+2015-08-24 22:06:51.8343|Info|    PASS | EQ | non objects should not be changed by clone
+2015-08-24 22:06:51.8343|Info|    PASS | EQ | should return empty object when a non-object is provided
+2015-08-24 22:06:51.8343|Info|    PASS | EQ | should return empty object when a non-object is provided
+2015-08-24 22:06:51.8343|Info|    PASS | EQ | should return empty object when a non-object is provided
+2015-08-24 22:06:51.8343|Info|    PASS | EQ | should return empty object when a non-object is provided
+2015-08-24 22:06:51.8343|Info|    PASS | EQ | should return new instance of array when array is provided
+2015-08-24 22:06:51.8343|Info|    PASS | EQ | object should inherit prototype
+2015-08-24 22:06:51.8343|Info|    PASS | EQ | properties should be added to object
+2015-08-24 22:06:51.8500|Info|    PASS | EQ | ok
+2015-08-24 22:06:51.8500|Info|    PASS | EQ | should only add own properties
+2015-08-24 22:06:51.8500|Info|    PASS | EQ | `null` is equal to `null`
+2015-08-24 22:06:51.8500|Info|    PASS | EQ | `undefined` is equal to `undefined`
+2015-08-24 22:06:51.8500|Info|    PASS | EQ | `0` is not equal to `-0`
+2015-08-24 22:06:51.8500|Info|    PASS | EQ | Commutative equality is implemented for `0` and `-0`
+2015-08-24 22:06:51.8500|Info|    PASS | EQ | `null` is not equal to `undefined`
+2015-08-24 22:06:51.8500|Info|    PASS | EQ | Commutative equality is implemented for `null` and `undefined`
+2015-08-24 22:06:51.8500|Info|    PASS | EQ | Identical string primitives are equal
+2015-08-24 22:06:51.8500|Info|    PASS | EQ | String objects with identical primitive values are equal
+2015-08-24 22:06:51.8500|Info|    PASS | EQ | String primitives and their corresponding object wrappers are equal
+2015-08-24 22:06:51.8656|Info|    PASS | EQ | Commutative equality is implemented for string objects and primitives
+2015-08-24 22:06:51.8656|Info|    PASS | EQ | String primitives with different values are not equal
+2015-08-24 22:06:51.8656|Info|    PASS | EQ | String objects with different primitive values are not equal
+2015-08-24 22:06:51.8656|Info|    PASS | EQ | String objects and objects with a custom `toString` method are not equal
+2015-08-24 22:06:51.8656|Info|    PASS | EQ | Identical number primitives are equal
+2015-08-24 22:06:51.8656|Info|    PASS | EQ | Number objects with identical primitive values are equal
+2015-08-24 22:06:51.8656|Info|    PASS | EQ | Number primitives and their corresponding object wrappers are equal
+2015-08-24 22:06:51.8656|Info|    PASS | EQ | Commutative equality is implemented for number objects and primitives
+2015-08-24 22:06:51.8656|Info|    PASS | EQ | `new Number(0)` and `-0` are not equal
+2015-08-24 22:06:51.8656|Info|    PASS | EQ | Commutative equality is implemented for `new Number(0)` and `-0`
+2015-08-24 22:06:51.8812|Info|    PASS | EQ | Number objects with different primitive values are not equal
+2015-08-24 22:06:51.8812|Info|    PASS | EQ | Number objects and objects with a `valueOf` method are not equal
+2015-08-24 22:06:51.8812|Info|    PASS | EQ | `NaN` is equal to `NaN`
+2015-08-24 22:06:51.8812|Info|    PASS | EQ | Object(`NaN`) is equal to `NaN`
+2015-08-24 22:06:51.8812|Info|    PASS | EQ | A number primitive is not equal to `NaN`
+2015-08-24 22:06:51.8812|Info|    PASS | EQ | A number object is not equal to `NaN`
+2015-08-24 22:06:51.8812|Info|    PASS | EQ | `Infinity` is not equal to `NaN`
+2015-08-24 22:06:51.8812|Info|    PASS | EQ | Identical boolean primitives are equal
+2015-08-24 22:06:51.8812|Info|    PASS | EQ | Boolean objects with identical primitive values are equal
+2015-08-24 22:06:51.8812|Info|    PASS | EQ | Boolean primitives and their corresponding object wrappers are equal
+2015-08-24 22:06:51.8812|Info|    PASS | EQ | Commutative equality is implemented for booleans
+2015-08-24 22:06:51.8968|Info|    PASS | EQ | Boolean objects with different primitive values are not equal
+2015-08-24 22:06:51.8968|Info|    PASS | EQ | `new Boolean(false)` is not equal to `true`
+2015-08-24 22:06:51.8968|Info|    PASS | EQ | String and number primitives with like values are not equal
+2015-08-24 22:06:51.8968|Info|    PASS | EQ | String and number objects with like values are not equal
+2015-08-24 22:06:51.8968|Info|    PASS | EQ | Commutative equality is implemented for like string and number values
+2015-08-24 22:06:51.8968|Info|    PASS | EQ | Number and string primitives with like values are not equal
+2015-08-24 22:06:51.8968|Info|    PASS | EQ | Number and boolean primitives with like values are not equal
+2015-08-24 22:06:51.8968|Info|    PASS | EQ | Boolean and number objects with like values are not equal
+2015-08-24 22:06:51.8968|Info|    PASS | EQ | Boolean primitives and string objects with like values are not equal
+2015-08-24 22:06:51.8968|Info|    PASS | EQ | Dates and their corresponding numeric primitive values are not equal
+2015-08-24 22:06:51.8968|Info|    PASS | EQ | Date objects referencing identical times are equal
+2015-08-24 22:06:51.8968|Info|    PASS | EQ | Date objects referencing different times are not equal
+2015-08-24 22:06:51.9125|Info|    PASS | EQ | Date objects and objects with a `getTime` method are not equal
+2015-08-24 22:06:51.9125|Info|    PASS | EQ | Invalid dates are not equal
+2015-08-24 22:06:51.9125|Info|    PASS | EQ | Different functions with identical bodies and source code representations are not equal
+2015-08-24 22:06:51.9125|Info|    PASS | EQ | RegExps with equivalent patterns and flags are equal
+2015-08-24 22:06:51.9125|Info|    PASS | EQ | Flag order is not significant
+2015-08-24 22:06:51.9125|Info|    PASS | EQ | RegExps with equivalent patterns and different flags are not equal
+2015-08-24 22:06:51.9125|Info|    PASS | EQ | RegExps with different patterns and equivalent flags are not equal
+2015-08-24 22:06:51.9125|Info|    PASS | EQ | Commutative equality is implemented for RegExps
+2015-08-24 22:06:51.9125|Info|    PASS | EQ | RegExps and RegExp-like objects are not equal
+2015-08-24 22:06:51.9125|Info|    PASS | EQ | Empty object literals are equal
+2015-08-24 22:06:51.9125|Info|    PASS | EQ | Empty array literals are equal
+2015-08-24 22:06:51.9281|Info|    PASS | EQ | Empty nested arrays and objects are equal
+2015-08-24 22:06:51.9281|Info|    PASS | EQ | Array-like objects and arrays are not equal.
+2015-08-24 22:06:51.9281|Info|    PASS | EQ | Commutative equality is implemented for array-like objects
+2015-08-24 22:06:51.9281|Info|    PASS | EQ | Object literals and array literals are not equal
+2015-08-24 22:06:51.9281|Info|    PASS | EQ | Commutative equality is implemented for objects and arrays
+2015-08-24 22:06:51.9281|Info|    PASS | EQ | Arrays containing identical primitives are equal
+2015-08-24 22:06:51.9281|Info|    PASS | EQ | Arrays containing equivalent elements are equal
+2015-08-24 22:06:51.9281|Info|    PASS | EQ | Arrays containing nested arrays and objects are recursively compared
+2015-08-24 22:06:51.9281|Info|    PASS | EQ | Arrays containing equivalent elements and different non-numeric properties are equal
+2015-08-24 22:06:51.9281|Info|    PASS | EQ | Arrays of different lengths are not equal
+2015-08-24 22:06:51.9281|Info|    PASS | EQ | Arrays of identical lengths containing different elements are not equal
+2015-08-24 22:06:51.9281|Info|    PASS | EQ | Sparse arrays of identical lengths are equal
+2015-08-24 22:06:51.9437|Info|    PASS | EQ | Sparse arrays of different lengths are not equal when both are empty
+2015-08-24 22:06:51.9437|Info|    PASS | EQ | Handles sparse arrays as dense
+2015-08-24 22:06:51.9437|Info|    PASS | EQ | Objects containing identical primitives are equal
+2015-08-24 22:06:51.9437|Info|    PASS | EQ | Objects containing equivalent members are equal
+2015-08-24 22:06:51.9437|Info|    PASS | EQ | Objects of identical sizes with different values are not equal
+2015-08-24 22:06:51.9437|Info|    PASS | EQ | Objects of identical sizes with different property names are not equal
+2015-08-24 22:06:51.9437|Info|    PASS | EQ | Objects of different sizes are not equal
+2015-08-24 22:06:51.9437|Info|    PASS | EQ | Commutative equality is implemented for objects
+2015-08-24 22:06:51.9437|Info|    PASS | EQ | Objects with identical keys and different values are not equivalent
+2015-08-24 22:06:51.9437|Info|    PASS | EQ | Objects with nested equivalent members are recursively compared
+2015-08-24 22:06:51.9437|Info|    PASS | EQ | Object instances are equal
+2015-08-24 22:06:51.9437|Info|    PASS | EQ | Objects with different constructors and identical own properties are not equal
+2015-08-24 22:06:51.9594|Info|    PASS | EQ | Object instances and objects sharing equivalent properties are not equal
+2015-08-24 22:06:51.9594|Info|    PASS | EQ | The prototype chain of objects should not be examined
+2015-08-24 22:06:52.0848|Info|    PASS | EQ | Arrays containing circular references are equal
+2015-08-24 22:06:52.0848|Info|    PASS | EQ | Arrays containing circular references and equivalent properties are equal
+2015-08-24 22:06:52.0848|Info|    PASS | EQ | Arrays containing circular references and different properties are not equal
+2015-08-24 22:06:52.0848|Info|    PASS | EQ | Comparison of circular references with non-circular references are not equal
+2015-08-24 22:06:52.0848|Info|    PASS | EQ | Objects containing circular references are equal
+2015-08-24 22:06:52.0848|Info|    PASS | EQ | Objects containing circular references and equivalent properties are equal
+2015-08-24 22:06:52.1004|Info|    PASS | EQ | Objects containing circular references and different properties are not equal
+2015-08-24 22:06:52.1004|Info|    PASS | EQ | Comparison of circular references with non-circular object references are not equal
+2015-08-24 22:06:52.1004|Info|    PASS | EQ | Cyclic structures are equal
+2015-08-24 22:06:52.1004|Info|    PASS | EQ | Cyclic structures containing equivalent properties are equal
+2015-08-24 22:06:52.1004|Info|    PASS | EQ | Cyclic structures containing different properties are not equal
+2015-08-24 22:06:52.1004|Info|    PASS | EQ | Cyclic structures with nested and identically-named properties are equal
+2015-08-24 22:06:52.1004|Info|    PASS | EQ | Chained objects containing different values are not equal
+2015-08-24 22:06:52.1160|Info|    PASS | EQ | `isEqual` can be chained
+2015-08-24 22:06:52.1160|Info|    PASS | EQ | Handles objects without a constructor (e.g. from Object.create
+2015-08-24 22:06:52.1160|Info|    PASS | EQ | Objects from different constructors are not equal
+2015-08-24 22:06:52.1160|Info|    PASS | EQ | [1] is not empty
+2015-08-24 22:06:52.1160|Info|    PASS | EQ | [] is empty
+2015-08-24 22:06:52.1160|Info|    PASS | EQ | {one : 1} is not empty
+2015-08-24 22:06:52.1316|Info|    PASS | EQ | {} is empty
+2015-08-24 22:06:52.1316|Info|    PASS | EQ | objects with prototype properties are empty
+2015-08-24 22:06:52.1316|Info|    PASS | EQ | null is empty
+2015-08-24 22:06:52.1316|Info|    PASS | EQ | undefined is empty
+2015-08-24 22:06:52.1316|Info|    PASS | EQ | the empty string is empty
+2015-08-24 22:06:52.1316|Info|    PASS | EQ | but other strings are not
+2015-08-24 22:06:52.1472|Info|    PASS | EQ | deleting all the keys from an object empties it
+2015-08-24 22:06:52.1472|Info|    PASS | EQ | empty arguments object is empty
+2015-08-24 22:06:52.1472|Info|    PASS | EQ | non-empty arguments object is not empty
+2015-08-24 22:06:52.1472|Info|    PASS | EQ | non-enumerable property is not empty
+2015-08-24 22:06:52.1472|Info|    PASS | EQ | a string is not an arguments object
+2015-08-24 22:06:52.1472|Info|    PASS | EQ | a function is not an arguments object
+2015-08-24 22:06:52.1629|Info|    PASS | EQ | but the arguments object is an arguments object
+2015-08-24 22:06:52.1629|Info|    PASS | EQ | but not when it's converted into an array
+2015-08-24 22:06:52.1629|Info|    PASS | EQ | and not vanilla arrays.
+2015-08-24 22:06:52.1629|Info|    PASS | EQ | the arguments object is object
+2015-08-24 22:06:52.1629|Info|    PASS | EQ | and arrays
+2015-08-24 22:06:52.1629|Info|    PASS | EQ | and functions
+2015-08-24 22:06:52.1785|Info|    PASS | EQ | but not null
+2015-08-24 22:06:52.1785|Info|    PASS | EQ | and not undefined
+2015-08-24 22:06:52.1785|Info|    PASS | EQ | and not string
+2015-08-24 22:06:52.1785|Info|    PASS | EQ | and not number
+2015-08-24 22:06:52.1785|Info|    PASS | EQ | and not boolean
+2015-08-24 22:06:52.1785|Info|    PASS | EQ | but new String()
+2015-08-24 22:06:52.1941|Info|    PASS | EQ | undefined vars are not arrays
+2015-08-24 22:06:52.1941|Info|    PASS | EQ | the arguments object is not an array
+2015-08-24 22:06:52.1941|Info|    PASS | EQ | but arrays are
+2015-08-24 22:06:52.1941|Info|    PASS | EQ | but strings are
+2015-08-24 22:06:52.1941|Info|    PASS | EQ | string literals are
+2015-08-24 22:06:52.1941|Info|    PASS | EQ | so are String objects
+2015-08-24 22:06:52.1941|Info|    PASS | EQ | ok
+2015-08-24 22:06:52.2097|Info|    PASS | EQ | a string is not a number
+2015-08-24 22:06:52.2097|Info|    PASS | EQ | the arguments object is not a number
+2015-08-24 22:06:52.2097|Info|    PASS | EQ | undefined is not a number
+2015-08-24 22:06:52.2097|Info|    PASS | EQ | but numbers are
+2015-08-24 22:06:52.2097|Info|    PASS | EQ | NaN *is* a number
+2015-08-24 22:06:52.2097|Info|    PASS | EQ | Infinity is a number
+2015-08-24 22:06:52.2097|Info|    PASS | EQ | numeric strings are not numbers
+2015-08-24 22:06:52.2254|Info|    PASS | EQ | a number is not a boolean
+2015-08-24 22:06:52.2254|Info|    PASS | EQ | a string is not a boolean
+2015-08-24 22:06:52.2254|Info|    PASS | EQ | the string "false" is not a boolean
+2015-08-24 22:06:52.2254|Info|    PASS | EQ | the string "true" is not a boolean
+2015-08-24 22:06:52.2254|Info|    PASS | EQ | the arguments object is not a boolean
+2015-08-24 22:06:52.2254|Info|    PASS | EQ | undefined is not a boolean
+2015-08-24 22:06:52.2410|Info|    PASS | EQ | NaN is not a boolean
+2015-08-24 22:06:52.2410|Info|    PASS | EQ | null is not a boolean
+2015-08-24 22:06:52.2410|Info|    PASS | EQ | but true is
+2015-08-24 22:06:52.2410|Info|    PASS | EQ | and so is false
+2015-08-24 22:06:52.2410|Info|    PASS | EQ | undefined vars are not functions
+2015-08-24 22:06:52.2410|Info|    PASS | EQ | arrays are not functions
+2015-08-24 22:06:52.2410|Info|    PASS | EQ | strings are not functions
+2015-08-24 22:06:52.2566|Info|    PASS | EQ | but functions are
+2015-08-24 22:06:52.2566|Info|    PASS | EQ | even anonymous ones
+2015-08-24 22:06:52.2566|Info|    FAIL | OK | Died on test #1     at Script Document [12]:2898:5
+    at Script Document [12]:3251:2: window is not defined
+2015-08-24 22:06:52.2566|Info| PASS - isDate
+2015-08-24 22:06:52.2566|Info| PASS - isRegExp
+2015-08-24 22:06:52.2566|Info| PASS - isFinite
+2015-08-24 22:06:52.2722|Info| PASS - isNaN
+2015-08-24 22:06:52.2722|Info| PASS - isNull
+2015-08-24 22:06:52.2722|Info| PASS - isUndefined
+2015-08-24 22:06:52.2722|Info| PASS - isError
+2015-08-24 22:06:52.2879|Info| PASS - tap
+2015-08-24 22:06:52.2879|Info| PASS - has
+2015-08-24 22:06:52.2879|Info| PASS - isMatch
+2015-08-24 22:06:52.2879|Info| PASS - matcher
+2015-08-24 22:06:52.3035|Info| PASS - matcher 
+2015-08-24 22:06:52.3035|Info| PASS - findKey
+2015-08-24 22:06:52.3035|Info| PASS - mapObject
+2015-08-24 22:06:52.3191|Info|----------------------------------------
+2015-08-24 22:06:52.3191|Info|Utility
+2015-08-24 22:06:52.3191|Info|----------------------------------------
+2015-08-24 22:06:52.3191|Info| PASS - #750 - Return _ instance.
+2015-08-24 22:06:52.3191|Info| PASS - identity
+2015-08-24 22:06:52.3191|Info| PASS - constant
+2015-08-24 22:06:52.3191|Info| PASS - noop
+2015-08-24 22:06:52.3191|Info| PASS - property
+2015-08-24 22:06:52.3348|Info| PASS - propertyOf
+2015-08-24 22:06:52.3504|Info| PASS - random
+2015-08-24 22:06:52.3504|Info| PASS - now
+2015-08-24 22:06:52.3504|Info| PASS - uniqueId
+2015-08-24 22:06:52.3504|Info| PASS - times
+2015-08-24 22:06:52.3504|Info| PASS - mixin
+2015-08-24 22:06:52.3504|Info| PASS - _.escape
+2015-08-24 22:06:52.3660|Info| PASS - _.unescape
+2015-08-24 22:06:52.3660|Info| PASS - _.escape & unescape
+2015-08-24 22:06:52.3660|Info| PASS - template
+2015-08-24 22:06:52.3816|Info| PASS - _.template provides the generated function source, when a SyntaxError occurs
+2015-08-24 22:06:52.3816|Info| PASS - _.template handles \u2028 & \u2029
+2015-08-24 22:06:52.3816|Info| PASS - result calls functions and returns primitives
+2015-08-24 22:06:52.3816|Info| PASS - result returns a default value if object is null or undefined
+2015-08-24 22:06:52.3816|Info| PASS - result returns a default value if property of object is missing
+2015-08-24 22:06:52.3816|Info| PASS - result only returns the default value if the object does not have the property or is undefined
+2015-08-24 22:06:52.3816|Info| PASS - result does not return the default if the property of an object is found in the prototype
+2015-08-24 22:06:52.3816|Info| PASS - result does use the fallback when the result of invoking the property is undefined
+2015-08-24 22:06:52.3816|Info| PASS - result fallback can use a function
+2015-08-24 22:06:52.3816|Info| PASS - _.templateSettings.variable
+2015-08-24 22:06:52.3816|Info| PASS - #547 - _.templateSettings is unchanged by custom settings.
+2015-08-24 22:06:52.3972|Info| PASS - #556 - undefined template variables.
+2015-08-24 22:06:52.3972|Info| PASS - interpolate evaluates code only once.
+2015-08-24 22:06:52.3972|Info| PASS - #746 - _.template settings are not modified.
+2015-08-24 22:06:52.3972|Info| PASS - #779 - delimeters are applied to unescaped text.
+2015-08-24 22:06:52.3972|Info|  Settimeout: id:86, (100) ms
+2015-08-24 22:06:52.4598|Info|  Settimeout: id:87, (50) ms
+2015-08-24 22:06:52.5223|Info|  Settimeout: id:88, (150) ms
+2015-08-24 22:06:52.5848|Info|      Encerrado timer: id:85, (22:06:52.5848)
+2015-08-24 22:06:52.5848|Info|      Executando timer: id:86, (22:06:52.5848)
+2015-08-24 22:06:52.5848|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:52.5848|Info|      Encerrado timer: id:86, (22:06:52.5848)
+2015-08-24 22:06:52.5848|Info|      Executando timer: id:87, (22:06:52.5848)
+2015-08-24 22:06:52.5848|Info|          Deveria ter disparado: function (){ ok(!delayed, "didn't delay the function quite yet"); }
+2015-08-24 22:06:52.5848|Info|      Encerrado timer: id:87, (22:06:52.5848)
+2015-08-24 22:06:52.6786|Info|      Executando timer: id:88, (22:06:52.6786)
+2015-08-24 22:06:52.6786|Info|          Deveria ter disparado: function (){ ok(delayed, 'delayed the function'); start(); }
+2015-08-24 22:06:52.6786|Info|  Settimeout: id:89, (13) ms
+2015-08-24 22:06:52.7410|Info|      Encerrado timer: id:88, (22:06:52.7410)
+2015-08-24 22:06:52.7410|Info|      Executando timer: id:89, (22:06:52.7410)
+2015-08-24 22:06:52.7410|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:52.7410|Info|  Settimeout: id:90, (32) ms
+2015-08-24 22:06:52.8035|Info|  Settimeout: id:91, (64) ms
+2015-08-24 22:06:52.8661|Info|  Settimeout: id:92, (96) ms
+2015-08-24 22:06:52.9286|Info|      Encerrado timer: id:89, (22:06:52.9286)
+2015-08-24 22:06:52.9286|Info|      Executando timer: id:90, (22:06:52.9286)
+2015-08-24 22:06:52.9286|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:52.9286|Info|      Encerrado timer: id:90, (22:06:52.9286)
+2015-08-24 22:06:52.9286|Info|      Executando timer: id:91, (22:06:52.9286)
+2015-08-24 22:06:52.9286|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:52.9286|Info|  Settimeout: id:93, (32) ms
+2015-08-24 22:06:53.0067|Info|      Encerrado timer: id:91, (22:06:53.0067)
+2015-08-24 22:06:53.0067|Info|      Executando timer: id:92, (22:06:53.0067)
+2015-08-24 22:06:53.0067|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:53.0067|Info|  Settimeout: id:94, (13) ms
+2015-08-24 22:06:53.0692|Info|      Encerrado timer: id:92, (22:06:53.0692)
+2015-08-24 22:06:53.0692|Info|      Executando timer: id:93, (22:06:53.0692)
+2015-08-24 22:06:53.0692|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:53.0692|Info|      Encerrado timer: id:93, (22:06:53.0692)
+2015-08-24 22:06:53.0692|Info|      Executando timer: id:94, (22:06:53.0692)
+2015-08-24 22:06:53.0692|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:53.0692|Info|  Settimeout: id:95, (100) ms
+2015-08-24 22:06:53.1473|Info|  Settimeout: id:96, (50) ms
+2015-08-24 22:06:53.2098|Info|  Settimeout: id:97, (150) ms
+2015-08-24 22:06:53.2723|Info|  Settimeout: id:98, (160) ms
+2015-08-24 22:06:53.3348|Info|  Settimeout: id:99, (230) ms
+2015-08-24 22:06:53.3973|Info|  Settimeout: id:100, (300) ms
+2015-08-24 22:06:53.4598|Info|      Encerrado timer: id:94, (22:06:53.4598)
+2015-08-24 22:06:53.4598|Info|      Executando timer: id:95, (22:06:53.4598)
+2015-08-24 22:06:53.4598|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:53.4598|Info|      Encerrado timer: id:95, (22:06:53.4598)
+2015-08-24 22:06:53.4598|Info|      Executando timer: id:96, (22:06:53.4598)
+2015-08-24 22:06:53.4598|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:53.4598|Info|  Settimeout: id:101, (100) ms
+2015-08-24 22:06:53.5223|Info|      Encerrado timer: id:96, (22:06:53.5223)
+2015-08-24 22:06:53.5223|Info|      Executando timer: id:97, (22:06:53.5223)
+2015-08-24 22:06:53.5223|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:53.5223|Info|      Encerrado timer: id:97, (22:06:53.5223)
+2015-08-24 22:06:53.5223|Info|      Executando timer: id:98, (22:06:53.5223)
+2015-08-24 22:06:53.5223|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:53.5223|Info|      Encerrado timer: id:98, (22:06:53.5223)
+2015-08-24 22:06:53.5692|Info|      Executando timer: id:99, (22:06:53.5692)
+2015-08-24 22:06:53.5692|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:53.5692|Info|      Encerrado timer: id:99, (22:06:53.5692)
+2015-08-24 22:06:53.7098|Info|      Executando timer: id:100, (22:06:53.7098)
+2015-08-24 22:06:53.7098|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:53.7098|Info|  Settimeout: id:102, (13) ms
+2015-08-24 22:06:53.7723|Info|      Encerrado timer: id:100, (22:06:53.7723)
+2015-08-24 22:06:53.7723|Info|      Executando timer: id:102, (22:06:53.7723)
+2015-08-24 22:06:53.7723|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:53.7723|Info|  Settimeout: id:103, (32) ms
+2015-08-24 22:06:53.8348|Info|  Settimeout: id:104, (96) ms
+2015-08-24 22:06:53.8973|Info|      Encerrado timer: id:102, (22:06:53.8973)
+2015-08-24 22:06:53.8973|Info|      Executando timer: id:103, (22:06:53.8973)
+2015-08-24 22:06:53.8973|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:53.8973|Info|      Encerrado timer: id:103, (22:06:53.8973)
+2015-08-24 22:06:53.9441|Info|      Executando timer: id:104, (22:06:53.9441)
+2015-08-24 22:06:53.9441|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:53.9441|Info|  Settimeout: id:105, (13) ms
+2015-08-24 22:06:54.0069|Info|      Encerrado timer: id:104, (22:06:54.0069)
+2015-08-24 22:06:54.0069|Info|      Executando timer: id:105, (22:06:54.0069)
+2015-08-24 22:06:54.0069|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:54.0069|Info|  Settimeout: id:106, (60) ms
+2015-08-24 22:06:54.0694|Info|  Settimeout: id:107, (96) ms
+2015-08-24 22:06:54.1319|Info|      Encerrado timer: id:105, (22:06:54.1319)
+2015-08-24 22:06:54.1787|Info|      Executando timer: id:107, (22:06:54.1787)
+2015-08-24 22:06:54.1787|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:54.1787|Info|  Settimeout: id:108, (13) ms
+2015-08-24 22:06:54.2413|Info|      Encerrado timer: id:107, (22:06:54.2413)
+2015-08-24 22:06:54.2413|Info|      Executando timer: id:108, (22:06:54.2413)
+2015-08-24 22:06:54.2413|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:54.2413|Info|  Settimeout: id:109, (100) ms
+2015-08-24 22:06:54.3038|Info|  Settimeout: id:110, (50) ms
+2015-08-24 22:06:54.3663|Info|  Settimeout: id:111, (60) ms
+2015-08-24 22:06:54.4288|Info|  Settimeout: id:112, (200) ms
+2015-08-24 22:06:54.4913|Info|  Settimeout: id:113, (250) ms
+2015-08-24 22:06:54.5538|Info|  Settimeout: id:114, (350) ms
+2015-08-24 22:06:54.6163|Info|      Encerrado timer: id:108, (22:06:54.6163)
+2015-08-24 22:06:54.6163|Info|      Executando timer: id:109, (22:06:54.6163)
+2015-08-24 22:06:54.6163|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:54.6163|Info|      Encerrado timer: id:109, (22:06:54.6163)
+2015-08-24 22:06:54.6163|Info|      Executando timer: id:110, (22:06:54.6163)
+2015-08-24 22:06:54.6631|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:54.6631|Info|  Settimeout: id:115, (100) ms
+2015-08-24 22:06:54.7257|Info|      Encerrado timer: id:110, (22:06:54.7257)
+2015-08-24 22:06:54.7257|Info|      Executando timer: id:111, (22:06:54.7257)
+2015-08-24 22:06:54.7257|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:54.7257|Info|      Encerrado timer: id:111, (22:06:54.7257)
+2015-08-24 22:06:54.7257|Info|      Executando timer: id:112, (22:06:54.7257)
+2015-08-24 22:06:54.7257|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:54.7413|Info|      Encerrado timer: id:112, (22:06:54.7413)
+2015-08-24 22:06:54.7569|Info|      Executando timer: id:113, (22:06:54.7569)
+2015-08-24 22:06:54.7569|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:54.7569|Info|      Encerrado timer: id:113, (22:06:54.7569)
+2015-08-24 22:06:54.7725|Info|      Executando timer: id:115, (22:06:54.7725)
+2015-08-24 22:06:54.7725|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:54.7725|Info|      Encerrado timer: id:115, (22:06:54.7725)
+2015-08-24 22:06:54.9132|Info|      Executando timer: id:114, (22:06:54.9132)
+2015-08-24 22:06:54.9132|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:54.9132|Info|  Settimeout: id:116, (13) ms
+2015-08-24 22:06:54.9757|Info|      Encerrado timer: id:114, (22:06:54.9757)
+2015-08-24 22:06:54.9757|Info|      Executando timer: id:116, (22:06:54.9757)
+2015-08-24 22:06:54.9757|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:54.9757|Info|----------------------------------------
+2015-08-24 22:06:54.9757|Info|Functions
+2015-08-24 22:06:54.9757|Info|----------------------------------------
+2015-08-24 22:06:54.9913|Info| PASS - more throttle does not trigger leading call when leading is set to false
+2015-08-24 22:06:54.9913|Info|  Settimeout: id:117, (64) ms
+2015-08-24 22:06:55.0538|Info|  Settimeout: id:118, (16) ms
+2015-08-24 22:06:55.1163|Info|  Settimeout: id:119, (32) ms
+2015-08-24 22:06:55.1788|Info|  Settimeout: id:120, (48) ms
+2015-08-24 22:06:55.2413|Info|  Settimeout: id:121, (128) ms
+2015-08-24 22:06:55.3038|Info|      Encerrado timer: id:116, (22:06:55.3038)
+2015-08-24 22:06:55.3038|Info|      Executando timer: id:117, (22:06:55.3038)
+2015-08-24 22:06:55.3038|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:55.3038|Info|      Encerrado timer: id:117, (22:06:55.3038)
+2015-08-24 22:06:55.3038|Info|      Executando timer: id:118, (22:06:55.3038)
+2015-08-24 22:06:55.3038|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:55.3038|Info|  Settimeout: id:122, (64) ms
+2015-08-24 22:06:55.3820|Info|      Encerrado timer: id:118, (22:06:55.3820)
+2015-08-24 22:06:55.3820|Info|      Executando timer: id:119, (22:06:55.3820)
+2015-08-24 22:06:55.3820|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:55.3820|Info|      Encerrado timer: id:119, (22:06:55.3820)
+2015-08-24 22:06:55.3820|Info|      Executando timer: id:120, (22:06:55.3820)
+2015-08-24 22:06:55.3820|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:55.5069|Info|      Encerrado timer: id:120, (22:06:55.5069)
+2015-08-24 22:06:55.5069|Info|      Executando timer: id:121, (22:06:55.5069)
+2015-08-24 22:06:55.5069|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:55.5069|Info|  Settimeout: id:123, (13) ms
+2015-08-24 22:06:55.5851|Info|      Encerrado timer: id:121, (22:06:55.5851)
+2015-08-24 22:06:55.5851|Info|      Executando timer: id:122, (22:06:55.5851)
+2015-08-24 22:06:55.5851|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:55.5851|Info|      Encerrado timer: id:122, (22:06:55.5851)
+2015-08-24 22:06:55.5851|Info|      Executando timer: id:123, (22:06:55.5851)
+2015-08-24 22:06:55.5851|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:55.5851|Info|  Settimeout: id:124, (32) ms
+2015-08-24 22:06:55.6632|Info|  Settimeout: id:125, (100) ms
+2015-08-24 22:06:55.7257|Info|      Encerrado timer: id:123, (22:06:55.7257)
+2015-08-24 22:06:55.7257|Info|      Executando timer: id:124, (22:06:55.7257)
+2015-08-24 22:06:55.7257|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:55.7257|Info|  Settimeout: id:126, (32) ms
+2015-08-24 22:06:55.7771|Info|      Encerrado timer: id:124, (22:06:55.7771)
+2015-08-24 22:06:55.7771|Info|      Executando timer: id:125, (22:06:55.7771)
+2015-08-24 22:06:55.7771|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:55.7854|Info|  Settimeout: id:127, (13) ms
+2015-08-24 22:06:55.8480|Info|      Encerrado timer: id:125, (22:06:55.8480)
+2015-08-24 22:06:55.8480|Info|      Executando timer: id:126, (22:06:55.8480)
+2015-08-24 22:06:55.8480|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:55.8480|Info|      Encerrado timer: id:126, (22:06:55.8480)
+2015-08-24 22:06:55.8480|Info|      Executando timer: id:127, (22:06:55.8480)
+2015-08-24 22:06:55.8480|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:55.8480|Info|  Settimeout: id:128, (100) ms
+2015-08-24 22:06:55.9261|Info|  Settimeout: id:129, (50) ms
+2015-08-24 22:06:55.9886|Info|  Settimeout: id:130, (150) ms
+2015-08-24 22:06:56.0511|Info|      Encerrado timer: id:127, (22:06:56.0511)
+2015-08-24 22:06:56.0511|Info|      Executando timer: id:128, (22:06:56.0511)
+2015-08-24 22:06:56.0511|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:56.0511|Info|      Encerrado timer: id:128, (22:06:56.0511)
+2015-08-24 22:06:56.0511|Info|      Executando timer: id:129, (22:06:56.0511)
+2015-08-24 22:06:56.0511|Info|          Deveria ter disparado: function (){ ok(!delayed, "didn't delay the function quite yet"); }
+2015-08-24 22:06:56.0667|Info|      Encerrado timer: id:129, (22:06:56.0667)
+2015-08-24 22:06:56.1449|Info|      Executando timer: id:130, (22:06:56.1449)
+2015-08-24 22:06:56.1449|Info|          Deveria ter disparado: function (){ ok(delayed, 'delayed the function'); start(); }
+2015-08-24 22:06:56.1449|Info|  Settimeout: id:131, (13) ms
+2015-08-24 22:06:56.2074|Info|      Encerrado timer: id:130, (22:06:56.2074)
+2015-08-24 22:06:56.2074|Info|      Executando timer: id:131, (22:06:56.2074)
+2015-08-24 22:06:56.2074|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:56.2074|Info|  Settimeout: id:132, (32) ms
+2015-08-24 22:06:56.2698|Info|  Settimeout: id:133, (64) ms
+2015-08-24 22:06:56.3324|Info|  Settimeout: id:134, (96) ms
+2015-08-24 22:06:56.3949|Info|      Encerrado timer: id:131, (22:06:56.3949)
+2015-08-24 22:06:56.3949|Info|      Executando timer: id:132, (22:06:56.3949)
+2015-08-24 22:06:56.3949|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:56.3949|Info|      Encerrado timer: id:132, (22:06:56.3949)
+2015-08-24 22:06:56.3949|Info|      Executando timer: id:133, (22:06:56.3949)
+2015-08-24 22:06:56.3949|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:56.4104|Info|  Settimeout: id:135, (32) ms
+2015-08-24 22:06:56.4729|Info|      Encerrado timer: id:133, (22:06:56.4729)
+2015-08-24 22:06:56.4729|Info|      Executando timer: id:134, (22:06:56.4729)
+2015-08-24 22:06:56.4729|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:56.4729|Info|  Settimeout: id:136, (13) ms
+2015-08-24 22:06:56.5355|Info|      Encerrado timer: id:134, (22:06:56.5355)
+2015-08-24 22:06:56.5355|Info|      Executando timer: id:135, (22:06:56.5355)
+2015-08-24 22:06:56.5355|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:56.5355|Info|      Encerrado timer: id:135, (22:06:56.5355)
+2015-08-24 22:06:56.5355|Info|      Executando timer: id:136, (22:06:56.5355)
+2015-08-24 22:06:56.5355|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:56.5355|Info|  Settimeout: id:137, (100) ms
+2015-08-24 22:06:56.6136|Info|  Settimeout: id:138, (50) ms
+2015-08-24 22:06:56.6761|Info|  Settimeout: id:139, (150) ms
+2015-08-24 22:06:56.7398|Info|  Settimeout: id:140, (160) ms
+2015-08-24 22:06:56.7995|Info|  Settimeout: id:141, (230) ms
+2015-08-24 22:06:56.8620|Info|  Settimeout: id:142, (300) ms
+2015-08-24 22:06:56.9245|Info|      Encerrado timer: id:136, (22:06:56.9245)
+2015-08-24 22:06:56.9245|Info|      Executando timer: id:137, (22:06:56.9245)
+2015-08-24 22:06:56.9245|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:56.9245|Info|      Encerrado timer: id:137, (22:06:56.9245)
+2015-08-24 22:06:56.9245|Info|      Executando timer: id:138, (22:06:56.9245)
+2015-08-24 22:06:56.9245|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:56.9245|Info|  Settimeout: id:143, (100) ms
+2015-08-24 22:06:57.0026|Info|      Encerrado timer: id:138, (22:06:57.0026)
+2015-08-24 22:06:57.0026|Info|      Executando timer: id:139, (22:06:57.0026)
+2015-08-24 22:06:57.0026|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:57.0026|Info|      Encerrado timer: id:139, (22:06:57.0026)
+2015-08-24 22:06:57.0026|Info|      Executando timer: id:140, (22:06:57.0026)
+2015-08-24 22:06:57.0026|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:57.0026|Info|      Encerrado timer: id:140, (22:06:57.0026)
+2015-08-24 22:06:57.0339|Info|      Executando timer: id:141, (22:06:57.0339)
+2015-08-24 22:06:57.0339|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:57.1432|Info|      Encerrado timer: id:141, (22:06:57.1432)
+2015-08-24 22:06:57.1744|Info|      Executando timer: id:142, (22:06:57.1744)
+2015-08-24 22:06:57.1744|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:57.1744|Info|  Settimeout: id:144, (13) ms
+2015-08-24 22:06:57.2370|Info|      Encerrado timer: id:142, (22:06:57.2370)
+2015-08-24 22:06:57.2370|Info|      Executando timer: id:144, (22:06:57.2370)
+2015-08-24 22:06:57.2370|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:57.2370|Info|  Settimeout: id:145, (32) ms
+2015-08-24 22:06:57.2995|Info|  Settimeout: id:146, (96) ms
+2015-08-24 22:06:57.3620|Info|      Encerrado timer: id:144, (22:06:57.3620)
+2015-08-24 22:06:57.3620|Info|      Executando timer: id:145, (22:06:57.3620)
+2015-08-24 22:06:57.3620|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:57.3620|Info|      Encerrado timer: id:145, (22:06:57.3620)
+2015-08-24 22:06:57.4089|Info|      Executando timer: id:146, (22:06:57.4089)
+2015-08-24 22:06:57.4089|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:57.4089|Info|  Settimeout: id:147, (13) ms
+2015-08-24 22:06:57.4714|Info|      Encerrado timer: id:146, (22:06:57.4714)
+2015-08-24 22:06:57.4714|Info|      Executando timer: id:147, (22:06:57.4714)
+2015-08-24 22:06:57.4714|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:57.4869|Info|  Settimeout: id:148, (60) ms
+2015-08-24 22:06:57.5495|Info|  Settimeout: id:149, (96) ms
+2015-08-24 22:06:57.6120|Info|      Encerrado timer: id:147, (22:06:57.6120)
+2015-08-24 22:06:57.6589|Info|      Executando timer: id:149, (22:06:57.6589)
+2015-08-24 22:06:57.6589|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:57.6589|Info|  Settimeout: id:150, (13) ms
+2015-08-24 22:06:57.7214|Info|      Encerrado timer: id:149, (22:06:57.7214)
+2015-08-24 22:06:57.7214|Info|      Executando timer: id:150, (22:06:57.7214)
+2015-08-24 22:06:57.7214|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:57.7214|Info|  Settimeout: id:151, (64) ms
+2015-08-24 22:06:57.7838|Info|  Settimeout: id:152, (16) ms
+2015-08-24 22:06:57.8620|Info|  Settimeout: id:153, (32) ms
+2015-08-24 22:06:57.9245|Info|  Settimeout: id:154, (48) ms
+2015-08-24 22:06:57.9870|Info|  Settimeout: id:155, (128) ms
+2015-08-24 22:06:58.0372|Info|      Encerrado timer: id:150, (22:06:58.0372)
+2015-08-24 22:06:58.0372|Info|      Executando timer: id:151, (22:06:58.0372)
+2015-08-24 22:06:58.0372|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:58.0372|Info|      Encerrado timer: id:151, (22:06:58.0372)
+2015-08-24 22:06:58.0372|Info|      Executando timer: id:152, (22:06:58.0412)
+2015-08-24 22:06:58.0372|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:58.0372|Info|  Settimeout: id:156, (64) ms
+2015-08-24 22:06:58.1080|Info|      Encerrado timer: id:152, (22:06:58.1080)
+2015-08-24 22:06:58.1080|Info|      Executando timer: id:153, (22:06:58.1080)
+2015-08-24 22:06:58.1080|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:58.1080|Info|      Encerrado timer: id:153, (22:06:58.1080)
+2015-08-24 22:06:58.1080|Info|      Executando timer: id:154, (22:06:58.1080)
+2015-08-24 22:06:58.1080|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:58.1080|Info|      Encerrado timer: id:154, (22:06:58.1080)
+2015-08-24 22:06:58.1236|Info|      Executando timer: id:155, (22:06:58.1236)
+2015-08-24 22:06:58.1236|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:58.1236|Info|  Settimeout: id:157, (13) ms
+2015-08-24 22:06:58.1861|Info|      Encerrado timer: id:155, (22:06:58.1861)
+2015-08-24 22:06:58.1861|Info|      Executando timer: id:156, (22:06:58.1861)
+2015-08-24 22:06:58.1861|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:58.1861|Info|      Encerrado timer: id:156, (22:06:58.1861)
+2015-08-24 22:06:58.1861|Info|      Executando timer: id:157, (22:06:58.1861)
+2015-08-24 22:06:58.1861|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:58.1861|Info|  Settimeout: id:158, (32) ms
+2015-08-24 22:06:58.2486|Info|  Settimeout: id:159, (100) ms
+2015-08-24 22:06:58.3111|Info|      Encerrado timer: id:157, (22:06:58.3111)
+2015-08-24 22:06:58.3111|Info|      Executando timer: id:158, (22:06:58.3111)
+2015-08-24 22:06:58.3111|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:58.3111|Info|  Settimeout: id:160, (32) ms
+2015-08-24 22:06:58.3736|Info|      Encerrado timer: id:158, (22:06:58.3736)
+2015-08-24 22:06:58.3736|Info|      Executando timer: id:159, (22:06:58.3736)
+2015-08-24 22:06:58.3736|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:58.3736|Info|  Settimeout: id:161, (13) ms
+2015-08-24 22:06:58.4361|Info|      Encerrado timer: id:159, (22:06:58.4361)
+2015-08-24 22:06:58.4361|Info|      Executando timer: id:160, (22:06:58.4361)
+2015-08-24 22:06:58.4361|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:06:58.4361|Info|      Encerrado timer: id:160, (22:06:58.4361)
+2015-08-24 22:06:58.4361|Info|      Executando timer: id:161, (22:06:58.4361)
+2015-08-24 22:06:58.4361|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:58.4361|Info|  Settimeout: id:162, (100) ms
+2015-08-24 22:06:58.5142|Info|  Settimeout: id:163, (50) ms
+2015-08-24 22:06:58.5767|Info|  Settimeout: id:164, (150) ms
+2015-08-24 22:06:58.6392|Info|      Encerrado timer: id:161, (22:06:58.6392)
+2015-08-24 22:06:58.6392|Info|      Executando timer: id:162, (22:06:58.6392)
+2015-08-24 22:06:58.6392|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:58.6392|Info|      Encerrado timer: id:162, (22:06:58.6392)
+2015-08-24 22:06:58.6392|Info|      Executando timer: id:163, (22:06:58.6392)
+2015-08-24 22:06:58.6392|Info|          Deveria ter disparado: function (){ ok(!delayed, "didn't delay the function quite yet"); }
+2015-08-24 22:06:58.6392|Info|      Encerrado timer: id:163, (22:06:58.6392)
+2015-08-24 22:06:58.7329|Info|      Executando timer: id:164, (22:06:58.7329)
+2015-08-24 22:06:58.7329|Info|          Deveria ter disparado: function (){ ok(delayed, 'delayed the function'); start(); }
+2015-08-24 22:06:58.7329|Info|  Settimeout: id:165, (13) ms
+2015-08-24 22:06:58.7955|Info|      Encerrado timer: id:164, (22:06:58.7955)
+2015-08-24 22:06:58.7955|Info|      Executando timer: id:165, (22:06:58.7955)
+2015-08-24 22:06:58.7955|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:58.7955|Info| FAIL - delay
+2015-08-24 22:06:58.7955|Info|    PASS | EQ | ok
+2015-08-24 22:06:58.7955|Info|    PASS | EQ | ok
+2015-08-24 22:06:58.7955|Info|    PASS | EQ | ok
+2015-08-24 22:06:58.7955|Info|    FAIL | EQ | didn't delay the function quite yet | Expected: true, Actual: false
+2015-08-24 22:06:58.7955|Info|    PASS | EQ | delayed the function
+2015-08-24 22:06:58.7955|Info|  Settimeout: id:166, (32) ms
+2015-08-24 22:06:58.8736|Info|  Settimeout: id:167, (64) ms
+2015-08-24 22:06:58.9361|Info|  Settimeout: id:168, (96) ms
+2015-08-24 22:06:58.9986|Info|      Encerrado timer: id:165, (22:06:58.9986)
+2015-08-24 22:06:58.9986|Info|      Executando timer: id:166, (22:06:58.9986)
+2015-08-24 22:06:58.9986|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:58.9986|Info|      Encerrado timer: id:166, (22:06:58.9986)
+2015-08-24 22:06:58.9986|Info|      Executando timer: id:167, (22:06:58.9986)
+2015-08-24 22:06:58.9986|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:59.0142|Info|  Settimeout: id:169, (32) ms
+2015-08-24 22:06:59.0767|Info|      Encerrado timer: id:167, (22:06:59.0767)
+2015-08-24 22:06:59.0767|Info|      Executando timer: id:168, (22:06:59.0767)
+2015-08-24 22:06:59.0767|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:59.0767|Info|  Settimeout: id:170, (13) ms
+2015-08-24 22:06:59.1392|Info|      Encerrado timer: id:168, (22:06:59.1392)
+2015-08-24 22:06:59.1392|Info|      Executando timer: id:169, (22:06:59.1392)
+2015-08-24 22:06:59.1392|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:59.1392|Info|      Encerrado timer: id:169, (22:06:59.1392)
+2015-08-24 22:06:59.1392|Info|      Executando timer: id:170, (22:06:59.1392)
+2015-08-24 22:06:59.1392|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:59.1392|Info| FAIL - throttle arguments
+2015-08-24 22:06:59.1548|Info|    PASS | EQ | ok
+2015-08-24 22:06:59.1548|Info|    PASS | EQ | ok
+2015-08-24 22:06:59.1548|Info|    PASS | EQ | ok
+2015-08-24 22:06:59.1548|Info|    FAIL | EQ | didn't delay the function quite yet | Expected: true, Actual: false
+2015-08-24 22:06:59.1548|Info|    PASS | EQ | delayed the function
+2015-08-24 22:06:59.1704|Info|    PASS | EQ | updated to latest value
+2015-08-24 22:06:59.1704|Info|    FAIL | EQ | updated to latest value | Expected: 3, Actual: 2
+2015-08-24 22:06:59.1704|Info|  Settimeout: id:171, (100) ms
+2015-08-24 22:06:59.2330|Info|  Settimeout: id:172, (50) ms
+2015-08-24 22:06:59.2955|Info|  Settimeout: id:173, (150) ms
+2015-08-24 22:06:59.3579|Info|  Settimeout: id:174, (160) ms
+2015-08-24 22:06:59.4205|Info|  Settimeout: id:175, (230) ms
+2015-08-24 22:06:59.4830|Info|  Settimeout: id:176, (300) ms
+2015-08-24 22:06:59.5454|Info|      Encerrado timer: id:170, (22:06:59.5454)
+2015-08-24 22:06:59.5454|Info|      Executando timer: id:171, (22:06:59.5454)
+2015-08-24 22:06:59.5454|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:06:59.5454|Info|      Encerrado timer: id:171, (22:06:59.5454)
+2015-08-24 22:06:59.5454|Info|      Executando timer: id:172, (22:06:59.5454)
+2015-08-24 22:06:59.5454|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:59.5454|Info|  Settimeout: id:177, (100) ms
+2015-08-24 22:06:59.6236|Info|      Encerrado timer: id:172, (22:06:59.6236)
+2015-08-24 22:06:59.6236|Info|      Executando timer: id:173, (22:06:59.6236)
+2015-08-24 22:06:59.6236|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:59.6236|Info|      Encerrado timer: id:173, (22:06:59.6236)
+2015-08-24 22:06:59.6236|Info|      Executando timer: id:174, (22:06:59.6236)
+2015-08-24 22:06:59.6236|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:59.6236|Info|      Encerrado timer: id:174, (22:06:59.6236)
+2015-08-24 22:06:59.6549|Info|      Executando timer: id:175, (22:06:59.6549)
+2015-08-24 22:06:59.6549|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:59.6549|Info|      Encerrado timer: id:175, (22:06:59.6549)
+2015-08-24 22:06:59.7955|Info|      Executando timer: id:176, (22:06:59.7955)
+2015-08-24 22:06:59.7955|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:06:59.7955|Info|  Settimeout: id:178, (13) ms
+2015-08-24 22:06:59.8579|Info|      Encerrado timer: id:176, (22:06:59.8579)
+2015-08-24 22:06:59.8579|Info|      Executando timer: id:178, (22:06:59.8579)
+2015-08-24 22:06:59.8579|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:06:59.8579|Info| FAIL - throttle repeatedly with results
+2015-08-24 22:06:59.8579|Info|    PASS | EQ | ok
+2015-08-24 22:06:59.8579|Info|    PASS | EQ | ok
+2015-08-24 22:06:59.8579|Info|    PASS | EQ | ok
+2015-08-24 22:06:59.8735|Info|    FAIL | EQ | didn't delay the function quite yet | Expected: true, Actual: false
+2015-08-24 22:06:59.8735|Info|    PASS | EQ | delayed the function
+2015-08-24 22:06:59.8735|Info|    PASS | EQ | updated to latest value
+2015-08-24 22:06:59.8735|Info|    FAIL | EQ | updated to latest value | Expected: 3, Actual: 2
+2015-08-24 22:06:59.8735|Info|    PASS | EQ | incr was called once
+2015-08-24 22:06:59.8735|Info|    PASS | EQ | incr was throttled
+2015-08-24 22:06:59.8735|Info|    FAIL | EQ | incr was throttled | Expected: 1, Actual: 2
+2015-08-24 22:06:59.8892|Info|    PASS | EQ | incr was called twice
+2015-08-24 22:06:59.8892|Info|    PASS | EQ | incr was throttled
+2015-08-24 22:06:59.8892|Info|    PASS | EQ | incr was called trailing
+2015-08-24 22:06:59.8892|Info|  Settimeout: id:179, (32) ms
+2015-08-24 22:06:59.9517|Info|  Settimeout: id:180, (96) ms
+2015-08-24 22:07:00.0145|Info|      Encerrado timer: id:178, (22:07:00.0145)
+2015-08-24 22:07:00.0145|Info|      Executando timer: id:179, (22:07:00.0145)
+2015-08-24 22:07:00.0145|Info|          Deveria ter disparado: function () {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    }
+2015-08-24 22:07:00.0145|Info|      Encerrado timer: id:179, (22:07:00.0145)
+2015-08-24 22:07:00.0614|Info|      Executando timer: id:180, (22:07:00.0614)
+2015-08-24 22:07:00.0614|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:07:00.0614|Info|  Settimeout: id:181, (13) ms
+2015-08-24 22:07:00.1239|Info|      Encerrado timer: id:180, (22:07:00.1239)
+2015-08-24 22:07:00.1239|Info|      Executando timer: id:181, (22:07:00.1239)
+2015-08-24 22:07:00.1239|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:07:00.1239|Info| FAIL - throttle triggers trailing call when invoked repeatedly
+2015-08-24 22:07:00.1239|Info|    PASS | EQ | ok
+2015-08-24 22:07:00.1239|Info|    PASS | EQ | ok
+2015-08-24 22:07:00.1239|Info|    PASS | EQ | ok
+2015-08-24 22:07:00.1395|Info|    FAIL | EQ | didn't delay the function quite yet | Expected: true, Actual: false
+2015-08-24 22:07:00.1395|Info|    PASS | EQ | delayed the function
+2015-08-24 22:07:00.1395|Info|    PASS | EQ | updated to latest value
+2015-08-24 22:07:00.1395|Info|    FAIL | EQ | updated to latest value | Expected: 3, Actual: 2
+2015-08-24 22:07:00.1395|Info|    PASS | EQ | incr was called once
+2015-08-24 22:07:00.1395|Info|    PASS | EQ | incr was throttled
+2015-08-24 22:07:00.1551|Info|    FAIL | EQ | incr was throttled | Expected: 1, Actual: 2
+2015-08-24 22:07:00.1551|Info|    PASS | EQ | incr was called twice
+2015-08-24 22:07:00.1551|Info|    PASS | EQ | incr was throttled
+2015-08-24 22:07:00.1551|Info|    PASS | EQ | incr was called trailing
+2015-08-24 22:07:00.1708|Info|    FAIL | EQ | failed, expected argument to be truthy, was: false | Expected: true, Actual: false
+2015-08-24 22:07:00.1708|Info|    PASS | EQ | okay
+2015-08-24 22:07:00.1708|Info|  Settimeout: id:182, (60) ms
+2015-08-24 22:07:00.2333|Info|  Settimeout: id:183, (96) ms
+2015-08-24 22:07:00.2958|Info|      Encerrado timer: id:181, (22:07:00.2958)
+2015-08-24 22:07:00.3427|Info|      Executando timer: id:183, (22:07:00.3427)
+2015-08-24 22:07:00.3427|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:07:00.3427|Info|  Settimeout: id:184, (13) ms
+2015-08-24 22:07:00.4052|Info|      Encerrado timer: id:183, (22:07:00.4052)
+2015-08-24 22:07:00.4052|Info|      Executando timer: id:184, (22:07:00.4052)
+2015-08-24 22:07:00.4052|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:07:00.4052|Info| FAIL - throttle does not trigger leading call when leading is set to false
+2015-08-24 22:07:00.4052|Info|    PASS | EQ | ok
+2015-08-24 22:07:00.4052|Info|    PASS | EQ | ok
+2015-08-24 22:07:00.4208|Info|    PASS | EQ | ok
+2015-08-24 22:07:00.4208|Info|    FAIL | EQ | didn't delay the function quite yet | Expected: true, Actual: false
+2015-08-24 22:07:00.4208|Info|    PASS | EQ | delayed the function
+2015-08-24 22:07:00.4208|Info|    PASS | EQ | updated to latest value
+2015-08-24 22:07:00.4208|Info|    FAIL | EQ | updated to latest value | Expected: 3, Actual: 2
+2015-08-24 22:07:00.4208|Info|    PASS | EQ | incr was called once
+2015-08-24 22:07:00.4208|Info|    PASS | EQ | incr was throttled
+2015-08-24 22:07:00.4364|Info|    FAIL | EQ | incr was throttled | Expected: 1, Actual: 2
+2015-08-24 22:07:00.4364|Info|    PASS | EQ | incr was called twice
+2015-08-24 22:07:00.4364|Info|    PASS | EQ | incr was throttled
+2015-08-24 22:07:00.4364|Info|    PASS | EQ | incr was called trailing
+2015-08-24 22:07:00.4364|Info|    FAIL | EQ | failed, expected argument to be truthy, was: false | Expected: true, Actual: false
+2015-08-24 22:07:00.4364|Info|    PASS | EQ | okay
+2015-08-24 22:07:00.4364|Info|    FAIL | EQ | ok | Expected: 0, Actual: 1
+2015-08-24 22:07:00.4520|Info|    PASS | EQ | ok
+2015-08-24 22:07:00.4520|Info|  Settimeout: id:185, (64) ms
+2015-08-24 22:07:00.5145|Info|  Settimeout: id:186, (16) ms
+2015-08-24 22:07:00.5771|Info|  Settimeout: id:187, (32) ms
+2015-08-24 22:07:00.6396|Info|  Settimeout: id:188, (48) ms
+2015-08-24 22:07:00.7021|Info|  Settimeout: id:189, (128) ms
+2015-08-24 22:07:00.7646|Info|      Encerrado timer: id:184, (22:07:00.7646)
+2015-08-24 22:07:00.7646|Info|      Executando timer: id:185, (22:07:00.7646)
+2015-08-24 22:07:00.7646|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:07:00.7646|Info|      Encerrado timer: id:185, (22:07:00.7646)
+2015-08-24 22:07:00.7646|Info|      Executando timer: id:186, (22:07:00.7646)
+2015-08-24 22:07:00.7646|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:07:00.7646|Info|  Settimeout: id:190, (64) ms
+2015-08-24 22:07:00.8271|Info|      Encerrado timer: id:186, (22:07:00.8271)
+2015-08-24 22:07:00.8271|Info|      Executando timer: id:187, (22:07:00.8271)
+2015-08-24 22:07:00.8271|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:07:00.8271|Info|      Encerrado timer: id:187, (22:07:00.8271)
+2015-08-24 22:07:00.8271|Info|      Executando timer: id:188, (22:07:00.8271)
+2015-08-24 22:07:00.8271|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:07:00.8271|Info|      Encerrado timer: id:188, (22:07:00.8271)
+2015-08-24 22:07:00.8427|Info|      Executando timer: id:189, (22:07:00.8427)
+2015-08-24 22:07:00.8427|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:07:00.8427|Info|  Settimeout: id:191, (13) ms
+2015-08-24 22:07:00.9052|Info|      Encerrado timer: id:189, (22:07:00.9052)
+2015-08-24 22:07:00.9052|Info|      Executando timer: id:190, (22:07:00.9052)
+2015-08-24 22:07:00.9052|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:07:00.9052|Info|      Encerrado timer: id:190, (22:07:00.9052)
+2015-08-24 22:07:00.9052|Info|      Executando timer: id:191, (22:07:00.9052)
+2015-08-24 22:07:00.9052|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:07:00.9052|Info| FAIL - debounce asap
+2015-08-24 22:07:00.9052|Info|    PASS | EQ | ok
+2015-08-24 22:07:00.9052|Info|    PASS | EQ | ok
+2015-08-24 22:07:00.9052|Info|    PASS | EQ | ok
+2015-08-24 22:07:00.9052|Info|    FAIL | EQ | didn't delay the function quite yet | Expected: true, Actual: false
+2015-08-24 22:07:00.9052|Info|    PASS | EQ | delayed the function
+2015-08-24 22:07:00.9208|Info|    PASS | EQ | updated to latest value
+2015-08-24 22:07:00.9208|Info|    FAIL | EQ | updated to latest value | Expected: 3, Actual: 2
+2015-08-24 22:07:00.9208|Info|    PASS | EQ | incr was called once
+2015-08-24 22:07:00.9208|Info|    PASS | EQ | incr was throttled
+2015-08-24 22:07:00.9208|Info|    FAIL | EQ | incr was throttled | Expected: 1, Actual: 2
+2015-08-24 22:07:00.9208|Info|    PASS | EQ | incr was called twice
+2015-08-24 22:07:00.9208|Info|    PASS | EQ | incr was throttled
+2015-08-24 22:07:00.9208|Info|    PASS | EQ | incr was called trailing
+2015-08-24 22:07:00.9208|Info|    FAIL | EQ | failed, expected argument to be truthy, was: false | Expected: true, Actual: false
+2015-08-24 22:07:00.9208|Info|    PASS | EQ | okay
+2015-08-24 22:07:00.9208|Info|    FAIL | EQ | ok | Expected: 0, Actual: 1
+2015-08-24 22:07:00.9364|Info|    PASS | EQ | ok
+2015-08-24 22:07:00.9364|Info|    PASS | EQ | ok
+2015-08-24 22:07:00.9364|Info|    PASS | EQ | ok
+2015-08-24 22:07:00.9364|Info|    PASS | EQ | incr was called immediately
+2015-08-24 22:07:00.9364|Info|    FAIL | EQ | incr was debounced | Expected: 1, Actual: 2
+2015-08-24 22:07:00.9364|Info|  Settimeout: id:192, (32) ms
+2015-08-24 22:07:00.9990|Info|  Settimeout: id:193, (100) ms
+2015-08-24 22:07:01.0618|Info|      Encerrado timer: id:191, (22:07:01.0618)
+2015-08-24 22:07:01.0618|Info|      Executando timer: id:192, (22:07:01.0618)
+2015-08-24 22:07:01.0618|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:07:01.0618|Info|  Settimeout: id:194, (32) ms
+2015-08-24 22:07:01.1243|Info|      Encerrado timer: id:192, (22:07:01.1243)
+2015-08-24 22:07:01.1243|Info|      Executando timer: id:193, (22:07:01.1243)
+2015-08-24 22:07:01.1243|Info|          Deveria ter disparado: function (){
+      return func.apply(null, args);
+    }
+2015-08-24 22:07:01.1243|Info|  Settimeout: id:195, (13) ms
+2015-08-24 22:07:01.1868|Info|      Encerrado timer: id:193, (22:07:01.1868)
+2015-08-24 22:07:01.1868|Info|      Executando timer: id:194, (22:07:01.1868)
+2015-08-24 22:07:01.1868|Info|          Deveria ter disparado: function () {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    }
+2015-08-24 22:07:01.1868|Info|      Encerrado timer: id:194, (22:07:01.1868)
+2015-08-24 22:07:01.1868|Info|      Executando timer: id:195, (22:07:01.1868)
+2015-08-24 22:07:01.1868|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-24 22:07:01.1868|Info| FAIL - debounce re-entrant
+2015-08-24 22:07:01.2023|Info|    PASS | EQ | ok
+2015-08-24 22:07:01.2023|Info|    PASS | EQ | ok
+2015-08-24 22:07:01.2023|Info|    PASS | EQ | ok
+2015-08-24 22:07:01.2023|Info|    FAIL | EQ | didn't delay the function quite yet | Expected: true, Actual: false
+2015-08-24 22:07:01.2023|Info|    PASS | EQ | delayed the function
+2015-08-24 22:07:01.2180|Info|    PASS | EQ | updated to latest value
+2015-08-24 22:07:01.2180|Info|    FAIL | EQ | updated to latest value | Expected: 3, Actual: 2
+2015-08-24 22:07:01.2180|Info|    PASS | EQ | incr was called once
+2015-08-24 22:07:01.2180|Info|    PASS | EQ | incr was throttled
+2015-08-24 22:07:01.2180|Info|    FAIL | EQ | incr was throttled | Expected: 1, Actual: 2
+2015-08-24 22:07:01.2180|Info|    PASS | EQ | incr was called twice
+2015-08-24 22:07:01.2180|Info|    PASS | EQ | incr was throttled
+2015-08-24 22:07:01.2336|Info|    PASS | EQ | incr was called trailing
+2015-08-24 22:07:01.2336|Info|    FAIL | EQ | failed, expected argument to be truthy, was: false | Expected: true, Actual: false
+2015-08-24 22:07:01.2336|Info|    PASS | EQ | okay
+2015-08-24 22:07:01.2336|Info|    FAIL | EQ | ok | Expected: 0, Actual: 1
+2015-08-24 22:07:01.2336|Info|    PASS | EQ | ok
+2015-08-24 22:07:01.2336|Info|    PASS | EQ | ok
+2015-08-24 22:07:01.2492|Info|    PASS | EQ | ok
+2015-08-24 22:07:01.2492|Info|    PASS | EQ | incr was called immediately
+2015-08-24 22:07:01.2492|Info|    FAIL | EQ | incr was debounced | Expected: 1, Actual: 2
+2015-08-24 22:07:01.2492|Info|    PASS | EQ | ok
+2015-08-24 22:07:01.2492|Info|    FAIL | EQ | append was debounced successfully | Expected: a1a2b1b2, Actual: a1a2
+2015-08-24 22:07:01.2492|Info|----------------------------------------
+2015-08-24 22:07:01.2492|Info|    PASS: 1366  FAIL: 8  TOTAL: 1374
+2015-08-24 22:07:01.2492|Info|    Finished in 17019 milliseconds.
+2015-08-24 22:07:01.2492|Info|----------------------------------------
+2015-08-24 22:07:01.2805|Info|      Encerrado timer: id:195, (22:07:01.2805)
+2015-08-24 22:07:01.2805|Info|Encerrando os testes
+2015-08-24 22:07:01.2805|Info|Total:1374, Sucesso: 1366, Falha: 8
+2015-08-24 22:07:01.2805|Info|17 segundos para avaliar o individuo underscore.js
+2015-08-24 22:07:01.2805|Info|FAILED: Functions: delay: didn't delay the function quite yet, ,     at Script Document [8]:1906:13
+    at Array.<anonymous> (Script Document [12]:1812:32)
+    at Script Document [21]:1:23
+2015-08-24 22:07:01.2805|Info|FAILED: Functions: throttle arguments: updated to latest value, expected: 3, actual: 2,     at Script Document [8]:1906:13
+    at Script Document [12]:1840:25
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [45]:1:24
+2015-08-24 22:07:01.2805|Info|FAILED: Functions: throttle repeatedly with results: incr was throttled, expected: 1, actual: 2,     at Script Document [8]:1906:13
+    at Script Document [12]:1890:20
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [77]:1:24
+2015-08-24 22:07:01.2805|Info|FAILED: Functions: throttle triggers trailing call when invoked repeatedly: failed, expected argument to be truthy, was: false, ,     at Script Document [8]:1906:13
+    at Object.<anonymous> (Script Document [12]:1909:16)
+    at Object.Test.run (Script Document [8]:894:28)
+    at Script Document [8]:1023:11
+    at process (Script Document [8]:583:24)
+    at begin (Script Document [8]:628:2)
+2015-08-24 22:07:01.2805|Info|FAILED: Functions: throttle does not trigger leading call when leading is set to false: expected: 0, actual: 1,     at Script Document [8]:1906:13
+    at Object.<anonymous> (Script Document [12]:1923:5)
+    at Object.Test.run (Script Document [8]:894:28)
+    at Script Document [8]:1023:11
+    at process (Script Document [8]:583:24)
+    at begin (Script Document [8]:628:2)
+2015-08-24 22:07:01.2805|Info|FAILED: Functions: more throttle does not trigger leading call when leading is set to false: expected: 1, actual: 2,     at Script Document [8]:1906:13
+    at Script Document [12]:1943:7
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [101]:1:24
+2015-08-24 22:07:01.2805|Info|FAILED: Functions: debounce asap: incr was debounced, expected: 1, actual: 2,     at Script Document [8]:1906:13
+    at Script Document [12]:2053:25
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [149]:1:24
+2015-08-24 22:07:01.2805|Info|FAILED: Functions: debounce re-entrant: append was debounced successfully, expected: a1a2b1b2, actual: a1a2,     at Script Document [8]:1906:13
+    at Script Document [12]:2106:7
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [171]:1:24
+2015-08-24 22:07:01.2805|Info|FAILED: Objects: #1929 Typed Array constructors are functions: Died on test #1     at Script Document [12]:2898:5
+    at Script Document [12]:3251:2: window is not defined, , ReferenceError: window is not defined
+    at Object.<anonymous> (Script Document [12]:2900:65)
+    at Object.Test.run (Script Document [8]:894:28)
+    at Script Document [8]:1023:11
+    at process (Script Document [8]:583:24)
+    at begin (Script Document [8]:628:2)
+    at Array.<anonymous> (Script Document [8]:643:4)
+    at Script Document [175]:1:24
+2015-08-24 22:07:01.2805|Info|FAILED: Functions: delay: didn't delay the function quite yet, ,     at Script Document [8]:1906:13
+    at Array.<anonymous> (Script Document [12]:1812:32)
+    at Script Document [179]:1:24
+2015-08-24 22:07:01.2805|Info|FAILED: Functions: throttle arguments: updated to latest value, expected: 3, actual: 2,     at Script Document [8]:1906:13
+    at Script Document [12]:1840:25
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [189]:1:24
+2015-08-24 22:07:01.2805|Info|FAILED: Functions: throttle repeatedly with results: incr was throttled, expected: 1, actual: 2,     at Script Document [8]:1906:13
+    at Script Document [12]:1890:20
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [205]:1:25
+2015-08-24 22:07:01.2805|Info|FAILED: Functions: throttle triggers trailing call when invoked repeatedly: failed, expected argument to be truthy, was: false, ,     at Script Document [8]:1906:13
+    at Object.<anonymous> (Script Document [12]:1909:16)
+    at Object.Test.run (Script Document [8]:894:28)
+    at Script Document [8]:1023:11
+    at process (Script Document [8]:583:24)
+    at begin (Script Document [8]:628:2)
+2015-08-24 22:07:01.2805|Info|FAILED: Functions: throttle does not trigger leading call when leading is set to false: expected: 0, actual: 1,     at Script Document [8]:1906:13
+    at Object.<anonymous> (Script Document [12]:1923:5)
+    at Object.Test.run (Script Document [8]:894:28)
+    at Script Document [8]:1023:11
+    at process (Script Document [8]:583:24)
+    at begin (Script Document [8]:628:2)
+2015-08-24 22:07:01.2961|Info|FAILED: Functions: debounce asap: incr was debounced, expected: 1, actual: 2,     at Script Document [8]:1906:13
+    at Script Document [12]:2053:25
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [243]:1:25
+2015-08-24 22:07:01.2961|Info|FAILED: Functions: debounce re-entrant: append was debounced successfully, expected: a1a2b1b2, actual: a1a2,     at Script Document [8]:1906:13
+    at Script Document [12]:2106:7
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [251]:1:25
+2015-08-24 22:07:01.2961|Info|FAILED: Functions: delay: didn't delay the function quite yet, ,     at Script Document [8]:1906:13
+    at Array.<anonymous> (Script Document [12]:1812:32)
+    at Script Document [259]:1:25
+2015-08-24 22:07:01.2961|Info|FAILED: Functions: throttle arguments: updated to latest value, expected: 3, actual: 2,     at Script Document [8]:1906:13
+    at Script Document [12]:1840:25
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [269]:1:25
+2015-08-24 22:07:01.2961|Info|FAILED: Functions: throttle repeatedly with results: incr was throttled, expected: 1, actual: 2,     at Script Document [8]:1906:13
+    at Script Document [12]:1890:20
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [285]:1:25
+2015-08-24 22:07:01.2961|Info|FAILED: Functions: throttle triggers trailing call when invoked repeatedly: failed, expected argument to be truthy, was: false, ,     at Script Document [8]:1906:13
+    at Object.<anonymous> (Script Document [12]:1909:16)
+    at Object.Test.run (Script Document [8]:894:28)
+    at Script Document [8]:1023:11
+    at process (Script Document [8]:583:24)
+    at begin (Script Document [8]:628:2)
+2015-08-24 22:07:01.2961|Info|FAILED: Functions: throttle does not trigger leading call when leading is set to false: expected: 0, actual: 1,     at Script Document [8]:1906:13
+    at Object.<anonymous> (Script Document [12]:1923:5)
+    at Object.Test.run (Script Document [8]:894:28)
+    at Script Document [8]:1023:11
+    at process (Script Document [8]:583:24)
+    at begin (Script Document [8]:628:2)
+2015-08-24 22:07:01.2961|Info|FAILED: Functions: debounce asap: incr was debounced, expected: 1, actual: 2,     at Script Document [8]:1906:13
+    at Script Document [12]:2053:25
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [307]:1:25
+2015-08-24 22:07:01.2961|Info|FAILED: Functions: debounce re-entrant: append was debounced successfully, expected: a1a2b1b2, actual: a1a2,     at Script Document [8]:1906:13
+    at Script Document [12]:2106:7
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [315]:1:25
+2015-08-24 22:07:01.2961|Info|FAILED: Functions: delay: didn't delay the function quite yet, ,     at Script Document [8]:1906:13
+    at Array.<anonymous> (Script Document [12]:1812:32)
+    at Script Document [323]:1:25
+2015-08-24 22:07:01.2961|Info|FAILED: Functions: throttle arguments: updated to latest value, expected: 3, actual: 2,     at Script Document [8]:1906:13
+    at Script Document [12]:1840:25
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [333]:1:25
+2015-08-24 22:07:01.2961|Info|FAILED: Functions: throttle repeatedly with results: incr was throttled, expected: 1, actual: 2,     at Script Document [8]:1906:13
+    at Script Document [12]:1890:20
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [349]:1:25
+2015-08-24 22:07:01.2961|Info|FAILED: Functions: throttle triggers trailing call when invoked repeatedly: failed, expected argument to be truthy, was: false, ,     at Script Document [8]:1906:13
+    at Object.<anonymous> (Script Document [12]:1909:16)
+    at Object.Test.run (Script Document [8]:894:28)
+    at Script Document [8]:1023:11
+    at process (Script Document [8]:583:24)
+    at begin (Script Document [8]:628:2)
+2015-08-24 22:07:01.2961|Info|FAILED: Functions: throttle does not trigger leading call when leading is set to false: expected: 0, actual: 1,     at Script Document [8]:1906:13
+    at Object.<anonymous> (Script Document [12]:1923:5)
+    at Object.Test.run (Script Document [8]:894:28)
+    at Script Document [8]:1023:11
+    at process (Script Document [8]:583:24)
+    at begin (Script Document [8]:628:2)
+2015-08-24 22:07:01.2961|Info|FAILED: Functions: debounce asap: incr was debounced, expected: 1, actual: 2,     at Script Document [8]:1906:13
+    at Script Document [12]:2053:25
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [371]:1:25
+2015-08-24 22:07:01.2961|Info|FAILED: Functions: debounce re-entrant: append was debounced successfully, expected: a1a2b1b2, actual: a1a2,     at Script Document [8]:1906:13
+    at Script Document [12]:2106:7
+    at Array.<anonymous> (Script Document [11]:768:19)
+    at Script Document [379]:1:25

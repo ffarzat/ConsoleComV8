@@ -55,7 +55,7 @@ namespace Otimizacao.Testes
         /// <summary>
         /// Executa os testes do Loadsh
         /// </summary>
-        [Test]
+        [Ignore]
         public void ExecutarTestesDoLodash()
         {
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Lodash"), true, true);
@@ -72,7 +72,7 @@ namespace Otimizacao.Testes
         /// <summary>
         /// Executa os testes do underscore
         /// </summary>
-        [Test]
+        [Ignore]
         public void ExecutarTestesDounderscore()
         {
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "underscore"), true, true);
