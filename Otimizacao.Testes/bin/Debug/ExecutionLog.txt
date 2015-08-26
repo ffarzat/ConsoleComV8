@@ -26883,3 +26883,11 @@
 2015-08-26 11:47:23.2500|Info|Encerrando os testes
 2015-08-26 11:47:23.2500|Info|Total:57982, Sucesso: 57982, Falha: 0
 2015-08-26 11:47:23.2500|Info|2 segundos para avaliar o individuo global.js
+2015-08-26 11:47:51.4921|Info|Iniciando os testes
+2015-08-26 11:47:54.4342|Info|Encerrando os testes
+2015-08-26 11:47:54.4342|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-26 11:47:54.4342|Info|3 segundos para avaliar o individuo global.js
+2015-08-26 11:49:39.4401|Info|Iniciando os testes
+2015-08-26 11:49:42.2854|Info|Encerrando os testes
+2015-08-26 11:49:42.2874|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-26 11:49:42.2874|Info|3 segundos para avaliar o individuo global.js
