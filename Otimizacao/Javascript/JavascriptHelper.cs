@@ -40,11 +40,6 @@ namespace Otimizacao.Javascript
         private object _timerLock = new object();
 
         /// <summary>
-        /// Armazena os Javascripts carregados
-        /// </summary>
-        private Dictionary<string, string> _javascripts;
-
-        /// <summary>
         /// V8 chrome engine
         /// </summary>
         private V8ScriptEngine _engine;
@@ -100,12 +95,18 @@ namespace Otimizacao.Javascript
         private static Logger _logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
+        /// Manager da ScriptEngine
+        /// </summary>
+        private RuntimeManager _manager;
+
+        /// <summary>
         /// Construtor, configura o Helper para posterior execuçao
         /// </summary>
         /// <param name="diretorioJavascripts">Diretório onde estão os arquivos em js</param>
         public JavascriptHelper(string diretorioJavascripts)
         {
             Carregar(diretorioJavascripts, false, false);
+            ConfigurarGeracao();
         }
 
         /// <summary>
@@ -117,6 +118,7 @@ namespace Otimizacao.Javascript
         public JavascriptHelper(string diretorioJavascripts, bool setTimeout, bool setInterval)
         {
             Carregar(diretorioJavascripts, setInterval, setInterval);
+            ConfigurarGeracao();
         }
 
         /// <summary>
@@ -127,21 +129,24 @@ namespace Otimizacao.Javascript
         /// <param name="setInterval">Habilitar a função global setInterval</param>
         private void Carregar(string diretorioJavascripts, bool setTimeout, bool setInterval)
         {
+            //O manager vai compilar e cachear as bibliotecas
+            _manager = new RuntimeManager(new ManualManagerSettings() { ScriptCacheMaxCount = 100, ScriptCacheExpirationSeconds = Int16.MaxValue });
+
             #region Ler arquivos Js
-            _javascripts = new Dictionary<string, string>();
+            //_javascripts = new Dictionary<string, string>();
 
             foreach (var enumerateFile in Directory.EnumerateFiles(diretorioJavascripts, "*.js"))
             {
-                _javascripts.Add(Path.GetFileName(enumerateFile), File.ReadAllText(enumerateFile));
+                _manager.Compile(Path.GetFileNameWithoutExtension(enumerateFile), File.ReadAllText(enumerateFile), true, int.MaxValue);
             }
 
             #endregion
 
             #region Cria a Engine e configura com o JavascriptHelper e Console
-            var manager = new RuntimeManager(new ManagerSettings());
+            
 
 
-            _engine = manager.GetEngine();
+            _engine = _manager.GetEngine();
             FalhasDosTestes = new List<string>();
             _timers = new Dictionary<int, bool>();
 
@@ -193,9 +198,13 @@ namespace Otimizacao.Javascript
         /// <summary>
         /// Metodo para futura geraco de código e mutantes
         /// </summary>
-        public void configurarGeracao()
+        public void ConfigurarGeracao()
         {
             #region Congigura o Escodegen e o Esprima
+
+            _manager.ExecuteCompiled("esprima");
+
+
 //            Engine.Execute(@"   var ObjEstraverse = {};
 //                                var ObjEscodegen = {};
 //                                var ObjCode = {};
@@ -269,11 +278,9 @@ namespace Otimizacao.Javascript
 
             #region Configura o QUnit
 
-            _engine.Execute(_javascripts["Qunit.js"]);
+            _manager.ExecuteCompiled("Qunit");
+            _manager.ExecuteCompiled("qunit-extras");
             
-            if (_javascripts.ContainsKey("qunit-extras.js"))
-                _engine.Execute(_javascripts["qunit-extras.js"]);
-
             _engine.Execute(@"   
                                     var total, sucesso, falha;
 
@@ -318,11 +325,11 @@ namespace Otimizacao.Javascript
             #endregion
 
             #region Carrega o individuo
-            _engine.Execute(_javascripts[nomeArquivoIndividuo]);
+            _manager.ExecuteCompiled(Path.GetFileNameWithoutExtension(nomeArquivoIndividuo));
             #endregion
 
             #region Carrega e executa os Testes
-            _engine.Execute(_javascripts[nomeDoArquivoTestes]);
+            _manager.ExecuteCompiled(Path.GetFileNameWithoutExtension(nomeDoArquivoTestes));
 
             Escrever("Iniciando os testes");
             //Escrever("_timers.Count {0}", _timers.Count);
