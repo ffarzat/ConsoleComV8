@@ -40,3 +40,9 @@ D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\core-test.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\esprima.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\global.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\Qunit.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\escodegen.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\ast.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\code.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\estraverse.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\keyword.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\utils.js

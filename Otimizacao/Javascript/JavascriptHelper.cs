@@ -9,6 +9,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using ClearScript.Manager;
+using ClearScript.Manager.Caching;
+using ClearScript.Manager.Loaders;
 using Microsoft.ClearScript.V8;
 using NLog;
 using Timer = System.Timers.Timer;
@@ -131,6 +133,8 @@ namespace Otimizacao.Javascript
         {
             //O manager vai compilar e cachear as bibliotecas
             _manager = new RuntimeManager(new ManualManagerSettings() { ScriptCacheMaxCount = 100, ScriptCacheExpirationSeconds = Int16.MaxValue });
+            _engine = _manager.GetEngine();
+            RequireManager.ClearPackages(); //garantir uma execução limpa
 
             #region Ler arquivos Js
             //_javascripts = new Dictionary<string, string>();
@@ -142,15 +146,15 @@ namespace Otimizacao.Javascript
 
             #endregion
 
-            #region Cria a Engine e configura com o JavascriptHelper e Console
+            #region Configura a Engine com o JavascriptHelper e Console, Settimeout e etc
             
 
 
-            _engine = _manager.GetEngine();
             FalhasDosTestes = new List<string>();
             _timers = new Dictionary<int, bool>();
 
             _engine.AddHostObject("javascriptHelper", this);
+           
             _engine.Execute(@"'use strict';
                         function console() {
                           if (!(this instanceof console)) {
@@ -191,7 +195,13 @@ namespace Otimizacao.Javascript
                 _engine.Execute(@"var clearInterval = function(id) { javascriptHelper.ClearTimeout(id);};");
             }
 
+            RequireManager.RegisterPackage(new RequiredPackage { PackageId = "esprima", ScriptUri = ".\\esprima.js" });
+            RequireManager.RegisterPackage(new RequiredPackage { PackageId = "estraverse", ScriptUri = ".\\estraverse.js" });
+            RequireManager.RegisterPackage(new RequiredPackage { PackageId = "esutils", ScriptUri = ".\\utils.js" });
 
+            RequireManager.RegisterPackage(new RequiredPackage { PackageId = "ast", ScriptUri = ".\\ast.js" });
+            RequireManager.RegisterPackage(new RequiredPackage { PackageId = "code", ScriptUri = ".\\code.js" });
+            RequireManager.RegisterPackage(new RequiredPackage { PackageId = "keyword", ScriptUri = ".\\keyword.js" });
             #endregion
         }
 
@@ -202,7 +212,14 @@ namespace Otimizacao.Javascript
         {
             #region Congigura o Escodegen e o Esprima
 
-            _manager.ExecuteCompiled("esprima");
+            CachedV8Script script;
+            _manager.TryGetCached("escodegen", out script);
+
+            var lista = new List<IncludeScript>();
+            lista.Add(new IncludeScript() { ScriptId = "escodegen", Uri = ".\\escodegen.js" });
+
+            _manager.ExecuteAsync(lista);
+
 
 
 //            Engine.Execute(@"   var ObjEstraverse = {};
@@ -341,7 +358,7 @@ namespace Otimizacao.Javascript
             //Escrever("_timers.Count {0}", _timers.Count);
             
             
-            while (getTimersCount() > 0)
+            while (GetTimersCount() > 0)
             {
                 Thread.Sleep(5);
             }
@@ -366,10 +383,33 @@ namespace Otimizacao.Javascript
         }
 
         /// <summary>
+        /// Executa um script por ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool ExecutarScriptPorId(string id)
+        {
+            bool sucesso = false;
+            try
+            {
+                sucesso = _manager.ExecuteCompiled(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.Info(ex.ToString());
+                throw;
+            }
+
+            _logger.Info(string.Format("{0} executado com sucesso? {1}", id, sucesso));
+            
+            return sucesso;
+        }
+
+        /// <summary>
         /// Retorno o total de Timers ainda para executar
         /// </summary>
         /// <returns></returns>
-        private int getTimersCount()
+        private int GetTimersCount()
         {
             int retorno = 0;
             
