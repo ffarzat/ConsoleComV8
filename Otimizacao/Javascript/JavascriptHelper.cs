@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
+using ClearScript.Manager;
 using Microsoft.ClearScript.V8;
 using NLog;
 using Timer = System.Timers.Timer;
@@ -137,8 +138,10 @@ namespace Otimizacao.Javascript
             #endregion
 
             #region Cria a Engine e configura com o JavascriptHelper e Console
+            var manager = new RuntimeManager(new ManagerSettings());
 
-            _engine = new V8ScriptEngine();
+
+            _engine = manager.GetEngine();
             FalhasDosTestes = new List<string>();
             _timers = new Dictionary<int, bool>();
 
