@@ -31,7 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClearScript">
-      <HintPath>..\packages\ClearScript.V8.5.4.2.1\lib\net40\ClearScript.dll</HintPath>
+      <HintPath>..\Refs\ClearScript.dll</HintPath>
+    </Reference>
+    <Reference Include="ClearScript.Manager">
+      <HintPath>..\Refs\ClearScript.Manager.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -52,11 +55,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Licenses\ClearScript.main.license" />
-    <None Include="Licenses\v8.main.license" />
-    <None Include="Licenses\v8.strongtalk.license" />
-    <None Include="Licenses\v8.v8.license" />
-    <None Include="Licenses\v8.valgrind.license" />
     <None Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -69,13 +67,13 @@
     <Folder Include="EsprimaAST\Nodes\Expressions\" />
     <Folder Include="EsprimaAST\Nodes\Statements\" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
-if not exist "$(TargetDir)" md "$(TargetDir)"
-xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.4.2.1\tools\native\x86\*.*" "$(TargetDir)"
-if not exist "$(TargetDir)" md "$(TargetDir)"
-xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.4.2.1\tools\native\amd64\*.*" "$(TargetDir)"</PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

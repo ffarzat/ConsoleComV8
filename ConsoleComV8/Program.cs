@@ -5,8 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClearScript.Manager;
+using Microsoft.ClearScript.V8;
 using NLog;
-using Otimizacao.Javascript;
+
 
 namespace ConsoleComV8
 {
@@ -14,8 +16,17 @@ namespace ConsoleComV8
     {
         static void Main(string[] args)
         {
-            var helper = new JavascriptHelper(Environment.CurrentDirectory);
-            helper.ExecutarTestes("lodash.js", "lodashTest.js");
+
+            ManagerPool.InitializeCurrentPool(new ManualManagerSettings { RuntimeMaxCount = 2 });
+
+            using (var scope = new ManagerScope())
+            {
+                var engine = scope.RuntimeManager.GetEngine();
+                engine.Execute("var i = 200;");
+                Console.WriteLine(engine.Script.i);
+            }
+
+
         }
 
     }

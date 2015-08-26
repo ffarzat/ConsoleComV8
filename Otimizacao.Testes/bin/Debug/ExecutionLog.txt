@@ -9755,3 +9755,7 @@
     at Script Document [12]:2106:7
     at Array.<anonymous> (Script Document [11]:768:19)
     at Script Document [379]:1:25
+2015-08-26 10:21:19.5499|Info|Iniciando os testes
+2015-08-26 10:21:22.3804|Info|Encerrando os testes
+2015-08-26 10:21:22.3804|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-26 10:21:22.3804|Info|3 segundos para avaliar o individuo global.js

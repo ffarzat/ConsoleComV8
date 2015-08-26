@@ -32,7 +32,10 @@
   <ItemGroup>
     <Reference Include="ClearScript, Version=5.4.2.1, Culture=neutral, PublicKeyToken=935d0c957da47c73, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ClearScript.V8.5.4.2.1\lib\net40\ClearScript.dll</HintPath>
+      <HintPath>..\Refs\ClearScript.dll</HintPath>
+    </Reference>
+    <Reference Include="ClearScript.Manager">
+      <HintPath>..\Refs\ClearScript.Manager.dll</HintPath>
     </Reference>
     <Reference Include="CodeBureau, Version=1.0.5709.22924, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -54,11 +57,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Licenses\ClearScript.main.license" />
-    <None Include="Licenses\v8.main.license" />
-    <None Include="Licenses\v8.strongtalk.license" />
-    <None Include="Licenses\v8.v8.license" />
-    <None Include="Licenses\v8.valgrind.license" />
     <None Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -71,6 +69,30 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Lib\ClearScriptV8-32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Lib\ClearScriptV8-32.pdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Lib\ClearScriptV8-64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Lib\ClearScriptV8-64.pdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Lib\v8-ia32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Lib\v8-ia32.pdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Lib\v8-x64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Lib\v8-x64.pdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Lodash\lodash.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -108,10 +130,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
-if not exist "$(TargetDir)" md "$(TargetDir)"
-xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.4.2.1\tools\native\x86\*.*" "$(TargetDir)"
-if not exist "$(TargetDir)" md "$(TargetDir)"
-xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.4.2.1\tools\native\amd64\*.*" "$(TargetDir)"</PostBuildEvent>
+copy "$(TargetDir)Lib\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

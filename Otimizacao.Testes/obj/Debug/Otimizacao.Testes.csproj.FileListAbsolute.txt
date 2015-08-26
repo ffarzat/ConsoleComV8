@@ -23,3 +23,16 @@ D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\NLog.xml
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\obj\Debug\Otimizacao.Testes.csprojResolveAssemblyReference.cache
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\obj\Debug\Otimizacao.Testes.dll
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\obj\Debug\Otimizacao.Testes.pdb
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\ClearScript.Manager.dll
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\ClearScript.pdb
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\ClearScript.xml
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\ClearScript.Manager.pdb
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\ClearScript.Manager.xml
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lib\ClearScriptV8-32.dll
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lib\ClearScriptV8-32.pdb
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lib\ClearScriptV8-64.dll
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lib\ClearScriptV8-64.pdb
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lib\v8-ia32.dll
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lib\v8-ia32.pdb
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lib\v8-x64.dll
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lib\v8-x64.pdb
