@@ -102,13 +102,17 @@ namespace Otimizacao.Javascript
         private RuntimeManager _manager;
 
         /// <summary>
+        /// Diretório onde os scripts estão
+        /// </summary>
+        private string _diretorioExecucao;
+
+        /// <summary>
         /// Construtor, configura o Helper para posterior execuçao
         /// </summary>
         /// <param name="diretorioJavascripts">Diretório onde estão os arquivos em js</param>
         public JavascriptHelper(string diretorioJavascripts)
         {
             Carregar(diretorioJavascripts, false, false);
-            ConfigurarGeracao();
         }
 
         /// <summary>
@@ -120,7 +124,6 @@ namespace Otimizacao.Javascript
         public JavascriptHelper(string diretorioJavascripts, bool setTimeout, bool setInterval)
         {
             Carregar(diretorioJavascripts, setInterval, setInterval);
-            ConfigurarGeracao();
         }
 
         /// <summary>
@@ -131,6 +134,8 @@ namespace Otimizacao.Javascript
         /// <param name="setInterval">Habilitar a função global setInterval</param>
         private void Carregar(string diretorioJavascripts, bool setTimeout, bool setInterval)
         {
+            _diretorioExecucao = diretorioJavascripts;
+
             //O manager vai compilar e cachear as bibliotecas
             _manager = new RuntimeManager(new ManualManagerSettings() { ScriptCacheMaxCount = 100, ScriptCacheExpirationSeconds = Int16.MaxValue });
             _engine = _manager.GetEngine();
@@ -194,31 +199,42 @@ namespace Otimizacao.Javascript
 
                 _engine.Execute(@"var clearInterval = function(id) { javascriptHelper.ClearTimeout(id);};");
             }
-
-            RequireManager.RegisterPackage(new RequiredPackage { PackageId = "esprima", ScriptUri = ".\\esprima.js" });
-            RequireManager.RegisterPackage(new RequiredPackage { PackageId = "estraverse", ScriptUri = ".\\estraverse.js" });
-            RequireManager.RegisterPackage(new RequiredPackage { PackageId = "esutils", ScriptUri = ".\\utils.js" });
-
-            RequireManager.RegisterPackage(new RequiredPackage { PackageId = "ast", ScriptUri = ".\\ast.js" });
-            RequireManager.RegisterPackage(new RequiredPackage { PackageId = "code", ScriptUri = ".\\code.js" });
-            RequireManager.RegisterPackage(new RequiredPackage { PackageId = "keyword", ScriptUri = ".\\keyword.js" });
             #endregion
+        }
+
+        /// <summary>
+        /// Registra um pacote em js para emular o funcionamento do RequireJs
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="arquivoJs"></param>
+        private void RegistarScript(string id, string arquivoJs)
+        {
+            RequireManager.RegisterPackage(new RequiredPackage { PackageId = id, ScriptUri = string.Format("{0}\\{1}", _diretorioExecucao, arquivoJs) });
         }
 
         /// <summary>
         /// Metodo para futura geraco de código e mutantes
         /// </summary>
-        public void ConfigurarGeracao()
+        public async Task ConfigurarGeracao()
         {
+            #region Registra os pacotes
+
+            RegistarScript("esprima", "esprima.js");
+            RegistarScript("estraverse", "estraverse.js");
+            RegistarScript("esutils", "utils.js");
+            RegistarScript("ast", "ast.js");
+            RegistarScript("code", "code.js");
+            RegistarScript("keyword", "keyword.js");
+            #endregion
+
             #region Congigura o Escodegen e o Esprima
 
-            CachedV8Script script;
-            _manager.TryGetCached("escodegen", out script);
-
             var lista = new List<IncludeScript>();
-            lista.Add(new IncludeScript() { ScriptId = "escodegen", Uri = ".\\escodegen.js" });
+            //lista.Add(new IncludeScript() { ScriptId = "requiremock", Code = "var exports = {};" });
+            lista.Add(new IncludeScript() { ScriptId = "escodegen", Uri = string.Format("{0}\\escodegen.js", _diretorioExecucao) });
 
-            _manager.ExecuteAsync(lista);
+
+            await _manager.ExecuteAsync(lista);
 
 
 

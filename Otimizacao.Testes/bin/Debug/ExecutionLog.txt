@@ -12,3 +12,23 @@
 2015-08-26 13:57:10.2485|Info|Encerrando os testes
 2015-08-26 13:57:10.2485|Info|Total:57982, Sucesso: 57982, Falha: 0
 2015-08-26 13:57:10.2485|Info|2 segundos para avaliar o individuo global.js
+2015-08-26 14:52:32.5365|Info|Iniciando os testes
+2015-08-26 14:52:34.8813|Info|Encerrando os testes
+2015-08-26 14:52:34.8813|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-26 14:52:34.8813|Info|2 segundos para avaliar o individuo global.js
+2015-08-26 14:52:38.8992|Info|Iniciando os testes
+2015-08-26 14:52:41.2475|Info|Encerrando os testes
+2015-08-26 14:52:41.2475|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-26 14:52:41.2475|Info|2 segundos para avaliar o individuo global.js
+2015-08-26 14:54:16.2604|Info|Iniciando os testes
+2015-08-26 14:54:18.5613|Info|Encerrando os testes
+2015-08-26 14:54:18.5613|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-26 14:54:18.5613|Info|2 segundos para avaliar o individuo global.js
+2015-08-26 14:54:22.8744|Info|Iniciando os testes
+2015-08-26 14:54:25.1386|Info|Encerrando os testes
+2015-08-26 14:54:25.1542|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-26 14:54:25.1542|Info|2 segundos para avaliar o individuo global.js
+2015-08-26 15:09:06.6991|Info|Iniciando os testes
+2015-08-26 15:09:09.0118|Info|Encerrando os testes
+2015-08-26 15:09:09.0118|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-26 15:09:09.0118|Info|2 segundos para avaliar o individuo global.js

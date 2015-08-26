@@ -41,10 +41,10 @@ namespace Otimizacao.Testes
         /// Executa os testes do uso do Require
         /// </summary>
         [Test]
-        public void ExecutarTestesDoMomentComRequire()
+        public async void ExecutarTestesDoMomentComRequire()
         {
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"));
-
+            await helper.ConfigurarGeracao();
             helper.ExecutarTestes("global.js", "core-test.js");
 
             helper.FalhasDosTestes.ForEach(Console.WriteLine);
