@@ -26875,3 +26875,11 @@
     at V8Runtime [3]:underscoreTests:2106:7
     at Array.<anonymous> (V8Runtime [3]:underscore:768:19)
     at Script Document [409]:1:25
+2015-08-26 11:45:50.3795|Info|Iniciando os testes
+2015-08-26 11:45:52.9110|Info|Encerrando os testes
+2015-08-26 11:45:52.9110|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-26 11:45:52.9110|Info|2 segundos para avaliar o individuo global.js
+2015-08-26 11:47:20.8687|Info|Iniciando os testes
+2015-08-26 11:47:23.2500|Info|Encerrando os testes
+2015-08-26 11:47:23.2500|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-26 11:47:23.2500|Info|2 segundos para avaliar o individuo global.js

@@ -36,3 +36,7 @@ D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lib\v8-ia32.dll
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lib\v8-ia32.pdb
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lib\v8-x64.dll
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Lib\v8-x64.pdb
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\core-test.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\esprima.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\global.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\Qunit.js
