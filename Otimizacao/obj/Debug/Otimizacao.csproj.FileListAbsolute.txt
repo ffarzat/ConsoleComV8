@@ -11,3 +11,4 @@ D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\ClearScript.xml
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\ClearScript.Manager.dll
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\ClearScript.Manager.pdb
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\ClearScript.Manager.xml
+D:\GitHub\ConsoleComV8\Otimizacao\obj\Debug\Otimizacao.csprojResolveAssemblyReference.cache

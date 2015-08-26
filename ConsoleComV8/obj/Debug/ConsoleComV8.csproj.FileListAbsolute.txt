@@ -71,3 +71,4 @@ D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Lib\v8-ia32.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Lib\v8-ia32.pdb
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Lib\v8-x64.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Lib\v8-x64.pdb
+D:\GitHub\ConsoleComV8\ConsoleComV8\obj\Debug\ConsoleComV8.csprojResolveAssemblyReference.cache

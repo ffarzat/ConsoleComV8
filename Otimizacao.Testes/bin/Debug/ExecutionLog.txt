@@ -9759,3 +9759,7 @@
 2015-08-26 10:21:22.3804|Info|Encerrando os testes
 2015-08-26 10:21:22.3804|Info|Total:57982, Sucesso: 57982, Falha: 0
 2015-08-26 10:21:22.3804|Info|3 segundos para avaliar o individuo global.js
+2015-08-26 10:34:37.5065|Info|Iniciando os testes
+2015-08-26 10:34:40.4650|Info|Encerrando os testes
+2015-08-26 10:34:40.4650|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-26 10:34:40.4650|Info|3 segundos para avaliar o individuo global.js
