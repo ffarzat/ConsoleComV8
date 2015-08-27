@@ -233,32 +233,32 @@ namespace Otimizacao.Javascript
             //lista.Add(new IncludeScript() { ScriptId = "requiremock", Code = "var exports = {};" });
             lista.Add(new IncludeScript() { ScriptId = "escodegen", Uri = string.Format("{0}\\escodegen.js", _diretorioExecucao) });
 
+            await _manager.ExecuteAsync("objetos", @"   var ObjEstraverse = {};
+                                var ObjEscodegen = {};
+                                var ObjCode = {};
+                                var ObjAst = {};
+                                var ObjKeyword = {};
+
+                                var Objutils = {};
+                                Objutils.ast = ObjAst;
+                                Objutils.code = ObjCode;
+                                Objutils.keyword = ObjKeyword;
+
+                            ");
+
 
             await _manager.ExecuteAsync(lista);
 
 
 
-//            Engine.Execute(@"   var ObjEstraverse = {};
-//                                var ObjEscodegen = {};
-//                                var ObjCode = {};
-//                                var ObjAst = {};
-//                                var ObjKeyword = {};
-//
-//                            ");
+
 
 //            Engine.Execute(code);
 //            Engine.Execute(ast);
 //            Engine.Execute(keyword);
 //            Engine.Execute(estraverse);
 
-//            Engine.Execute(@"
-//
-//                            var Objutils = {};
-//                            Objutils.ast = ObjAst;
-//                            Objutils.code = ObjCode;
-//                            Objutils.keyword = ObjKeyword;
-//                            
-//            ");
+
 
 
 //            Engine.Execute(escodegen);

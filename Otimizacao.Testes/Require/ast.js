@@ -22,7 +22,7 @@
   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-(function () {
+(function (exports) {
     'use strict';
 
     function isExpression(node) {
@@ -131,7 +131,7 @@
         return false;
     }
 
-    module.exports = {
+    exports = {
         isExpression: isExpression,
         isStatement: isStatement,
         isIterationStatement: isIterationStatement,
@@ -140,5 +140,5 @@
 
         trailingStatement: trailingStatement
     };
-}());
+}(ObjAst));
 /* vim: set sw=4 ts=4 et tw=80 : */

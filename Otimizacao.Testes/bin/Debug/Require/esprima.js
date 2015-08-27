@@ -2384,30 +2384,12 @@
         extra.errors.push(error);
     }
 
-    function constructError(msg, column) {
-        var error = new Error(msg);
-        try {
-            throw error;
-        } catch (base) {
-            /* istanbul ignore else */
-            if (Object.create && Object.defineProperty) {
-                error = Object.create(base);
-                Object.defineProperty(error, 'column', { value: column });
-            }
-        } finally {
-            return error;
-        }
-    }
-
     function createError(line, pos, description) {
-        var msg, column, error;
-
-        msg = 'Line ' + line + ': ' + description;
-        column = pos - (scanning ? lineStart : lastLineStart) + 1;
-        error = constructError(msg, column);
-        error.lineNumber = line;
-        error.description = description;
+        var error = new Error('Line ' + line + ': ' + description);
         error.index = pos;
+        error.lineNumber = line;
+        error.column = pos - (scanning ? lineStart : lastLineStart) + 1;
+        error.description = description;
         return error;
     }
 
@@ -2668,7 +2650,7 @@
 
     // ECMA-262 13.3.3 Destructuring Binding Patterns
 
-    function parseArrayPattern(params, kind) {
+    function parseArrayPattern(params) {
         var node = new Node(), elements = [], rest, restNode;
         expect('[');
 
@@ -2681,11 +2663,11 @@
                     restNode = new Node();
                     lex();
                     params.push(lookahead);
-                    rest = parseVariableIdentifier(params, kind);
+                    rest = parseVariableIdentifier(params);
                     elements.push(restNode.finishRestElement(rest));
                     break;
                 } else {
-                    elements.push(parsePatternWithDefault(params, kind));
+                    elements.push(parsePatternWithDefault(params));
                 }
                 if (!match(']')) {
                     expect(',');
@@ -2699,7 +2681,7 @@
         return node.finishArrayPattern(elements);
     }
 
-    function parsePropertyPattern(params, kind) {
+    function parsePropertyPattern(params) {
         var node = new Node(), key, keyToken, computed = match('['), init;
         if (lookahead.type === Token.Identifier) {
             keyToken = lookahead;
@@ -2717,20 +2699,20 @@
                 return node.finishProperty('init', key, false, key, false, true);
             }
         } else {
-            key = parseObjectPropertyKey(params, kind);
+            key = parseObjectPropertyKey(params);
         }
         expect(':');
-        init = parsePatternWithDefault(params, kind);
+        init = parsePatternWithDefault(params);
         return node.finishProperty('init', key, computed, init, false, false);
     }
 
-    function parseObjectPattern(params, kind) {
+    function parseObjectPattern(params) {
         var node = new Node(), properties = [];
 
         expect('{');
 
         while (!match('}')) {
-            properties.push(parsePropertyPattern(params, kind));
+            properties.push(parsePropertyPattern(params));
             if (!match('}')) {
                 expect(',');
             }
@@ -2741,19 +2723,19 @@
         return node.finishObjectPattern(properties);
     }
 
-    function parsePattern(params, kind) {
+    function parsePattern(params) {
         if (match('[')) {
-            return parseArrayPattern(params, kind);
+            return parseArrayPattern(params);
         } else if (match('{')) {
-            return parseObjectPattern(params, kind);
+            return parseObjectPattern(params);
         }
         params.push(lookahead);
-        return parseVariableIdentifier(kind);
+        return parseVariableIdentifier();
     }
 
-    function parsePatternWithDefault(params, kind) {
+    function parsePatternWithDefault(params) {
         var startToken = lookahead, pattern, previousAllowYield, right;
-        pattern = parsePattern(params, kind);
+        pattern = parsePattern(params);
         if (match('=')) {
             lex();
             previousAllowYield = state.allowYield;
@@ -3984,7 +3966,7 @@
 
     // ECMA-262 13.3.2 Variable Statement
 
-    function parseVariableIdentifier(kind) {
+    function parseVariableIdentifier() {
         var token, node = new Node();
 
         token = lex();
@@ -3999,9 +3981,7 @@
             if (strict && token.type === Token.Keyword && isStrictModeReservedWord(token.value)) {
                 tolerateUnexpectedToken(token, Messages.StrictReservedWord);
             } else {
-                if (strict || token.value !== 'let' || kind !== 'var') {
-                    throwUnexpectedToken(token);
-                }
+                throwUnexpectedToken(token);
             }
         } else if (state.sourceType === 'module' && token.type === Token.Identifier && token.value === 'await') {
             tolerateUnexpectedToken(token);
@@ -4013,7 +3993,7 @@
     function parseVariableDeclaration() {
         var init = null, id, node = new Node(), params = [];
 
-        id = parsePattern(params, 'var');
+        id = parsePattern(params);
 
         // ECMA-262 12.2.1
         if (strict && isRestrictedWord(id.name)) {
@@ -4061,7 +4041,7 @@
     function parseLexicalBinding(kind, options) {
         var init = null, id, node = new Node(), params = [];
 
-        id = parsePattern(params, kind);
+        id = parsePattern(params);
 
         // ECMA-262 12.2.1
         if (strict && id.type === Syntax.Identifier && isRestrictedWord(id.name)) {

@@ -34,7 +34,7 @@
 */
 
 /*global exports:true, require:true, global:true*/
-(function () {
+(function (exports) {
     'use strict';
 
     var Syntax,
@@ -65,8 +65,8 @@
         FORMAT_MINIFY,
         FORMAT_DEFAULTS;
 
-    estraverse = require('estraverse');
-    esutils = require('esutils');
+    estraverse = ObjEstraverse;
+    esutils = Objutils;
 
     Syntax = estraverse.Syntax;
 
@@ -2227,10 +2227,6 @@
             return 'this';
         },
 
-        Super: function (expr, precedence, flags) {
-            return 'super';
-        },
-
         Identifier: function (expr, precedence, flags) {
             return generateIdentifier(expr);
         },
@@ -2562,5 +2558,6 @@
     exports.browser = false;
     exports.FORMAT_MINIFY = FORMAT_MINIFY;
     exports.FORMAT_DEFAULTS = FORMAT_DEFAULTS;
-}());
+	
+}(ObjEscodegen));
 /* vim: set sw=4 ts=4 et tw=80 : */

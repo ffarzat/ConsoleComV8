@@ -23,7 +23,7 @@
   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-(function () {
+(function (exports) {
     'use strict';
 
     var ES6Regex, ES5Regex, NON_ASCII_WHITESPACES, IDENTIFIER_START, IDENTIFIER_PART, ch;
@@ -120,16 +120,17 @@
         return ch < 0x80 ? IDENTIFIER_PART[ch] : ES6Regex.NonAsciiIdentifierPart.test(fromCodePoint(ch));
     }
 
-    module.exports = {
-        isDecimalDigit: isDecimalDigit,
-        isHexDigit: isHexDigit,
-        isOctalDigit: isOctalDigit,
-        isWhiteSpace: isWhiteSpace,
-        isLineTerminator: isLineTerminator,
-        isIdentifierStartES5: isIdentifierStartES5,
-        isIdentifierPartES5: isIdentifierPartES5,
-        isIdentifierStartES6: isIdentifierStartES6,
-        isIdentifierPartES6: isIdentifierPartES6
-    };
-}());
+    
+    exports.isDecimalDigit			= isDecimalDigit;
+	exports.isHexDigit				= isHexDigit;
+	exports.isOctalDigit 			= isOctalDigit;
+	exports.isWhiteSpace			= isWhiteSpace;
+	exports.isLineTerminator		= isLineTerminator;
+	exports.isIdentifierStartES5	= isIdentifierStartES5;
+	exports.isIdentifierPartES5		= isIdentifierPartES5;
+	exports.isIdentifierStartES6	= isIdentifierStartES6;
+	exports.isIdentifierPartES6		= isIdentifierPartES6;
+    
+	
+}(ObjCode));
 /* vim: set sw=4 ts=4 et tw=80 : */

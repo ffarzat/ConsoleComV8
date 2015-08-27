@@ -22,10 +22,10 @@
   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-(function () {
+(function (exports) {
     'use strict';
 
-    var code = require('./code');
+    var code = ObjCode;
 
     function isStrictModeReservedWordES6(id) {
         switch (id) {
@@ -150,7 +150,7 @@
         return isIdentifierNameES6(id) && !isReservedWordES6(id, strict);
     }
 
-    module.exports = {
+    exports = {
         isKeywordES5: isKeywordES5,
         isKeywordES6: isKeywordES6,
         isReservedWordES5: isReservedWordES5,
@@ -161,5 +161,5 @@
         isIdentifierES5: isIdentifierES5,
         isIdentifierES6: isIdentifierES6
     };
-}());
+}(ObjKeyword));
 /* vim: set sw=4 ts=4 et tw=80 : */
