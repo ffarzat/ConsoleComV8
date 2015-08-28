@@ -215,7 +215,7 @@ namespace Otimizacao.Javascript
         /// <summary>
         /// Metodo para futura geraco de código e mutantes
         /// </summary>
-        public async Task ConfigurarGeracao()
+        public void ConfigurarGeracao()
         {
             #region Registra os pacotes
 
@@ -226,7 +226,7 @@ namespace Otimizacao.Javascript
             //RegistarScript("code", "code.js");
             //RegistarScript("keyword", "keyword.js");
 
-            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao, "global.js"));
+            
             //var scriptTestCode = File.ReadAllText("core-test.js");
             //var qunit = File.ReadAllText("qunit-1.18.0.js");
             //var console = File.ReadAllText("Console.js");
@@ -276,17 +276,41 @@ namespace Otimizacao.Javascript
                                                 }
                                             };");
 
-            var esprimaParse = string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, comment: true }});", EncodeJsString(scriptCode));
+            #endregion
+        }
+
+        /// <summary>
+        /// Gera a AST em Javascript do individuo
+        /// </summary>
+        /// <param name="codigoIndividuo"></param>
+        /// <returns></returns>
+        public string GerarAst(string codigoIndividuo)
+        {
+            var engine = _manager.GetEngine();
+            var esprimaParse = string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, loc:true, comment: true }});", EncodeJsString(codigoIndividuo));
             engine.Execute(esprimaParse);
             engine.Execute("javascriptHelper.JsonAst = JSON.stringify(syntax);");
+
+            return this.JsonAst;
+        }
+
+        /// <summary>
+        /// Baseado na AST gera o código do individuo
+        /// </summary>
+        /// <param name="astJson">AST no formato do Esprima</param>
+        /// <returns></returns>
+        public string GerarCodigo(string astJson)
+        {
+            var engine = _manager.GetEngine();
+            this.JsonAst = astJson;
 
             engine.Execute("syntax = ObjEscodegen.attachComments(syntax, syntax.comments, syntax.tokens);");
             engine.Execute("var code = ObjEscodegen.generate(syntax, option);");
             engine.Execute("javascriptHelper.Codigo = code;");
 
-            Escrever("{0}", this.Codigo);
+            //Escrever("{0}", this.Codigo);
 
-            #endregion
+            return Codigo;
         }
 
         /// <summary>

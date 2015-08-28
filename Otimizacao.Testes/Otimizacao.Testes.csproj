@@ -117,6 +117,9 @@
     <Content Include="Require\ast.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Require\astMoment.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Require\code.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

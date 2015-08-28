@@ -46,3 +46,4 @@ D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\code.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\estraverse.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\keyword.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\utils.js
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\astMoment.txt

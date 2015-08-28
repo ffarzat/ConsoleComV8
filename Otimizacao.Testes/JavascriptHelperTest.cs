@@ -21,30 +21,35 @@ namespace Otimizacao.Testes
     public class JavascriptHelperTest
     {
 
-        /// <summary>
-        /// Engine do v8 para testes simultaneos
-        /// </summary>
-        private V8ScriptEngine _engine;
-
-        /// <summary>
-        /// Para o teste do timeout
-        /// </summary>
-        public int Global { get; set; }
-
-        /// <summary>
-        /// Para os testes do timeout
-        /// </summary>
-        public string Nome { get; set; }
-
 
         /// <summary>
         /// Executa os testes do uso do Require
         /// </summary>
         [Test]
-        public async void ExecutarTestesDoMomentComRequire()
+        public async void GerarAst()
+        {
+            const string diretorioExecucao = "Require";
+            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "global.js"));
+            var astMoment = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "astMoment.txt"));
+
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, diretorioExecucao), false, false);
+            helper.ConfigurarGeracao();
+            var ast = helper.GerarAst(scriptCode);
+
+            Assert.AreEqual(astMoment, helper.JsonAst, "AST Inválida");
+            Assert.AreEqual(ast, helper.JsonAst, "AST Inválida");
+            
+
+        }
+
+        /// <summary>
+        /// Executa os testes do Monent com SetTimeout and SetInterval ligadas
+        /// </summary>
+        [Test]
+        public async void ExecutarTestesDoMomentComSetTimeoutEInterval()
         {
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"), true, true);
-            await helper.ConfigurarGeracao();
+            helper.ConfigurarGeracao();
             helper.ExecutarTestes("global.js", "core-test.js");
 
             helper.FalhasDosTestes.ForEach(Console.WriteLine);
