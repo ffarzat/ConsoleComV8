@@ -43,7 +43,7 @@ namespace Otimizacao.Testes
         [Test]
         public async void ExecutarTestesDoMomentComRequire()
         {
-            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"));
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"), true, true);
             await helper.ConfigurarGeracao();
             helper.ExecutarTestes("global.js", "core-test.js");
 

@@ -232,7 +232,7 @@ namespace Otimizacao.Javascript
             var lista = new List<IncludeScript>();
             //lista.Add(new IncludeScript() { ScriptId = "requiremock", Code = "var exports = {};" });
             lista.Add(new IncludeScript() { ScriptId = "escodegen", Uri = string.Format("{0}\\escodegen.js", _diretorioExecucao) });
-
+            
             await _manager.ExecuteAsync("objetos", @"   var ObjEstraverse = {};
                                 var ObjEscodegen = {};
                                 var ObjCode = {};
@@ -249,39 +249,26 @@ namespace Otimizacao.Javascript
 
             await _manager.ExecuteAsync(lista);
 
+            lista.Add(new IncludeScript() { ScriptId = "esprima", Uri = string.Format("{0}\\esprima.js", _diretorioExecucao) });
+            await _manager.ExecuteAsync(lista);
 
+            await _manager.ExecuteAsync("options", @"var        option = {
+                                                comment: true,
+                                                format: {
+                                                    indent: {
+                                                        style: '\t'
+                                                    },
+                                                    quotes: 'auto'
+                                                }
+                                            };");
+            lista.Clear();
+            
 
+            var esprimaParse = string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, comment: true }});", EncodeJsString("var teste = 0; //Comentário"));
+            await _manager.ExecuteAsync("esprimaGerandoAST", esprimaParse);
+            //await _manager.ExecuteAsync("PassandoParaoHelper", "javascriptHelper.JsonAst = JSON.stringify(syntax);"); //Passo para o c#
 
-
-//            Engine.Execute(code);
-//            Engine.Execute(ast);
-//            Engine.Execute(keyword);
-//            Engine.Execute(estraverse);
-
-
-
-
-//            Engine.Execute(escodegen);
-//            Engine.Execute(esprima);
-
-//            Engine.Execute(@"        option = {
-//                                                comment: true,
-//                                                format: {
-//                                                    indent: {
-//                                                        style: '\t'
-//                                                    },
-//                                                    quotes: 'auto'
-//                                                }
-//                                            };");
-
-
-//            var esprimaParse = string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, comment: true }});", helper.EncodeJsString(scriptCode));
-//            Engine.Execute(esprimaParse);
-//            Engine.Execute("javascriptHelper.JsonAst = JSON.stringify(syntax);"); //Passo para o c#
-
-            //helper.Program = JsonConvert.DeserializeObject<Otimizacao.EsprimaAST.Nodes.Program>(helper.JsonAst, new EsprimaAstConverter());
-            //helper.Program = JsonConvert.DeserializeObject<dynamic>(helper.JsonAst);
-
+            
             /*
             engine.Execute(astTraverse);
             
@@ -290,9 +277,9 @@ namespace Otimizacao.Javascript
                         }});");
              */
 
-            //Engine.Execute("syntax = ObjEscodegen.attachComments(syntax, syntax.comments, syntax.tokens);");
-            //Engine.Execute("var code = ObjEscodegen.generate(syntax, option);");
-            //Engine.Execute("javascriptHelper.Codigo = code;");
+            //await _manager.ExecuteAsync("syntaxGeneration", "syntax = ObjEscodegen.attachComments(syntax, syntax.comments, syntax.tokens);");
+            //await _manager.ExecuteAsync("codeRegenaration", "var code = ObjEscodegen.generate(syntax, option);");
+            //await _manager.ExecuteAsync("PassandoCodigoParaOHelper", "javascriptHelper.Codigo = code;");
 
             #endregion
         }

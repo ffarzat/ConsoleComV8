@@ -52,3 +52,99 @@
 2015-08-26 22:00:51.2337|Info|Encerrando os testes
 2015-08-26 22:00:51.2494|Info|Total:57982, Sucesso: 57982, Falha: 0
 2015-08-26 22:00:51.2494|Info|5 segundos para avaliar o individuo global.js
+2015-08-26 22:01:38.3259|Info|Iniciando os testes
+2015-08-26 22:01:39.2323|Info|  Settimeout: id:0, (13) ms
+2015-08-26 22:01:39.3192|Info|      Executando timer: id:0, (22:01:39.2523)
+2015-08-26 22:01:39.3505|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-26 22:01:40.4232|Info|  Settimeout: id:1, (13) ms
+2015-08-26 22:01:40.4858|Info|      Encerrado timer: id:0, (22:01:40.4858)
+2015-08-26 22:01:40.4858|Info|      Executando timer: id:1, (22:01:40.4858)
+2015-08-26 22:01:40.4858|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-26 22:01:41.4906|Info|  Settimeout: id:2, (13) ms
+2015-08-26 22:01:41.5531|Info|      Encerrado timer: id:1, (22:01:41.5531)
+2015-08-26 22:01:41.5531|Info|      Executando timer: id:2, (22:01:41.5531)
+2015-08-26 22:01:41.5531|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-26 22:01:42.1783|Info|      Encerrado timer: id:2, (22:01:42.1783)
+2015-08-26 22:01:42.2095|Info|Encerrando os testes
+2015-08-26 22:01:42.2095|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-26 22:01:42.2095|Info|4 segundos para avaliar o individuo global.js
+2015-08-26 22:03:17.7002|Info|Iniciando os testes
+2015-08-26 22:03:18.0283|Info|  Settimeout: id:0, (13) ms
+2015-08-26 22:03:18.0596|Info|      Executando timer: id:0, (22:03:18.0596)
+2015-08-26 22:03:18.1064|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-26 22:03:19.1113|Info|  Settimeout: id:1, (13) ms
+2015-08-26 22:03:19.1738|Info|      Encerrado timer: id:0, (22:03:19.1738)
+2015-08-26 22:03:19.1738|Info|      Executando timer: id:1, (22:03:19.1738)
+2015-08-26 22:03:19.1738|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-26 22:03:20.1741|Info|  Settimeout: id:2, (13) ms
+2015-08-26 22:03:20.2367|Info|      Encerrado timer: id:1, (22:03:20.2367)
+2015-08-26 22:03:20.2367|Info|      Executando timer: id:2, (22:03:20.2367)
+2015-08-26 22:03:20.2367|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-26 22:03:20.4710|Info|      Encerrado timer: id:2, (22:03:20.4710)
+2015-08-26 22:03:20.4710|Info|Encerrando os testes
+2015-08-26 22:03:20.4710|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-26 22:03:20.4710|Info|3 segundos para avaliar o individuo global.js
+2015-08-26 22:11:23.7999|Info|Iniciando os testes
+2015-08-26 22:11:26.1680|Info|Encerrando os testes
+2015-08-26 22:11:26.1680|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-26 22:11:26.1680|Info|2 segundos para avaliar o individuo global.js
+2015-08-26 22:14:10.3219|Info|Iniciando os testes
+2015-08-26 22:14:12.7901|Info|Encerrando os testes
+2015-08-26 22:14:12.7901|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-26 22:14:12.7901|Info|2 segundos para avaliar o individuo global.js
+2015-08-28 11:55:44.0913|Info|Iniciando os testes
+2015-08-28 11:55:46.3572|Info|Encerrando os testes
+2015-08-28 11:55:46.3572|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-28 11:55:46.3572|Info|2 segundos para avaliar o individuo global.js
+2015-08-28 12:02:39.0767|Info|Iniciando os testes
+2015-08-28 12:02:39.7490|Info|  Settimeout: id:0, (13) ms
+2015-08-28 12:02:39.7803|Info|      Executando timer: id:0, (12:02:39.7803)
+2015-08-28 12:02:39.8260|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-28 12:02:40.8393|Info|  Settimeout: id:1, (13) ms
+2015-08-28 12:02:40.9019|Info|      Encerrado timer: id:0, (12:02:40.9019)
+2015-08-28 12:02:40.9019|Info|      Executando timer: id:1, (12:02:40.9019)
+2015-08-28 12:02:40.9019|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-28 12:02:41.9135|Info|  Settimeout: id:2, (13) ms
+2015-08-28 12:02:41.9761|Info|      Encerrado timer: id:1, (12:02:41.9761)
+2015-08-28 12:02:41.9761|Info|      Executando timer: id:2, (12:02:41.9761)
+2015-08-28 12:02:41.9761|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-28 12:02:42.3041|Info|      Encerrado timer: id:2, (12:02:42.3041)
+2015-08-28 12:02:42.4291|Info|Encerrando os testes
+2015-08-28 12:02:42.4291|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-28 12:02:42.4448|Info|3 segundos para avaliar o individuo global.js
