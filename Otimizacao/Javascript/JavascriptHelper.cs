@@ -219,40 +219,54 @@ namespace Otimizacao.Javascript
         {
             #region Registra os pacotes
 
-            RegistarScript("esprima", "esprima.js");
-            RegistarScript("estraverse", "estraverse.js");
-            RegistarScript("esutils", "utils.js");
-            RegistarScript("ast", "ast.js");
-            RegistarScript("code", "code.js");
-            RegistarScript("keyword", "keyword.js");
+            //RegistarScript("esprima", "esprima.js");
+            //RegistarScript("estraverse", "estraverse.js");
+            //RegistarScript("esutils", "utils.js");
+            //RegistarScript("ast", "ast.js");
+            //RegistarScript("code", "code.js");
+            //RegistarScript("keyword", "keyword.js");
+
+            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao, "global.js"));
+            //var scriptTestCode = File.ReadAllText("core-test.js");
+            //var qunit = File.ReadAllText("qunit-1.18.0.js");
+            //var console = File.ReadAllText("Console.js");
+            var esprima = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"esprima.js"));
+            var escodegen = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"escodegen.js"));
+            var estraverse = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"estraverse.js"));
+            var ast = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"ast.js"));
+            var code = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"code.js"));
+            var keyword = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"keyword.js"));
+
             #endregion
 
             #region Congigura o Escodegen e o Esprima
 
-            var lista = new List<IncludeScript>();
-            //lista.Add(new IncludeScript() { ScriptId = "requiremock", Code = "var exports = {};" });
-            lista.Add(new IncludeScript() { ScriptId = "escodegen", Uri = string.Format("{0}\\escodegen.js", _diretorioExecucao) });
+            var engine = _manager.GetEngine();
             
-            await _manager.ExecuteAsync("objetos", @"   var ObjEstraverse = {};
+            engine.Execute(@"   var ObjEstraverse = {};
                                 var ObjEscodegen = {};
                                 var ObjCode = {};
                                 var ObjAst = {};
                                 var ObjKeyword = {};
-
-                                var Objutils = {};
-                                Objutils.ast = ObjAst;
-                                Objutils.code = ObjCode;
-                                Objutils.keyword = ObjKeyword;
-
                             ");
 
+            engine.Execute(code);
+            engine.Execute(ast);
+            engine.Execute(keyword);
+            engine.Execute(estraverse);
 
-            await _manager.ExecuteAsync(lista);
+            engine.Execute(@"
+                            var Objutils = {};
+                            Objutils.ast = ObjAst;
+                            Objutils.code = ObjCode;
+                            Objutils.keyword = ObjKeyword;
+                            
+            ");
 
-            lista.Add(new IncludeScript() { ScriptId = "esprima", Uri = string.Format("{0}\\esprima.js", _diretorioExecucao) });
-            await _manager.ExecuteAsync(lista);
+            engine.Execute(escodegen);
+            engine.Execute(esprima);
 
-            await _manager.ExecuteAsync("options", @"var        option = {
+            engine.Execute(@"        option = {
                                                 comment: true,
                                                 format: {
                                                     indent: {
@@ -261,25 +275,16 @@ namespace Otimizacao.Javascript
                                                     quotes: 'auto'
                                                 }
                                             };");
-            lista.Clear();
-            
 
-            var esprimaParse = string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, comment: true }});", EncodeJsString("var teste = 0; //Comentário"));
-            await _manager.ExecuteAsync("esprimaGerandoAST", esprimaParse);
-            //await _manager.ExecuteAsync("PassandoParaoHelper", "javascriptHelper.JsonAst = JSON.stringify(syntax);"); //Passo para o c#
+            var esprimaParse = string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, comment: true }});", EncodeJsString(scriptCode));
+            engine.Execute(esprimaParse);
+            engine.Execute("javascriptHelper.JsonAst = JSON.stringify(syntax);");
 
-            
-            /*
-            engine.Execute(astTraverse);
-            
-            engine.Execute(@"traverse(syntax, {pre: function(node, parent, prop, idx) {
-                                console.log(node.type + (parent ? ' from parent ' + parent.type + ' via ' + prop + (idx !== undefined ? '[' + idx + ']' : '') : ''));
-                        }});");
-             */
+            engine.Execute("syntax = ObjEscodegen.attachComments(syntax, syntax.comments, syntax.tokens);");
+            engine.Execute("var code = ObjEscodegen.generate(syntax, option);");
+            engine.Execute("javascriptHelper.Codigo = code;");
 
-            //await _manager.ExecuteAsync("syntaxGeneration", "syntax = ObjEscodegen.attachComments(syntax, syntax.comments, syntax.tokens);");
-            //await _manager.ExecuteAsync("codeRegenaration", "var code = ObjEscodegen.generate(syntax, option);");
-            //await _manager.ExecuteAsync("PassandoCodigoParaOHelper", "javascriptHelper.Codigo = code;");
+            Escrever("{0}", this.Codigo);
 
             #endregion
         }
