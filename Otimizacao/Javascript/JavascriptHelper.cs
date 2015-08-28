@@ -270,7 +270,7 @@ namespace Otimizacao.Javascript
                                                 comment: true,
                                                 format: {
                                                     indent: {
-                                                        style: '\t'
+                                                        style: '    '
                                                     },
                                                     quotes: 'auto'
                                                 }
@@ -286,10 +286,18 @@ namespace Otimizacao.Javascript
         /// <returns></returns>
         public string GerarAst(string codigoIndividuo)
         {
+            var sw = new Stopwatch();
+            sw.Start();
+
             var engine = _manager.GetEngine();
             var esprimaParse = string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, loc:true, comment: true }});", EncodeJsString(codigoIndividuo));
             engine.Execute(esprimaParse);
             engine.Execute("javascriptHelper.JsonAst = JSON.stringify(syntax);");
+
+            sw.Stop();
+
+            Log(string.Format("ast gerada com sucesso"));
+            Log(string.Format(" {0} ms", sw.Elapsed.TotalMilliseconds));
 
             return this.JsonAst;
         }
@@ -301,14 +309,23 @@ namespace Otimizacao.Javascript
         /// <returns></returns>
         public string GerarCodigo(string astJson)
         {
+
+            var sw = new Stopwatch();
+            sw.Start();
+
+
             var engine = _manager.GetEngine();
             this.JsonAst = astJson;
 
+            engine.Execute("var syntax = JSON.parse(javascriptHelper.JsonAst);");
             engine.Execute("syntax = ObjEscodegen.attachComments(syntax, syntax.comments, syntax.tokens);");
             engine.Execute("var code = ObjEscodegen.generate(syntax, option);");
             engine.Execute("javascriptHelper.Codigo = code;");
 
-            //Escrever("{0}", this.Codigo);
+            sw.Stop();
+
+            Log(string.Format("Codigo gerado com sucesso"));
+            Log(string.Format(" {0} ms", sw.Elapsed.TotalMilliseconds));
 
             return Codigo;
         }
@@ -405,7 +422,7 @@ namespace Otimizacao.Javascript
             sw.Stop();
 
             Log(string.Format("Total:{0}, Sucesso: {1}, Falha: {2}", this.TotalTestes, this.TestesComSucesso, this.TestesComFalha));
-            Log(string.Format("{0} segundos para avaliar o individuo {1}", sw.Elapsed.Seconds, nomeArquivoIndividuo));
+            Log(string.Format(" {0} segundos para avaliar o individuo {1}", sw.Elapsed.Seconds, nomeArquivoIndividuo));
 
             this.FalhasDosTestes.ForEach(this.Log);
 

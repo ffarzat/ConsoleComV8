@@ -21,9 +21,27 @@ namespace Otimizacao.Testes
     public class JavascriptHelperTest
     {
 
+        /// <summary>
+        /// Executa os testes de geracao de codigo
+        /// </summary>
+        [Test]
+        public async void GerarCodigo()
+        {
+            const string diretorioExecucao = "Require";
+            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "global.js")).Replace("\n\n", "");
+            var astMoment = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "astMoment.txt"));
+
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, diretorioExecucao), false, false);
+            helper.ConfigurarGeracao();
+            var codigo = helper.GerarCodigo(astMoment).Replace("\n\n", "");
+
+            Assert.AreEqual(scriptCode, helper.Codigo, "Código Inválido");
+            Assert.AreEqual(codigo, helper.Codigo, "Código Inválido");
+        }
+
 
         /// <summary>
-        /// Executa os testes do uso do Require
+        /// Executa os testes de geração da AST
         /// </summary>
         [Test]
         public async void GerarAst()
@@ -38,8 +56,6 @@ namespace Otimizacao.Testes
 
             Assert.AreEqual(astMoment, helper.JsonAst, "AST Inválida");
             Assert.AreEqual(ast, helper.JsonAst, "AST Inválida");
-            
-
         }
 
         /// <summary>

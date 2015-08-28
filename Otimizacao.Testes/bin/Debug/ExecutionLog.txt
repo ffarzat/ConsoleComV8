@@ -10787,3 +10787,21 @@ moment.locale('en');
 2015-08-28 14:29:19.6837|Info|Encerrando os testes
 2015-08-28 14:29:19.6837|Info|Total:57982, Sucesso: 57982, Falha: 0
 2015-08-28 14:29:19.6837|Info|3 segundos para avaliar o individuo global.js
+2015-08-28 14:39:30.0833|Info|ast gerada com sucesso
+2015-08-28 14:39:30.1043|Info| 0 segundos
+2015-08-28 14:44:51.2524|Info|Codigo gerado com sucesso
+2015-08-28 14:44:51.2837|Info| 755,1401 ms
+2015-08-28 14:47:10.4085|Info|Codigo gerado com sucesso
+2015-08-28 14:47:10.4316|Info| 783,7545 ms
+2015-08-28 14:47:31.4555|Info|Codigo gerado com sucesso
+2015-08-28 14:47:31.4795|Info| 587,6571 ms
+2015-08-28 14:51:37.5118|Info|Codigo gerado com sucesso
+2015-08-28 14:51:37.5274|Info| 589,1674 ms
+2015-08-28 14:51:58.9440|Info|Codigo gerado com sucesso
+2015-08-28 14:51:58.9753|Info| 615,0276 ms
+2015-08-28 14:52:28.7068|Info|Codigo gerado com sucesso
+2015-08-28 14:52:28.7225|Info| 679,1129 ms
+2015-08-28 14:52:53.5034|Info|Codigo gerado com sucesso
+2015-08-28 14:52:53.5190|Info| 572,4609 ms
+2015-08-28 14:54:00.2536|Info|Codigo gerado com sucesso
+2015-08-28 14:54:00.2693|Info| 578,747 ms
