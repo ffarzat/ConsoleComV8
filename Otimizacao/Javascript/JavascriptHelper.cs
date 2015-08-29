@@ -37,11 +37,6 @@ namespace Otimizacao.Javascript
         }
 
         /// <summary>
-        /// Para fazer o lock do SetTimeout
-        /// </summary>
-        private object _timerLock = new object();
-
-        /// <summary>
         /// V8 chrome engine
         /// </summary>
         private V8ScriptEngine _engine;

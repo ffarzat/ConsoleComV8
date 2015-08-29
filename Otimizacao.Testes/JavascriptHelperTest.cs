@@ -25,7 +25,7 @@ namespace Otimizacao.Testes
         /// Executa os testes de geracao de codigo
         /// </summary>
         [Test]
-        public async void GerarCodigo()
+        public void GerarCodigo()
         {
             const string diretorioExecucao = "Require";
             //var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "global.js")).Replace("\n\n", "").Replace("\n", "").Replace(" ", "");
@@ -44,7 +44,7 @@ namespace Otimizacao.Testes
         /// Executa os testes de geração da AST
         /// </summary>
         [Test]
-        public async void GerarAst()
+        public void GerarAst()
         {
             const string diretorioExecucao = "Require";
             var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "global.js"));
@@ -62,7 +62,7 @@ namespace Otimizacao.Testes
         /// Executa os testes do Monent com SetTimeout and SetInterval ligadas
         /// </summary>
         [Test]
-        public async void ExecutarTestesDoMomentComSetTimeoutEInterval()
+        public void ExecutarTestesDoMomentComSetTimeoutEInterval()
         {
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"), true, true);
             helper.ConfigurarGeracao();

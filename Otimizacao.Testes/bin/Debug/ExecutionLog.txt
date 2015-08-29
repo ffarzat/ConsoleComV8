@@ -10899,3 +10899,39 @@ moment.locale('en');
 2015-08-28 21:57:47.7339|Info| 470,9734 ms
 2015-08-28 21:57:48.4699|Info|Codigo gerado com sucesso
 2015-08-28 21:57:48.4699|Info| 548,1967 ms
+2015-08-28 21:59:46.7325|Info|Iniciando os testes
+2015-08-28 21:59:49.5289|Info|Encerrando os testes
+2015-08-28 21:59:49.5289|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-28 21:59:49.5289|Info| 3 segundos para avaliar o individuo global.js
+2015-08-28 21:59:50.2609|Info|Iniciando os testes
+2015-08-28 21:59:50.5529|Info|  Settimeout: id:0, (13) ms
+2015-08-28 21:59:50.5729|Info|      Executando timer: id:0, (21:59:50.5729)
+2015-08-28 21:59:50.6209|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-28 21:59:51.6253|Info|  Settimeout: id:1, (13) ms
+2015-08-28 21:59:51.6774|Info|      Encerrado timer: id:0, (21:59:51.6774)
+2015-08-28 21:59:51.6774|Info|      Executando timer: id:1, (21:59:51.6774)
+2015-08-28 21:59:51.6774|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-28 21:59:52.6854|Info|  Settimeout: id:2, (13) ms
+2015-08-28 21:59:52.7375|Info|      Encerrado timer: id:1, (21:59:52.7375)
+2015-08-28 21:59:52.7375|Info|      Executando timer: id:2, (21:59:52.7375)
+2015-08-28 21:59:52.7375|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-28 21:59:53.2217|Info|      Encerrado timer: id:2, (21:59:53.2217)
+2015-08-28 21:59:53.2217|Info|Encerrando os testes
+2015-08-28 21:59:53.2217|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-28 21:59:53.2217|Info| 3 segundos para avaliar o individuo global.js
+2015-08-28 21:59:53.9298|Info|ast gerada com sucesso
+2015-08-28 21:59:53.9298|Info| 513,5374 ms
+2015-08-28 21:59:54.6739|Info|Codigo gerado com sucesso
+2015-08-28 21:59:54.6739|Info| 548,6369 ms
