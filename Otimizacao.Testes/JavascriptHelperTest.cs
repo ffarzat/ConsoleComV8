@@ -123,5 +123,22 @@ namespace Otimizacao.Testes
             Assert.Greater(helper.TestesComSucesso, 1);
 
         }
+
+        /// <summary>
+        /// Testa o procedimento de mutação (excluir um nó)
+        /// </summary>
+        [Test]
+        public void ExecutarMutacao()
+        {
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"), true, true);
+            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Require", "global.js"));
+            helper.ConfigurarGeracao();
+            var ast = helper.GerarAst(scriptCode);
+            
+            var astNova = helper.ExecutarMutacaoExclusao(ast);
+
+            Assert.AreNotEqual(ast, astNova);
+        }
+
     }
 }

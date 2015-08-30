@@ -298,6 +298,23 @@ namespace Otimizacao.Javascript
         }
 
         /// <summary>
+        /// Executa a exclusao de um nó específico na árvore
+        /// </summary>
+        /// <param name="ast">árvore no formato do esprima</param>
+        /// <returns></returns>
+        public string ExecutarMutacaoExclusao(string ast)
+        {
+            RegistarScript("ast-types", "main.js");
+
+            _manager.ExecuteAsync("", @"var types = require('ast-types');
+                                        var partialFunExpr = { type: 'FunctionExpression' };");
+
+            var astNova = _manager.GetEngine().Script.astNova;
+
+            return astNova;
+        }
+
+        /// <summary>
         /// Baseado na AST gera o código do individuo
         /// </summary>
         /// <param name="astJson">AST no formato do Esprima</param>

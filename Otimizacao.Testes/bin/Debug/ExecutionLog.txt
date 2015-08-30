@@ -10935,3 +10935,49 @@ moment.locale('en');
 2015-08-28 21:59:53.9298|Info| 513,5374 ms
 2015-08-28 21:59:54.6739|Info|Codigo gerado com sucesso
 2015-08-28 21:59:54.6739|Info| 548,6369 ms
+2015-08-30 11:12:08.7510|Info|Iniciando os testes
+2015-08-30 11:12:11.0776|Info|Encerrando os testes
+2015-08-30 11:12:11.0776|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-30 11:12:11.0776|Info| 2 segundos para avaliar o individuo global.js
+2015-08-30 11:12:11.8280|Info|Iniciando os testes
+2015-08-30 11:12:12.1405|Info|  Settimeout: id:0, (13) ms
+2015-08-30 11:12:12.1718|Info|      Executando timer: id:0, (11:12:12.1718)
+2015-08-30 11:12:12.2343|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-08-30 11:12:13.2499|Info|  Settimeout: id:1, (13) ms
+2015-08-30 11:12:13.4062|Info|      Encerrado timer: id:0, (11:12:13.4062)
+2015-08-30 11:12:13.4062|Info|      Executando timer: id:1, (11:12:13.4062)
+2015-08-30 11:12:13.4062|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-30 11:12:14.4066|Info|  Settimeout: id:2, (13) ms
+2015-08-30 11:12:14.4691|Info|      Encerrado timer: id:1, (11:12:14.4691)
+2015-08-30 11:12:14.4691|Info|      Executando timer: id:2, (11:12:14.4691)
+2015-08-30 11:12:14.4691|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-08-30 11:12:15.0003|Info|      Encerrado timer: id:2, (11:12:15.0003)
+2015-08-30 11:12:15.0003|Info|Encerrando os testes
+2015-08-30 11:12:15.0003|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-08-30 11:12:15.0003|Info| 3 segundos para avaliar o individuo global.js
+2015-08-30 11:12:15.6410|Info|ast gerada com sucesso
+2015-08-30 11:12:15.6410|Info| 469,6459 ms
+2015-08-30 11:12:16.3443|Info|Codigo gerado com sucesso
+2015-08-30 11:12:16.3443|Info| 530,0686 ms
+2015-08-30 12:02:39.0042|Info|ast gerada com sucesso
+2015-08-30 12:02:39.0358|Info| 510,2483 ms
+2015-08-30 12:02:58.4940|Info|ast gerada com sucesso
+2015-08-30 12:02:58.6346|Info| 527,8675 ms
+2015-08-30 12:04:38.7868|Info|ast gerada com sucesso
+2015-08-30 12:04:38.8025|Info| 488,7044 ms
+2015-08-30 12:06:21.6009|Info|ast gerada com sucesso
+2015-08-30 12:06:21.6321|Info| 493,5259 ms
+2015-08-30 12:09:10.5843|Info|ast gerada com sucesso
+2015-08-30 12:09:10.6155|Info| 532,6705 ms
