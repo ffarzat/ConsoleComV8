@@ -304,9 +304,9 @@ namespace Otimizacao.Javascript
         /// <returns></returns>
         public string ExecutarMutacaoExclusao(string ast)
         {
-            RegistarScript("ast-types", "main.js");
+            RegistarScript("asttypes", "main.js");
 
-            _manager.ExecuteAsync("", @"var types = require('ast-types');
+             _manager.ExecuteAsync("", @"var types = require('asttypes');
                                         var partialFunExpr = { type: 'FunctionExpression' };");
 
             var astNova = _manager.GetEngine().Script.astNova;
