@@ -1,14 +1,6 @@
-require("es7");
-
-require("types");
-var types = exports;
-
 var def = types.Type.def;
 var or = types.Type.or;
 
-require("shared");
-var shared = exports;
-var defaults = shared.defaults;
 
 def("VariableDeclaration")
     .field("declarations", [or(

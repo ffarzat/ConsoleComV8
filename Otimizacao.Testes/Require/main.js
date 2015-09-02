@@ -18,7 +18,7 @@ require("es7");
 require("mozilla");
 require("e4x");
 require("fbharmony");
-//require("esprima");
+require("esprima");
 //require("babel");
 
 types.finalize();
