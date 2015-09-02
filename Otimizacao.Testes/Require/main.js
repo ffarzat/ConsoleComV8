@@ -2,14 +2,19 @@
 require("types");
 var types = exports;
 
+require("shared");
+var shared = exports;
+var defaults = shared.defaults;
+
+
 // This core module of AST types captures ES5 as it is parsed today by
 // git://github.com/ariya/esprima.git#master.
 require("core");
 
 // Feel free to add to or remove from this list of extension modules to
 // configure the precise type hierarchy that you need.
-//require("es6");
-//require("es7");
+require("es6");
+require("es7");
 //require("mozilla");
 //require("e4x");
 //require("fbharmony");

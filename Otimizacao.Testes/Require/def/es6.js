@@ -1,13 +1,7 @@
-//var types = require("types");
-require("types");
-var types = exports;
-
+//Types is defined in main.Js
 var def = types.Type.def;
 var or = types.Type.or;
 
-require("shared");
-var shared = exports;
-var defaults = shared.defaults;
 
 def("Function")
     .field("generator", Boolean, defaults["false"])

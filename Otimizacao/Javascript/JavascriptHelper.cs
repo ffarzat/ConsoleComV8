@@ -331,7 +331,7 @@ namespace Otimizacao.Javascript
                                                 require('asttypes');
                                                 var partialFunExpr = { type: 'FunctionExpression' };");
 
-            var astNova = _manager.GetEngine().Script.astNova;
+            var astNova = ""; // _manager.GetEngine().Script.astNova;
 
             return astNova;
         }
