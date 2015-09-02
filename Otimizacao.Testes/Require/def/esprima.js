@@ -1,9 +1,14 @@
 require("es7");
 
-var types = require("lib/types");
-var defaults = require("lib/shared").defaults;
+require("types");
+var types = exports;
+
 var def = types.Type.def;
 var or = types.Type.or;
+
+require("shared");
+var shared = exports;
+var defaults = shared.defaults;
 
 def("VariableDeclaration")
     .field("declarations", [or(

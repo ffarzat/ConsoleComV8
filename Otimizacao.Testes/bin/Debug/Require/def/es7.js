@@ -1,10 +1,16 @@
 require("es6");
 
-var types = require("types");
+require("types");
+var types = exports;
+
 var def = types.Type.def;
 var or = types.Type.or;
 var builtin = types.builtInTypes;
-var defaults = require("shared").defaults;
+
+
+require("shared");
+var shared = exports;
+var defaults = shared.defaults;
 
 def("Function")
     .field("async", Boolean, defaults["false"]);

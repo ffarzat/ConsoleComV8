@@ -1,5 +1,9 @@
 require("core");
-var types = require("types");
+
+require("types");
+var types = exports;
+
+
 var def = types.Type.def;
 var or = types.Type.or;
 

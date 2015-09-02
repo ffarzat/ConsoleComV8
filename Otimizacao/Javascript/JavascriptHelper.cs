@@ -318,6 +318,7 @@ namespace Otimizacao.Javascript
             RegistarScript("e4x", "def/e4x.js");
             RegistarScript("fbharmony", "def/fb-harmony.js");
             RegistarScript("babel", "def/babel.js");
+            RegistarScript("esprima", "def/esprima.js");
 
             RegistarScript("shared", "lib/shared.js");
             RegistarScript("types", "lib/types.js");
@@ -327,7 +328,7 @@ namespace Otimizacao.Javascript
 
             await _manager.ExecuteAsync("", @"  var exports = {}; 
                                                 var module = {};
-                                                var types = require('asttypes');
+                                                require('asttypes');
                                                 var partialFunExpr = { type: 'FunctionExpression' };");
 
             var astNova = _manager.GetEngine().Script.astNova;

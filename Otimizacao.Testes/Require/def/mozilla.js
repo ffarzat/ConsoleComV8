@@ -1,10 +1,17 @@
 require("core");
-var types = require("types");
+
+require("types");
+var types = exports;
+
 var def = types.Type.def;
 var or = types.Type.or;
-var shared = require("shared");
-var geq = shared.geq;
+
+
+require("shared");
+var shared = exports;
 var defaults = shared.defaults;
+var geq = shared.geq;
+
 
 def("Function")
     // SpiderMonkey allows expression closures: function(x) x+1

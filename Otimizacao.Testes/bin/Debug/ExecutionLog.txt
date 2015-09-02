@@ -11091,3 +11091,51 @@ moment.locale('en');
 2015-09-02 11:08:10.6530|Info| 546,2924 ms
 2015-09-02 11:09:01.3840|Info|ast gerada com sucesso
 2015-09-02 11:09:01.4060|Info| 551,6773 ms
+2015-09-02 11:17:37.9918|Info|ast gerada com sucesso
+2015-09-02 11:17:38.0189|Info| 587,4407 ms
+2015-09-02 11:17:48.8866|Info|ast gerada com sucesso
+2015-09-02 11:17:48.9076|Info| 525,1243 ms
+2015-09-02 11:20:03.8714|Info|ast gerada com sucesso
+2015-09-02 11:20:03.8934|Info| 544,0403 ms
+2015-09-02 11:21:51.8891|Info|ast gerada com sucesso
+2015-09-02 11:21:51.9122|Info| 554,1528 ms
+2015-09-02 11:22:13.4825|Info|ast gerada com sucesso
+2015-09-02 11:22:13.5035|Info| 519,8034 ms
+2015-09-02 11:24:09.4308|Info|ast gerada com sucesso
+2015-09-02 11:24:09.4538|Info| 563,1083 ms
+2015-09-02 11:24:20.6978|Info|ast gerada com sucesso
+2015-09-02 11:24:20.7188|Info| 499,4789 ms
+2015-09-02 11:26:53.6394|Info|ast gerada com sucesso
+2015-09-02 11:26:53.6614|Info| 518,567 ms
+2015-09-02 11:28:44.3070|Info|ast gerada com sucesso
+2015-09-02 11:28:44.3350|Info| 728,674 ms
+2015-09-02 11:30:29.9420|Info|ast gerada com sucesso
+2015-09-02 11:30:29.9650|Info| 541,2896 ms
+2015-09-02 11:30:39.2055|Info|ast gerada com sucesso
+2015-09-02 11:30:39.2306|Info| 509,5531 ms
+2015-09-02 11:32:20.6786|Info|ast gerada com sucesso
+2015-09-02 11:32:20.7006|Info| 523,6416 ms
+2015-09-02 11:33:16.1720|Info|ast gerada com sucesso
+2015-09-02 11:33:16.1950|Info| 530,6584 ms
+2015-09-02 11:34:18.1971|Info|ast gerada com sucesso
+2015-09-02 11:34:18.2191|Info| 528,9065 ms
+2015-09-02 11:36:50.7754|Info|ast gerada com sucesso
+2015-09-02 11:36:50.7974|Info| 531,5194 ms
+2015-09-02 11:37:47.9470|Info|ast gerada com sucesso
+2015-09-02 11:37:47.9690|Info| 541,9394 ms
+2015-09-02 11:39:36.4630|Info|ast gerada com sucesso
+2015-09-02 11:39:36.4850|Info| 504,3735 ms
+2015-09-02 11:48:12.8497|Info|ast gerada com sucesso
+2015-09-02 11:48:12.8717|Info| 556,9856 ms
+2015-09-02 11:54:55.6868|Info|ast gerada com sucesso
+2015-09-02 11:54:55.7098|Info| 567,3638 ms
+2015-09-02 12:04:44.6349|Info|ast gerada com sucesso
+2015-09-02 12:04:44.6599|Info| 581,9023 ms
+2015-09-02 12:05:36.6819|Info|ast gerada com sucesso
+2015-09-02 12:05:36.7079|Info| 646,0808 ms
+2015-09-02 12:06:14.5298|Info|ast gerada com sucesso
+2015-09-02 12:06:14.5518|Info| 519,0881 ms
+2015-09-02 12:06:26.0029|Info|ast gerada com sucesso
+2015-09-02 12:06:26.0239|Info| 507,2824 ms
+2015-09-02 12:07:13.0383|Info|ast gerada com sucesso
+2015-09-02 12:07:13.0593|Info| 509,3545 ms

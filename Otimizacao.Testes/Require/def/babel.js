@@ -1,9 +1,15 @@
 require("es7");
 
-var types = require("types");
-var defaults = require("shared").defaults;
+require("types");
+var types = exports;
+
 var def = types.Type.def;
 var or = types.Type.or;
+
+require("shared");
+var shared = exports;
+var defaults = shared.defaults;
+
 
 def("Noop")
   .bases("Node")
