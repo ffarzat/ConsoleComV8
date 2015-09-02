@@ -329,12 +329,34 @@ namespace Otimizacao.Javascript
             RegistarScript("pathvisitor", "lib/path-visitor.js");
 
 
-            await _manager.ExecuteAsync("", @"  require('asttypes');
-                                                var partialFunExpr = { type: 'FunctionExpression' };");
+            await _manager.ExecuteAsync("", @"  var ast = JSON.parse(javascriptHelper.JsonAst);
+                                                require('asttypes');
 
-            var astNova = ""; // _manager.GetEngine().Script.astNova;
+                                                var n = types.namedTypes;
 
-            return astNova;
+                                                types.visit(ast, {
+                                                    // This method will be called for any node with .type 'MemberExpression':
+                                                    visitFunction: function(path) {
+
+
+                                                        var node = path.node;
+
+                                                        javascriptHelper.Escrever('{0}', JSON.stringify(path.name));
+
+                                                        path.prune();
+
+                                                        
+                                                        this.traverse(path);
+
+                                                        
+                                                    }
+                                                });
+
+                                                javascriptHelper.JsonAst = JSON.stringify(ast);
+
+            ");
+
+           return JsonAst;
         }
 
         /// <summary>

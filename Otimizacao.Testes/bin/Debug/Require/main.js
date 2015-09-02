@@ -50,11 +50,7 @@ exports.finalize = types.finalize;
 exports.NodePath = NodePath;
 exports.PathVisitor = PathVisitor;
 exports.visit = PathVisitor.visit;
-
-
-
 exports.astNodesAreEquivalent = astNodesAreEquivalent;
-
 
 types = exports;
 exports = {};
