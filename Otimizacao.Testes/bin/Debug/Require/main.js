@@ -14,7 +14,7 @@ require("core");
 // Feel free to add to or remove from this list of extension modules to
 // configure the precise type hierarchy that you need.
 require("es6");
-//require("es7");
+require("es7");
 //require("mozilla");
 //require("e4x");
 //require("fbharmony");
