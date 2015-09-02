@@ -15,7 +15,7 @@ require("core");
 // configure the precise type hierarchy that you need.
 require("es6");
 require("es7");
-//require("mozilla");
+require("mozilla");
 //require("e4x");
 //require("fbharmony");
 //require("esprima");
