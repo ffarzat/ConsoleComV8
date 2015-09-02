@@ -15,6 +15,7 @@ exports = {};
 
 require("nodepath"); //Cria o objeto Global NodePath
 require("pathvisitor"); //PathVisitor
+require("equiv"); //astNodesAreEquivalent
 
 
 // This core module of AST types captures ES5 as it is parsed today by
@@ -48,9 +49,8 @@ exports.finalize = types.finalize;
 
 exports.NodePath = NodePath;
 exports.PathVisitor = PathVisitor;
-//exports.visit = exports.PathVisitor.visit;
-//exports.astNodesAreEquivalent = require("equiv");
-
+exports.visit = PathVisitor.visit;
+exports.astNodesAreEquivalent = astNodesAreEquivalent;
 
 types = exports;
 exports = {};
