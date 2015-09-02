@@ -16,7 +16,7 @@ require("core");
 require("es6");
 require("es7");
 require("mozilla");
-//require("e4x");
+require("e4x");
 //require("fbharmony");
 //require("esprima");
 //require("babel");
