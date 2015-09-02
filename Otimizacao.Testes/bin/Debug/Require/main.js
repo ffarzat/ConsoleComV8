@@ -1,4 +1,5 @@
 require("assert"); //Cria o objeto global assert
+require("util"); //Cria o Objeto Global Util
 
 require("types");
 var types = exports;
@@ -38,7 +39,8 @@ exports.someField = types.someField;
 exports.getSupertypeNames = types.getSupertypeNames;
 exports.finalize = types.finalize;
 
-//exports.NodePath = require("nodepath");
+require("nodepath");
+exports.NodePath = NodePath;
 //exports.PathVisitor = require("pathvisitor");
 //exports.visit = exports.PathVisitor.visit;
 //exports.astNodesAreEquivalent = require("equiv");

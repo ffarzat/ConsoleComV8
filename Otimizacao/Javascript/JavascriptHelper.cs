@@ -320,11 +320,14 @@ namespace Otimizacao.Javascript
             RegistarScript("babel", "def/babel.js");
             RegistarScript("esprima", "def/esprima.js");
 
+            RegistarScript("path", "lib/path.js");
+            RegistarScript("scope", "lib/scope.js");
             RegistarScript("shared", "lib/shared.js");
             RegistarScript("types", "lib/types.js");
             RegistarScript("equiv", "lib/equiv.js");
             RegistarScript("nodepath", "lib/node-path.js");
             RegistarScript("pathvisitor", "lib/path-visitor.js");
+
 
             await _manager.ExecuteAsync("", @"  var exports = {}; 
                                                 var module = {};

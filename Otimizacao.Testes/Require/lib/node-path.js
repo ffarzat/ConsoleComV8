@@ -3,15 +3,16 @@ var b = types.builders;
 var isNumber = types.builtInTypes.number;
 var isArray = types.builtInTypes.array;
 
-var Path = require("path");
-var Scope = require("scope");
+require("path");
+require("scope");
 
 function NodePath(value, parentPath, name) {
     assert.ok(this instanceof NodePath);
     Path.call(this, value, parentPath, name);
 }
 
-require("util").inherits(NodePath, Path);
+Util.inherits(NodePath, Path);
+
 var NPp = NodePath.prototype;
 
 Object.defineProperties(NPp, {
