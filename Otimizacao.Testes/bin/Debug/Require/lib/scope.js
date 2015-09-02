@@ -1,5 +1,5 @@
 var assert = require("assert");
-var types = require("./types");
+var types = require("types");
 var Type = types.Type;
 var namedTypes = types.namedTypes;
 var Node = namedTypes.Node;

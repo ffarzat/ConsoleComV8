@@ -1,4 +1,5 @@
-var assert = require("assert");
+//var assert = require("assert");
+require("assert");
 var Ap = Array.prototype;
 var slice = Ap.slice;
 var map = Ap.map;

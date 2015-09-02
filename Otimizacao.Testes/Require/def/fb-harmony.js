@@ -1,9 +1,9 @@
-require("./es7");
+require("es7");
 
-var types = require("../lib/types");
+var types = require("types");
 var def = types.Type.def;
 var or = types.Type.or;
-var defaults = require("../lib/shared").defaults;
+var defaults = require("shared").defaults;
 
 def("JSXAttribute")
     .bases("Node")

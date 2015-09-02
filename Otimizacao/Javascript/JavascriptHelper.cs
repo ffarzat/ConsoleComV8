@@ -302,12 +302,33 @@ namespace Otimizacao.Javascript
         /// </summary>
         /// <param name="ast">árvore no formato do esprima</param>
         /// <returns></returns>
-        public string ExecutarMutacaoExclusao(string ast)
+        public async Task<string> ExecutarMutacaoExclusao(string ast)
         {
+            
             RegistarScript("asttypes", "main.js");
+            RegistarScript("assert", "assert.js");
+            RegistarScript("util", "util.js");
+            RegistarScript("isBuffer", "isBuffer.js");
+            RegistarScript("inherits", "inherits.js");
 
-             _manager.ExecuteAsync("", @"var types = require('asttypes');
-                                        var partialFunExpr = { type: 'FunctionExpression' };");
+            RegistarScript("core", "def/core.js");
+            RegistarScript("es6", "def/es6.js");
+            RegistarScript("es7", "def/es7.js");
+            RegistarScript("mozilla", "def/mozilla.js");
+            RegistarScript("e4x", "def/e4x.js");
+            RegistarScript("fbharmony", "def/fb-harmony.js");
+            RegistarScript("babel", "def/babel.js");
+
+            RegistarScript("shared", "lib/shared.js");
+            RegistarScript("types", "lib/types.js");
+            RegistarScript("equiv", "lib/equiv.js");
+            RegistarScript("nodepath", "lib/node-path.js");
+            RegistarScript("pathvisitor", "lib/path-visitor.js");
+
+            await _manager.ExecuteAsync("", @"  var exports = {}; 
+                                                var module = {};
+                                                var types = require('asttypes');
+                                                var partialFunExpr = { type: 'FunctionExpression' };");
 
             var astNova = _manager.GetEngine().Script.astNova;
 

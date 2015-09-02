@@ -1,5 +1,5 @@
-require("./core");
-var types = require("../lib/types");
+require("core");
+var types = require("types");
 var def = types.Type.def;
 var or = types.Type.or;
 

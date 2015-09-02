@@ -1,4 +1,7 @@
-var types = require("../lib/types");
+//var types = require("types");
+require("types");
+var types = exports;
+
 var Type = types.Type;
 var builtin = types.builtInTypes;
 var isNumber = builtin.number;

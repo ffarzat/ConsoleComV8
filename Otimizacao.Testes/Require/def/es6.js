@@ -1,8 +1,8 @@
-require("./core");
-var types = require("../lib/types");
+require("core");
+var types = require("types");
 var def = types.Type.def;
 var or = types.Type.or;
-var defaults = require("../lib/shared").defaults;
+var defaults = require("hared").defaults;
 
 def("Function")
     .field("generator", Boolean, defaults["false"])

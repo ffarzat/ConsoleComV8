@@ -10989,3 +10989,105 @@ moment.locale('en');
 2015-08-30 12:21:08.0274|Info| 512,6176 ms
 2015-08-30 13:15:02.6672|Info|ast gerada com sucesso
 2015-08-30 13:15:02.6828|Info| 609,4872 ms
+2015-08-30 13:32:53.6888|Info|ast gerada com sucesso
+2015-08-30 13:32:53.7045|Info| 494,6932 ms
+2015-08-30 13:34:13.3325|Info|ast gerada com sucesso
+2015-08-30 13:34:13.3481|Info| 542,9302 ms
+2015-09-02 09:45:44.1924|Info|ast gerada com sucesso
+2015-09-02 09:45:44.3305|Info| 619,7899 ms
+2015-09-02 09:47:59.3681|Info|ast gerada com sucesso
+2015-09-02 09:47:59.3891|Info| 504,0517 ms
+2015-09-02 10:02:49.9056|Info|ast gerada com sucesso
+2015-09-02 10:02:49.9368|Info| 557,6436 ms
+2015-09-02 10:03:50.9279|Info|ast gerada com sucesso
+2015-09-02 10:03:50.9435|Info| 542,4198 ms
+2015-09-02 10:04:45.8672|Info|ast gerada com sucesso
+2015-09-02 10:04:45.8984|Info| 496,3054 ms
+2015-09-02 10:08:09.0997|Info|ast gerada com sucesso
+2015-09-02 10:08:09.1360|Info| 544,8263 ms
+2015-09-02 10:09:01.0162|Info|ast gerada com sucesso
+2015-09-02 10:09:01.0318|Info| 583,175 ms
+2015-09-02 10:09:36.4755|Info|ast gerada com sucesso
+2015-09-02 10:09:36.4912|Info| 703,111 ms
+2015-09-02 10:11:39.1202|Info|ast gerada com sucesso
+2015-09-02 10:11:39.1514|Info| 588,4789 ms
+2015-09-02 10:24:49.8507|Info|ast gerada com sucesso
+2015-09-02 10:24:49.8820|Info| 527,6034 ms
+2015-09-02 10:26:14.4005|Info|ast gerada com sucesso
+2015-09-02 10:26:14.4318|Info| 568,2204 ms
+2015-09-02 10:27:09.8695|Info|ast gerada com sucesso
+2015-09-02 10:27:09.9008|Info| 560,6663 ms
+2015-09-02 10:29:39.2958|Info|ast gerada com sucesso
+2015-09-02 10:29:39.3198|Info| 692,8552 ms
+2015-09-02 10:30:40.9006|Info|ast gerada com sucesso
+2015-09-02 10:30:40.9246|Info| 591,3496 ms
+2015-09-02 10:31:49.7814|Info|ast gerada com sucesso
+2015-09-02 10:31:49.8045|Info| 593,7063 ms
+2015-09-02 10:32:11.2277|Info|ast gerada com sucesso
+2015-09-02 10:32:11.2507|Info| 561,9872 ms
+2015-09-02 10:34:34.6155|Info|ast gerada com sucesso
+2015-09-02 10:34:34.6915|Info| 592,222 ms
+2015-09-02 10:35:12.6145|Info|ast gerada com sucesso
+2015-09-02 10:35:12.6365|Info| 574,2081 ms
+2015-09-02 10:39:14.7464|Info|ast gerada com sucesso
+2015-09-02 10:39:14.7684|Info| 547,0602 ms
+2015-09-02 10:40:06.0889|Info|ast gerada com sucesso
+2015-09-02 10:40:06.1109|Info| 534,5922 ms
+2015-09-02 10:42:18.2507|Info|ast gerada com sucesso
+2015-09-02 10:42:18.2737|Info| 553,5622 ms
+2015-09-02 10:53:19.5613|Info|ast gerada com sucesso
+2015-09-02 10:53:19.5833|Info| 551,5612 ms
+2015-09-02 10:53:21.0843|Info|Iniciando os testes
+2015-09-02 10:53:23.6292|Info|Encerrando os testes
+2015-09-02 10:53:23.6292|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-02 10:53:23.6292|Info| 3 segundos para avaliar o individuo global.js
+2015-09-02 10:53:24.2756|Info|Iniciando os testes
+2015-09-02 10:53:24.3136|Info|  Settimeout: id:0, (13) ms
+2015-09-02 10:53:24.4447|Info|      Executando timer: id:0, (10:53:24.3327)
+2015-09-02 10:53:24.4678|Info|          Deveria ter disparado: function () {
+			if ( config.current && config.current.semaphore > 0 ) {
+				return;
+			}
+			if ( config.timeout ) {
+				clearTimeout( config.timeout );
+			}
+			begin();
+		}
+2015-09-02 10:53:25.4745|Info|  Settimeout: id:1, (13) ms
+2015-09-02 10:53:25.5256|Info|      Encerrado timer: id:0, (10:53:25.5256)
+2015-09-02 10:53:25.5256|Info|      Executando timer: id:1, (10:53:25.5275)
+2015-09-02 10:53:25.5256|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-09-02 10:53:26.5312|Info|  Settimeout: id:2, (13) ms
+2015-09-02 10:53:26.5823|Info|      Encerrado timer: id:1, (10:53:26.5823)
+2015-09-02 10:53:26.5823|Info|      Executando timer: id:2, (10:53:26.5823)
+2015-09-02 10:53:26.5823|Info|          Deveria ter disparado: function next() {
+		process( last );
+	}
+2015-09-02 10:53:27.1577|Info|      Encerrado timer: id:2, (10:53:27.1577)
+2015-09-02 10:53:27.1607|Info|Encerrando os testes
+2015-09-02 10:53:27.1607|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-02 10:53:27.1607|Info| 3 segundos para avaliar o individuo global.js
+2015-09-02 10:53:27.9522|Info|ast gerada com sucesso
+2015-09-02 10:53:27.9522|Info| 580,1551 ms
+2015-09-02 10:53:28.7928|Info|Codigo gerado com sucesso
+2015-09-02 10:53:28.7928|Info| 624,9009 ms
+2015-09-02 10:53:50.6063|Info|ast gerada com sucesso
+2015-09-02 10:53:50.6283|Info| 556,2671 ms
+2015-09-02 10:54:00.7795|Info|ast gerada com sucesso
+2015-09-02 10:54:00.8026|Info| 535,8076 ms
+2015-09-02 10:57:02.9009|Info|ast gerada com sucesso
+2015-09-02 10:57:02.9249|Info| 542,5351 ms
+2015-09-02 10:58:51.8762|Info|ast gerada com sucesso
+2015-09-02 10:58:51.8992|Info| 545,15 ms
+2015-09-02 10:59:31.9347|Info|ast gerada com sucesso
+2015-09-02 10:59:31.9587|Info| 543,6779 ms
+2015-09-02 11:06:57.2949|Info|ast gerada com sucesso
+2015-09-02 11:06:57.3209|Info| 606,6777 ms
+2015-09-02 11:07:35.1538|Info|ast gerada com sucesso
+2015-09-02 11:07:35.1758|Info| 559,7536 ms
+2015-09-02 11:08:10.6300|Info|ast gerada com sucesso
+2015-09-02 11:08:10.6530|Info| 546,2924 ms
+2015-09-02 11:09:01.3840|Info|ast gerada com sucesso
+2015-09-02 11:09:01.4060|Info| 551,6773 ms

@@ -128,14 +128,14 @@ namespace Otimizacao.Testes
         /// Testa o procedimento de mutação (excluir um nó)
         /// </summary>
         [Test]
-        public void ExecutarMutacao()
+        public async void ExecutarMutacao()
         {
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"), true, true);
             var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Require", "global.js"));
             helper.ConfigurarGeracao();
             var ast = helper.GerarAst(scriptCode);
             
-            var astNova = helper.ExecutarMutacaoExclusao(ast);
+            var astNova = await helper.ExecutarMutacaoExclusao(ast);
 
             Assert.AreNotEqual(ast, astNova);
         }

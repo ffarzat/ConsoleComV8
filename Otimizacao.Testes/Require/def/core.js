@@ -1,8 +1,13 @@
-var types = require("../lib/types");
+//var types = require("types");
+require("types");
+var types = exports;
+
 var Type = types.Type;
 var def = Type.def;
 var or = Type.or;
-var shared = require("../lib/shared");
+//var shared = require("shared");
+var shared = exports;
+
 var defaults = shared.defaults;
 var geq = shared.geq;
 

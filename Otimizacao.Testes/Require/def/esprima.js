@@ -1,7 +1,7 @@
-require("./es7");
+require("es7");
 
-var types = require("../lib/types");
-var defaults = require("../lib/shared").defaults;
+var types = require("lib/types");
+var defaults = require("lib/shared").defaults;
 var def = types.Type.def;
 var or = types.Type.or;
 
