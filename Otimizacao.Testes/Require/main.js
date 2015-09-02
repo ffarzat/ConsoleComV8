@@ -1,3 +1,4 @@
+require("assert"); //Cria o objeto global assert
 
 require("types");
 var types = exports;
@@ -23,6 +24,8 @@ require("babel");
 
 types.finalize();
 
+exports = {};
+
 exports.Type = types.Type;
 exports.builtInTypes = types.builtInTypes;
 exports.namedTypes = types.namedTypes;
@@ -33,7 +36,6 @@ exports.getFieldValue = types.getFieldValue;
 exports.eachField = types.eachField;
 exports.someField = types.someField;
 exports.getSupertypeNames = types.getSupertypeNames;
-
 exports.finalize = types.finalize;
 
 //exports.NodePath = require("nodepath");

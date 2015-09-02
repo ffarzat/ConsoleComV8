@@ -1,9 +1,8 @@
-var assert = require("assert");
-var types = require("types");
 var n = types.namedTypes;
 var b = types.builders;
 var isNumber = types.builtInTypes.number;
 var isArray = types.builtInTypes.array;
+
 var Path = require("path");
 var Scope = require("scope");
 
