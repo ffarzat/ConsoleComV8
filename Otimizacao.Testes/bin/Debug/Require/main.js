@@ -1,12 +1,19 @@
+var exports = {};
 require("assert"); //Cria o objeto global assert
 require("util"); //Cria o Objeto Global Util
 
+
 require("types");
 var types = exports;
+exports = {};
 
 require("shared");
 var shared = exports;
 var defaults = shared.defaults;
+exports = {};
+
+
+require("nodepath"); //Cria o objeto Global NodePath
 
 
 // This core module of AST types captures ES5 as it is parsed today by
@@ -25,8 +32,6 @@ require("babel");
 
 types.finalize();
 
-exports = {};
-
 exports.Type = types.Type;
 exports.builtInTypes = types.builtInTypes;
 exports.namedTypes = types.namedTypes;
@@ -39,7 +44,7 @@ exports.someField = types.someField;
 exports.getSupertypeNames = types.getSupertypeNames;
 exports.finalize = types.finalize;
 
-require("nodepath");
+
 exports.NodePath = NodePath;
 //exports.PathVisitor = require("pathvisitor");
 //exports.visit = exports.PathVisitor.visit;
@@ -47,3 +52,4 @@ exports.NodePath = NodePath;
 
 
 types = exports;
+exports = {};

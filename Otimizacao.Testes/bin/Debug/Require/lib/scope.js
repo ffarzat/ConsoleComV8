@@ -282,4 +282,4 @@ Sp.getGlobalScope = function() {
     return scope;
 };
 
-module.exports = Scope;
+//module.exports = Scope;

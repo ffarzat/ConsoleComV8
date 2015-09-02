@@ -523,7 +523,9 @@ function isPrimitive(arg) {
 }
 exports.isPrimitive = isPrimitive;
 
-exports.isBuffer = require('isBuffer');
+exports.isBuffer = function isBuffer(arg) {
+  return arg instanceof Buffer;
+};
 
 function objectToString(o) {
   return Object.prototype.toString.call(o);

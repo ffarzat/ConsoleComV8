@@ -175,4 +175,4 @@ function objectsAreEquivalent(a, b, problemPath) {
     return false;
 }
 
-module.exports = astNodesAreEquivalent;
+//module.exports = astNodesAreEquivalent;

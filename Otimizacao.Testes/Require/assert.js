@@ -26,7 +26,6 @@
 // versus loading the builtin util module as happens otherwise
 // this is a bug in node module loading as far as I am concerned
 require('util');
-var util = exports;
 
 var pSlice = Array.prototype.slice;
 var hasOwn = Object.prototype.hasOwnProperty;
@@ -35,7 +34,7 @@ var hasOwn = Object.prototype.hasOwnProperty;
 // AssertionError's when particular conditions are not met. The
 // assert module must conform to the following interface.
 
-var assert = module.exports = ok;
+var assert = ok;
 
 // 2. The AssertionError is defined in assert.
 // new assert.AssertionError({ message: message,
@@ -81,23 +80,23 @@ assert.AssertionError = function AssertionError(options) {
 };
 
 // assert.AssertionError instanceof Error
-util.inherits(assert.AssertionError, Error);
+Util.inherits(assert.AssertionError, Error);
 
 function replacer(key, value) {
-  if (util.isUndefined(value)) {
+  if (Util.isUndefined(value)) {
     return '' + value;
   }
-  if (util.isNumber(value) && !isFinite(value)) {
+  if (Util.isNumber(value) && !isFinite(value)) {
     return value.toString();
   }
-  if (util.isFunction(value) || util.isRegExp(value)) {
+  if (Util.isFunction(value) || Util.isRegExp(value)) {
     return value.toString();
   }
   return value;
 }
 
 function truncate(s, n) {
-  if (util.isString(s)) {
+  if (Util.isString(s)) {
     return s.length < n ? s : s.slice(0, n);
   } else {
     return s;
@@ -177,7 +176,7 @@ function _deepEqual(actual, expected) {
   if (actual === expected) {
     return true;
 
-  } else if (util.isBuffer(actual) && util.isBuffer(expected)) {
+  } else if (Util.isBuffer(actual) && Util.isBuffer(expected)) {
     if (actual.length != expected.length) return false;
 
     for (var i = 0; i < actual.length; i++) {
@@ -188,13 +187,13 @@ function _deepEqual(actual, expected) {
 
   // 7.2. If the expected value is a Date object, the actual value is
   // equivalent if it is also a Date object that refers to the same time.
-  } else if (util.isDate(actual) && util.isDate(expected)) {
+  } else if (Util.isDate(actual) && Util.isDate(expected)) {
     return actual.getTime() === expected.getTime();
 
   // 7.3 If the expected value is a RegExp object, the actual value is
   // equivalent if it is also a RegExp object with the same source and
   // properties (`global`, `multiline`, `lastIndex`, `ignoreCase`).
-  } else if (util.isRegExp(actual) && util.isRegExp(expected)) {
+  } else if (Util.isRegExp(actual) && Util.isRegExp(expected)) {
     return actual.source === expected.source &&
            actual.global === expected.global &&
            actual.multiline === expected.multiline &&
@@ -203,7 +202,7 @@ function _deepEqual(actual, expected) {
 
   // 7.4. Other pairs that do not both pass typeof value == 'object',
   // equivalence is determined by ==.
-  } else if (!util.isObject(actual) && !util.isObject(expected)) {
+  } else if (!Util.isObject(actual) && !Util.isObject(expected)) {
     return actual == expected;
 
   // 7.5 For all other Object pairs, including Array objects, equivalence is
@@ -222,12 +221,12 @@ function isArguments(object) {
 }
 
 function objEquiv(a, b) {
-  if (util.isNullOrUndefined(a) || util.isNullOrUndefined(b))
+  if (Util.isNullOrUndefined(a) || Util.isNullOrUndefined(b))
     return false;
   // an identical 'prototype' property.
   if (a.prototype !== b.prototype) return false;
   // if one is a primitive, the other must be same
-  if (util.isPrimitive(a) || util.isPrimitive(b)) {
+  if (Util.isPrimitive(a) || Util.isPrimitive(b)) {
     return a === b;
   }
   var aIsArgs = isArguments(a),
@@ -309,7 +308,7 @@ function expectedException(actual, expected) {
 function _throws(shouldThrow, block, expected, message) {
   var actual;
 
-  if (util.isString(expected)) {
+  if (Util.isString(expected)) {
     message = expected;
     expected = null;
   }

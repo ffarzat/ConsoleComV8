@@ -64,5 +64,4 @@ D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\lib\shared.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\lib\types.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\main.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\assert.js
-D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\isBuffer.js
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Require\util.js

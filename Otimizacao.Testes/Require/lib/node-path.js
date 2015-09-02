@@ -446,4 +446,4 @@ function cleanUpIfStatementAfterPrune(ifStatement) {
     }
 }
 
-module.exports = NodePath;
+//module.exports = NodePath;

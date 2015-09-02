@@ -329,9 +329,7 @@ namespace Otimizacao.Javascript
             RegistarScript("pathvisitor", "lib/path-visitor.js");
 
 
-            await _manager.ExecuteAsync("", @"  var exports = {}; 
-                                                var module = {};
-                                                require('asttypes');
+            await _manager.ExecuteAsync("", @"  require('asttypes');
                                                 var partialFunExpr = { type: 'FunctionExpression' };");
 
             var astNova = ""; // _manager.GetEngine().Script.astNova;

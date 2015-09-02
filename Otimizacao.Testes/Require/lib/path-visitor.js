@@ -371,4 +371,4 @@ sharedContextProtoMethods.abort = function abort() {
     this.visitor.abort();
 };
 
-module.exports = PathVisitor;
+//module.exports = PathVisitor;
