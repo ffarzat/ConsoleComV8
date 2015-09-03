@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Timers;
 using Microsoft.ClearScript.V8;
 using NUnit.Framework;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Otimizacao.Javascript;
 using Timer = System.Timers.Timer;
 
@@ -138,6 +140,15 @@ namespace Otimizacao.Testes
             var astNova = await helper.ExecutarMutacaoExclusao(ast);
 
             Assert.AreNotEqual(ast, astNova);
+            File.WriteAllText("astOriginal.txt", JToken.Parse(ast).ToString());
+            File.WriteAllText("astMutada.txt", JToken.Parse(astNova).ToString());
+
+
+            var codigo = helper.GerarCodigo(ast);
+            var codigoNovo = helper.GerarCodigo(astNova);
+
+            Assert.AreNotEqual(codigo, codigoNovo);
+
         }
 
     }
