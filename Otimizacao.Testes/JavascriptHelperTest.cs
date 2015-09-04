@@ -113,7 +113,6 @@ namespace Otimizacao.Testes
         /// Executa os testes do underscore
         /// </summary>
         [Test]
-        [Ignore]
         public void ExecutarTestesDounderscore()
         {
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "underscore"), true, true);

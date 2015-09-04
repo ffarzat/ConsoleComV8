@@ -154,7 +154,7 @@ namespace Otimizacao.Javascript
             _timers = new Dictionary<int, bool>();
 
             _engine.AddHostObject("javascriptHelper", this);
-           
+            
             _engine.Execute(@"'use strict';
                         function console() {
                           if (!(this instanceof console)) {
@@ -167,6 +167,7 @@ namespace Otimizacao.Javascript
                         };");
 
             _engine.Execute("var console = new console();");
+            _engine.Execute("var GLOBAL = this;");
 
             _engine.Execute(@"var stFunctionsCallBack = new Array();");
 
