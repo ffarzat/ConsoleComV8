@@ -567,7 +567,7 @@ namespace Otimizacao.Javascript
             th.Priority = ThreadPriority.Highest;
             th.IsBackground = false;
             th.Start();
-            th.Join(50);
+            //th.Join(50);
 
             return id.ToString();
         }

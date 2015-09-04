@@ -3114,10 +3114,11 @@
     asyncTest('should delay `func` execution', 2, function() {
       if (!(isRhino && isModularize)) {
         var pass = false;
-        _.delay(function() { pass = true; }, 32);
+        _.delay(function() { pass = true;}, 32);
 
         setTimeout(function() {
           ok(!pass);
+		  javascriptHelper.Escrever('{0} = {1}', 'pass', pass);
         }, 1);
 
         setTimeout(function() {
