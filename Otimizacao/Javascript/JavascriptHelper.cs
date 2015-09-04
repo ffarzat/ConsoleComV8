@@ -118,7 +118,7 @@ namespace Otimizacao.Javascript
         /// <param name="setInterval">Habilitar a função global setInterval</param>
         public JavascriptHelper(string diretorioJavascripts, bool setTimeout, bool setInterval)
         {
-            Carregar(diretorioJavascripts, setInterval, setInterval);
+            Carregar(diretorioJavascripts, setTimeout, setInterval);
         }
 
         /// <summary>
