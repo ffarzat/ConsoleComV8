@@ -56,6 +56,8 @@ namespace Otimizacao.Testes
             helper.ConfigurarGeracao();
             var ast = helper.GerarAst(scriptCode);
 
+            //File.WriteAllText("astMoment.txt", ast);
+
             Assert.AreEqual(astMoment, helper.JsonAst, "AST Inválida");
             Assert.AreEqual(ast, helper.JsonAst, "AST Inválida");
         }
@@ -140,8 +142,8 @@ namespace Otimizacao.Testes
             var astNova = await helper.ExecutarMutacaoExclusao(ast);
 
             Assert.AreNotEqual(ast, astNova);
-            File.WriteAllText("astOriginal.txt", JToken.Parse(ast).ToString());
-            File.WriteAllText("astMutada.txt", JToken.Parse(astNova).ToString());
+            File.WriteAllText("astOriginal.txt", ast);
+            File.WriteAllText("astMutada.txt", astNova);
 
 
             var codigo = helper.GerarCodigo(ast);

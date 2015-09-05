@@ -13,6 +13,7 @@ using ClearScript.Manager.Caching;
 using ClearScript.Manager.Loaders;
 using Microsoft.ClearScript.V8;
 using NLog;
+using Newtonsoft.Json.Linq;
 using Timer = System.Timers.Timer;
 
 namespace Otimizacao.Javascript
@@ -294,6 +295,9 @@ namespace Otimizacao.Javascript
 
             Log(string.Format("ast gerada com sucesso"));
             Log(string.Format(" {0} ms", sw.Elapsed.TotalMilliseconds));
+            
+            //Formata a Ast para facilitar o Debug
+            JsonAst = JToken.Parse(JsonAst).ToString();
 
             return this.JsonAst;
         }
