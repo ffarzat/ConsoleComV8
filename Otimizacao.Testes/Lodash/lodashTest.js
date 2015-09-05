@@ -7763,6 +7763,7 @@
     });
 
     test('should work with nulls from another realm', 2, function() {
+		console.log('_._object={0}', _._object);
       if (_._object) {
         strictEqual(_.isNil(_._null), true);
         strictEqual(_.isNil(_._undefined), true);
