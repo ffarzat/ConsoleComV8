@@ -388,6 +388,9 @@ namespace Otimizacao.Javascript
 
             engine.Execute("var syntax = JSON.parse(javascriptHelper.JsonAst);");
             engine.Execute("syntax = ObjEscodegen.attachComments(syntax, syntax.comments, syntax.tokens);");
+
+            engine.Execute("javascriptHelper.Escrever('{0}', JSON.stringify(syntax));");
+
             engine.Execute("var code = ObjEscodegen.generate(syntax, option);");
             engine.Execute("javascriptHelper.Codigo = code;");
 

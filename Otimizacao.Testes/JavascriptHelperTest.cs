@@ -49,33 +49,17 @@ namespace Otimizacao.Testes
         public void GerarAst()
         {
             const string diretorioExecucao = "Require";
-            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "global.js"));
-            var astMoment = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "astMoment.txt"));
+            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "underscore.js"));
+            var astUnderscore = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "astUnderscore.txt"));
 
-            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, diretorioExecucao), false, false);
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, diretorioExecucao), true, false);
             helper.ConfigurarGeracao();
             var ast = helper.GerarAst(scriptCode);
 
-            //File.WriteAllText("astMoment.txt", FormatarStringJson(ast));
+            File.WriteAllText("astUnderscoreNovo.txt", helper.FormatarStringJson(ast));
 
-            Assert.AreEqual(astMoment, helper.FormatarStringJson(helper.JsonAst), "AST Inválida");
+            Assert.AreEqual(astUnderscore, helper.FormatarStringJson(helper.JsonAst), "AST Inválida");
             Assert.AreEqual(ast, helper.JsonAst, "AST Inválida");
-        }
-
-        /// <summary>
-        /// Executa os testes do Monent com SetTimeout and SetInterval ligadas
-        /// </summary>
-        [Test]
-        public void ExecutarTestesDoMomentComSetTimeoutEInterval()
-        {
-            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"), true, true);
-            helper.ConfigurarGeracao();
-            helper.ExecutarTestes("global.js", "core-test.js");
-
-            helper.FalhasDosTestes.ForEach(Console.WriteLine);
-            Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");
-            Assert.AreEqual(helper.TestesComSucesso, 57982);
-
         }
 
         /// <summary>
@@ -132,7 +116,7 @@ namespace Otimizacao.Testes
         /// Testa o procedimento de mutação (excluir um nó)
         /// </summary>
         [Test]
-        public async void ExecutarMutacao()
+        public async void ExecutarMutacaoExclusao()
         {
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"), true, true);
             var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Require", "global.js"));
@@ -142,8 +126,8 @@ namespace Otimizacao.Testes
             var astNova = await helper.ExecutarMutacaoExclusao(ast);
 
             Assert.AreNotEqual(ast, astNova);
-            File.WriteAllText("astOriginal.txt", ast);
-            File.WriteAllText("astMutada.txt", astNova);
+            File.WriteAllText("astOriginal.txt", helper.FormatarStringJson(ast));
+            File.WriteAllText("astMutada.txt", helper.FormatarStringJson(astNova));
 
 
             var codigo = helper.GerarCodigo(ast);
