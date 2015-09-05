@@ -56,9 +56,9 @@ namespace Otimizacao.Testes
             helper.ConfigurarGeracao();
             var ast = helper.GerarAst(scriptCode);
 
-            //File.WriteAllText("astMoment.txt", ast);
+            //File.WriteAllText("astMoment.txt", FormatarStringJson(ast));
 
-            Assert.AreEqual(astMoment, helper.JsonAst, "AST Inválida");
+            Assert.AreEqual(astMoment, helper.FormatarStringJson(helper.JsonAst), "AST Inválida");
             Assert.AreEqual(ast, helper.JsonAst, "AST Inválida");
         }
 

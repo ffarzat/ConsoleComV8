@@ -6962,3 +6962,495 @@
 2015-09-05 18:37:20.8968|Info|Encerrando os testes
 2015-09-05 18:37:20.8968|Info|Total:4449, Sucesso: 4449, Falha: 0
 2015-09-05 18:37:20.9128|Info| 9 segundos para avaliar o individuo lodash.js
+2015-09-05 18:41:36.0881|Info|ast gerada com sucesso
+2015-09-05 18:41:36.1181|Info| 714,0564 ms
+2015-09-05 18:41:42.0053|Info|"callee"
+2015-09-05 18:41:42.0093|Info|1
+2015-09-05 18:41:42.0093|Info|"callee"
+2015-09-05 18:41:42.0093|Info|1
+2015-09-05 18:41:42.0093|Info|"callee"
+2015-09-05 18:41:42.0093|Info|1
+2015-09-05 18:41:43.4513|Info|Codigo gerado com sucesso
+2015-09-05 18:41:43.4513|Info| 1083,9752 ms
+2015-09-05 18:41:44.6902|Info|Iniciando os testes
+2015-09-05 18:41:52.8050|Info|----------------------------------------
+2015-09-05 18:41:52.8050|Info|    PASS: 4449  FAIL: 0  TOTAL: 4449
+2015-09-05 18:41:52.8050|Info|    Finished in 8092 milliseconds.
+2015-09-05 18:41:52.8050|Info|----------------------------------------
+2015-09-05 18:41:52.8050|Info|Encerrando os testes
+2015-09-05 18:41:52.8050|Info|Total:4449, Sucesso: 4449, Falha: 0
+2015-09-05 18:41:52.8050|Info| 8 segundos para avaliar o individuo lodash.js
+2015-09-05 18:41:53.9818|Info|Iniciando os testes
+2015-09-05 18:41:57.4343|Info|Encerrando os testes
+2015-09-05 18:41:57.4343|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-05 18:41:57.4343|Info| 4 segundos para avaliar o individuo global.js
+2015-09-05 18:41:58.3029|Info|Iniciando os testes
+2015-09-05 18:42:01.4982|Info|Encerrando os testes
+2015-09-05 18:42:01.4982|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-05 18:42:01.4982|Info| 3 segundos para avaliar o individuo global.js
+2015-09-05 18:42:01.6143|Info|Iniciando os testes
+2015-09-05 18:42:01.6403|Info|----------------------------------------
+2015-09-05 18:42:01.6403|Info|Arrays
+2015-09-05 18:42:01.6403|Info|----------------------------------------
+2015-09-05 18:42:01.6403|Info| PASS - first
+2015-09-05 18:42:01.6403|Info| PASS - head
+2015-09-05 18:42:01.6403|Info| PASS - take
+2015-09-05 18:42:01.6473|Info| PASS - rest
+2015-09-05 18:42:01.6473|Info| PASS - tail
+2015-09-05 18:42:01.6473|Info| PASS - drop
+2015-09-05 18:42:01.6473|Info| PASS - initial
+2015-09-05 18:42:01.6473|Info| PASS - last
+2015-09-05 18:42:01.6473|Info| PASS - compact
+2015-09-05 18:42:02.3458|Info| PASS - flatten
+2015-09-05 18:42:02.3458|Info| PASS - without
+2015-09-05 18:42:02.3458|Info| PASS - sortedIndex
+2015-09-05 18:42:02.3508|Info| PASS - uniq
+2015-09-05 18:42:02.3508|Info| PASS - unique
+2015-09-05 18:42:02.3508|Info| PASS - intersection
+2015-09-05 18:42:02.3508|Info| PASS - union
+2015-09-05 18:42:02.3508|Info| PASS - difference
+2015-09-05 18:42:02.3508|Info| PASS - zip
+2015-09-05 18:42:02.3508|Info| PASS - unzip
+2015-09-05 18:42:02.3508|Info| PASS - object
+2015-09-05 18:42:02.3508|Info| PASS - indexOf
+2015-09-05 18:42:02.3508|Info| PASS - indexOf with NaN
+2015-09-05 18:42:02.3508|Info| PASS - indexOf with +- 0
+2015-09-05 18:42:02.3508|Info| PASS - lastIndexOf
+2015-09-05 18:42:02.3658|Info| PASS - lastIndexOf with NaN
+2015-09-05 18:42:02.3658|Info| PASS - lastIndexOf with +- 0
+2015-09-05 18:42:02.3658|Info| PASS - findIndex
+2015-09-05 18:42:02.3658|Info| PASS - findLastIndex
+2015-09-05 18:42:02.3658|Info| PASS - range
+2015-09-05 18:42:02.3658|Info|----------------------------------------
+2015-09-05 18:42:02.3658|Info|Chaining
+2015-09-05 18:42:02.3658|Info|----------------------------------------
+2015-09-05 18:42:02.3658|Info| PASS - map/flatten/reduce
+2015-09-05 18:42:02.3658|Info| PASS - select/reject/sortBy
+2015-09-05 18:42:02.3658|Info| PASS - select/reject/sortBy in functional style
+2015-09-05 18:42:02.3658|Info| PASS - reverse/concat/unshift/pop/map
+2015-09-05 18:42:02.3658|Info| PASS - splice
+2015-09-05 18:42:02.3658|Info| PASS - shift
+2015-09-05 18:42:02.3658|Info| PASS - pop
+2015-09-05 18:42:02.3658|Info| PASS - chaining works in small stages
+2015-09-05 18:42:02.3658|Info| PASS - #1562: Engine proxies for chained functions
+2015-09-05 18:42:02.3838|Info|----------------------------------------
+2015-09-05 18:42:02.3838|Info|Collections
+2015-09-05 18:42:02.3838|Info|----------------------------------------
+2015-09-05 18:42:02.3838|Info| PASS - each
+2015-09-05 18:42:02.3838|Info| PASS - forEach
+2015-09-05 18:42:02.3838|Info| PASS - lookupIterator with contexts
+2015-09-05 18:42:02.3838|Info| PASS - Iterating objects with sketchy length properties
+2015-09-05 18:42:02.3968|Info| PASS - Resistant to collection length and properties changing while iterating
+2015-09-05 18:42:02.3968|Info| PASS - map
+2015-09-05 18:42:02.3968|Info| PASS - collect
+2015-09-05 18:42:02.3968|Info| PASS - reduce
+2015-09-05 18:42:02.3968|Info| PASS - foldl
+2015-09-05 18:42:02.3968|Info| PASS - reduceRight
+2015-09-05 18:42:02.3968|Info| PASS - foldr
+2015-09-05 18:42:02.3968|Info| PASS - find
+2015-09-05 18:42:02.3968|Info| PASS - detect
+2015-09-05 18:42:02.3968|Info| PASS - filter
+2015-09-05 18:42:02.4128|Info| PASS - select
+2015-09-05 18:42:02.4128|Info| PASS - reject
+2015-09-05 18:42:02.4128|Info| PASS - every
+2015-09-05 18:42:02.4128|Info| PASS - all
+2015-09-05 18:42:02.4128|Info| PASS - some
+2015-09-05 18:42:02.4128|Info| PASS - any
+2015-09-05 18:42:02.4128|Info| PASS - includes
+2015-09-05 18:42:02.4128|Info| PASS - include
+2015-09-05 18:42:02.4128|Info| PASS - contains
+2015-09-05 18:42:02.4128|Info| PASS - includes with NaN
+2015-09-05 18:42:02.4128|Info| PASS - includes with +- 0
+2015-09-05 18:42:02.4298|Info| PASS - invoke
+2015-09-05 18:42:02.4298|Info| PASS - invoke w/ function reference
+2015-09-05 18:42:02.4298|Info| PASS - invoke when strings have a call method
+2015-09-05 18:42:02.4298|Info| PASS - pluck
+2015-09-05 18:42:02.4298|Info| PASS - where
+2015-09-05 18:42:02.4298|Info| PASS - findWhere
+2015-09-05 18:42:02.4889|Info| PASS - max
+2015-09-05 18:42:02.5229|Info| PASS - min
+2015-09-05 18:42:02.5229|Info| PASS - sortBy
+2015-09-05 18:42:02.5229|Info| PASS - groupBy
+2015-09-05 18:42:02.5229|Info| PASS - indexBy
+2015-09-05 18:42:02.5229|Info| PASS - countBy
+2015-09-05 18:42:02.5229|Info| PASS - shuffle
+2015-09-05 18:42:02.5229|Info| PASS - sample
+2015-09-05 18:42:02.5229|Info| PASS - toArray
+2015-09-05 18:42:02.5229|Info| PASS - size
+2015-09-05 18:42:02.5229|Info| PASS - partition
+2015-09-05 18:42:02.5229|Info|----------------------------------------
+2015-09-05 18:42:02.5379|Info|Functions
+2015-09-05 18:42:02.5379|Info|----------------------------------------
+2015-09-05 18:42:02.5379|Info| PASS - bind
+2015-09-05 18:42:02.5379|Info| PASS - partial
+2015-09-05 18:42:02.5379|Info| PASS - bindAll
+2015-09-05 18:42:02.5379|Info| PASS - memoize
+2015-09-05 18:42:02.7130|Info| PASS - delay
+2015-09-05 18:42:02.7801|Info| PASS - defer
+2015-09-05 18:42:02.8611|Info| PASS - throttle
+2015-09-05 18:42:02.9742|Info| PASS - throttle arguments
+2015-09-05 18:42:03.0553|Info| PASS - throttle once
+2015-09-05 18:42:03.1363|Info| PASS - throttle twice
+2015-09-05 18:42:03.2384|Info| PASS - more throttling
+2015-09-05 18:42:03.5556|Info| PASS - throttle repeatedly with results
+2015-09-05 18:42:03.7157|Info| PASS - throttle triggers trailing call when invoked repeatedly
+2015-09-05 18:42:03.8288|Info| PASS - throttle does not trigger leading call when leading is set to false
+2015-09-05 18:42:04.1961|Info| PASS - more throttle does not trigger leading call when leading is set to false
+2015-09-05 18:42:04.7625|Info| PASS - one more throttle with leading: false test
+2015-09-05 18:42:04.9716|Info| PASS - throttle does not trigger trailing call when trailing is set to false
+2015-09-05 18:42:05.1898|Info| PASS - throttle continues to function after system time is set backwards
+2015-09-05 18:42:05.3059|Info| PASS - throttle re-entrant
+2015-09-05 18:42:05.4180|Info| PASS - debounce
+2015-09-05 18:42:05.5641|Info| PASS - debounce asap
+2015-09-05 18:42:05.6771|Info| PASS - debounce asap recursively
+2015-09-05 18:42:05.8933|Info| PASS - debounce after system time is set backwards
+2015-09-05 18:42:06.0094|Info| PASS - debounce re-entrant
+2015-09-05 18:42:06.0094|Info| PASS - once
+2015-09-05 18:42:06.0094|Info| PASS - Recursive onced function.
+2015-09-05 18:42:06.0094|Info| PASS - wrap
+2015-09-05 18:42:06.0094|Info| PASS - negate
+2015-09-05 18:42:06.0094|Info| PASS - compose
+2015-09-05 18:42:06.0094|Info| PASS - after
+2015-09-05 18:42:06.0094|Info| PASS - before
+2015-09-05 18:42:06.0094|Info| PASS - iteratee
+2015-09-05 18:42:06.0094|Info|----------------------------------------
+2015-09-05 18:42:06.0094|Info|Objects
+2015-09-05 18:42:06.0094|Info|----------------------------------------
+2015-09-05 18:42:06.0094|Info| PASS - keys
+2015-09-05 18:42:06.0094|Info| PASS - allKeys
+2015-09-05 18:42:06.0224|Info| PASS - values
+2015-09-05 18:42:06.0224|Info| PASS - pairs
+2015-09-05 18:42:06.0224|Info| PASS - invert
+2015-09-05 18:42:06.0224|Info| PASS - functions
+2015-09-05 18:42:06.0224|Info| PASS - methods
+2015-09-05 18:42:06.0224|Info| PASS - extend
+2015-09-05 18:42:06.0224|Info| PASS - extendOwn
+2015-09-05 18:42:06.0224|Info| PASS - pick
+2015-09-05 18:42:06.0394|Info| PASS - omit
+2015-09-05 18:42:06.0394|Info| PASS - defaults
+2015-09-05 18:42:06.0394|Info| PASS - clone
+2015-09-05 18:42:06.0394|Info| PASS - create
+2015-09-05 18:42:06.0394|Info| PASS - isEqual
+2015-09-05 18:42:06.0534|Info| PASS - isEmpty
+2015-09-05 18:42:06.0534|Info| PASS - isArguments
+2015-09-05 18:42:06.0534|Info| PASS - isObject
+2015-09-05 18:42:06.0534|Info| PASS - isArray
+2015-09-05 18:42:06.0534|Info| PASS - isString
+2015-09-05 18:42:06.0534|Info| PASS - isNumber
+2015-09-05 18:42:06.0534|Info| PASS - isBoolean
+2015-09-05 18:42:06.0534|Info| PASS - isFunction
+2015-09-05 18:42:06.0534|Info| PASS - #1929 Typed Array constructors are functions
+2015-09-05 18:42:06.0534|Info| PASS - isDate
+2015-09-05 18:42:06.0694|Info| PASS - isRegExp
+2015-09-05 18:42:06.0694|Info| PASS - isFinite
+2015-09-05 18:42:06.0694|Info| PASS - isNaN
+2015-09-05 18:42:06.0694|Info| PASS - isNull
+2015-09-05 18:42:06.0694|Info| PASS - isUndefined
+2015-09-05 18:42:06.0694|Info| PASS - isError
+2015-09-05 18:42:06.0694|Info| PASS - tap
+2015-09-05 18:42:06.0694|Info| PASS - has
+2015-09-05 18:42:06.0694|Info| PASS - isMatch
+2015-09-05 18:42:06.0694|Info| PASS - matcher
+2015-09-05 18:42:06.0854|Info| PASS - matcher 
+2015-09-05 18:42:06.0854|Info| PASS - findKey
+2015-09-05 18:42:06.0854|Info| PASS - mapObject
+2015-09-05 18:42:06.0854|Info|----------------------------------------
+2015-09-05 18:42:06.0854|Info|Utility
+2015-09-05 18:42:06.0854|Info|----------------------------------------
+2015-09-05 18:42:06.0854|Info| PASS - #750 - Return _ instance.
+2015-09-05 18:42:06.0854|Info| PASS - identity
+2015-09-05 18:42:06.0854|Info| PASS - constant
+2015-09-05 18:42:06.0854|Info| PASS - noop
+2015-09-05 18:42:06.0854|Info| PASS - property
+2015-09-05 18:42:06.1004|Info| PASS - propertyOf
+2015-09-05 18:42:06.1004|Info| PASS - random
+2015-09-05 18:42:06.1004|Info| PASS - now
+2015-09-05 18:42:06.1004|Info| PASS - uniqueId
+2015-09-05 18:42:06.1004|Info| PASS - times
+2015-09-05 18:42:06.1004|Info| PASS - mixin
+2015-09-05 18:42:06.1004|Info| PASS - _.escape
+2015-09-05 18:42:06.1004|Info| PASS - _.unescape
+2015-09-05 18:42:06.1004|Info| PASS - _.escape & unescape
+2015-09-05 18:42:06.1175|Info| PASS - template
+2015-09-05 18:42:06.1175|Info| PASS - _.template provides the generated function source, when a SyntaxError occurs
+2015-09-05 18:42:06.1175|Info| PASS - _.template handles \u2028 & \u2029
+2015-09-05 18:42:06.1175|Info| PASS - result calls functions and returns primitives
+2015-09-05 18:42:06.1175|Info| PASS - result returns a default value if object is null or undefined
+2015-09-05 18:42:06.1175|Info| PASS - result returns a default value if property of object is missing
+2015-09-05 18:42:06.1175|Info| PASS - result only returns the default value if the object does not have the property or is undefined
+2015-09-05 18:42:06.1175|Info| PASS - result does not return the default if the property of an object is found in the prototype
+2015-09-05 18:42:06.1175|Info| PASS - result does use the fallback when the result of invoking the property is undefined
+2015-09-05 18:42:06.1175|Info| PASS - result fallback can use a function
+2015-09-05 18:42:06.1175|Info| PASS - _.templateSettings.variable
+2015-09-05 18:42:06.1175|Info| PASS - #547 - _.templateSettings is unchanged by custom settings.
+2015-09-05 18:42:06.1175|Info| PASS - #556 - undefined template variables.
+2015-09-05 18:42:06.1175|Info| PASS - interpolate evaluates code only once.
+2015-09-05 18:42:06.1315|Info| PASS - #746 - _.template settings are not modified.
+2015-09-05 18:42:06.1315|Info| PASS - #779 - delimeters are applied to unescaped text.
+2015-09-05 18:42:06.1315|Info|----------------------------------------
+2015-09-05 18:42:06.1315|Info|    PASS: 1382  FAIL: 0  TOTAL: 1382
+2015-09-05 18:42:06.1315|Info|    Finished in 4504 milliseconds.
+2015-09-05 18:42:06.1315|Info|----------------------------------------
+2015-09-05 18:42:06.1315|Info|Encerrando os testes
+2015-09-05 18:42:06.1315|Info|Total:1382, Sucesso: 1382, Falha: 0
+2015-09-05 18:42:06.1315|Info| 4 segundos para avaliar o individuo underscore.js
+2015-09-05 18:42:07.3743|Info|ast gerada com sucesso
+2015-09-05 18:42:07.3743|Info| 762,3068 ms
+2015-09-05 18:42:13.6658|Info|Codigo gerado com sucesso
+2015-09-05 18:42:13.6658|Info| 1171,8664 ms
+2015-09-05 18:48:50.0014|Info|ast gerada com sucesso
+2015-09-05 18:48:50.0314|Info| 4584,6808 ms
+2015-09-05 18:49:10.7271|Info|"callee"
+2015-09-05 18:49:10.7271|Info|1
+2015-09-05 18:49:10.7271|Info|"callee"
+2015-09-05 18:49:10.7271|Info|1
+2015-09-05 18:49:10.7271|Info|"callee"
+2015-09-05 18:49:10.7271|Info|1
+2015-09-05 18:50:00.9848|Info|ast gerada com sucesso
+2015-09-05 18:50:01.0128|Info| 4679,5991 ms
+2015-09-05 18:50:52.1552|Info|ast gerada com sucesso
+2015-09-05 18:50:52.1842|Info| 767,094 ms
+2015-09-05 18:52:09.9114|Info|ast gerada com sucesso
+2015-09-05 18:52:09.9404|Info| 746,4293 ms
+2015-09-05 18:55:19.6862|Info|ast gerada com sucesso
+2015-09-05 18:55:19.7263|Info| 787,4505 ms
+2015-09-05 18:56:00.2521|Info|ast gerada com sucesso
+2015-09-05 18:56:00.2761|Info| 741,7518 ms
+2015-09-05 18:56:10.9036|Info|Codigo gerado com sucesso
+2015-09-05 18:56:10.9287|Info| 1165,6901 ms
+2015-09-05 18:56:18.0727|Info|ast gerada com sucesso
+2015-09-05 18:56:18.1017|Info| 752,5618 ms
+2015-09-05 18:56:19.5238|Info|"callee"
+2015-09-05 18:56:19.5238|Info|1
+2015-09-05 18:56:19.5238|Info|"callee"
+2015-09-05 18:56:19.5238|Info|1
+2015-09-05 18:56:19.5238|Info|"callee"
+2015-09-05 18:56:19.5238|Info|1
+2015-09-05 18:56:20.6506|Info|Codigo gerado com sucesso
+2015-09-05 18:56:20.6506|Info| 892,295 ms
+2015-09-05 18:56:21.9925|Info|Iniciando os testes
+2015-09-05 18:56:30.3044|Info|----------------------------------------
+2015-09-05 18:56:30.3044|Info|    PASS: 4449  FAIL: 0  TOTAL: 4449
+2015-09-05 18:56:30.3044|Info|    Finished in 8290 milliseconds.
+2015-09-05 18:56:30.3044|Info|----------------------------------------
+2015-09-05 18:56:30.3044|Info|Encerrando os testes
+2015-09-05 18:56:30.3044|Info|Total:4449, Sucesso: 4449, Falha: 0
+2015-09-05 18:56:30.3044|Info| 9 segundos para avaliar o individuo lodash.js
+2015-09-05 18:56:31.1730|Info|Iniciando os testes
+2015-09-05 18:56:34.5694|Info|Encerrando os testes
+2015-09-05 18:56:34.5694|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-05 18:56:34.5694|Info| 4 segundos para avaliar o individuo global.js
+2015-09-05 18:56:35.3850|Info|Iniciando os testes
+2015-09-05 18:56:38.6063|Info|Encerrando os testes
+2015-09-05 18:56:38.6063|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-05 18:56:38.6063|Info| 3 segundos para avaliar o individuo global.js
+2015-09-05 18:56:38.7514|Info|Iniciando os testes
+2015-09-05 18:56:38.7784|Info|----------------------------------------
+2015-09-05 18:56:38.7784|Info|Arrays
+2015-09-05 18:56:38.7784|Info|----------------------------------------
+2015-09-05 18:56:38.7784|Info| PASS - first
+2015-09-05 18:56:38.7784|Info| PASS - head
+2015-09-05 18:56:38.7784|Info| PASS - take
+2015-09-05 18:56:38.7784|Info| PASS - rest
+2015-09-05 18:56:38.7784|Info| PASS - tail
+2015-09-05 18:56:38.7874|Info| PASS - drop
+2015-09-05 18:56:38.7874|Info| PASS - initial
+2015-09-05 18:56:38.7874|Info| PASS - last
+2015-09-05 18:56:38.7874|Info| PASS - compact
+2015-09-05 18:56:39.5080|Info| PASS - flatten
+2015-09-05 18:56:39.5080|Info| PASS - without
+2015-09-05 18:56:39.5080|Info| PASS - sortedIndex
+2015-09-05 18:56:39.5080|Info| PASS - uniq
+2015-09-05 18:56:39.5080|Info| PASS - unique
+2015-09-05 18:56:39.5080|Info| PASS - intersection
+2015-09-05 18:56:39.5080|Info| PASS - union
+2015-09-05 18:56:39.5230|Info| PASS - difference
+2015-09-05 18:56:39.5230|Info| PASS - zip
+2015-09-05 18:56:39.5230|Info| PASS - unzip
+2015-09-05 18:56:39.5230|Info| PASS - object
+2015-09-05 18:56:39.5230|Info| PASS - indexOf
+2015-09-05 18:56:39.5230|Info| PASS - indexOf with NaN
+2015-09-05 18:56:39.5230|Info| PASS - indexOf with +- 0
+2015-09-05 18:56:39.5230|Info| PASS - lastIndexOf
+2015-09-05 18:56:39.5380|Info| PASS - lastIndexOf with NaN
+2015-09-05 18:56:39.5380|Info| PASS - lastIndexOf with +- 0
+2015-09-05 18:56:39.5380|Info| PASS - findIndex
+2015-09-05 18:56:39.5380|Info| PASS - findLastIndex
+2015-09-05 18:56:39.5380|Info| PASS - range
+2015-09-05 18:56:39.5380|Info|----------------------------------------
+2015-09-05 18:56:39.5380|Info|Chaining
+2015-09-05 18:56:39.5380|Info|----------------------------------------
+2015-09-05 18:56:39.5380|Info| PASS - map/flatten/reduce
+2015-09-05 18:56:39.5380|Info| PASS - select/reject/sortBy
+2015-09-05 18:56:39.5380|Info| PASS - select/reject/sortBy in functional style
+2015-09-05 18:56:39.5530|Info| PASS - reverse/concat/unshift/pop/map
+2015-09-05 18:56:39.5530|Info| PASS - splice
+2015-09-05 18:56:39.5530|Info| PASS - shift
+2015-09-05 18:56:39.5530|Info| PASS - pop
+2015-09-05 18:56:39.5530|Info| PASS - chaining works in small stages
+2015-09-05 18:56:39.5530|Info| PASS - #1562: Engine proxies for chained functions
+2015-09-05 18:56:39.5530|Info|----------------------------------------
+2015-09-05 18:56:39.5530|Info|Collections
+2015-09-05 18:56:39.5530|Info|----------------------------------------
+2015-09-05 18:56:39.5530|Info| PASS - each
+2015-09-05 18:56:39.5530|Info| PASS - forEach
+2015-09-05 18:56:39.5530|Info| PASS - lookupIterator with contexts
+2015-09-05 18:56:39.5710|Info| PASS - Iterating objects with sketchy length properties
+2015-09-05 18:56:39.5710|Info| PASS - Resistant to collection length and properties changing while iterating
+2015-09-05 18:56:39.5710|Info| PASS - map
+2015-09-05 18:56:39.5710|Info| PASS - collect
+2015-09-05 18:56:39.5710|Info| PASS - reduce
+2015-09-05 18:56:39.5710|Info| PASS - foldl
+2015-09-05 18:56:39.5710|Info| PASS - reduceRight
+2015-09-05 18:56:39.5900|Info| PASS - foldr
+2015-09-05 18:56:39.5900|Info| PASS - find
+2015-09-05 18:56:39.5900|Info| PASS - detect
+2015-09-05 18:56:39.5900|Info| PASS - filter
+2015-09-05 18:56:39.5900|Info| PASS - select
+2015-09-05 18:56:39.5900|Info| PASS - reject
+2015-09-05 18:56:39.5900|Info| PASS - every
+2015-09-05 18:56:39.5900|Info| PASS - all
+2015-09-05 18:56:39.6000|Info| PASS - some
+2015-09-05 18:56:39.6000|Info| PASS - any
+2015-09-05 18:56:39.6000|Info| PASS - includes
+2015-09-05 18:56:39.6000|Info| PASS - include
+2015-09-05 18:56:39.6000|Info| PASS - contains
+2015-09-05 18:56:39.6000|Info| PASS - includes with NaN
+2015-09-05 18:56:39.6000|Info| PASS - includes with +- 0
+2015-09-05 18:56:39.6000|Info| PASS - invoke
+2015-09-05 18:56:39.6000|Info| PASS - invoke w/ function reference
+2015-09-05 18:56:39.6000|Info| PASS - invoke when strings have a call method
+2015-09-05 18:56:39.6000|Info| PASS - pluck
+2015-09-05 18:56:39.6000|Info| PASS - where
+2015-09-05 18:56:39.6000|Info| PASS - findWhere
+2015-09-05 18:56:39.6451|Info| PASS - max
+2015-09-05 18:56:39.6761|Info| PASS - min
+2015-09-05 18:56:39.6781|Info| PASS - sortBy
+2015-09-05 18:56:39.6781|Info| PASS - groupBy
+2015-09-05 18:56:39.6781|Info| PASS - indexBy
+2015-09-05 18:56:39.6781|Info| PASS - countBy
+2015-09-05 18:56:39.6781|Info| PASS - shuffle
+2015-09-05 18:56:39.6781|Info| PASS - sample
+2015-09-05 18:56:39.6781|Info| PASS - toArray
+2015-09-05 18:56:39.6781|Info| PASS - size
+2015-09-05 18:56:39.6781|Info| PASS - partition
+2015-09-05 18:56:39.6781|Info|----------------------------------------
+2015-09-05 18:56:39.6781|Info|Functions
+2015-09-05 18:56:39.6781|Info|----------------------------------------
+2015-09-05 18:56:39.6941|Info| PASS - bind
+2015-09-05 18:56:39.6941|Info| PASS - partial
+2015-09-05 18:56:39.6941|Info| PASS - bindAll
+2015-09-05 18:56:39.6941|Info| PASS - memoize
+2015-09-05 18:56:39.8652|Info| PASS - delay
+2015-09-05 18:56:39.9323|Info| PASS - defer
+2015-09-05 18:56:40.0133|Info| PASS - throttle
+2015-09-05 18:56:40.1254|Info| PASS - throttle arguments
+2015-09-05 18:56:40.2055|Info| PASS - throttle once
+2015-09-05 18:56:40.2855|Info| PASS - throttle twice
+2015-09-05 18:56:40.3886|Info| PASS - more throttling
+2015-09-05 18:56:40.7058|Info| PASS - throttle repeatedly with results
+2015-09-05 18:56:40.8659|Info| PASS - throttle triggers trailing call when invoked repeatedly
+2015-09-05 18:56:40.9780|Info| PASS - throttle does not trigger leading call when leading is set to false
+2015-09-05 18:56:41.3453|Info| PASS - more throttle does not trigger leading call when leading is set to false
+2015-09-05 18:56:41.9117|Info| PASS - one more throttle with leading: false test
+2015-09-05 18:56:42.1218|Info| PASS - throttle does not trigger trailing call when trailing is set to false
+2015-09-05 18:56:42.3390|Info| PASS - throttle continues to function after system time is set backwards
+2015-09-05 18:56:42.4561|Info| PASS - throttle re-entrant
+2015-09-05 18:56:42.5691|Info| PASS - debounce
+2015-09-05 18:56:42.7142|Info| PASS - debounce asap
+2015-09-05 18:56:42.8263|Info| PASS - debounce asap recursively
+2015-09-05 18:56:43.0445|Info| PASS - debounce after system time is set backwards
+2015-09-05 18:56:43.1616|Info| PASS - debounce re-entrant
+2015-09-05 18:56:43.1626|Info| PASS - once
+2015-09-05 18:56:43.1626|Info| PASS - Recursive onced function.
+2015-09-05 18:56:43.1626|Info| PASS - wrap
+2015-09-05 18:56:43.1626|Info| PASS - negate
+2015-09-05 18:56:43.1626|Info| PASS - compose
+2015-09-05 18:56:43.1626|Info| PASS - after
+2015-09-05 18:56:43.1626|Info| PASS - before
+2015-09-05 18:56:43.1626|Info| PASS - iteratee
+2015-09-05 18:56:43.1626|Info|----------------------------------------
+2015-09-05 18:56:43.1626|Info|Objects
+2015-09-05 18:56:43.1626|Info|----------------------------------------
+2015-09-05 18:56:43.1626|Info| PASS - keys
+2015-09-05 18:56:43.1626|Info| PASS - allKeys
+2015-09-05 18:56:43.1626|Info| PASS - values
+2015-09-05 18:56:43.1626|Info| PASS - pairs
+2015-09-05 18:56:43.1626|Info| PASS - invert
+2015-09-05 18:56:43.1626|Info| PASS - functions
+2015-09-05 18:56:43.1626|Info| PASS - methods
+2015-09-05 18:56:43.1786|Info| PASS - extend
+2015-09-05 18:56:43.1786|Info| PASS - extendOwn
+2015-09-05 18:56:43.1786|Info| PASS - pick
+2015-09-05 18:56:43.1786|Info| PASS - omit
+2015-09-05 18:56:43.1786|Info| PASS - defaults
+2015-09-05 18:56:43.1786|Info| PASS - clone
+2015-09-05 18:56:43.1786|Info| PASS - create
+2015-09-05 18:56:43.1786|Info| PASS - isEqual
+2015-09-05 18:56:43.1946|Info| PASS - isEmpty
+2015-09-05 18:56:43.1946|Info| PASS - isArguments
+2015-09-05 18:56:43.1946|Info| PASS - isObject
+2015-09-05 18:56:43.1946|Info| PASS - isArray
+2015-09-05 18:56:43.1946|Info| PASS - isString
+2015-09-05 18:56:43.1946|Info| PASS - isNumber
+2015-09-05 18:56:43.1946|Info| PASS - isBoolean
+2015-09-05 18:56:43.1946|Info| PASS - isFunction
+2015-09-05 18:56:43.1946|Info| PASS - #1929 Typed Array constructors are functions
+2015-09-05 18:56:43.2096|Info| PASS - isDate
+2015-09-05 18:56:43.2096|Info| PASS - isRegExp
+2015-09-05 18:56:43.2096|Info| PASS - isFinite
+2015-09-05 18:56:43.2096|Info| PASS - isNaN
+2015-09-05 18:56:43.2096|Info| PASS - isNull
+2015-09-05 18:56:43.2096|Info| PASS - isUndefined
+2015-09-05 18:56:43.2096|Info| PASS - isError
+2015-09-05 18:56:43.2096|Info| PASS - tap
+2015-09-05 18:56:43.2096|Info| PASS - has
+2015-09-05 18:56:43.2096|Info| PASS - isMatch
+2015-09-05 18:56:43.2096|Info| PASS - matcher
+2015-09-05 18:56:43.2096|Info| PASS - matcher 
+2015-09-05 18:56:43.2096|Info| PASS - findKey
+2015-09-05 18:56:43.2096|Info| PASS - mapObject
+2015-09-05 18:56:43.2096|Info|----------------------------------------
+2015-09-05 18:56:43.2096|Info|Utility
+2015-09-05 18:56:43.2256|Info|----------------------------------------
+2015-09-05 18:56:43.2256|Info| PASS - #750 - Return _ instance.
+2015-09-05 18:56:43.2256|Info| PASS - identity
+2015-09-05 18:56:43.2256|Info| PASS - constant
+2015-09-05 18:56:43.2256|Info| PASS - noop
+2015-09-05 18:56:43.2256|Info| PASS - property
+2015-09-05 18:56:43.2256|Info| PASS - propertyOf
+2015-09-05 18:56:43.2256|Info| PASS - random
+2015-09-05 18:56:43.2256|Info| PASS - now
+2015-09-05 18:56:43.2256|Info| PASS - uniqueId
+2015-09-05 18:56:43.2256|Info| PASS - times
+2015-09-05 18:56:43.2256|Info| PASS - mixin
+2015-09-05 18:56:43.2256|Info| PASS - _.escape
+2015-09-05 18:56:43.2256|Info| PASS - _.unescape
+2015-09-05 18:56:43.2256|Info| PASS - _.escape & unescape
+2015-09-05 18:56:43.2436|Info| PASS - template
+2015-09-05 18:56:43.2436|Info| PASS - _.template provides the generated function source, when a SyntaxError occurs
+2015-09-05 18:56:43.2436|Info| PASS - _.template handles \u2028 & \u2029
+2015-09-05 18:56:43.2436|Info| PASS - result calls functions and returns primitives
+2015-09-05 18:56:43.2436|Info| PASS - result returns a default value if object is null or undefined
+2015-09-05 18:56:43.2436|Info| PASS - result returns a default value if property of object is missing
+2015-09-05 18:56:43.2436|Info| PASS - result only returns the default value if the object does not have the property or is undefined
+2015-09-05 18:56:43.2436|Info| PASS - result does not return the default if the property of an object is found in the prototype
+2015-09-05 18:56:43.2436|Info| PASS - result does use the fallback when the result of invoking the property is undefined
+2015-09-05 18:56:43.2436|Info| PASS - result fallback can use a function
+2015-09-05 18:56:43.2436|Info| PASS - _.templateSettings.variable
+2015-09-05 18:56:43.2436|Info| PASS - #547 - _.templateSettings is unchanged by custom settings.
+2015-09-05 18:56:43.2436|Info| PASS - #556 - undefined template variables.
+2015-09-05 18:56:43.2576|Info| PASS - interpolate evaluates code only once.
+2015-09-05 18:56:43.2576|Info| PASS - #746 - _.template settings are not modified.
+2015-09-05 18:56:43.2576|Info| PASS - #779 - delimeters are applied to unescaped text.
+2015-09-05 18:56:43.2576|Info|----------------------------------------
+2015-09-05 18:56:43.2576|Info|    PASS: 1382  FAIL: 0  TOTAL: 1382
+2015-09-05 18:56:43.2576|Info|    Finished in 4494 milliseconds.
+2015-09-05 18:56:43.2576|Info|----------------------------------------
+2015-09-05 18:56:43.2576|Info|Encerrando os testes
+2015-09-05 18:56:43.2576|Info|Total:1382, Sucesso: 1382, Falha: 0
+2015-09-05 18:56:43.2576|Info| 4 segundos para avaliar o individuo underscore.js
+2015-09-05 18:56:44.3524|Info|ast gerada com sucesso
+2015-09-05 18:56:44.3524|Info| 676,9203 ms
+2015-09-05 18:56:50.3166|Info|Codigo gerado com sucesso
+2015-09-05 18:56:50.3166|Info| 1205,2156 ms

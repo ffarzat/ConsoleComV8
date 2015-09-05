@@ -41,7 +41,7 @@ namespace Otimizacao.Javascript
         /// V8 chrome engine
         /// </summary>
         private V8ScriptEngine _engine;
-       
+
         /// <summary>
         /// String com o Json da árvore do Javascript processada
         /// </summary>
@@ -295,11 +295,18 @@ namespace Otimizacao.Javascript
 
             Log(string.Format("ast gerada com sucesso"));
             Log(string.Format(" {0} ms", sw.Elapsed.TotalMilliseconds));
-            
-            //Formata a Ast para facilitar o Debug
-            JsonAst = JToken.Parse(JsonAst).ToString();
 
-            return this.JsonAst;
+            return JsonAst;
+        }
+
+        /// <summary>
+        /// Identa uma string no formato Json
+        /// </summary>
+        /// <param name="json"></param>
+        /// <returns></returns>
+        public string FormatarStringJson(string json)
+        {
+            return JToken.Parse(json).ToString();
         }
 
         /// <summary>
