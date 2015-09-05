@@ -118,8 +118,8 @@ namespace Otimizacao.Testes
         [Test]
         public async void ExecutarMutacaoExclusao()
         {
-            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"), true, true);
-            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Require", "global.js"));
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"), true, false);
+            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Require", "underscore.js"));
             helper.ConfigurarGeracao();
             var ast = helper.GerarAst(scriptCode);
             
