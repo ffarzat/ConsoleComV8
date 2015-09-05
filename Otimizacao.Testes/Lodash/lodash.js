@@ -7059,7 +7059,7 @@
 		  result = func.apply(thisArg, args);
           
 		  //javascriptHelper.Escrever('result ' + result);
-		  javascriptHelper.Escrever('!timeoutId && !maxTimeoutId ' + (!timeoutId && !maxTimeoutId));
+		  //javascriptHelper.Escrever('!timeoutId && !maxTimeoutId ' + (!timeoutId && !maxTimeoutId));
 		  
 		  if (!timeoutId && !maxTimeoutId) {
             args = thisArg = undefined;

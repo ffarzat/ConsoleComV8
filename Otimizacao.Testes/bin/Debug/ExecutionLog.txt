@@ -6624,3 +6624,341 @@
 2015-09-05 18:28:56.4311|Info|FAILED: lodash.isNil: should work with nulls from another realm: Expected 2 assertions, but 1 were run, ,     at V8Runtime:lodashTest:7765:5
     at V8Runtime:lodashTest:7775:4
     at V8Runtime:lodashTest:17425:3
+2015-09-05 18:32:50.5748|Info|Iniciando os testes
+2015-09-05 18:32:51.0361|Info|  Settimeout: id:0, (13) ms
+2015-09-05 18:32:51.0901|Info|  Settimeout: id:1, (13) ms
+2015-09-05 18:32:51.1932|Info|  Settimeout: id:2, (32) ms
+2015-09-05 18:32:51.1942|Info|  Settimeout: id:3, (96) ms
+2015-09-05 18:32:51.2562|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:51.2933|Info|  Settimeout: id:4, (13) ms
+2015-09-05 18:32:51.3093|Info|  Settimeout: id:5, (32) ms
+2015-09-05 18:32:51.3093|Info|  Settimeout: id:6, (64) ms
+2015-09-05 18:32:51.3093|Info|  Settimeout: id:7, (128) ms
+2015-09-05 18:32:51.3433|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:51.3763|Info|  Settimeout: id:8, (32) ms
+2015-09-05 18:32:51.4104|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:51.4414|Info|  Settimeout: id:9, (32) ms
+2015-09-05 18:32:51.4414|Info|  Settimeout: id:10, (13) ms
+2015-09-05 18:32:51.4574|Info|  Settimeout: id:11, (32) ms
+2015-09-05 18:32:51.4574|Info|  Settimeout: id:12, (64) ms
+2015-09-05 18:32:51.4754|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:51.5244|Info|  Settimeout: id:13, (32) ms
+2015-09-05 18:32:51.5244|Info|  Settimeout: id:14, (13) ms
+2015-09-05 18:32:51.5405|Info|  Settimeout: id:15, (32) ms
+2015-09-05 18:32:51.5405|Info|  Settimeout: id:16, (64) ms
+2015-09-05 18:32:51.5745|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:51.6075|Info|  Settimeout: id:17, (13) ms
+2015-09-05 18:32:51.6225|Info|  Settimeout: id:18, (32) ms
+2015-09-05 18:32:51.6225|Info|  Settimeout: id:19, (32) ms
+2015-09-05 18:32:51.6225|Info|  Settimeout: id:20, (32) ms
+2015-09-05 18:32:51.6225|Info|  Settimeout: id:21, (64) ms
+2015-09-05 18:32:51.6575|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:51.6575|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:51.6906|Info|  Settimeout: id:22, (32) ms
+2015-09-05 18:32:51.6906|Info|  Settimeout: id:23, (13) ms
+2015-09-05 18:32:51.7066|Info|  Settimeout: id:24, (32) ms
+2015-09-05 18:32:51.7066|Info|  Settimeout: id:25, (32) ms
+2015-09-05 18:32:51.7066|Info|  Settimeout: id:26, (64) ms
+2015-09-05 18:32:51.7406|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:51.7746|Info|  Settimeout: id:27, (13) ms
+2015-09-05 18:32:51.7896|Info|  Settimeout: id:28, (128) ms
+2015-09-05 18:32:51.7896|Info|  Settimeout: id:29, (64) ms
+2015-09-05 18:32:51.7896|Info|  Settimeout: id:30, (96) ms
+2015-09-05 18:32:51.9187|Info|  Settimeout: id:31, (128) ms
+2015-09-05 18:32:51.9187|Info|  Settimeout: id:32, (64) ms
+2015-09-05 18:32:52.0468|Info|  Settimeout: id:33, (128) ms
+2015-09-05 18:32:52.0468|Info|  Settimeout: id:34, (64) ms
+2015-09-05 18:32:52.1099|Info|  Settimeout: id:35, (1) ms
+2015-09-05 18:32:52.1099|Info|  Settimeout: id:36, (94) ms
+2015-09-05 18:32:52.1099|Info|  Settimeout: id:37, (13) ms
+2015-09-05 18:32:52.1099|Info|  Settimeout: id:38, (59) ms
+2015-09-05 18:32:52.1279|Info|  Settimeout: id:39, (64) ms
+2015-09-05 18:32:52.1329|Info|  Settimeout: id:40, (32) ms
+2015-09-05 18:32:52.1329|Info|  Settimeout: id:41, (128) ms
+2015-09-05 18:32:52.1669|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:52.1669|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:52.2069|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:52.2640|Info|  Settimeout: id:42, (13) ms
+2015-09-05 18:32:52.2790|Info|  Settimeout: id:43, (32) ms
+2015-09-05 18:32:52.2790|Info|  Settimeout: id:44, (63) ms
+2015-09-05 18:32:52.3430|Info|  Settimeout: id:45, (64) ms
+2015-09-05 18:32:52.4091|Info|  Settimeout: id:46, (13) ms
+2015-09-05 18:32:52.4281|Info|  Settimeout: id:47, (1) ms
+2015-09-05 18:32:52.4281|Info|  Settimeout: id:48, (32) ms
+2015-09-05 18:32:52.4631|Info|  Settimeout: id:49, (13) ms
+2015-09-05 18:32:52.4781|Info|  Settimeout: id:50, (1) ms
+2015-09-05 18:32:52.4781|Info|  Settimeout: id:51, (32) ms
+2015-09-05 18:32:52.5151|Info|  Settimeout: id:52, (13) ms
+2015-09-05 18:32:52.5302|Info|  Settimeout: id:53, (1) ms
+2015-09-05 18:32:52.5302|Info|  Settimeout: id:54, (32) ms
+2015-09-05 18:32:52.5652|Info|  Settimeout: id:55, (13) ms
+2015-09-05 18:32:52.5802|Info|  Settimeout: id:56, (32) ms
+2015-09-05 18:32:52.5802|Info|  Settimeout: id:57, (1) ms
+2015-09-05 18:32:52.5802|Info|  Settimeout: id:58, (64) ms
+2015-09-05 18:32:52.6482|Info|  Settimeout: id:59, (13) ms
+2015-09-05 18:32:52.6632|Info|  Settimeout: id:60, (32) ms
+2015-09-05 18:32:52.6632|Info|  Settimeout: id:61, (64) ms
+2015-09-05 18:32:52.7303|Info|  Settimeout: id:62, (13) ms
+2015-09-05 18:32:52.7453|Info|  Settimeout: id:63, (32) ms
+2015-09-05 18:32:52.7453|Info|  Settimeout: id:64, (64) ms
+2015-09-05 18:32:52.8124|Info|  Settimeout: id:65, (13) ms
+2015-09-05 18:32:55.6854|Info|  Settimeout: id:66, (13) ms
+2015-09-05 18:32:55.8075|Info|_._object=[undefined]
+2015-09-05 18:32:55.8075|Info|----------------------------------------
+2015-09-05 18:32:55.8075|Info|lodash.isNil
+2015-09-05 18:32:55.8075|Info|----------------------------------------
+2015-09-05 18:32:55.8075|Info| FAIL - should work with nulls from another realm
+2015-09-05 18:32:55.8195|Info|    FAIL | OK | Expected 2 assertions, but 1 were run
+2015-09-05 18:32:56.1507|Info|  Settimeout: id:67, (32) ms
+2015-09-05 18:32:56.1848|Info|  Settimeout: id:68, (13) ms
+2015-09-05 18:32:56.4089|Info|  Settimeout: id:69, (32) ms
+2015-09-05 18:32:56.4089|Info|  Settimeout: id:70, (64) ms
+2015-09-05 18:32:56.4439|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:56.4770|Info|  Settimeout: id:71, (13) ms
+2015-09-05 18:32:56.4930|Info|  Settimeout: id:72, (32) ms
+2015-09-05 18:32:56.4930|Info|  Settimeout: id:73, (64) ms
+2015-09-05 18:32:56.5270|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:56.5600|Info|  Settimeout: id:74, (32) ms
+2015-09-05 18:32:56.5600|Info|  Settimeout: id:75, (13) ms
+2015-09-05 18:32:56.5790|Info|  Settimeout: id:76, (32) ms
+2015-09-05 18:32:56.5860|Info|  Settimeout: id:77, (64) ms
+2015-09-05 18:32:56.5860|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:56.6181|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:56.6511|Info|  Settimeout: id:78, (13) ms
+2015-09-05 18:32:56.6661|Info|  Settimeout: id:79, (64) ms
+2015-09-05 18:32:56.7321|Info|  Settimeout: id:80, (13) ms
+2015-09-05 18:32:56.7472|Info|  Settimeout: id:81, (32) ms
+2015-09-05 18:32:56.7792|Info|  Settimeout: id:82, (32) ms
+2015-09-05 18:32:56.8112|Info|  Settimeout: id:83, (32) ms
+2015-09-05 18:32:56.8432|Info|  Settimeout: id:84, (32) ms
+2015-09-05 18:32:56.8752|Info|  Settimeout: id:85, (32) ms
+2015-09-05 18:32:56.9073|Info|  Settimeout: id:86, (32) ms
+2015-09-05 18:32:56.9393|Info|  Settimeout: id:87, (32) ms
+2015-09-05 18:32:56.9713|Info|  Settimeout: id:88, (32) ms
+2015-09-05 18:32:57.0033|Info|  Settimeout: id:89, (32) ms
+2015-09-05 18:32:57.0354|Info|  Settimeout: id:90, (32) ms
+2015-09-05 18:32:57.0674|Info|  Settimeout: id:91, (1) ms
+2015-09-05 18:32:57.0704|Info|  Settimeout: id:92, (13) ms
+2015-09-05 18:32:57.0864|Info|  Settimeout: id:93, (32) ms
+2015-09-05 18:32:57.1184|Info|  Settimeout: id:94, (32) ms
+2015-09-05 18:32:57.1504|Info|  Settimeout: id:95, (32) ms
+2015-09-05 18:32:57.1825|Info|  Settimeout: id:96, (32) ms
+2015-09-05 18:32:57.2145|Info|  Settimeout: id:97, (32) ms
+2015-09-05 18:32:57.2465|Info|  Settimeout: id:98, (32) ms
+2015-09-05 18:32:57.2785|Info|  Settimeout: id:99, (32) ms
+2015-09-05 18:32:57.3106|Info|  Settimeout: id:100, (32) ms
+2015-09-05 18:32:57.3426|Info|  Settimeout: id:101, (32) ms
+2015-09-05 18:32:57.3746|Info|  Settimeout: id:102, (32) ms
+2015-09-05 18:32:57.4066|Info|  Settimeout: id:103, (1) ms
+2015-09-05 18:32:57.4066|Info|  Settimeout: id:104, (13) ms
+2015-09-05 18:32:57.4246|Info|  Settimeout: id:105, (32) ms
+2015-09-05 18:32:57.4246|Info|  Settimeout: id:106, (128) ms
+2015-09-05 18:32:57.4587|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:57.5557|Info|  Settimeout: id:107, (13) ms
+2015-09-05 18:32:57.5717|Info|  Settimeout: id:108, (32) ms
+2015-09-05 18:32:57.5717|Info|  Settimeout: id:109, (64) ms
+2015-09-05 18:32:57.5717|Info|  Settimeout: id:110, (64) ms
+2015-09-05 18:32:57.5717|Info|  Settimeout: id:111, (256) ms
+2015-09-05 18:32:57.6058|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:57.6398|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:57.8329|Info|  Settimeout: id:112, (13) ms
+2015-09-05 18:32:57.8479|Info|  Settimeout: id:113, (64) ms
+2015-09-05 18:32:57.8479|Info|  Settimeout: id:114, (96) ms
+2015-09-05 18:32:57.8499|Info|  Settimeout: id:115, (192) ms
+2015-09-05 18:32:57.9470|Info|  Settimeout: id:116, (64) ms
+2015-09-05 18:32:58.0431|Info|  Settimeout: id:117, (13) ms
+2015-09-05 18:32:58.0581|Info|  Settimeout: id:118, (0) ms
+2015-09-05 18:32:58.0581|Info|  Settimeout: id:119, (32) ms
+2015-09-05 18:32:58.0581|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:58.0931|Info|  Settimeout: id:120, (0) ms
+2015-09-05 18:32:58.0931|Info|  Settimeout: id:121, (13) ms
+2015-09-05 18:32:58.0931|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:58.1091|Info|  Settimeout: id:122, (32) ms
+2015-09-05 18:32:58.1091|Info|  Settimeout: id:123, (64) ms
+2015-09-05 18:32:58.1431|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:58.1772|Info|  Settimeout: id:124, (13) ms
+2015-09-05 18:32:58.1922|Info|  Settimeout: id:125, (32) ms
+2015-09-05 18:32:58.1942|Info|  Settimeout: id:126, (256) ms
+2015-09-05 18:32:58.2272|Info|  Settimeout: id:127, (32) ms
+2015-09-05 18:32:58.2272|Info|!timeoutId && !maxTimeoutId false
+2015-09-05 18:32:58.2622|Info|  Settimeout: id:128, (32) ms
+2015-09-05 18:32:58.2622|Info|!timeoutId && !maxTimeoutId false
+2015-09-05 18:32:58.2963|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:58.4524|Info|  Settimeout: id:129, (13) ms
+2015-09-05 18:32:58.4744|Info|  Settimeout: id:130, (32) ms
+2015-09-05 18:32:58.4754|Info|  Settimeout: id:131, (64) ms
+2015-09-05 18:32:58.5084|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:58.5414|Info|  Settimeout: id:132, (32) ms
+2015-09-05 18:32:58.5414|Info|  Settimeout: id:133, (13) ms
+2015-09-05 18:32:58.5574|Info|  Settimeout: id:134, (32) ms
+2015-09-05 18:32:58.5574|Info|  Settimeout: id:135, (64) ms
+2015-09-05 18:32:58.5755|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:58.6255|Info|  Settimeout: id:136, (13) ms
+2015-09-05 18:32:58.6405|Info|  Settimeout: id:137, (32) ms
+2015-09-05 18:32:58.6405|Info|  Settimeout: id:138, (32) ms
+2015-09-05 18:32:58.6405|Info|  Settimeout: id:139, (64) ms
+2015-09-05 18:32:58.7085|Info|  Settimeout: id:140, (13) ms
+2015-09-05 18:32:58.7236|Info|  Settimeout: id:141, (32) ms
+2015-09-05 18:32:58.7576|Info|  Settimeout: id:142, (13) ms
+2015-09-05 18:32:58.7726|Info|  Settimeout: id:143, (32) ms
+2015-09-05 18:32:58.7726|Info|  Settimeout: id:144, (64) ms
+2015-09-05 18:32:58.8066|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:58.8406|Info|  Settimeout: id:145, (13) ms
+2015-09-05 18:32:58.8566|Info|  Settimeout: id:146, (32) ms
+2015-09-05 18:32:58.8566|Info|  Settimeout: id:147, (256) ms
+2015-09-05 18:32:58.8907|Info|  Settimeout: id:148, (32) ms
+2015-09-05 18:32:58.8907|Info|!timeoutId && !maxTimeoutId false
+2015-09-05 18:32:58.9247|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:32:59.1158|Info|  Settimeout: id:149, (13) ms
+2015-09-05 18:32:59.1368|Info|  Settimeout: id:150, (64) ms
+2015-09-05 18:32:59.2029|Info|  Settimeout: id:151, (13) ms
+2015-09-05 18:32:59.2179|Info|  Settimeout: id:152, (32) ms
+2015-09-05 18:32:59.2179|Info|  Settimeout: id:153, (64) ms
+2015-09-05 18:32:59.2850|Info|  Settimeout: id:154, (13) ms
+2015-09-05 18:32:59.3000|Info|  Settimeout: id:155, (64) ms
+2015-09-05 18:32:59.3660|Info|  Settimeout: id:156, (13) ms
+2015-09-05 18:32:59.5071|Info|----------------------------------------
+2015-09-05 18:32:59.5071|Info|    PASS: 4450  FAIL: 1  TOTAL: 4451
+2015-09-05 18:32:59.5071|Info|    Finished in 8451 milliseconds.
+2015-09-05 18:32:59.5071|Info|----------------------------------------
+2015-09-05 18:32:59.5071|Info|Encerrando os testes
+2015-09-05 18:32:59.5071|Info|Total:4451, Sucesso: 4450, Falha: 1
+2015-09-05 18:32:59.5071|Info| 9 segundos para avaliar o individuo lodash.js
+2015-09-05 18:32:59.5071|Info|FAILED: lodash.isNil: should work with nulls from another realm: Expected 2 assertions, but 1 were run, ,     at V8Runtime:lodashTest:7765:5
+    at V8Runtime:lodashTest:7775:4
+    at V8Runtime:lodashTest:17425:3
+2015-09-05 18:33:32.6787|Info|Iniciando os testes
+2015-09-05 18:33:33.3532|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:33.4442|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:33.5093|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:33.5743|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:33.6694|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:33.7494|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:33.7494|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:33.8295|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:34.2478|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:34.2618|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:34.2938|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:37.8423|Info|_._object=[undefined]
+2015-09-05 18:33:37.8423|Info|----------------------------------------
+2015-09-05 18:33:37.8423|Info|lodash.isNil
+2015-09-05 18:33:37.8423|Info|----------------------------------------
+2015-09-05 18:33:37.8423|Info| FAIL - should work with nulls from another realm
+2015-09-05 18:33:37.8423|Info|    FAIL | OK | Expected 2 assertions, but 1 were run
+2015-09-05 18:33:38.4558|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:38.5348|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:38.6009|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:38.6209|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:39.4515|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:39.5956|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:39.6286|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:40.0439|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:40.0769|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:40.1240|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:40.2050|Info|!timeoutId && !maxTimeoutId false
+2015-09-05 18:33:40.2380|Info|!timeoutId && !maxTimeoutId false
+2015-09-05 18:33:40.2711|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:40.4832|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:40.5493|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:40.7724|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:40.8525|Info|!timeoutId && !maxTimeoutId false
+2015-09-05 18:33:40.8855|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:33:41.4739|Info|----------------------------------------
+2015-09-05 18:33:41.4749|Info|    PASS: 4450  FAIL: 1  TOTAL: 4451
+2015-09-05 18:33:41.4749|Info|    Finished in 8325 milliseconds.
+2015-09-05 18:33:41.4749|Info|----------------------------------------
+2015-09-05 18:33:41.4749|Info|Encerrando os testes
+2015-09-05 18:33:41.4749|Info|Total:4451, Sucesso: 4450, Falha: 1
+2015-09-05 18:33:41.4749|Info| 9 segundos para avaliar o individuo lodash.js
+2015-09-05 18:33:41.4749|Info|FAILED: lodash.isNil: should work with nulls from another realm: Expected 2 assertions, but 1 were run, ,     at V8Runtime:lodashTest:7765:5
+    at V8Runtime:lodashTest:7775:4
+    at V8Runtime:lodashTest:17425:3
+2015-09-05 18:34:14.5804|Info|Iniciando os testes
+2015-09-05 18:34:15.2669|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:15.3570|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:15.4220|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:15.4861|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:15.5792|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:15.6592|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:15.6592|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:15.7403|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:16.1586|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:16.1716|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:16.2036|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:19.7341|Info|_._object=[undefined]
+2015-09-05 18:34:19.7341|Info|----------------------------------------
+2015-09-05 18:34:19.7341|Info|lodash.isNil
+2015-09-05 18:34:19.7341|Info|----------------------------------------
+2015-09-05 18:34:19.7341|Info| FAIL - should work with nulls from another realm
+2015-09-05 18:34:19.7341|Info|    FAIL | OK | Expected 2 assertions, but 1 were run
+2015-09-05 18:34:20.3435|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:20.4236|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:20.4886|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:20.5067|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:20.9530|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:21.3382|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:21.4824|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:21.5154|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:21.9307|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:21.9647|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:22.0107|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:22.0908|Info|!timeoutId && !maxTimeoutId false
+2015-09-05 18:34:22.1238|Info|!timeoutId && !maxTimeoutId false
+2015-09-05 18:34:22.1568|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:22.3670|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:22.4320|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:22.6532|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:22.7322|Info|!timeoutId && !maxTimeoutId false
+2015-09-05 18:34:22.7653|Info|!timeoutId && !maxTimeoutId true
+2015-09-05 18:34:23.3647|Info|----------------------------------------
+2015-09-05 18:34:23.3657|Info|    PASS: 4450  FAIL: 1  TOTAL: 4451
+2015-09-05 18:34:23.3657|Info|    Finished in 8288 milliseconds.
+2015-09-05 18:34:23.3657|Info|----------------------------------------
+2015-09-05 18:34:23.3657|Info|Encerrando os testes
+2015-09-05 18:34:23.3657|Info|Total:4451, Sucesso: 4450, Falha: 1
+2015-09-05 18:34:23.3657|Info| 9 segundos para avaliar o individuo lodash.js
+2015-09-05 18:34:23.3657|Info|FAILED: lodash.isNil: should work with nulls from another realm: Expected 2 assertions, but 1 were run, ,     at V8Runtime:lodashTest:7765:5
+    at V8Runtime:lodashTest:7775:4
+    at V8Runtime:lodashTest:17425:3
+2015-09-05 18:34:43.1347|Info|Iniciando os testes
+2015-09-05 18:34:48.2384|Info|_._object=[undefined]
+2015-09-05 18:34:48.2434|Info|----------------------------------------
+2015-09-05 18:34:48.2434|Info|lodash.isNil
+2015-09-05 18:34:48.2434|Info|----------------------------------------
+2015-09-05 18:34:48.2434|Info| FAIL - should work with nulls from another realm
+2015-09-05 18:34:48.2434|Info|    FAIL | OK | Expected 2 assertions, but 1 were run
+2015-09-05 18:34:51.8599|Info|----------------------------------------
+2015-09-05 18:34:51.8599|Info|    PASS: 4450  FAIL: 1  TOTAL: 4451
+2015-09-05 18:34:51.8599|Info|    Finished in 8237 milliseconds.
+2015-09-05 18:34:51.8599|Info|----------------------------------------
+2015-09-05 18:34:51.8689|Info|Encerrando os testes
+2015-09-05 18:34:51.8689|Info|Total:4451, Sucesso: 4450, Falha: 1
+2015-09-05 18:34:51.8689|Info| 9 segundos para avaliar o individuo lodash.js
+2015-09-05 18:34:51.8689|Info|FAILED: lodash.isNil: should work with nulls from another realm: Expected 2 assertions, but 1 were run, ,     at V8Runtime:lodashTest:7765:5
+    at V8Runtime:lodashTest:7775:4
+    at V8Runtime:lodashTest:17425:3
+2015-09-05 18:36:03.7440|Info|Iniciando os testes
+2015-09-05 18:36:08.7606|Info|_._object=[undefined]
+2015-09-05 18:36:08.7606|Info|----------------------------------------
+2015-09-05 18:36:08.7606|Info|lodash.isNil
+2015-09-05 18:36:08.7606|Info|----------------------------------------
+2015-09-05 18:36:08.7606|Info| FAIL - should work with nulls from another realm
+2015-09-05 18:36:08.7606|Info|    FAIL | OK | Expected 2 assertions, but 1 were run
+2015-09-05 18:36:12.3441|Info|----------------------------------------
+2015-09-05 18:36:12.3441|Info|    PASS: 4450  FAIL: 1  TOTAL: 4451
+2015-09-05 18:36:12.3441|Info|    Finished in 8114 milliseconds.
+2015-09-05 18:36:12.3441|Info|----------------------------------------
+2015-09-05 18:36:12.3521|Info|Encerrando os testes
+2015-09-05 18:36:12.3521|Info|Total:4451, Sucesso: 4450, Falha: 1
+2015-09-05 18:36:12.3521|Info| 9 segundos para avaliar o individuo lodash.js
+2015-09-05 18:36:12.3521|Info|FAILED: lodash.isNil: should work with nulls from another realm: Expected 2 assertions, but 1 were run, ,     at V8Runtime:lodashTest:7765:5
+    at V8Runtime:lodashTest:7775:4
+    at V8Runtime:lodashTest:17425:3
+2015-09-05 18:37:12.1146|Info|Iniciando os testes
+2015-09-05 18:37:20.8968|Info|----------------------------------------
+2015-09-05 18:37:20.8968|Info|    PASS: 4449  FAIL: 0  TOTAL: 4449
+2015-09-05 18:37:20.8968|Info|    Finished in 8268 milliseconds.
+2015-09-05 18:37:20.8968|Info|----------------------------------------
+2015-09-05 18:37:20.8968|Info|Encerrando os testes
+2015-09-05 18:37:20.8968|Info|Total:4449, Sucesso: 4449, Falha: 0
+2015-09-05 18:37:20.9128|Info| 9 segundos para avaliar o individuo lodash.js
