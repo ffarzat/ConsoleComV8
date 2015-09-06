@@ -293,8 +293,8 @@ namespace Otimizacao.Javascript
 
             sw.Stop();
 
-            Log(string.Format("ast gerada com sucesso"));
-            Log(string.Format(" {0} ms", sw.Elapsed.TotalMilliseconds));
+            //Log(string.Format("ast gerada com sucesso"));
+            //Log(string.Format(" {0} ms", sw.Elapsed.TotalMilliseconds));
 
             return JsonAst;
         }
@@ -489,8 +489,8 @@ namespace Otimizacao.Javascript
 
             sw.Stop();
 
-            Log(string.Format("Codigo gerado com sucesso"));
-            Log(string.Format(" {0} ms", sw.Elapsed.TotalMilliseconds));
+            //Log(string.Format("Codigo gerado com sucesso"));
+            //Log(string.Format(" {0} ms", sw.Elapsed.TotalMilliseconds));
 
             return Codigo;
         }
