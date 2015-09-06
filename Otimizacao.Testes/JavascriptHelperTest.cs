@@ -31,7 +31,7 @@ namespace Otimizacao.Testes
         {
             const string diretorioExecucao = "Require";
             //var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "global.js")).Replace("\n\n", "").Replace("\n", "").Replace(" ", "");
-            var astMoment = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "astMoment.txt"));
+            var astMoment = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "astUnderscore.txt"));
 
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, diretorioExecucao), false, false);
             helper.ConfigurarGeracao();
