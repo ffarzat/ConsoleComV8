@@ -124,7 +124,7 @@ namespace Otimizacao.Testes
 
             var ast = helper.GerarAst(scriptCode);
             
-            var astNova = helper.ExecutarMutacaoExclusao(ast);
+            var astNova = helper.ExecutarMutacaoExclusao(ast, 100);
 
             Assert.AreNotEqual(ast, astNova);
 

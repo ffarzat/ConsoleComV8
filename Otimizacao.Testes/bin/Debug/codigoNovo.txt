@@ -25,7 +25,7 @@
             return obj;
         if (!(this instanceof _))
             return new _(obj);
-        this._wrapped = obj;
+        ;;
     };
     // Export the Underscore object for **Node.js**, with
     // backwards-compatibility for the old `require()` API. If we're in
@@ -84,7 +84,22 @@
         return cb(value, context, Infinity);
     };
     // An internal function for creating assigner functions.
-    ;
+    var createAssigner = function (keysFunc, undefinedOnly) {
+        return function (obj) {
+            var length = arguments.length;
+            if (length < 2 || obj == null)
+                return obj;
+            for (var index = 1; index < length; index++) {
+                var source = arguments[index], keys = keysFunc(source), l = keys.length;
+                for (var i = 0; i < l; i++) {
+                    var key = keys[i];
+                    if (!undefinedOnly || obj[key] === void 0)
+                        obj[key] = source[key];
+                }
+            }
+            return obj;
+        };
+    };
     // An internal function for creating a new object that inherits from another.
     var baseCreate = function (prototype) {
         if (!_.isObject(prototype))

@@ -313,8 +313,10 @@ namespace Otimizacao.Javascript
         /// Executa a exclusao de um nó específico na árvore
         /// </summary>
         /// <param name="ast">árvore no formato do esprima</param>
+        /// <param name="randonLine">Linha para excluir</param>
+        /// <param name="randonInstruction">Instruçao na linha para exclusão</param>
         /// <returns></returns>
-        public string ExecutarMutacaoExclusao(string ast)
+        public string ExecutarMutacaoExclusao(string ast, int randonNode)
         {
 
             var engine = _manager.GetEngine();
@@ -326,9 +328,11 @@ namespace Otimizacao.Javascript
                     var counter = 0;
                     ObjEstraverse.replace(ast, {
                         enter: function(node, parent) {
-                            //javascriptHelper.Escrever('{0}', Array(indent + 1).join(' ') + node.type);
+                            
+                            //javascriptHelper.Escrever('{0}', JSON.stringify(node));
+                            //node.type == 'VariableDeclaration' && 
 
-                            if(node.type == 'VariableDeclaration' && counter > 300)
+                            if(counter > #randonNode)
                             {
                                 node.type = 'EmptyStatement';
                                 this.break();
@@ -345,7 +349,7 @@ namespace Otimizacao.Javascript
                     });
 
                     javascriptHelper.JsonAst = JSON.stringify(ast);
-                    ");
+                    ".Replace("#randonNode", randonNode.ToString()));
 
            return JsonAst;
         }
