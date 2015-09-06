@@ -492,3 +492,15 @@
 2015-09-05 22:42:22.2569|Info| 111,6011 ms
 2015-09-05 22:42:23.6791|Info|Codigo gerado com sucesso
 2015-09-05 22:42:23.6791|Info| 152,708 ms
+2015-09-06 07:50:38.9242|Info|ast gerada com sucesso
+2015-09-06 07:50:38.9555|Info| 153,2864 ms
+2015-09-06 07:50:39.2311|Info|Codigo gerado com sucesso
+2015-09-06 07:50:39.2311|Info| 117,7874 ms
+2015-09-06 07:50:39.3249|Info|Codigo gerado com sucesso
+2015-09-06 07:50:39.3249|Info| 95,4986 ms
+2015-09-06 07:50:48.9990|Info|ast gerada com sucesso
+2015-09-06 07:50:49.0303|Info| 146,744 ms
+2015-09-06 07:50:49.2433|Info|Codigo gerado com sucesso
+2015-09-06 07:50:49.2589|Info| 111,356 ms
+2015-09-06 07:50:49.3371|Info|Codigo gerado com sucesso
+2015-09-06 07:50:49.3527|Info| 91,6994 ms

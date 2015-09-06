@@ -314,63 +314,11 @@ namespace Otimizacao.Javascript
         /// </summary>
         /// <param name="ast">árvore no formato do esprima</param>
         /// <returns></returns>
-        public async Task<string> ExecutarMutacaoExclusao(string ast)
+        public string ExecutarMutacaoExclusao(string ast)
         {
-            
-//            RegistarScript("asttypes", "main.js");
-//            RegistarScript("assert", "assert.js");
-//            RegistarScript("util", "util.js");
-//            RegistarScript("isBuffer", "isBuffer.js");
-//            RegistarScript("inherits", "inherits.js");
 
-//            RegistarScript("core", "def/core.js");
-//            RegistarScript("es6", "def/es6.js");
-//            RegistarScript("es7", "def/es7.js");
-//            RegistarScript("mozilla", "def/mozilla.js");
-//            RegistarScript("e4x", "def/e4x.js");
-//            RegistarScript("fbharmony", "def/fb-harmony.js");
-//            RegistarScript("babel", "def/babel.js");
-//            RegistarScript("esprima", "def/esprima.js");
-
-//            RegistarScript("path", "lib/path.js");
-//            RegistarScript("scope", "lib/scope.js");
-//            RegistarScript("shared", "lib/shared.js");
-//            RegistarScript("types", "lib/types.js");
-//            RegistarScript("equiv", "lib/equiv.js");
-//            RegistarScript("nodepath", "lib/node-path.js");
-//            RegistarScript("pathvisitor", "lib/path-visitor.js");
-
-
-//            await _manager.ExecuteAsync("MutarPorExclusao", @"  var ast = JSON.parse(javascriptHelper.JsonAst);
-//                                                require('asttypes');
-//
-//                                                var n = types.namedTypes;
-//
-//                                                types.visit(ast, {
-//                                                    
-//                                                    visitFunction: function(path) {
-//
-//
-//                                                        var node = path.node;
-//
-//                                                        javascriptHelper.Escrever('{0}', JSON.stringify(node.type));
-//
-//                                                        //path.prune();
-//
-//                                                        //path.get('VariableDeclaration', 0).replace();                                                        
-//
-//                                                        this.traverse(path);
-//
-//                                                        
-//                                                    }
-//                                                });
-//
-//                                                javascriptHelper.JsonAst = JSON.stringify(ast);
-//
-//            ");
-
-
-            await _manager.ExecuteAsync("Mutar", @"
+            var engine = _manager.GetEngine();
+            engine.Execute(@"
 
                     var ast = JSON.parse(javascriptHelper.JsonAst);
 
@@ -397,7 +345,7 @@ namespace Otimizacao.Javascript
                     });
 
                     javascriptHelper.JsonAst = JSON.stringify(ast);
-");
+                    ");
 
            return JsonAst;
         }
