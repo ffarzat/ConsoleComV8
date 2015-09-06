@@ -1,0 +1,38 @@
+2015-09-05 22:31:22.3898|Info|ast gerada com sucesso
+2015-09-05 22:31:22.4679|Info| 616,5082 ms
+2015-09-05 22:31:23.4992|Info|Codigo gerado com sucesso
+2015-09-05 22:31:23.4992|Info| 436,7363 ms
+2015-09-05 22:32:20.2831|Info|ast gerada com sucesso
+2015-09-05 22:32:20.3612|Info| 595,5675 ms
+2015-09-05 22:32:42.0994|Info|ast gerada com sucesso
+2015-09-05 22:32:42.1150|Info| 161,0564 ms
+2015-09-05 22:35:05.5964|Info|ast gerada com sucesso
+2015-09-05 22:35:05.6120|Info| 146,6375 ms
+2015-09-05 22:35:05.8620|Info|Codigo gerado com sucesso
+2015-09-05 22:35:05.8620|Info| 99,1047 ms
+2015-09-05 22:35:30.8739|Info|ast gerada com sucesso
+2015-09-05 22:35:30.8895|Info| 153,5631 ms
+2015-09-05 22:35:31.1242|Info|Codigo gerado com sucesso
+2015-09-05 22:35:31.1242|Info| 98,3045 ms
+2015-09-05 22:35:39.8186|Info|ast gerada com sucesso
+2015-09-05 22:35:39.8342|Info| 149,8208 ms
+2015-09-05 22:35:40.0688|Info|Codigo gerado com sucesso
+2015-09-05 22:35:40.0688|Info| 99,2128 ms
+2015-09-05 22:36:58.4221|Info|ast gerada com sucesso
+2015-09-05 22:36:58.4533|Info| 146,8625 ms
+2015-09-05 22:36:58.6877|Info|Codigo gerado com sucesso
+2015-09-05 22:36:58.6877|Info| 95,7406 ms
+2015-09-05 22:36:58.7815|Info|Codigo gerado com sucesso
+2015-09-05 22:36:58.7815|Info| 94,6033 ms
+2015-09-05 22:38:06.9915|Info|ast gerada com sucesso
+2015-09-05 22:38:07.0227|Info| 279,4537 ms
+2015-09-05 22:38:07.2727|Info|Codigo gerado com sucesso
+2015-09-05 22:38:07.2727|Info| 106,1274 ms
+2015-09-05 22:38:07.3821|Info|Codigo gerado com sucesso
+2015-09-05 22:38:07.3821|Info| 97,0425 ms
+2015-09-05 22:39:49.8487|Info|ast gerada com sucesso
+2015-09-05 22:39:49.8643|Info| 155,6107 ms
+2015-09-05 22:39:50.0987|Info|Codigo gerado com sucesso
+2015-09-05 22:39:50.1144|Info| 101,431 ms
+2015-09-05 22:39:50.1924|Info|Codigo gerado com sucesso
+2015-09-05 22:39:50.2080|Info| 83,1888 ms

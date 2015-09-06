@@ -317,56 +317,87 @@ namespace Otimizacao.Javascript
         public async Task<string> ExecutarMutacaoExclusao(string ast)
         {
             
-            RegistarScript("asttypes", "main.js");
-            RegistarScript("assert", "assert.js");
-            RegistarScript("util", "util.js");
-            RegistarScript("isBuffer", "isBuffer.js");
-            RegistarScript("inherits", "inherits.js");
+//            RegistarScript("asttypes", "main.js");
+//            RegistarScript("assert", "assert.js");
+//            RegistarScript("util", "util.js");
+//            RegistarScript("isBuffer", "isBuffer.js");
+//            RegistarScript("inherits", "inherits.js");
 
-            RegistarScript("core", "def/core.js");
-            RegistarScript("es6", "def/es6.js");
-            RegistarScript("es7", "def/es7.js");
-            RegistarScript("mozilla", "def/mozilla.js");
-            RegistarScript("e4x", "def/e4x.js");
-            RegistarScript("fbharmony", "def/fb-harmony.js");
-            RegistarScript("babel", "def/babel.js");
-            RegistarScript("esprima", "def/esprima.js");
+//            RegistarScript("core", "def/core.js");
+//            RegistarScript("es6", "def/es6.js");
+//            RegistarScript("es7", "def/es7.js");
+//            RegistarScript("mozilla", "def/mozilla.js");
+//            RegistarScript("e4x", "def/e4x.js");
+//            RegistarScript("fbharmony", "def/fb-harmony.js");
+//            RegistarScript("babel", "def/babel.js");
+//            RegistarScript("esprima", "def/esprima.js");
 
-            RegistarScript("path", "lib/path.js");
-            RegistarScript("scope", "lib/scope.js");
-            RegistarScript("shared", "lib/shared.js");
-            RegistarScript("types", "lib/types.js");
-            RegistarScript("equiv", "lib/equiv.js");
-            RegistarScript("nodepath", "lib/node-path.js");
-            RegistarScript("pathvisitor", "lib/path-visitor.js");
-
-
-            await _manager.ExecuteAsync("", @"  var ast = JSON.parse(javascriptHelper.JsonAst);
-                                                require('asttypes');
-
-                                                var n = types.namedTypes;
-
-                                                types.visit(ast, {
-                                                    // This method will be called for any node with .type 'MemberExpression':
-                                                    visitFunction: function(path) {
+//            RegistarScript("path", "lib/path.js");
+//            RegistarScript("scope", "lib/scope.js");
+//            RegistarScript("shared", "lib/shared.js");
+//            RegistarScript("types", "lib/types.js");
+//            RegistarScript("equiv", "lib/equiv.js");
+//            RegistarScript("nodepath", "lib/node-path.js");
+//            RegistarScript("pathvisitor", "lib/path-visitor.js");
 
 
-                                                        var node = path.node;
+//            await _manager.ExecuteAsync("MutarPorExclusao", @"  var ast = JSON.parse(javascriptHelper.JsonAst);
+//                                                require('asttypes');
+//
+//                                                var n = types.namedTypes;
+//
+//                                                types.visit(ast, {
+//                                                    
+//                                                    visitFunction: function(path) {
+//
+//
+//                                                        var node = path.node;
+//
+//                                                        javascriptHelper.Escrever('{0}', JSON.stringify(node.type));
+//
+//                                                        //path.prune();
+//
+//                                                        //path.get('VariableDeclaration', 0).replace();                                                        
+//
+//                                                        this.traverse(path);
+//
+//                                                        
+//                                                    }
+//                                                });
+//
+//                                                javascriptHelper.JsonAst = JSON.stringify(ast);
+//
+//            ");
 
-                                                        javascriptHelper.Escrever('{0}', JSON.stringify(path.name));
 
-                                                        path.prune();
+            await _manager.ExecuteAsync("Mutar", @"
 
-                                                        
-                                                        this.traverse(path);
+                    var ast = JSON.parse(javascriptHelper.JsonAst);
 
-                                                        
-                                                    }
-                                                });
+                    var indent = 0;
+                    var counter = 0;
+                    ObjEstraverse.replace(ast, {
+                        enter: function(node, parent) {
+                            //javascriptHelper.Escrever('{0}', Array(indent + 1).join(' ') + node.type);
 
-                                                javascriptHelper.JsonAst = JSON.stringify(ast);
+                            if(node.type == 'VariableDeclaration' && counter > 300)
+                            {
+                                node.type = 'EmptyStatement';
+                                this.break();
+                                return node;
 
-            ");
+                            }
+
+                            counter++;
+                            indent += 4;
+                        },
+                        leave: function(node, parent) {
+                            indent -= 4;
+                        }
+                    });
+
+                    javascriptHelper.JsonAst = JSON.stringify(ast);
+");
 
            return JsonAst;
         }
@@ -389,7 +420,10 @@ namespace Otimizacao.Javascript
             engine.Execute("var syntax = JSON.parse(javascriptHelper.JsonAst);");
             engine.Execute("syntax = ObjEscodegen.attachComments(syntax, syntax.comments, syntax.tokens);");
 
-            engine.Execute("javascriptHelper.Escrever('{0}', javascriptHelper.FormatarStringJson(JSON.stringify(syntax)));");
+            //engine.Execute("javascriptHelper.JsonAst = JSON.stringify(syntax);");
+            //File.WriteAllText("syntax" + Guid.NewGuid().ToString() + ".txt", this.FormatarStringJson(JsonAst));
+
+            //engine.Execute("javascriptHelper.Escrever('{0}', javascriptHelper.FormatarStringJson(JSON.stringify(syntax)));");
 
             engine.Execute("var code = ObjEscodegen.generate(syntax, option);");
             engine.Execute("javascriptHelper.Codigo = code;");
