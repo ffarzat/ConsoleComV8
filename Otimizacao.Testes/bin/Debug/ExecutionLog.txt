@@ -18,3 +18,15 @@
 2015-09-06 08:15:34.1659|Info| 100,8388 ms
 2015-09-06 08:15:34.2597|Info|Codigo gerado com sucesso
 2015-09-06 08:15:34.2597|Info| 88,2149 ms
+2015-09-06 08:34:46.3106|Info|ast gerada com sucesso
+2015-09-06 08:34:46.3306|Info| 151,279 ms
+2015-09-06 08:35:29.3503|Info|ast gerada com sucesso
+2015-09-06 08:35:29.3703|Info| 159,7987 ms
+2015-09-06 08:43:36.4719|Info|ast gerada com sucesso
+2015-09-06 08:43:36.4919|Info| 129,0372 ms
+2015-09-06 08:44:22.4713|Info|ast gerada com sucesso
+2015-09-06 08:44:22.4953|Info| 148,6531 ms
+2015-09-06 08:44:23.1582|Info|Codigo gerado com sucesso
+2015-09-06 08:44:23.1582|Info| 118,4403 ms
+2015-09-06 08:44:23.2382|Info|Codigo gerado com sucesso
+2015-09-06 08:44:23.2382|Info| 76,7855 ms

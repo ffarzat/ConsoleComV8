@@ -360,42 +360,105 @@ namespace Otimizacao.Javascript
         /// <param name="astMae">Ast que representa a mae</param>
         /// <param name="randonNodePai">Nó aleatório escolhido no pai</param>
         /// <param name="randonNodeMae">Nó aleatório escolhido na mãe</param>
+        /// <param name="astPrimeiroFilho">Pai com o nó da mãe</param>
+        /// <param name="astSegundoFilho">Mãe com o nó do pai</param>
         /// <returns></returns>
-        public string ExecutarCrossOver(string astPai, string astMae, int randonNodePai, int randonNodeMae)
+        public void ExecutarCrossOver(string astPai, string astMae, int randonNodePai, int randonNodeMae, out string astPrimeiroFilho, out string astSegundoFilho)
         {
             var engine = _manager.GetEngine();
-//            engine.Execute(@"
-//
-//                    var ast = JSON.parse(javascriptHelper.JsonAst);
-//
-//                    var indent = 0;
-//                    var counter = 0;
-//                    ObjEstraverse.replace(ast, {
-//                        enter: function(node, parent) {
-//                            
-//                            //javascriptHelper.Escrever('{0}', JSON.stringify(node));
-//                            //node.type == 'VariableDeclaration' && 
-//
-//                            if(counter > #randonNode)
-//                            {
-//                                node.type = 'EmptyStatement';
-//                                this.break();
-//                                return node;
-//
-//                            }
-//
-//                            counter++;
-//                            indent += 4;
-//                        },
-//                        leave: function(node, parent) {
-//                            indent -= 4;
-//                        }
-//                    });
-//
-//                    javascriptHelper.JsonAst = JSON.stringify(ast);
-//                    ".Replace("#randonNode", randonNode.ToString()));
 
-            return JsonAst;
+            #region Recupero o nó no pai
+
+            engine.Execute("var nodePai = {type:'EmptyStatement'};");
+            
+            engine.Execute("var astPai = JSON.parse(#astPai);"
+                .Replace("#astPai", this.EncodeJsString(astPai))
+                );
+
+            engine.Execute(@"
+
+                    var counter = 0;
+                    ObjEstraverse.replace(astPai, {
+                        enter: function(node, parent) {
+
+                            if(counter > #randonNodePai)
+                            {
+                                nodePai = node;
+                                this.break();
+                            }
+
+                            counter++;
+                        }
+                    });
+                    "
+                .Replace("#randonNodePai", randonNodePai.ToString())
+                     
+                     );
+            
+            #endregion
+            
+            #region Recupero o nó na mãe e troco pelo do Pai
+            engine.Execute("var nodeMae = {type : 'EmptyStatement'};");
+            engine.Execute("var astMae = JSON.parse(#astMae);"
+                 .Replace("#astMae", this.EncodeJsString(astMae))
+                 );
+
+            engine.Execute(@"
+
+                    var counter = 0;
+                    ObjEstraverse.replace(astMae, {
+                        enter: function(node, parent) {
+
+                            if(counter > #randonNodeMae)
+                            {
+                                nodeMae = node;
+                                this.break();
+                                return nodePai;
+                            }
+
+                            counter++;
+                        }
+                    });
+                        javascriptHelper.JsonAst = JSON.stringify(astMae);
+                    "
+
+                .Replace("#randonNodeMae", randonNodeMae.ToString())
+                
+                );
+
+            //Troco na mae
+            astSegundoFilho = JsonAst;
+
+            #endregion
+
+            #region Troco agora no pai
+
+            engine.Execute(@"
+
+                    var counter = 0;
+                    ObjEstraverse.replace(astPai, {
+                        enter: function(node, parent) {
+
+                            if(counter > #randonNodePai)
+                            {
+                                this.break();
+                                return nodeMae;
+                            }
+
+                            counter++;
+                        }
+                    });
+
+                    javascriptHelper.JsonAst = JSON.stringify(astPai);
+                    "
+                    .Replace("#astPai", this.EncodeJsString(astPai))
+                    .Replace("#randonNodePai", randonNodePai.ToString())
+
+                    );
+
+            astPrimeiroFilho = JsonAst;
+            #endregion
+
         }
 
         /// <summary>

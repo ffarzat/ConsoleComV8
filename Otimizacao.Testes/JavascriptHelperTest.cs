@@ -142,5 +142,33 @@ namespace Otimizacao.Testes
 
         }
 
+        [Test]
+        public void ExecutarCrossOver()
+        {
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"), true, false);
+            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Require", "underscore.js"));
+            helper.ConfigurarGeracao();
+
+            var ast = helper.GerarAst(scriptCode);
+
+            var astNova = helper.ExecutarMutacaoExclusao(ast, 100);
+
+            Assert.AreNotEqual(ast, astNova);
+
+            string astFilho1, astFilho2;
+
+            helper.ExecutarCrossOver(ast, astNova, 348, 456, out astFilho1, out astFilho2);
+
+
+            var codigo = helper.GerarCodigo(astFilho1);
+            var codigoNovo = helper.GerarCodigo(astFilho2);
+
+            Assert.AreNotEqual(codigo, codigoNovo);
+
+            File.WriteAllText("codigo.txt", codigo);
+            File.WriteAllText("codigoNovo.txt", codigoNovo);
+
+        }
+
     }
 }
