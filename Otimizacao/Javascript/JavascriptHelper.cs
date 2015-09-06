@@ -313,8 +313,7 @@ namespace Otimizacao.Javascript
         /// Executa a exclusao de um nó específico na árvore
         /// </summary>
         /// <param name="ast">árvore no formato do esprima</param>
-        /// <param name="randonLine">Linha para excluir</param>
-        /// <param name="randonInstruction">Instruçao na linha para exclusão</param>
+        /// <param name="randonNode">Linha para excluir</param>
         /// <returns></returns>
         public string ExecutarMutacaoExclusao(string ast, int randonNode)
         {
@@ -322,7 +321,7 @@ namespace Otimizacao.Javascript
             var engine = _manager.GetEngine();
             engine.Execute(@"
 
-                    var ast = JSON.parse(javascriptHelper.JsonAst);
+                    var ast = JSON.parse(#ast);
 
                     var indent = 0;
                     var counter = 0;
@@ -349,9 +348,54 @@ namespace Otimizacao.Javascript
                     });
 
                     javascriptHelper.JsonAst = JSON.stringify(ast);
-                    ".Replace("#randonNode", randonNode.ToString()));
+                    ".Replace("#ast", this.EncodeJsString(ast)).Replace("#randonNode", randonNode.ToString()));
 
            return JsonAst;
+        }
+
+        /// <summary>
+        /// Exeucta um crossOver para gerar dois novos individuos trocando material entre o pai e mae
+        /// </summary>
+        /// <param name="astPai">Ast que representa o Pai</param>
+        /// <param name="astMae">Ast que representa a mae</param>
+        /// <param name="randonNodePai">Nó aleatório escolhido no pai</param>
+        /// <param name="randonNodeMae">Nó aleatório escolhido na mãe</param>
+        /// <returns></returns>
+        public string ExecutarCrossOver(string astPai, string astMae, int randonNodePai, int randonNodeMae)
+        {
+            var engine = _manager.GetEngine();
+//            engine.Execute(@"
+//
+//                    var ast = JSON.parse(javascriptHelper.JsonAst);
+//
+//                    var indent = 0;
+//                    var counter = 0;
+//                    ObjEstraverse.replace(ast, {
+//                        enter: function(node, parent) {
+//                            
+//                            //javascriptHelper.Escrever('{0}', JSON.stringify(node));
+//                            //node.type == 'VariableDeclaration' && 
+//
+//                            if(counter > #randonNode)
+//                            {
+//                                node.type = 'EmptyStatement';
+//                                this.break();
+//                                return node;
+//
+//                            }
+//
+//                            counter++;
+//                            indent += 4;
+//                        },
+//                        leave: function(node, parent) {
+//                            indent -= 4;
+//                        }
+//                    });
+//
+//                    javascriptHelper.JsonAst = JSON.stringify(ast);
+//                    ".Replace("#randonNode", randonNode.ToString()));
+
+            return JsonAst;
         }
 
         /// <summary>

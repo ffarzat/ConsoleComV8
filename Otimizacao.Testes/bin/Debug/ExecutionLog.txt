@@ -10,3 +10,11 @@
 2015-09-06 08:10:30.2253|Info| 96,763 ms
 2015-09-06 08:10:30.3190|Info|Codigo gerado com sucesso
 2015-09-06 08:10:30.3190|Info| 85,3 ms
+2015-09-06 08:14:53.0803|Info|ast gerada com sucesso
+2015-09-06 08:14:53.0959|Info| 151,6161 ms
+2015-09-06 08:15:33.8691|Info|ast gerada com sucesso
+2015-09-06 08:15:33.9003|Info| 148,3136 ms
+2015-09-06 08:15:34.1659|Info|Codigo gerado com sucesso
+2015-09-06 08:15:34.1659|Info| 100,8388 ms
+2015-09-06 08:15:34.2597|Info|Codigo gerado com sucesso
+2015-09-06 08:15:34.2597|Info| 88,2149 ms
