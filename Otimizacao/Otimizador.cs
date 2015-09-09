@@ -115,11 +115,13 @@ namespace Otimizacao
         }
 
         /// <summary>
-        /// Executa a Otimização
+        /// Executa a Otimização.
         /// </summary>
         /// <param name="caminhoBibliotecaJs"></param>
         /// <param name="caminhoTestesJs"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// Verdadeiro se encontrar melhoria
+        /// </returns>
         public bool Otimizar(string caminhoBibliotecaJs, string caminhoTestesJs)
         {
             _jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
@@ -131,16 +133,113 @@ namespace Otimizacao
             _jHelper.Log(string.Format("    SetTimeout {0}", _usarSetTimeout));
 
             CriarPrimeiraGeracao(caminhoBibliotecaJs);
-            return false;
+
+            ExecutarRodadas();
+
+
+            return MelhorIndividuo.Ast == _original.Ast;
+        }
+
+        /// <summary>
+        /// Executa as rodadas configuradas
+        /// </summary>
+        private void ExecutarRodadas()
+        {
+            Crossover();
+            Mutate();
+            ExecuteFitEvaluation();
+            Selection();
+            FindBestChromosomeOfRun();
+        }
+
+        /// <summary>
+        /// Executa a seleção natural pelo método de Elite
+        /// </summary>
+        private void Selection()
+        {
+            
+
+        }
+
+        /// <summary>
+        /// Encerra uma geração
+        /// </summary>
+        private void FindBestChromosomeOfRun()
+        {
+            
+        }
+
+        /// <summary>
+        /// Avalia todos os individuos na geração
+        /// </summary>
+        private void ExecuteFitEvaluation()
+        {
+            foreach (var individuo in _population)
+            {
+                if (individuo.Fitness == Int64.MaxValue)
+                    AvaliarIndividuo(individuo);
+            }
+
+        }
+
+        /// <summary>
+        /// Do crossover in the population
+        /// </summary>
+        private void Crossover()
+        {
+            int count = 0;
+
+            for (int i = 1; i < _size; i += 2)
+            {
+                if (Rand.NextDouble() <= _crossOverRate)
+                {
+                    // clone both ancestors
+                    Individuo c1 = _population[i - 1].Clone();
+                    Individuo c2 = _population[i].Clone();
+
+                    Individuo c3, c4;
+                    ExecutarCruzamento(c1, c2, out c3, out c4);
+
+                    // add two new offsprings to the population
+                    _population.Add(c3);
+                    _population.Add(c4);
+                    
+                    count++;
+                }
+            }
+
+            _logger.Info("      {0} crossover(s) executados", count);
+
+        }
+
+        /// <summary>
+        /// Do mutation in the population
+        /// </summary>
+        private void Mutate()
+        {
+            int count = 0;
+
+            for (int i = 0; i < _size; i++)
+            {
+                // generate next random number and check if we need to do mutation
+
+                if (Rand.NextDouble() <= _mutationRate)
+                {
+                    // clone the chromosome
+                    Individuo c = _population[i].Clone();
+                    ExecutarMutacao(c);
+                    _population.Add(c);
+                    count++;
+                }
+            }
+
+            _logger.Info("          {0} mutações executadas", count);
         }
 
         /// <summary>
         /// Cria a primeira geração a partir do individuo base
         /// </summary>
-        /// <param name="size"></param>
-        /// <param name="jHelper"></param>
         /// <param name="caminhoBibliotecaJs"></param>
-        /// <param name="caminhoTestesJs"></param>
         private void CriarPrimeiraGeracao(string caminhoBibliotecaJs)
         {
             CriarIndividuoOriginal(caminhoBibliotecaJs);
@@ -148,7 +247,8 @@ namespace Otimizacao
             _population.Add(_original);
 
             _jHelper.Log(string.Format("    Criando a populaçao Inicial com {0} individuos",_size));
-            for (int i = 0; i < (_size -1); i++)
+            
+            for (int i = 0; i < (_size); i++) 
             {
                 _jHelper.Log(string.Format("    {0} - Fitness : {1}", i,  _original.Fitness));
                 var atual = _original.Clone();
@@ -198,8 +298,16 @@ namespace Otimizacao
         /// <param name="filhoMae"></param>
         private void ExecutarCruzamento(Individuo pai, Individuo mae, out Individuo filhoPai, out Individuo filhoMae)
         {
-            filhoPai = null;
-            filhoMae = null;
+            filhoPai = pai.Clone();
+            filhoMae = mae.Clone();
+            var totalPai = _jHelper.ContarNos(pai.Ast);
+            var totalMae = _jHelper.ContarNos(mae.Ast);
+
+            string c1, c2;
+            _jHelper.ExecutarCrossOver(pai.Ast, mae.Ast, totalPai, totalMae, out c1, out c2);
+
+            filhoPai.Ast = c1;
+            filhoMae.Ast = c2;
         }
 
         /// <summary>
