@@ -632,14 +632,17 @@ namespace Otimizacao.Javascript
             
             sw.Stop();
 
-            //Log(string.Format("Total:{0}, Sucesso: {1}, Falha: {2}", this.TotalTestes, this.TestesComSucesso, this.TestesComFalha));
-            //Log(string.Format(" {0} segundos para avaliar o individuo {1}", sw.Elapsed.Seconds, nomeArquivoIndividuo));
+            _logger.Trace(string.Format("           Total:{0}, Sucesso: {1}, Falha: {2}", this.TotalTestes, this.TestesComSucesso, this.TestesComFalha));
+            _logger.Trace(string.Format("           {0} segundos para avaliar o individuo {1}", sw.Elapsed.Seconds, nomeArquivoIndividuo));
 
             //this.FalhasDosTestes.ForEach(this.Log);
 
+            if(TotalTestes == 0)
+                return Int64.MaxValue - 5;
+
             var tempoTestesSomados = (TotalTestes - TestesComSucesso); //Penaliza quem falha
 
-            return (sw.Elapsed.Milliseconds + tempoTestesSomados);
+            return (sw.ElapsedMilliseconds + tempoTestesSomados);
         }
 
         /// <summary>
