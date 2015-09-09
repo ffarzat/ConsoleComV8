@@ -10717,3 +10717,57 @@
 2015-09-09 12:00:21.0490|Info|    1 - Fitness : 743
 2015-09-09 12:00:26.2296|Info|    2 - Fitness : 743
 2015-09-09 12:00:31.5204|Info|    3 - Fitness : 743
+2015-09-09 13:36:19.9886|Info|Iniciando Otimização do global.js
+2015-09-09 13:36:20.0016|Info|    SetTimeout False
+2015-09-09 13:36:23.7523|Info|    Fitness do Original 735
+2015-09-09 13:36:23.7523|Info|    Criando a populaçao Inicial com 10 individuos
+2015-09-09 13:36:23.7523|Info|    0 - Fitness : 735
+2015-09-09 13:36:26.7054|Info|            Avaliando 
+2015-09-09 13:36:29.3653|Info|                659
+2015-09-09 13:36:29.3653|Info|    1 - Fitness : 735
+2015-09-09 13:36:32.1763|Info|            Avaliando 
+2015-09-09 13:36:34.5640|Info|                387
+2015-09-09 13:36:34.5640|Info|    2 - Fitness : 735
+2015-09-09 13:36:37.4030|Info|            Avaliando 
+2015-09-09 13:36:39.9428|Info|                539
+2015-09-09 13:36:39.9428|Info|    3 - Fitness : 735
+2015-09-09 13:36:42.8348|Info|            Avaliando 
+2015-09-09 13:37:12.1287|Info|Iniciando Otimização do global.js
+2015-09-09 13:37:12.1427|Info|    SetTimeout False
+2015-09-09 13:37:15.8663|Info|    Fitness do Original 726
+2015-09-09 13:37:15.8663|Info|    Criando a populaçao Inicial com 10 individuos
+2015-09-09 13:37:15.8663|Info|    0 - Fitness : 726
+2015-09-09 13:37:18.6783|Info|            Avaliando ResultadosMoment\91aa3df3-d483-492f-96db-e37694bcf976.js
+2015-09-09 13:37:21.2221|Info|                543
+2015-09-09 13:37:21.2221|Info|    1 - Fitness : 726
+2015-09-09 13:37:24.0571|Info|            Avaliando ResultadosMoment\55dec60b-bee4-456f-962f-f41f0f1b9d4f.js
+2015-09-09 13:37:26.4458|Info|                387
+2015-09-09 13:37:26.4458|Info|    2 - Fitness : 726
+2015-09-09 13:37:29.3069|Info|            Avaliando ResultadosMoment\c0340f05-8651-40f7-8f2c-06926c114f20.js
+2015-09-09 13:37:31.8106|Info|                502
+2015-09-09 13:37:31.8106|Info|    3 - Fitness : 726
+2015-09-09 13:37:34.7107|Info|            Avaliando ResultadosMoment\5cdebac1-82a0-473c-9a72-fad4549bcf7e.js
+2015-09-09 13:37:37.1114|Info|                400
+2015-09-09 13:37:37.1114|Info|    4 - Fitness : 726
+2015-09-09 13:38:01.8150|Info|Iniciando Otimização do global.js
+2015-09-09 13:38:01.8280|Info|    SetTimeout False
+2015-09-09 13:38:05.4916|Info|    Fitness do Original 673
+2015-09-09 13:38:05.4916|Info|    Criando a populaçao Inicial com 10 individuos
+2015-09-09 13:38:08.3336|Info|            Avaliando ResultadosMoment\0a264319-e8f8-4ef0-bfed-deef1b60b3cb.js
+2015-09-09 13:38:10.8824|Info|                548
+2015-09-09 13:38:13.6394|Info|            Avaliando ResultadosMoment\451b4a79-c859-490b-acd6-0edb1a679df0.js
+2015-09-09 13:38:15.9130|Info|                272
+2015-09-09 13:38:18.8220|Info|            Avaliando ResultadosMoment\47c1ce77-dc61-42b8-9f8e-ff14d6d90561.js
+2015-09-09 13:38:21.2197|Info|                397
+2015-09-09 13:38:24.1258|Info|            Avaliando ResultadosMoment\a1041efc-5812-47df-802a-2837c182ad02.js
+2015-09-09 13:38:26.4885|Info|                362
+2015-09-09 13:38:29.3975|Info|            Avaliando ResultadosMoment\336d8604-75a4-4984-a9b8-a8ad2816cf56.js
+2015-09-09 13:38:31.8953|Info|                497
+2015-09-09 13:38:34.8004|Info|            Avaliando ResultadosMoment\44de1375-f4de-47ba-8b1f-a2cdbf1fd904.js
+2015-09-09 13:38:37.2111|Info|                410
+2015-09-09 13:38:40.1132|Info|            Avaliando ResultadosMoment\5657d204-e39e-44b9-ab11-15c5cf61d58a.js
+2015-09-09 13:38:42.5629|Info|                449
+2015-09-09 13:38:45.4730|Info|            Avaliando ResultadosMoment\37797134-9d2a-4c34-a0c9-2558d186955c.js
+2015-09-09 13:38:47.9598|Info|                486
+2015-09-09 13:39:01.7876|Info|            Avaliando ResultadosMoment\60e9ec68-67d1-4575-abbf-2b4c211026e3.js
+2015-09-09 13:39:04.6997|Info|                911

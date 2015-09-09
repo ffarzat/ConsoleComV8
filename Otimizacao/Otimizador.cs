@@ -92,6 +92,10 @@ namespace Otimizacao
         private string _caminhoScriptTestes;
 
         /// <summary>
+        /// Embaralhar a população após  a seleção?
+        /// </summary>
+        private bool _shuffle;
+        /// <summary>
         /// Construtor Default
         /// </summary>
         public Otimizador(int tamanhoPopulacao, int totalGeracoes, int timeoutAvaliacaoIndividuo, string diretorioFontes, string diretorioExecucao)
@@ -157,7 +161,25 @@ namespace Otimizacao
         /// </summary>
         private void Selection()
         {
+            var ordered = _population.OrderBy(c => c.Fitness).ToList();
+
+            ordered.RemoveRange(_size, ordered.Count - _size);
             
+            _population.Clear();
+            _population.AddRange(ordered);
+
+            if (_shuffle)
+                EmbaralharPopulacao();
+        }
+
+        /// <summary>
+        /// Embaralha a lista que antes estava ordenada pelo Fitness
+        /// </summary>
+        private void EmbaralharPopulacao()
+        {
+            var shuffled = _population.OrderBy(c => Rand.Next()).ToList();
+            _population.Clear();
+            _population.AddRange(shuffled);
 
         }
 
@@ -166,7 +188,22 @@ namespace Otimizacao
         /// </summary>
         private void FindBestChromosomeOfRun()
         {
-            
+            foreach (Individuo c in _population)
+            {
+                Int64 fitness = c.Fitness;
+
+                // accumulate summary value
+                _fitnessSum += fitness;
+
+                // check for min
+                if (fitness < _fitnessMin)
+                {
+                    _fitnessMin = fitness;
+                    MelhorIndividuo = c;
+                    _logger.Info("============================== Achou melhor individuo novo! Valor={0} ==============================", _fitnessMin);
+                }
+            }
+            _fitnessAvg = ((double) _fitnessSum / _size);
         }
 
         /// <summary>
@@ -250,7 +287,7 @@ namespace Otimizacao
             
             for (int i = 0; i < (_size); i++) 
             {
-                _jHelper.Log(string.Format("    {0} - Fitness : {1}", i,  _original.Fitness));
+                //_jHelper.Log(string.Format("    {0} - Fitness : {1}", i,  _original.Fitness));
                 var atual = _original.Clone();
                 ExecutarMutacao(atual);
                 AvaliarIndividuo(atual);
@@ -317,9 +354,11 @@ namespace Otimizacao
         private Int64 AvaliarIndividuo(Individuo sujeito)
         {
             var caminhoNovoAvaliado = GerarCodigo(sujeito);
-            
+
+            _jHelper.Log(string.Format("            Avaliando {0}", sujeito.Arquivo));
             sujeito.Fitness = _jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes);
-            
+            _jHelper.Log(string.Format("                {0}", sujeito.Fitness));
+
             return sujeito.Fitness;
         }
 
@@ -334,6 +373,8 @@ namespace Otimizacao
 
             var caminhoNovoAvaliado = string.Format("{0}\\{1}.js", _diretorioExecucao, Guid.NewGuid());
             File.WriteAllText(caminhoNovoAvaliado, sujeito.Codigo);
+            
+            sujeito.Arquivo = caminhoNovoAvaliado;
 
             return caminhoNovoAvaliado;
         }
