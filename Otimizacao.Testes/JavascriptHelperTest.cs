@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
-using ClearScript.Manager;
 using Microsoft.ClearScript.V8;
 using NUnit.Framework;
 using Newtonsoft.Json;
@@ -23,15 +22,6 @@ namespace Otimizacao.Testes
     [TestFixture]
     public class JavascriptHelperTest
     {
-
-        /// <summary>
-        /// Setup dos testes
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Setup()
-        {
-            ManagerPool.InitializeCurrentPool(new ManualManagerSettings { RuntimeMaxCount = 10, ScriptCacheMaxCount = 100, ScriptCacheExpirationSeconds = Int16.MaxValue });
-        }
 
         /// <summary>
         /// Executa os testes de geracao de codigo
@@ -80,7 +70,7 @@ namespace Otimizacao.Testes
         {
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Moment"));
 
-            helper.ExecutarTestes(Path.Combine(Environment.CurrentDirectory, "Moment", "global.js"), "core-test.js");
+            helper.ExecutarTestes("global.js", "core-test.js");
 
             helper.FalhasDosTestes.ForEach(Console.WriteLine);
             Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");
@@ -96,7 +86,7 @@ namespace Otimizacao.Testes
         {
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Lodash"), true, false);
 
-            helper.ExecutarTestes(Path.Combine(Environment.CurrentDirectory, "Lodash", "lodash.js"), "lodashTest.js");
+            helper.ExecutarTestes("lodash.js", "lodashTest.js");
 
             helper.FalhasDosTestes.ForEach(Console.WriteLine);
 
@@ -113,7 +103,7 @@ namespace Otimizacao.Testes
         {
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "underscore"), true, true);
 
-            helper.ExecutarTestes(Path.Combine(Environment.CurrentDirectory, "underscore", "underscore.js"), "underscoreTests.js");
+            helper.ExecutarTestes("underscore.js", "underscoreTests.js");
 
             helper.FalhasDosTestes.ForEach(Console.WriteLine);
 

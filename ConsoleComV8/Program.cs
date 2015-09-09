@@ -26,29 +26,11 @@ namespace ConsoleComV8
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            #region Underscore
-
-            //var otimizador = new Otimizador(10, 5, 20, "underscore", "ResultadosUnderscore");
-            //otimizador.UsarSetTimeout();
+            var otimizador = new Otimizador(10, 5, 20, "underscore", "ResultadosUnderscore");
+            otimizador.UsarSetTimeout();
             
-            //var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
-            #endregion
-
-            #region Lodash
-
-            //var otimizadorLodash = new Otimizador(10, 5, 20, "lodash", "ResultadosLodash");
-            //otimizadorLodash.UsarSetTimeout();
-
-            //var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
-            #endregion
-
-            #region Moment
-            var otimizadorMoment = new Otimizador(10, 5, 20, "Moment", "ResultadosMoment");
-            //otimizadorMoment.UsarSetTimeout();
-
-            var otimizouMoment = otimizadorMoment.Otimizar(Path.Combine(Environment.CurrentDirectory, "Moment", "global.js"), "core-test.js");
-
-            #endregion
+            var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
+            
 
         }
 
