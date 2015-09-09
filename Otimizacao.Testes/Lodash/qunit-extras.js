@@ -202,7 +202,7 @@
     var isPhantomPage = typeof context.callPhantom == 'function';
 
     /** Detects if QUnit Extras should log to the console. */
-    var isSilent = document && !isPhantomPage;
+    var isSilent = true; //document && !isPhantomPage;
 
     /** Used to indicate if running in Windows. */
     var isWindows = isNode && process.platform == 'win32';

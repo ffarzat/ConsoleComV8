@@ -24,7 +24,8 @@ namespace Otimizacao.Javascript
     /// <remarks>
     /// [clearInterval, clearTimeout, setInterval, setTimeout]  seguiram as especificações da Mozilla em [https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout#JavaScript_Content]
     /// </remarks>
-    public class JavascriptHelper
+    public class JavascriptHelper: IDisposable
+
     {
         /// <summary>
         /// Para testes
@@ -835,6 +836,11 @@ namespace Otimizacao.Javascript
         public void AdicionarDetalheDeFalha(string detalhes)
         {
             this.FalhasDosTestes.Add(detalhes);
+        }
+
+        public void Dispose()
+        {
+            _manager.Dispose();
         }
     }
 }

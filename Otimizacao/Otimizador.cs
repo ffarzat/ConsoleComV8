@@ -78,11 +78,6 @@ namespace Otimizacao
         private string _diretorioExecucao;
 
         /// <summary>
-        /// Helper para executar a otimização em Js
-        /// </summary>
-        private JavascriptHelper _jHelper;
-
-        /// <summary>
         /// Inidividuo original
         /// </summary>
         private Individuo _original;
@@ -96,6 +91,11 @@ namespace Otimizacao
         /// Embaralhar a população após  a seleção?
         /// </summary>
         private bool _shuffle;
+
+        /// <summary>
+        /// Caminho da Biblioteca Js original
+        /// </summary>
+        private string _caminhoBiblioteca;
         /// <summary>
         /// Construtor Default
         /// </summary>
@@ -115,6 +115,10 @@ namespace Otimizacao
         /// </summary>
         private void LimparResultadosAnteriores()
         {
+            
+            if (File.Exists("ExecutionLog.txt"))
+                File.Delete("ExecutionLog.txt");
+
 
             if (Directory.Exists(_diretorioExecucao))
             {
@@ -146,17 +150,15 @@ namespace Otimizacao
         /// </returns>
         public bool Otimizar(string caminhoBibliotecaJs, string caminhoTestesJs)
         {
-            _jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-            _jHelper.ConfigurarGeracao();
-
             _caminhoScriptTestes = caminhoTestesJs;
+            _caminhoBiblioteca = caminhoBibliotecaJs;
 
-            _jHelper.Log(string.Format("Iniciando Otimização do {0}", caminhoBibliotecaJs));
-            _jHelper.Log(string.Format("    SetTimeout {0}", _usarSetTimeout));
-            _jHelper.Log(string.Format("    Individuos {0}", _size));
-            _jHelper.Log(string.Format("    Geracoes {0}", _executarAte));
+            _logger.Info(string.Format("Iniciando Otimização do {0}", caminhoBibliotecaJs));
+            _logger.Info(string.Format("    SetTimeout {0}", _usarSetTimeout));
+            _logger.Info(string.Format("    Individuos {0}", _size));
+            _logger.Info(string.Format("    Geracoes {0}", _executarAte));
 
-            CriarPrimeiraGeracao(caminhoBibliotecaJs);
+            CriarPrimeiraGeracao();
 
             ExecutarRodadas();
 
@@ -171,7 +173,7 @@ namespace Otimizacao
         {
             for (int i = 0; i < _executarAte; i++)
             {
-                _jHelper.Log(string.Format("Geracao {0}", i));
+                _logger.Info(string.Format("Geracao {0}", i));
                 Crossover();
                 Mutate();
                 ExecuteFitEvaluation();
@@ -225,10 +227,21 @@ namespace Otimizacao
                 {
                     _fitnessMin = fitness;
                     MelhorIndividuo = c;
-                    _logger.Info("============================== Achou melhor individuo novo! Valor={0} ==============================", _fitnessMin);
+                    _logger.Info("-> Achou melhor individuo novo! Valor={0}", _fitnessMin);
+                    GerarRelatorioHtml(_caminhoBiblioteca, c.Arquivo);
                 }
             }
             _fitnessAvg = ((double) _fitnessSum / _size);
+        }
+
+        /// <summary>
+        /// Gera uma página HTML com o diff entre o original e o novo melhor encontrado
+        /// </summary>
+        /// <param name="caminhoBiblioteca"></param>
+        /// <param name="arquivo"></param>
+        private void GerarRelatorioHtml(string caminhoBiblioteca, string arquivo)
+        {
+            
         }
 
         /// <summary>
@@ -295,24 +308,21 @@ namespace Otimizacao
                 }
             }
 
-            _logger.Info("          {0} mutações executadas", count);
+            _logger.Info("      {0} mutações executadas", count);
         }
 
         /// <summary>
         /// Cria a primeira geração a partir do individuo base
         /// </summary>
-        /// <param name="caminhoBibliotecaJs"></param>
-        private void CriarPrimeiraGeracao(string caminhoBibliotecaJs)
+        private void CriarPrimeiraGeracao()
         {
-            CriarIndividuoOriginal(caminhoBibliotecaJs);
-
+            CriarIndividuoOriginal(_caminhoBiblioteca);
             _population.Add(_original);
 
-            _jHelper.Log(string.Format("    Criando a populaçao Inicial com {0} individuos",_size));
+            _logger.Info(string.Format("    Criando a populaçao Inicial com {0} individuos",_size));
             
             for (int i = 0; i < (_size); i++) 
             {
-                //_jHelper.Log(string.Format("    {0} - Fitness : {1}", i,  _original.Fitness));
                 var atual = _original.Clone();
                 ExecutarMutacao(atual);
                 AvaliarIndividuo(atual);
@@ -326,18 +336,27 @@ namespace Otimizacao
         /// <param name="caminhoBibliotecaJs"></param>
         private void CriarIndividuoOriginal(string caminhoBibliotecaJs)
         {
+            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+            jHelper.ConfigurarGeracao();
+
             var caminho = string.Format("{0}\\{1}", _diretorioFontes, caminhoBibliotecaJs);
 
             _original = new Individuo
                 {
-                    Ast = _jHelper.GerarAst(File.ReadAllText(caminho)),
+                    Ast = jHelper.GerarAst(File.ReadAllText(caminho)),
                     Arquivo = caminho,
                 };
 
-            _original.Codigo = _jHelper.GerarCodigo(_original.Ast);
-            _original.Fitness = _jHelper.ExecutarTestes(caminhoBibliotecaJs, _caminhoScriptTestes);
+            _original.Codigo = jHelper.GerarCodigo(_original.Ast);
+            _original.Fitness = jHelper.ExecutarTestes(caminhoBibliotecaJs, _caminhoScriptTestes);
 
-            _jHelper.Log(string.Format("    Fitness do Original {0}", _original.Fitness));
+            _logger.Info(string.Format("    Fitness do Original {0}", _original.Fitness));
+
+            _fitnessMin = _original.Fitness;
+
+            MelhorIndividuo = _original.Clone();
+
+            jHelper.Dispose();
         }
 
         /// <summary>
@@ -346,11 +365,16 @@ namespace Otimizacao
         /// <param name="sujeito"> </param>
         private void ExecutarMutacao(Individuo sujeito)
         {
-            var total = _jHelper.ContarNos(sujeito.Ast);
+            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+            jHelper.ConfigurarGeracao();
+
+            var total = jHelper.ContarNos(sujeito.Ast);
             int no = Rand.Next(0, total);
             
             if(total > 0 )
-                sujeito.Ast = _jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no);
+                sujeito.Ast = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no);
+
+            jHelper.Dispose();
         }
 
         /// <summary>
@@ -362,25 +386,31 @@ namespace Otimizacao
         /// <param name="filhoMae"></param>
         private void ExecutarCruzamento(Individuo pai, Individuo mae, out Individuo filhoPai, out Individuo filhoMae)
         {
+            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+            jHelper.ConfigurarGeracao();
+
             filhoPai = pai.Clone();
             filhoMae = mae.Clone();
-            var totalPai = _jHelper.ContarNos(pai.Ast);
-            var totalMae = _jHelper.ContarNos(mae.Ast);
+            var totalPai = jHelper.ContarNos(pai.Ast);
+            var totalMae = jHelper.ContarNos(mae.Ast);
 
             string c1, c2;
             try
             {
-                _jHelper.ExecutarCrossOver(pai.Ast, mae.Ast, totalPai, totalMae, out c1, out c2);
+                jHelper.ExecutarCrossOver(pai.Ast, mae.Ast, totalPai, totalMae, out c1, out c2);
             }
             catch (Exception ex)
             {
-                _jHelper.Log(ex.ToString());
+                _logger.Error(ex.ToString());
                 return;
             }
             
 
             filhoPai.Ast = c1;
             filhoMae.Ast = c2;
+            
+            jHelper.Dispose();
+
         }
 
         /// <summary>
@@ -389,11 +419,14 @@ namespace Otimizacao
         /// <param name="sujeito"></param>
         private Int64 AvaliarIndividuo(Individuo sujeito)
         {
+            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+            
             var caminhoNovoAvaliado = GerarCodigo(sujeito);
 
-            //_jHelper.Log(string.Format("            Avaliando {0}", sujeito.Arquivo));
-            sujeito.Fitness = _jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes);
-            _jHelper.Log(string.Format("            {0}", sujeito.Fitness));
+            sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes);
+            _logger.Info(string.Format("            {0}", sujeito.Fitness));
+
+            jHelper.Dispose();
 
             return sujeito.Fitness;
         }
@@ -405,12 +438,17 @@ namespace Otimizacao
         /// <returns></returns>
         private string GerarCodigo(Individuo sujeito)
         {
-            sujeito.Codigo = _jHelper.GerarCodigo(sujeito.Ast);
+            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+            jHelper.ConfigurarGeracao();
+
+            sujeito.Codigo = jHelper.GerarCodigo(sujeito.Ast);
 
             var caminhoNovoAvaliado = string.Format("{0}\\{1}.js", _diretorioExecucao, Guid.NewGuid());
             File.WriteAllText(caminhoNovoAvaliado, sujeito.Codigo);
             
             sujeito.Arquivo = caminhoNovoAvaliado;
+
+            jHelper.Dispose();
 
             return caminhoNovoAvaliado;
         }
