@@ -26,6 +26,17 @@ namespace ConsoleComV8
         /// <param name="args"></param>
         static void Main(string[] args)
         {
+            #region Moment
+            var otimizadorMoment = new Otimizador(10, 5, 20, "Moment", "ResultadosMoment");
+            //otimizadorMoment.UsarSetTimeout();
+
+            var otimizouMoment = otimizadorMoment.Otimizar( "global.js", "core-test.js");
+
+            Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
+
+
+            #endregion
+
             #region Underscore
 
             var otimizador = new Otimizador(10, 5, 20, "underscore", "ResultadosUnderscore");
@@ -47,16 +58,7 @@ namespace ConsoleComV8
             Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
             #endregion
 
-            #region Moment
-            var otimizadorMoment = new Otimizador(10, 5, 20, "Moment", "ResultadosMoment");
-            //otimizadorMoment.UsarSetTimeout();
 
-            var otimizouMoment = otimizadorMoment.Otimizar(Path.Combine(Environment.CurrentDirectory, "Moment", "global.js"), "core-test.js");
-
-            Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
-
-
-            #endregion
             
 
         }

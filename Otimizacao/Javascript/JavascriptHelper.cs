@@ -838,9 +838,13 @@ namespace Otimizacao.Javascript
             this.FalhasDosTestes.Add(detalhes);
         }
 
+        /// <summary>
+        /// Dipor do objeto
+        /// </summary>
         public void Dispose()
         {
             _manager.Dispose();
+            _engine.Dispose();
         }
     }
 }
