@@ -10493,3 +10493,212 @@
 2015-09-06 09:18:55.6800|Info|Encerrando os testes
 2015-09-06 09:18:55.6800|Info|Total:1382, Sucesso: 1382, Falha: 0
 2015-09-06 09:18:55.6800|Info| 4 segundos para avaliar o individuo underscore.js
+2015-09-09 11:03:58.8651|Info|Iniciando os testes
+2015-09-09 11:04:01.6661|Info|Encerrando os testes
+2015-09-09 11:04:01.6661|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:04:01.6661|Info| 3 segundos para avaliar o individuo global.js
+2015-09-09 11:05:10.0136|Info|Iniciando os testes
+2015-09-09 11:05:17.5950|Info|Encerrando os testes
+2015-09-09 11:05:19.7556|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:05:20.2509|Info| 11 segundos para avaliar o individuo global.js
+2015-09-09 11:09:27.0873|Info|Iniciando os testes
+2015-09-09 11:09:29.5040|Info|Encerrando os testes
+2015-09-09 11:09:29.5040|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:09:29.5040|Info| 2 segundos para avaliar o individuo global.js
+2015-09-09 11:11:51.7390|Info|Iniciando os testes
+2015-09-09 11:11:54.4360|Info|Encerrando os testes
+2015-09-09 11:11:54.4360|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:11:54.4360|Info| 3 segundos para avaliar o individuo global.js
+2015-09-09 11:12:10.8996|Info|Iniciando os testes
+2015-09-09 11:12:13.3974|Info|Encerrando os testes
+2015-09-09 11:12:13.3974|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:12:13.3974|Info| 2 segundos para avaliar o individuo ResultadosMoment\1638365c-74eb-4c48-9169-55946ecae8ae.js
+2015-09-09 11:12:24.8816|Info|Iniciando os testes
+2015-09-09 11:12:27.3724|Info|Encerrando os testes
+2015-09-09 11:12:27.3724|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:12:27.3724|Info| 2 segundos para avaliar o individuo ResultadosMoment\5fab1bef-6a6c-4feb-9662-63b54cc6adf6.js
+2015-09-09 11:12:38.4763|Info|Iniciando os testes
+2015-09-09 11:12:40.8269|Info|Encerrando os testes
+2015-09-09 11:12:40.8269|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:12:40.8269|Info| 2 segundos para avaliar o individuo ResultadosMoment\675f2382-e155-4a07-810f-aa65dd7ee3f1.js
+2015-09-09 11:12:43.3878|Info|Iniciando os testes
+2015-09-09 11:12:45.8185|Info|Encerrando os testes
+2015-09-09 11:12:45.8185|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:12:45.8185|Info| 2 segundos para avaliar o individuo ResultadosMoment\32467f12-bef1-40b4-a68e-528f0162b10e.js
+2015-09-09 11:12:48.1341|Info|Iniciando os testes
+2015-09-09 11:12:50.6309|Info|Encerrando os testes
+2015-09-09 11:12:50.6309|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:12:50.6309|Info| 2 segundos para avaliar o individuo ResultadosMoment\656633c4-48ee-435f-b9fa-c396525fd5a1.js
+2015-09-09 11:12:53.2158|Info|Iniciando os testes
+2015-09-09 11:12:55.7425|Info|Encerrando os testes
+2015-09-09 11:12:55.7425|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:12:55.7425|Info| 2 segundos para avaliar o individuo ResultadosMoment\17071a23-22bb-475f-ba94-1a0178a95af9.js
+2015-09-09 11:13:21.7980|Info|Iniciando os testes
+2015-09-09 11:13:24.1377|Info|Encerrando os testes
+2015-09-09 11:13:24.1377|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:13:24.1377|Info| 2 segundos para avaliar o individuo global.js
+2015-09-09 11:13:26.2602|Info|Iniciando os testes
+2015-09-09 11:13:28.4628|Info|Encerrando os testes
+2015-09-09 11:13:28.4628|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:13:28.4628|Info| 2 segundos para avaliar o individuo ResultadosMoment\6b0f189a-1518-4e37-8a58-73eca00c8a05.js
+2015-09-09 11:13:30.4592|Info|Iniciando os testes
+2015-09-09 11:13:32.5707|Info|Encerrando os testes
+2015-09-09 11:13:32.5707|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:13:32.5707|Info| 2 segundos para avaliar o individuo ResultadosMoment\daae87ed-8134-4d95-9f19-fa42d9bf2b1f.js
+2015-09-09 11:13:34.8063|Info|Iniciando os testes
+2015-09-09 11:13:36.8367|Info|Encerrando os testes
+2015-09-09 11:13:36.8367|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:13:36.8367|Info| 2 segundos para avaliar o individuo ResultadosMoment\20493a41-c3ce-42ac-aa36-41b14240f52c.js
+2015-09-09 11:13:39.0853|Info|Iniciando os testes
+2015-09-09 11:13:41.2278|Info|Encerrando os testes
+2015-09-09 11:13:41.2278|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:13:41.2278|Info| 2 segundos para avaliar o individuo ResultadosMoment\04b3f6cb-278a-4be5-9b89-aa821422cf95.js
+2015-09-09 11:13:43.2653|Info|Iniciando os testes
+2015-09-09 11:13:45.4969|Info|Encerrando os testes
+2015-09-09 11:13:45.4969|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:13:45.4969|Info| 2 segundos para avaliar o individuo ResultadosMoment\2945ecc8-915a-467b-b7f7-b954a7e52753.js
+2015-09-09 11:13:47.7745|Info|Iniciando os testes
+2015-09-09 11:13:49.8530|Info|Encerrando os testes
+2015-09-09 11:13:49.8530|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:13:49.8530|Info| 2 segundos para avaliar o individuo ResultadosMoment\af02d530-cfcc-407d-a680-c23948e728cf.js
+2015-09-09 11:13:52.1636|Info|Iniciando os testes
+2015-09-09 11:13:54.3722|Info|Encerrando os testes
+2015-09-09 11:13:54.3722|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:13:54.3722|Info| 2 segundos para avaliar o individuo ResultadosMoment\346b9d60-627a-4963-ad69-c26675799a8f.js
+2015-09-09 11:13:56.6208|Info|Iniciando os testes
+2015-09-09 11:13:58.9214|Info|Encerrando os testes
+2015-09-09 11:13:58.9214|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:13:58.9214|Info| 2 segundos para avaliar o individuo ResultadosMoment\9fa22ee1-5bd6-4705-910d-f0526c55be55.js
+2015-09-09 11:14:01.2500|Info|Iniciando os testes
+2015-09-09 11:14:03.3486|Info|Encerrando os testes
+2015-09-09 11:14:03.3495|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:14:03.3495|Info| 2 segundos para avaliar o individuo ResultadosMoment\b37d0a24-8914-4e9b-8a8a-7eab5e169709.js
+2015-09-09 11:14:29.3630|Info|Iniciando os testes
+2015-09-09 11:14:31.6937|Info|Encerrando os testes
+2015-09-09 11:14:31.6937|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:14:31.6937|Info| 2 segundos para avaliar o individuo global.js
+2015-09-09 11:16:24.1916|Info|Iniciando os testes
+2015-09-09 11:16:26.4942|Info|Encerrando os testes
+2015-09-09 11:16:26.4942|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:16:26.4942|Info| 2 segundos para avaliar o individuo global.js
+2015-09-09 11:16:28.6388|Info|Iniciando os testes
+2015-09-09 11:16:30.7673|Info|Encerrando os testes
+2015-09-09 11:16:30.7673|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:16:30.7673|Info| 2 segundos para avaliar o individuo ResultadosMoment\7bc6608d-dfc9-416b-bd43-0d91cfb0eb1b.js
+2015-09-09 11:16:32.8367|Info|Iniciando os testes
+2015-09-09 11:16:34.9653|Info|Encerrando os testes
+2015-09-09 11:16:34.9653|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:16:34.9653|Info| 2 segundos para avaliar o individuo ResultadosMoment\d52222b4-6378-4821-9177-e0430c9ad26f.js
+2015-09-09 11:16:37.4170|Info|Iniciando os testes
+2015-09-09 11:16:39.4224|Info|Encerrando os testes
+2015-09-09 11:16:39.4224|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:16:39.4224|Info| 2 segundos para avaliar o individuo ResultadosMoment\e88f254a-4f56-4974-8e26-16fa6f7ef014.js
+2015-09-09 11:24:08.3123|Info|Iniciando os testes
+2015-09-09 11:24:10.6660|Info|Encerrando os testes
+2015-09-09 11:24:10.6660|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:24:10.6660|Info| 2 segundos para avaliar o individuo global.js
+2015-09-09 11:24:53.3273|Info|Iniciando os testes
+2015-09-09 11:24:55.6760|Info|Encerrando os testes
+2015-09-09 11:24:55.6760|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:24:55.6760|Info| 2 segundos para avaliar o individuo global.js
+2015-09-09 11:25:05.1607|Info| Excluindo nó: {"range":[268065,268094],"loc":{"start":{"line":7555,"column":23},"end":{"line":7555,"column":52}},"type":"ConditionalExpression","test":{"range":[268065,268075],"loc":{"start":{"line":7555,"column":23},"end":{"line":7555,"column":33}},"type":"BinaryExpression","operator":">=","left":{"range":[268065,268069],"loc":{"start":{"line":7555,"column":23},"end":{"line":7555,"column":27}},"type":"Identifier","name":"hour"},"right":{"range":[268073,268075],"loc":{"start":{"line":7555,"column":31},"end":{"line":7555,"column":33}},"type":"Literal","value":11,"raw":"11"}},"consequent":{"range":[268078,268082],"loc":{"start":{"line":7555,"column":36},"end":{"line":7555,"column":40}},"type":"Identifier","name":"hour"},"alternate":{"range":[268085,268094],"loc":{"start":{"line":7555,"column":43},"end":{"line":7555,"column":52}},"type":"BinaryExpression","operator":"+","left":{"range":[268085,268089],"loc":{"start":{"line":7555,"column":43},"end":{"line":7555,"column":47}},"type":"Identifier","name":"hour"},"right":{"range":[268092,268094],"loc":{"start":{"line":7555,"column":50},"end":{"line":7555,"column":52}},"type":"Literal","value":12,"raw":"12"}}}
+2015-09-09 11:26:04.6330|Info|Iniciando os testes
+2015-09-09 11:26:06.9806|Info|Encerrando os testes
+2015-09-09 11:26:06.9806|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:26:06.9806|Info| 2 segundos para avaliar o individuo global.js
+2015-09-09 11:26:12.9849|Info|Iniciando os testes
+2015-09-09 11:26:15.2565|Info|Encerrando os testes
+2015-09-09 11:26:15.2565|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:26:15.2565|Info| 2 segundos para avaliar o individuo ResultadosMoment\e6385c89-acc2-476c-b070-719a2d8f025d.js
+2015-09-09 11:26:18.3637|Info|Iniciando os testes
+2015-09-09 11:26:20.5723|Info|Encerrando os testes
+2015-09-09 11:26:20.5723|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:26:20.5723|Info| 2 segundos para avaliar o individuo ResultadosMoment\04d5352d-ec42-4887-857b-eb24b700a52b.js
+2015-09-09 11:26:23.7366|Info|Iniciando os testes
+2015-09-09 11:26:25.9691|Info|Encerrando os testes
+2015-09-09 11:26:25.9691|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:26:25.9691|Info| 2 segundos para avaliar o individuo ResultadosMoment\76684157-1213-49b9-b82d-7076f6438be0.js
+2015-09-09 11:26:29.2495|Info|Iniciando os testes
+2015-09-09 11:26:31.4630|Info|Encerrando os testes
+2015-09-09 11:26:31.4630|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:26:31.4630|Info| 2 segundos para avaliar o individuo ResultadosMoment\39a9d590-6163-4a4f-a8e9-dfbd1864e1d4.js
+2015-09-09 11:26:34.6323|Info|Iniciando os testes
+2015-09-09 11:26:36.8989|Info|Encerrando os testes
+2015-09-09 11:26:36.8989|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:26:36.8989|Info| 2 segundos para avaliar o individuo ResultadosMoment\3b774a28-c930-4608-83f6-c08e045a0c81.js
+2015-09-09 11:28:01.1748|Info|Iniciando os testes
+2015-09-09 11:28:03.4354|Info|Encerrando os testes
+2015-09-09 11:28:03.4354|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:28:03.4354|Info| 2 segundos para avaliar o individuo global.js
+2015-09-09 11:28:13.8278|Info|Iniciando os testes
+2015-09-09 11:28:16.0103|Info|Encerrando os testes
+2015-09-09 11:28:16.0103|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:28:16.0103|Info| 2 segundos para avaliar o individuo ResultadosMoment\23f31fc4-0b37-4d64-9074-1a65816229df.js
+2015-09-09 11:28:19.0735|Info|Iniciando os testes
+2015-09-09 11:28:21.0689|Info|Encerrando os testes
+2015-09-09 11:28:21.0689|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:28:21.0689|Info| 2 segundos para avaliar o individuo ResultadosMoment\0273c917-2f6e-4e15-8079-b4b458a8e8e1.js
+2015-09-09 11:28:24.3312|Info|Iniciando os testes
+2015-09-09 11:28:26.7630|Info|Encerrando os testes
+2015-09-09 11:28:26.7630|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:28:26.7630|Info| 2 segundos para avaliar o individuo ResultadosMoment\4a133e3f-4e75-4ecb-aac8-0390aac33aab.js
+2015-09-09 11:28:30.0363|Info|Iniciando os testes
+2015-09-09 11:28:32.1068|Info|Encerrando os testes
+2015-09-09 11:28:32.1068|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:28:32.1068|Info| 2 segundos para avaliar o individuo ResultadosMoment\680f4e8f-9e5e-4e4c-b5ba-f47fe8e8034a.js
+2015-09-09 11:28:50.4728|Info|Iniciando os testes
+2015-09-09 11:28:52.6453|Info|Encerrando os testes
+2015-09-09 11:28:52.6453|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:28:52.6463|Info| 2 segundos para avaliar o individuo ResultadosMoment\1691b622-7524-435e-b0d4-5e00b21cc485.js
+2015-09-09 11:28:55.8826|Info|Iniciando os testes
+2015-09-09 11:28:57.9781|Info|Encerrando os testes
+2015-09-09 11:28:57.9781|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:28:57.9781|Info| 2 segundos para avaliar o individuo ResultadosMoment\61efe4f2-f3b2-4d59-8bcb-6c61bb3ffb17.js
+2015-09-09 11:29:01.2364|Info|Iniciando os testes
+2015-09-09 11:29:03.4210|Info|Encerrando os testes
+2015-09-09 11:29:03.4210|Info|Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 11:29:03.4210|Info| 2 segundos para avaliar o individuo ResultadosMoment\087056dc-0c78-4389-b664-907b4138b816.js
+2015-09-09 11:29:06.6813|Info|Iniciando os testes
+2015-09-09 11:29:33.6195|Info|Encerrando os testes
+2015-09-09 11:33:03.7938|Info|Iniciando Otimização do global.js
+2015-09-09 11:33:03.8068|Info|    SetTimeout False
+2015-09-09 11:33:07.6105|Info|    Fitness do Original 58783
+2015-09-09 11:33:07.6105|Info|    Criando a populaçao Inicial com 10 individuos
+2015-09-09 11:33:07.6105|Info|    0 - Fitness : 58783
+2015-09-09 11:33:13.0373|Info|    1 - Fitness : 58783
+2015-09-09 11:33:18.1960|Info|    2 - Fitness : 58783
+2015-09-09 11:33:23.4237|Info|    3 - Fitness : 58783
+2015-09-09 11:33:28.6825|Info|    4 - Fitness : 58783
+2015-09-09 11:33:34.0233|Info|    5 - Fitness : 58783
+2015-09-09 11:33:39.3480|Info|    6 - Fitness : 58783
+2015-09-09 11:33:44.8509|Info|    7 - Fitness : 58783
+2015-09-09 11:33:50.3509|Info|    8 - Fitness : 58783
+2015-09-09 11:35:17.6349|Info|Iniciando Otimização do global.js
+2015-09-09 11:35:17.6499|Info|    SetTimeout False
+2015-09-09 11:35:21.9629|Info|    Fitness do Original 144
+2015-09-09 11:35:21.9629|Info|    Criando a populaçao Inicial com 10 individuos
+2015-09-09 11:35:21.9629|Info|    0 - Fitness : 144
+2015-09-09 11:35:28.0102|Info|    1 - Fitness : 144
+2015-09-09 11:35:33.7963|Info|    2 - Fitness : 144
+2015-09-09 11:35:39.8207|Info|    3 - Fitness : 144
+2015-09-09 11:35:45.7989|Info|    4 - Fitness : 144
+2015-09-09 11:35:51.2027|Info|    5 - Fitness : 144
+2015-09-09 11:35:56.6756|Info|    6 - Fitness : 144
+2015-09-09 11:36:02.1095|Info|    7 - Fitness : 144
+2015-09-09 11:36:07.5964|Info|    8 - Fitness : 144
+2015-09-09 11:37:19.4954|Info|Iniciando Otimização do global.js
+2015-09-09 11:37:19.5074|Info|    SetTimeout False
+2015-09-09 11:37:23.1821|Info|    Fitness do Original 690
+2015-09-09 11:37:23.1821|Info|    Criando a populaçao Inicial com 10 individuos
+2015-09-09 11:37:23.1821|Info|    0 - Fitness : 690
+2015-09-09 11:37:25.2075|Info|             Excluindo nó: {"range":[268065,268094],"loc":{"start":{"line":7555,"column":23},"end":{"line":7555,"column":52}},"type":"ConditionalExpression","test":{"range":[268065,268075],"loc":{"start":{"line":7555,"column":23},"end":{"line":7555,"column":33}},"type":"BinaryExpression","operator":">=","left":{"range":[268065,268069],"loc":{"start":{"line":7555,"column":23},"end":{"line":7555,"column":27}},"type":"Identifier","name":"hour"},"right":{"range":[268073,268075],"loc":{"start":{"line":7555,"column":31},"end":{"line":7555,"column":33}},"type":"Literal","value":11,"raw":"11"}},"consequent":{"range":[268078,268082],"loc":{"start":{"line":7555,"column":36},"end":{"line":7555,"column":40}},"type":"Identifier","name":"hour"},"alternate":{"range":[268085,268094],"loc":{"start":{"line":7555,"column":43},"end":{"line":7555,"column":52}},"type":"BinaryExpression","operator":"+","left":{"range":[268085,268089],"loc":{"start":{"line":7555,"column":43},"end":{"line":7555,"column":47}},"type":"Identifier","name":"hour"},"right":{"range":[268092,268094],"loc":{"start":{"line":7555,"column":50},"end":{"line":7555,"column":52}},"type":"Literal","value":12,"raw":"12"}}}
+2015-09-09 11:37:28.5008|Info|    1 - Fitness : 690
+2015-09-09 11:37:30.3672|Info|             Excluindo nó: {"range":[307529,307546],"loc":{"start":{"line":8624,"column":12},"end":{"line":8624,"column":29}},"type":"Property","key":{"range":[307529,307530],"loc":{"start":{"line":8624,"column":12},"end":{"line":8624,"column":13}},"type":"Identifier","name":"M"},"computed":false,"value":{"range":[307533,307546],"loc":{"start":{"line":8624,"column":16},"end":{"line":8624,"column":29}},"type":"Identifier","name":"sk__translate"},"kind":"init","method":false,"shorthand":false}
+2015-09-09 11:37:33.5514|Info|    2 - Fitness : 690
+2015-09-09 11:37:35.4208|Info|             Excluindo nó: {"range":[285468,285474],"loc":{"start":{"line":8052,"column":8},"end":{"line":8052,"column":14}},"type":"Identifier","name":"months"}
+2015-09-09 11:37:38.7952|Info|    3 - Fitness : 690
+2015-09-09 11:37:40.6945|Info|             Excluindo nó: {"range":[196957,196979],"loc":{"start":{"line":5615,"column":22},"end":{"line":5615,"column":44}},"type":"Literal","value":"Di_Lu_Ma_Me_Je_Ve_Sa","raw":"'Di_Lu_Ma_Me_Je_Ve_Sa'"}
+2015-09-09 11:37:44.0589|Info|    4 - Fitness : 690
+2015-09-09 11:37:45.9522|Info|             Excluindo nó: {"range":[63453,63458],"loc":{"start":{"line":1911,"column":75},"end":{"line":1911,"column":80}},"type":"Identifier","name":"month"}
+2015-09-09 11:37:49.4147|Info|    5 - Fitness : 690
+2015-09-09 11:37:51.2950|Info|             Excluindo nó: {"range":[197259,197503],"loc":{"start":{"line":5624,"column":19},"end":{"line":5631,"column":9}},"type":"ObjectExpression","properties":[{"range":[197274,197304],"loc":{"start":{"line":5625,"column":12},"end":{"line":5625,"column":42}},"type":"Property","key":{"range":[197274,197281],"loc":{"start":{"line":5625,"column":12},"end":{"line":5625,"column":19}},"type":"Identifier","name":"sameDay"},"computed":false,"value":{"range":[197283,197304],"loc":{"start":{"line":5625,"column":21},"end":{"line":5625,"column":42}},"type":"Literal","value":"[Aujourd'hui à] LT","raw":"'[Aujourd\\'hui à] LT'"},"kind":"init","method":false,"shorthand":false},{"range":[197319,197343],"loc":{"start":{"line":5626,"column":12},"end":{"line":5626,"column":36}},"type":"Property","key":{"range":[197319,197326],"loc":{"start":{"line":5626,"column":12},"end":{"line":5626,"column":19}},"type":"Identifier","name":"nextDay"},"computed":false,"value":{"range":[197328,197343],"loc":{"start":{"line":5626,"column":21},"end":{"line":5626,"column":36}},"type":"Literal","value":"[Demain à] LT","raw":"'[Demain à] LT'"},"kind":"init","method":false,"shorthand":false},{"range":[197358,197381],"loc":{"start":{"line":5627,"column":12},"end":{"line":5627,"column":35}},"type":"Property","key":{"range":[197358,197366],"loc":{"start":{"line":5627,"column":12},"end":{"line":5627,"column":20}},"type":"Identifier","name":"nextWeek"},"computed":false,"value":{"range":[197368,197381],"loc":{"start":{"line":5627,"column":22},"end":{"line":5627,"column":35}},"type":"Literal","value":"dddd [à] LT","raw":"'dddd [à] LT'"},"kind":"init","method":false,"shorthand":false},{"range":[197396,197418],"loc":{"start":{"line":5628,"column":12},"end":{"line":5628,"column":34}},"type":"Property","key":{"range":[197396,197403],"loc":{"start":{"line":5628,"column":12},"end":{"line":5628,"column":19}},"type":"Identifier","name":"lastDay"},"computed":false,"value":{"range":[197405,197418],"loc":{"start":{"line":5628,"column":21},"end":{"line":5628,"column":34}},"type":"Literal","value":"[Hier à] LT","raw":"'[Hier à] LT'"},"kind":"init","method":false,"shorthand":false},{"range":[197433,197464],"loc":{"start":{"line":5629,"column":12},"end":{"line":5629,"column":43}},"type":"Property","key":{"range":[197433,197441],"loc":{"start":{"line":5629,"column":12},"end":{"line":5629,"column":20}},"type":"Identifier","name":"lastWeek"},"computed":false,"value":{"range":[197443,197464],"loc":{"start":{"line":5629,"column":22},"end":{"line":5629,"column":43}},"type":"Literal","value":"dddd [dernier à] LT","raw":"'dddd [dernier à] LT'"},"kind":"init","method":false,"shorthand":false},{"range":[197479,197492],"loc":{"start":{"line":5630,"column":12},"end":{"line":5630,"column":25}},"type":"Property","key":{"range":[197479,197487],"loc":{"start":{"line":5630,"column":12},"end":{"line":5630,"column":20}},"type":"Identifier","name":"sameElse"},"computed":false,"value":{"range":[197489,197492],"loc":{"start":{"line":5630,"column":22},"end":{"line":5630,"column":25}},"type":"Literal","value":"L","raw":"'L'"},"kind":"init","method":false,"shorthand":false}]}

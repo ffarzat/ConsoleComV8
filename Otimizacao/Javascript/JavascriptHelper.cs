@@ -103,6 +103,11 @@ namespace Otimizacao.Javascript
         private string _diretorioExecucao;
 
         /// <summary>
+        /// Total de Nós de um
+        /// </summary>
+        public int TotalDeNos { get; set; } 
+
+        /// <summary>
         /// Construtor, configura o Helper para posterior execuçao
         /// </summary>
         /// <param name="diretorioJavascripts">Diretório onde estão os arquivos em js</param>
@@ -333,6 +338,7 @@ namespace Otimizacao.Javascript
 
                             if(counter > #randonNode)
                             {
+                                //javascriptHelper.Escrever('             Excluindo nó: {0}', JSON.stringify(node));
                                 node.type = 'EmptyStatement';
                                 this.break();
                                 return node;
@@ -351,6 +357,34 @@ namespace Otimizacao.Javascript
                     ".Replace("#ast", this.EncodeJsString(ast)).Replace("#randonNode", randonNode.ToString()));
 
            return JsonAst;
+        }
+
+        /// <summary>
+        /// Conta o total de Nós de uma Ast
+        /// </summary>
+        /// <param name="ast">árvore no formato do esprima</param>
+        /// <returns></returns>
+        public int ContarNos(string ast)
+        {
+
+            var engine = _manager.GetEngine();
+            engine.Execute(@"
+
+                    var ast = JSON.parse(#ast);
+
+                    var indent = 0;
+                    var counter = 0;
+
+                    ObjEstraverse.replace(ast, {
+                        enter: function(node, parent) {
+                            counter++;
+                        }
+                    });
+
+                    javascriptHelper.TotalDeNos = counter;
+                    ".Replace("#ast", this.EncodeJsString(ast)));
+
+            return TotalDeNos;
         }
 
         /// <summary>
@@ -562,7 +596,7 @@ namespace Otimizacao.Javascript
             #region Carrega e executa os Testes
             _manager.ExecuteCompiled(Path.GetFileNameWithoutExtension(nomeDoArquivoTestes));
 
-            Escrever("Iniciando os testes");
+            //Escrever("Iniciando os testes");
             //Escrever("_timers.Count {0}", _timers.Count);
 
             _engine.Execute(@"   QUnit.load();
@@ -580,20 +614,20 @@ namespace Otimizacao.Javascript
             
 
             
-            Escrever("Encerrando os testes");
+            //Escrever("Encerrando os testes");
 
             #endregion
             
             sw.Stop();
 
-            Log(string.Format("Total:{0}, Sucesso: {1}, Falha: {2}", this.TotalTestes, this.TestesComSucesso, this.TestesComFalha));
-            Log(string.Format(" {0} segundos para avaliar o individuo {1}", sw.Elapsed.Seconds, nomeArquivoIndividuo));
+            //Log(string.Format("Total:{0}, Sucesso: {1}, Falha: {2}", this.TotalTestes, this.TestesComSucesso, this.TestesComFalha));
+            //Log(string.Format(" {0} segundos para avaliar o individuo {1}", sw.Elapsed.Seconds, nomeArquivoIndividuo));
 
-            this.FalhasDosTestes.ForEach(this.Log);
+            //this.FalhasDosTestes.ForEach(this.Log);
 
+            var tempoTestesSomados = (TotalTestes - TestesComSucesso); //Penaliza quem falha
 
-
-            return (TotalTestes - TestesComSucesso);
+            return (sw.Elapsed.Milliseconds + tempoTestesSomados);
         }
 
         /// <summary>

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ClearScript.Manager;
 using Microsoft.ClearScript.V8;
 using NLog;
+using Otimizacao;
 using Otimizacao.Javascript;
 
 
@@ -25,26 +26,9 @@ namespace ConsoleComV8
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            for (int i = 0; i < 60; i++)
-            {
-                
-
-
-                var helperMoment = new JavascriptHelper("Moment", false, false);
-
-                //criar os individuos
-
-                //Fazer o setup da FitNess
-
-                //Configurar as rodadas, log, relatório de saída
-
-                //Executar
-
-                
-            }
-
-
-
+            var otimizador = new Otimizador(10, 5, 3, "Moment", "ResultadosMoment");
+            otimizador.Otimizar("global.js", "core-test.js");
+            
             Console.Read();
         }
 

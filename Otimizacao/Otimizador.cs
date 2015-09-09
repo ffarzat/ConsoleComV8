@@ -101,6 +101,9 @@ namespace Otimizacao
             _timeout = timeoutAvaliacaoIndividuo;
             _diretorioFontes = diretorioFontes;
             _diretorioExecucao = diretorioExecucao;
+
+            if (!Directory.Exists(_diretorioExecucao))
+                Directory.CreateDirectory(_diretorioExecucao);
         }
 
         /// <summary>
@@ -120,7 +123,12 @@ namespace Otimizacao
         public bool Otimizar(string caminhoBibliotecaJs, string caminhoTestesJs)
         {
             _jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+            _jHelper.ConfigurarGeracao();
+
             _caminhoScriptTestes = caminhoTestesJs;
+
+            _jHelper.Log(string.Format("Iniciando Otimização do {0}", caminhoBibliotecaJs));
+            _jHelper.Log(string.Format("    SetTimeout {0}", _usarSetTimeout));
 
             CriarPrimeiraGeracao(caminhoBibliotecaJs);
             return false;
@@ -139,13 +147,13 @@ namespace Otimizacao
 
             _population.Add(_original);
 
+            _jHelper.Log(string.Format("    Criando a populaçao Inicial com {0} individuos",_size));
             for (int i = 0; i < (_size -1); i++)
             {
+                _jHelper.Log(string.Format("    {0} - Fitness : {1}", i,  _original.Fitness));
                 var atual = _original.Clone();
-                
                 ExecutarMutacao(atual);
                 AvaliarIndividuo(atual);
-                
                 _population.Add(atual);
             }
         }
@@ -156,14 +164,18 @@ namespace Otimizacao
         /// <param name="caminhoBibliotecaJs"></param>
         private void CriarIndividuoOriginal(string caminhoBibliotecaJs)
         {
-            _original = new Individuo()
+            var caminho = string.Format("{0}\\{1}", _diretorioFontes, caminhoBibliotecaJs);
+
+            _original = new Individuo
                 {
-                    Ast = _jHelper.GerarAst(File.ReadAllText(caminhoBibliotecaJs)),
+                    Ast = _jHelper.GerarAst(File.ReadAllText(caminho)),
+                    Arquivo = caminho,
                 };
 
-            _original.Arquivo = caminhoBibliotecaJs;
             _original.Codigo = _jHelper.GerarCodigo(_original.Ast);
             _original.Fitness = _jHelper.ExecutarTestes(caminhoBibliotecaJs, _caminhoScriptTestes);
+
+            _jHelper.Log(string.Format("    Fitness do Original {0}", _original.Fitness));
         }
 
         /// <summary>
@@ -172,7 +184,9 @@ namespace Otimizacao
         /// <param name="sujeito"> </param>
         private void ExecutarMutacao(Individuo sujeito)
         {
-            sujeito.Ast = _jHelper.ExecutarMutacaoExclusao(sujeito.Ast, Rand.Next());
+            var total = _jHelper.ContarNos(sujeito.Ast);
+            int no = Rand.Next(0, total);
+            sujeito.Ast = _jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no);
         }
 
         /// <summary>
@@ -212,6 +226,7 @@ namespace Otimizacao
 
             var caminhoNovoAvaliado = string.Format("{0}\\{1}.js", _diretorioExecucao, Guid.NewGuid());
             File.WriteAllText(caminhoNovoAvaliado, sujeito.Codigo);
+
             return caminhoNovoAvaliado;
         }
     }
