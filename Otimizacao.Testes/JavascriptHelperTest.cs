@@ -170,5 +170,24 @@ namespace Otimizacao.Testes
 
         }
 
+        /// <summary>
+        /// Conta quantos nós existem na Ast
+        /// </summary>
+        [Test]
+        public void ExecutarContagemDeNos()
+        {
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"), true, false);
+            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Require", "underscore.js"));
+            helper.ConfigurarGeracao();
+
+            var ast = helper.GerarAst(scriptCode);
+
+            var total = helper.ContarNos(ast);
+
+            Assert.AreNotEqual(0, total);
+            Assert.AreEqual(6549, total);
+
+        }
+
     }
 }
