@@ -10771,3 +10771,404 @@
 2015-09-09 13:38:47.9598|Info|                486
 2015-09-09 13:39:01.7876|Info|            Avaliando ResultadosMoment\60e9ec68-67d1-4575-abbf-2b4c211026e3.js
 2015-09-09 13:39:04.6997|Info|                911
+2015-09-09 13:46:16.3486|Info|Iniciando Otimização do global.js
+2015-09-09 13:46:16.3606|Info|    SetTimeout False
+2015-09-09 13:46:20.1353|Info|    Fitness do Original 747
+2015-09-09 13:46:20.1353|Info|    Criando a populaçao Inicial com 10 individuos
+2015-09-09 13:46:23.0023|Info|            Avaliando ResultadosMoment\42dac867-5b2a-4652-82f5-5505744d5530.js
+2015-09-09 13:46:25.4890|Info|                486
+2015-09-09 13:46:28.2820|Info|            Avaliando ResultadosMoment\15243c6f-cb4f-4a20-8925-57313ad23f38.js
+2015-09-09 13:46:30.5927|Info|                310
+2015-09-09 13:46:33.4387|Info|            Avaliando ResultadosMoment\ed7299ad-41ad-4159-aee1-24e7e4d67999.js
+2015-09-09 13:46:35.7874|Info|                348
+2015-09-09 13:46:38.6894|Info|            Avaliando ResultadosMoment\2ca2918c-0cb1-4726-b3a3-3d907c9948e8.js
+2015-09-09 13:46:41.0942|Info|                403
+2015-09-09 13:46:43.9992|Info|            Avaliando ResultadosMoment\379fa7ae-ba21-4eba-82b1-3b90d0e76d38.js
+2015-09-09 13:46:46.5030|Info|                502
+2015-09-09 13:46:49.4351|Info|            Avaliando ResultadosMoment\1565a713-006d-4cfd-9b51-9d238069729f.js
+2015-09-09 13:46:51.8368|Info|                400
+2015-09-09 13:46:54.7829|Info|            Avaliando ResultadosMoment\98ccab68-b10a-403a-9efc-5ab48fa92388.js
+2015-09-09 13:46:57.4397|Info|                656
+2015-09-09 13:47:25.9570|Info|Iniciando Otimização do global.js
+2015-09-09 13:47:25.9700|Info|    SetTimeout False
+2015-09-09 13:47:29.6817|Info|    Fitness do Original 713
+2015-09-09 13:47:29.6817|Info|    Criando a populaçao Inicial com 10 individuos
+2015-09-09 13:47:35.0615|Info|            515
+2015-09-09 13:47:40.2091|Info|            361
+2015-09-09 13:49:59.2819|Info|Iniciando Otimização do global.js
+2015-09-09 13:49:59.2960|Info|    SetTimeout False
+2015-09-09 13:50:03.0506|Info|    Fitness do Original 734
+2015-09-09 13:50:03.0506|Info|    Criando a populaçao Inicial com 10 individuos
+2015-09-09 13:50:08.7437|Info|            701
+2015-09-09 13:50:13.9283|Info|            387
+2015-09-09 13:50:19.5283|Info|            714
+2015-09-09 13:50:25.0022|Info|            565
+2015-09-09 13:50:30.6292|Info|            552
+2015-09-09 13:50:36.1501|Info|            544
+2015-09-09 13:50:41.9933|Info|            665
+2015-09-09 13:50:47.8304|Info|            668
+2015-09-09 13:50:53.3964|Info|            610
+2015-09-09 13:50:59.0334|Info|            611
+2015-09-09 13:52:32.8701|Info|Iniciando Otimização do global.js
+2015-09-09 13:52:32.8841|Info|    SetTimeout False
+2015-09-09 13:52:36.6518|Info|    Fitness do Original 778
+2015-09-09 13:52:36.6518|Info|    Criando a populaçao Inicial com 10 individuos
+2015-09-09 13:54:10.2933|Info|Iniciando Otimização do global.js
+2015-09-09 13:54:10.3063|Info|    SetTimeout False
+2015-09-09 13:54:14.1851|Info|    Fitness do Original 866
+2015-09-09 13:54:14.1851|Info|    Criando a populaçao Inicial com 10 individuos
+2015-09-09 13:54:19.9591|Info|            775
+2015-09-09 13:54:25.2649|Info|            377
+2015-09-09 13:54:30.6067|Info|            449
+2015-09-09 13:54:36.2447|Info|            687
+2015-09-09 13:54:42.0038|Info|            549
+2015-09-09 13:54:47.3706|Info|            443
+2015-09-09 13:54:52.9586|Info|            605
+2015-09-09 13:54:58.4875|Info|            549
+2015-09-09 13:55:04.1225|Info|            634
+2015-09-09 13:55:09.7275|Info|            607
+2015-09-09 13:55:15.9099|Info|System.Runtime.InteropServices.SEHException (0x80004005): External component has thrown an exception.
+   at new(UInt32 )
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >._Copy(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt32 _Newsize, UInt32 _Oldlen) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 2223
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >._Grow(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt32 _Newsize, Boolean _Trim) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 2246
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >.assign(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt16* _Ptr, UInt32 _Count) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 1158
+   at StdString.{ctor}(StdString* , String gcValue) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 768
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 372
+2015-09-09 13:56:42.8336|Info|Iniciando Otimização do global.js
+2015-09-09 13:56:42.8336|Info|    SetTimeout False
+2015-09-09 13:56:46.5733|Info|    Fitness do Original 734
+2015-09-09 13:56:46.5733|Info|    Criando a populaçao Inicial com 10 individuos
+2015-09-09 13:56:52.0232|Info|            603
+2015-09-09 13:56:57.0668|Info|            315
+2015-09-09 13:57:02.3345|Info|            414
+2015-09-09 13:57:07.6102|Info|            437
+2015-09-09 13:57:12.9671|Info|            494
+2015-09-09 13:57:18.4069|Info|            548
+2015-09-09 13:57:23.8488|Info|            561
+2015-09-09 13:57:29.3127|Info|            569
+2015-09-09 13:57:35.6021|Info|            241
+2015-09-09 13:57:41.9477|Info|            740
+2015-09-09 13:57:46.3358|Info|System.Runtime.InteropServices.SEHException (0x80004005): External component has thrown an exception.
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarCrossOver(String astPai, String astMae, Int32 randonNodePai, Int32 randonNodeMae, String& astPrimeiroFilho, String& astSegundoFilho) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 445
+   at Otimizacao.Otimizador.ExecutarCruzamento(Individuo pai, Individuo mae, Individuo& filhoPai, Individuo& filhoMae) in d:\GitHub\ConsoleComV8\Otimizacao\Otimizador.cs:line 364
+2015-09-09 13:57:47.7488|Info|System.Runtime.InteropServices.SEHException (0x80004005): External component has thrown an exception.
+   at new(UInt32 )
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >._Copy(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt32 _Newsize, UInt32 _Oldlen) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 2223
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >._Grow(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt32 _Newsize, Boolean _Trim) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 2246
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >.assign(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt16* _Ptr, UInt32 _Count) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 1158
+   at StdString.{ctor}(StdString* , String gcValue) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 768
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 372
+2015-09-09 13:57:51.2633|Info|System.Runtime.InteropServices.SEHException (0x80004005): External component has thrown an exception.
+   at new(UInt32 )
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >._Copy(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt32 _Newsize, UInt32 _Oldlen) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 2223
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >._Grow(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt32 _Newsize, Boolean _Trim) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 2246
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >.assign(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt16* _Ptr, UInt32 _Count) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 1158
+   at StdString.{ctor}(StdString* , String gcValue) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 768
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 372
+2015-09-09 13:57:51.6996|Info|System.OutOfMemoryException: Exception of type 'System.OutOfMemoryException' was thrown.
+   at System.String.ReplaceInternal(String oldValue, String newValue)
+   at System.String.Replace(String oldValue, String newValue)
+   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 372
+2015-09-09 13:57:51.9507|Info|System.OutOfMemoryException: Exception of type 'System.OutOfMemoryException' was thrown.
+   at System.String.ReplaceInternal(String oldValue, String newValue)
+   at System.String.Replace(String oldValue, String newValue)
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarCrossOver(String astPai, String astMae, Int32 randonNodePai, Int32 randonNodeMae, String& astPrimeiroFilho, String& astSegundoFilho) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 417
+   at Otimizacao.Otimizador.ExecutarCruzamento(Individuo pai, Individuo mae, Individuo& filhoPai, Individuo& filhoMae) in d:\GitHub\ConsoleComV8\Otimizacao\Otimizador.cs:line 364
+2015-09-09 13:57:52.2059|Info|System.OutOfMemoryException: Exception of type 'System.OutOfMemoryException' was thrown.
+   at System.String.ReplaceInternal(String oldValue, String newValue)
+   at System.String.Replace(String oldValue, String newValue)
+   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 372
+2015-09-09 13:57:52.4631|Info|System.OutOfMemoryException: Exception of type 'System.OutOfMemoryException' was thrown.
+   at System.String.ReplaceInternal(String oldValue, String newValue)
+   at System.String.Replace(String oldValue, String newValue)
+   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 372
+2015-09-09 13:57:52.7203|Info|System.OutOfMemoryException: Exception of type 'System.OutOfMemoryException' was thrown.
+   at System.String.ReplaceInternal(String oldValue, String newValue)
+   at System.String.Replace(String oldValue, String newValue)
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarCrossOver(String astPai, String astMae, Int32 randonNodePai, Int32 randonNodeMae, String& astPrimeiroFilho, String& astSegundoFilho) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 417
+   at Otimizacao.Otimizador.ExecutarCruzamento(Individuo pai, Individuo mae, Individuo& filhoPai, Individuo& filhoMae) in d:\GitHub\ConsoleComV8\Otimizacao\Otimizador.cs:line 364
+2015-09-09 13:57:52.7203|Info|      4 crossover(s) executados
+2015-09-09 13:57:52.9765|Info|System.OutOfMemoryException: Exception of type 'System.OutOfMemoryException' was thrown.
+   at System.String.ReplaceInternal(String oldValue, String newValue)
+   at System.String.Replace(String oldValue, String newValue)
+   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 372
+2015-09-09 13:58:56.7248|Info|Iniciando Otimização do global.js
+2015-09-09 13:58:56.7248|Info|    SetTimeout False
+2015-09-09 13:59:01.0208|Info|    Fitness do Original 201
+2015-09-09 13:59:01.0218|Info|    Criando a populaçao Inicial com 10 individuos
+2015-09-09 13:59:06.9600|Info|            890
+2015-09-09 13:59:12.4690|Info|            537
+2015-09-09 13:59:18.6323|Info|            956
+2015-09-09 13:59:24.7547|Info|            748
+2015-09-09 13:59:31.0332|Info|            905
+2015-09-09 13:59:37.2566|Info|            828
+2015-09-09 13:59:43.1458|Info|            504
+2015-09-09 13:59:49.1020|Info|            701
+2015-09-09 13:59:54.6930|Info|            525
+2015-09-09 13:59:54.9872|Info|System.OutOfMemoryException: Insufficient memory to continue the execution of the program.
+   at System.Runtime.InteropServices.Marshal.StringToHGlobalUni(String s)
+   at Microsoft.ClearScript.V8.V8ProxyHelpers.AllocString(String value) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ProxyHelpers.cs:line 76
+   at StdString.{ctor}(StdString* , String gcValue) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\stdstring.h:line 76
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 372
+2015-09-09 13:59:58.0584|Info|            530
+2015-09-09 14:00:03.3511|Info|System.Runtime.InteropServices.SEHException (0x80004005): External component has thrown an exception.
+   at new(UInt32 )
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >._Copy(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt32 _Newsize, UInt32 _Oldlen) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 2223
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >._Grow(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt32 _Newsize, Boolean _Trim) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 2246
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >.assign(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt16* _Ptr, UInt32 _Count) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 1158
+   at StdString.{ctor}(StdString* , String gcValue) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 768
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 372
+2015-09-09 14:00:03.6903|Info|System.Runtime.InteropServices.SEHException (0x80004005): External component has thrown an exception.
+   at new(UInt32 )
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >._Copy(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt32 _Newsize, UInt32 _Oldlen) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 2223
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >._Grow(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt32 _Newsize, Boolean _Trim) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 2246
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >.assign(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt16* _Ptr, UInt32 _Count) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 1158
+   at StdString.{ctor}(StdString* , String gcValue) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 768
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 372
+2015-09-09 14:00:04.0406|Info|System.Runtime.InteropServices.SEHException (0x80004005): External component has thrown an exception.
+   at new(UInt32 )
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >._Copy(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt32 _Newsize, UInt32 _Oldlen) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 2223
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >._Grow(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt32 _Newsize, Boolean _Trim) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 2246
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >.assign(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt16* _Ptr, UInt32 _Count) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 1158
+   at StdString.{ctor}(StdString* , String gcValue) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 768
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarCrossOver(String astPai, String astMae, Int32 randonNodePai, Int32 randonNodeMae, String& astPrimeiroFilho, String& astSegundoFilho) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 417
+   at Otimizacao.Otimizador.ExecutarCruzamento(Individuo pai, Individuo mae, Individuo& filhoPai, Individuo& filhoMae) in d:\GitHub\ConsoleComV8\Otimizacao\Otimizador.cs:line 366
+2015-09-09 14:00:04.7661|Info|System.Runtime.InteropServices.SEHException (0x80004005): External component has thrown an exception.
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 372
+2015-09-09 14:00:05.0633|Info|System.OutOfMemoryException: Insufficient memory to continue the execution of the program.
+   at System.Runtime.InteropServices.Marshal.StringToHGlobalUni(String s)
+   at Microsoft.ClearScript.V8.V8ProxyHelpers.AllocString(String value) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ProxyHelpers.cs:line 76
+   at StdString.{ctor}(StdString* , String gcValue) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\stdstring.h:line 76
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 372
+2015-09-09 14:00:05.4606|Info|System.OutOfMemoryException: Insufficient memory to continue the execution of the program.
+   at System.Runtime.InteropServices.Marshal.StringToHGlobalUni(String s)
+   at Microsoft.ClearScript.V8.V8ProxyHelpers.AllocString(String value) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ProxyHelpers.cs:line 76
+   at StdString.{ctor}(StdString* , String gcValue) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\stdstring.h:line 76
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarCrossOver(String astPai, String astMae, Int32 randonNodePai, Int32 randonNodeMae, String& astPrimeiroFilho, String& astSegundoFilho) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 417
+   at Otimizacao.Otimizador.ExecutarCruzamento(Individuo pai, Individuo mae, Individuo& filhoPai, Individuo& filhoMae) in d:\GitHub\ConsoleComV8\Otimizacao\Otimizador.cs:line 366
+2015-09-09 14:00:05.7418|Info|System.OutOfMemoryException: Insufficient memory to continue the execution of the program.
+   at System.Runtime.InteropServices.Marshal.StringToHGlobalUni(String s)
+   at Microsoft.ClearScript.V8.V8ProxyHelpers.AllocString(String value) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ProxyHelpers.cs:line 76
+   at StdString.{ctor}(StdString* , String gcValue) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\stdstring.h:line 76
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 372
+2015-09-09 14:00:06.0420|Info|System.OutOfMemoryException: Insufficient memory to continue the execution of the program.
+   at System.Runtime.InteropServices.Marshal.StringToHGlobalUni(String s)
+   at Microsoft.ClearScript.V8.V8ProxyHelpers.AllocString(String value) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ProxyHelpers.cs:line 76
+   at StdString.{ctor}(StdString* , String gcValue) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\stdstring.h:line 76
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 372
+2015-09-09 14:00:06.3272|Info|System.OutOfMemoryException: Insufficient memory to continue the execution of the program.
+   at System.Runtime.InteropServices.Marshal.StringToHGlobalUni(String s)
+   at Microsoft.ClearScript.V8.V8ProxyHelpers.AllocString(String value) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ProxyHelpers.cs:line 76
+   at StdString.{ctor}(StdString* , String gcValue) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\stdstring.h:line 76
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarCrossOver(String astPai, String astMae, Int32 randonNodePai, Int32 randonNodeMae, String& astPrimeiroFilho, String& astSegundoFilho) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 417
+   at Otimizacao.Otimizador.ExecutarCruzamento(Individuo pai, Individuo mae, Individuo& filhoPai, Individuo& filhoMae) in d:\GitHub\ConsoleComV8\Otimizacao\Otimizador.cs:line 366
+2015-09-09 14:00:06.3272|Info|      4 crossover(s) executados
+2015-09-09 14:00:06.6194|Info|System.OutOfMemoryException: Insufficient memory to continue the execution of the program.
+   at System.Runtime.InteropServices.Marshal.StringToHGlobalUni(String s)
+   at Microsoft.ClearScript.V8.V8ProxyHelpers.AllocString(String value) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ProxyHelpers.cs:line 76
+   at StdString.{ctor}(StdString* , String gcValue) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\stdstring.h:line 76
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 372
+2015-09-09 14:00:06.9687|Info|System.Runtime.InteropServices.SEHException (0x80004005): External component has thrown an exception.
+   at new(UInt32 )
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >._Copy(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt32 _Newsize, UInt32 _Oldlen) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 2223
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >._Grow(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt32 _Newsize, Boolean _Trim) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 2246
+   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >.assign(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt16* _Ptr, UInt32 _Count) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 1158
+   at StdString.{ctor}(StdString* , String gcValue) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 768
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 372
+2015-09-09 14:00:06.9687|Info|          2 mutações executadas
+2015-09-09 14:00:10.4581|Info|            584
+2015-09-09 14:00:13.3632|Info|            412
+2015-09-09 14:00:16.6526|Info|            412
+2015-09-09 14:00:19.5937|Info|            458

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using NLog;
 using Otimizacao.Javascript;
@@ -106,8 +107,25 @@ namespace Otimizacao
             _diretorioFontes = diretorioFontes;
             _diretorioExecucao = diretorioExecucao;
 
-            if (!Directory.Exists(_diretorioExecucao))
-                Directory.CreateDirectory(_diretorioExecucao);
+            LimparResultadosAnteriores();
+        }
+
+        /// <summary>
+        /// Limpa o diretório de resultados
+        /// </summary>
+        private void LimparResultadosAnteriores()
+        {
+
+            if (Directory.Exists(_diretorioExecucao))
+            {
+                new DirectoryInfo(_diretorioExecucao).Delete(true);
+            }
+
+            Thread.Sleep(10);
+
+            Directory.CreateDirectory(_diretorioExecucao);
+            
+            Thread.Sleep(10);
         }
 
         /// <summary>
@@ -323,7 +341,9 @@ namespace Otimizacao
         {
             var total = _jHelper.ContarNos(sujeito.Ast);
             int no = Rand.Next(0, total);
-            sujeito.Ast = _jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no);
+            
+            if(total > 0 )
+                sujeito.Ast = _jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no);
         }
 
         /// <summary>
@@ -341,7 +361,16 @@ namespace Otimizacao
             var totalMae = _jHelper.ContarNos(mae.Ast);
 
             string c1, c2;
-            _jHelper.ExecutarCrossOver(pai.Ast, mae.Ast, totalPai, totalMae, out c1, out c2);
+            try
+            {
+                _jHelper.ExecutarCrossOver(pai.Ast, mae.Ast, totalPai, totalMae, out c1, out c2);
+            }
+            catch (Exception ex)
+            {
+                _jHelper.Log(ex.ToString());
+                return;
+            }
+            
 
             filhoPai.Ast = c1;
             filhoMae.Ast = c2;
@@ -355,9 +384,9 @@ namespace Otimizacao
         {
             var caminhoNovoAvaliado = GerarCodigo(sujeito);
 
-            _jHelper.Log(string.Format("            Avaliando {0}", sujeito.Arquivo));
+            //_jHelper.Log(string.Format("            Avaliando {0}", sujeito.Arquivo));
             sujeito.Fitness = _jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes);
-            _jHelper.Log(string.Format("                {0}", sujeito.Fitness));
+            _jHelper.Log(string.Format("            {0}", sujeito.Fitness));
 
             return sujeito.Fitness;
         }

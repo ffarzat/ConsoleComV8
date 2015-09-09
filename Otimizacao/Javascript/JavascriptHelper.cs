@@ -366,9 +366,10 @@ namespace Otimizacao.Javascript
         /// <returns></returns>
         public int ContarNos(string ast)
         {
-
-            var engine = _manager.GetEngine();
-            engine.Execute(@"
+            try
+            {
+                var engine = _manager.GetEngine();
+                engine.Execute(@"
 
                     var ast = JSON.parse(#ast);
 
@@ -383,6 +384,14 @@ namespace Otimizacao.Javascript
 
                     javascriptHelper.TotalDeNos = counter;
                     ".Replace("#ast", this.EncodeJsString(ast)));
+            }
+            catch (Exception ex )
+            {
+                
+                Log(ex.ToString());
+                return 0;
+            }
+            
 
             return TotalDeNos;
         }
@@ -599,20 +608,22 @@ namespace Otimizacao.Javascript
             //Escrever("Iniciando os testes");
             //Escrever("_timers.Count {0}", _timers.Count);
 
-            _engine.Execute(@"   QUnit.load();
+            try
+            {
+                _engine.Execute(@"   QUnit.load();
                                 QUnit.start();
                 ");
-
-            //Escrever("_timers.Count {0}", _timers.Count);
-            
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
+                return Int64.MaxValue - 5;
+            }
             
             while (GetTimersCount() > 0)
             {
                 Thread.Sleep(5);
             }
-    
-            
-
             
             //Escrever("Encerrando os testes");
 
