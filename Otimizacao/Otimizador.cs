@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -150,6 +151,9 @@ namespace Otimizacao
         /// </returns>
         public bool Otimizar(string caminhoBibliotecaJs, string caminhoTestesJs)
         {
+            var sw = new Stopwatch();
+            sw.Start();
+
             _caminhoScriptTestes = caminhoTestesJs;
             _caminhoBiblioteca = caminhoBibliotecaJs;
 
@@ -161,9 +165,16 @@ namespace Otimizacao
             CriarPrimeiraGeracao();
 
             ExecutarRodadas();
+            
+            sw.Stop();
 
+            _logger.Info("Rodadas executadas com sucesso", _fitnessMin);
+            var otimizou = MelhorIndividuo.Ast != _original.Ast;
+            _logger.Info("Houve otimizacao: {0}", otimizou);
 
-            return MelhorIndividuo.Ast == _original.Ast;
+            _logger.Info("Tempo total: {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
+
+            return otimizou;
         }
 
         /// <summary>

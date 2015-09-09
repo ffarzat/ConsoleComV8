@@ -26,11 +26,12 @@ namespace ConsoleComV8
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            var otimizador = new Otimizador(10, 5, 3, "underscore", "ResultadosUnderscore");
+            var otimizador = new Otimizador(10, 5, 20, "underscore", "ResultadosUnderscore");
             otimizador.UsarSetTimeout();
-            otimizador.Otimizar("underscore.js", "underscoreTests.js");
             
-            Console.Read();
+            var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
+            
+
         }
 
     }
