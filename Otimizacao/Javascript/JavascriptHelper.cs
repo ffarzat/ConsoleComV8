@@ -501,7 +501,7 @@ namespace Otimizacao.Javascript
         /// <param name="nomeArquivoIndividuo">Nome do arquivo.js que representa o individuo</param>
         /// <param name="nomeDoArquivoTestes">Nome do arquivo.js que representa a lista de testes para executar</param>
         /// <returns></returns>
-        public bool ExecutarTestes(string nomeArquivoIndividuo, string nomeDoArquivoTestes)
+        public Int64 ExecutarTestes(string nomeArquivoIndividuo, string nomeDoArquivoTestes)
         {
            
             var sw = new Stopwatch();
@@ -591,9 +591,9 @@ namespace Otimizacao.Javascript
 
             this.FalhasDosTestes.ForEach(this.Log);
 
-            
 
-            return true;
+
+            return (TotalTestes - TestesComSucesso);
         }
 
         /// <summary>

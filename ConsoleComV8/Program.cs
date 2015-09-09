@@ -27,6 +27,9 @@ namespace ConsoleComV8
         {
             for (int i = 0; i < 60; i++)
             {
+                
+
+
                 var helperMoment = new JavascriptHelper("Moment", false, false);
 
                 //criar os individuos

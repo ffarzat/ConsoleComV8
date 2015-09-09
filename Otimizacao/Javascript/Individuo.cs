@@ -27,6 +27,11 @@ namespace Otimizacao.Javascript
         public Int64 Fitness { get; set; }
 
         /// <summary>
+        /// Caminho do arquivo do inidviduo
+        /// </summary>
+        public string Arquivo { get; set; }
+
+        /// <summary>
         /// Construtor Default
         /// </summary>
         public Individuo()
@@ -42,8 +47,6 @@ namespace Otimizacao.Javascript
             return new Individuo()
                 {
                     Ast = this.Ast,
-                    Codigo= this.Codigo,
-                    Fitness = this.Fitness
                 };
         }
 
