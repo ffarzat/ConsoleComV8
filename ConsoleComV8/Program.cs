@@ -25,14 +25,22 @@ namespace ConsoleComV8
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            var helperMoment = new JavascriptHelper("Moment", false, false);
-            helperMoment.ExecutarTestes("global.js", "core-test.js");
+            for (int i = 0; i < 60; i++)
+            {
+                var helperMoment = new JavascriptHelper("Moment", false, false);
 
-            var helperLodash = new JavascriptHelper("Lodash", true, false);
-            helperLodash.ExecutarTestes("lodash.js", "lodashTest.js");
+                //criar os individuos
 
-            var helperUnderscore = new JavascriptHelper("underscore", true, false);
-            helperUnderscore.ExecutarTestes("underscore.js", "underscoreTests.js");
+                //Fazer o setup da FitNess
+
+                //Configurar as rodadas, log, relatório de saída
+
+                //Executar
+
+                
+            }
+
+
 
             Console.Read();
         }

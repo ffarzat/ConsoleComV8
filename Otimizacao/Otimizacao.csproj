@@ -52,7 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Javascript\Individuo.cs" />
     <Compile Include="Javascript\JavascriptHelper.cs" />
+    <Compile Include="Otimizador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
