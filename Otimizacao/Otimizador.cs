@@ -153,6 +153,8 @@ namespace Otimizacao
 
             _jHelper.Log(string.Format("Iniciando Otimização do {0}", caminhoBibliotecaJs));
             _jHelper.Log(string.Format("    SetTimeout {0}", _usarSetTimeout));
+            _jHelper.Log(string.Format("    Individuos {0}", _size));
+            _jHelper.Log(string.Format("    Geracoes {0}", _executarAte));
 
             CriarPrimeiraGeracao(caminhoBibliotecaJs);
 
@@ -167,11 +169,16 @@ namespace Otimizacao
         /// </summary>
         private void ExecutarRodadas()
         {
-            Crossover();
-            Mutate();
-            ExecuteFitEvaluation();
-            Selection();
-            FindBestChromosomeOfRun();
+            for (int i = 0; i < _executarAte; i++)
+            {
+                _jHelper.Log(string.Format("Geracao {0}", i));
+                Crossover();
+                Mutate();
+                ExecuteFitEvaluation();
+                Selection();
+                FindBestChromosomeOfRun();    
+            }
+            
         }
 
         /// <summary>
