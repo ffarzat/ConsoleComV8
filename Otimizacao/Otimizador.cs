@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ClearScript.Manager;
 using NLog;
 using Otimizacao.Javascript;
 
@@ -109,6 +110,8 @@ namespace Otimizacao
             _diretorioExecucao = diretorioExecucao;
 
             LimparResultadosAnteriores();
+
+            ManagerPool.InitializeCurrentPool(new ManualManagerSettings { RuntimeMaxCount = tamanhoPopulacao * totalGeracoes, ScriptCacheMaxCount = 100, ScriptCacheExpirationSeconds = Int16.MaxValue });
         }
 
         /// <summary>
@@ -350,12 +353,12 @@ namespace Otimizacao
             var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
             jHelper.ConfigurarGeracao();
 
-            var caminho = string.Format("{0}\\{1}", _diretorioFontes, caminhoBibliotecaJs);
+            //var caminho = string.Format("{0}\\{1}", _diretorioFontes, caminhoBibliotecaJs);
 
             _original = new Individuo
                 {
-                    Ast = jHelper.GerarAst(File.ReadAllText(caminho)),
-                    Arquivo = caminho,
+                    Ast = jHelper.GerarAst(File.ReadAllText(caminhoBibliotecaJs)),
+                    Arquivo = caminhoBibliotecaJs,
                 };
 
             _original.Codigo = jHelper.GerarCodigo(_original.Ast);

@@ -143,6 +143,9 @@
     <Content Include="Moment\keyword.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Moment\qunit-extras.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Moment\Qunit.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -182,9 +185,6 @@
     <Content Include="underscore\utils.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Otimizacao\Otimizacao.csproj">

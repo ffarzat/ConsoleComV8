@@ -114,6 +114,9 @@
     <Content Include="Moment\global.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Moment\qunit-extras.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Moment\Qunit.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

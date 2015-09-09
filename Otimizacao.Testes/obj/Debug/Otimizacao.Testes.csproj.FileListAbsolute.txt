@@ -49,3 +49,4 @@ D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\NLog.xml
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\obj\Debug\Otimizacao.Testes.csprojResolveAssemblyReference.cache
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\obj\Debug\Otimizacao.Testes.dll
 D:\GitHub\ConsoleComV8\Otimizacao.Testes\obj\Debug\Otimizacao.Testes.pdb
+D:\GitHub\ConsoleComV8\Otimizacao.Testes\bin\Debug\Moment\qunit-extras.js

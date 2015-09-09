@@ -94,14 +94,14 @@ namespace Otimizacao.Javascript
         private static Logger _logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
-        /// Manager da ScriptEngine
-        /// </summary>
-        private RuntimeManager _manager;
-
-        /// <summary>
         /// Diretório onde os scripts estão
         /// </summary>
         private string _diretorioExecucao;
+
+        /// <summary>
+        /// Scopo do Manager da script Engine
+        /// </summary>
+        private ManagerScope _scope;
 
         /// <summary>
         /// Total de Nós de um
@@ -138,31 +138,33 @@ namespace Otimizacao.Javascript
         {
             _diretorioExecucao = diretorioJavascripts;
 
-            //O manager vai compilar e cachear as bibliotecas
-            _manager = new RuntimeManager(new ManualManagerSettings() { ScriptCacheMaxCount = 100, ScriptCacheExpirationSeconds = Int16.MaxValue });
-            _engine = _manager.GetEngine();
-            RequireManager.ClearPackages(); //garantir uma execução limpa
-
-            #region Ler arquivos Js
-            //_javascripts = new Dictionary<string, string>();
-
-            foreach (var enumerateFile in Directory.EnumerateFiles(diretorioJavascripts, "*.js"))
-            {
-                _manager.Compile(Path.GetFileNameWithoutExtension(enumerateFile), File.ReadAllText(enumerateFile), true, int.MaxValue);
-            }
-
-            #endregion
-
-            #region Configura a Engine com o JavascriptHelper e Console, Settimeout e etc
+            _scope = new ManagerScope();
             
+                //O manager vai compilar e cachear as bibliotecas
+                
+                _engine = _scope.RuntimeManager.GetEngine();
+                RequireManager.ClearPackages(); //garantir uma execução limpa
+
+                #region Ler arquivos Js
+                //_javascripts = new Dictionary<string, string>();
+
+                //foreach (var enumerateFile in Directory.EnumerateFiles(diretorioJavascripts, "*.js"))
+                //{
+                //    scope.RuntimeManager.Compile(Path.GetFileNameWithoutExtension(enumerateFile), File.ReadAllText(enumerateFile), true, int.MaxValue);
+                //}
+
+                #endregion
+
+                #region Configura a Engine com o JavascriptHelper e Console, Settimeout e etc
 
 
-            FalhasDosTestes = new List<string>();
-            _timers = new Dictionary<int, bool>();
 
-            _engine.AddHostObject("javascriptHelper", this);
-            
-            _engine.Execute(@"'use strict';
+                FalhasDosTestes = new List<string>();
+                _timers = new Dictionary<int, bool>();
+
+                _engine.AddHostObject("javascriptHelper", this);
+
+                _engine.Execute(@"'use strict';
                         function console() {
                           if (!(this instanceof console)) {
                             return new Console();
@@ -173,26 +175,26 @@ namespace Otimizacao.Javascript
                           javascriptHelper.Escrever(args, args1, args2);
                         };");
 
-            _engine.Execute("var console = new console();");
-            _engine.Execute("var GLOBAL = this;");
+                _engine.Execute("var console = new console();");
+                _engine.Execute("var GLOBAL = this;");
 
-            _engine.Execute(@"var stFunctionsCallBack = new Array();");
+                _engine.Execute(@"var stFunctionsCallBack = new Array();");
 
-            if (setTimeout)
-            {
-                _engine.Execute(@"var setTimeout = function (funcToCall, millis) {
+                if (setTimeout)
+                {
+                    _engine.Execute(@"var setTimeout = function (funcToCall, millis) {
                                                 var textoId = javascriptHelper.CurrentThreadId;
                                                 var idlocal = javascriptHelper.SetTimeout(millis);
                                                 stFunctionsCallBack.push(funcToCall);
                                                 return idlocal;
                             };");
 
-                _engine.Execute(@"var clearTimeout = function(id) { javascriptHelper.ClearTimeout(id);};");
-            }
+                    _engine.Execute(@"var clearTimeout = function(id) { javascriptHelper.ClearTimeout(id);};");
+                }
 
-            if (setInterval)
-            {
-                _engine.Execute(@"var setInterval = function (funcToCall, millis) {
+                if (setInterval)
+                {
+                    _engine.Execute(@"var setInterval = function (funcToCall, millis) {
                                                 
                                                 var idlocal = javascriptHelper.SetTimeout(millis);
                                                 var funcaoTimeout = function() { funcToCall(); setTimeout(funcToCall, millis); };
@@ -200,9 +202,12 @@ namespace Otimizacao.Javascript
                                                 return idlocal;
                             };");
 
-                _engine.Execute(@"var clearInterval = function(id) { javascriptHelper.ClearTimeout(id);};");
-            }
-            #endregion
+                    _engine.Execute(@"var clearInterval = function(id) { javascriptHelper.ClearTimeout(id);};");
+                }
+                #endregion
+            
+
+            
         }
 
         /// <summary>
@@ -220,66 +225,58 @@ namespace Otimizacao.Javascript
         /// </summary>
         public void ConfigurarGeracao()
         {
+
+
+
             #region Registra os pacotes
 
-            //RegistarScript("esprima", "esprima.js");
-            //RegistarScript("estraverse", "estraverse.js");
-            //RegistarScript("esutils", "utils.js");
-            //RegistarScript("ast", "ast.js");
-            //RegistarScript("code", "code.js");
-            //RegistarScript("keyword", "keyword.js");
-
-            
-            //var scriptTestCode = File.ReadAllText("core-test.js");
-            //var qunit = File.ReadAllText("qunit-1.18.0.js");
-            //var console = File.ReadAllText("Console.js");
-            var esprima = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"esprima.js"));
-            var escodegen = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"escodegen.js"));
-            var estraverse = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"estraverse.js"));
-            var ast = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"ast.js"));
-            var code = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"code.js"));
-            var keyword = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"keyword.js"));
+            var esprima = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao, "esprima.js"));
+            var escodegen = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao, "escodegen.js"));
+            var estraverse = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao, "estraverse.js"));
+            var ast = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao, "ast.js"));
+            var code = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao, "code.js"));
+            var keyword = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao, "keyword.js"));
 
             #endregion
 
             #region Congigura o Escodegen e o Esprima
 
-            var engine = _manager.GetEngine();
-            
-            engine.Execute(@"   var ObjEstraverse = {};
-                                var ObjEscodegen = {};
-                                var ObjCode = {};
-                                var ObjAst = {};
-                                var ObjKeyword = {};
-                            ");
+            _engine.Execute(@"   var ObjEstraverse = {};
+                            var ObjEscodegen = {};
+                            var ObjCode = {};
+                            var ObjAst = {};
+                            var ObjKeyword = {};
+                        ");
 
-            engine.Execute(code);
-            engine.Execute(ast);
-            engine.Execute(keyword);
-            engine.Execute(estraverse);
+            _engine.Execute(code);
+            _engine.Execute(ast);
+            _engine.Execute(keyword);
+            _engine.Execute(estraverse);
 
-            engine.Execute(@"
-                            var Objutils = {};
-                            Objutils.ast = ObjAst;
-                            Objutils.code = ObjCode;
-                            Objutils.keyword = ObjKeyword;
+            _engine.Execute(@"
+                        var Objutils = {};
+                        Objutils.ast = ObjAst;
+                        Objutils.code = ObjCode;
+                        Objutils.keyword = ObjKeyword;
                             
-            ");
+        ");
 
-            engine.Execute(escodegen);
-            engine.Execute(esprima);
+            _engine.Execute(escodegen);
+            _engine.Execute(esprima);
 
-            engine.Execute(@"        option = {
-                                                comment: true,
-                                                format: {
-                                                    indent: {
-                                                        style: '    '
-                                                    },
-                                                    quotes: 'auto'
-                                                }
-                                            };");
+            _engine.Execute(@"        option = {
+                                            comment: true,
+                                            format: {
+                                                indent: {
+                                                    style: '    '
+                                                },
+                                                quotes: 'auto'
+                                            }
+                                        };");
 
             #endregion
+            
+
         }
 
         /// <summary>
@@ -292,10 +289,11 @@ namespace Otimizacao.Javascript
             var sw = new Stopwatch();
             sw.Start();
 
-            var engine = _manager.GetEngine();
+
             var esprimaParse = string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, loc:true, comment: true }});", EncodeJsString(codigoIndividuo));
-            engine.Execute(esprimaParse);
-            engine.Execute("javascriptHelper.JsonAst = JSON.stringify(syntax);");
+            _engine.Execute(esprimaParse);
+            _engine.Execute("javascriptHelper.JsonAst = JSON.stringify(syntax);");
+            
 
             sw.Stop();
 
@@ -323,9 +321,8 @@ namespace Otimizacao.Javascript
         /// <returns></returns>
         public string ExecutarMutacaoExclusao(string ast, int randonNode)
         {
-
-            var engine = _manager.GetEngine();
-            engine.Execute(@"
+               
+                _engine.Execute(@"
 
                     var ast = JSON.parse(#ast);
 
@@ -356,6 +353,9 @@ namespace Otimizacao.Javascript
 
                     javascriptHelper.JsonAst = JSON.stringify(ast);
                     ".Replace("#ast", this.EncodeJsString(ast)).Replace("#randonNode", randonNode.ToString()));
+            
+
+            
 
            return JsonAst;
         }
@@ -369,8 +369,8 @@ namespace Otimizacao.Javascript
         {
             try
             {
-                var engine = _manager.GetEngine();
-                engine.Execute(@"
+                   
+                    _engine.Execute(@"
 
                     var ast = JSON.parse(#ast);
 
@@ -385,6 +385,8 @@ namespace Otimizacao.Javascript
 
                     javascriptHelper.TotalDeNos = counter;
                     ".Replace("#ast", this.EncodeJsString(ast)));
+              
+                
             }
             catch (Exception ex )
             {
@@ -409,65 +411,65 @@ namespace Otimizacao.Javascript
         /// <returns></returns>
         public void ExecutarCrossOver(string astPai, string astMae, int randonNodePai, int randonNodeMae, out string astPrimeiroFilho, out string astSegundoFilho)
         {
-            var engine = _manager.GetEngine();
+
 
             #region Recupero o nó no pai
 
-            engine.Execute("var nodePai = {type:'EmptyStatement'};");
-            
-            engine.Execute("var astPai = JSON.parse(#astPai);"
+            _engine.Execute("var nodePai = {type:'EmptyStatement'};");
+
+            _engine.Execute("var astPai = JSON.parse(#astPai);"
                 .Replace("#astPai", this.EncodeJsString(astPai))
                 );
 
-            engine.Execute(@"
+            _engine.Execute(@"
 
-                    var counter = 0;
-                    ObjEstraverse.replace(astPai, {
-                        enter: function(node, parent) {
+                var counter = 0;
+                ObjEstraverse.replace(astPai, {
+                    enter: function(node, parent) {
 
-                            if(counter > #randonNodePai)
-                            {
-                                nodePai = node;
-                                this.break();
-                            }
-
-                            counter++;
+                        if(counter > #randonNodePai)
+                        {
+                            nodePai = node;
+                            this.break();
                         }
-                    });
-                    "
+
+                        counter++;
+                    }
+                });
+                "
                 .Replace("#randonNodePai", randonNodePai.ToString())
-                     
-                     );
-            
+
+                        );
+
             #endregion
-            
+
             #region Recupero o nó na mãe e troco pelo do Pai
-            engine.Execute("var nodeMae = {type : 'EmptyStatement'};");
-            engine.Execute("var astMae = JSON.parse(#astMae);"
-                 .Replace("#astMae", this.EncodeJsString(astMae))
-                 );
+            _engine.Execute("var nodeMae = {type : 'EmptyStatement'};");
+            _engine.Execute("var astMae = JSON.parse(#astMae);"
+                    .Replace("#astMae", this.EncodeJsString(astMae))
+                    );
 
-            engine.Execute(@"
+            _engine.Execute(@"
 
-                    var counter = 0;
-                    ObjEstraverse.replace(astMae, {
-                        enter: function(node, parent) {
+                var counter = 0;
+                ObjEstraverse.replace(astMae, {
+                    enter: function(node, parent) {
 
-                            if(counter > #randonNodeMae)
-                            {
-                                nodeMae = node;
-                                this.break();
-                                return nodePai;
-                            }
-
-                            counter++;
+                        if(counter > #randonNodeMae)
+                        {
+                            nodeMae = node;
+                            this.break();
+                            return nodePai;
                         }
-                    });
-                        javascriptHelper.JsonAst = JSON.stringify(astMae);
-                    "
+
+                        counter++;
+                    }
+                });
+                    javascriptHelper.JsonAst = JSON.stringify(astMae);
+                "
 
                 .Replace("#randonNodeMae", randonNodeMae.ToString())
-                
+
                 );
 
             //Troco na mae
@@ -477,24 +479,24 @@ namespace Otimizacao.Javascript
 
             #region Troco agora no pai
 
-            engine.Execute(@"
+            _engine.Execute(@"
 
-                    var counter = 0;
-                    ObjEstraverse.replace(astPai, {
-                        enter: function(node, parent) {
+                var counter = 0;
+                ObjEstraverse.replace(astPai, {
+                    enter: function(node, parent) {
 
-                            if(counter > #randonNodePai)
-                            {
-                                this.break();
-                                return nodeMae;
-                            }
-
-                            counter++;
+                        if(counter > #randonNodePai)
+                        {
+                            this.break();
+                            return nodeMae;
                         }
-                    });
 
-                    javascriptHelper.JsonAst = JSON.stringify(astPai);
-                    "
+                        counter++;
+                    }
+                });
+
+                javascriptHelper.JsonAst = JSON.stringify(astPai);
+                "
                     .Replace("#astPai", this.EncodeJsString(astPai))
                     .Replace("#randonNodePai", randonNodePai.ToString())
 
@@ -502,6 +504,9 @@ namespace Otimizacao.Javascript
 
             astPrimeiroFilho = JsonAst;
             #endregion
+            
+
+
 
         }
 
@@ -516,25 +521,20 @@ namespace Otimizacao.Javascript
             var sw = new Stopwatch();
             sw.Start();
 
+                
+                this.JsonAst = astJson;
 
-            var engine = _manager.GetEngine();
-            this.JsonAst = astJson;
+                _engine.Execute("var syntax = JSON.parse(javascriptHelper.JsonAst);");
+                _engine.Execute("syntax = ObjEscodegen.attachComments(syntax, syntax.comments, syntax.tokens);");
 
-            engine.Execute("var syntax = JSON.parse(javascriptHelper.JsonAst);");
-            engine.Execute("syntax = ObjEscodegen.attachComments(syntax, syntax.comments, syntax.tokens);");
+                _engine.Execute("var code = ObjEscodegen.generate(syntax, option);");
+                _engine.Execute("javascriptHelper.Codigo = code;");
+            
 
-            //engine.Execute("javascriptHelper.JsonAst = JSON.stringify(syntax);");
-            //File.WriteAllText("syntax" + Guid.NewGuid().ToString() + ".txt", this.FormatarStringJson(JsonAst));
 
-            //engine.Execute("javascriptHelper.Escrever('{0}', javascriptHelper.FormatarStringJson(JSON.stringify(syntax)));");
-
-            engine.Execute("var code = ObjEscodegen.generate(syntax, option);");
-            engine.Execute("javascriptHelper.Codigo = code;");
+            
 
             sw.Stop();
-
-            //Log(string.Format("Codigo gerado com sucesso"));
-            //Log(string.Format(" {0} ms", sw.Elapsed.TotalMilliseconds));
 
             return Codigo;
         }
@@ -551,85 +551,86 @@ namespace Otimizacao.Javascript
             var sw = new Stopwatch();
             sw.Start();
 
-            #region Configura o QUnit
+                #region Configura o QUnit
 
-            _manager.ExecuteCompiled("Qunit");
-            _manager.ExecuteCompiled("qunit-extras");
-            
+            _engine.Execute(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao, "Qunit.js")));
+            _engine.Execute(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao, "qunit-extras.js")));
+
+
             _engine.Execute(@"   
-                                    var total, sucesso, falha;
+                                var total, sucesso, falha;
 
-                                    QUnit.done(function( details ) {
-                                    //console.log('=============================================');
-                                    //console.log('Total:' + details.total);
-                                    //console.log('Falha:' + details.failed);
-                                    //console.log('Sucesso:' + details.passed);
-                                    //console.log('Tempo:' + details.runtime);
+                                QUnit.done(function( details ) {
+                                //console.log('=============================================');
+                                //console.log('Total:' + details.total);
+                                //console.log('Falha:' + details.failed);
+                                //console.log('Sucesso:' + details.passed);
+                                //console.log('Tempo:' + details.runtime);
                                        
-                                    javascriptHelper.TotalTestes = details.total;
-                                    javascriptHelper.TestesComSucesso = details.passed;
-                                    javascriptHelper.TestesComFalha = details.failed;
+                                javascriptHelper.TotalTestes = details.total;
+                                javascriptHelper.TestesComSucesso = details.passed;
+                                javascriptHelper.TestesComFalha = details.failed;
 
-                                });
+                            });
 
-                                QUnit.log(function( details ) {
-                                  if ( details.result ) {
-                                    return;
-                                  }
-                                  var loc = details.module + ': ' + details.name + ': ',
-                                    output = 'FAILED: ' + loc + ( details.message ? details.message + ', ' : '' );
+                            QUnit.log(function( details ) {
+                                if ( details.result ) {
+                                return;
+                                }
+                                var loc = details.module + ': ' + details.name + ': ',
+                                output = 'FAILED: ' + loc + ( details.message ? details.message + ', ' : '' );
  
-                                  if ( details.actual ) {
-                                    output += 'expected: ' + details.expected + ', actual: ' + details.actual;
-                                  }
-                                  if ( details.source ) {
-                                    output += ', ' + details.source;
-                                  }
+                                if ( details.actual ) {
+                                output += 'expected: ' + details.expected + ', actual: ' + details.actual;
+                                }
+                                if ( details.source ) {
+                                output += ', ' + details.source;
+                                }
 
-                                    //console.log('=============================================');
-                                    //console.log( output );
+                                //console.log('=============================================');
+                                //console.log( output );
 
-                                    javascriptHelper.AdicionarDetalheDeFalha(output);
-                                });
+                                javascriptHelper.AdicionarDetalheDeFalha(output);
+                            });
 
 
 
-                                QUnit.config.autostart = false;
-                                QUnit.config.ignoreGlobalErrors = true;
-                        ");
-            #endregion
+                            QUnit.config.autostart = false;
+                            QUnit.config.ignoreGlobalErrors = true;
+                    ");
+                #endregion
 
-            #region Carrega o individuo
-            _manager.ExecuteCompiled(Path.GetFileNameWithoutExtension(nomeArquivoIndividuo));
-            #endregion
+                #region Carrega o individuo
+                _engine.Execute(File.ReadAllText(nomeArquivoIndividuo));
+                #endregion
 
-            #region Carrega e executa os Testes
-            _manager.ExecuteCompiled(Path.GetFileNameWithoutExtension(nomeDoArquivoTestes));
+                #region Carrega e executa os Testes
+                _engine.Execute(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao, nomeDoArquivoTestes)));
 
-            //Escrever("Iniciando os testes");
-            //Escrever("_timers.Count {0}", _timers.Count);
+                //Escrever("Iniciando os testes");
+                //Escrever("_timers.Count {0}", _timers.Count);
 
-            try
-            {
-                _engine.Execute(@"   QUnit.load();
-                                QUnit.start();
-                ");
-            }
-            catch (Exception ex)
-            {
-                Log(ex.ToString());
-                return Int64.MaxValue - 5;
-            }
-            
-            while (GetTimersCount() > 0)
-            {
-                Thread.Sleep(5);
-            }
-            
-            //Escrever("Encerrando os testes");
+                try
+                {
+                    _engine.Execute(@"   QUnit.load();
+                            QUnit.start();
+            ");
+                }
+                catch (Exception ex)
+                {
+                    Log(ex.ToString());
+                    return Int64.MaxValue - 5;
+                }
 
-            #endregion
-            
+                while (GetTimersCount() > 0)
+                {
+                    Thread.Sleep(5);
+                }
+
+                //Escrever("Encerrando os testes");
+
+                #endregion
+                       
             sw.Stop();
 
             //Log(string.Format("Total:{0}, Sucesso: {1}, Falha: {2}", this.TotalTestes, this.TestesComSucesso, this.TestesComFalha));
@@ -640,29 +641,6 @@ namespace Otimizacao.Javascript
             var tempoTestesSomados = (TotalTestes - TestesComSucesso); //Penaliza quem falha
 
             return (sw.Elapsed.Milliseconds + tempoTestesSomados);
-        }
-
-        /// <summary>
-        /// Executa um script por ID
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public bool ExecutarScriptPorId(string id)
-        {
-            bool sucesso = false;
-            try
-            {
-                sucesso = _manager.ExecuteCompiled(id);
-            }
-            catch (Exception ex)
-            {
-                _logger.Info(ex.ToString());
-                throw;
-            }
-
-            _logger.Info(string.Format("{0} executado com sucesso? {1}", id, sucesso));
-            
-            return sucesso;
         }
 
         /// <summary>
@@ -838,9 +816,12 @@ namespace Otimizacao.Javascript
             this.FalhasDosTestes.Add(detalhes);
         }
 
+        /// <summary>
+        /// Libera o objeto da memória
+        /// </summary>
         public void Dispose()
         {
-            _manager.Dispose();
+            _scope.Dispose();
         }
     }
 }
