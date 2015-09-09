@@ -11172,3 +11172,10 @@
 2015-09-09 14:00:13.3632|Info|            412
 2015-09-09 14:00:16.6526|Info|            412
 2015-09-09 14:00:19.5937|Info|            458
+2015-09-09 14:11:22.1484|Info|Iniciando Otimização do global.js
+2015-09-09 14:11:22.1484|Info|    SetTimeout False
+2015-09-09 14:11:26.0531|Info|    Fitness do Original 765
+2015-09-09 14:11:26.0531|Info|    Criando a populaçao Inicial com 10 individuos
+2015-09-09 14:11:31.4830|Info|            482
+2015-09-09 14:11:36.5196|Info|            280
+2015-09-09 14:11:41.6252|Info|            301

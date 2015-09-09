@@ -41,3 +41,8 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Recycle Bin used on file shares
+Debug/
+
+ConsoleComV8/bin/Debug/ExecutionLog.txt
