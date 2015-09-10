@@ -27,7 +27,7 @@ namespace ConsoleComV8
         static void Main(string[] args)
         {
             #region Moment
-            var otimizadorMoment = new Otimizador(10, 5, 20, "Moment", "ResultadosMoment");
+            var otimizadorMoment = new Otimizador(5, 5, 20, "Moment", "ResultadosMoment");
             //otimizadorMoment.UsarSetTimeout();
 
             var otimizouMoment = otimizadorMoment.Otimizar( "global.js", "core-test.js");

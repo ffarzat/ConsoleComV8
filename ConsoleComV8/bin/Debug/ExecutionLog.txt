@@ -1,100 +1,20 @@
-2015-09-09 19:58:23.1765|Info|Iniciando Otimização do global.js
-2015-09-09 19:58:23.1975|Info|    SetTimeout False
-2015-09-09 19:58:23.1975|Info|    Individuos 10
-2015-09-09 19:58:23.1975|Info|    Geracoes 5
-2015-09-09 19:58:27.5966|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 19:58:27.5966|Trace|           2 segundos para avaliar o individuo global.js
-2015-09-09 19:58:27.5966|Info|    Fitness do Original 2818
-2015-09-09 19:58:27.6016|Info|    Criando a populaçao Inicial com 10 individuos
-2015-09-09 19:58:33.3707|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 19:58:33.3707|Trace|           2 segundos para avaliar o individuo ResultadosMoment\0e74392b-2b59-4694-b95e-1c4ae3b18e0b.js
-2015-09-09 19:58:33.3707|Info|            2726
-2015-09-09 19:58:39.1308|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 19:58:39.1308|Trace|           2 segundos para avaliar o individuo ResultadosMoment\868734d1-d6de-4fdd-b875-701021140928.js
-2015-09-09 19:58:39.1308|Info|            2703
-2015-09-09 19:58:45.1040|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 19:58:45.1040|Trace|           2 segundos para avaliar o individuo ResultadosMoment\f5e4e069-4810-4920-82ce-8a1bbe2cc616.js
-2015-09-09 19:58:45.1040|Info|            2965
-2015-09-09 19:58:51.3155|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 19:58:51.3155|Trace|           2 segundos para avaliar o individuo ResultadosMoment\75d7e96c-197e-4597-a74f-8656c91fe0db.js
-2015-09-09 19:58:51.3155|Info|            2933
-2015-09-09 19:58:57.2037|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 19:58:57.2037|Trace|           2 segundos para avaliar o individuo ResultadosMoment\6fbdeb71-cb45-4eb2-b99b-4244831bc0de.js
-2015-09-09 19:58:57.2037|Info|            2813
-2015-09-09 19:59:03.3610|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 19:59:03.3610|Trace|           2 segundos para avaliar o individuo ResultadosMoment\9f7fd9eb-c180-49cb-9f8d-45af937a7b65.js
-2015-09-09 19:59:03.3610|Info|            2908
-2015-09-09 19:59:09.5694|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 19:59:09.5694|Trace|           2 segundos para avaliar o individuo ResultadosMoment\3581a2ad-67c8-4371-86a1-5460a521fb78.js
-2015-09-09 19:59:09.5694|Info|            2898
-2015-09-09 19:59:15.3686|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 19:59:15.3686|Trace|           2 segundos para avaliar o individuo ResultadosMoment\2dc82089-9c2e-408d-9918-67db6c18060a.js
-2015-09-09 19:59:15.3686|Info|            2713
-2015-09-09 19:59:21.1417|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 19:59:21.1417|Trace|           2 segundos para avaliar o individuo ResultadosMoment\eff4c493-5e4d-44dc-928a-8b99954a0c69.js
-2015-09-09 19:59:21.1417|Info|            2689
-2015-09-09 19:59:27.4261|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 19:59:27.4261|Trace|           3 segundos para avaliar o individuo ResultadosMoment\a46b14c3-f38e-4bdc-ac3c-38197c57e9f8.js
-2015-09-09 19:59:27.4261|Info|            3014
-2015-09-09 19:59:27.4261|Info|Geracao 0
-2015-09-09 19:59:46.9730|Info|      4 crossover(s) executados
-2015-09-09 19:59:47.4783|Info|System.Runtime.InteropServices.SEHException (0x80004005): External component has thrown an exception.
-   at new(UInt32 )
-   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >._Copy(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt32 _Newsize, UInt32 _Oldlen) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 2223
-   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >._Grow(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt32 _Newsize, Boolean _Trim) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 2246
-   at std.basic_string<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >.assign(basic_string<unsigned short\,std::char_traits<unsigned short>\,std::allocator<unsigned short> >* , UInt16* _Ptr, UInt32 _Count) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 1158
-   at StdString.{ctor}(StdString* , String gcValue) in c:\program files (x86)\microsoft visual studio 12.0\vc\include\xstring:line 768
-   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 185
-   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
-   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
-   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
-   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
-   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
-   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
-   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
-   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
-   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
-   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
-   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
-   at Otimizacao.Javascript.JavascriptHelper.ContarNos(String ast) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 373
-2015-09-09 19:59:49.8741|Info|      2 mutações executadas
-2015-09-09 19:59:53.7608|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 19:59:53.7608|Trace|           2 segundos para avaliar o individuo ResultadosMoment\6b9ac5af-0739-49dc-b74e-56f356ef3694.js
-2015-09-09 19:59:53.7608|Info|            2946
-2015-09-09 19:59:57.5445|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 19:59:57.5445|Trace|           2 segundos para avaliar o individuo ResultadosMoment\fde61703-1749-4675-bbc9-c6497fd27b82.js
-2015-09-09 19:59:57.5445|Info|            2899
-2015-09-09 20:00:01.3452|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 20:00:01.3452|Trace|           2 segundos para avaliar o individuo ResultadosMoment\22ea47da-f93a-4ecc-ba32-ea56c0de3533.js
-2015-09-09 20:00:01.3452|Info|            2911
-2015-09-09 20:00:05.1889|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 20:00:05.1889|Trace|           3 segundos para avaliar o individuo ResultadosMoment\c5497bdd-3a95-4ac1-892f-63ff2d6d8a19.js
-2015-09-09 20:00:05.1889|Info|            3008
-2015-09-09 20:00:09.2328|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 20:00:09.2328|Trace|           3 segundos para avaliar o individuo ResultadosMoment\02026ea7-eda2-4ae4-9504-2f0ee4d4a863.js
-2015-09-09 20:00:09.2328|Info|            3001
-2015-09-09 20:00:13.2707|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 20:00:13.2717|Trace|           2 segundos para avaliar o individuo ResultadosMoment\0ac2a371-118e-4fbb-92dc-8cb5b46a9a17.js
-2015-09-09 20:00:13.2717|Info|            2932
-2015-09-09 20:00:17.4647|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 20:00:17.4647|Trace|           3 segundos para avaliar o individuo ResultadosMoment\e80579b7-694c-4812-9a97-23e20d7308b0.js
-2015-09-09 20:00:17.4647|Info|            3244
-2015-09-09 20:00:21.5676|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 20:00:21.5676|Trace|           3 segundos para avaliar o individuo ResultadosMoment\dc22df69-a065-49e1-aba6-994f48c66cd9.js
-2015-09-09 20:00:21.5686|Info|            3056
-2015-09-09 20:00:25.4083|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 20:00:25.4083|Trace|           2 segundos para avaliar o individuo ResultadosMoment\10e9ac25-f3a2-47b9-9369-9d5084662d39.js
-2015-09-09 20:00:25.4083|Info|            2932
-2015-09-09 20:00:29.2991|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 20:00:29.2991|Trace|           3 segundos para avaliar o individuo ResultadosMoment\5964f9e4-3d2d-4b4f-bd38-5c34e16c7842.js
-2015-09-09 20:00:29.2991|Info|            3006
-2015-09-09 20:00:29.2991|Info|-> Achou melhor individuo novo! Valor=2689
-2015-09-09 20:00:29.3031|Info|Geracao 1
-2015-09-09 20:00:53.8405|Info|      5 crossover(s) executados
-2015-09-09 20:00:56.2252|Info|      1 mutações executadas
-2015-09-09 20:00:59.8708|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 20:00:59.8708|Trace|           2 segundos para avaliar o individuo ResultadosMoment\cf828b8b-9c41-417c-8ea7-04f1e3153df8.js
-2015-09-09 20:00:59.8708|Info|            2819
-2015-09-09 20:01:03.7055|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-09 20:01:03.7055|Trace|           2 segundos para avaliar o individuo ResultadosMoment\ed52f51a-0d1f-428a-9fef-48059db51d4d.js
-2015-09-09 20:01:03.7055|Info|            2945
+2015-09-09 21:03:02.8893|Info|Iniciando Otimização do underscore.js
+2015-09-09 21:03:02.8893|Info|    SetTimeout True
+2015-09-09 21:03:02.8893|Info|    Individuos 10
+2015-09-09 21:03:02.8893|Info|    Geracoes 5
+2015-09-09 21:03:07.6887|Trace|           Total:1382, Sucesso: 1382, Falha: 0
+2015-09-09 21:03:07.6887|Trace|           4 segundos para avaliar o individuo underscore.js
+2015-09-09 21:03:07.6887|Info|    Fitness do Original 4427
+2015-09-09 21:03:07.6887|Info|    Criando a populaçao Inicial com 10 individuos
+2015-09-09 21:03:09.8462|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-09 21:03:09.8462|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\ac230abd-6d7e-4168-be10-23e6f1c1037a.js
+2015-09-09 21:03:09.8462|Info|            1729
+2015-09-09 21:03:12.0158|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-09 21:03:12.0158|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\e799db34-9c3f-4093-bc57-0b7f645ba491.js
+2015-09-09 21:03:12.0158|Info|            1798
+2015-09-09 21:03:14.2123|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-09 21:03:14.2123|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\e10847f5-3985-4f7e-985c-ad11f3bceab2.js
+2015-09-09 21:03:14.2123|Info|            1806
+2015-09-09 21:03:16.3899|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-09 21:03:16.3899|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\e9ee2734-b2d1-4396-80a4-fbbd44740614.js
+2015-09-09 21:03:16.3899|Info|            1788

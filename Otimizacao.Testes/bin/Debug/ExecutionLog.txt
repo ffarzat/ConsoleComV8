@@ -1120,3 +1120,9 @@
 2015-09-09 10:56:05.1305|Info|Encerrando os testes
 2015-09-09 10:56:05.1305|Info|Total:1382, Sucesso: 1382, Falha: 0
 2015-09-09 10:56:05.1305|Info| 4 segundos para avaliar o individuo underscore.js
+2015-09-09 21:00:09.5622|Trace|           Total:4449, Sucesso: 4449, Falha: 0
+2015-09-09 21:00:09.5832|Trace|           8 segundos para avaliar o individuo lodash.js
+2015-09-09 21:00:12.7134|Trace|           Total:57982, Sucesso: 57982, Falha: 0
+2015-09-09 21:00:12.7134|Trace|           2 segundos para avaliar o individuo global.js
+2015-09-09 21:00:16.8964|Trace|           Total:1382, Sucesso: 1382, Falha: 0
+2015-09-09 21:00:16.8964|Trace|           4 segundos para avaliar o individuo underscore.js

@@ -323,9 +323,9 @@ namespace Otimizacao.Javascript
         /// <returns></returns>
         public string ExecutarMutacaoExclusao(string ast, int randonNode)
         {
-
-            var engine = _manager.GetEngine();
-            engine.Execute(@"
+            try
+            {
+                _engine.Execute(@"
 
                     var ast = JSON.parse(#ast);
 
@@ -356,6 +356,13 @@ namespace Otimizacao.Javascript
 
                     javascriptHelper.JsonAst = JSON.stringify(ast);
                     ".Replace("#ast", this.EncodeJsString(ast)).Replace("#randonNode", randonNode.ToString()));
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
+                return "";
+            }
+            
 
            return JsonAst;
         }
@@ -369,8 +376,7 @@ namespace Otimizacao.Javascript
         {
             try
             {
-                var engine = _manager.GetEngine();
-                engine.Execute(@"
+                _engine.Execute(@"
 
                     var ast = JSON.parse(#ast);
 
@@ -516,20 +522,21 @@ namespace Otimizacao.Javascript
             var sw = new Stopwatch();
             sw.Start();
 
-
-            var engine = _manager.GetEngine();
             this.JsonAst = astJson;
 
-            engine.Execute("var syntax = JSON.parse(javascriptHelper.JsonAst);");
-            engine.Execute("syntax = ObjEscodegen.attachComments(syntax, syntax.comments, syntax.tokens);");
+            try
+            {
+                _engine.Execute("var syntax = JSON.parse(javascriptHelper.JsonAst);");
+                _engine.Execute("syntax = ObjEscodegen.attachComments(syntax, syntax.comments, syntax.tokens);");
+                _engine.Execute("var code = ObjEscodegen.generate(syntax, option);");
+                _engine.Execute("javascriptHelper.Codigo = code;");
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                return "";
+            }
 
-            //engine.Execute("javascriptHelper.JsonAst = JSON.stringify(syntax);");
-            //File.WriteAllText("syntax" + Guid.NewGuid().ToString() + ".txt", this.FormatarStringJson(JsonAst));
-
-            //engine.Execute("javascriptHelper.Escrever('{0}', javascriptHelper.FormatarStringJson(JSON.stringify(syntax)));");
-
-            engine.Execute("var code = ObjEscodegen.generate(syntax, option);");
-            engine.Execute("javascriptHelper.Codigo = code;");
 
             sw.Stop();
 
