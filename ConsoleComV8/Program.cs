@@ -27,19 +27,19 @@ namespace ConsoleComV8
         static void Main(string[] args)
         {
             #region Moment
-            var otimizadorMoment = new Otimizador(5, 5, 20, "Moment", "ResultadosMoment");
+            //var otimizadorMoment = new Otimizador(5, 5, 20, "Moment", "ResultadosMoment");
             //otimizadorMoment.UsarSetTimeout();
 
-            var otimizouMoment = otimizadorMoment.Otimizar( "global.js", "core-test.js");
+            //var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
 
-            Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
+            //Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
 
 
             #endregion
 
             #region Underscore
 
-            var otimizador = new Otimizador(10, 5, 20, "underscore", "ResultadosUnderscore");
+            var otimizador = new Otimizador(100, 100, 20, "underscore", "ResultadosUnderscore");
             otimizador.UsarSetTimeout();
 
             var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
@@ -50,16 +50,13 @@ namespace ConsoleComV8
 
             #region Lodash
 
-            var otimizadorLodash = new Otimizador(10, 5, 20, "lodash", "ResultadosLodash");
-            otimizadorLodash.UsarSetTimeout();
+            //var otimizadorLodash = new Otimizador(10, 5, 20, "lodash", "ResultadosLodash");
+            //otimizadorLodash.UsarSetTimeout();
 
-            var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
+            //var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
 
-            Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
+            //Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
             #endregion
-
-
-            
 
         }
 
