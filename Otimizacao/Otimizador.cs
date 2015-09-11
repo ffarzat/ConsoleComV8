@@ -381,10 +381,21 @@ namespace Otimizacao
 
             var total = jHelper.ContarNos(sujeito.Ast);
             int no = Rand.Next(0, total);
-            
-            if(total > 0 )
-                sujeito.Ast = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no);
 
+            if (total > 0)
+            {
+                sujeito.Ast = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no);
+                
+                int totalMutacoes = 1;
+                
+                while (sujeito.Ast == "" && totalMutacoes < 50)
+                {
+                    _logger.Info("          Tentativa {0} de executar mutação no código...", totalMutacoes);
+                    sujeito.Ast = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no);
+                    totalMutacoes++;
+                }
+                
+            }
             jHelper.Dispose();
         }
 

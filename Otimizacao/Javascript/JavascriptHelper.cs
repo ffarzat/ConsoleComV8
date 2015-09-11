@@ -359,7 +359,7 @@ namespace Otimizacao.Javascript
             }
             catch (Exception ex)
             {
-                Log(ex.ToString());
+                _logger.Error(ex.ToString());
                 return "";
             }
             

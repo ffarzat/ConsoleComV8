@@ -1,14 +1,17 @@
-2015-09-11 10:15:54.0946|Info|Iniciando Otimização do global.js
-2015-09-11 10:15:54.1096|Info|    SetTimeout False
-2015-09-11 10:15:54.1096|Info|    Individuos 100
-2015-09-11 10:15:54.1096|Info|    Geracoes 100
-2015-09-11 10:15:58.4547|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-11 10:15:58.4547|Trace|           2 segundos para avaliar o individuo global.js
-2015-09-11 10:15:58.4547|Info|    Fitness do Original 2802
-2015-09-11 10:15:58.4607|Info|    Criando a populaçao Inicial com 100 individuos
-2015-09-11 10:16:04.4029|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-11 10:16:04.4029|Trace|           2 segundos para avaliar o individuo ResultadosMoment\cc0c48a5-b1da-4238-bbf9-59b56c5ab957.js
-2015-09-11 10:16:04.4029|Info|            2787
-2015-09-11 10:16:10.4022|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-11 10:16:10.4022|Trace|           2 segundos para avaliar o individuo ResultadosMoment\b8b82d57-2e3f-4c7a-b2d1-4d45dc9afcc4.js
-2015-09-11 10:16:10.4022|Info|            2864
+2015-09-11 10:41:41.3395|Info|Iniciando Otimização do global.js
+2015-09-11 10:41:41.3585|Info|    SetTimeout False
+2015-09-11 10:41:41.3585|Info|    Individuos 100
+2015-09-11 10:41:41.3585|Info|    Geracoes 100
+2015-09-11 10:41:45.5945|Trace|           Total:57982, Sucesso: 57982, Falha: 0
+2015-09-11 10:41:45.5945|Trace|           2 segundos para avaliar o individuo global.js
+2015-09-11 10:41:45.5945|Info|    Fitness do Original 2767
+2015-09-11 10:41:45.6005|Info|    Criando a populaçao Inicial com 100 individuos
+2015-09-11 10:41:51.4997|Trace|           Total:57982, Sucesso: 57982, Falha: 0
+2015-09-11 10:41:51.4997|Trace|           2 segundos para avaliar o individuo ResultadosMoment\149b372d-1ea4-4186-9e12-ef4d378164e7.js
+2015-09-11 10:41:51.4997|Info|            2810
+2015-09-11 10:41:57.4009|Trace|           Total:57982, Sucesso: 57982, Falha: 0
+2015-09-11 10:41:57.4009|Trace|           2 segundos para avaliar o individuo ResultadosMoment\57ffa43c-9e42-459f-90b7-0f0cbd36e0b5.js
+2015-09-11 10:41:57.4009|Info|            2797
+2015-09-11 10:42:03.3361|Trace|           Total:57982, Sucesso: 57982, Falha: 0
+2015-09-11 10:42:03.3361|Trace|           2 segundos para avaliar o individuo ResultadosMoment\a034a74a-14be-48c0-a538-712b9d9754e4.js
+2015-09-11 10:42:03.3361|Info|            2835
