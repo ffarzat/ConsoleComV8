@@ -455,7 +455,7 @@ namespace Otimizacao
             sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes);
             sw.Stop();
             
-            _logger.Info(string.Format("            F:{0}       | T: {1}        | {2}", sujeito.Fitness, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff")));
+            _logger.Info(string.Format("            FIT:{0}       | CTs: {1}        | T: {2}", sujeito.Fitness, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff")));
 
             jHelper.Dispose();
 

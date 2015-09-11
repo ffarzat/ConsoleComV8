@@ -1,61 +1,49 @@
-2015-09-11 19:14:40.2405|Info|Iniciando Otimização do underscore.js
-2015-09-11 19:14:40.2405|Info|    SetTimeout True
-2015-09-11 19:14:40.2405|Info|    Individuos 100
-2015-09-11 19:14:40.2405|Info|    Geracoes 100
-2015-09-11 19:14:45.2341|Trace|           Total:1382, Sucesso: 1382, Falha: 0
-2015-09-11 19:14:45.2341|Trace|           4 segundos para avaliar o individuo underscore.js
-2015-09-11 19:14:45.2341|Info|    Quantidade de Testes Total 1382
-2015-09-11 19:14:45.2341|Info|    Fitness do Original 4300
-2015-09-11 19:14:45.2341|Info|    T do Original 1382
-2015-09-11 19:14:45.2421|Info|    Criando a populaçao Inicial com 100 individuos
-2015-09-11 19:14:47.0074|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:14:47.0074|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\7c950dc4-1747-4b96-bad8-fa37178cf5e0.js
-2015-09-11 19:14:47.0074|Info|            F:9223372036854775802       | T: 2        | 00:00:01.6811
-2015-09-11 19:14:49.0368|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:14:49.0368|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\57a6493a-29f3-470b-bbef-3ecf25c00780.js
-2015-09-11 19:14:49.0368|Info|            F:9223372036854775802       | T: 2        | 00:00:01.9440
-2015-09-11 19:14:51.1013|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:14:51.1013|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\296e3c96-ef9d-4732-9f2d-7df5e9d8c03b.js
-2015-09-11 19:14:51.1013|Info|            F:9223372036854775802       | T: 2        | 00:00:01.9257
-2015-09-11 19:14:53.2098|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:14:53.2098|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\193b5221-2900-4f94-8f23-606e4d68a81d.js
-2015-09-11 19:14:53.2098|Info|            F:9223372036854775802       | T: 2        | 00:00:01.9915
-2015-09-11 19:14:55.2672|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:14:55.2672|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\dda75664-81c1-41e6-b50d-7860b8647132.js
-2015-09-11 19:14:55.2672|Info|            F:9223372036854775802       | T: 2        | 00:00:01.9441
-2015-09-11 19:14:57.3977|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:14:57.3977|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\252c0981-03c4-4fca-9339-84bd1f4543ac.js
-2015-09-11 19:14:57.3977|Info|            F:9223372036854775802       | T: 2        | 00:00:02.0250
-2015-09-11 19:14:59.4342|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:14:59.4342|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\9f24ca66-9310-4997-b395-b620b7bdf135.js
-2015-09-11 19:14:59.4342|Info|            F:9223372036854775802       | T: 2        | 00:00:01.9117
-2015-09-11 19:15:01.4486|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:15:01.4486|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\71e463b6-e191-4fe0-9e6d-b68ec280c8ff.js
-2015-09-11 19:15:01.4486|Info|            F:9223372036854775802       | T: 2        | 00:00:01.9103
-2015-09-11 19:15:03.6311|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:15:03.6311|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\a2f8bf84-aaea-4748-a105-621ef3f36a93.js
-2015-09-11 19:15:03.6311|Info|            F:9223372036854775802       | T: 2        | 00:00:02.0826
-2015-09-11 19:15:05.8547|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:15:05.8547|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\1de7980b-e42c-48ac-96f7-ddaef028c13a.js
-2015-09-11 19:15:05.8547|Info|            F:9223372036854775802       | T: 2        | 00:00:02.1132
-2015-09-11 19:15:08.1104|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:15:08.1104|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\34b2b370-0242-4d39-9e9b-c20d25f4d06e.js
-2015-09-11 19:15:08.1104|Info|            F:9223372036854775802       | T: 2        | 00:00:02.1486
-2015-09-11 19:15:10.5110|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:15:10.5110|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\aaa76cc2-fc48-432b-82a4-32bc37ec8a52.js
-2015-09-11 19:15:10.5110|Info|            F:9223372036854775802       | T: 2        | 00:00:02.2887
-2015-09-11 19:15:12.8196|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:15:12.8196|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\9c6a83fd-b03a-4997-bb50-f17889377dbf.js
-2015-09-11 19:15:12.8196|Info|            F:9223372036854775802       | T: 2        | 00:00:02.1886
-2015-09-11 19:15:14.8211|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:15:14.8211|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\34bd0035-d5b4-4de6-8502-8057a5f86d95.js
-2015-09-11 19:15:14.8211|Info|            F:9223372036854775802       | T: 2        | 00:00:01.8858
-2015-09-11 19:15:16.8855|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:15:16.8855|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\6de3719b-8fb8-49cc-9956-61230dd3c4be.js
-2015-09-11 19:15:16.8855|Info|            F:9223372036854775802       | T: 2        | 00:00:01.9604
-2015-09-11 19:15:18.8359|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:15:18.8359|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\13d41ad7-4d3d-44fc-8504-53d2570584dd.js
-2015-09-11 19:15:18.8359|Info|            F:9223372036854775802       | T: 2        | 00:00:01.8453
-2015-09-11 19:15:20.9695|Trace|           Total:264, Sucesso: 2, Falha: 262
-2015-09-11 19:15:20.9695|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\6c0da6ea-40ae-4799-a830-ae4a19795c25.js
-2015-09-11 19:15:20.9695|Info|            F:9223372036854775802       | T: 2        | 00:00:02.0309
+2015-09-11 19:15:59.2947|Info|Iniciando Otimização do underscore.js
+2015-09-11 19:15:59.3097|Info|    SetTimeout True
+2015-09-11 19:15:59.3097|Info|    Individuos 100
+2015-09-11 19:15:59.3097|Info|    Geracoes 100
+2015-09-11 19:16:04.5194|Trace|           Total:1382, Sucesso: 1382, Falha: 0
+2015-09-11 19:16:04.5194|Trace|           4 segundos para avaliar o individuo underscore.js
+2015-09-11 19:16:04.5194|Info|    Quantidade de Testes Total 1382
+2015-09-11 19:16:04.5214|Info|    Fitness do Original 4418
+2015-09-11 19:16:04.5214|Info|    T do Original 1382
+2015-09-11 19:16:04.5214|Info|    Criando a populaçao Inicial com 100 individuos
+2015-09-11 19:16:06.3757|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 19:16:06.3757|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\7b8d7b35-a414-435a-80ef-6e0b5a0be7fb.js
+2015-09-11 19:16:06.3757|Info|            FIT:9223372036854775802       | CTs: 2        | T: 00:00:01.7568
+2015-09-11 19:16:08.3648|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 19:16:08.3648|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\4dfff01d-cd80-43e0-990c-55098170ebba.js
+2015-09-11 19:16:08.3648|Info|            FIT:9223372036854775802       | CTs: 2        | T: 00:00:01.8960
+2015-09-11 19:16:10.3452|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 19:16:10.3452|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\30798578-3a2c-4781-9f12-157804dfbc50.js
+2015-09-11 19:16:10.3452|Info|            FIT:9223372036854775802       | CTs: 2        | T: 00:00:01.8826
+2015-09-11 19:16:12.3346|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 19:16:12.3346|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\e07d2e3c-35d8-4923-b112-e2129a1c8eb4.js
+2015-09-11 19:16:12.3346|Info|            FIT:9223372036854775802       | CTs: 2        | T: 00:00:01.8768
+2015-09-11 19:16:14.2279|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 19:16:14.2279|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\44756a12-5a61-4bbd-b46c-73a66a3d70ed.js
+2015-09-11 19:16:14.2279|Info|            FIT:9223372036854775802       | CTs: 2        | T: 00:00:01.7937
+2015-09-11 19:16:16.1113|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 19:16:16.1113|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\50232088-d3a9-41dd-a3a5-2e41993626ea.js
+2015-09-11 19:16:16.1113|Info|            FIT:9223372036854775802       | CTs: 2        | T: 00:00:01.7952
+2015-09-11 19:16:17.9686|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 19:16:17.9686|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\2b0701ef-ddde-4150-95f2-47d7f5a97769.js
+2015-09-11 19:16:17.9686|Info|            FIT:9223372036854775802       | CTs: 2        | T: 00:00:01.7604
+2015-09-11 19:16:19.7629|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 19:16:19.7629|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\e24fd46e-9a09-48b9-8579-a38a0542f148.js
+2015-09-11 19:16:19.7629|Info|            FIT:9223372036854775802       | CTs: 2        | T: 00:00:01.7054
+2015-09-11 19:16:21.6432|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 19:16:21.6432|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\38d72bb3-d785-4d8b-b727-db5bdf57b829.js
+2015-09-11 19:16:21.6432|Info|            FIT:9223372036854775802       | CTs: 2        | T: 00:00:01.7888
+2015-09-11 19:16:23.5265|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 19:16:23.5265|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\070f2bf5-d67d-4b87-b8e9-429b5e1c1b40.js
+2015-09-11 19:16:23.5265|Info|            FIT:9223372036854775802       | CTs: 2        | T: 00:00:01.7886
+2015-09-11 19:16:25.4149|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 19:16:25.4149|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\7ea25362-da96-42e1-aad7-2d203138f93b.js
+2015-09-11 19:16:25.4149|Info|            FIT:9223372036854775802       | CTs: 2        | T: 00:00:01.7947
+2015-09-11 19:16:27.3643|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 19:16:27.3643|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\b74d90b7-cc86-4c43-befa-411847d64277.js
+2015-09-11 19:16:27.3643|Info|            FIT:9223372036854775802       | CTs: 2        | T: 00:00:01.8592
+2015-09-11 19:16:29.2299|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 19:16:29.2299|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\f17c7a2b-8a0f-4ba1-a78c-399b2faa272e.js
+2015-09-11 19:16:29.2299|Info|            FIT:9223372036854775802       | CTs: 2        | T: 00:00:01.7764
