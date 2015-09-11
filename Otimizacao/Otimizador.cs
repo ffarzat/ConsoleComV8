@@ -182,14 +182,22 @@ namespace Otimizacao
         /// </summary>
         private void ExecutarRodadas()
         {
+           
+
             for (int i = 0; i < _executarAte; i++)
             {
+                var sw = new Stopwatch();
+                sw.Start();
                 _logger.Info(string.Format("Geracao {0}", i));
                 Crossover();
                 Mutate();
                 ExecuteFitEvaluation();
                 Selection();
-                FindBestChromosomeOfRun();    
+                FindBestChromosomeOfRun();
+
+                sw.Stop();
+                _logger.Info("Geração avaliada em : {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
+                _logger.Info("===================================");
             }
             
         }
