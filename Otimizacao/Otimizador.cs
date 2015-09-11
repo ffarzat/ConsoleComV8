@@ -361,7 +361,9 @@ namespace Otimizacao
             _original.Codigo = jHelper.GerarCodigo(_original.Ast);
             _original.Fitness = jHelper.ExecutarTestes(caminhoBibliotecaJs, _caminhoScriptTestes);
 
+            _logger.Info(string.Format("    Quantidade de Testes Total {0}", jHelper.TotalTestes));
             _logger.Info(string.Format("    Fitness do Original {0}", _original.Fitness));
+            _logger.Info(string.Format("    T do Original {0}", jHelper.TestesComSucesso));
 
             _fitnessMin = _original.Fitness;
 
