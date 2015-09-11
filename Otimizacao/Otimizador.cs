@@ -446,7 +446,7 @@ namespace Otimizacao
             var caminhoNovoAvaliado = GerarCodigo(sujeito);
 
             sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes);
-            _logger.Info(string.Format("            {0}", sujeito.Fitness));
+            _logger.Info(string.Format("            F:{0} | T: {1}", sujeito.Fitness, jHelper.TestesComSucesso));
 
             jHelper.Dispose();
 
