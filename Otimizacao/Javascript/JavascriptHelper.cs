@@ -855,6 +855,9 @@ namespace Otimizacao.Javascript
         {
             _manager.Dispose();
             _engine.Dispose();
+
+            GC.Collect(GC.MaxGeneration);
+            GC.WaitForPendingFinalizers();
         }
     }
 }

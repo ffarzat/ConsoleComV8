@@ -1,4 +1,20 @@
-2015-09-09 22:47:58.0272|Info|Iniciando Otimização do global.js
-2015-09-09 22:47:58.0502|Info|    SetTimeout False
-2015-09-09 22:47:58.0502|Info|    Individuos 100
-2015-09-09 22:47:58.0502|Info|    Geracoes 100
+2015-09-11 09:52:51.6649|Info|Iniciando Otimização do underscore.js
+2015-09-11 09:52:51.7010|Info|    SetTimeout True
+2015-09-11 09:52:51.7010|Info|    Individuos 100
+2015-09-11 09:52:51.7010|Info|    Geracoes 100
+2015-09-11 09:52:57.3470|Trace|           Total:1382, Sucesso: 1382, Falha: 0
+2015-09-11 09:52:57.3470|Trace|           4 segundos para avaliar o individuo underscore.js
+2015-09-11 09:52:57.3470|Info|    Fitness do Original 4653
+2015-09-11 09:52:57.3540|Info|    Criando a populaçao Inicial com 100 individuos
+2015-09-11 09:52:59.4294|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 09:52:59.4294|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\965ee226-9567-45fc-ba4f-b5f38d25e1e9.js
+2015-09-11 09:52:59.4294|Info|            9223372036854775802
+2015-09-11 09:53:01.5479|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 09:53:01.5479|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\dd7a2ac0-1ad9-4eef-86a0-a3732c1bcb2f.js
+2015-09-11 09:53:01.5479|Info|            9223372036854775802
+2015-09-11 09:53:03.6145|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 09:53:03.6154|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\c4c2acfe-e987-43a3-81d3-a2c507830747.js
+2015-09-11 09:53:03.6154|Info|            9223372036854775802
+2015-09-11 09:53:05.8440|Trace|           Total:264, Sucesso: 2, Falha: 262
+2015-09-11 09:53:05.8440|Trace|           1 segundos para avaliar o individuo ResultadosUnderscore\28cb61ec-0aad-4535-ab8a-8ae296d09f9c.js
+2015-09-11 09:53:05.8440|Info|            9223372036854775802
