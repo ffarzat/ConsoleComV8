@@ -27,12 +27,12 @@ namespace ConsoleComV8
         static void Main(string[] args)
         {
             #region Moment
-            
-            //var otimizadorMoment = new Otimizador(100, 100, 5, "Moment", "ResultadosMoment");
 
-            //var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
+            var otimizadorMoment = new Otimizador(100, 100, 5, "Moment", "ResultadosMoment");
 
-            //Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
+            var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
+
+            Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
 
 
             #endregion
