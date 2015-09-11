@@ -139,7 +139,7 @@ namespace Otimizacao.Javascript
             _diretorioExecucao = diretorioJavascripts;
 
             //O manager vai compilar e cachear as bibliotecas
-            _manager = new RuntimeManager(new ManualManagerSettings() { ScriptCacheMaxCount = 100, ScriptCacheExpirationSeconds = Int16.MaxValue });
+            _manager = new RuntimeManager(new ManualManagerSettings() { MaxExecutableBytes = (1000000000 * 2)});
             _engine = _manager.GetEngine();
             RequireManager.ClearPackages(); //garantir uma execução limpa
 

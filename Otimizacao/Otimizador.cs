@@ -378,24 +378,19 @@ namespace Otimizacao
         {
             var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
             jHelper.ConfigurarGeracao();
-
-            var total = jHelper.ContarNos(sujeito.Ast);
-            int no = Rand.Next(0, total);
-
-            if (total > 0)
+            
+            int totalMutacoes = 1;
+                
+            while (sujeito.Ast == "" && totalMutacoes < 50)
             {
+                _logger.Info("          Tentativa {0} de executar mutação no código...", totalMutacoes);
+                var total = jHelper.ContarNos(sujeito.Ast);
+                int no = Rand.Next(0, total);
                 sujeito.Ast = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no);
-                
-                int totalMutacoes = 1;
-                
-                while (sujeito.Ast == "" && totalMutacoes < 50)
-                {
-                    _logger.Info("          Tentativa {0} de executar mutação no código...", totalMutacoes);
-                    sujeito.Ast = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no);
-                    totalMutacoes++;
-                }
-                
+                totalMutacoes++;
             }
+                
+            
             jHelper.Dispose();
         }
 
@@ -446,7 +441,7 @@ namespace Otimizacao
             var caminhoNovoAvaliado = GerarCodigo(sujeito);
 
             sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes);
-            _logger.Info(string.Format("            F:{0} | T: {1}", sujeito.Fitness, jHelper.TestesComSucesso));
+            _logger.Info(string.Format("            F:{0}       | T: {1}", sujeito.Fitness, jHelper.TestesComSucesso));
 
             jHelper.Dispose();
 
