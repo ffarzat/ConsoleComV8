@@ -446,12 +446,16 @@ namespace Otimizacao
         /// <param name="sujeito"></param>
         private Int64 AvaliarIndividuo(Individuo sujeito)
         {
-            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-            
-            var caminhoNovoAvaliado = GerarCodigo(sujeito);
+            var sw = new Stopwatch();
+            sw.Start();
 
+            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+            var caminhoNovoAvaliado = GerarCodigo(sujeito);
+            
             sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes);
-            _logger.Info(string.Format("            F:{0}       | T: {1}", sujeito.Fitness, jHelper.TestesComSucesso));
+            sw.Stop();
+            
+            _logger.Info(string.Format("            F:{0}       | T: {1}        | {2}", sujeito.Fitness, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff")));
 
             jHelper.Dispose();
 
