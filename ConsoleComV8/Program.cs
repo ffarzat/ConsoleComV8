@@ -39,23 +39,23 @@ namespace ConsoleComV8
 
             #region Underscore
 
-            var otimizador = new Otimizador(100, 100, 20, "underscore", "ResultadosUnderscore");
-            otimizador.UsarSetTimeout();
+            //var otimizador = new Otimizador(100, 100, 20, "underscore", "ResultadosUnderscore");
+            //otimizador.UsarSetTimeout();
 
-            var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
+            //var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
 
-            Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
+            //Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
 
             #endregion
 
             #region Lodash
 
-            //var otimizadorLodash = new Otimizador(10, 5, 20, "lodash", "ResultadosLodash");
-            //otimizadorLodash.UsarSetTimeout();
+            var otimizadorLodash = new Otimizador(10, 5, 20, "Lodash", "ResultadosLodash");
+            otimizadorLodash.UsarSetTimeout();
 
-            //var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
+            var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
 
-            //Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
+            Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
             #endregion
 
         }
