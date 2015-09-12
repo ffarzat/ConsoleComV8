@@ -11,6 +11,7 @@ using System.Timers;
 using ClearScript.Manager;
 using ClearScript.Manager.Caching;
 using ClearScript.Manager.Loaders;
+using Microsoft.ClearScript;
 using Microsoft.ClearScript.V8;
 using NLog;
 using Newtonsoft.Json.Linq;
@@ -560,6 +561,9 @@ namespace Otimizacao.Javascript
 
             #region Configura o QUnit
 
+
+
+
             _manager.ExecuteCompiled("Qunit");
             _manager.ExecuteCompiled("qunit-extras");
             
@@ -606,25 +610,32 @@ namespace Otimizacao.Javascript
                         ");
             #endregion
 
-            #region Carrega o individuo
-            _manager.ExecuteCompiled(Path.GetFileNameWithoutExtension(nomeArquivoIndividuo));
-            #endregion
-
-            #region Carrega e executa os Testes
-            _manager.ExecuteCompiled(Path.GetFileNameWithoutExtension(nomeDoArquivoTestes));
-
-            //Escrever("Iniciando os testes");
-            //Escrever("_timers.Count {0}", _timers.Count);
-
+            #region Carrega Individuo e executa os Testes
+            
             try
             {
+
+                _manager.Compile(Path.GetFileNameWithoutExtension(nomeArquivoIndividuo), File.ReadAllText(nomeArquivoIndividuo), true, 60);
+                _manager.ExecuteCompiled(Path.GetFileNameWithoutExtension(nomeArquivoIndividuo));
+
+                _manager.ExecuteCompiled(Path.GetFileNameWithoutExtension(nomeDoArquivoTestes));
+
+                //Escrever("Iniciando os testes");
+                //Escrever("_timers.Count {0}", _timers.Count);
+
                 _engine.Execute(@"   QUnit.load();
                                 QUnit.start();
                 ");
             }
+            catch (ScriptEngineException ex)
+            {
+                _logger.Trace(ex.ErrorDetails);
+                _logger.Trace(ex.ToString());
+                return Int64.MaxValue - 5;
+            }
             catch (Exception ex)
             {
-                Log(ex.ToString());
+                _logger.Trace(ex.ToString());
                 return Int64.MaxValue - 5;
             }
             

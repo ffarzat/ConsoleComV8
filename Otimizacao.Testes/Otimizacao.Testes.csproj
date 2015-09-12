@@ -135,6 +135,9 @@
     <Content Include="Require\estraverse.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Require\global.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Require\keyword.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -359,6 +359,11 @@ namespace Otimizacao
             jHelper.ConfigurarGeracao();
 
             var caminho = string.Format("{0}\\{1}", _diretorioFontes, caminhoBibliotecaJs);
+            var caminhoDestino = string.Format("{0}\\{1}", _diretorioExecucao, caminhoBibliotecaJs);
+
+            if (!File.Exists(caminhoDestino))
+                File.Copy(caminho, caminhoDestino);
+
 
             _original = new Individuo
                 {
@@ -367,7 +372,7 @@ namespace Otimizacao
                 };
 
             _original.Codigo = jHelper.GerarCodigo(_original.Ast);
-            _original.Fitness = jHelper.ExecutarTestes(caminhoBibliotecaJs, _caminhoScriptTestes);
+            _original.Fitness = jHelper.ExecutarTestes(caminhoDestino, _caminhoScriptTestes);
 
             _logger.Info(string.Format("    Quantidade de Testes Total {0}", jHelper.TotalTestes));
             _logger.Info(string.Format("    Fitness do Original {0}", _original.Fitness));
@@ -390,17 +395,21 @@ namespace Otimizacao
             jHelper.ConfigurarGeracao();
             
             int totalMutacoes = 1;
-                
-            while (sujeito.Ast == "" && totalMutacoes < 50)
+            string novaAst = "";
+
+            while (novaAst == "" & totalMutacoes < 50)
             {
-                _logger.Info("          Tentativa {0} de executar mutação no código...", totalMutacoes);
+                if(totalMutacoes > 1)
+                    _logger.Info("          Tentativa {0} de executar mutação no código...", totalMutacoes);
+
                 var total = jHelper.ContarNos(sujeito.Ast);
                 int no = Rand.Next(0, total);
-                sujeito.Ast = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no);
+                novaAst = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no);
                 totalMutacoes++;
             }
-                
-            
+
+            sujeito.Ast = novaAst;
+
             jHelper.Dispose();
         }
 

@@ -27,6 +27,26 @@ namespace Otimizacao.Testes
         /// Executa os testes de geracao de codigo
         /// </summary>
         [Test]
+        public void GerarCodigoDoMoment()
+        {
+            const string diretorioExecucao = "Require";
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, diretorioExecucao), false, false);
+            helper.ConfigurarGeracao();
+
+            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "global.js"));
+            var astMoment = helper.GerarAst(scriptCode);
+            
+            
+            var codigo = helper.GerarCodigo(astMoment); 
+            
+            Assert.AreEqual(codigo, helper.Codigo, "Código Inválido");
+        }
+
+
+        /// <summary>
+        /// Executa os testes de geracao de codigo
+        /// </summary>
+        [Test]
         public void GerarCodigo()
         {
             const string diretorioExecucao = "Require";
