@@ -1327,7 +1327,10 @@
             }
             result.push(']');
             break;
-
+		case Syntax.EmptyStatement:
+			result = '';
+			break;
+			
         case Syntax.ComprehensionBlock:
             if (expr.left.type === Syntax.VariableDeclaration) {
                 fragment = [
