@@ -223,17 +223,6 @@ namespace Otimizacao.Javascript
         {
             #region Registra os pacotes
 
-            //RegistarScript("esprima", "esprima.js");
-            //RegistarScript("estraverse", "estraverse.js");
-            //RegistarScript("esutils", "utils.js");
-            //RegistarScript("ast", "ast.js");
-            //RegistarScript("code", "code.js");
-            //RegistarScript("keyword", "keyword.js");
-
-            
-            //var scriptTestCode = File.ReadAllText("core-test.js");
-            //var qunit = File.ReadAllText("qunit-1.18.0.js");
-            //var console = File.ReadAllText("Console.js");
             var esprima = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"esprima.js"));
             var escodegen = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"escodegen.js"));
             var estraverse = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"estraverse.js"));

@@ -35,11 +35,15 @@ namespace Otimizacao.Testes
 
             var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "global.js"));
             var astMoment = helper.GerarAst(scriptCode);
+
+            File.WriteAllText("astMoment.txt", helper.FormatarStringJson(astMoment));
             
-            
-            var codigo = helper.GerarCodigo(astMoment); 
-            
-            Assert.AreEqual(codigo, helper.Codigo, "Código Inválido");
+            var codigo = helper.GerarCodigo(astMoment);
+
+            File.WriteAllText("codigo.txt", scriptCode);
+            File.WriteAllText("codigoNovo.txt", codigo);
+
+            Assert.AreEqual(scriptCode, helper.Codigo, "Código Inválido");
         }
 
 
