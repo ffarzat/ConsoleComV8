@@ -139,25 +139,25 @@ namespace Otimizacao.Testes
         public void ExecutarMutacaoExclusao()
         {
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"), true, false);
-            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Require", "underscore.js"));
+            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Require", "global.js"));
             helper.ConfigurarGeracao();
 
             var ast = helper.GerarAst(scriptCode);
             
-            var astNova = helper.ExecutarMutacaoExclusao(ast, 100);
+            var astNova = helper.ExecutarMutacaoExclusao(ast, 175);
 
             Assert.AreNotEqual(ast, astNova);
 
-            //File.WriteAllText("astOriginal.txt", helper.FormatarStringJson(ast));
-            //File.WriteAllText("astMutada.txt", helper.FormatarStringJson(astNova));
+            File.WriteAllText("astOriginal.txt", helper.FormatarStringJson(ast));
+            File.WriteAllText("astMutada.txt", helper.FormatarStringJson(astNova));
 
 
-            var codigo = helper.GerarCodigo(ast);
+            //var codigo = helper.GerarCodigo(ast);
             var codigoNovo = helper.GerarCodigo(astNova);
 
-            Assert.AreNotEqual(codigo, codigoNovo);
+            Assert.AreNotEqual(scriptCode, codigoNovo);
 
-            File.WriteAllText("codigo.txt", codigo);
+            File.WriteAllText("codigo.txt", scriptCode);
             File.WriteAllText("codigoNovo.txt", codigoNovo);
 
         }
