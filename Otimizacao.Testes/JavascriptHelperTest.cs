@@ -26,7 +26,9 @@ namespace Otimizacao.Testes
         /// <summary>
         /// Executa os testes de geracao de codigo
         /// </summary>
+        /// <remarks>Usado apenas para debugs</remarks>
         [Test]
+        [Ignore]
         public void GerarCodigoDoMoment()
         {
             const string diretorioExecucao = "Require";
@@ -159,6 +161,8 @@ namespace Otimizacao.Testes
             //var codigo = helper.GerarCodigo(ast);
             var codigoNovo = helper.GerarCodigo(astNova);
 
+
+            Assert.AreNotEqual("", codigoNovo);
             Assert.AreNotEqual(scriptCode, codigoNovo);
 
             File.WriteAllText("codigo.txt", scriptCode);

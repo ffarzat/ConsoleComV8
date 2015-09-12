@@ -1254,17 +1254,18 @@
 					
 					//javascriptHelper.Escrever('expr.raw :{0}', JSON.stringify(expr.raw));
 					
-                    raw = parse(expr.raw).body[0].expression;
+                    //raw = parse(expr.raw).body[0].expression;
                     
 //					javascriptHelper.Escrever('raw.type === Syntax.Literal :{0}', raw.type === Syntax.Literal);
 //					javascriptHelper.Escrever('raw :{0}', JSON.stringify(raw));
 					
-					if (raw.type === Syntax.Literal) {
-                        if (raw.value === expr.value) {
-                            result = expr.raw;
-                            break;
-                        }
-                    }
+					//if (raw.type === Syntax.Literal) {
+                        //if (raw.value === expr.value) {
+                            //result = expr.raw;
+                            //break;
+                        //}
+                    //}
+					
                 } catch (e) {
                     // not use raw property
 					javascriptHelper.Escrever('erro :{0}', JSON.stringify(expr.raw));
@@ -1326,7 +1327,10 @@
             }
             result.push(']');
             break;
-
+		case Syntax.EmptyStatement:
+			result = '';
+			break;
+			
         case Syntax.ComprehensionBlock:
             if (expr.left.type === Syntax.VariableDeclaration) {
                 fragment = [
