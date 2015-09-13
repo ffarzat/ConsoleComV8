@@ -37,12 +37,18 @@ namespace Otimizacao.Javascript
         public string Arquivo { get; set; }
 
         /// <summary>
+        /// Define como o individuo foi criado
+        /// </summary>
+        public Operador CriadoPor { get; set; }
+
+        /// <summary>
         /// Construtor Default
         /// </summary>
         public Individuo()
         {
-            Id= Guid.NewGuid(),
+            Id = Guid.NewGuid();
             Fitness = Int64.MaxValue;
+            CriadoPor = Operador.Clonagem;
         }
         /// <summary>
         /// Gera um clone do individuo atual
@@ -56,5 +62,17 @@ namespace Otimizacao.Javascript
                 };
         }
 
+
     }
+
+    /// <summary>
+    /// Operação Genética
+    /// </summary>
+    public enum Operador
+    {
+        Mutacao,
+        Cruzamento,
+        Clonagem
+    }
+
 }
