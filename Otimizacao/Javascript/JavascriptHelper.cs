@@ -656,12 +656,12 @@ namespace Otimizacao.Javascript
             {
                 _logger.Trace(ex.ErrorDetails);
                 _logger.Trace(ex.ToString());
-                return _fitTopValue;
+                return _fitTopValue + 1000;
             }
             catch (Exception ex)
             {
                 _logger.Trace(ex.ToString());
-                return _fitTopValue - 1;
+                return _fitTopValue = 1000;
             }
 
             while (GetTimersCount() > 0 & sw.Elapsed.Seconds <= _timeoutTestes)
