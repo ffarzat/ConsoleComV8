@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using NLog;
 using OfficeOpenXml;
+using OfficeOpenXml.Style;
 using Otimizacao.Javascript;
 
 namespace Otimizacao
@@ -15,7 +16,7 @@ namespace Otimizacao
     /// <summary>
     /// Representa um otimizador de javascript
     /// </summary>
-    public class Otimizador
+    public class Otimizador: IDisposable
     {
         /// <summary>
         /// NLog Logger
@@ -120,26 +121,9 @@ namespace Otimizacao
             _diretorioFontes = diretorioFontes;
             _diretorioExecucao = diretorioExecucao;
 
-            #region Diretorio Alvo dos relatorios
-                if (Directory.Exists(_diretorioExecucao))
-                {
-                    new DirectoryInfo(_diretorioExecucao).Delete(true);
-                }
-
-                Thread.Sleep(10);
-
-                Directory.CreateDirectory(_diretorioExecucao);
-            #endregion
+            LimparResultadosAnteriores();
 
             _excel = new ExcelPackage();
-        }
-
-        /// <summary>
-        /// Destrutor
-        /// </summary>
-        ~Otimizador()
-        {
-            _excel.Dispose();
         }
 
         /// <summary>
@@ -157,7 +141,9 @@ namespace Otimizacao
                 new DirectoryInfo(_diretorioExecucao).Delete(true);
             }
 
-            Thread.Sleep(10);
+            Thread.Sleep(5);
+            Directory.CreateDirectory(_diretorioExecucao);
+            Thread.Sleep(5);
         }
 
         /// <summary>
@@ -190,13 +176,14 @@ namespace Otimizacao
             _logger.Info(string.Format("    Geracoes {0}", _executarAte));
 
             CriarExcel();
-
-
+            
             CriarPrimeiraGeracao();
 
             ExecutarRodadas();
             
             sw.Stop();
+
+            SalvarExcel();
 
             _logger.Info("Rodadas executadas com sucesso", _fitnessMin);
             
@@ -222,9 +209,27 @@ namespace Otimizacao
 
             _excel.Workbook.Worksheets.Add("Resultados");
 
+            //Titulos
+            //Planilha.Cells["A1:F1"].Style.Fill.PatternType = ExcelFillStyle.LightGrid;
 
+            Planilha.Cells["A1"].Value = "Geracao";
+            Planilha.Cells["B1"].Value = "Individuo";
+            Planilha.Cells["C1"].Value = "Operacao";
+            Planilha.Cells["D1"].Value = "Fitness";
+            Planilha.Cells["E1"].Value = "Tempo";
+            Planilha.Cells["F1"].Value = "Testes";
 
-            // Save the Excel file
+        }
+
+        /// <summary>
+        /// Salva o arquivo excel
+        /// </summary>
+        private void SalvarExcel()
+        {
+            
+            if(File.Exists(Path.Combine(_diretorioExecucao, "resultados.xlsx")))
+                File.Delete(Path.Combine(_diretorioExecucao, "resultados.xlsx"));
+
             var bin = _excel.GetAsByteArray();
             File.WriteAllBytes(Path.Combine(_diretorioExecucao, "resultados.xlsx"), bin);
         }
@@ -234,20 +239,26 @@ namespace Otimizacao
         /// </summary>
         private void ExecutarRodadas()
         {
-           
-
             for (int i = 0; i < _executarAte; i++)
             {
+                _generationCount = i;
+                _logger.Info(string.Format("Geracao {0}", i));
+
                 var sw = new Stopwatch();
                 sw.Start();
-                _logger.Info(string.Format("Geracao {0}", i));
+                
                 Crossover();
+                
                 Mutate();
+                
                 ExecuteFitEvaluation();
+                
                 Selection();
+                
                 FindBestChromosomeOfRun();
-
+                
                 sw.Stop();
+
                 _logger.Info("Geração avaliada em : {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
                 _logger.Info("===================================");
             }
@@ -309,7 +320,7 @@ namespace Otimizacao
                 _logger.Info("-> Arquivo = {0}", MelhorIndividuo.Arquivo);
 
                 string generationResultPath = Path.Combine(_diretorioExecucao, _generationCount.ToString());
-                string generationBestPath = Path.Combine(_diretorioExecucao, "\\melhor.js");
+                string generationBestPath = Path.Combine(generationResultPath, "\\melhor.js");
                 
                 Directory.CreateDirectory(generationResultPath);
                 File.WriteAllText(generationBestPath, MelhorIndividuo.Codigo);
@@ -336,11 +347,14 @@ namespace Otimizacao
         /// </summary>
         private void ExecuteFitEvaluation()
         {
-            foreach (var individuo in _population)
+            for (int i = 0; i < _population.Count; i++)
             {
+                var individuo = _population[i];
+                
                 if (individuo.Fitness == Int64.MaxValue)
-                    AvaliarIndividuo(individuo);
+                    AvaliarIndividuo(i, individuo);    
             }
+            
 
         }
 
@@ -407,16 +421,16 @@ namespace Otimizacao
             _population.Add(_original);
             
             _logger.Info(string.Format("    Avaliando o original"));
-            AvaliarIndividuo(_original);
+            AvaliarIndividuo(0,_original);
             _fitnessMin = _original.Fitness;
 
             _logger.Info(string.Format("    Criando a populaçao Inicial com {0} individuos",_size));
             
-            for (int i = 0; i < (_size); i++) 
+            for (int i = 1; i < (_size); i++) 
             {
                 var atual = _original.Clone();
                 ExecutarMutacao(atual);
-                AvaliarIndividuo(atual);
+                AvaliarIndividuo(i, atual);
                 _population.Add(atual);
             }
 
@@ -531,8 +545,9 @@ namespace Otimizacao
         /// <summary>
         /// Executa os testes com o sujeito e preenche sua propriedade Fitness Retorna o valor dessa propriedade
         /// </summary>
+        /// <param name="indice"></param>
         /// <param name="sujeito"></param>
-        private Int64 AvaliarIndividuo(Individuo sujeito)
+        private Int64 AvaliarIndividuo(int indice, Individuo sujeito)
         {
             var sw = new Stopwatch();
             sw.Start();
@@ -546,6 +561,10 @@ namespace Otimizacao
             sw.Stop();
             
             _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff")));
+            
+            CriarLinhaExcel(indice, sujeito, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
+
+
 
             jHelper.Dispose();
 
@@ -554,6 +573,25 @@ namespace Otimizacao
                 sujeito.Fitness = _original.Fitness;
 
             return sujeito.Fitness;
+        }
+
+        /// <summary>
+        /// Inclui a linha no excel
+        /// </summary>
+        /// <param name="indice"></param>
+        /// <param name="sujeito"></param>
+        /// <param name="testesComSucesso"></param>
+        /// <param name="tempoTotal"></param>
+        private void CriarLinhaExcel(int indice, Individuo sujeito, int testesComSucesso, string tempoTotal)
+        {
+            var indiceExcel = indice + 2;
+
+            Planilha.Cells["A" + indiceExcel].Value =_generationCount;
+            Planilha.Cells["B" + indiceExcel].Value = sujeito.Arquivo;
+            Planilha.Cells["C" + indiceExcel].Value = sujeito.CriadoPor.ToString();
+            Planilha.Cells["D" + indiceExcel].Value = sujeito.Fitness;
+            Planilha.Cells["E" + indiceExcel].Value = tempoTotal;
+            Planilha.Cells["F" + indiceExcel].Value = testesComSucesso;
         }
 
         /// <summary>
@@ -576,6 +614,14 @@ namespace Otimizacao
             jHelper.Dispose();
 
             return caminhoNovoAvaliado;
+        }
+
+        /// <summary>
+        /// Libera os objetos
+        /// </summary>
+        public void Dispose()
+        {
+            _excel.Dispose();
         }
     }
 }

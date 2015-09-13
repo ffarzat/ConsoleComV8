@@ -26,7 +26,8 @@ namespace Otimizacao.Testes
 
             otimizador.LimparResultadosAnteriores();
 
-            Assert.IsFalse(Directory.Exists("ResultadosMoment"));
+            Assert.IsTrue(Directory.Exists("ResultadosMoment"));
+            Assert.AreEqual(Directory.EnumerateFiles("ResultadosMoment").Count() , 0 );
         }
 
         /// <summary>
@@ -35,8 +36,10 @@ namespace Otimizacao.Testes
         [Test]
         public void ValidarExcel()
         {
-            var otimizador = new Otimizador(1, 1, 1, "Require", "ResultadosMoment");
-            var otimizou = otimizador.Otimizar("global.js", "core-test.js");
+            var otimizador = new Otimizador(10, 2, 20, "Require", "ResultadosUnderscore");
+            otimizador.UsarSetTimeout();
+
+            var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
         }
 
     }
