@@ -349,7 +349,7 @@ namespace Otimizacao.Javascript
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.ToString());
+                _logger.Trace(ex.ToString());
                 return "";
             }
             
@@ -385,7 +385,7 @@ namespace Otimizacao.Javascript
             catch (Exception ex )
             {
                 
-                Log(ex.ToString());
+                _logger.Trace(ex.ToString());
                 return 0;
             }
             
