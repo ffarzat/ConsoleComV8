@@ -336,8 +336,10 @@ namespace Otimizacao
         {
             CriarIndividuoOriginal(_caminhoBiblioteca);
             _population.Add(_original);
+            
             _logger.Info(string.Format("    Avaliando o original"));
             AvaliarIndividuo(_original);
+            _fitnessMin = _original.Fitness;
 
             _logger.Info(string.Format("    Criando a populaçao Inicial com {0} individuos",_size));
             
