@@ -95,9 +95,14 @@ namespace Otimizacao.Javascript
         private static Logger _logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
+        /// Cache dos arquivos em disco
+        /// </summary>
+        private Dictionary<string, string> _cacheCodigos;
+
+        /// <summary>
         /// Manager da ScriptEngine
         /// </summary>
-        private RuntimeManager _manager;
+        //private RuntimeManager _manager;
 
         /// <summary>
         /// Diretório onde os scripts estão
@@ -140,16 +145,18 @@ namespace Otimizacao.Javascript
             _diretorioExecucao = diretorioJavascripts;
 
             //O manager vai compilar e cachear as bibliotecas
-            _manager = new RuntimeManager(new ManualManagerSettings() { MaxExecutableBytes = (1000000000 * 2)});
-            _engine = _manager.GetEngine();
+            //_manager = new RuntimeManager(new ManualManagerSettings() { MaxExecutableBytes = (1000000000 * 2)});
+            _engine = new V8ScriptEngine();
             RequireManager.ClearPackages(); //garantir uma execução limpa
 
             #region Ler arquivos Js
-            //_javascripts = new Dictionary<string, string>();
+            
+            _cacheCodigos = new Dictionary<string, string>();
 
             foreach (var enumerateFile in Directory.EnumerateFiles(diretorioJavascripts, "*.js"))
             {
-                _manager.Compile(Path.GetFileNameWithoutExtension(enumerateFile), File.ReadAllText(enumerateFile), true, int.MaxValue);
+                _cacheCodigos.Add(Path.GetFileNameWithoutExtension(enumerateFile), File.ReadAllText(enumerateFile));
+                //_manager.Compile(Path.GetFileNameWithoutExtension(enumerateFile), File.ReadAllText(enumerateFile), true, int.MaxValue);
             }
 
             #endregion
@@ -234,21 +241,21 @@ namespace Otimizacao.Javascript
 
             #region Congigura o Escodegen e o Esprima
 
-            var engine = _manager.GetEngine();
+            //var engine = _manager.GetEngine();
             
-            engine.Execute(@"   var ObjEstraverse = {};
+            _engine.Execute(@"   var ObjEstraverse = {};
                                 var ObjEscodegen = {};
                                 var ObjCode = {};
                                 var ObjAst = {};
                                 var ObjKeyword = {};
                             ");
 
-            engine.Execute(code);
-            engine.Execute(ast);
-            engine.Execute(keyword);
-            engine.Execute(estraverse);
+            _engine.Execute(code);
+            _engine.Execute(ast);
+            _engine.Execute(keyword);
+            _engine.Execute(estraverse);
 
-            engine.Execute(@"
+            _engine.Execute(@"
                             var Objutils = {};
                             Objutils.ast = ObjAst;
                             Objutils.code = ObjCode;
@@ -256,10 +263,10 @@ namespace Otimizacao.Javascript
                             
             ");
 
-            engine.Execute(escodegen);
-            engine.Execute(esprima);
+            _engine.Execute(escodegen);
+            _engine.Execute(esprima);
 
-            engine.Execute(@"        option = {
+            _engine.Execute(@"        option = {
                                                 comment: true,
                                                 format: {
                                                     indent: {
@@ -282,10 +289,10 @@ namespace Otimizacao.Javascript
             var sw = new Stopwatch();
             sw.Start();
 
-            var engine = _manager.GetEngine();
+            //var engine = _manager.GetEngine();
             var esprimaParse = string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, loc:true, comment: true }});", EncodeJsString(codigoIndividuo));
-            engine.Execute(esprimaParse);
-            engine.Execute("javascriptHelper.JsonAst = JSON.stringify(syntax);");
+            _engine.Execute(esprimaParse);
+            _engine.Execute("javascriptHelper.JsonAst = JSON.stringify(syntax);");
 
             sw.Stop();
 
@@ -405,7 +412,7 @@ namespace Otimizacao.Javascript
         /// <returns></returns>
         public void ExecutarCrossOver(string astPai, string astMae, int randonNodePai, int randonNodeMae, out string astPrimeiroFilho, out string astSegundoFilho)
         {
-            var engine = _manager.GetEngine();
+            //var engine = _manager.GetEngine();
 
             astPrimeiroFilho = "";
             astSegundoFilho = "";
@@ -414,13 +421,13 @@ namespace Otimizacao.Javascript
             {
                 #region Recupero o nó no pai
 
-                engine.Execute("var nodePai = {type:'EmptyStatement'};");
+                _engine.Execute("var nodePai = {type:'EmptyStatement'};");
 
-                engine.Execute("var astPai = JSON.parse(#astPai);"
+                _engine.Execute("var astPai = JSON.parse(#astPai);"
                     .Replace("#astPai", this.EncodeJsString(astPai))
                     );
 
-                engine.Execute(@"
+                _engine.Execute(@"
 
                     var counter = 0;
                     ObjEstraverse.replace(astPai, {
@@ -443,12 +450,12 @@ namespace Otimizacao.Javascript
                 #endregion
 
                 #region Recupero o nó na mãe e troco pelo do Pai
-                engine.Execute("var nodeMae = {type : 'EmptyStatement'};");
-                engine.Execute("var astMae = JSON.parse(#astMae);"
+                _engine.Execute("var nodeMae = {type : 'EmptyStatement'};");
+                _engine.Execute("var astMae = JSON.parse(#astMae);"
                      .Replace("#astMae", this.EncodeJsString(astMae))
                      );
 
-                engine.Execute(@"
+                _engine.Execute(@"
 
                     var counter = 0;
                     ObjEstraverse.replace(astMae, {
@@ -478,7 +485,7 @@ namespace Otimizacao.Javascript
 
                 #region Troco agora no pai
 
-                engine.Execute(@"
+                _engine.Execute(@"
 
                     var counter = 0;
                     ObjEstraverse.replace(astPai, {
@@ -566,9 +573,11 @@ namespace Otimizacao.Javascript
 
 
 
+            _engine.Execute(_cacheCodigos["Qunit"]);
+            _engine.Execute(_cacheCodigos["qunit-extras"]);
 
-            _manager.ExecuteCompiled("Qunit");
-            _manager.ExecuteCompiled("qunit-extras");
+            //_manager.ExecuteCompiled("Qunit");
+            //_manager.ExecuteCompiled("qunit-extras");
             
             _engine.Execute(@"   
                                     var total, sucesso, falha;
@@ -618,10 +627,12 @@ namespace Otimizacao.Javascript
             try
             {
 
-                _manager.Compile(Path.GetFileNameWithoutExtension(nomeArquivoIndividuo), File.ReadAllText(nomeArquivoIndividuo), true, 60);
-                _manager.ExecuteCompiled(Path.GetFileNameWithoutExtension(nomeArquivoIndividuo));
+                //_manager.Compile(Path.GetFileNameWithoutExtension(nomeArquivoIndividuo), File.ReadAllText(nomeArquivoIndividuo), true, 60);
+                //_manager.ExecuteCompiled(Path.GetFileNameWithoutExtension(nomeArquivoIndividuo));
+                _engine.Execute(File.ReadAllText(nomeArquivoIndividuo));
 
-                _manager.ExecuteCompiled(Path.GetFileNameWithoutExtension(nomeDoArquivoTestes));
+                //_manager.ExecuteCompiled(Path.GetFileNameWithoutExtension(nomeDoArquivoTestes));
+                _engine.Execute(_cacheCodigos[Path.GetFileNameWithoutExtension(nomeDoArquivoTestes)]);
 
                 //Escrever("Iniciando os testes");
                 //Escrever("_timers.Count {0}", _timers.Count);
@@ -641,8 +652,8 @@ namespace Otimizacao.Javascript
                 _logger.Trace(ex.ToString());
                 return Int64.MaxValue - 1;
             }
-            
-            while (GetTimersCount() > 0)
+
+            while (GetTimersCount() > 0 & _timeOutCodes < sw.Elapsed.Seconds)
             {
                 Thread.Sleep(5);
             }
@@ -664,29 +675,6 @@ namespace Otimizacao.Javascript
             var tempoTestesSomados = (TotalTestes - TestesComSucesso); //Penaliza quem falha
 
             return (sw.ElapsedMilliseconds + tempoTestesSomados);
-        }
-
-        /// <summary>
-        /// Executa um script por ID
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public bool ExecutarScriptPorId(string id)
-        {
-            bool sucesso = false;
-            try
-            {
-                sucesso = _manager.ExecuteCompiled(id);
-            }
-            catch (Exception ex)
-            {
-                _logger.Info(ex.ToString());
-                throw;
-            }
-
-            _logger.Info(string.Format("{0} executado com sucesso? {1}", id, sucesso));
-            
-            return sucesso;
         }
 
         /// <summary>
@@ -875,7 +863,7 @@ namespace Otimizacao.Javascript
         /// </summary>
         public void Dispose()
         {
-            _manager.Dispose();
+            //_manager.Dispose();
             _engine.Dispose();
 
             //GC.Collect(GC.MaxGeneration);
