@@ -499,6 +499,10 @@ namespace Otimizacao
 
             jHelper.Dispose();
 
+            //Não deveria nunca acontecer de sujeitos iguais
+            if (_original.Ast == sujeito.Ast)
+                sujeito.Fitness = _original.Fitness;
+
             return sujeito.Fitness;
         }
 

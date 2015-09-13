@@ -1,4 +1,11 @@
-2015-09-13 12:01:32.9943|Info|Iniciando Otimização do underscore.js
-2015-09-13 12:01:33.0093|Info|    SetTimeout True
-2015-09-13 12:01:33.0093|Info|    Individuos 5
-2015-09-13 12:01:33.0093|Info|    Geracoes 5
+2015-09-13 12:08:51.3072|Info|Iniciando Otimização do underscore.js
+2015-09-13 12:08:51.3233|Info|    SetTimeout True
+2015-09-13 12:08:51.3233|Info|    Individuos 5
+2015-09-13 12:08:51.3233|Info|    Geracoes 5
+2015-09-13 12:08:56.4299|Trace|           Total:1382, Sucesso: 1382, Falha: 0
+2015-09-13 12:08:56.4299|Trace|           4 segundos para avaliar o individuo ResultadosUnderscore\underscore.js
+2015-09-13 12:08:56.4779|Info|    Avaliando o original
+2015-09-13 12:09:01.2623|Trace|           Total:1382, Sucesso: 1382, Falha: 0
+2015-09-13 12:09:01.2623|Trace|           4 segundos para avaliar o individuo ResultadosUnderscore\2d7cca79-16c7-4112-bc6c-31ca95097788.js
+2015-09-13 12:09:01.2623|Info|            FIT:4524       | CTs: 1382            | T: 00:00:04.7844
+2015-09-13 12:09:01.2803|Info|    Criando a populaçao Inicial com 5 individuos
