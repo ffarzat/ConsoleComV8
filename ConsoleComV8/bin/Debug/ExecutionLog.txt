@@ -1162,3 +1162,7 @@
    at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
    at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 638
 2015-09-13 07:49:46.4273|Info|            FIT:9223372036854775802       | CTs: 0            | T: 00:00:00.4006
+2015-09-13 09:11:20.7564|Info|Iniciando Otimização do underscore.js
+2015-09-13 09:11:20.7734|Info|    SetTimeout True
+2015-09-13 09:11:20.7734|Info|    Individuos 100
+2015-09-13 09:11:20.7734|Info|    Geracoes 100

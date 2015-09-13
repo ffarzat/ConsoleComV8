@@ -675,7 +675,7 @@ namespace Otimizacao.Javascript
 
             //this.FalhasDosTestes.ForEach(this.Log);
 
-            if (TestesComFalha > 0)
+            if (TestesComFalha > 0 | TestesComSucesso == 0 | TestesComSucesso != TotalTestes)
                 return Int64.MaxValue - TestesComSucesso;
 
             var tempoTestesSomados = (TotalTestes - TestesComSucesso); //Penaliza quem falha
