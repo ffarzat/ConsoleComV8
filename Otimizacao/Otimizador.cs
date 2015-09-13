@@ -245,6 +245,7 @@ namespace Otimizacao
                     _fitnessMin = fitness;
                     MelhorIndividuo = c;
                     _logger.Info("-> Achou melhor individuo novo! Valor={0}", _fitnessMin);
+                    _logger.Info("-> Criado por = {0}", c.CriadoPor.ToString());
                     GerarRelatorioHtml(_caminhoBiblioteca, c.Arquivo);
                 }
             }
