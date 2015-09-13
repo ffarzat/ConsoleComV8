@@ -402,7 +402,7 @@ namespace Otimizacao
             while (novaAst == "" & totalMutacoes < 50)
             {
                 if(totalMutacoes > 1)
-                    _logger.Info("          Tentativa {0} de executar mutação no código...", totalMutacoes);
+                    _logger.Trace("          Tentativa {0} de executar mutação", totalMutacoes);
 
                 var total = jHelper.ContarNos(sujeito.Ast);
                 int no = Rand.Next(0, total);
