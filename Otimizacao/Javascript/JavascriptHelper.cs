@@ -644,7 +644,7 @@ namespace Otimizacao.Javascript
 
             //this.FalhasDosTestes.ForEach(this.Log);
 
-            if (TestesComSucesso != TotalTestes)
+            if (TestesComFalha > 0)
                 return Int64.MaxValue - TestesComSucesso;
 
             var tempoTestesSomados = (TotalTestes - TestesComSucesso); //Penaliza quem falha
@@ -864,8 +864,8 @@ namespace Otimizacao.Javascript
             _manager.Dispose();
             _engine.Dispose();
 
-            GC.Collect(GC.MaxGeneration);
-            GC.WaitForPendingFinalizers();
+            //GC.Collect(GC.MaxGeneration);
+            //GC.WaitForPendingFinalizers();
         }
     }
 }
