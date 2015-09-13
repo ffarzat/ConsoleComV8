@@ -335,6 +335,8 @@ namespace Otimizacao
         {
             CriarIndividuoOriginal(_caminhoBiblioteca);
             _population.Add(_original);
+            _logger.Info(string.Format("    Avaliando o original"));
+            AvaliarIndividuo(_original);
 
             _logger.Info(string.Format("    Criando a populaçao Inicial com {0} individuos",_size));
             
@@ -357,12 +359,12 @@ namespace Otimizacao
         /// <param name="caminhoBibliotecaJs"></param>
         private void CriarIndividuoOriginal(string caminhoBibliotecaJs)
         {
-            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-            jHelper.ConfigurarGeracao();
-
             var caminho = string.Format("{0}\\{1}", _diretorioFontes, caminhoBibliotecaJs);
             var caminhoDestino = string.Format("{0}\\{1}", _diretorioExecucao, caminhoBibliotecaJs);
 
+            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+            jHelper.ConfigurarGeracao();
+            
             var codigo = File.ReadAllText(caminho);
             var ast = jHelper.GerarAst(codigo);
             
@@ -377,11 +379,7 @@ namespace Otimizacao
             File.WriteAllText(caminhoDestino, _original.Codigo);
             
             _original.Fitness = jHelper.ExecutarTestes(caminhoDestino, _caminhoScriptTestes);
-
-            _logger.Info(string.Format("    Quantidade de Testes Total {0}", jHelper.TotalTestes));
-            _logger.Info(string.Format("    Fitness do Original {0}", _original.Fitness));
-            _logger.Info(string.Format("    T do Original {0}", jHelper.TestesComSucesso));
-
+            
             _fitnessMin = _original.Fitness;
 
             MelhorIndividuo = _original.Clone();
