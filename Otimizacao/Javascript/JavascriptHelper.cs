@@ -85,11 +85,6 @@ namespace Otimizacao.Javascript
         private Dictionary<int, bool> _timers;
 
         /// <summary>
-        /// Funções para futura execução via SetTimout
-        /// </summary>
-        private Dictionary<int, object> _timeOutCodes; 
-
-        /// <summary>
         /// NLog Logger
         /// </summary>
         private static Logger _logger = LogManager.GetCurrentClassLogger();

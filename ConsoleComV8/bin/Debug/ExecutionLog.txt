@@ -1,17 +1,17 @@
-2015-09-13 10:29:26.8292|Info|Iniciando Otimização do underscore.js
-2015-09-13 10:29:26.8452|Info|    SetTimeout True
-2015-09-13 10:29:26.8452|Info|    Individuos 100
-2015-09-13 10:29:26.8452|Info|    Geracoes 100
-2015-09-13 10:29:31.7768|Trace|           Total:1382, Sucesso: 1382, Falha: 0
-2015-09-13 10:29:31.7768|Trace|           4 segundos para avaliar o individuo ResultadosUnderscore\underscore.js
-2015-09-13 10:29:31.7768|Info|    Avaliando o original
-2015-09-13 10:29:36.3660|Trace|           Total:1382, Sucesso: 1382, Falha: 0
-2015-09-13 10:29:36.3660|Trace|           4 segundos para avaliar o individuo ResultadosUnderscore\4895aedd-7218-499d-8db5-3a2b8970b932.js
-2015-09-13 10:29:36.3660|Info|            FIT:4351       | CTs: 1382            | T: 00:00:04.5849
-2015-09-13 10:29:36.3660|Info|    Criando a populaçao Inicial com 100 individuos
-2015-09-13 10:29:37.0555|Trace|SyntaxError: Unexpected token .
+2015-09-13 11:03:21.7803|Info|Iniciando Otimização do underscore.js
+2015-09-13 11:03:21.8003|Info|    SetTimeout True
+2015-09-13 11:03:21.8003|Info|    Individuos 100
+2015-09-13 11:03:21.8003|Info|    Geracoes 100
+2015-09-13 11:03:27.2952|Trace|           Total:1382, Sucesso: 1382, Falha: 0
+2015-09-13 11:03:27.2952|Trace|           4 segundos para avaliar o individuo ResultadosUnderscore\underscore.js
+2015-09-13 11:03:27.3493|Info|    Avaliando o original
+2015-09-13 11:03:32.1257|Trace|           Total:1382, Sucesso: 1382, Falha: 0
+2015-09-13 11:03:32.1257|Trace|           4 segundos para avaliar o individuo ResultadosUnderscore\3542afe8-0d32-47ed-bac3-a1d4b38f819d.js
+2015-09-13 11:03:32.1257|Info|            FIT:4416       | CTs: 1382            | T: 00:00:04.7766
+2015-09-13 11:03:32.1377|Info|    Criando a populaçao Inicial com 100 individuos
+2015-09-13 11:03:33.0293|Trace|SyntaxError: Unexpected token .
     at Script Document [10]:1020:5 ->     .create = function (prototype, props) {
-2015-09-13 10:29:37.0555|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token .
+2015-09-13 11:03:33.0293|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token .
    at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
    at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 189
    at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
@@ -26,10 +26,10 @@
    at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
    at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
    at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 644
-2015-09-13 10:29:37.0555|Info|            FIT:5321       | CTs: 0            | T: 00:00:00.2882
-2015-09-13 10:29:37.7150|Trace|SyntaxError: Unexpected token ;
+2015-09-13 11:03:33.0293|Info|            FIT:5765       | CTs: 0            | T: 00:00:00.3929
+2015-09-13 11:03:33.8529|Trace|SyntaxError: Unexpected token ;
     at Script Document [10]:1169:38 ->         return toString.call(obj) ===;
-2015-09-13 10:29:37.7150|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token ;
+2015-09-13 11:03:33.8529|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token ;
    at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
    at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 189
    at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
@@ -44,13 +44,49 @@
    at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
    at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
    at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 644
-2015-09-13 10:29:37.7150|Info|            FIT:5321       | CTs: 0            | T: 00:00:00.2753
-2015-09-13 10:29:42.6396|Trace|           Total:1332, Sucesso: 1331, Falha: 1
-2015-09-13 10:29:42.6396|Trace|           4 segundos para avaliar o individuo ResultadosUnderscore\e3f1fc28-2d29-4956-aea3-d94816c87132.js
-2015-09-13 10:29:42.6396|Info|            FIT:4322       | CTs: 1331            | T: 00:00:04.5433
-2015-09-13 10:29:49.4147|Trace|           Total:1382, Sucesso: 1381, Falha: 1
-2015-09-13 10:29:49.4147|Trace|           6 segundos para avaliar o individuo ResultadosUnderscore\e521b78f-7354-4c05-8503-02b2e752397d.js
-2015-09-13 10:29:49.4147|Info|            FIT:4322       | CTs: 1381            | T: 00:00:06.3787
-2015-09-13 10:29:54.6204|Trace|           Total:1379, Sucesso: 1378, Falha: 1
-2015-09-13 10:29:54.6204|Trace|           4 segundos para avaliar o individuo ResultadosUnderscore\87e2f7a8-d775-4f9e-8e3b-facbc9df179e.js
-2015-09-13 10:29:54.6204|Info|            FIT:4322       | CTs: 1378            | T: 00:00:04.7970
+2015-09-13 11:03:33.8529|Info|            FIT:5765       | CTs: 0            | T: 00:00:00.3008
+2015-09-13 11:03:38.9105|Trace|           Total:1332, Sucesso: 1331, Falha: 1
+2015-09-13 11:03:38.9115|Trace|           4 segundos para avaliar o individuo ResultadosUnderscore\7ce2dbbe-c5a3-4957-bd0f-657621ec6ce2.js
+2015-09-13 11:03:38.9115|Info|            FIT:4766       | CTs: 1331            | T: 00:00:04.6419
+2015-09-13 11:03:45.8464|Trace|           Total:1382, Sucesso: 1381, Falha: 1
+2015-09-13 11:03:45.8464|Trace|           6 segundos para avaliar o individuo ResultadosUnderscore\4ac59af5-e82f-4329-a589-920c31dcdf5b.js
+2015-09-13 11:03:45.8464|Info|            FIT:4766       | CTs: 1381            | T: 00:00:06.4291
+2015-09-13 11:03:51.0394|Trace|           Total:1379, Sucesso: 1378, Falha: 1
+2015-09-13 11:03:51.0394|Trace|           4 segundos para avaliar o individuo ResultadosUnderscore\7437d340-5610-4b79-b156-b8ebf2ade29f.js
+2015-09-13 11:03:51.0394|Info|            FIT:4766       | CTs: 1378            | T: 00:00:04.7149
+2015-09-13 11:03:51.8640|Trace|SyntaxError: Unexpected token =
+    at Script Document [10]:764:22 ->                      = null;
+2015-09-13 11:03:51.8650|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token =
+   at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 189
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 644
+2015-09-13 11:03:51.8650|Info|            FIT:5765       | CTs: 0            | T: 00:00:00.3385
+2015-09-13 11:03:52.6645|Trace|SyntaxError: Unexpected token ;
+    at Script Document [10]:1316:21 ->             value = ;
+2015-09-13 11:03:52.6645|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token ;
+   at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 189
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
+   at Microsoft.ClearScript.ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 1148
+   at Microsoft.ClearScript.V8.V8ScriptEngine.BaseScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 505
+   at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass24`1.<ScriptInvoke>b__23() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.?A0xc63f385f.InvokeAction(Void* pvActionRef) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 74
+   at Microsoft.ClearScript.V8.V8ContextProxyImpl.InvokeWithLock(Action gcAction) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 143
+   at Microsoft.ClearScript.V8.V8ScriptEngine.ScriptInvoke[T](Func`1 func) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 827
+   at Microsoft.ClearScript.V8.V8ScriptEngine.Execute(String documentName, String code, Boolean evaluate, Boolean discard) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 760
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, Boolean discard, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 805
+   at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
+   at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 644
+2015-09-13 11:03:52.6645|Info|            FIT:5765       | CTs: 0            | T: 00:00:00.3273
