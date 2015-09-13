@@ -61,3 +61,23 @@
 2015-09-12 21:48:50.9844|Info|===================================
 2015-09-12 21:48:50.9844|Info|Geracao 1
 2015-09-12 21:49:00.2870|Info|      2 crossover(s) executados
+2015-09-12 22:44:20.3924|Info|Iniciando Otimização do underscore.js
+2015-09-12 22:44:20.4184|Info|    SetTimeout True
+2015-09-12 22:44:20.4184|Info|    Individuos 100
+2015-09-12 22:44:20.4184|Info|    Geracoes 100
+2015-09-12 22:44:25.5581|Trace|           Total:1382, Sucesso: 1382, Falha: 0
+2015-09-12 22:44:25.5581|Trace|           4 segundos para avaliar o individuo ResultadosUnderscore\underscore.js
+2015-09-12 22:44:25.5581|Info|    Quantidade de Testes Total 1382
+2015-09-12 22:44:25.5581|Info|    Fitness do Original 4429
+2015-09-12 22:44:25.5581|Info|    T do Original 1382
+2015-09-12 22:44:25.5581|Info|    Criando a populaçao Inicial com 100 individuos
+2015-09-12 22:44:26.2946|Trace|SyntaxError: Unexpected token .
+    at V8Runtime [3]:4c836eb2-deda-4e70-a47b-c43500ef4969:1020:5 ->     .create = function (prototype, props) {
+2015-09-12 22:44:26.2946|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token .
+   at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
+   at Microsoft.ClearScript.V8.V8IsolateProxyImpl.Compile(String gcDocumentName, String gcCode) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8isolateproxyimpl.cpp:line 146
+   at Microsoft.ClearScript.V8.V8Runtime.Compile(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8Runtime.cs:line 442
+   at ClearScript.Manager.ScriptCompiler.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\ScriptCompiler.cs:line 30
+   at ClearScript.Manager.RuntimeManager.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\RuntimeManager.cs:line 299
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 607
+2015-09-12 22:44:26.2946|Info|            FIT:9223372036854775802       | CTs: 0            | T: 00:00:00.3135
