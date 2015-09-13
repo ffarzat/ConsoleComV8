@@ -105,6 +105,11 @@ namespace Otimizacao
         private ExcelPackage _excel;
 
         /// <summary>
+        /// Usada na execução para o relatório
+        /// </summary>
+        private ExcelWorksheet Planilha { get { return _excel.Workbook.Worksheets["Resultados"]; } }
+
+        /// <summary>
         /// Construtor Default
         /// </summary>
         public Otimizador(int tamanhoPopulacao, int totalGeracoes, int timeoutAvaliacaoIndividuo, string diretorioFontes, string diretorioExecucao)
@@ -216,7 +221,9 @@ namespace Otimizacao
             _excel.Workbook.Properties.Company = "www.vitalbusiness.com.br";
 
             _excel.Workbook.Worksheets.Add("Resultados");
-            
+
+
+
             // Save the Excel file
             var bin = _excel.GetAsByteArray();
             File.WriteAllBytes(Path.Combine(_diretorioExecucao, "resultados.xlsx"), bin);
