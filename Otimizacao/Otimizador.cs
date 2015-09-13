@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using NLog;
+using OfficeOpenXml;
 using Otimizacao.Javascript;
 
 namespace Otimizacao
@@ -97,6 +98,12 @@ namespace Otimizacao
         /// Caminho da Biblioteca Js original
         /// </summary>
         private string _caminhoBiblioteca;
+
+        /// <summary>
+        /// Excel do relatório
+        /// </summary>
+        private ExcelPackage _excel;
+
         /// <summary>
         /// Construtor Default
         /// </summary>
@@ -107,6 +114,27 @@ namespace Otimizacao
             _timeout = timeoutAvaliacaoIndividuo;
             _diretorioFontes = diretorioFontes;
             _diretorioExecucao = diretorioExecucao;
+
+            #region Diretorio Alvo dos relatorios
+                if (Directory.Exists(_diretorioExecucao))
+                {
+                    new DirectoryInfo(_diretorioExecucao).Delete(true);
+                }
+
+                Thread.Sleep(10);
+
+                Directory.CreateDirectory(_diretorioExecucao);
+            #endregion
+
+            _excel = new ExcelPackage();
+        }
+
+        /// <summary>
+        /// Destrutor
+        /// </summary>
+        ~Otimizador()
+        {
+            _excel.Dispose();
         }
 
         /// <summary>
@@ -124,10 +152,6 @@ namespace Otimizacao
                 new DirectoryInfo(_diretorioExecucao).Delete(true);
             }
 
-            Thread.Sleep(10);
-
-            Directory.CreateDirectory(_diretorioExecucao);
-            
             Thread.Sleep(10);
         }
 
