@@ -29,7 +29,15 @@ namespace Otimizacao.Testes
             Assert.IsFalse(Directory.Exists("ResultadosMoment"));
         }
 
-
+        /// <summary>
+        /// Roda, recupera excel e verifica os valores
+        /// </summary>
+        [Test]
+        public void ValidarExcel()
+        {
+            var otimizador = new Otimizador(1, 1, 1, "Require", "ResultadosMoment");
+            var otimizou = otimizador.Otimizar("global.js", "core-test.js");
+        }
 
     }
 }
