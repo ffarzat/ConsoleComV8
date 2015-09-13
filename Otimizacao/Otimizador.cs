@@ -246,7 +246,7 @@ namespace Otimizacao
                     MelhorIndividuo = c;
                     _logger.Info("-> Achou melhor individuo novo! Valor={0}", _fitnessMin);
                     _logger.Info("-> Criado por = {0}", c.CriadoPor.ToString());
-                    GerarRelatorioHtml(_caminhoBiblioteca, c.Arquivo);
+                    GerarRelatorioHtml(c.Arquivo);
                 }
             }
             _fitnessAvg = ((double) _fitnessSum / _size);
@@ -255,9 +255,8 @@ namespace Otimizacao
         /// <summary>
         /// Gera uma página HTML com o diff entre o original e o novo melhor encontrado
         /// </summary>
-        /// <param name="caminhoBiblioteca"></param>
         /// <param name="arquivo"></param>
-        private void GerarRelatorioHtml(string caminhoBiblioteca, string arquivo)
+        private void GerarRelatorioHtml(string arquivo)
         {
             
         }
