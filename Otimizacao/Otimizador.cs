@@ -562,7 +562,7 @@ namespace Otimizacao
             sw.Stop();
 
             //Não deveria nunca acontecer de sujeitos iguais
-            if (_original.Ast == sujeito.Ast)
+            if (_original.Codigo.Equals(sujeito.Codigo))
                 sujeito.Fitness = _original.Fitness;
             
             
