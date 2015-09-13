@@ -1,49 +1,17 @@
-2015-09-13 10:14:41.6051|Info|Iniciando Otimização do lodash.js
-2015-09-13 10:14:41.6261|Info|    SetTimeout True
-2015-09-13 10:14:41.6261|Info|    Individuos 100
-2015-09-13 10:14:41.6261|Info|    Geracoes 100
-2015-09-13 10:16:28.9771|Info|Iniciando Otimização do lodash.js
-2015-09-13 10:16:28.9942|Info|    SetTimeout True
-2015-09-13 10:16:28.9942|Info|    Individuos 100
-2015-09-13 10:16:28.9942|Info|    Geracoes 100
-2015-09-13 10:19:14.5731|Info|Iniciando Otimização do lodash.js
-2015-09-13 10:19:14.6011|Info|    SetTimeout True
-2015-09-13 10:19:14.6011|Info|    Individuos 100
-2015-09-13 10:19:14.6011|Info|    Geracoes 100
-2015-09-13 10:19:36.3462|Info|Iniciando Otimização do lodash.js
-2015-09-13 10:19:36.3602|Info|    SetTimeout True
-2015-09-13 10:19:36.3602|Info|    Individuos 100
-2015-09-13 10:19:36.3602|Info|    Geracoes 100
-2015-09-13 10:19:50.0559|Info|Iniciando Otimização do lodash.js
-2015-09-13 10:19:50.0700|Info|    SetTimeout True
-2015-09-13 10:19:50.0700|Info|    Individuos 100
-2015-09-13 10:19:50.0700|Info|    Geracoes 100
-2015-09-13 10:20:28.5812|Info|Iniciando Otimização do lodash.js
-2015-09-13 10:20:28.5952|Info|    SetTimeout True
-2015-09-13 10:20:28.5952|Info|    Individuos 100
-2015-09-13 10:20:28.5952|Info|    Geracoes 100
-2015-09-13 10:20:55.1435|Info|Iniciando Otimização do lodash.js
-2015-09-13 10:20:55.1595|Info|    SetTimeout True
-2015-09-13 10:20:55.1595|Info|    Individuos 100
-2015-09-13 10:20:55.1595|Info|    Geracoes 100
-2015-09-13 10:23:03.2729|Info|Iniciando Otimização do lodash.js
-2015-09-13 10:23:03.2939|Info|    SetTimeout True
-2015-09-13 10:23:03.2939|Info|    Individuos 100
-2015-09-13 10:23:03.2939|Info|    Geracoes 100
-2015-09-13 10:24:41.0491|Info|Iniciando Otimização do lodash.js
-2015-09-13 10:24:41.0651|Info|    SetTimeout True
-2015-09-13 10:24:41.0651|Info|    Individuos 100
-2015-09-13 10:24:41.0651|Info|    Geracoes 100
-2015-09-13 10:24:51.5291|Trace|           Total:4449, Sucesso: 4449, Falha: 0
-2015-09-13 10:24:51.5291|Trace|           8 segundos para avaliar o individuo ResultadosLodash\lodash.js
-2015-09-13 10:24:51.5291|Info|    Avaliando o original
-2015-09-13 10:25:00.3594|Trace|           Total:4449, Sucesso: 4449, Falha: 0
-2015-09-13 10:25:00.3594|Trace|           8 segundos para avaliar o individuo ResultadosLodash\752d8567-8601-455f-9d06-399668095533.js
-2015-09-13 10:25:00.3594|Info|            FIT:8274       | CTs: 4449            | T: 00:00:08.8254
-2015-09-13 10:25:00.3594|Info|    Criando a populaçao Inicial com 100 individuos
-2015-09-13 10:25:02.2007|Trace|SyntaxError: Unexpected token ;
-    at Script Document [10]:7789:26 ->             var result = ;
-2015-09-13 10:25:02.2007|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token ;
+2015-09-13 10:29:26.8292|Info|Iniciando Otimização do underscore.js
+2015-09-13 10:29:26.8452|Info|    SetTimeout True
+2015-09-13 10:29:26.8452|Info|    Individuos 100
+2015-09-13 10:29:26.8452|Info|    Geracoes 100
+2015-09-13 10:29:31.7768|Trace|           Total:1382, Sucesso: 1382, Falha: 0
+2015-09-13 10:29:31.7768|Trace|           4 segundos para avaliar o individuo ResultadosUnderscore\underscore.js
+2015-09-13 10:29:31.7768|Info|    Avaliando o original
+2015-09-13 10:29:36.3660|Trace|           Total:1382, Sucesso: 1382, Falha: 0
+2015-09-13 10:29:36.3660|Trace|           4 segundos para avaliar o individuo ResultadosUnderscore\4895aedd-7218-499d-8db5-3a2b8970b932.js
+2015-09-13 10:29:36.3660|Info|            FIT:4351       | CTs: 1382            | T: 00:00:04.5849
+2015-09-13 10:29:36.3660|Info|    Criando a populaçao Inicial com 100 individuos
+2015-09-13 10:29:37.0555|Trace|SyntaxError: Unexpected token .
+    at Script Document [10]:1020:5 ->     .create = function (prototype, props) {
+2015-09-13 10:29:37.0555|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token .
    at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
    at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 189
    at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
@@ -58,10 +26,10 @@
    at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
    at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
    at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 644
-2015-09-13 10:25:02.2007|Info|            FIT:9851       | CTs: 0            | T: 00:00:00.6213
-2015-09-13 10:25:04.0110|Trace|SyntaxError: Unexpected token ;
-    at Script Document [10]:9323:31 ->                     source += ;
-2015-09-13 10:25:04.0110|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token ;
+2015-09-13 10:29:37.0555|Info|            FIT:5321       | CTs: 0            | T: 00:00:00.2882
+2015-09-13 10:29:37.7150|Trace|SyntaxError: Unexpected token ;
+    at Script Document [10]:1169:38 ->         return toString.call(obj) ===;
+2015-09-13 10:29:37.7150|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token ;
    at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
    at Microsoft.ClearScript.V8.V8ContextProxyImpl.Execute(String gcDocumentName, String gcCode, Boolean evaluate, Boolean discard) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8contextproxyimpl.cpp:line 189
    at Microsoft.ClearScript.V8.V8ScriptEngine.<>c__DisplayClass1b.<Execute>b__19() in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8ScriptEngine.cs:line 774
@@ -76,4 +44,13 @@
    at Microsoft.ClearScript.ScriptEngine.Execute(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 784
    at Microsoft.ClearScript.ScriptEngine.Execute(String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\ScriptEngine.cs:line 765
    at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 644
-2015-09-13 10:25:04.0110|Info|            FIT:9851       | CTs: 0            | T: 00:00:00.6045
+2015-09-13 10:29:37.7150|Info|            FIT:5321       | CTs: 0            | T: 00:00:00.2753
+2015-09-13 10:29:42.6396|Trace|           Total:1332, Sucesso: 1331, Falha: 1
+2015-09-13 10:29:42.6396|Trace|           4 segundos para avaliar o individuo ResultadosUnderscore\e3f1fc28-2d29-4956-aea3-d94816c87132.js
+2015-09-13 10:29:42.6396|Info|            FIT:4322       | CTs: 1331            | T: 00:00:04.5433
+2015-09-13 10:29:49.4147|Trace|           Total:1382, Sucesso: 1381, Falha: 1
+2015-09-13 10:29:49.4147|Trace|           6 segundos para avaliar o individuo ResultadosUnderscore\e521b78f-7354-4c05-8503-02b2e752397d.js
+2015-09-13 10:29:49.4147|Info|            FIT:4322       | CTs: 1381            | T: 00:00:06.3787
+2015-09-13 10:29:54.6204|Trace|           Total:1379, Sucesso: 1378, Falha: 1
+2015-09-13 10:29:54.6204|Trace|           4 segundos para avaliar o individuo ResultadosUnderscore\87e2f7a8-d775-4f9e-8e3b-facbc9df179e.js
+2015-09-13 10:29:54.6204|Info|            FIT:4322       | CTs: 1378            | T: 00:00:04.7970
