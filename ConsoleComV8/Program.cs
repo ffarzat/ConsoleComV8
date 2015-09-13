@@ -28,23 +28,23 @@ namespace ConsoleComV8
         {
             #region Moment
 
-            //var otimizadorMoment = new Otimizador(100, 100, 5, "Moment", "ResultadosMoment");
+            var otimizadorMoment = new Otimizador(100, 100, 5, "Moment", "ResultadosMoment");
+            otimizadorMoment.LimparResultadosAnteriores();
 
-            //var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
+            var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
 
-            //Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
-
-
+            Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
+            
             #endregion
 
             #region Underscore
 
-            //var otimizador = new Otimizador(100, 100, 20, "underscore", "ResultadosUnderscore");
-            //otimizador.UsarSetTimeout();
+            var otimizador = new Otimizador(100, 100, 20, "underscore", "ResultadosUnderscore");
+            otimizador.UsarSetTimeout();
 
-            //var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
+            var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
 
-            //Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
+            Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
 
             #endregion
 

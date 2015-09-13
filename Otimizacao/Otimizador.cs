@@ -107,14 +107,12 @@ namespace Otimizacao
             _timeout = timeoutAvaliacaoIndividuo;
             _diretorioFontes = diretorioFontes;
             _diretorioExecucao = diretorioExecucao;
-
-            LimparResultadosAnteriores();
         }
 
         /// <summary>
         /// Limpa o diretório de resultados
         /// </summary>
-        private void LimparResultadosAnteriores()
+        public void LimparResultadosAnteriores()
         {
             
             if (File.Exists("ExecutionLog.txt"))
@@ -347,6 +345,10 @@ namespace Otimizacao
                 AvaliarIndividuo(atual);
                 _population.Add(atual);
             }
+
+            //vai que?
+            FindBestChromosomeOfRun();
+
         }
 
         /// <summary>
