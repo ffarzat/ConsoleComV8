@@ -1,33 +1,119 @@
-2015-09-12 21:28:35.0496|Info|Iniciando Otimização do global.js
-2015-09-12 21:28:35.0667|Info|    SetTimeout False
-2015-09-12 21:28:35.0667|Info|    Individuos 100
-2015-09-12 21:28:35.0667|Info|    Geracoes 100
-2015-09-12 21:28:41.5183|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-12 21:28:41.5183|Trace|           4 segundos para avaliar o individuo ResultadosMoment\global.js
-2015-09-12 21:28:41.5183|Info|    Quantidade de Testes Total 57982
-2015-09-12 21:28:41.5183|Info|    Fitness do Original 4088
-2015-09-12 21:28:41.5183|Info|    T do Original 57982
-2015-09-12 21:28:41.5272|Info|    Criando a populaçao Inicial com 100 individuos
-2015-09-12 21:28:48.6163|Trace|           Total:57982, Sucesso: 57982, Falha: 0
-2015-09-12 21:28:48.6163|Trace|           3 segundos para avaliar o individuo ResultadosMoment\a2de495d-df88-4108-ae85-f7dace0acde1.js
-2015-09-12 21:28:48.6163|Info|            FIT:3200       | CTs: 57982            | T: 00:00:04.4061
-2015-09-12 21:28:52.5541|Trace|SyntaxError: Unexpected token ,
-    at V8Runtime [6]:dddee07e-0f70-4e5f-ae85-4c4818372eef:8203:17 ->                 ,
-2015-09-12 21:28:52.5541|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token ,
+2015-09-12 21:41:32.7570|Info|Iniciando Otimização do global.js
+2015-09-12 21:41:32.7720|Info|    SetTimeout False
+2015-09-12 21:41:32.7720|Info|    Individuos 100
+2015-09-12 21:41:32.7720|Info|    Geracoes 100
+2015-09-12 21:41:37.7833|Trace|           Total:57982, Sucesso: 57982, Falha: 0
+2015-09-12 21:41:37.7833|Trace|           2 segundos para avaliar o individuo ResultadosMoment\global.js
+2015-09-12 21:41:37.7833|Info|    Quantidade de Testes Total 57982
+2015-09-12 21:41:37.7833|Info|    Fitness do Original 2873
+2015-09-12 21:41:37.7833|Info|    T do Original 57982
+2015-09-12 21:41:37.7903|Info|    Criando a populaçao Inicial com 100 individuos
+2015-09-12 21:41:44.3640|Trace|           Total:57982, Sucesso: 57982, Falha: 0
+2015-09-12 21:41:44.3640|Trace|           3 segundos para avaliar o individuo ResultadosMoment\75bb35d7-df07-451f-be49-5e7ec7377476.js
+2015-09-12 21:41:44.3640|Info|            FIT:3116       | CTs: 57982            | T: 00:00:04.2453
+2015-09-12 21:41:47.9255|Trace|SyntaxError: Unexpected token ,
+    at V8Runtime [6]:d65fcc56-8236-4810-957f-c16b66346026:8203:17 ->                 ,
+2015-09-12 21:41:47.9305|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token ,
    at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
    at Microsoft.ClearScript.V8.V8IsolateProxyImpl.Compile(String gcDocumentName, String gcCode) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8isolateproxyimpl.cpp:line 146
    at Microsoft.ClearScript.V8.V8Runtime.Compile(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8Runtime.cs:line 442
    at ClearScript.Manager.ScriptCompiler.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\ScriptCompiler.cs:line 30
    at ClearScript.Manager.RuntimeManager.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\RuntimeManager.cs:line 299
    at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 607
-2015-09-12 21:28:52.5541|Info|            FIT:9223372036854775802       | CTs: 0            | T: 00:00:01.2860
-2015-09-12 21:28:56.8391|Trace|SyntaxError: Unexpected token :
-    at V8Runtime [9]:baa2d47b-b191-43ea-be78-4bc0a4c26475:7638:13 ->             : function (momentToFormat, format) {
-2015-09-12 21:28:56.8391|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token :
+2015-09-12 21:41:47.9305|Info|            FIT:9223372036854775802       | CTs: 0            | T: 00:00:01.1954
+2015-09-12 21:41:51.4500|Trace|SyntaxError: Unexpected token :
+    at V8Runtime [9]:20061ada-0a23-4884-83de-144580c321d0:7638:13 ->             : function (momentToFormat, format) {
+2015-09-12 21:41:51.4500|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token :
    at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
    at Microsoft.ClearScript.V8.V8IsolateProxyImpl.Compile(String gcDocumentName, String gcCode) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8isolateproxyimpl.cpp:line 146
    at Microsoft.ClearScript.V8.V8Runtime.Compile(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8Runtime.cs:line 442
    at ClearScript.Manager.ScriptCompiler.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\ScriptCompiler.cs:line 30
    at ClearScript.Manager.RuntimeManager.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\RuntimeManager.cs:line 299
    at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 607
-2015-09-12 21:28:56.8391|Info|            FIT:9223372036854775802       | CTs: 0            | T: 00:00:01.4466
+2015-09-12 21:41:51.4500|Info|            FIT:9223372036854775802       | CTs: 0            | T: 00:00:01.1648
+2015-09-12 21:41:55.2797|Trace|SyntaxError: Unexpected token .
+    at V8Runtime [12]:a43427fd-697d-46b1-85c4-9750c62bf650:5214:26 ->             weekdaysMin: .split('_'),
+2015-09-12 21:41:55.2797|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token .
+   at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
+   at Microsoft.ClearScript.V8.V8IsolateProxyImpl.Compile(String gcDocumentName, String gcCode) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8isolateproxyimpl.cpp:line 146
+   at Microsoft.ClearScript.V8.V8Runtime.Compile(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8Runtime.cs:line 442
+   at ClearScript.Manager.ScriptCompiler.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\ScriptCompiler.cs:line 30
+   at ClearScript.Manager.RuntimeManager.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\RuntimeManager.cs:line 299
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 607
+2015-09-12 21:41:55.2797|Info|            FIT:9223372036854775802       | CTs: 0            | T: 00:00:01.5368
+2015-09-12 21:42:01.7343|Trace|           Total:57982, Sucesso: 57982, Falha: 0
+2015-09-12 21:42:01.7343|Trace|           2 segundos para avaliar o individuo ResultadosMoment\3b8dc5fe-1940-4259-b56e-5e33dd876bd8.js
+2015-09-12 21:42:01.7343|Info|            FIT:2884       | CTs: 57982            | T: 00:00:03.9941
+2015-09-12 21:42:05.3188|Trace|SyntaxError: Unexpected token ,
+    at V8Runtime [18]:786998a4-38b0-4581-91c3-1eea27de8090:5223:23 ->             calendar: ,
+2015-09-12 21:42:05.3188|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token ,
+   at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
+   at Microsoft.ClearScript.V8.V8IsolateProxyImpl.Compile(String gcDocumentName, String gcCode) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8isolateproxyimpl.cpp:line 146
+   at Microsoft.ClearScript.V8.V8Runtime.Compile(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8Runtime.cs:line 442
+   at ClearScript.Manager.ScriptCompiler.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\ScriptCompiler.cs:line 30
+   at ClearScript.Manager.RuntimeManager.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\RuntimeManager.cs:line 299
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 607
+2015-09-12 21:42:05.3188|Info|            FIT:9223372036854775802       | CTs: 0            | T: 00:00:01.2468
+2015-09-12 21:42:08.7893|Trace|SyntaxError: Unexpected token :
+    at V8Runtime [21]:989bff2e-201f-4654-9cc5-922d02f32f1a:9314:13 ->             : {
+2015-09-12 21:42:08.7893|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token :
+   at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
+   at Microsoft.ClearScript.V8.V8IsolateProxyImpl.Compile(String gcDocumentName, String gcCode) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8isolateproxyimpl.cpp:line 146
+   at Microsoft.ClearScript.V8.V8Runtime.Compile(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8Runtime.cs:line 442
+   at ClearScript.Manager.ScriptCompiler.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\ScriptCompiler.cs:line 30
+   at ClearScript.Manager.RuntimeManager.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\RuntimeManager.cs:line 299
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 607
+2015-09-12 21:42:08.7893|Info|            FIT:9223372036854775802       | CTs: 0            | T: 00:00:01.1409
+2015-09-12 21:42:14.8316|Trace|           Total:57982, Sucesso: 57982, Falha: 0
+2015-09-12 21:42:14.8316|Trace|           2 segundos para avaliar o individuo ResultadosMoment\36bdcf8d-949c-444a-b7aa-bf7b5ca0f5d8.js
+2015-09-12 21:42:14.8316|Info|            FIT:2742       | CTs: 57982            | T: 00:00:03.7883
+2015-09-12 21:42:18.2650|Trace|SyntaxError: Unexpected token ,
+    at V8Runtime [27]:ce8ed469-8d0a-453a-878a-35a0defb7952:9952:31 ->                 mom.utcOffset(, keepTime);
+2015-09-12 21:42:18.2650|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token ,
+   at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
+   at Microsoft.ClearScript.V8.V8IsolateProxyImpl.Compile(String gcDocumentName, String gcCode) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8isolateproxyimpl.cpp:line 146
+   at Microsoft.ClearScript.V8.V8Runtime.Compile(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8Runtime.cs:line 442
+   at ClearScript.Manager.ScriptCompiler.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\ScriptCompiler.cs:line 30
+   at ClearScript.Manager.RuntimeManager.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\RuntimeManager.cs:line 299
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 607
+2015-09-12 21:42:18.2650|Info|            FIT:9223372036854775802       | CTs: 0            | T: 00:00:01.1039
+2015-09-12 21:42:21.8446|Trace|SyntaxError: Unexpected token =
+    at V8Runtime [30]:b6b5bcf1-6e0a-4b39-b631-173934acd586:2208:6 ->      = getWeeksInYear;
+2015-09-12 21:42:21.8446|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token =
+   at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
+   at Microsoft.ClearScript.V8.V8IsolateProxyImpl.Compile(String gcDocumentName, String gcCode) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8isolateproxyimpl.cpp:line 146
+   at Microsoft.ClearScript.V8.V8Runtime.Compile(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8Runtime.cs:line 442
+   at ClearScript.Manager.ScriptCompiler.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\ScriptCompiler.cs:line 30
+   at ClearScript.Manager.RuntimeManager.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\RuntimeManager.cs:line 299
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 607
+2015-09-12 21:42:21.8446|Info|            FIT:9223372036854775802       | CTs: 0            | T: 00:00:01.2616
+2015-09-12 21:42:25.1939|Trace|SyntaxError: Unexpected token ;
+    at V8Runtime [33]:1241820a-59af-42ab-bba5-3ef5ee1a1f05:2349:36 ->     prototype__proto.monthsShort = ;
+2015-09-12 21:42:25.1939|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token ;
+   at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
+   at Microsoft.ClearScript.V8.V8IsolateProxyImpl.Compile(String gcDocumentName, String gcCode) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8isolateproxyimpl.cpp:line 146
+   at Microsoft.ClearScript.V8.V8Runtime.Compile(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8Runtime.cs:line 442
+   at ClearScript.Manager.ScriptCompiler.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\ScriptCompiler.cs:line 30
+   at ClearScript.Manager.RuntimeManager.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\RuntimeManager.cs:line 299
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 607
+2015-09-12 21:42:25.1939|Info|            FIT:9223372036854775802       | CTs: 0            | T: 00:00:01.0982
+2015-09-12 21:42:28.7114|Trace|SyntaxError: Unexpected token ,
+    at V8Runtime [36]:001f3146-07ce-4ced-8100-a2d3e50dd914:4145:17 ->                 ,
+2015-09-12 21:42:28.7114|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token ,
+   at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
+   at Microsoft.ClearScript.V8.V8IsolateProxyImpl.Compile(String gcDocumentName, String gcCode) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8isolateproxyimpl.cpp:line 146
+   at Microsoft.ClearScript.V8.V8Runtime.Compile(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8Runtime.cs:line 442
+   at ClearScript.Manager.ScriptCompiler.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\ScriptCompiler.cs:line 30
+   at ClearScript.Manager.RuntimeManager.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\RuntimeManager.cs:line 299
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 607
+2015-09-12 21:42:28.7114|Info|            FIT:9223372036854775802       | CTs: 0            | T: 00:00:01.2131
+2015-09-12 21:42:32.3620|Trace|SyntaxError: Unexpected token ,
+    at V8Runtime [39]:7c24d2d6-13ec-4a7e-9c1e-ea6f6fd53e5e:6052:13 ->             ,
+2015-09-12 21:42:32.3620|Trace|Microsoft.ClearScript.ScriptEngineException: SyntaxError: Unexpected token ,
+   at V8Exception.ThrowScriptEngineException(V8Exception* ) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8exception.cpp:line 81
+   at Microsoft.ClearScript.V8.V8IsolateProxyImpl.Compile(String gcDocumentName, String gcCode) in c:\projects\clearscript\clearscript_5_4\clearscript\v8\clearscriptv8\v8isolateproxyimpl.cpp:line 146
+   at Microsoft.ClearScript.V8.V8Runtime.Compile(String documentName, String code) in c:\Projects\ClearScript\ClearScript_5_4\ClearScript\V8\V8Runtime.cs:line 442
+   at ClearScript.Manager.ScriptCompiler.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\ScriptCompiler.cs:line 30
+   at ClearScript.Manager.RuntimeManager.Compile(String scriptId, String code, Boolean addToCache, Nullable`1 cacheExpirationSeconds) in d:\GitHub\ClearScript.Manager\src\ClearScript.Manager\RuntimeManager.cs:line 299
+   at Otimizacao.Javascript.JavascriptHelper.ExecutarTestes(String nomeArquivoIndividuo, String nomeDoArquivoTestes) in d:\GitHub\ConsoleComV8\Otimizacao\Javascript\JavascriptHelper.cs:line 607
+2015-09-12 21:42:32.3620|Info|            FIT:9223372036854775802       | CTs: 0            | T: 00:00:01.1963

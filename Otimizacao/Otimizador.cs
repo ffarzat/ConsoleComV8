@@ -363,17 +363,19 @@ namespace Otimizacao
             var caminho = string.Format("{0}\\{1}", _diretorioFontes, caminhoBibliotecaJs);
             var caminhoDestino = string.Format("{0}\\{1}", _diretorioExecucao, caminhoBibliotecaJs);
 
-            if (!File.Exists(caminhoDestino))
-                File.Copy(caminho, caminhoDestino);
-
-
+            var codigo = File.ReadAllText(caminho);
+            var ast = jHelper.GerarAst(codigo);
+            
             _original = new Individuo
                 {
-                    Ast = jHelper.GerarAst(File.ReadAllText(caminho)),
+                    Ast = ast,
                     Arquivo = caminho,
                 };
 
+            
             _original.Codigo = jHelper.GerarCodigo(_original.Ast);
+            File.WriteAllText(caminhoDestino, _original.Codigo);
+            
             _original.Fitness = jHelper.ExecutarTestes(caminhoDestino, _caminhoScriptTestes);
 
             _logger.Info(string.Format("    Quantidade de Testes Total {0}", jHelper.TotalTestes));
