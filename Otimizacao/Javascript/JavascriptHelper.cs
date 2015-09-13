@@ -102,7 +102,7 @@ namespace Otimizacao.Javascript
         /// <summary>
         /// Manager da ScriptEngine
         /// </summary>
-        //private RuntimeManager _manager;
+        private RuntimeManager _manager;
 
         /// <summary>
         /// Diretório onde os scripts estão
@@ -156,9 +156,11 @@ namespace Otimizacao.Javascript
             _timeoutTestes = int.MaxValue;
 
             //O manager vai compilar e cachear as bibliotecas
-            //_manager = new RuntimeManager(new ManualManagerSettings() { MaxExecutableBytes = (1000000000 * 2)});
-            _engine = new V8ScriptEngine();
-            RequireManager.ClearPackages(); //garantir uma execução limpa
+            _manager = new RuntimeManager(new ManualManagerSettings() { MaxExecutableBytes = (1000000000 * 2)});
+            _engine = _manager.GetEngine();
+            
+            
+            //RequireManager.ClearPackages(); //garantir uma execução limpa
 
             #region Ler arquivos Js
             
@@ -638,12 +640,11 @@ namespace Otimizacao.Javascript
             try
             {
 
-                //_manager.Compile(Path.GetFileNameWithoutExtension(nomeArquivoIndividuo), File.ReadAllText(nomeArquivoIndividuo), true, 60);
-                //_manager.ExecuteCompiled(Path.GetFileNameWithoutExtension(nomeArquivoIndividuo));
-                _engine.Execute(File.ReadAllText(nomeArquivoIndividuo));
+                var codigoIndividuo = File.ReadAllText(nomeArquivoIndividuo);
+                _engine.Execute(codigoIndividuo);
 
-                //_manager.ExecuteCompiled(Path.GetFileNameWithoutExtension(nomeDoArquivoTestes));
-                _engine.Execute(_cacheCodigos[Path.GetFileNameWithoutExtension(nomeDoArquivoTestes)]);
+                var codigoTestes = _cacheCodigos[Path.GetFileNameWithoutExtension(nomeDoArquivoTestes)];
+                _engine.Execute(codigoTestes);
 
                 //Escrever("Iniciando os testes");
                 //Escrever("_timers.Count {0}", _timers.Count);
@@ -872,8 +873,9 @@ namespace Otimizacao.Javascript
         /// </summary>
         public void Dispose()
         {
-            //_manager.Dispose();
-            _engine.Dispose();
+            _manager.Cleanup();
+            _manager.Dispose();
+            _manager = null;
 
             //GC.Collect(GC.MaxGeneration);
             //GC.WaitForPendingFinalizers();
