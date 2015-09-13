@@ -523,7 +523,7 @@ namespace Otimizacao.Javascript
             }
             catch (Exception ex)
             {
-                _logger.Error(ex);
+                _logger.Trace();r(ex);
                 return "";
             }
 
