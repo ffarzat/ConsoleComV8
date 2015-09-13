@@ -184,6 +184,9 @@ namespace Otimizacao
             _logger.Info(string.Format("    Individuos {0}", _size));
             _logger.Info(string.Format("    Geracoes {0}", _executarAte));
 
+            CriarExcel();
+
+
             CriarPrimeiraGeracao();
 
             ExecutarRodadas();
@@ -201,6 +204,22 @@ namespace Otimizacao
             _logger.Info("Tempo total: {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
 
             return otimizou;
+        }
+
+        /// <summary>
+        /// Cria a planilha em disco
+        /// </summary>
+        private void CriarExcel()
+        {
+            _excel.Workbook.Properties.Author = "Fabio Farzat";
+            _excel.Workbook.Properties.Title = string.Format("Execucao do {0}", _caminhoBiblioteca);
+            _excel.Workbook.Properties.Company = "www.vitalbusiness.com.br";
+
+            _excel.Workbook.Worksheets.Add("Resultados");
+            
+            // Save the Excel file
+            var bin = _excel.GetAsByteArray();
+            File.WriteAllBytes(Path.Combine(_diretorioExecucao, "resultados.xlsx"), bin);
         }
 
         /// <summary>
