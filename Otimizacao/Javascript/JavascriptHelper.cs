@@ -407,15 +407,20 @@ namespace Otimizacao.Javascript
         {
             var engine = _manager.GetEngine();
 
-            #region Recupero o nó no pai
+            astPrimeiroFilho = "";
+            astSegundoFilho = "";
 
-            engine.Execute("var nodePai = {type:'EmptyStatement'};");
-            
-            engine.Execute("var astPai = JSON.parse(#astPai);"
-                .Replace("#astPai", this.EncodeJsString(astPai))
-                );
+            try
+            {
+                #region Recupero o nó no pai
 
-            engine.Execute(@"
+                engine.Execute("var nodePai = {type:'EmptyStatement'};");
+
+                engine.Execute("var astPai = JSON.parse(#astPai);"
+                    .Replace("#astPai", this.EncodeJsString(astPai))
+                    );
+
+                engine.Execute(@"
 
                     var counter = 0;
                     ObjEstraverse.replace(astPai, {
@@ -431,19 +436,19 @@ namespace Otimizacao.Javascript
                         }
                     });
                     "
-                .Replace("#randonNodePai", randonNodePai.ToString())
-                     
-                     );
-            
-            #endregion
-            
-            #region Recupero o nó na mãe e troco pelo do Pai
-            engine.Execute("var nodeMae = {type : 'EmptyStatement'};");
-            engine.Execute("var astMae = JSON.parse(#astMae);"
-                 .Replace("#astMae", this.EncodeJsString(astMae))
-                 );
+                    .Replace("#randonNodePai", randonNodePai.ToString())
 
-            engine.Execute(@"
+                         );
+
+                #endregion
+
+                #region Recupero o nó na mãe e troco pelo do Pai
+                engine.Execute("var nodeMae = {type : 'EmptyStatement'};");
+                engine.Execute("var astMae = JSON.parse(#astMae);"
+                     .Replace("#astMae", this.EncodeJsString(astMae))
+                     );
+
+                engine.Execute(@"
 
                     var counter = 0;
                     ObjEstraverse.replace(astMae, {
@@ -462,18 +467,18 @@ namespace Otimizacao.Javascript
                         javascriptHelper.JsonAst = JSON.stringify(astMae);
                     "
 
-                .Replace("#randonNodeMae", randonNodeMae.ToString())
-                
-                );
+                    .Replace("#randonNodeMae", randonNodeMae.ToString())
 
-            //Troco na mae
-            astSegundoFilho = JsonAst;
+                    );
 
-            #endregion
+                //Troco na mae
+                astSegundoFilho = JsonAst;
 
-            #region Troco agora no pai
+                #endregion
 
-            engine.Execute(@"
+                #region Troco agora no pai
+
+                engine.Execute(@"
 
                     var counter = 0;
                     ObjEstraverse.replace(astPai, {
@@ -491,13 +496,22 @@ namespace Otimizacao.Javascript
 
                     javascriptHelper.JsonAst = JSON.stringify(astPai);
                     "
-                    .Replace("#astPai", this.EncodeJsString(astPai))
-                    .Replace("#randonNodePai", randonNodePai.ToString())
+                        .Replace("#astPai", this.EncodeJsString(astPai))
+                        .Replace("#randonNodePai", randonNodePai.ToString())
 
-                    );
+                        );
 
-            astPrimeiroFilho = JsonAst;
-            #endregion
+                astPrimeiroFilho = JsonAst;
+                #endregion
+            }
+            catch (ScriptEngineException ex)
+            {
+                _logger.Trace(ex);
+            }
+            catch (Exception ex)
+            {
+                _logger.Trace(ex);
+            }
 
         }
 
