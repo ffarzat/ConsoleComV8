@@ -38,16 +38,6 @@ namespace ConsoleComV8
 
             #endregion
 
-            #region Lodash
-
-            var otimizadorLodash = new Otimizador(100, 100, 20, "Lodash", "ResultadosLodash");
-            otimizadorLodash.UsarSetTimeout();
-
-            var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
-
-            Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
-            #endregion
-
             #region Moment
 
             var otimizadorMoment = new Otimizador(100, 100, 5, "Moment", "ResultadosMoment");
@@ -57,6 +47,16 @@ namespace ConsoleComV8
 
             Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
 
+            #endregion
+
+            #region Lodash
+
+            var otimizadorLodash = new Otimizador(100, 100, 20, "Lodash", "ResultadosLodash");
+            otimizadorLodash.UsarSetTimeout();
+
+            var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
+
+            Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
             #endregion
 
         }
