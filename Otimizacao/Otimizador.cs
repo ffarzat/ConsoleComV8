@@ -468,6 +468,8 @@ namespace Otimizacao
             sw.Start();
 
             var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+            jHelper.ConfigurarTimeOut(_timeout);
+            jHelper.ConfigurarMelhorFit(_fitnessMin);
             var caminhoNovoAvaliado = GerarCodigo(sujeito);
             
             sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes);

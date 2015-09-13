@@ -115,6 +115,11 @@ namespace Otimizacao.Javascript
         private int _timeoutTestes;
 
         /// <summary>
+        /// Valor de multa para Calculo da Fitness
+        /// </summary>
+        private Int64 _fitTopValue;
+
+        /// <summary>
         /// Total de Nós de um
         /// </summary>
         public int TotalDeNos { get; set; } 
@@ -651,12 +656,12 @@ namespace Otimizacao.Javascript
             {
                 _logger.Trace(ex.ErrorDetails);
                 _logger.Trace(ex.ToString());
-                return Int64.MaxValue - 5;
+                return _fitTopValue;
             }
             catch (Exception ex)
             {
                 _logger.Trace(ex.ToString());
-                return Int64.MaxValue - 1;
+                return _fitTopValue - 1;
             }
 
             while (GetTimersCount() > 0 & sw.Elapsed.Seconds <= _timeoutTestes)
@@ -676,11 +681,9 @@ namespace Otimizacao.Javascript
             //this.FalhasDosTestes.ForEach(this.Log);
 
             if (TestesComFalha > 0 | TestesComSucesso == 0 | TestesComSucesso != TotalTestes)
-                return Int64.MaxValue - TestesComSucesso;
+                return _fitTopValue + TestesComFalha;
 
-            var tempoTestesSomados = (TotalTestes - TestesComSucesso); //Penaliza quem falha
-
-            return (sw.ElapsedMilliseconds + tempoTestesSomados);
+            return (sw.ElapsedMilliseconds);
         }
 
         /// <summary>
@@ -883,6 +886,15 @@ namespace Otimizacao.Javascript
         public void ConfigurarTimeOut(int i)
         {
             _timeoutTestes = i;
+        }
+
+        /// <summary>
+        /// Configura o limite superior da Fit
+        /// </summary>
+        /// <param name="fitnessMin"></param>
+        public void ConfigurarMelhorFit(Int64 fitnessMin)
+        {
+            _fitTopValue = fitnessMin;
         }
     }
 }
