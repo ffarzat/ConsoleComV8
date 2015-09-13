@@ -50,7 +50,7 @@ namespace ConsoleComV8
 
             #region Lodash
 
-            var otimizadorLodash = new Otimizador(10, 5, 20, "Lodash", "ResultadosLodash");
+            var otimizadorLodash = new Otimizador(100, 100, 20, "Lodash", "ResultadosLodash");
             otimizadorLodash.UsarSetTimeout();
 
             var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
