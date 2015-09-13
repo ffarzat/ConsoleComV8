@@ -874,8 +874,8 @@ namespace Otimizacao.Javascript
             _manager.Dispose();
             _manager = null;
 
-            //GC.Collect(GC.MaxGeneration);
-            //GC.WaitForPendingFinalizers();
+            GC.Collect(GC.MaxGeneration);
+            GC.WaitForPendingFinalizers();
         }
 
         /// <summary>
