@@ -413,6 +413,7 @@ namespace Otimizacao
             }
 
             sujeito.Ast = novaAst;
+            sujeito.CriadoPor = Operador.Mutacao;
 
             jHelper.Dispose();
         }
@@ -430,7 +431,11 @@ namespace Otimizacao
             jHelper.ConfigurarGeracao();
 
             filhoPai = pai.Clone();
+            filhoPai.CriadoPor= Operador.Cruzamento;
+            
             filhoMae = mae.Clone();
+            filhoMae.CriadoPor = Operador.Cruzamento;
+
             var totalPai = jHelper.ContarNos(pai.Ast);
             var totalMae = jHelper.ContarNos(mae.Ast);
 
@@ -487,7 +492,7 @@ namespace Otimizacao
 
             sujeito.Codigo = jHelper.GerarCodigo(sujeito.Ast);
 
-            var caminhoNovoAvaliado = string.Format("{0}\\{1}.js", _diretorioExecucao, Guid.NewGuid());
+            var caminhoNovoAvaliado = string.Format("{0}\\{1}.js", _diretorioExecucao, sujeito.Id);
             File.WriteAllText(caminhoNovoAvaliado, sujeito.Codigo);
             
             sujeito.Arquivo = caminhoNovoAvaliado;
