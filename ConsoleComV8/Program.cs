@@ -29,7 +29,7 @@ namespace ConsoleComV8
 
             #region Underscore
 
-            var otimizador = new Otimizador(100, 100, 20, "underscore", "ResultadosUnderscore");
+            var otimizador = new Otimizador(5, 5, 20, "underscore", "ResultadosUnderscore");
             otimizador.LimparResultadosAnteriores();
             otimizador.UsarSetTimeout();
 
