@@ -36,6 +36,9 @@
     <Reference Include="ClearScript.Manager">
       <HintPath>..\Refs\ClearScript.Manager.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\Refs\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Refs\Newtonsoft.Json.dll</HintPath>

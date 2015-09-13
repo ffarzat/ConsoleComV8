@@ -625,7 +625,7 @@ namespace Otimizacao.Javascript
             catch (Exception ex)
             {
                 _logger.Trace(ex.ToString());
-                return Int64.MaxValue - 5;
+                return Int64.MaxValue - 1;
             }
             
             while (GetTimersCount() > 0)
@@ -645,7 +645,7 @@ namespace Otimizacao.Javascript
             //this.FalhasDosTestes.ForEach(this.Log);
 
             if (TestesComSucesso != TotalTestes)
-                return Int64.MaxValue - 5;
+                return Int64.MaxValue - TestesComSucesso;
 
             var tempoTestesSomados = (TotalTestes - TestesComSucesso); //Penaliza quem falha
 
