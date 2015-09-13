@@ -320,9 +320,10 @@ namespace Otimizacao
                 _logger.Info("-> Arquivo = {0}", MelhorIndividuo.Arquivo);
 
                 string generationResultPath = Path.Combine(_diretorioExecucao, _generationCount.ToString());
-                string generationBestPath = Path.Combine(generationResultPath, "\\melhor.js");
+                string generationBestPath = generationResultPath + "\\melhor.js";
                 
                 Directory.CreateDirectory(generationResultPath);
+                Thread.Sleep(5);
                 File.WriteAllText(generationBestPath, MelhorIndividuo.Codigo);
 
                 GerarRelatorioHtml(generationBestPath);
