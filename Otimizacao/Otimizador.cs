@@ -167,7 +167,11 @@ namespace Otimizacao
             sw.Stop();
 
             _logger.Info("Rodadas executadas com sucesso", _fitnessMin);
+            
+            
             var otimizou = MelhorIndividuo.Ast != _original.Ast;
+
+            _logger.Info("============================================================");
             _logger.Info("Houve otimizacao: {0}", otimizou);
 
             _logger.Info("Tempo total: {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
