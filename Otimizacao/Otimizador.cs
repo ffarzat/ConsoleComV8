@@ -559,18 +559,19 @@ namespace Otimizacao
             
             sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes);
             sw.Stop();
-            
-            _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff")));
-            
-            CriarLinhaExcel(indice, sujeito, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
-
-
-
-            jHelper.Dispose();
 
             //Não deveria nunca acontecer de sujeitos iguais
             if (_original.Ast == sujeito.Ast)
                 sujeito.Fitness = _original.Fitness;
+            
+            
+            _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff")));
+            
+            CriarLinhaExcel(indice, sujeito, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
+            
+            jHelper.Dispose();
+
+            
 
             return sujeito.Fitness;
         }
