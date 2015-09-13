@@ -564,8 +564,13 @@ namespace Otimizacao
             //Não deveria nunca acontecer de sujeitos iguais
             if (_original.Codigo.Equals(sujeito.Codigo))
                 sujeito.Fitness = _original.Fitness;
-            
-            
+
+
+            //Não deveria nunca acontecer de sujeitos iguais
+            var igual = _population.FirstOrDefault(i => i.Codigo.Equals(sujeito.Codigo));
+            if (igual != null)
+                sujeito.Fitness = igual.Fitness;
+
             _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff")));
             
             CriarLinhaExcel(indice, sujeito, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
