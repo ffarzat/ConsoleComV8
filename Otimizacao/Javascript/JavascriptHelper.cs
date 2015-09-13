@@ -110,6 +110,11 @@ namespace Otimizacao.Javascript
         private string _diretorioExecucao;
 
         /// <summary>
+        /// Tempo para timout nos testes
+        /// </summary>
+        private int _timeoutTestes;
+
+        /// <summary>
         /// Total de Nós de um
         /// </summary>
         public int TotalDeNos { get; set; } 
@@ -143,6 +148,7 @@ namespace Otimizacao.Javascript
         private void Carregar(string diretorioJavascripts, bool setTimeout, bool setInterval)
         {
             _diretorioExecucao = diretorioJavascripts;
+            _timeoutTestes = int.MaxValue;
 
             //O manager vai compilar e cachear as bibliotecas
             //_manager = new RuntimeManager(new ManualManagerSettings() { MaxExecutableBytes = (1000000000 * 2)});
@@ -653,7 +659,7 @@ namespace Otimizacao.Javascript
                 return Int64.MaxValue - 1;
             }
 
-            while (GetTimersCount() > 0 & _timeOutCodes < sw.Elapsed.Seconds)
+            while (GetTimersCount() > 0 & sw.Elapsed.Seconds <= _timeoutTestes)
             {
                 Thread.Sleep(5);
             }
@@ -868,6 +874,15 @@ namespace Otimizacao.Javascript
 
             //GC.Collect(GC.MaxGeneration);
             //GC.WaitForPendingFinalizers();
+        }
+
+        /// <summary>
+        /// Timeout para execução dos testes em segundos
+        /// </summary>
+        /// <param name="i"></param>
+        public void ConfigurarTimeOut(int i)
+        {
+            _timeoutTestes = i;
         }
     }
 }

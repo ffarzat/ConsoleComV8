@@ -111,7 +111,7 @@ namespace Otimizacao.Testes
         public void ExecutarTestesDoLodash()
         {
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Lodash"), true, false);
-
+            helper.ConfigurarTimeOut(20);
             helper.ExecutarTestes("lodash.js", "lodashTest.js");
 
             helper.FalhasDosTestes.ForEach(Console.WriteLine);
