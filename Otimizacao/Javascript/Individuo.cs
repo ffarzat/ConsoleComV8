@@ -12,6 +12,11 @@ namespace Otimizacao.Javascript
     public class Individuo
     {
         /// <summary>
+        /// Id do Individuo
+        /// </summary>
+        public Guid Id { get; set; }
+
+        /// <summary>
         /// Código final do individuo
         /// </summary>
         public string Codigo { get; set; }
@@ -36,6 +41,7 @@ namespace Otimizacao.Javascript
         /// </summary>
         public Individuo()
         {
+            Id= Guid.NewGuid(),
             Fitness = Int64.MaxValue;
         }
         /// <summary>
