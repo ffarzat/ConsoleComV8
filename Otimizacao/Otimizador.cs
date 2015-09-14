@@ -45,7 +45,7 @@ namespace Otimizacao
 
         // population parameters
         private double _crossOverRate = 0.75;
-        private double _mutationRate = 0.10;
+        private double _mutationRate = 0.25;
 
         // random number generator
         private static readonly Random Rand = new Random(int.MaxValue);

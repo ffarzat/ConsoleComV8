@@ -29,7 +29,7 @@ namespace ConsoleComV8
 
             #region Underscore
 
-            var otimizador = new Otimizador(60, 60, 20, "underscore", "ResultadosUnderscore");
+            var otimizador = new Otimizador(100, 60, 20, "underscore", "ResultadosUnderscore");
             otimizador.LimparResultadosAnteriores();
             otimizador.UsarSetTimeout();
 
@@ -41,7 +41,7 @@ namespace ConsoleComV8
 
             #region Lodash
 
-            var otimizadorLodash = new Otimizador(60, 60, 20, "Lodash", "ResultadosLodash");
+            var otimizadorLodash = new Otimizador(100, 60, 20, "Lodash", "ResultadosLodash");
             otimizadorLodash.LimparResultadosAnteriores();
             otimizadorLodash.UsarSetTimeout();
 
@@ -53,7 +53,7 @@ namespace ConsoleComV8
 
             #region Moment
 
-            var otimizadorMoment = new Otimizador(60, 60, 5, "Moment", "ResultadosMoment");
+            var otimizadorMoment = new Otimizador(100, 60, 5, "Moment", "ResultadosMoment");
             otimizadorMoment.LimparResultadosAnteriores();
 
             var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
