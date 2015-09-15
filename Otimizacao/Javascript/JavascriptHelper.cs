@@ -693,12 +693,17 @@ namespace Otimizacao.Javascript
         private int GetTimersCount()
         {
             int retorno = 0;
+
+            var conseguiu = Monitor.TryEnter(_timers, 10);
             
-            lock (_timers)
+            if (conseguiu)
             {
                 retorno = _timers.Count(pair => pair.Value);
+                Monitor.Exit(_timers);
             }
             
+
+
             return retorno;
         }
 
