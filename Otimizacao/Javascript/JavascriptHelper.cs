@@ -725,11 +725,12 @@ namespace Otimizacao.Javascript
             int id = _timers.Count;
             //Escrever("  Settimeout: id:{0}, ({1}) ms", id, miliseconds);
 
-            lock (_timers)
+            Monitor.Enter(_timers);
             {
                 _timers.Add(id, true);
                 //Escrever("_timers.Count {0}", _timers.Count);
             }
+            Monitor.Exit(_timers);
 
             //Escrever("  ManagedThreadId : [{0}]", Thread.CurrentThread.ManagedThreadId.ToString());
 
@@ -755,28 +756,30 @@ namespace Otimizacao.Javascript
             //Escrever("      Executar timer: id:{0}:", id);
             //Escrever("      ManagedThreadId : [{0}]", Thread.CurrentThread.ManagedThreadId.ToString());
 
-            lock (_timers)
+            try
             {
+                Monitor.Enter(_timers);
+
                 if (_timers[id])
                 {
                     //Escrever("      Executando timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
                     //_engine.Execute(string.Format("javascriptHelper.Escrever('          Deveria ter disparado: ' + stFunctionsCallBack[{0}]);", id));
-                    try
-                    {
-                        _engine.Execute(string.Format("stFunctionsCallBack[{0}]();", id));
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.Trace("         Erro na execução do SetTimeout id {0}", id);
-                        _logger.Trace(ex);
-                    }
 
-                    
+
+                    _engine.Execute(string.Format("stFunctionsCallBack[{0}]();", id));
+                        
                     //Escrever("      Encerrado timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
                     _timers[id] = false;
                 }
-                
-                
+
+                Monitor.Exit(_timers);
+            }
+            catch (Exception ex)
+            {
+
+                _logger.Trace("         Erro na execução do SetTimeout id {0}", id);
+                _logger.Trace(ex);
+                Monitor.Exit(_timers);
             }
         }
 
