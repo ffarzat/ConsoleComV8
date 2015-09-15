@@ -882,8 +882,8 @@ namespace Otimizacao.Javascript
         {
             //_engine.CollectGarbage(true);
             
-            _manager.Cleanup();
-            _manager.Dispose();
+            //_manager.Cleanup();
+            //_manager.Dispose();
             _manager = null;
 
             GC.Collect(GC.MaxGeneration);
