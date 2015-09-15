@@ -694,7 +694,7 @@ namespace Otimizacao.Javascript
         {
             int retorno = 0;
 
-            var conseguiu = Monitor.TryEnter(_timers, 10);
+            var conseguiu = Monitor.TryEnter(_timers, 60000);
             
             if (conseguiu)
             {
