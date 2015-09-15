@@ -246,11 +246,14 @@ namespace Otimizacao
 
                 var sw = new Stopwatch();
                 sw.Start();
-                
+                _logger.Info("      Executando cruzamentos...");
+
                 Crossover();
-                
+
+                _logger.Info("      Executando mutacoes...");
+
                 Mutate();
-                
+
                 ExecuteFitEvaluation();
                 
                 Selection();
