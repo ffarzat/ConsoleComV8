@@ -880,13 +880,16 @@ namespace Otimizacao.Javascript
         /// </summary>
         public void Dispose()
         {
+            GC.Collect(GC.MaxGeneration);
+
             //_engine.CollectGarbage(true);
             
             //_manager.Cleanup();
+            GC.WaitForFullGCComplete(60000);
             _manager.Dispose();
             _manager = null;
 
-            GC.Collect(GC.MaxGeneration);
+            
             GC.WaitForPendingFinalizers();
         }
 
