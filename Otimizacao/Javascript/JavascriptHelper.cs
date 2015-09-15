@@ -880,7 +880,7 @@ namespace Otimizacao.Javascript
         /// </summary>
         public void Dispose()
         {
-            _engine.CollectGarbage(true);
+            //_engine.CollectGarbage(true);
             
             _manager.Cleanup();
             _manager.Dispose();
