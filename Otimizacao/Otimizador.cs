@@ -310,6 +310,7 @@ namespace Otimizacao
                 {
                     _fitnessMin = fitness;
                     MelhorIndividuo = c;
+                    _logger.Info("-> Bom! Valor={0}", _fitnessMin);
                 }
             }
 
