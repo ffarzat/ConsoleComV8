@@ -365,6 +365,10 @@ namespace Otimizacao
         /// </summary>
         private void Crossover()
         {
+
+            var sw = new Stopwatch();
+            sw.Start();
+
             int count = 0;
 
             for (int i = 1; i < _size; i += 2)
@@ -385,9 +389,9 @@ namespace Otimizacao
                     count++;
                 }
             }
-
-            _logger.Info("      {0} crossover(s) executados", count);
-
+            sw.Stop();
+            _logger.Info("      {0} crossover(s) executados em {1}", count, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
+            
         }
 
         /// <summary>
@@ -395,6 +399,9 @@ namespace Otimizacao
         /// </summary>
         private void Mutate()
         {
+            var sw = new Stopwatch();
+            sw.Start();
+
             int count = 0;
 
             for (int i = 0; i < _size; i++)
@@ -410,8 +417,8 @@ namespace Otimizacao
                     count++;
                 }
             }
-
-            _logger.Info("      {0} mutações executadas", count);
+            sw.Stop();
+            _logger.Info("      {0} mutações executadas em {1}", count, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
         }
 
         /// <summary>
@@ -513,6 +520,7 @@ namespace Otimizacao
         /// <param name="filhoMae"></param>
         private void ExecutarCruzamento(Individuo pai, Individuo mae, out Individuo filhoPai, out Individuo filhoMae)
         {
+
             var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
             jHelper.ConfigurarGeracao();
 
