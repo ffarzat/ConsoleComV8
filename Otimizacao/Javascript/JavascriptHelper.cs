@@ -770,9 +770,8 @@ namespace Otimizacao.Javascript
                     //Escrever("      Executando timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
                     //_engine.Execute(string.Format("javascriptHelper.Escrever('          Deveria ter disparado: ' + stFunctionsCallBack[{0}]);", id));
 
-                    var t = new Thread(() => _engine.Execute(string.Format("stFunctionsCallBack[{0}]();", id)));
-                    t.Start();
-                    t.Join(_timeoutTestes);
+
+                    _engine.Execute(string.Format("stFunctionsCallBack[{0}]();", id));
                         
                     //Escrever("      Encerrado timer: id:{0}, ({1})", id, DateTime.Now.ToString("HH:mm:ss.ffff"));
                     _timers[id] = false;
@@ -785,7 +784,6 @@ namespace Otimizacao.Javascript
 
                 _logger.Trace("         Erro na execução do SetTimeout id {0}", id);
                 _logger.Trace(ex);
-                _timers[id] = false;
                 Monitor.Exit(_timers);
             }
         }
