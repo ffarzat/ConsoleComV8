@@ -569,8 +569,10 @@ namespace Otimizacao
             jHelper.ConfigurarTimeOut(_timeout);
             jHelper.ConfigurarMelhorFit(_fitnessMin);
             var caminhoNovoAvaliado = GerarCodigo(sujeito);
-            
-            sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes);
+
+            var avaliar = new Thread(() => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
+            avaliar.Start();
+            avaliar.Join(_timeout * 1000);
             sw.Stop();
 
             //Não deveria nunca acontecer de sujeitos iguais
