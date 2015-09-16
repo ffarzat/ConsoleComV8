@@ -885,6 +885,7 @@ namespace Otimizacao.Javascript
             GC.WaitForFullGCComplete(60000);
             GC.Collect();
 
+            _engine.Interrupt();
             _manager.Cleanup();
             _manager.Dispose();
             _manager = null;
