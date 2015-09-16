@@ -569,21 +569,20 @@ namespace Otimizacao
             jHelper.ConfigurarTimeOut(_timeout);
             jHelper.ConfigurarMelhorFit(_fitnessMin);
             var caminhoNovoAvaliado = GerarCodigo(sujeito);
-
+            
+            sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes);
+            sw.Stop();
 
             //Não deveria nunca acontecer de sujeitos iguais
             if (_original.Codigo.Equals(sujeito.Codigo))
                 sujeito.Fitness = _original.Fitness;
+
 
             //Não deveria nunca acontecer de sujeitos iguais
             var igual = _population.FirstOrDefault(i => i.Codigo.Equals(sujeito.Codigo));
             if (igual != null)
                 sujeito.Fitness = igual.Fitness;
 
-            sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes);
-            sw.Stop();
-
-            
             _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff")));
             
             CriarLinhaExcel(indice, sujeito, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
