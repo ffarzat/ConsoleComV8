@@ -578,7 +578,7 @@ namespace Otimizacao
 
             #region Codigo Vazio
 
-            if (sujeito.Codigo == "")
+            if (string.IsNullOrEmpty(sujeito.Codigo))
             {
                 _logger.Info("              Codigo Vazio");
 
