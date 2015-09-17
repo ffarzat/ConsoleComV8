@@ -566,38 +566,46 @@ namespace Otimizacao
         {
             var sw = new Stopwatch();
             sw.Start();
-
+            var avaliado = false;
             var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
             jHelper.ConfigurarTimeOut(_timeout);
             jHelper.ConfigurarMelhorFit(_fitnessMin);
             var caminhoNovoAvaliado = GerarCodigo(sujeito);
 
-            var avaliar = new Thread(() => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
-
-            try
-            {
-                avaliar.Start();
-                avaliar.Join(_timeout * 1000);
-            }
-            catch (AccessViolationException ex)
-            {
-                jHelper.Dispose();
-                sujeito.Fitness = Int64.MaxValue;
-                _logger.Trace("         AccessViolationException");
-                _logger.Trace(ex);
-            }
-            
-            sw.Stop();
-
             //Não deveria nunca acontecer de sujeitos iguais
             if (_original.Codigo.Equals(sujeito.Codigo))
+            {
                 sujeito.Fitness = _original.Fitness;
-
-
+                avaliado = true;
+            }
             //Não deveria nunca acontecer de sujeitos iguais
             var igual = _population.FirstOrDefault(i => i.Codigo.Equals(sujeito.Codigo));
             if (igual != null)
+            {
                 sujeito.Fitness = igual.Fitness;
+                avaliado = true;
+            }
+
+            if (!avaliado)
+            {
+                try
+                {
+                    var avaliar =
+                        new Thread(
+                            () => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
+                    avaliar.Start();
+                    avaliar.Join(_timeout*1000);
+                }
+                catch (AccessViolationException ex)
+                {
+                    jHelper.Dispose();
+                    sujeito.Fitness = Int64.MaxValue;
+                    _logger.Trace("         AccessViolationException");
+                    _logger.Trace(ex);
+                }
+            }
+
+            sw.Stop();
 
             _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff")));
             
