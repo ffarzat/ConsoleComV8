@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -756,6 +757,7 @@ namespace Otimizacao.Javascript
         /// <summary>
         /// Quando o timer dispara
         /// </summary>
+        [HandleProcessCorruptedStateExceptions]
         void JavascriptHelper_Elapsed(int id)
         {
             //Escrever("      Executar timer: id:{0}:", id);
