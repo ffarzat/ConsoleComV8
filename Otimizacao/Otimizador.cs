@@ -477,8 +477,13 @@ namespace Otimizacao
             
             _original.Codigo = jHelper.GerarCodigo(_original.Ast);
             File.WriteAllText(caminhoDestino, _original.Codigo);
-            
+
+            var sw = new Stopwatch();
+            sw.Start();
             _original.Fitness = jHelper.ExecutarTestes(caminhoDestino, _caminhoScriptTestes);
+            sw.Stop();
+            _original.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
+            _original.TestesComSucesso = jHelper.TestesComSucesso;
             
             _fitnessMin = _original.Fitness;
 
