@@ -583,7 +583,9 @@ namespace Otimizacao.Javascript
 
 
             _engine.Execute(_cacheCodigos["Qunit"]);
-            _engine.Execute(_cacheCodigos["qunit-extras"]);
+
+            if (_cacheCodigos.ContainsKey("qunit-extras"))
+                _engine.Execute(_cacheCodigos["qunit-extras"]);
 
             //_manager.ExecuteCompiled("Qunit");
             //_manager.ExecuteCompiled("qunit-extras");
