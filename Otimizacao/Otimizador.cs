@@ -600,20 +600,27 @@ namespace Otimizacao
                             () => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
                     avaliar.Start();
                     avaliar.Join(_timeout*1000);
+
+                    sw.Stop();
+
+                    sujeito.TestesComSucesso = jHelper.TestesComSucesso;
+                    sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
+
                 }
                 catch (AccessViolationException ex)
                 {
                     jHelper.Dispose();
                     sujeito.Fitness = Int64.MaxValue;
+
+                    sujeito.TestesComSucesso = jHelper.TestesComSucesso;
+                    sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
+                    
                     _logger.Trace("         AccessViolationException");
                     _logger.Trace(ex);
                 }
             }
 
-            sw.Stop();
-
-            sujeito.TestesComSucesso = jHelper.TestesComSucesso;
-            sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
+            
 
 
             _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
