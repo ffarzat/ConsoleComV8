@@ -610,10 +610,10 @@ namespace Otimizacao
             #endregion
 
             #region Igual a outro na geração
-            var igual = _population.FirstOrDefault(i => i.Codigo.Equals(sujeito.Codigo));
+            var igual = _population.FirstOrDefault(i => i.Codigo.Equals(sujeito.Codigo) && !string.IsNullOrEmpty(sujeito.Codigo));
             if (igual != null)
             {
-                _logger.Info("              Igual a outro na geração");
+                _logger.Info("              Igual a outro na geracao");
 
                 sujeito.TempoExecucao = igual.TempoExecucao;
                 sujeito.TestesComSucesso = igual.TestesComSucesso;
