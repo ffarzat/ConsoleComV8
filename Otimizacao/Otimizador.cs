@@ -581,14 +581,16 @@ namespace Otimizacao
             if (sujeito.Codigo == "")
             {
                 _logger.Info("              Codigo Vazio");
-                sw.Stop();
 
-                sujeito.Fitness = Int64.MaxValue - 100;
-                sujeito.TestesComSucesso = jHelper.TestesComSucesso;
-                sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
+                sujeito.Codigo = _original.Codigo;
+                sujeito.Fitness = _original.Fitness;
+                sujeito.TestesComSucesso = _original.TestesComSucesso;
+                sujeito.TempoExecucao = _original.TempoExecucao;
 
                 _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
+                
                 CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
+
                 return sujeito.Fitness;
             }
 
