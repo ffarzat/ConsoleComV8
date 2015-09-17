@@ -616,9 +616,9 @@ namespace Otimizacao
             sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
 
 
-            _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff")));
-            
-            CriarLinhaExcel(indice, sujeito, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
+            _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
+
+            CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
             
             jHelper.Dispose();
 
