@@ -573,10 +573,10 @@ namespace Otimizacao
             var sw = new Stopwatch();
             sw.Start();
 
-            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-            jHelper.ConfigurarTimeOut(_timeout);
-            jHelper.ConfigurarMelhorFit(_fitnessMin);
+            
             var caminhoNovoAvaliado = GerarCodigo(sujeito);
+
+            #region Codigo Vazio
 
             if (sujeito.Codigo == "")
             {
@@ -593,8 +593,9 @@ namespace Otimizacao
 
                 return sujeito.Fitness;
             }
+            #endregion
 
-            //Não deveria nunca acontecer de sujeitos iguais
+            #region Igual ao Original
             if (_original.Codigo.Equals(sujeito.Codigo))
             {
                 _logger.Info("              Igual ao Original");
@@ -606,7 +607,9 @@ namespace Otimizacao
                 CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
                 return sujeito.Fitness;
             }
-            //Não deveria nunca acontecer de sujeitos iguais
+            #endregion
+
+            #region Igual a outro na geração
             var igual = _population.FirstOrDefault(i => i.Codigo.Equals(sujeito.Codigo));
             if (igual != null)
             {
@@ -620,7 +623,13 @@ namespace Otimizacao
                 return sujeito.Fitness;
             }
 
+            #endregion
+
             #region realmente executar os testes então
+
+            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+            jHelper.ConfigurarTimeOut(_timeout);
+            jHelper.ConfigurarMelhorFit(_fitnessMin);
 
             try
             {
@@ -651,8 +660,6 @@ namespace Otimizacao
             }
 
             #endregion
-
-
 
             _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
 
