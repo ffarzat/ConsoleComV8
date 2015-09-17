@@ -681,7 +681,7 @@ namespace Otimizacao.Javascript
                 return _fitTopValue + 1000;
             if (TestesComSucesso == 0)
                 return _fitTopValue + 1000;
-            if (TestesComSucesso != TotalTestes)
+            if (TestesComSucesso < TotalTestes)
                 return _fitTopValue + 1000;
 
             return (sw.ElapsedMilliseconds);
