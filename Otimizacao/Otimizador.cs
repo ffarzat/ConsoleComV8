@@ -567,69 +567,91 @@ namespace Otimizacao
         {
             var sw = new Stopwatch();
             sw.Start();
-            var avaliado = false;
+
             var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
             jHelper.ConfigurarTimeOut(_timeout);
             jHelper.ConfigurarMelhorFit(_fitnessMin);
             var caminhoNovoAvaliado = GerarCodigo(sujeito);
 
+            if (sujeito.Codigo == "")
+            {
+                _logger.Info("              Codigo Vazio");
+                sw.Stop();
+
+                sujeito.Fitness = Int64.MaxValue - 100;
+                sujeito.TestesComSucesso = jHelper.TestesComSucesso;
+                sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
+
+                _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
+                CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
+                return sujeito.Fitness;
+            }
+
             //Não deveria nunca acontecer de sujeitos iguais
             if (_original.Codigo.Equals(sujeito.Codigo))
             {
+                _logger.Info("              Igual ao Original");
+
                 sujeito.TempoExecucao = _original.TempoExecucao;
                 sujeito.TestesComSucesso = _original.TestesComSucesso;
                 sujeito.Fitness = _original.Fitness;
-                avaliado = true;
+                _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
+                CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
+                return sujeito.Fitness;
             }
             //Não deveria nunca acontecer de sujeitos iguais
             var igual = _population.FirstOrDefault(i => i.Codigo.Equals(sujeito.Codigo));
             if (igual != null)
             {
+                _logger.Info("              Igual a outro na geração");
+
                 sujeito.TempoExecucao = igual.TempoExecucao;
                 sujeito.TestesComSucesso = igual.TestesComSucesso;
                 sujeito.Fitness = igual.Fitness;
-                avaliado = true;
+                _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
+                CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
+                return sujeito.Fitness;
             }
 
-            if (!avaliado)
+            #region realmente executar os testes então
+
+            try
             {
-                try
-                {
-                    var avaliar =
-                        new Thread(
-                            () => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
-                    avaliar.Start();
-                    avaliar.Join(_timeout*1000);
+                _logger.Info("              Avaliando via testes");
 
-                    sw.Stop();
+                var avaliar =
+                    new Thread(
+                        () => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
+                avaliar.Start();
+                avaliar.Join(_timeout * 1000);
 
-                    sujeito.TestesComSucesso = jHelper.TestesComSucesso;
-                    sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
+                sw.Stop();
 
-                }
-                catch (AccessViolationException ex)
-                {
-                    jHelper.Dispose();
-                    sujeito.Fitness = Int64.MaxValue;
+                sujeito.TestesComSucesso = jHelper.TestesComSucesso;
+                sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
 
-                    sujeito.TestesComSucesso = jHelper.TestesComSucesso;
-                    sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
-                    
-                    _logger.Trace("         AccessViolationException");
-                    _logger.Trace(ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                jHelper.Dispose();
+                sujeito.Fitness = Int64.MaxValue - 100;
+
+                sujeito.TestesComSucesso = jHelper.TestesComSucesso;
+                sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
+
+                _logger.Trace("         AccessViolationException");
+                _logger.Trace(ex);
             }
 
-            
+            #endregion
+
 
 
             _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
 
             CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
-            
-            jHelper.Dispose();
 
-            
+            jHelper.Dispose();
 
             return sujeito.Fitness;
         }
