@@ -757,7 +757,6 @@ namespace Otimizacao.Javascript
         /// <summary>
         /// Quando o timer dispara
         /// </summary>
-        [HandleProcessCorruptedStateExceptions]
         void JavascriptHelper_Elapsed(int id)
         {
             //Escrever("      Executar timer: id:{0}:", id);

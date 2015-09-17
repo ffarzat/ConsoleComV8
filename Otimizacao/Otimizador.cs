@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -560,6 +561,7 @@ namespace Otimizacao
         /// </summary>
         /// <param name="indice"></param>
         /// <param name="sujeito"></param>
+        [HandleProcessCorruptedStateExceptions]
         private Int64 AvaliarIndividuo(int indice, Individuo sujeito)
         {
             var sw = new Stopwatch();
@@ -571,8 +573,20 @@ namespace Otimizacao
             var caminhoNovoAvaliado = GerarCodigo(sujeito);
 
             var avaliar = new Thread(() => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
-            avaliar.Start();
-            avaliar.Join(_timeout * 1000);
+
+            try
+            {
+                avaliar.Start();
+                avaliar.Join(_timeout * 1000);
+            }
+            catch (AccessViolationException ex)
+            {
+                jHelper.Dispose();
+                sujeito.Fitness = Int64.MaxValue;
+                _logger.Trace("         AccessViolationException");
+                _logger.Trace(ex);
+            }
+            
             sw.Stop();
 
             //Não deveria nunca acontecer de sujeitos iguais
