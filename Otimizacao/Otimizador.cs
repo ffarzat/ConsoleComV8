@@ -431,11 +431,12 @@ namespace Otimizacao
         private void CriarPrimeiraGeracao()
         {
             CriarIndividuoOriginal(_caminhoBiblioteca);
-            _population.Add(_original);
+            
             
             _logger.Info(string.Format("    Avaliando o original"));
             AvaliarIndividuo(0,_original);
             _fitnessMin = _original.Fitness;
+            _population.Add(_original);
 
             _logger.Info(string.Format("    Criando a populaçao Inicial com {0} individuos",_size));
             
@@ -575,6 +576,8 @@ namespace Otimizacao
             //Não deveria nunca acontecer de sujeitos iguais
             if (_original.Codigo.Equals(sujeito.Codigo))
             {
+                sujeito.TempoExecucao = _original.TempoExecucao;
+                sujeito.TestesComSucesso = _original.TestesComSucesso;
                 sujeito.Fitness = _original.Fitness;
                 avaliado = true;
             }
@@ -582,6 +585,8 @@ namespace Otimizacao
             var igual = _population.FirstOrDefault(i => i.Codigo.Equals(sujeito.Codigo));
             if (igual != null)
             {
+                sujeito.TempoExecucao = igual.TempoExecucao;
+                sujeito.TestesComSucesso = igual.TestesComSucesso;
                 sujeito.Fitness = igual.Fitness;
                 avaliado = true;
             }
@@ -606,6 +611,10 @@ namespace Otimizacao
             }
 
             sw.Stop();
+
+            sujeito.TestesComSucesso = jHelper.TestesComSucesso;
+            sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
+
 
             _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, jHelper.TestesComSucesso, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff")));
             

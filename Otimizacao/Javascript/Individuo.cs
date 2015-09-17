@@ -42,6 +42,16 @@ namespace Otimizacao.Javascript
         public Operador CriadoPor { get; set; }
 
         /// <summary>
+        /// Número de testes que passaram com sucesso
+        /// </summary>
+        public int TestesComSucesso { get; set; }
+
+        /// <summary>
+        /// Tempo que o individuo levou
+        /// </summary>
+        public string TempoExecucao { get; set; }
+
+        /// <summary>
         /// Construtor Default
         /// </summary>
         public Individuo()
@@ -49,6 +59,8 @@ namespace Otimizacao.Javascript
             Id = Guid.NewGuid();
             Fitness = Int64.MaxValue;
             CriadoPor = Operador.Clonagem;
+            TestesComSucesso = 0;
+            TempoExecucao = "00:00:00.0000";
         }
         /// <summary>
         /// Gera um clone do individuo atual
