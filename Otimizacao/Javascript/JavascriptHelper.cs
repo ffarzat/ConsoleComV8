@@ -679,13 +679,6 @@ namespace Otimizacao.Javascript
 
             //this.FalhasDosTestes.ForEach(this.Log);
 
-            if (TestesComFalha > 0)
-                return _fitTopValue + TestesComFalha;
-            if (TestesComSucesso == 0)
-                return _fitTopValue + TestesComFalha >0 ? TestesComFalha: 1000;
-            if (TestesComSucesso < TotalTestes)
-                return _fitTopValue + TestesComFalha > 0 ? TestesComFalha : 1000;
-
             return (sw.ElapsedMilliseconds);
         }
 
