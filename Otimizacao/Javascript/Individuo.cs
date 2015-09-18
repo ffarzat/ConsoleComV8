@@ -61,6 +61,7 @@ namespace Otimizacao.Javascript
             CriadoPor = Operador.Clonagem;
             TestesComSucesso = 0;
             TempoExecucao = "00:00:00.0000";
+            Codigo = "";
         }
         /// <summary>
         /// Gera um clone do individuo atual
