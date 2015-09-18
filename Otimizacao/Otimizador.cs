@@ -310,7 +310,7 @@ namespace Otimizacao
                 _fitnessSum += fitness;
 
                 // check for min
-                if (fitness < _fitnessMin)
+                if (fitness < _fitnessMin & fitness> 0)
                 {
                     _fitnessMin = fitness;
                     MelhorIndividuo = c;
