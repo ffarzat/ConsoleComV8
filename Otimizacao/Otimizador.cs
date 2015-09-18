@@ -611,18 +611,18 @@ namespace Otimizacao
             #endregion
 
             #region Igual a outro na geração
-            var igual = _population.FirstOrDefault(i => i.Fitness != Int64.MaxValue && i.Codigo.Equals(sujeito.Codigo));
-            if (igual != null)
-            {
-                _logger.Info("              Igual a outro na geracao");
+            //var igual = _population.FirstOrDefault(i => i.Fitness != Int64.MaxValue && i.Codigo.Equals(sujeito.Codigo));
+            //if (igual != null)
+            //{
+            //    _logger.Info("              Igual a outro na geracao");
 
-                sujeito.TempoExecucao = igual.TempoExecucao;
-                sujeito.TestesComSucesso = igual.TestesComSucesso;
-                sujeito.Fitness = igual.Fitness;
-                _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
-                CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
-                return sujeito.Fitness;
-            }
+            //    sujeito.TempoExecucao = igual.TempoExecucao;
+            //    sujeito.TestesComSucesso = igual.TestesComSucesso;
+            //    sujeito.Fitness = igual.Fitness;
+            //    _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
+            //    CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
+            //    return sujeito.Fitness;
+            //}
 
             #endregion
 
