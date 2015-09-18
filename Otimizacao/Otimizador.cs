@@ -581,7 +581,7 @@ namespace Otimizacao
 
             if (string.IsNullOrEmpty(sujeito.Codigo))
             {
-                _logger.Info("              Codigo Vazio");
+                _logger.Trace("              Codigo Vazio");
 
                 sujeito.Codigo = _original.Codigo;
                 sujeito.Fitness = _original.Fitness;
@@ -599,7 +599,7 @@ namespace Otimizacao
             #region Igual ao Original
             if (_original.Codigo.Equals(sujeito.Codigo))
             {
-                _logger.Info("              Igual ao Original");
+                _logger.Trace("              Igual ao Original");
 
                 sujeito.TempoExecucao = _original.TempoExecucao;
                 sujeito.TestesComSucesso = _original.TestesComSucesso;
@@ -634,7 +634,7 @@ namespace Otimizacao
 
             try
             {
-                _logger.Info("              Avaliando via testes");
+                _logger.Trace("              Avaliando via testes");
 
                 var avaliar =
                     new Thread(() => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
