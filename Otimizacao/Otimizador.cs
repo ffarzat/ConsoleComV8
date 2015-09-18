@@ -611,7 +611,7 @@ namespace Otimizacao
             #endregion
 
             #region Igual a outro na geração
-            var igual = _population.FirstOrDefault(i => i.Codigo.Equals(sujeito.Codigo) && i.Fitness != Int64.MaxValue);
+            var igual = _population.FirstOrDefault(i => i.Fitness != Int64.MaxValue && i.Codigo.Equals(sujeito.Codigo));
             if (igual != null)
             {
                 _logger.Info("              Igual a outro na geracao");
