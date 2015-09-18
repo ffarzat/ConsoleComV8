@@ -731,6 +731,10 @@ namespace Otimizacao.Javascript
         /// <param name="miliseconds">tempo em ms</param>
         public string SetTimeout(int miliseconds)
         {
+            if (string.IsNullOrEmpty(miliseconds.ToString()))
+                miliseconds = 1;
+
+
             int id = _timers.Count;
             //Escrever("  Settimeout: id:{0}, ({1}) ms", id, miliseconds);
 
