@@ -660,7 +660,7 @@ namespace Otimizacao.Javascript
             catch (Exception ex)
             {
                 _logger.Trace(ex.ToString());
-                return _fitTopValue = 1000;
+                return _fitTopValue + 1000;
             }
 
             while (GetTimersCount() > 0 & sw.Elapsed.Seconds <= _timeoutTestes)
@@ -673,6 +673,14 @@ namespace Otimizacao.Javascript
             #endregion
             
             sw.Stop();
+
+            if (TestesComFalha > 0)
+                return _fitTopValue + TestesComFalha;
+            if (TestesComSucesso == 0)
+                return _fitTopValue + TestesComFalha > 0 ? TestesComFalha : 1000;
+            if (TestesComSucesso < TotalTestes)
+                return _fitTopValue + TestesComFalha > 0 ? TestesComFalha : 1000;
+
 
             _logger.Trace(string.Format("           Total:{0}, Sucesso: {1}, Falha: {2}", this.TotalTestes, this.TestesComSucesso, this.TestesComFalha));
             _logger.Trace(string.Format("           {0} segundos para avaliar o individuo {1}", sw.Elapsed.Seconds, nomeArquivoIndividuo));

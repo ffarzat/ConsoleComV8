@@ -661,12 +661,15 @@ namespace Otimizacao
 
             #endregion
 
-            if (jHelper.TestesComFalha > 0)
-                sujeito.Fitness = _fitnessMin + jHelper.TestesComFalha;
-            if (jHelper.TestesComSucesso == 0)
-                sujeito.Fitness = _fitnessMin + jHelper.TestesComFalha > 0 ? jHelper.TestesComFalha : 1000;
-            if (jHelper.TestesComSucesso < jHelper.TotalTestes)
-                sujeito.Fitness = _fitnessMin + jHelper.TestesComFalha > 0 ? jHelper.TestesComFalha : 1000;
+            //if (jHelper.TestesComFalha > 0)
+            //    sujeito.Fitness = _fitnessMin + jHelper.TestesComFalha;
+            //if (jHelper.TestesComSucesso == 0)
+            //    sujeito.Fitness = _fitnessMin + jHelper.TestesComFalha > 0 ? jHelper.TestesComFalha : 1000;
+            //if (jHelper.TestesComSucesso < jHelper.TotalTestes)
+            //{
+            //    _logger.Info("          Sucesso inferior ao Total");
+            //    sujeito.Fitness = _fitnessMin + (jHelper.TestesComFalha > 0 ? jHelper.TestesComFalha : 1000);
+            //}
 
 
             _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
