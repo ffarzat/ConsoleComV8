@@ -540,8 +540,8 @@ namespace Otimizacao
             filhoMae = mae.Clone();
             filhoMae.CriadoPor = Operador.Cruzamento;
 
-            var totalPai = jHelper.ContarNos(pai.Ast);
-            var totalMae = jHelper.ContarNos(mae.Ast);
+            var totalPai = Rand.Next(0, jHelper.ContarNos(pai.Ast));
+            var totalMae = Rand.Next(0, jHelper.ContarNos(mae.Ast));
 
             string c1, c2;
             try
@@ -550,6 +550,7 @@ namespace Otimizacao
             }
             catch (Exception ex)
             {
+                _logger.Info("          Erro ao executar cruzamento");
                 _logger.Error(ex.ToString());
                 return;
             }
