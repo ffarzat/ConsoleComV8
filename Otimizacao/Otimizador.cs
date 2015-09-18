@@ -574,22 +574,22 @@ namespace Otimizacao
             var sw = new Stopwatch();
             sw.Start();
 
-            
+            var valorFitFalha = Int64.MaxValue - 100;
+
             var caminhoNovoAvaliado = GerarCodigo(sujeito);
 
-            #region Codigo Vazio
+            #region Codigo Vazio [sujeito inválido]
 
             if (string.IsNullOrEmpty(sujeito.Codigo))
             {
                 _logger.Trace("              Codigo Vazio");
 
-                sujeito.Codigo = _original.Codigo;
-                sujeito.Fitness = _original.Fitness;
-                sujeito.TestesComSucesso = _original.TestesComSucesso;
-                sujeito.TempoExecucao = _original.TempoExecucao;
+                sujeito.Fitness = valorFitFalha;
+                sujeito.TestesComSucesso = 0;
+                sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
 
                 _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
-                
+
                 CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
 
                 return sujeito.Fitness;
@@ -608,22 +608,6 @@ namespace Otimizacao
                 CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
                 return sujeito.Fitness;
             }
-            #endregion
-
-            #region Igual a outro na geração
-            //var igual = _population.FirstOrDefault(i => i.Fitness != Int64.MaxValue && i.Codigo.Equals(sujeito.Codigo));
-            //if (igual != null)
-            //{
-            //    _logger.Info("              Igual a outro na geracao");
-
-            //    sujeito.TempoExecucao = igual.TempoExecucao;
-            //    sujeito.TestesComSucesso = igual.TestesComSucesso;
-            //    sujeito.Fitness = igual.Fitness;
-            //    _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
-            //    CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
-            //    return sujeito.Fitness;
-            //}
-
             #endregion
 
             #region realmente executar os testes então
@@ -649,28 +633,17 @@ namespace Otimizacao
             }
             catch (Exception ex)
             {
-                jHelper.Dispose();
-                sujeito.Fitness = Int64.MaxValue - 100;
-
+                
+                sujeito.Fitness = valorFitFalha;
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
 
-                _logger.Trace("         AccessViolationException");
                 _logger.Trace(ex);
+
+                jHelper.Dispose();
             }
 
             #endregion
-
-            #region Bug que deixa a Fit zerada
-
-            if (sujeito.Fitness == 0)
-            {
-                sujeito.Fitness = _original.Fitness;
-            }
-
-            #endregion
-
-
 
             _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
 
