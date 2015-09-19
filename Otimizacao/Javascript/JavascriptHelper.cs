@@ -682,8 +682,8 @@ namespace Otimizacao.Javascript
                 return _fitTopValue + TestesComFalha > 0 ? TestesComFalha : 1000;
 
 
-            _logger.Trace(string.Format("           Total:{0}, Sucesso: {1}, Falha: {2}", this.TotalTestes, this.TestesComSucesso, this.TestesComFalha));
-            _logger.Trace(string.Format("           {0} segundos para avaliar o individuo {1}", sw.Elapsed.Seconds, nomeArquivoIndividuo));
+            _logger.Info(string.Format("           Total:{0}, Sucesso: {1}, Falha: {2}", this.TotalTestes, this.TestesComSucesso, this.TestesComFalha));
+            _logger.Info(string.Format("           {0} segundos para avaliar o individuo {1}", sw.Elapsed.Seconds, nomeArquivoIndividuo));
 
             //this.FalhasDosTestes.ForEach(this.Log);
 
