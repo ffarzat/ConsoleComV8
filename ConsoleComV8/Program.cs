@@ -29,7 +29,7 @@ namespace ConsoleComV8
 
             #region Moment
 
-            var otimizadorMoment = new Otimizador(10, 10, 6, "Moment", "ResultadosMoment");
+            var otimizadorMoment = new Otimizador(100, 100, 6, "Moment", "ResultadosMoment");
             otimizadorMoment.LimparResultadosAnteriores();
 
             var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
@@ -45,7 +45,7 @@ namespace ConsoleComV8
 
             #region Lodash
 
-            var otimizadorLodash = new Otimizador(100, 100, 12, "Lodash", "ResultadosLodash");
+            var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
             otimizadorLodash.LimparResultadosAnteriores();
             otimizadorLodash.UsarSetTimeout();
 
