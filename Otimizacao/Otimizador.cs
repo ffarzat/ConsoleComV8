@@ -133,8 +133,8 @@ namespace Otimizacao
         public void LimparResultadosAnteriores()
         {
             
-            if (File.Exists("ExecutionLog.txt"))
-                File.Delete("ExecutionLog.txt");
+//            if (File.Exists("ExecutionLog.txt"))
+//                File.Delete("ExecutionLog.txt");
 
 
             if (Directory.Exists(_diretorioExecucao))
