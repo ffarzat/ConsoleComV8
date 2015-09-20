@@ -665,6 +665,7 @@ namespace Otimizacao.Javascript
 
             while (GetTimersCount() > 0 & sw.Elapsed.Seconds <= _timeoutTestes)
             {
+                _logger.Trace("     Aguardando encerrar o SetTimeout");
                 Thread.Sleep(5);
             }
             
