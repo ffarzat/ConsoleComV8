@@ -46,3 +46,7 @@ Temporary Items
 Debug/
 
 ConsoleComV8/bin/Debug/ExecutionLog.txt
+ConsoleComV8/bin/Debug/ConsoleComV8.exe
+*.pdb
+ConsoleComV8/bin/Debug/Otimizacao.dll
+*.exe
