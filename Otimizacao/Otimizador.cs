@@ -301,6 +301,7 @@ namespace Otimizacao
         /// </summary>
         private void FindBestChromosomeOfRun()
         {
+            var melhores = new List<Individuo>();
             var originalValue = _fitnessMin;
 
             foreach (Individuo c in _population)
@@ -315,26 +316,28 @@ namespace Otimizacao
                     _fitnessMin = fitness;
                     MelhorIndividuo = c;
                     _logger.Info("-> Bom! Valor={0}", _fitnessMin);
+
+                    melhores.Add(c);
+
                 }
             }
 
-            if (originalValue != _fitnessMin)
+            if (melhores.Count > 0)
             {
-                _logger.Info("-> Achou melhor individuo novo! Valor={0}", _fitnessMin);
-                _logger.Info("-> Criado por = {0}", MelhorIndividuo.CriadoPor.ToString());
-                _logger.Info("-> Arquivo = {0}", MelhorIndividuo.Arquivo);
-
+                #region Cria diretorio da geração
                 string generationResultPath = Path.Combine(_diretorioExecucao, _generationCount.ToString());
-                string generationBestPath = generationResultPath + "\\melhor.js";
-                
                 Directory.CreateDirectory(generationResultPath);
                 Thread.Sleep(5);
-                File.WriteAllText(generationBestPath, MelhorIndividuo.Codigo);
+                #endregion
 
-                GerarRelatorioHtml(generationBestPath);
+                foreach (var individuo in melhores)
+                {
+                    string generationBestPath = string.Format("{0}\\{1}.js", generationResultPath, individuo.Id);
+
+                    File.WriteAllText(generationBestPath, individuo.Codigo);
+                }
+
             }
-
-            
 
             _fitnessAvg = ((double) _fitnessSum / _size);
         }
