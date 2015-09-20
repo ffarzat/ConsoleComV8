@@ -578,6 +578,11 @@ namespace Otimizacao.Javascript
             var sw = new Stopwatch();
             sw.Start();
 
+            this.TestesComFalha = 0;
+            this.TestesComSucesso = 0;
+            this.TotalTestes = 0;
+
+
             #region Configura o QUnit
 
 
@@ -675,12 +680,12 @@ namespace Otimizacao.Javascript
             
             sw.Stop();
 
-            if (TestesComFalha > 0)
-                return _fitTopValue + TestesComFalha;
-            if (TestesComSucesso == 0)
-                return _fitTopValue + TestesComFalha > 0 ? TestesComFalha : 1000;
-            if (TestesComSucesso < TotalTestes)
-                return _fitTopValue + TestesComFalha > 0 ? TestesComFalha : 1000;
+            //if (TestesComFalha > 0)
+            //    return _fitTopValue + TestesComFalha;
+            //if (TestesComSucesso == 0)
+            //    return _fitTopValue + TestesComFalha > 0 ? TestesComFalha : 1000;
+            //if (TestesComSucesso < TotalTestes)
+            //    return _fitTopValue + TestesComFalha > 0 ? TestesComFalha : 1000;
 
 
             _logger.Info(string.Format("           Total:{0}, Sucesso: {1}, Falha: {2}", this.TotalTestes, this.TestesComSucesso, this.TestesComFalha));

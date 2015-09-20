@@ -356,15 +356,13 @@ namespace Otimizacao
         /// </summary>
         private void ExecuteFitEvaluation()
         {
-            for (int i = 0; i < _population.Count; i++)
-            {
-                var individuo = _population[i];
-                
-                if (individuo.Fitness == Int64.MaxValue)
-                    AvaliarIndividuo(i, individuo);    
-            }
-            
+            var sujeitosParaAvaliar = _population.Where(ind => ind.Fitness == Int64.MaxValue).ToList();
 
+            for (int i = 0; i < sujeitosParaAvaliar.Count(); i++)
+            {
+                var individuo = sujeitosParaAvaliar[i];
+                AvaliarIndividuo(i, individuo);    
+            }
         }
 
         /// <summary>
@@ -577,7 +575,7 @@ namespace Otimizacao
             var sw = new Stopwatch();
             sw.Start();
 
-            var valorFitFalha = Int64.MaxValue - 100;
+            const long valorFitFalha = Int64.MaxValue - 100;
 
             var caminhoNovoAvaliado = GerarCodigo(sujeito);
 
@@ -623,12 +621,14 @@ namespace Otimizacao
             {
                 _logger.Trace("              Avaliando via testes");
 
-                var avaliar =
-                    new Thread(() => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
+                var avaliar = new Thread(() => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
                 avaliar.Start();
                 avaliar.Join(_timeout * 1000);
 
                 sw.Stop();
+
+                if (jHelper.TestesComFalha > 0)
+                    sujeito.Fitness = valorFitFalha;
 
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
