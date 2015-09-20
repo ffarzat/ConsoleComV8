@@ -583,7 +583,7 @@ namespace Otimizacao
 
             if (string.IsNullOrEmpty(sujeito.Codigo))
             {
-                _logger.Trace("              Codigo Vazio");
+                _logger.Info("              Codigo Vazio");
 
                 sujeito.Fitness = valorFitFalha;
                 sujeito.TestesComSucesso = 0;
@@ -600,7 +600,7 @@ namespace Otimizacao
             #region Igual ao Original
             if (_original.Codigo.Equals(sujeito.Codigo))
             {
-                _logger.Trace("              Igual ao Original");
+                _logger.Info("              Igual ao Original");
 
                 sujeito.TempoExecucao = _original.TempoExecucao;
                 sujeito.TestesComSucesso = _original.TestesComSucesso;
@@ -623,12 +623,17 @@ namespace Otimizacao
 
                 var avaliar = new Thread(() => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
                 avaliar.Start();
-                avaliar.Join(_timeout * 1000);
+                avaliar.Join(_timeout * 1000); //timeout
 
                 sw.Stop();
 
-                if (jHelper.TestesComFalha > 0)
+                _logger.Info("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
+
+                if (!jHelper.ExecutouTestesAteFinal)
                     sujeito.Fitness = valorFitFalha;
+
+                if (jHelper.ExecutouTestesAteFinal && jHelper.TestesComFalha > 0)
+                    sujeito.Fitness = + jHelper.TestesComFalha;
 
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
@@ -666,6 +671,8 @@ namespace Otimizacao
         /// <param name="tempoTotal"></param>
         private void CriarLinhaExcel(int indice, Individuo sujeito, int testesComSucesso, string tempoTotal)
         {
+            _logger.Info("              Incluído no excel : {0}", indice);
+
             var indiceExcel = indice + 2;
 
             Planilha.Cells["A" + indiceExcel].Value =_generationCount;
