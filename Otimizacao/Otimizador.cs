@@ -623,7 +623,7 @@ namespace Otimizacao
             #endregion
 
             #region Igual ao Original
-            if (_original.Codigo.Equals(sujeito.Codigo))
+            if (indice > 0 & _original.Codigo.Equals(sujeito.Codigo))
             {
                 _logger.Info("              Igual ao Original");
 
@@ -631,7 +631,9 @@ namespace Otimizacao
                 sujeito.TestesComSucesso = _original.TestesComSucesso;
                 sujeito.Fitness = _original.Fitness;
                 _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
+                
                 CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
+                
                 return sujeito.Fitness;
             }
             #endregion
@@ -698,7 +700,15 @@ namespace Otimizacao
         {
             _logger.Info("              Incluído no excel : {0}", indice);
 
-            var indiceExcel = indice + 2;
+            int indiceExcel = 1;
+
+            do
+            {
+                indiceExcel++;
+            } while (Planilha.Cells["A" + indiceExcel].Value != null);
+
+            
+
 
             Planilha.Cells["A" + indiceExcel].Value =_generationCount;
             Planilha.Cells["B" + indiceExcel].Value = sujeito.Arquivo;
