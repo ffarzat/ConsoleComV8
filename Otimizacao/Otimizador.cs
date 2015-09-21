@@ -112,6 +112,11 @@ namespace Otimizacao
         private ExcelPackage _excel;
 
         /// <summary>
+        /// Total de nós
+        /// </summary>
+        private int _total;
+
+        /// <summary>
         /// Usada na execução para o relatório
         /// </summary>
         private ExcelWorksheet Planilha { get { return _excel.Workbook.Worksheets["Resultados"]; } }
@@ -473,6 +478,7 @@ namespace Otimizacao
             var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
             jHelper.ConfigurarGeracao();
             
+
             var codigo = File.ReadAllText(caminho);
             var ast = jHelper.GerarAst(codigo);
             
@@ -485,6 +491,8 @@ namespace Otimizacao
             
             _original.Codigo = jHelper.GerarCodigo(_original.Ast);
             File.WriteAllText(caminhoDestino, _original.Codigo);
+
+            _total = jHelper.ContarNos(_original.Ast);
 
             var sw = new Stopwatch();
             sw.Start();
@@ -513,13 +521,12 @@ namespace Otimizacao
             int totalMutacoes = 1;
             string novaAst = "";
 
-            while (novaAst == "" & totalMutacoes < 50)
+            while (novaAst == "" & totalMutacoes < 5)
             {
                 if(totalMutacoes > 1)
                     _logger.Trace("          Tentativa {0} de executar mutação", totalMutacoes);
 
-                var total = jHelper.ContarNos(sujeito.Ast);
-                int no = Rand.Next(0, total);
+                int no = Rand.Next(0, _total);
 
                 try
                 {
@@ -560,8 +567,8 @@ namespace Otimizacao
             filhoMae = mae.Clone();
             filhoMae.CriadoPor = Operador.Cruzamento;
 
-            var totalPai = Rand.Next(0, jHelper.ContarNos(pai.Ast));
-            var totalMae = Rand.Next(0, jHelper.ContarNos(mae.Ast));
+            var totalPai = Rand.Next(0, _total);
+            var totalMae = Rand.Next(0, _total);
 
             string c1 = "", c2 = "";
             try

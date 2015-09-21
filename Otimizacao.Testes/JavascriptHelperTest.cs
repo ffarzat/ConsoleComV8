@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -144,6 +145,9 @@ namespace Otimizacao.Testes
         [Test]
         public void ExecutarMutacaoExclusao()
         {
+            var sw = new Stopwatch();
+            sw.Start();
+
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"), true, false);
             var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Require", "global.js"));
             helper.ConfigurarGeracao();
@@ -152,15 +156,23 @@ namespace Otimizacao.Testes
             
             var astNova = helper.ExecutarMutacaoExclusao(ast, 175);
 
+            sw.Stop();
+            Console.WriteLine("ExecutarMutacaoExclusao {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
+
             Assert.AreNotEqual(ast, astNova);
 
             File.WriteAllText("astOriginal.txt", helper.FormatarStringJson(ast));
             File.WriteAllText("astMutada.txt", helper.FormatarStringJson(astNova));
 
+            
+            sw.Reset();
+            sw.Start();
 
             //var codigo = helper.GerarCodigo(ast);
             var codigoNovo = helper.GerarCodigo(astNova);
 
+            sw.Stop();
+            Console.WriteLine("GerarCodigo {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
 
             Assert.AreNotEqual("", codigoNovo);
             Assert.AreNotEqual(scriptCode, codigoNovo);
