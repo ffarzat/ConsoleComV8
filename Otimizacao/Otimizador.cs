@@ -528,6 +528,7 @@ namespace Otimizacao
                 catch (Exception ex)
                 {
                     _logger.Trace("          {0}", ex);
+                    break;
                 }
 
                 totalMutacoes++;
