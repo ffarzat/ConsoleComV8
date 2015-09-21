@@ -709,34 +709,35 @@ namespace Otimizacao
         [HandleProcessCorruptedStateExceptions]
         private string GerarCodigo(Individuo sujeito)
         {
-            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-            jHelper.ConfigurarGeracao();
+
+            var caminhoNovoAvaliado = string.Format("{0}\\{1}.js", _diretorioExecucao, sujeito.Id);
 
             try
             {
+                var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+                jHelper.ConfigurarGeracao();
                 sujeito.Codigo = jHelper.GerarCodigo(sujeito.Ast);
+                
+                if (!string.IsNullOrEmpty(sujeito.Codigo))
+                {
+                    File.WriteAllText(caminhoNovoAvaliado, sujeito.Codigo);
+                    sujeito.Arquivo = caminhoNovoAvaliado;
+                }
+                else
+                {
+                    sujeito.Arquivo = "";
+                }
+                
+                jHelper.Dispose();
+
             }
             catch (Exception ex)
             {
                 _logger.Trace(ex);
+                caminhoNovoAvaliado = "";
             }
 
-            var caminhoNovoAvaliado = string.Format("{0}\\{1}.js", _diretorioExecucao, sujeito.Id);
-
-            if (!string.IsNullOrEmpty(sujeito.Codigo))
-            {
-                File.WriteAllText(caminhoNovoAvaliado, sujeito.Codigo);
-                sujeito.Arquivo = caminhoNovoAvaliado;
-            }
-            else
-            {
-                sujeito.Arquivo = "";
-            }
             
-            
-            
-
-            jHelper.Dispose();
 
             return caminhoNovoAvaliado;
         }
