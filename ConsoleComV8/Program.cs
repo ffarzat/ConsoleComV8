@@ -27,22 +27,6 @@ namespace ConsoleComV8
         static void Main(string[] args)
         {
 
-            #region Moment
-
-            var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
-            otimizadorMoment.LimparResultadosAnteriores();
-
-            var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
-
-            Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
-
-            #endregion
-
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.WaitForFullGCComplete(60000);
-            GC.Collect();
-
             #region Lodash
 
             var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
@@ -54,6 +38,7 @@ namespace ConsoleComV8
 
             Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
             #endregion
+            
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
@@ -72,7 +57,21 @@ namespace ConsoleComV8
 
             #endregion
 
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.WaitForFullGCComplete(60000);
+            GC.Collect();
 
+            #region Moment
+
+            var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
+            otimizadorMoment.LimparResultadosAnteriores();
+
+            var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
+
+            Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
+
+            #endregion
             
 
         }
