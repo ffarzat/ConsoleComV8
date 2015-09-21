@@ -30,6 +30,11 @@ namespace Otimizacao
         private int _timeout { get; set; }
 
         /// <summary>
+        /// Indice global para individuos
+        /// </summary>
+        private int _countGlobal { get; set; }
+
+        /// <summary>
         /// Tamanho da geração (Qtd de individuos)
         /// </summary>
         private int _size =100;
@@ -121,6 +126,7 @@ namespace Otimizacao
             _timeout = timeoutAvaliacaoIndividuo;
             _diretorioFontes = diretorioFontes;
             _diretorioExecucao = diretorioExecucao;
+            _countGlobal = 0;
 
             LimparResultadosAnteriores();
 
@@ -361,7 +367,8 @@ namespace Otimizacao
             for (int i = 0; i < sujeitosParaAvaliar.Count(); i++)
             {
                 var individuo = sujeitosParaAvaliar[i];
-                AvaliarIndividuo(i, individuo);    
+                AvaliarIndividuo(_countGlobal, individuo);
+                _countGlobal++;
             }
         }
 
@@ -497,6 +504,7 @@ namespace Otimizacao
         /// Executa uma mutação no individuo
         /// </summary>
         /// <param name="sujeito"> </param>
+        [HandleProcessCorruptedStateExceptions]
         private void ExecutarMutacao(Individuo sujeito)
         {
             var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
@@ -512,7 +520,16 @@ namespace Otimizacao
 
                 var total = jHelper.ContarNos(sujeito.Ast);
                 int no = Rand.Next(0, total);
-                novaAst = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no);
+
+                try
+                {
+                    novaAst = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no);
+                }
+                catch (Exception ex)
+                {
+                    _logger.Trace("          {0}", ex);
+                }
+
                 totalMutacoes++;
             }
 
@@ -529,6 +546,7 @@ namespace Otimizacao
         /// <param name="mae"></param>
         /// <param name="filhoPai"></param>
         /// <param name="filhoMae"></param>
+        [HandleProcessCorruptedStateExceptions]
         private void ExecutarCruzamento(Individuo pai, Individuo mae, out Individuo filhoPai, out Individuo filhoMae)
         {
 
