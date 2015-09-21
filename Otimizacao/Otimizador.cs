@@ -660,7 +660,7 @@ namespace Otimizacao
                     sujeito.Fitness = valorFitFalha;
 
                 if (jHelper.ExecutouTestesAteFinal && jHelper.TestesComFalha > 0)
-                    sujeito.Fitness += jHelper.TestesComFalha;
+                    sujeito.Fitness = valorFitFalha + jHelper.TestesComFalha;
 
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
@@ -668,7 +668,9 @@ namespace Otimizacao
             }
             catch (Exception ex)
             {
-                
+
+                _logger.Info("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
+
                 sujeito.Fitness = valorFitFalha;
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
