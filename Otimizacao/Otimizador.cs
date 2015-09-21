@@ -562,7 +562,7 @@ namespace Otimizacao
             var totalPai = Rand.Next(0, jHelper.ContarNos(pai.Ast));
             var totalMae = Rand.Next(0, jHelper.ContarNos(mae.Ast));
 
-            string c1, c2;
+            string c1 = "", c2 = "";
             try
             {
                 jHelper.ExecutarCrossOver(pai.Ast, mae.Ast, totalPai, totalMae, out c1, out c2);
@@ -571,7 +571,6 @@ namespace Otimizacao
             {
                 _logger.Info("          Erro ao executar cruzamento");
                 _logger.Error(ex.ToString());
-                return;
             }
             
 
@@ -706,17 +705,35 @@ namespace Otimizacao
         /// </summary>
         /// <param name="sujeito"></param>
         /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
         private string GerarCodigo(Individuo sujeito)
         {
             var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
             jHelper.ConfigurarGeracao();
 
-            sujeito.Codigo = jHelper.GerarCodigo(sujeito.Ast);
+            try
+            {
+                sujeito.Codigo = jHelper.GerarCodigo(sujeito.Ast);
+            }
+            catch (Exception ex)
+            {
+                _logger.Trace(ex);
+            }
 
             var caminhoNovoAvaliado = string.Format("{0}\\{1}.js", _diretorioExecucao, sujeito.Id);
-            File.WriteAllText(caminhoNovoAvaliado, sujeito.Codigo);
+
+            if (!string.IsNullOrEmpty(sujeito.Codigo))
+            {
+                File.WriteAllText(caminhoNovoAvaliado, sujeito.Codigo);
+                sujeito.Arquivo = caminhoNovoAvaliado;
+            }
+            else
+            {
+                sujeito.Arquivo = "";
+            }
             
-            sujeito.Arquivo = caminhoNovoAvaliado;
+            
+            
 
             jHelper.Dispose();
 
