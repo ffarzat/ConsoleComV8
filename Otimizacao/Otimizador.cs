@@ -650,7 +650,7 @@ namespace Otimizacao
                     sujeito.Fitness = valorFitFalha;
 
                 if (jHelper.ExecutouTestesAteFinal && jHelper.TestesComFalha > 0)
-                    sujeito.Fitness = + jHelper.TestesComFalha;
+                    sujeito.Fitness += jHelper.TestesComFalha;
 
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
