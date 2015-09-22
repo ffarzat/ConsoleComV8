@@ -498,7 +498,7 @@ namespace Otimizacao
             sw.Start();
             _original.Fitness = jHelper.ExecutarTestes(caminhoDestino, _caminhoScriptTestes);
             sw.Stop();
-            _original.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
+            _original.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
             _original.TestesComSucesso = jHelper.TestesComSucesso;
             
             _fitnessMin = _original.Fitness;
@@ -612,7 +612,7 @@ namespace Otimizacao
 
                 sujeito.Fitness = valorFitFalha;
                 sujeito.TestesComSucesso = 0;
-                sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
+                sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
 
                 _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
 
@@ -663,7 +663,7 @@ namespace Otimizacao
                     sujeito.Fitness = valorFitFalha + jHelper.TestesComFalha;
 
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
-                sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
+                sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
 
             }
             catch (Exception ex)
@@ -673,7 +673,7 @@ namespace Otimizacao
 
                 sujeito.Fitness = valorFitFalha;
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
-                sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
+                sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
 
                 _logger.Trace(ex);
 
