@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -144,23 +145,36 @@ namespace Otimizacao.Testes
         [Test]
         public void ExecutarMutacaoExclusao()
         {
+            var sw = new Stopwatch();
+            sw.Start();
+
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"), true, false);
             var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Require", "global.js"));
             helper.ConfigurarGeracao();
 
             var ast = helper.GerarAst(scriptCode);
+
+            int no = new Random().Next(0, helper.ContarNos(ast));
             
-            var astNova = helper.ExecutarMutacaoExclusao(ast, 175);
+            var astNova = helper.ExecutarMutacaoExclusao(ast, no);
+
+            sw.Stop();
+            Console.WriteLine("ExecutarMutacaoExclusao {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
 
             Assert.AreNotEqual(ast, astNova);
 
             File.WriteAllText("astOriginal.txt", helper.FormatarStringJson(ast));
             File.WriteAllText("astMutada.txt", helper.FormatarStringJson(astNova));
 
+            
+            sw.Reset();
+            sw.Start();
 
             //var codigo = helper.GerarCodigo(ast);
             var codigoNovo = helper.GerarCodigo(astNova);
 
+            sw.Stop();
+            Console.WriteLine("GerarCodigo {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
 
             Assert.AreNotEqual("", codigoNovo);
             Assert.AreNotEqual(scriptCode, codigoNovo);
@@ -173,19 +187,33 @@ namespace Otimizacao.Testes
         [Test]
         public void ExecutarCrossOver()
         {
+            var sw = new Stopwatch();
+            sw.Start();
+
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Require"), true, false);
-            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Require", "underscore.js"));
+            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Require", "global.js"));
             helper.ConfigurarGeracao();
 
             var ast = helper.GerarAst(scriptCode);
+            
+            int no = new Random().Next(0, helper.ContarNos(ast));
 
-            var astNova = helper.ExecutarMutacaoExclusao(ast, 100);
+            var astNova = helper.ExecutarMutacaoExclusao(ast, no);
+
+            sw.Stop();
+            Console.WriteLine("ExecutarMutacaoExclusao {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
 
             Assert.AreNotEqual(ast, astNova);
+
+            sw.Reset();
+            sw.Start();
 
             string astFilho1, astFilho2;
 
             helper.ExecutarCrossOver(ast, astNova, 348, 456, out astFilho1, out astFilho2);
+
+            sw.Stop();
+            Console.WriteLine("ExecutarCrossOver {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
 
 
             var codigo = helper.GerarCodigo(astFilho1);

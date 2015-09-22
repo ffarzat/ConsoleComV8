@@ -37,24 +37,21 @@ namespace ConsoleComV8
             //Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
 
             #endregion
-
+			
+			
             #region Lodash
 
             var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
             otimizadorLodash.LimparResultadosAnteriores();
             otimizadorLodash.UsarSetTimeout();
 
-
             var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
             otimizadorLodash.Dispose();
+            
+
 
             Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
             #endregion
-
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.WaitForFullGCComplete(60000);
-            GC.Collect();
 
             #region Underscore
 
@@ -64,8 +61,8 @@ namespace ConsoleComV8
 
             var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
             otimizador.Dispose();
-
-            Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
+			
+			Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
 
             #endregion
 

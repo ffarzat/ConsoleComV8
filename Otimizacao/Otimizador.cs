@@ -112,6 +112,11 @@ namespace Otimizacao
         private ExcelPackage _excel;
 
         /// <summary>
+        /// Total de nós
+        /// </summary>
+        private int _total;
+
+        /// <summary>
         /// Usada na execução para o relatório
         /// </summary>
         private ExcelWorksheet Planilha { get { return _excel.Workbook.Worksheets["Resultados"]; } }
@@ -473,6 +478,7 @@ namespace Otimizacao
             var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
             jHelper.ConfigurarGeracao();
             
+
             var codigo = File.ReadAllText(caminho);
             var ast = jHelper.GerarAst(codigo);
             
@@ -485,6 +491,8 @@ namespace Otimizacao
             
             _original.Codigo = jHelper.GerarCodigo(_original.Ast);
             File.WriteAllText(caminhoDestino, _original.Codigo);
+
+            _total = jHelper.ContarNos(_original.Ast);
 
             var sw = new Stopwatch();
             sw.Start();
@@ -513,13 +521,12 @@ namespace Otimizacao
             int totalMutacoes = 1;
             string novaAst = "";
 
-            while (novaAst == "" & totalMutacoes < 50)
+            while (novaAst == "" & totalMutacoes < 5)
             {
                 if(totalMutacoes > 1)
                     _logger.Trace("          Tentativa {0} de executar mutação", totalMutacoes);
 
-                var total = jHelper.ContarNos(sujeito.Ast);
-                int no = Rand.Next(0, total);
+                int no = Rand.Next(0, _total);
 
                 try
                 {
@@ -528,6 +535,7 @@ namespace Otimizacao
                 catch (Exception ex)
                 {
                     _logger.Trace("          {0}", ex);
+                    break;
                 }
 
                 totalMutacoes++;
@@ -559,8 +567,8 @@ namespace Otimizacao
             filhoMae = mae.Clone();
             filhoMae.CriadoPor = Operador.Cruzamento;
 
-            var totalPai = Rand.Next(0, jHelper.ContarNos(pai.Ast));
-            var totalMae = Rand.Next(0, jHelper.ContarNos(mae.Ast));
+            var totalPai = Rand.Next(0, _total);
+            var totalMae = Rand.Next(0, _total);
 
             string c1 = "", c2 = "";
             try
@@ -615,7 +623,7 @@ namespace Otimizacao
             #endregion
 
             #region Igual ao Original
-            if (_original.Codigo.Equals(sujeito.Codigo))
+            if (indice > 0 & _original.Codigo.Equals(sujeito.Codigo))
             {
                 _logger.Info("              Igual ao Original");
 
@@ -623,7 +631,9 @@ namespace Otimizacao
                 sujeito.TestesComSucesso = _original.TestesComSucesso;
                 sujeito.Fitness = _original.Fitness;
                 _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
+                
                 CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
+                
                 return sujeito.Fitness;
             }
             #endregion
@@ -650,7 +660,7 @@ namespace Otimizacao
                     sujeito.Fitness = valorFitFalha;
 
                 if (jHelper.ExecutouTestesAteFinal && jHelper.TestesComFalha > 0)
-                    sujeito.Fitness = + jHelper.TestesComFalha;
+                    sujeito.Fitness = valorFitFalha + jHelper.TestesComFalha;
 
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
@@ -658,7 +668,9 @@ namespace Otimizacao
             }
             catch (Exception ex)
             {
-                
+
+                _logger.Info("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
+
                 sujeito.Fitness = valorFitFalha;
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff");
@@ -690,7 +702,15 @@ namespace Otimizacao
         {
             _logger.Info("              Incluído no excel : {0}", indice);
 
-            var indiceExcel = indice + 2;
+            int indiceExcel = 1;
+
+            do
+            {
+                indiceExcel++;
+            } while (Planilha.Cells["A" + indiceExcel].Value != null);
+
+            
+
 
             Planilha.Cells["A" + indiceExcel].Value =_generationCount;
             Planilha.Cells["B" + indiceExcel].Value = sujeito.Arquivo;
@@ -708,34 +728,35 @@ namespace Otimizacao
         [HandleProcessCorruptedStateExceptions]
         private string GerarCodigo(Individuo sujeito)
         {
-            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-            jHelper.ConfigurarGeracao();
+
+            var caminhoNovoAvaliado = string.Format("{0}\\{1}.js", _diretorioExecucao, sujeito.Id);
 
             try
             {
+                var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+                jHelper.ConfigurarGeracao();
                 sujeito.Codigo = jHelper.GerarCodigo(sujeito.Ast);
+                
+                if (!string.IsNullOrEmpty(sujeito.Codigo))
+                {
+                    File.WriteAllText(caminhoNovoAvaliado, sujeito.Codigo);
+                    sujeito.Arquivo = caminhoNovoAvaliado;
+                }
+                else
+                {
+                    sujeito.Arquivo = "";
+                }
+                
+                jHelper.Dispose();
+
             }
             catch (Exception ex)
             {
                 _logger.Trace(ex);
+                caminhoNovoAvaliado = "";
             }
 
-            var caminhoNovoAvaliado = string.Format("{0}\\{1}.js", _diretorioExecucao, sujeito.Id);
-
-            if (!string.IsNullOrEmpty(sujeito.Codigo))
-            {
-                File.WriteAllText(caminhoNovoAvaliado, sujeito.Codigo);
-                sujeito.Arquivo = caminhoNovoAvaliado;
-            }
-            else
-            {
-                sujeito.Arquivo = "";
-            }
             
-            
-            
-
-            jHelper.Dispose();
 
             return caminhoNovoAvaliado;
         }
