@@ -29,19 +29,14 @@ namespace ConsoleComV8
 
             #region Moment
 
-            var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
-            otimizadorMoment.LimparResultadosAnteriores();
+            //var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
+            //otimizadorMoment.LimparResultadosAnteriores();
 
-            var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
+            //var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
 
-            Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
+            //Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
 
             #endregion
-
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.WaitForFullGCComplete(60000);
-            GC.Collect();
 
             #region Lodash
 
@@ -51,6 +46,7 @@ namespace ConsoleComV8
 
 
             var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
+            otimizadorLodash.Dispose();
 
             Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
             #endregion
@@ -67,6 +63,7 @@ namespace ConsoleComV8
             otimizador.UsarSetTimeout();
 
             var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
+            otimizador.Dispose();
 
             Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
 
