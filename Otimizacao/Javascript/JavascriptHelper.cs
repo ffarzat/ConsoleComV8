@@ -158,7 +158,7 @@ namespace Otimizacao.Javascript
             ExecutouTestesAteFinal = false;
 
             //O manager vai compilar e cachear as bibliotecas
-            _manager = new RuntimeManager(new ManualManagerSettings() { MaxExecutableBytes = (1000000000 * 2), MaxOldSpaceBytes = (1000000000 * 2), MaxNewSpaceBytes = (1000000000 * 2), RuntimeMaxCount = int.MaxValue});
+            _manager = new RuntimeManager(new ManualManagerSettings() { MaxExecutableBytes = (1000000000 * 2), RuntimeMaxCount = int.MaxValue});
             _engine = _manager.GetEngine();
             
             
