@@ -546,7 +546,8 @@ namespace Otimizacao
             }
             finally
             {
-                jHelper.Dispose();
+                if (jHelper != null)
+                    jHelper.Dispose();
             }
             
         }
@@ -587,7 +588,8 @@ namespace Otimizacao
             }
             finally
             {
-                jHelper.Dispose();
+                if (jHelper != null)
+                    jHelper.Dispose();
             }
 
 
@@ -762,7 +764,8 @@ namespace Otimizacao
             }
             finally
             {
-                jHelper.Dispose();
+                if (jHelper != null)
+                    jHelper.Dispose();
             }
 
             return caminhoNovoAvaliado;
