@@ -143,11 +143,6 @@ namespace Otimizacao
         /// </summary>
         public void LimparResultadosAnteriores()
         {
-            
-//            if (File.Exists("ExecutionLog.txt"))
-//                File.Delete("ExecutionLog.txt");
-
-
             if (Directory.Exists(_diretorioExecucao))
             {
                 new DirectoryInfo(_diretorioExecucao).Delete(true);
@@ -767,6 +762,15 @@ namespace Otimizacao
         public void Dispose()
         {
             _excel.Dispose();
+        }
+
+        /// <summary>
+        /// Configura o otimizador para entender que está em um loop de otimização
+        /// </summary>
+        /// <param name="i"></param>
+        public void ConfigurarRodada(int i)
+        {
+            _diretorioExecucao = i + "_" + _diretorioExecucao;
         }
     }
 }

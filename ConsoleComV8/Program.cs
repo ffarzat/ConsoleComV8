@@ -31,11 +31,13 @@ namespace ConsoleComV8
 
             for (int i = 0; i < 30; i++)
             {
-                Console.WriteLine("Rodada {0}", i);
+                Console.WriteLine("======================================   Rodada {0}", i);
 
                 #region Moment
 
                 var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
+                otimizadorMoment.ConfigurarRodada(i);
+                otimizadorMoment.LimparResultadosAnteriores();
 
                 var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
 
@@ -46,6 +48,7 @@ namespace ConsoleComV8
                 #region Lodash
 
                 var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
+                otimizadorLodash.ConfigurarRodada(i);
                 otimizadorLodash.LimparResultadosAnteriores();
                 otimizadorLodash.UsarSetTimeout();
 
@@ -59,6 +62,7 @@ namespace ConsoleComV8
                 #region Underscore
 
                 var otimizador = new Otimizador(100, 100, 8, "underscore", "ResultadosUnderscore");
+                otimizador.ConfigurarRodada(i);
                 otimizador.LimparResultadosAnteriores();
                 otimizador.UsarSetTimeout();
 
@@ -67,7 +71,7 @@ namespace ConsoleComV8
 
                 Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
 
-
+                Console.WriteLine("===================================//>   Rodada {0}", i);
                 #endregion
             }
 
