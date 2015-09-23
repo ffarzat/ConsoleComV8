@@ -368,6 +368,9 @@ namespace Otimizacao.Javascript
 
                     javascriptHelper.JsonAst = JSON.stringify(ast);
                     ".Replace("#ast", this.EncodeJsString(ast)).Replace("#randonNode", randonNode.ToString()));
+
+                _engine.Interrupt();
+
             }
             catch (Exception ex)
             {
