@@ -203,9 +203,9 @@ namespace Otimizacao
             var otimizou = MelhorIndividuo.Ast != _original.Ast;
 
             _logger.Info("============================================================");
-            _logger.Info("Houve otimizacao: {0}", otimizou);
+            _logger.Info("  Houve otimizacao: {0}", otimizou);
 
-            _logger.Info("Tempo total: {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
+            _logger.Info("  Tempo total: {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
 
             return otimizou;
         }

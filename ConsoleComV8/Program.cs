@@ -26,15 +26,16 @@ namespace ConsoleComV8
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-
-            #region Moment
+            var sw = new Stopwatch();
+            sw.Start();
 
             for (int i = 0; i < 30; i++)
             {
                 Console.WriteLine("Rodada {0}", i);
 
+                #region Moment
+
                 var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
-                otimizadorMoment.LimparResultadosAnteriores();
 
                 var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
 
@@ -65,19 +66,14 @@ namespace ConsoleComV8
                 otimizador.Dispose();
 
                 Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
+
+
+                #endregion
             }
 
-            #endregion
+            sw.Stop();
 
-
-            
-
+            Console.WriteLine("Rodadas executados com sucesso. Tempo total {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
         }
-
     }
-
-
-
-
-
 }
