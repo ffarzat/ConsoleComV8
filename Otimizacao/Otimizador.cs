@@ -510,36 +510,43 @@ namespace Otimizacao
         [HandleProcessCorruptedStateExceptions]
         private void ExecutarMutacao(Individuo sujeito)
         {
-            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-            jHelper.ConfigurarGeracao();
-            
-            int totalMutacoes = 1;
-            string novaAst = "";
 
-            while (novaAst == "" & totalMutacoes < 5)
+            try
             {
-                if(totalMutacoes > 1)
-                    _logger.Trace("          Tentativa {0} de executar mutação", totalMutacoes);
+                var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+                jHelper.ConfigurarGeracao();
 
-                int no = Rand.Next(0, _total);
+                int totalMutacoes = 1;
+                string novaAst = "";
 
-                try
+
+                while (novaAst == "" & totalMutacoes < 5)
                 {
+                    if (totalMutacoes > 1)
+                        _logger.Trace("          Tentativa {0} de executar mutação", totalMutacoes);
+
+                    int no = Rand.Next(0, _total);
+
                     novaAst = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no);
-                }
-                catch (Exception ex)
-                {
-                    _logger.Trace("          {0}", ex);
-                    break;
+
+
+                    totalMutacoes++;
                 }
 
-                totalMutacoes++;
+                sujeito.Ast = novaAst;
+                sujeito.CriadoPor = Operador.Mutacao;
+
+                jHelper.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                _logger.Trace("          {0}", ex);
+
+                sujeito.Ast = "";
+                sujeito.CriadoPor = Operador.Mutacao;
             }
 
-            sujeito.Ast = novaAst;
-            sujeito.CriadoPor = Operador.Mutacao;
-
-            jHelper.Dispose();
         }
 
         /// <summary>
