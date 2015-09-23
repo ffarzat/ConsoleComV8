@@ -29,40 +29,43 @@ namespace ConsoleComV8
 
             #region Moment
 
-            var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
-            otimizadorMoment.LimparResultadosAnteriores();
+            for (int i = 0; i < 30; i++)
+            {
+                Console.WriteLine("Rodada {0}", i);
 
-            var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
+                var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
+                otimizadorMoment.LimparResultadosAnteriores();
 
-            Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
+                var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
 
-            #endregion
-			
-			
-            #region Lodash
+                Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
 
-            var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
-            otimizadorLodash.LimparResultadosAnteriores();
-            otimizadorLodash.UsarSetTimeout();
+                #endregion
 
-            var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
-            otimizadorLodash.Dispose();
-            
+                #region Lodash
 
+                var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
+                otimizadorLodash.LimparResultadosAnteriores();
+                otimizadorLodash.UsarSetTimeout();
 
-            Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
-            #endregion
+                var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
+                otimizadorLodash.Dispose();
 
-            #region Underscore
+                Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
 
-            var otimizador = new Otimizador(100, 100, 8, "underscore", "ResultadosUnderscore");
-            otimizador.LimparResultadosAnteriores();
-            otimizador.UsarSetTimeout();
+                #endregion
 
-            var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
-            otimizador.Dispose();
-			
-			Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
+                #region Underscore
+
+                var otimizador = new Otimizador(100, 100, 8, "underscore", "ResultadosUnderscore");
+                otimizador.LimparResultadosAnteriores();
+                otimizador.UsarSetTimeout();
+
+                var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
+                otimizador.Dispose();
+
+                Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
+            }
 
             #endregion
 
