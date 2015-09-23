@@ -510,10 +510,11 @@ namespace Otimizacao
         [HandleProcessCorruptedStateExceptions]
         private void ExecutarMutacao(Individuo sujeito)
         {
+            JavascriptHelper jHelper = null;
 
             try
             {
-                var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+                jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
                 jHelper.ConfigurarGeracao();
 
                 int totalMutacoes = 1;
@@ -535,9 +536,6 @@ namespace Otimizacao
 
                 sujeito.Ast = novaAst;
                 sujeito.CriadoPor = Operador.Mutacao;
-
-                jHelper.Dispose();
-
             }
             catch (Exception ex)
             {
@@ -546,7 +544,11 @@ namespace Otimizacao
                 sujeito.Ast = "";
                 sujeito.CriadoPor = Operador.Mutacao;
             }
-
+            finally
+            {
+                jHelper.Dispose();
+            }
+            
         }
 
         /// <summary>
@@ -559,22 +561,23 @@ namespace Otimizacao
         [HandleProcessCorruptedStateExceptions]
         private void ExecutarCruzamento(Individuo pai, Individuo mae, out Individuo filhoPai, out Individuo filhoMae)
         {
+            JavascriptHelper jHelper = null;
 
-            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-            jHelper.ConfigurarGeracao();
-
-            filhoPai = pai.Clone();
-            filhoPai.CriadoPor= Operador.Cruzamento;
+            string c1 = "", c2 = "";
             
+            filhoPai = pai.Clone();
+            filhoPai.CriadoPor = Operador.Cruzamento;
+
             filhoMae = mae.Clone();
             filhoMae.CriadoPor = Operador.Cruzamento;
 
-            var totalPai = Rand.Next(0, _total);
-            var totalMae = Rand.Next(0, _total);
-
-            string c1 = "", c2 = "";
             try
             {
+                jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+                jHelper.ConfigurarGeracao();
+                
+                var totalPai = Rand.Next(0, _total);
+                var totalMae = Rand.Next(0, _total);
                 jHelper.ExecutarCrossOver(pai.Ast, mae.Ast, totalPai, totalMae, out c1, out c2);
             }
             catch (Exception ex)
@@ -582,13 +585,15 @@ namespace Otimizacao
                 _logger.Info("          Erro ao executar cruzamento");
                 _logger.Error(ex.ToString());
             }
-            
+            finally
+            {
+                jHelper.Dispose();
+            }
+
 
             filhoPai.Ast = c1;
             filhoMae.Ast = c2;
             
-            jHelper.Dispose();
-
         }
 
         /// <summary>
@@ -677,9 +682,7 @@ namespace Otimizacao
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
 
-                _logger.Trace(ex);
-
-                jHelper.Dispose();
+                _logger.Trace(ex);  
             }
 
             #endregion
@@ -732,13 +735,13 @@ namespace Otimizacao
         {
 
             var caminhoNovoAvaliado = string.Format("{0}\\{1}.js", _diretorioExecucao, sujeito.Id);
-
+            JavascriptHelper jHelper = null;
             try
             {
-                var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+                jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
                 jHelper.ConfigurarGeracao();
                 sujeito.Codigo = jHelper.GerarCodigo(sujeito.Ast);
-                
+
                 if (!string.IsNullOrEmpty(sujeito.Codigo))
                 {
                     File.WriteAllText(caminhoNovoAvaliado, sujeito.Codigo);
@@ -748,8 +751,8 @@ namespace Otimizacao
                 {
                     sujeito.Arquivo = "";
                 }
-                
-                jHelper.Dispose();
+
+
 
             }
             catch (Exception ex)
@@ -757,8 +760,10 @@ namespace Otimizacao
                 _logger.Trace(ex);
                 caminhoNovoAvaliado = "";
             }
-
-            
+            finally
+            {
+                jHelper.Dispose();
+            }
 
             return caminhoNovoAvaliado;
         }
