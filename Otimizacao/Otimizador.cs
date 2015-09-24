@@ -583,7 +583,7 @@ namespace Otimizacao
             }
             catch (Exception ex)
             {
-                _logger.Info("          Erro ao executar cruzamento");
+                _logger.Trace("          Erro ao executar cruzamento");
                 _logger.Error(ex.ToString());
             }
             finally

@@ -736,10 +736,10 @@ namespace Otimizacao.Javascript
         {
             int idLocal = int.Parse(id);
 
-            lock (_timers)
-            {
+            Monitor.Enter(_timers);
+            if (_timers.ContainsKey(idLocal))
                 _timers[idLocal] = false;
-            }
+            Monitor.Exit(_timers);
         }
 
         /// <summary>
