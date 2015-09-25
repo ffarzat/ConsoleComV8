@@ -473,12 +473,17 @@ namespace Otimizacao
             var caminho = string.Format("{0}\\{1}", _diretorioFontes, caminhoBibliotecaJs);
             var caminhoDestino = string.Format("{0}\\{1}", _diretorioExecucao, caminhoBibliotecaJs);
 
+            _original = new Individuo
+            {
+                Arquivo = caminho,
+            };
+
             int contador = 0;
 
-            while (_original == null & _original.Fitness == Int64.MaxValue & contador < 5)
+            while (_original.Fitness == Int64.MaxValue & contador < 50)
             {
 
-                _logger.Trace(" Original... {0}", contador);
+                _logger.Info("      Criando e V8engine - Tentativa {0}", contador);
 
                 try
                 {
@@ -488,11 +493,7 @@ namespace Otimizacao
                     var codigo = File.ReadAllText(caminho);
                     var ast = jHelper.GerarAst(codigo);
 
-                    _original = new Individuo
-                    {
-                        Ast = ast,
-                        Arquivo = caminho,
-                    };
+                    _original.Ast = ast;
 
 
                     _original.Codigo = jHelper.GerarCodigo(_original.Ast);
