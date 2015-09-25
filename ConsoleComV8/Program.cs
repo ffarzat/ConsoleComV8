@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using ClearScript.Manager;
 using Microsoft.ClearScript.V8;
@@ -73,6 +74,19 @@ namespace ConsoleComV8
 
                 Console.WriteLine("===================================//>   Rodada {0}", i);
                 #endregion
+
+
+                #region Força limpeza do GC
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.WaitForFullGCComplete(60000);
+                GC.Collect();
+                
+                //Tire uma soneca
+                Thread.Sleep(60000);
+
+                #endregion
+
             }
 
             sw.Stop();
