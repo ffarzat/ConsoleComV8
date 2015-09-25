@@ -465,42 +465,74 @@ namespace Otimizacao
         /// Popula o primeiro individuo
         /// </summary>
         /// <param name="caminhoBibliotecaJs"></param>
+        [HandleProcessCorruptedStateExceptions]
         private void CriarIndividuoOriginal(string caminhoBibliotecaJs)
         {
+            JavascriptHelper jHelper = null;
+
             var caminho = string.Format("{0}\\{1}", _diretorioFontes, caminhoBibliotecaJs);
             var caminhoDestino = string.Format("{0}\\{1}", _diretorioExecucao, caminhoBibliotecaJs);
 
-            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-            jHelper.ConfigurarGeracao();
-            
+            int contador = 0;
 
-            var codigo = File.ReadAllText(caminho);
-            var ast = jHelper.GerarAst(codigo);
-            
-            _original = new Individuo
+            while (_original == null & _original.Fitness == Int64.MaxValue & contador < 5)
+            {
+
+                _logger.Trace(" Original... {0}", contador);
+
+                try
                 {
-                    Ast = ast,
-                    Arquivo = caminho,
-                };
+                    jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+                    jHelper.ConfigurarGeracao();
+
+                    var codigo = File.ReadAllText(caminho);
+                    var ast = jHelper.GerarAst(codigo);
+
+                    _original = new Individuo
+                    {
+                        Ast = ast,
+                        Arquivo = caminho,
+                    };
+
+
+                    _original.Codigo = jHelper.GerarCodigo(_original.Ast);
+                    File.WriteAllText(caminhoDestino, _original.Codigo);
+
+                    _total = jHelper.ContarNos(_original.Ast);
+
+                    var sw = new Stopwatch();
+                    sw.Start();
+                    _original.Fitness = jHelper.ExecutarTestes(caminhoDestino, _caminhoScriptTestes);
+                    sw.Stop();
+                    _original.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
+                    _original.TestesComSucesso = jHelper.TestesComSucesso;
+
+                    _fitnessMin = _original.Fitness;
+
+                    MelhorIndividuo = _original.Clone();
+
+                    jHelper.Dispose();
+
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    _logger.Trace(ex);
+
+                    if (jHelper != null)
+                    {
+                        jHelper.Dispose();
+                    }
+
+                    //Dorme um minuto e tenta de novo
+                    Thread.Sleep(60000);
+                    _logger.Trace(" Falhou ao criar individuo. Tentando novamente.");
+
+                }
+
+            }
 
             
-            _original.Codigo = jHelper.GerarCodigo(_original.Ast);
-            File.WriteAllText(caminhoDestino, _original.Codigo);
-
-            _total = jHelper.ContarNos(_original.Ast);
-
-            var sw = new Stopwatch();
-            sw.Start();
-            _original.Fitness = jHelper.ExecutarTestes(caminhoDestino, _caminhoScriptTestes);
-            sw.Stop();
-            _original.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
-            _original.TestesComSucesso = jHelper.TestesComSucesso;
-            
-            _fitnessMin = _original.Fitness;
-
-            MelhorIndividuo = _original.Clone();
-
-            jHelper.Dispose();
         }
 
         /// <summary>
