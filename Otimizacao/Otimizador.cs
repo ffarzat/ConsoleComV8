@@ -527,7 +527,7 @@ namespace Otimizacao
 
                     //Dorme um minuto e tenta de novo
                     Thread.Sleep(60000);
-                    _logger.Trace(" Falhou ao criar individuo. Tentando novamente.");
+                    _logger.Info(" Falhou ao criar individuo. Tentando novamente.");
 
                 }
 
