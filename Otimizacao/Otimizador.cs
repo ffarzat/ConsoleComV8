@@ -684,12 +684,14 @@ namespace Otimizacao
 
             #region realmente executar os testes então
 
-            var jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-            jHelper.ConfigurarTimeOut(_timeout);
-            jHelper.ConfigurarMelhorFit(_fitnessMin);
+            JavascriptHelper jHelper = null;
 
             try
             {
+                jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+                jHelper.ConfigurarTimeOut(_timeout);
+                jHelper.ConfigurarMelhorFit(_fitnessMin);
+
                 _logger.Trace("              Avaliando via testes");
 
                 var avaliar = new Thread(() => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
@@ -709,6 +711,8 @@ namespace Otimizacao
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
 
+                jHelper.Dispose();
+
             }
             catch (Exception ex)
             {
@@ -719,7 +723,10 @@ namespace Otimizacao
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
 
-                _logger.Trace(ex);  
+                _logger.Trace(ex);
+  
+                if(jHelper != null)
+                    jHelper.Dispose();
             }
 
             #endregion
@@ -728,7 +735,7 @@ namespace Otimizacao
 
             CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
 
-            jHelper.Dispose();
+            
 
             return sujeito.Fitness;
         }
