@@ -563,9 +563,10 @@ namespace Otimizacao
 
                     int no = Rand.Next(0, _total);
 
-                    novaAst = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no);
-
-
+                    var avaliar = new Thread(() => novaAst = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no));
+                    avaliar.Start();
+                    avaliar.Join(_timeout * 1000); //timeout
+                    
                     totalMutacoes++;
                 }
 
