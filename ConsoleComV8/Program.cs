@@ -36,13 +36,13 @@ namespace ConsoleComV8
 
                 #region Moment
 
-                var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
-                otimizadorMoment.ConfigurarRodada(i);
-                otimizadorMoment.LimparResultadosAnteriores();
+                //var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
+                //otimizadorMoment.ConfigurarRodada(i);
+                //otimizadorMoment.LimparResultadosAnteriores();
 
-                var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
+                //var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
 
-                Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
+                //Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
 
                 #endregion
 
