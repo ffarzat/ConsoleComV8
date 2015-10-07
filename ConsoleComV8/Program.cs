@@ -62,17 +62,17 @@ namespace ConsoleComV8
 
                 #region Underscore
 
-                var otimizador = new Otimizador(100, 100, 8, "underscore", "ResultadosUnderscore");
-                otimizador.ConfigurarRodada(i);
-                otimizador.LimparResultadosAnteriores();
-                otimizador.UsarSetTimeout();
+                //var otimizador = new Otimizador(100, 100, 8, "underscore", "ResultadosUnderscore");
+                //otimizador.ConfigurarRodada(i);
+                //otimizador.LimparResultadosAnteriores();
+                //otimizador.UsarSetTimeout();
 
-                var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
-                otimizador.Dispose();
+                //var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
+                //otimizador.Dispose();
 
-                Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
+                //Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
 
-                Console.WriteLine("===================================//>   Rodada {0}", i);
+                //Console.WriteLine("===================================//>   Rodada {0}", i);
                 #endregion
 
 
