@@ -76,15 +76,15 @@ namespace ConsoleComV8
 
             #region Lodash
 
-            var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
-            otimizadorLodash.ConfigurarRodada(rodada);
-            otimizadorLodash.LimparResultadosAnteriores();
-            otimizadorLodash.UsarSetTimeout();
+            //var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
+            //otimizadorLodash.ConfigurarRodada(rodada);
+            //otimizadorLodash.LimparResultadosAnteriores();
+            //otimizadorLodash.UsarSetTimeout();
 
-            var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
-            otimizadorLodash.Dispose();
+            //var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
+            //otimizadorLodash.Dispose();
 
-            Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
+            //Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
 
             #endregion
 
