@@ -343,6 +343,14 @@ namespace Otimizacao
                     File.WriteAllText(generationBestPath, individuo.Codigo);
                 }
 
+
+                if (_generationCount > 0)
+                {
+                    var di = new DirectoryInfo(_diretorioExecucao);
+                    di.EnumerateFiles().Where(n => !n.Name.Contains("resultados")).ToList().ForEach(a => a.Delete());    
+                }
+                
+
             }
 
             _fitnessAvg = ((double) _fitnessSum / _size);
@@ -700,6 +708,7 @@ namespace Otimizacao
                 avaliar.Join(_timeout * 1000); //timeout
 
                 sw.Stop();
+                jHelper.Dispose();
 
                 _logger.Info("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
 
@@ -712,7 +721,7 @@ namespace Otimizacao
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
 
-                jHelper.Dispose();
+                
 
             }
             catch (Exception ex)

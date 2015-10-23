@@ -37,6 +37,8 @@ namespace Otimizacao.Testes
         public void ValidarExcel()
         {
             var otimizador = new Otimizador(5, 2, 20, "Require", "ResultadosUnderscore");
+            otimizador.ConfigurarRodada(1);
+            otimizador.LimparResultadosAnteriores();
             otimizador.UsarSetTimeout();
 
             var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");

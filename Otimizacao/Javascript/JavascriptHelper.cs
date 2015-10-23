@@ -16,6 +16,7 @@ using Microsoft.ClearScript;
 using Microsoft.ClearScript.V8;
 using NLog;
 using Newtonsoft.Json.Linq;
+using Rhetos.Utilities;
 using Timer = System.Timers.Timer;
 
 namespace Otimizacao.Javascript
@@ -27,8 +28,12 @@ namespace Otimizacao.Javascript
     /// [clearInterval, clearTimeout, setInterval, setTimeout]  seguiram as especificações da Mozilla em [https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout#JavaScript_Content]
     /// </remarks>
     public class JavascriptHelper: IDisposable
-
     {
+        /// <summary>
+        /// Threads do SetTimeout
+        /// </summary>
+        public List<Thread> TimedOuts; 
+
         /// <summary>
         /// Para testes
         /// </summary>
@@ -153,6 +158,7 @@ namespace Otimizacao.Javascript
         /// <param name="setInterval">Habilitar a função global setInterval</param>
         private void Carregar(string diretorioJavascripts, bool setTimeout, bool setInterval)
         {
+            TimedOuts = new List<Thread>();
             _diretorioExecucao = diretorioJavascripts;
             _timeoutTestes = int.MaxValue;
             ExecutouTestesAteFinal = false;
@@ -304,8 +310,13 @@ namespace Otimizacao.Javascript
             var sw = new Stopwatch();
             sw.Start();
 
+            var fr = new FastReplacer("{[#", "#]}");
+            fr.Append(@"var syntax = esprima.parse({[#CODIGO#]}, { raw: true, tokens: true, range: true, loc:true, comment: true });");
+            fr.Replace("{[#CODIGO#]}", EncodeJsString(codigoIndividuo));
+            var esprimaParse = fr.ToString();
+
             //var engine = _manager.GetEngine();
-            var esprimaParse = string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, loc:true, comment: true }});", EncodeJsString(codigoIndividuo));
+            var esprimaParseAntigo = string.Format(@"var syntax = esprima.parse({0}, {{ raw: true, tokens: true, range: true, loc:true, comment: true }});", EncodeJsString(codigoIndividuo));
             _engine.Execute(esprimaParse);
             _engine.Execute("javascriptHelper.JsonAst = JSON.stringify(syntax);");
 
@@ -679,7 +690,7 @@ namespace Otimizacao.Javascript
 
             while (GetTimersCount() > 0 & sw.Elapsed.Seconds <= _timeoutTestes)
             {
-                _logger.Trace("     Aguardando encerrar o SetTimeout");
+                //_logger.Trace("     Aguardando encerrar o SetTimeout");
                 Thread.Sleep(5);
             }
             
@@ -772,6 +783,8 @@ namespace Otimizacao.Javascript
 
             th.Priority = ThreadPriority.Highest;
             th.IsBackground = false;
+
+            TimedOuts.Add(th);
             th.Start();
             //th.Join(50);
 
@@ -902,10 +915,7 @@ namespace Otimizacao.Javascript
         /// </summary>
         public void Dispose()
         {
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.WaitForFullGCComplete(60000);
-            GC.Collect();
+            TimedOuts.Where(th=> th.IsAlive).ToList().ForEach(tha=> tha.Interrupt());
 
             _engine.Interrupt();
             _manager.Cleanup();

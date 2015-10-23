@@ -105,6 +105,66 @@ namespace Otimizacao.Testes
             
         }
 
+        [Test]
+        public void ExecutarTestesDoMomentSemHelper()
+        {
+            var engine = new V8ScriptEngine();
+
+            var quintCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Moment", "Qunit.js"));
+            var codigoIndividuo = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Moment", "global.js"));
+            var codigoTestes = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Moment", "core-test.js"));
+
+            engine.AddHostType("Console", typeof(Console));
+
+            engine.Execute("var GLOBAL = this;");
+
+            engine.Execute(quintCode);
+            engine.Execute(codigoIndividuo);
+            engine.Execute(codigoTestes);
+
+            #region Configura Retorno de erros
+            engine.Execute(@"   
+                                    var total, sucesso, falha;
+
+                                    QUnit.done(function( details ) {
+                                    Console.WriteLine('=============================================');
+                                    Console.WriteLine('Total:' + details.total);
+                                    Console.WriteLine('Falha:' + details.failed);
+                                    Console.WriteLine('Sucesso:' + details.passed);
+                                    Console.WriteLine('Tempo:' + details.runtime);
+                                       
+                                });
+
+                                QUnit.log(function( details ) {
+                                  if ( details.result ) {
+                                    return;
+                                  }
+                                  var loc = details.module + ': ' + details.name + ': ',
+                                    output = 'FAILED: ' + loc + ( details.message ? details.message + ', ' : '' );
+ 
+                                  if ( details.actual ) {
+                                    output += 'expected: ' + details.expected + ', actual: ' + details.actual;
+                                  }
+                                  if ( details.source ) {
+                                    output += ', ' + details.source;
+                                  }
+
+                                    Console.WriteLine('=============================================');
+                                    Console.WriteLine( output );
+                                });
+
+                                QUnit.config.autostart = false;
+                                QUnit.config.ignoreGlobalErrors = true;
+                        ");
+            #endregion
+
+            engine.Execute(@"   QUnit.load();
+                                QUnit.start();
+                ");
+
+            //Assert.AreEqual(0, 57982);
+        }
+
         /// <summary>
         /// Executa os testes do Loadsh
         /// </summary>
