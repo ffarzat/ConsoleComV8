@@ -52,3 +52,6 @@ ConsoleComV8/bin/Debug/Otimizacao.dll
 *.exe
 
 Otimizacao/obj/Debug/Otimizacao.pdb
+*.exe
+ConsoleComV8/bin/Debug/ConsoleComV8.pdb
+*.cache
