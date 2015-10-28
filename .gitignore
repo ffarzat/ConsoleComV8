@@ -44,9 +44,11 @@ Temporary Items
 
 # Recycle Bin used on file shares
 Debug/
+ConsoleComV8/bin/Debug/
 ConsoleComV8/bin/Debug/ExecutionLog.txt
 ConsoleComV8/bin/Debug/ConsoleComV8.exe
 ConsoleComV8/bin/Debug/Otimizacao.dll
 *.pdb
 *.exe
 
+Otimizacao/obj/Debug/Otimizacao.pdb
