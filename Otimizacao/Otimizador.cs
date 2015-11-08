@@ -19,6 +19,13 @@ namespace Otimizacao
     /// </summary>
     public class Otimizador: IDisposable
     {
+
+        /// <summary>
+        /// Guarda qual das rodadas externas é a atual
+        /// </summary>
+        public int RodadaGlobalExterna { get; set; }
+
+
         /// <summary>
         /// NLog Logger
         /// </summary>
@@ -201,6 +208,22 @@ namespace Otimizacao
             _logger.Info("  Houve otimizacao: {0}", otimizou);
 
             _logger.Info("  Tempo total: {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
+
+            #region Gera o CSV da rodada
+
+            var myExport = new CsvExport();
+
+            myExport.AddRow();
+            myExport["Rodada"] = RodadaGlobalExterna;
+            myExport["Individuo"] = MelhorIndividuo.Arquivo;
+            myExport["Operacao"] = MelhorIndividuo.CriadoPor;
+            myExport["Fitness"] = MelhorIndividuo.Fitness;
+            myExport["Tempo"] = MelhorIndividuo.TempoExecucao;
+            myExport["Testes"] = MelhorIndividuo.TestesComSucesso;
+
+            myExport.ExportToFile("rodadas.csv");
+
+            #endregion
 
             return otimizou;
         }
@@ -518,7 +541,7 @@ namespace Otimizacao
 
                     _fitnessMin = _original.Fitness;
 
-                    MelhorIndividuo = _original.Clone();
+                    MelhorIndividuo = _original;
 
                     jHelper.Dispose();
 
@@ -837,6 +860,8 @@ namespace Otimizacao
         /// <param name="i"></param>
         public void ConfigurarRodada(int i)
         {
+            RodadaGlobalExterna = i;
+
             _diretorioExecucao = i + "_" + _diretorioExecucao;
         }
     }

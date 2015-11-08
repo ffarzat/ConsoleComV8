@@ -64,11 +64,11 @@ namespace ConsoleComV8
             Console.WriteLine("======================================   Rodada {0}", rodada);
             #region Moment
 
-            //var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
-            //otimizadorMoment.ConfigurarRodada(rodada);
-            //otimizadorMoment.LimparResultadosAnteriores();
+            var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
+            otimizadorMoment.ConfigurarRodada(rodada);
+            otimizadorMoment.LimparResultadosAnteriores();
 
-            //var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
+            var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
 
             //Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
 
@@ -76,12 +76,12 @@ namespace ConsoleComV8
 
             #region Lodash
 
-            //var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
-            //otimizadorLodash.ConfigurarRodada(rodada);
-            //otimizadorLodash.LimparResultadosAnteriores();
-            //otimizadorLodash.UsarSetTimeout();
+            var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
+            otimizadorLodash.ConfigurarRodada(rodada);
+            otimizadorLodash.LimparResultadosAnteriores();
+            otimizadorLodash.UsarSetTimeout();
 
-            //var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
+            var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
             //otimizadorLodash.Dispose();
 
             //Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
@@ -96,9 +96,9 @@ namespace ConsoleComV8
             otimizador.UsarSetTimeout();
 
             var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
-            otimizador.Dispose();
+            //otimizador.Dispose();
 
-            Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
+            //Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
 
             Console.WriteLine("===================================//>   Rodada {0}", rodada);
             #endregion

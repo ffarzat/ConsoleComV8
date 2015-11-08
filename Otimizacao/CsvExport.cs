@@ -146,11 +146,36 @@ namespace Otimizacao
         }
 
         /// <summary>
-        /// Exports to a file
+        /// Output all rows as a CSV returning a string for a append into a file
         /// </summary>
+        private string ExportToAppend()
+        {
+            var sb = new StringBuilder();
+
+            // The rows
+            foreach (Dictionary<string, object> row in _rows)
+            {
+                _fields.Where(f => !row.ContainsKey(f)).ToList().ForEach(k =>
+                {
+                    row[k] = null;
+                });
+                sb.Append(string.Join(",", _fields.Select(field => MakeValueCsvFriendly(row[field])).ToArray()));
+                sb.AppendLine();
+            }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Export to a File append new lines to it
+        /// </summary>
+        /// <param name="path"></param>
         public void ExportToFile(string path)
         {
-            File.WriteAllText(path, Export());
+            if(File.Exists(path))
+                File.AppendAllLines(path, new[] {ExportToAppend()});
+            else
+                File.WriteAllText(path, Export());
         }
 
         /// <summary>

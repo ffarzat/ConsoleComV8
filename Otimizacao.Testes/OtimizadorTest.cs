@@ -44,5 +44,20 @@ namespace Otimizacao.Testes
             var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
         }
 
+
+        /// <summary>
+        /// Roda, recupera excel e verifica os valores
+        /// </summary>
+        [Test]
+        public void ValidarCsv()
+        {
+            var otimizador = new Otimizador(5, 2, 20, "Require", "ResultadosUnderscore");
+            otimizador.ConfigurarRodada(2);
+            otimizador.LimparResultadosAnteriores();
+            otimizador.UsarSetTimeout();
+
+            var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
+        }
+
     }
 }
