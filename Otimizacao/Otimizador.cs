@@ -673,7 +673,7 @@ namespace Otimizacao
         [HandleProcessCorruptedStateExceptions]
         private double AvaliarIndividuo(int indice, Individuo sujeito)
         {
-            const int total = 4;
+            const int total = 5;
             var fits = new double[total];
 
             for (int i = 0; i < total; i++)
