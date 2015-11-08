@@ -64,8 +64,8 @@ namespace Otimizacao
         private static readonly Random Rand = new Random(int.MaxValue);
 
         //Controles totais
-        private Int64 _fitnessMin = Int64.MaxValue;
-        private Int64 _fitnessSum = 0;
+        private double _fitnessMin = double.MaxValue;
+        private double _fitnessSum = 0;
         private double _fitnessAvg = 0;
 
         /// <summary>
@@ -335,7 +335,7 @@ namespace Otimizacao
 
             foreach (Individuo c in _population)
             {
-                Int64 fitness = c.Fitness;
+                double fitness = c.Fitness;
 
                 _fitnessSum += fitness;
 
@@ -671,7 +671,28 @@ namespace Otimizacao
         /// <param name="indice"></param>
         /// <param name="sujeito"></param>
         [HandleProcessCorruptedStateExceptions]
-        private Int64 AvaliarIndividuo(int indice, Individuo sujeito)
+        private double AvaliarIndividuo(int indice, Individuo sujeito)
+        {
+            const int total = 4;
+            var fits = new double[total];
+
+            for (int i = 0; i < total; i++)
+            {
+                fits[i] = ExecutarTestesParaIndividuoEspecifico(indice, sujeito);
+            }
+
+            sujeito.Fitness = fits.Average();
+
+            return sujeito.Fitness;
+        }
+
+        /// <summary>
+        /// Executa os testes
+        /// </summary>
+        /// <param name="indice"></param>
+        /// <param name="sujeito"></param>
+        /// <returns></returns>
+        private double ExecutarTestesParaIndividuoEspecifico(int indice, Individuo sujeito)
         {
             var sw = new Stopwatch();
             sw.Start();
@@ -690,15 +711,18 @@ namespace Otimizacao
                 sujeito.TestesComSucesso = 0;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
 
-                _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
+                _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness,
+                                           sujeito.TestesComSucesso, sujeito.TempoExecucao));
 
                 CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
 
                 return sujeito.Fitness;
             }
+
             #endregion
 
             #region Igual ao Original
+
             if (indice > 0 & _original.Codigo.Equals(sujeito.Codigo))
             {
                 _logger.Info("              Igual ao Original");
@@ -706,12 +730,14 @@ namespace Otimizacao
                 sujeito.TempoExecucao = _original.TempoExecucao;
                 sujeito.TestesComSucesso = _original.TestesComSucesso;
                 sujeito.Fitness = _original.Fitness;
-                _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
-                
+                _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness,
+                                           sujeito.TestesComSucesso, sujeito.TempoExecucao));
+
                 CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
-                
+
                 return sujeito.Fitness;
             }
+
             #endregion
 
             #region realmente executar os testes então
@@ -726,9 +752,10 @@ namespace Otimizacao
 
                 _logger.Trace("              Avaliando via testes");
 
-                var avaliar = new Thread(() => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
+                var avaliar =
+                    new Thread(() => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
                 avaliar.Start();
-                avaliar.Join(_timeout * 1000); //timeout
+                avaliar.Join(_timeout*1000); //timeout
 
                 sw.Stop();
                 jHelper.Dispose();
@@ -743,13 +770,9 @@ namespace Otimizacao
 
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
-
-                
-
             }
             catch (Exception ex)
             {
-
                 _logger.Info("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
 
                 sujeito.Fitness = valorFitFalha;
@@ -757,18 +780,18 @@ namespace Otimizacao
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
 
                 _logger.Trace(ex);
-  
-                if(jHelper != null)
+
+                if (jHelper != null)
                     jHelper.Dispose();
             }
 
             #endregion
 
-            _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
+            _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness,
+                                       sujeito.TestesComSucesso, sujeito.TempoExecucao));
 
             CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
 
-            
 
             return sujeito.Fitness;
         }

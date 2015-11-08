@@ -29,7 +29,7 @@ namespace Otimizacao.Javascript
         /// <summary>
         /// Valor de Fitness calculado ao final
         /// </summary>
-        public Int64 Fitness { get; set; }
+        public double Fitness { get; set; }
 
         /// <summary>
         /// Caminho do arquivo do inidviduo

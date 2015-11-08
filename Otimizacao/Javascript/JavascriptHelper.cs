@@ -123,7 +123,7 @@ namespace Otimizacao.Javascript
         /// <summary>
         /// Valor de multa para Calculo da Fitness
         /// </summary>
-        private Int64 _fitTopValue;
+        private double _fitTopValue;
 
         /// <summary>
         /// Total de Nós de um
@@ -592,7 +592,7 @@ namespace Otimizacao.Javascript
         /// <param name="nomeArquivoIndividuo">Nome do arquivo.js que representa o individuo</param>
         /// <param name="nomeDoArquivoTestes">Nome do arquivo.js que representa a lista de testes para executar</param>
         /// <returns></returns>
-        public Int64 ExecutarTestes(string nomeArquivoIndividuo, string nomeDoArquivoTestes)
+        public double ExecutarTestes(string nomeArquivoIndividuo, string nomeDoArquivoTestes)
         {
            
             var sw = new Stopwatch();
@@ -934,7 +934,7 @@ namespace Otimizacao.Javascript
         /// Configura o limite superior da Fit
         /// </summary>
         /// <param name="fitnessMin"></param>
-        public void ConfigurarMelhorFit(Int64 fitnessMin)
+        public void ConfigurarMelhorFit(double fitnessMin)
         {
             _fitTopValue = fitnessMin;
         }
