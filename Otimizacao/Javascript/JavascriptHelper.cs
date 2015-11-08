@@ -32,7 +32,7 @@ namespace Otimizacao.Javascript
         /// <summary>
         /// Threads do SetTimeout
         /// </summary>
-        public List<Thread> TimedOuts; 
+        public List<IDisposable> TimedOuts; 
 
         /// <summary>
         /// Para testes
@@ -158,7 +158,7 @@ namespace Otimizacao.Javascript
         /// <param name="setInterval">Habilitar a função global setInterval</param>
         private void Carregar(string diretorioJavascripts, bool setTimeout, bool setInterval)
         {
-            TimedOuts = new List<Thread>();
+            TimedOuts = new List<IDisposable>();
             _diretorioExecucao = diretorioJavascripts;
             _timeoutTestes = int.MaxValue;
             ExecutouTestesAteFinal = false;
@@ -749,7 +749,9 @@ namespace Otimizacao.Javascript
 
             Monitor.Enter(_timers);
             if (_timers.ContainsKey(idLocal))
+            {
                 _timers[idLocal] = false;
+            }
             Monitor.Exit(_timers);
         }
 
@@ -759,9 +761,8 @@ namespace Otimizacao.Javascript
         /// <param name="miliseconds">tempo em ms</param>
         public string SetTimeout(int miliseconds)
         {
-            if (string.IsNullOrEmpty(miliseconds.ToString()))
+            if (string.IsNullOrEmpty(miliseconds.ToString()) | miliseconds == 0)
                 miliseconds = 1;
-
 
             int id = _timers.Count;
             //Escrever("  Settimeout: id:{0}, ({1}) ms", id, miliseconds);
@@ -775,18 +776,9 @@ namespace Otimizacao.Javascript
 
             //Escrever("  ManagedThreadId : [{0}]", Thread.CurrentThread.ManagedThreadId.ToString());
 
-            var th = new Thread(() =>
-                {
-                    Thread.Sleep(miliseconds);
-                    JavascriptHelper_Elapsed(id);
-                });
+            var handleSetTimeout = EasyTimer.SetTimeout( ()=> JavascriptHelper_Elapsed(id), miliseconds);
 
-            th.Priority = ThreadPriority.Highest;
-            th.IsBackground = false;
-
-            TimedOuts.Add(th);
-            th.Start();
-            //th.Join(50);
+            TimedOuts.Add(handleSetTimeout);
 
             return id.ToString();
         }
@@ -915,7 +907,7 @@ namespace Otimizacao.Javascript
         /// </summary>
         public void Dispose()
         {
-            TimedOuts.Where(th=> th.IsAlive).ToList().ForEach(tha=> tha.Interrupt());
+            TimedOuts.ForEach(t=> t.Dispose());
 
             _engine.Interrupt();
             _manager.Cleanup();

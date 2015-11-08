@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Javascript\EasyTimer.cs" />
     <Compile Include="Javascript\Individuo.cs" />
     <Compile Include="Javascript\JavascriptHelper.cs" />
     <Compile Include="Otimizador.cs" />
