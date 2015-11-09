@@ -1,23 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Timers;
 using ClearScript.Manager;
-using ClearScript.Manager.Caching;
 using ClearScript.Manager.Loaders;
 using Microsoft.ClearScript;
 using Microsoft.ClearScript.V8;
 using NLog;
 using Newtonsoft.Json.Linq;
 using Rhetos.Utilities;
-using Timer = System.Timers.Timer;
 
 namespace Otimizacao.Javascript
 {
@@ -809,7 +803,7 @@ namespace Otimizacao.Javascript
             catch (Exception ex)
             {
                 _timers[id] = false;
-                _logger.Trace("         Erro na execução do SetTimeout id {0}", id);
+                //_logger.Trace("         Erro na execução do SetTimeout id {0}", id);
                 _logger.Trace(ex);
                 Monitor.Exit(_timers);
             }

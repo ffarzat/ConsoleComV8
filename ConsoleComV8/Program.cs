@@ -62,26 +62,27 @@ namespace ConsoleComV8
         private static void OtimizarBibliotecas(int rodada)
         {
             Console.WriteLine("======================================   Rodada {0}", rodada);
+
             #region Moment
 
-            //var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
-            //otimizadorMoment.ConfigurarRodada(rodada);
-            //otimizadorMoment.LimparResultadosAnteriores();
+            var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
+            otimizadorMoment.ConfigurarRodada(rodada);
+            otimizadorMoment.LimparResultadosAnteriores();
 
-            //var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
-
+            var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
+            otimizadorMoment.Dispose();
             //Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
 
             #endregion
 
             #region Lodash
 
-            var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
-            otimizadorLodash.ConfigurarRodada(rodada);
-            otimizadorLodash.LimparResultadosAnteriores();
-            otimizadorLodash.UsarSetTimeout();
+            //var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
+            //otimizadorLodash.ConfigurarRodada(rodada);
+            //otimizadorLodash.LimparResultadosAnteriores();
+            //otimizadorLodash.UsarSetTimeout();
 
-            var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
+            //var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
             //otimizadorLodash.Dispose();
 
             //Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
@@ -110,7 +111,7 @@ namespace ConsoleComV8
             GC.Collect();
 
             //Tire uma soneca
-            Thread.Sleep(60000);
+            //Thread.Sleep(60000);
 
             #endregion
         }

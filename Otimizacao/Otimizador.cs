@@ -4,12 +4,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.ExceptionServices;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using NLog;
 using OfficeOpenXml;
-using OfficeOpenXml.Style;
 using Otimizacao.Javascript;
 
 namespace Otimizacao
@@ -199,8 +196,7 @@ namespace Otimizacao
 
             SalvarExcel();
 
-            _logger.Info("Rodadas executadas com sucesso", _fitnessMin);
-            
+            _logger.Info("Rodada {0} executada com sucesso", RodadaGlobalExterna);
             
             var otimizou = MelhorIndividuo.Ast != _original.Ast;
 
@@ -284,8 +280,12 @@ namespace Otimizacao
 
                 Mutate();
 
+                _logger.Info("      Avaliando...");
+
                 ExecuteFitEvaluation();
-                
+
+                _logger.Info("      Selecionando...");
+
                 Selection();
                 
                 FindBestChromosomeOfRun();
@@ -683,6 +683,8 @@ namespace Otimizacao
 
             sujeito.Fitness = fits.Average();
 
+            _logger.Info(string.Format("            FIT:{0}     | CTs: {1}      | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
+
             return sujeito.Fitness;
         }
 
@@ -750,7 +752,7 @@ namespace Otimizacao
                 jHelper.ConfigurarTimeOut(_timeout);
                 jHelper.ConfigurarMelhorFit(_fitnessMin);
 
-                _logger.Trace("              Avaliando via testes");
+                //_logger.Trace("              Avaliando via testes");
 
                 var avaliar =
                     new Thread(() => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
@@ -760,7 +762,7 @@ namespace Otimizacao
                 sw.Stop();
                 jHelper.Dispose();
 
-                _logger.Info("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
+                //_logger.Info("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
 
                 if (!jHelper.ExecutouTestesAteFinal)
                     sujeito.Fitness = valorFitFalha;
@@ -773,7 +775,7 @@ namespace Otimizacao
             }
             catch (Exception ex)
             {
-                _logger.Info("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
+                //_logger.Info("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
 
                 sujeito.Fitness = valorFitFalha;
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
@@ -786,9 +788,6 @@ namespace Otimizacao
             }
 
             #endregion
-
-            _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness,
-                                       sujeito.TestesComSucesso, sujeito.TempoExecucao));
 
             CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
 
@@ -805,7 +804,7 @@ namespace Otimizacao
         /// <param name="tempoTotal"></param>
         private void CriarLinhaExcel(int indice, Individuo sujeito, int testesComSucesso, string tempoTotal)
         {
-            _logger.Info("              Incluído no excel : {0}", indice);
+            //_logger.Info("              Incluído no excel : {0}", indice);
 
             int indiceExcel = 1;
 
