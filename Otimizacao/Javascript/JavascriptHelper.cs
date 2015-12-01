@@ -901,7 +901,8 @@ namespace Otimizacao.Javascript
         /// </summary>
         public void Dispose()
         {
-            TimedOuts.ForEach(t=> t.Dispose());
+
+            //TimedOuts.ForEach(t=> t.Dispose());
 
             _engine.Interrupt();
             _manager.Cleanup();
