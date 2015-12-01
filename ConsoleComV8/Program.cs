@@ -65,13 +65,13 @@ namespace ConsoleComV8
 
             #region Moment
 
-            var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
-            otimizadorMoment.ConfigurarRodada(rodada);
-            otimizadorMoment.LimparResultadosAnteriores();
+            //var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
+            //otimizadorMoment.ConfigurarRodada(rodada);
+            //otimizadorMoment.LimparResultadosAnteriores();
 
-            var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
-            otimizadorMoment.Dispose();
-            //Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
+            //var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
+            //otimizadorMoment.Dispose();
+            ////Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
 
             #endregion
 
@@ -91,15 +91,15 @@ namespace ConsoleComV8
 
             #region Underscore
 
-            //var otimizador = new Otimizador(100, 100, 8, "underscore", "ResultadosUnderscore");
-            //otimizador.ConfigurarRodada(rodada);
-            //otimizador.LimparResultadosAnteriores();
-            //otimizador.UsarSetTimeout();
+            var otimizador = new Otimizador(100, 100, 8, "underscore", "ResultadosUnderscore");
+            otimizador.ConfigurarRodada(rodada);
+            otimizador.LimparResultadosAnteriores();
+            otimizador.UsarSetTimeout();
 
-            //var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
-            //otimizador.Dispose();
+            var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
+            otimizador.Dispose();
 
-            //Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
+            Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
 
             Console.WriteLine("===================================//>   Rodada {0}", rodada);
             #endregion
