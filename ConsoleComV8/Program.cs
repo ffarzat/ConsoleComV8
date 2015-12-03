@@ -36,9 +36,12 @@ namespace ConsoleComV8
                 int rodada = 0;
                 int.TryParse(args[0], out rodada);
 
-                if (rodada != 0)
-                    OtimizarBibliotecas(rodada);
+                string nome = args[1] + "";
 
+                if (!string.IsNullOrEmpty(nome))
+                    OtimizarBibliotecas(rodada, nome);
+                else
+                    OtimizarBibliotecas(rodada);
             }
             else
             {
@@ -65,27 +68,27 @@ namespace ConsoleComV8
 
             #region Moment
 
-            //var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
-            //otimizadorMoment.ConfigurarRodada(rodada);
-            //otimizadorMoment.LimparResultadosAnteriores();
+            var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
+            otimizadorMoment.ConfigurarRodada(rodada);
+            otimizadorMoment.LimparResultadosAnteriores();
 
-            //var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
-            //otimizadorMoment.Dispose();
-            ////Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
+            var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
+            otimizadorMoment.Dispose();
+            Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
 
             #endregion
 
             #region Lodash
 
-            //var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
-            //otimizadorLodash.ConfigurarRodada(rodada);
-            //otimizadorLodash.LimparResultadosAnteriores();
-            //otimizadorLodash.UsarSetTimeout();
+            var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
+            otimizadorLodash.ConfigurarRodada(rodada);
+            otimizadorLodash.LimparResultadosAnteriores();
+            otimizadorLodash.UsarSetTimeout();
 
-            //var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
-            //otimizadorLodash.Dispose();
+            var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
+            otimizadorLodash.Dispose();
 
-            //Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
+            Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
 
             #endregion
 
@@ -102,6 +105,81 @@ namespace ConsoleComV8
             Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
 
             Console.WriteLine("===================================//>   Rodada {0}", rodada);
+            #endregion
+
+            #region Força limpeza do GC
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.WaitForFullGCComplete(60000);
+            GC.Collect();
+
+            //Tire uma soneca
+            //Thread.Sleep(60000);
+
+            #endregion
+        }
+
+        /// <summary>
+        /// Executa uma rodada com as 3 bibliotecas atuais
+        /// </summary>
+        /// <param name="rodada"></param>
+        /// <param name="nome"></param>
+        private static void OtimizarBibliotecas(int rodada, string nome)
+        {
+            Console.WriteLine("======================================   Rodada {0} {1}", rodada, nome);
+
+            #region Moment
+
+            if (nome == "Moment")
+
+            {
+                var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
+                otimizadorMoment.ConfigurarRodada(rodada);
+                otimizadorMoment.LimparResultadosAnteriores();
+
+                var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
+                otimizadorMoment.Dispose();
+                Console.WriteLine("{0} otimizou? {1}", "Moment", otimizouMoment);
+            }
+
+            #endregion
+
+            #region Lodash
+
+            if (nome == "Lodash")
+            {
+                var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
+                otimizadorLodash.ConfigurarRodada(rodada);
+                otimizadorLodash.LimparResultadosAnteriores();
+                otimizadorLodash.UsarSetTimeout();
+
+                var otimizouLodash = otimizadorLodash.Otimizar("lodash.js", "lodashTest.js");
+                otimizadorLodash.Dispose();
+
+                Console.WriteLine("{0} otimizou? {1}", "lodash", otimizouLodash);
+            }
+
+            
+
+            #endregion
+
+            #region Underscore
+
+            if (nome == "Underscore")
+            {
+                var otimizador = new Otimizador(100, 100, 8, "underscore", "ResultadosUnderscore");
+                otimizador.ConfigurarRodada(rodada);
+                otimizador.LimparResultadosAnteriores();
+                otimizador.UsarSetTimeout();
+
+                var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
+                otimizador.Dispose();
+
+                Console.WriteLine("{0} otimizou? {1}", "Underscore", otimizou);
+
+                Console.WriteLine("===================================//>   Rodada {0}", rodada);
+            }
+
             #endregion
 
             #region Força limpeza do GC
