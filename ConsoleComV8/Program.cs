@@ -21,6 +21,10 @@ namespace ConsoleComV8
     /// </summary>
     class Program
     {
+        private static int _rodadas = 50;
+
+        private static int _totalPorGeracao = 100;
+
         /// <summary>
         /// Principal
         /// </summary>
@@ -68,7 +72,7 @@ namespace ConsoleComV8
 
             #region Moment
 
-            var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
+            var otimizadorMoment = new Otimizador(_totalPorGeracao, _rodadas, 10, "Moment", "ResultadosMoment");
             otimizadorMoment.ConfigurarRodada(rodada);
             otimizadorMoment.LimparResultadosAnteriores();
 
@@ -80,7 +84,7 @@ namespace ConsoleComV8
 
             #region Lodash
 
-            var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
+            var otimizadorLodash = new Otimizador(_totalPorGeracao, _rodadas, 15, "Lodash", "ResultadosLodash");
             otimizadorLodash.ConfigurarRodada(rodada);
             otimizadorLodash.LimparResultadosAnteriores();
             otimizadorLodash.UsarSetTimeout();
@@ -94,7 +98,7 @@ namespace ConsoleComV8
 
             #region Underscore
 
-            var otimizador = new Otimizador(100, 100, 8, "underscore", "ResultadosUnderscore");
+            var otimizador = new Otimizador(_totalPorGeracao, _rodadas, 8, "underscore", "ResultadosUnderscore");
             otimizador.ConfigurarRodada(rodada);
             otimizador.LimparResultadosAnteriores();
             otimizador.UsarSetTimeout();
@@ -133,7 +137,7 @@ namespace ConsoleComV8
             if (nome == "Moment")
 
             {
-                var otimizadorMoment = new Otimizador(100, 100, 10, "Moment", "ResultadosMoment");
+                var otimizadorMoment = new Otimizador(_totalPorGeracao, _rodadas, 10, "Moment", "ResultadosMoment");
                 otimizadorMoment.ConfigurarRodada(rodada);
                 otimizadorMoment.LimparResultadosAnteriores();
 
@@ -148,7 +152,7 @@ namespace ConsoleComV8
 
             if (nome == "Lodash")
             {
-                var otimizadorLodash = new Otimizador(100, 100, 15, "Lodash", "ResultadosLodash");
+                var otimizadorLodash = new Otimizador(_totalPorGeracao, _rodadas, 15, "Lodash", "ResultadosLodash");
                 otimizadorLodash.ConfigurarRodada(rodada);
                 otimizadorLodash.LimparResultadosAnteriores();
                 otimizadorLodash.UsarSetTimeout();
@@ -167,7 +171,7 @@ namespace ConsoleComV8
 
             if (nome == "Underscore")
             {
-                var otimizador = new Otimizador(100, 100, 8, "underscore", "ResultadosUnderscore");
+                var otimizador = new Otimizador(_totalPorGeracao, _rodadas, 8, "underscore", "ResultadosUnderscore");
                 otimizador.ConfigurarRodada(rodada);
                 otimizador.LimparResultadosAnteriores();
                 otimizador.UsarSetTimeout();
