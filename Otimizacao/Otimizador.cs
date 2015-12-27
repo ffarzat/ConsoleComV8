@@ -238,6 +238,8 @@ namespace Otimizacao
             //Titulos
             //Planilha.Cells["A1:F1"].Style.Fill.PatternType = ExcelFillStyle.LightGrid;
 
+            Planilha.InsertRow(1, 1);
+
             Planilha.Cells["A1"].Value = "Geracao";
             Planilha.Cells["B1"].Value = "Individuo";
             Planilha.Cells["C1"].Value = "Operacao";
@@ -778,7 +780,7 @@ namespace Otimizacao
                 //_logger.Info("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
 
                 sujeito.Fitness = valorFitFalha;
-                sujeito.TestesComSucesso = jHelper.TestesComSucesso;
+                sujeito.TestesComSucesso = jHelper != null ? jHelper.TestesComSucesso : 0;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
 
                 _logger.Trace(ex);
@@ -806,15 +808,8 @@ namespace Otimizacao
         {
             //_logger.Info("              Incluído no excel : {0}", indice);
 
-            int indiceExcel = 1;
-
-            do
-            {
-                indiceExcel++;
-            } while (Planilha.Cells["A" + indiceExcel].Value != null);
-
-            
-
+            int indiceExcel = Planilha.Dimension.End.Row + 1;
+            Planilha.InsertRow(indiceExcel, 1);
 
             Planilha.Cells["A" + indiceExcel].Value =_generationCount;
             Planilha.Cells["B" + indiceExcel].Value = sujeito.Arquivo;
@@ -822,6 +817,21 @@ namespace Otimizacao
             Planilha.Cells["D" + indiceExcel].Value = sujeito.Fitness;
             Planilha.Cells["E" + indiceExcel].Value = tempoTotal;
             Planilha.Cells["F" + indiceExcel].Value = testesComSucesso;
+
+            var existingFile = new FileInfo(Path.Combine(_diretorioExecucao, "resultados.xlsx"));
+            if (existingFile.Exists)
+            {
+                existingFile.Delete();
+                Thread.Sleep(10);
+            }
+
+            var holdingstream = new MemoryStream();
+            _excel.SaveAs(existingFile);
+            holdingstream.SetLength(0);
+            _excel.Stream.Position = 0;
+            _excel.Stream.CopyTo(holdingstream);
+            _excel.Load(holdingstream);
+
         }
 
         /// <summary>
