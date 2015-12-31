@@ -168,33 +168,62 @@ namespace Otimizacao
         /// </returns>
         public bool Otimizar(string caminhoBibliotecaJs, string caminhoTestesJs)
         {
-            var sw = new Stopwatch();
-            sw.Start();
+
+            bool otimizou = false;
 
             _caminhoScriptTestes = caminhoTestesJs;
             _caminhoBiblioteca = caminhoBibliotecaJs;
 
             _logger.Info(string.Format("Iniciando Otimização do {0}", caminhoBibliotecaJs));
             _logger.Info(string.Format("    SetTimeout {0}", _usarSetTimeout));
+            _logger.Info(string.Format("    Heuristica {0}", Heuristica));
+
             _logger.Info(string.Format("    Individuos {0}", _size));
             _logger.Info(string.Format("    Geracoes {0}", _executarAte));
 
-            CriarExcel();
-            
+            var sw = new Stopwatch();
+            sw.Start();
+            if(Heuristica == "GA")
+                otimizou = OtimizarUsandoGa();
+
+            if(Heuristica == "HC")
+                otimizou = OtimizarUsandoHc();
+
+            sw.Stop();
+            _logger.Info("  Tempo total: {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
+
+            return otimizou;
+        }
+
+        /// <summary>
+        /// Usar HC para otimizar
+        /// </summary>
+        /// <returns></returns>
+        private bool OtimizarUsandoHc()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Usar GA como Heuristica de busca
+        /// </summary>
+        /// <returns></returns>
+        private bool OtimizarUsandoGa()
+        {
             CriarPrimeiraGeracao();
 
             ExecutarRodadas();
+
             
-            sw.Stop();
 
             _logger.Info("Rodada {0} executada com sucesso", RodadaGlobalExterna);
-            
+
             var otimizou = MelhorIndividuo.Ast != _original.Ast;
 
             _logger.Info("============================================================");
             _logger.Info("  Houve otimizacao: {0}", otimizou);
 
-            _logger.Info("  Tempo total: {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
+            
 
             #region Gera o CSV da rodada
 
@@ -881,7 +910,8 @@ namespace Otimizacao
             }
             catch (Exception ex)
             {
-                _logger.Trace(ex);
+                //_logger.Trace(ex);
+                _logger.Trace("AST invalida. Codigo nao gerado");
                 caminhoNovoAvaliado = "";
             }
             finally
