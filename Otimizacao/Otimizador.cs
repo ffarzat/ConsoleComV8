@@ -186,6 +186,22 @@ namespace Otimizacao
             if(Heuristica == "HC")
                 otimizou = OtimizarUsandoHc();
 
+            #region Gera o CSV da rodada
+
+            var myExport = new CsvExport();
+
+            myExport.AddRow();
+            myExport["Rodada"] = RodadaGlobalExterna;
+            myExport["Individuo"] = MelhorIndividuo.Arquivo;
+            myExport["Operacao"] = MelhorIndividuo.CriadoPor;
+            myExport["Fitness"] = MelhorIndividuo.Fitness;
+            myExport["Tempo"] = MelhorIndividuo.TempoExecucao;
+            myExport["Testes"] = MelhorIndividuo.TestesComSucesso;
+
+            myExport.ExportToFile("rodadas.csv");
+
+            #endregion
+
             sw.Stop();
             _logger.Info("  Tempo total: {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
 
@@ -275,24 +291,6 @@ namespace Otimizacao
 
             _logger.Info("============================================================");
             _logger.Info("  Houve otimizacao: {0}", otimizou);
-
-            
-
-            #region Gera o CSV da rodada
-
-            var myExport = new CsvExport();
-
-            myExport.AddRow();
-            myExport["Rodada"] = RodadaGlobalExterna;
-            myExport["Individuo"] = MelhorIndividuo.Arquivo;
-            myExport["Operacao"] = MelhorIndividuo.CriadoPor;
-            myExport["Fitness"] = MelhorIndividuo.Fitness;
-            myExport["Tempo"] = MelhorIndividuo.TempoExecucao;
-            myExport["Testes"] = MelhorIndividuo.TestesComSucesso;
-
-            myExport.ExportToFile("rodadas.csv");
-
-            #endregion
 
             return otimizou;
         }
