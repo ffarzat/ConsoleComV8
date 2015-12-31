@@ -178,9 +178,6 @@ namespace Otimizacao
             _logger.Info(string.Format("    SetTimeout {0}", _usarSetTimeout));
             _logger.Info(string.Format("    Heuristica {0}", Heuristica));
 
-            _logger.Info(string.Format("    Individuos {0}", _size));
-            _logger.Info(string.Format("    Geracoes {0}", _executarAte));
-
             var sw = new Stopwatch();
             sw.Start();
             if(Heuristica == "GA")
@@ -201,7 +198,59 @@ namespace Otimizacao
         /// <returns></returns>
         private bool OtimizarUsandoHc()
         {
-            throw new NotImplementedException();
+            var totalVizinhosExplorar = _size;
+            var moverNoPrimeiroMelhor = true;
+            var otimizado = false;
+            var melhores = new List<Individuo>();
+
+            _logger.Info("      Avaliar {0} vizinhos", totalVizinhosExplorar);
+
+            CriarIndividuoOriginal(_caminhoBiblioteca);
+
+            for (int i = 1; i < totalVizinhosExplorar -1; i++)
+            {
+                //cria o vizinho
+                _logger.Info("      {0}", i);
+                
+                Individuo c = MelhorIndividuo.Clone();
+                
+                ExecutarMutacao(c); 
+                
+                //Avalia o vizinho e veja se melhorou
+                var fitvizinho = ExecutarTestesParaIndividuoEspecifico(i, c);
+
+                if (fitvizinho < 0)
+                    fitvizinho = fitvizinho*-1;
+
+
+                if (fitvizinho < _fitnessMin)
+                {
+                    _logger.Info("      Encontrado. FIT Antigo {0} | FIT novo {1}", _fitnessMin, c.Fitness);
+                    MelhorIndividuo = c;
+                    _fitnessMin = fitvizinho;
+                    otimizado = true;
+                    melhores.Add(c);
+                }
+            }
+
+            #region Cria diretorio dos resultados
+            string generationResultPath = Path.Combine(_diretorioExecucao, "0");
+            Directory.CreateDirectory(generationResultPath);
+            Thread.Sleep(5);
+            #endregion
+
+            foreach (var individuo in melhores)
+            {
+                string generationBestPath = string.Format("{0}\\{1}.js", generationResultPath, individuo.Id);
+
+                File.WriteAllText(generationBestPath, individuo.Codigo);
+            }
+
+
+            _logger.Info("============================================================");
+            _logger.Info("  Houve otimizacao: {0}", otimizado);
+
+            return otimizado;
         }
 
         /// <summary>
@@ -210,6 +259,10 @@ namespace Otimizacao
         /// <returns></returns>
         private bool OtimizarUsandoGa()
         {
+
+            _logger.Info(string.Format("    Individuos {0}", _size));
+            _logger.Info(string.Format("    Geracoes {0}", _executarAte));
+
             CriarPrimeiraGeracao();
 
             ExecutarRodadas();
