@@ -6,7 +6,6 @@ using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Threading;
 using NLog;
-using OfficeOpenXml;
 using Otimizacao.Javascript;
 
 namespace Otimizacao
@@ -111,19 +110,9 @@ namespace Otimizacao
         private string _caminhoBiblioteca;
 
         /// <summary>
-        /// Excel do relatório
-        /// </summary>
-        private ExcelPackage _excel;
-
-        /// <summary>
         /// Total de nós
         /// </summary>
         private int _total;
-
-        /// <summary>
-        /// Usada na execução para o relatório
-        /// </summary>
-        private ExcelWorksheet Planilha { get { return _excel.Workbook.Worksheets["Resultados"]; } }
 
         /// <summary>
         /// Construtor Default
@@ -138,8 +127,6 @@ namespace Otimizacao
             _countGlobal = 0;
 
             LimparResultadosAnteriores();
-
-            _excel = new ExcelPackage();
         }
 
         /// <summary>
@@ -194,8 +181,6 @@ namespace Otimizacao
             
             sw.Stop();
 
-            SalvarExcel();
-
             _logger.Info("Rodada {0} executada com sucesso", RodadaGlobalExterna);
             
             var otimizou = MelhorIndividuo.Ast != _original.Ast;
@@ -229,37 +214,42 @@ namespace Otimizacao
         /// </summary>
         private void CriarExcel()
         {
-            _excel.Workbook.Properties.Author = "Fabio Farzat";
-            _excel.Workbook.Properties.Title = string.Format("Execucao do {0}", _caminhoBiblioteca);
-            _excel.Workbook.Properties.Company = "www.vitalbusiness.com.br";
+            //_excel.Workbook.Properties.Author = "Fabio Farzat";
+            //_excel.Workbook.Properties.Title = string.Format("Execucao do {0}", _caminhoBiblioteca);
+            //_excel.Workbook.Properties.Company = "www.vitalbusiness.com.br";
 
-            _excel.Workbook.Worksheets.Add("Resultados");
+            //_excel.Workbook.Worksheets.Add("Resultados");
 
-            //Titulos
-            //Planilha.Cells["A1:F1"].Style.Fill.PatternType = ExcelFillStyle.LightGrid;
+            ////Titulos
+            ////Planilha.Cells["A1:F1"].Style.Fill.PatternType = ExcelFillStyle.LightGrid;
 
-            Planilha.InsertRow(1, 1);
+            //Planilha.InsertRow(1, 1);
 
-            Planilha.Cells["A1"].Value = "Geracao";
-            Planilha.Cells["B1"].Value = "Individuo";
-            Planilha.Cells["C1"].Value = "Operacao";
-            Planilha.Cells["D1"].Value = "Fitness";
-            Planilha.Cells["E1"].Value = "Tempo";
-            Planilha.Cells["F1"].Value = "Testes";
+            //Planilha.Cells["A1"].Value = "Geracao";
+            //Planilha.Cells["B1"].Value = "Individuo";
+            //Planilha.Cells["C1"].Value = "Operacao";
+            //Planilha.Cells["D1"].Value = "Fitness";
+            //Planilha.Cells["E1"].Value = "Tempo";
+            //Planilha.Cells["F1"].Value = "Testes";
 
-        }
 
-        /// <summary>
-        /// Salva o arquivo excel
-        /// </summary>
-        private void SalvarExcel()
-        {
-            
-            if(File.Exists(Path.Combine(_diretorioExecucao, "resultados.xlsx")))
-                File.Delete(Path.Combine(_diretorioExecucao, "resultados.xlsx"));
+            #region Gera o CSV inicial
 
-            var bin = _excel.GetAsByteArray();
-            File.WriteAllBytes(Path.Combine(_diretorioExecucao, "resultados.xlsx"), bin);
+            //var myExport = new CsvExport();
+
+            //myExport.AddRow();
+            //myExport["Geracao"] = "";
+            //myExport["Individuo"] = "";
+            //myExport["Operacao"] = "";
+            //myExport["Fitness"] = "";
+            //myExport["Tempo"] = "";
+            //myExport["Testes"] = "";
+
+            //myExport.ExportToFile(Path.Combine(_diretorioExecucao, "resultados.csv"));
+
+            #endregion
+
+
         }
 
         /// <summary>
@@ -808,29 +798,48 @@ namespace Otimizacao
         {
             //_logger.Info("              Incluído no excel : {0}", indice);
 
-            int indiceExcel = Planilha.Dimension.End.Row + 1;
-            Planilha.InsertRow(indiceExcel, 1);
+            #region Inclui no  CSV
 
-            Planilha.Cells["A" + indiceExcel].Value =_generationCount;
-            Planilha.Cells["B" + indiceExcel].Value = sujeito.Arquivo;
-            Planilha.Cells["C" + indiceExcel].Value = sujeito.CriadoPor.ToString();
-            Planilha.Cells["D" + indiceExcel].Value = sujeito.Fitness;
-            Planilha.Cells["E" + indiceExcel].Value = tempoTotal;
-            Planilha.Cells["F" + indiceExcel].Value = testesComSucesso;
+            var myExport = new CsvExport();
 
-            var existingFile = new FileInfo(Path.Combine(_diretorioExecucao, "resultados.xlsx"));
-            if (existingFile.Exists)
-            {
-                existingFile.Delete();
-                Thread.Sleep(10);
-            }
+            myExport.AddRow();
 
-            var holdingstream = new MemoryStream();
-            _excel.SaveAs(existingFile);
-            holdingstream.SetLength(0);
-            _excel.Stream.Position = 0;
-            _excel.Stream.CopyTo(holdingstream);
-            _excel.Load(holdingstream);
+            myExport["Geracao"] = _generationCount;
+            myExport["Individuo"] = sujeito.Arquivo;
+            myExport["Operacao"] = sujeito.CriadoPor.ToString();
+            myExport["Fitness"] = sujeito.Fitness;
+            myExport["Tempo"] = tempoTotal;
+            myExport["Testes"] = testesComSucesso;
+
+            myExport.ExportToFile(Path.Combine(_diretorioExecucao, "resultados.csv"));
+
+            #endregion
+
+
+
+            //int indiceExcel = Planilha.Dimension.End.Row + 1;
+            //Planilha.InsertRow(indiceExcel, 1);
+
+            //Planilha.Cells["A" + indiceExcel].Value =_generationCount;
+            //Planilha.Cells["B" + indiceExcel].Value = sujeito.Arquivo;
+            //Planilha.Cells["C" + indiceExcel].Value = sujeito.CriadoPor.ToString();
+            //Planilha.Cells["D" + indiceExcel].Value = sujeito.Fitness;
+            //Planilha.Cells["E" + indiceExcel].Value = tempoTotal;
+            //Planilha.Cells["F" + indiceExcel].Value = testesComSucesso;
+
+            //var existingFile = new FileInfo(Path.Combine(_diretorioExecucao, "resultados.xlsx"));
+            //if (existingFile.Exists)
+            //{
+            //    existingFile.Delete();
+            //    Thread.Sleep(10);
+            //}
+
+            //var holdingstream = new MemoryStream();
+            //_excel.SaveAs(existingFile);
+            //holdingstream.SetLength(0);
+            //_excel.Stream.Position = 0;
+            //_excel.Stream.CopyTo(holdingstream);
+            //_excel.Load(holdingstream);
 
         }
 
@@ -883,7 +892,7 @@ namespace Otimizacao
         /// </summary>
         public void Dispose()
         {
-            _excel.Dispose();
+            
         }
 
         /// <summary>

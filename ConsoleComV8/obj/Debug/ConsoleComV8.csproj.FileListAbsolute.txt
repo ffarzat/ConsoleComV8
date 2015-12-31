@@ -75,7 +75,6 @@ D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ClearScript.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ClearScript.Manager.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\NLog.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Otimizacao.dll
-D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\EPPlus.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Newtonsoft.Json.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Otimizacao.pdb
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ClearScript.pdb

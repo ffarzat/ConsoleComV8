@@ -70,7 +70,7 @@ namespace Otimizacao
         /// <summary>
         /// Add a list of typed objects, maps object properties to CsvFields
         /// </summary>
-        public void AddRows<T>(IEnumerable<T> list)
+        public void AddRows<T>(List<T> list)
         {
             if (list.Any())
             {
@@ -128,8 +128,8 @@ namespace Otimizacao
             sb.AppendLine("sep=,");
 
             // The header
-            sb.Append(string.Join(",", _fields.ToArray()));
-            sb.AppendLine();
+            sb.AppendLine(string.Join(",", _fields.ToArray()));
+            //sb.AppendLine();
 
             // The rows
             foreach (Dictionary<string, object> row in _rows)
@@ -138,8 +138,8 @@ namespace Otimizacao
                 {
                     row[k] = null;
                 });
-                sb.Append(string.Join(",", _fields.Select(field => MakeValueCsvFriendly(row[field])).ToArray()));
-                sb.AppendLine();
+                sb.AppendLine(string.Join(",", _fields.Select(field => MakeValueCsvFriendly(row[field])).ToArray()));
+                
             }
 
             return sb.ToString();
@@ -160,7 +160,7 @@ namespace Otimizacao
                     row[k] = null;
                 });
                 sb.Append(string.Join(",", _fields.Select(field => MakeValueCsvFriendly(row[field])).ToArray()));
-                sb.AppendLine();
+                //sb.AppendLine();
             }
 
             return sb.ToString();

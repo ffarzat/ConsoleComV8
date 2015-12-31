@@ -3,7 +3,6 @@ D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\Otimizacao.dll
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\Otimizacao.pdb
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\ClearScript.dll
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\ClearScript.Manager.dll
-D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\EPPlus.dll
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\Newtonsoft.Json.dll
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\NLog.dll
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\ClearScript.pdb
@@ -15,3 +14,4 @@ D:\GitHub\ConsoleComV8\Otimizacao\obj\Debug\Otimizacao.dll
 D:\GitHub\ConsoleComV8\Otimizacao\obj\Debug\Otimizacao.pdb
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\Rhetos.Utilities.dll
 D:\GitHub\ConsoleComV8\Otimizacao\bin\Debug\Rhetos.Utilities.pdb
+D:\GitHub\ConsoleComV8\Otimizacao\obj\Debug\Otimizacao.csprojResolveAssemblyReference.cache
