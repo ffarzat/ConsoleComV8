@@ -567,7 +567,8 @@ namespace Otimizacao.Javascript
             }
             catch (Exception ex)
             {
-                _logger.Trace(ex);
+                //_logger.Trace(ex);
+                _logger.Trace("AST Inválida");
                 return "";
             }
 
@@ -672,8 +673,9 @@ namespace Otimizacao.Javascript
             }
             catch (ScriptEngineException ex)
             {
-                _logger.Trace(ex.ErrorDetails);
-                _logger.Trace(ex.ToString());
+                //_logger.Trace(ex.ErrorDetails);
+                //_logger.Trace(ex.ToString());
+                _logger.Trace("         AST inválida");
                 return _fitTopValue + 1000;
             }
             catch (Exception ex)
