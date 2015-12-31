@@ -41,11 +41,17 @@ namespace ConsoleComV8
                 int.TryParse(args[0], out rodada);
 
                 string nome = args[1] + "";
+                string heuristica = args[2] + "";
 
                 if (!string.IsNullOrEmpty(nome))
-                    OtimizarBibliotecas(rodada, nome);
+                    OtimizarBibliotecas(rodada, nome, heuristica);
                 else
                     OtimizarBibliotecas(rodada);
+
+
+
+
+
             }
             else
             {
@@ -128,7 +134,8 @@ namespace ConsoleComV8
         /// </summary>
         /// <param name="rodada"></param>
         /// <param name="nome"></param>
-        private static void OtimizarBibliotecas(int rodada, string nome)
+        /// <param name="heuristica"></param>
+        private static void OtimizarBibliotecas(int rodada, string nome, string heuristica)
         {
             Console.WriteLine("======================================   Rodada {0} {1}", rodada, nome);
 
@@ -139,6 +146,7 @@ namespace ConsoleComV8
             {
                 var otimizadorMoment = new Otimizador(_totalPorGeracao, _rodadas, 10, "Moment", "ResultadosMoment");
                 otimizadorMoment.ConfigurarRodada(rodada);
+                otimizadorMoment.ConfigurarHeuristica(heuristica);
                 otimizadorMoment.LimparResultadosAnteriores();
 
                 var otimizouMoment = otimizadorMoment.Otimizar("global.js", "core-test.js");
@@ -154,6 +162,7 @@ namespace ConsoleComV8
             {
                 var otimizadorLodash = new Otimizador(_totalPorGeracao, _rodadas, 15, "Lodash", "ResultadosLodash");
                 otimizadorLodash.ConfigurarRodada(rodada);
+                otimizadorLodash.ConfigurarHeuristica(heuristica);
                 otimizadorLodash.LimparResultadosAnteriores();
                 otimizadorLodash.UsarSetTimeout();
 
@@ -173,6 +182,7 @@ namespace ConsoleComV8
             {
                 var otimizador = new Otimizador(_totalPorGeracao, _rodadas, 8, "underscore", "ResultadosUnderscore");
                 otimizador.ConfigurarRodada(rodada);
+                otimizador.ConfigurarHeuristica(heuristica);
                 otimizador.LimparResultadosAnteriores();
                 otimizador.UsarSetTimeout();
 
@@ -193,7 +203,7 @@ namespace ConsoleComV8
             GC.Collect();
 
             //Tire uma soneca
-            //Thread.Sleep(60000);
+            Thread.Sleep(60000);
 
             #endregion
         }

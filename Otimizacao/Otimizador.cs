@@ -21,6 +21,10 @@ namespace Otimizacao
         /// </summary>
         public int RodadaGlobalExterna { get; set; }
 
+        /// <summary>
+        /// GA ou HC por enquanto
+        /// </summary>
+        public string Heuristica { get; set; }
 
         /// <summary>
         /// NLog Logger
@@ -125,6 +129,8 @@ namespace Otimizacao
             _diretorioFontes = diretorioFontes;
             _diretorioExecucao = diretorioExecucao;
             _countGlobal = 0;
+
+            Heuristica = "GA";
 
             LimparResultadosAnteriores();
         }
@@ -904,6 +910,15 @@ namespace Otimizacao
             RodadaGlobalExterna = i;
 
             _diretorioExecucao = i + "_" + _diretorioExecucao;
+        }
+
+        /// <summary>
+        /// Configura o otimizador para uma determinada heuristica
+        /// </summary>
+        /// <param name="heuristica"></param>
+        public void ConfigurarHeuristica(string heuristica)
+        {
+            Heuristica = heuristica;
         }
     }
 }
