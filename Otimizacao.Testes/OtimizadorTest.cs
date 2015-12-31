@@ -33,7 +33,7 @@ namespace Otimizacao.Testes
         /// <summary>
         /// Roda, recupera excel e verifica os valores
         /// </summary>
-        [Test]
+        [Test, Ignore]
         public void ValidarExcel()
         {
             var otimizador = new Otimizador(5, 2, 20, "Require", "ResultadosUnderscore");

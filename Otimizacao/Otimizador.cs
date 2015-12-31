@@ -21,6 +21,10 @@ namespace Otimizacao
         /// </summary>
         public int RodadaGlobalExterna { get; set; }
 
+        /// <summary>
+        /// GA ou HC por enquanto
+        /// </summary>
+        public string Heuristica { get; set; }
 
         /// <summary>
         /// NLog Logger
@@ -126,6 +130,8 @@ namespace Otimizacao
             _diretorioExecucao = diretorioExecucao;
             _countGlobal = 0;
 
+            Heuristica = "GA";
+
             LimparResultadosAnteriores();
         }
 
@@ -162,33 +168,23 @@ namespace Otimizacao
         /// </returns>
         public bool Otimizar(string caminhoBibliotecaJs, string caminhoTestesJs)
         {
-            var sw = new Stopwatch();
-            sw.Start();
+
+            bool otimizou = false;
 
             _caminhoScriptTestes = caminhoTestesJs;
             _caminhoBiblioteca = caminhoBibliotecaJs;
 
             _logger.Info(string.Format("Iniciando Otimização do {0}", caminhoBibliotecaJs));
             _logger.Info(string.Format("    SetTimeout {0}", _usarSetTimeout));
-            _logger.Info(string.Format("    Individuos {0}", _size));
-            _logger.Info(string.Format("    Geracoes {0}", _executarAte));
+            _logger.Info(string.Format("    Heuristica {0}", Heuristica));
 
-            CriarExcel();
-            
-            CriarPrimeiraGeracao();
+            var sw = new Stopwatch();
+            sw.Start();
+            if(Heuristica == "GA")
+                otimizou = OtimizarUsandoGa();
 
-            ExecutarRodadas();
-            
-            sw.Stop();
-
-            _logger.Info("Rodada {0} executada com sucesso", RodadaGlobalExterna);
-            
-            var otimizou = MelhorIndividuo.Ast != _original.Ast;
-
-            _logger.Info("============================================================");
-            _logger.Info("  Houve otimizacao: {0}", otimizou);
-
-            _logger.Info("  Tempo total: {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
+            if(Heuristica == "HC")
+                otimizou = OtimizarUsandoHc();
 
             #region Gera o CSV da rodada
 
@@ -205,6 +201,96 @@ namespace Otimizacao
             myExport.ExportToFile("rodadas.csv");
 
             #endregion
+
+            sw.Stop();
+            _logger.Info("  Tempo total: {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
+
+            return otimizou;
+        }
+
+        /// <summary>
+        /// Usar HC para otimizar
+        /// </summary>
+        /// <returns></returns>
+        private bool OtimizarUsandoHc()
+        {
+            var totalVizinhosExplorar = _size;
+            var moverNoPrimeiroMelhor = true;
+            var otimizado = false;
+            var melhores = new List<Individuo>();
+
+            _logger.Info("      Avaliar {0} vizinhos", totalVizinhosExplorar);
+
+            CriarIndividuoOriginal(_caminhoBiblioteca);
+
+            for (int i = 1; i < totalVizinhosExplorar -1; i++)
+            {
+                //cria o vizinho
+                _logger.Info("      {0}", i);
+                
+                Individuo c = MelhorIndividuo.Clone();
+                
+                ExecutarMutacao(c); 
+                
+                //Avalia o vizinho e veja se melhorou
+                var fitvizinho = ExecutarTestesParaIndividuoEspecifico(i, c);
+
+                if (fitvizinho < 0)
+                    fitvizinho = fitvizinho*-1;
+
+
+                if (fitvizinho < _fitnessMin)
+                {
+                    _logger.Info("      Encontrado. FIT Antigo {0} | FIT novo {1}", _fitnessMin, c.Fitness);
+                    MelhorIndividuo = c;
+                    _fitnessMin = fitvizinho;
+                    otimizado = true;
+                    melhores.Add(c);
+                }
+            }
+
+            #region Cria diretorio dos resultados
+            string generationResultPath = Path.Combine(_diretorioExecucao, "0");
+            Directory.CreateDirectory(generationResultPath);
+            Thread.Sleep(5);
+            #endregion
+
+            foreach (var individuo in melhores)
+            {
+                string generationBestPath = string.Format("{0}\\{1}.js", generationResultPath, individuo.Id);
+
+                File.WriteAllText(generationBestPath, individuo.Codigo);
+            }
+
+
+            _logger.Info("============================================================");
+            _logger.Info("  Houve otimizacao: {0}", otimizado);
+
+            return otimizado;
+        }
+
+        /// <summary>
+        /// Usar GA como Heuristica de busca
+        /// </summary>
+        /// <returns></returns>
+        private bool OtimizarUsandoGa()
+        {
+
+            _logger.Info(string.Format("    Individuos {0}", _size));
+            _logger.Info(string.Format("    Geracoes {0}", _executarAte));
+
+            CriarPrimeiraGeracao();
+
+            ExecutarRodadas();
+
+            
+
+            _logger.Info("Rodada {0} executada com sucesso", RodadaGlobalExterna);
+
+            var otimizou = MelhorIndividuo.Ast != _original.Ast;
+
+            _logger.Info("============================================================");
+            _logger.Info("  Houve otimizacao: {0}", otimizou);
 
             return otimizou;
         }
@@ -875,7 +961,8 @@ namespace Otimizacao
             }
             catch (Exception ex)
             {
-                _logger.Trace(ex);
+                //_logger.Trace(ex);
+                _logger.Trace("AST invalida. Codigo nao gerado");
                 caminhoNovoAvaliado = "";
             }
             finally
@@ -904,6 +991,15 @@ namespace Otimizacao
             RodadaGlobalExterna = i;
 
             _diretorioExecucao = i + "_" + _diretorioExecucao;
+        }
+
+        /// <summary>
+        /// Configura o otimizador para uma determinada heuristica
+        /// </summary>
+        /// <param name="heuristica"></param>
+        public void ConfigurarHeuristica(string heuristica)
+        {
+            Heuristica = heuristica;
         }
     }
 }
