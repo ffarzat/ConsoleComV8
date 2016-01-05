@@ -627,7 +627,8 @@ namespace Otimizacao
                 }
                 catch (Exception ex)
                 {
-                    _logger.Trace(ex);
+                    //_logger.Trace(ex);
+                    //_logger.Trace("Erro na criação do original");
 
                     if (jHelper != null)
                     {
@@ -684,7 +685,8 @@ namespace Otimizacao
             }
             catch (Exception ex)
             {
-                _logger.Trace("          {0}", ex);
+                _logger.Trace("          Erro na Mutação");
+                //_logger.Trace("          {0}", ex);
 
                 sujeito.Ast = "";
                 sujeito.CriadoPor = Operador.Mutacao;
@@ -729,7 +731,7 @@ namespace Otimizacao
             catch (Exception ex)
             {
                 _logger.Trace("          Erro ao executar cruzamento");
-                _logger.Error(ex.ToString());
+                //_logger.Error(ex.ToString());
             }
             finally
             {
