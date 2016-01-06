@@ -9,7 +9,6 @@ using ClearScript.Manager;
 using ClearScript.Manager.Loaders;
 using Microsoft.ClearScript;
 using Microsoft.ClearScript.V8;
-using NLog;
 using Newtonsoft.Json.Linq;
 using Rhetos.Utilities;
 
@@ -88,11 +87,6 @@ namespace Otimizacao.Javascript
         /// Guarda os timers para simular o SetTimeout;
         /// </summary>
         private Dictionary<int, bool> _timers;
-
-        /// <summary>
-        /// NLog Logger
-        /// </summary>
-        private static Logger _logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// Cache dos arquivos em disco
@@ -379,7 +373,7 @@ namespace Otimizacao.Javascript
             }
             catch (Exception ex)
             {
-                _logger.Trace(ex.ToString());
+                Console.WriteLine(ex.ToString());
                 return "";
             }
             
@@ -415,7 +409,7 @@ namespace Otimizacao.Javascript
             catch (Exception ex )
             {
                 
-                _logger.Trace(ex.ToString());
+                Console.WriteLine(ex.ToString());
                 return 0;
             }
             
@@ -536,11 +530,11 @@ namespace Otimizacao.Javascript
             }
             catch (ScriptEngineException ex)
             {
-                _logger.Trace(ex);
+                Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                _logger.Trace(ex);
+                Console.WriteLine(ex);
             }
 
         }
@@ -567,8 +561,8 @@ namespace Otimizacao.Javascript
             }
             catch (Exception ex)
             {
-                //_logger.Trace(ex);
-                _logger.Trace("AST Inválida");
+                //Console.WriteLine(ex);
+                Console.WriteLine("AST Inválida");
                 return "";
             }
 
@@ -673,20 +667,20 @@ namespace Otimizacao.Javascript
             }
             catch (ScriptEngineException ex)
             {
-                //_logger.Trace(ex.ErrorDetails);
-                //_logger.Trace(ex.ToString());
-                _logger.Trace("         AST inválida");
+                //Console.WriteLine(ex.ErrorDetails);
+                //Console.WriteLine(ex.ToString());
+                Console.WriteLine("         AST inválida");
                 return _fitTopValue + 1000;
             }
             catch (Exception ex)
             {
-                _logger.Trace(ex.ToString());
+                Console.WriteLine(ex.ToString());
                 return _fitTopValue + 1000;
             }
 
             while (GetTimersCount() > 0 & sw.Elapsed.Seconds <= _timeoutTestes)
             {
-                //_logger.Trace("     Aguardando encerrar o SetTimeout");
+                //Console.WriteLine("     Aguardando encerrar o SetTimeout");
                 Thread.Sleep(5);
             }
             
@@ -704,8 +698,8 @@ namespace Otimizacao.Javascript
             //    return _fitTopValue + TestesComFalha > 0 ? TestesComFalha : 1000;
 
 
-            //_logger.Info(string.Format("           Total:{0}, Sucesso: {1}, Falha: {2}", this.TotalTestes, this.TestesComSucesso, this.TestesComFalha));
-            //_logger.Info(string.Format("           {0} segundos para avaliar o individuo {1}", sw.Elapsed.Seconds, nomeArquivoIndividuo));
+            //Console.WriteLine(string.Format("           Total:{0}, Sucesso: {1}, Falha: {2}", this.TotalTestes, this.TestesComSucesso, this.TestesComFalha));
+            //Console.WriteLine(string.Format("           {0} segundos para avaliar o individuo {1}", sw.Elapsed.Seconds, nomeArquivoIndividuo));
 
             //this.FalhasDosTestes.ForEach(this.Log);
 
@@ -805,8 +799,8 @@ namespace Otimizacao.Javascript
             catch (Exception ex)
             {
                 _timers[id] = false;
-                //_logger.Trace("         Erro na execução do SetTimeout id {0}", id);
-                _logger.Trace(ex);
+                //Console.WriteLine("         Erro na execução do SetTimeout id {0}", id);
+                Console.WriteLine(ex);
                 Monitor.Exit(_timers);
             }
         }
@@ -822,7 +816,7 @@ namespace Otimizacao.Javascript
             var consoleOut = arg.Replace("%s", "{0}");
             string one = args1 == null ? "" : args1.ToString();
             string two = args2 == null ? "" : args2.ToString();
-            _logger.Info(consoleOut, one, two);
+            Console.WriteLine(consoleOut, one, two);
         }
 
         /// <summary>
@@ -830,7 +824,7 @@ namespace Otimizacao.Javascript
         /// </summary>
         public void Log(string mensagem)
         {
-            _logger.Info(mensagem);
+            Console.WriteLine(mensagem);
         }
 
         /// <summary>

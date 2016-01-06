@@ -73,7 +73,6 @@ D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ConsoleComV8.exe
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ConsoleComV8.pdb
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ClearScript.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ClearScript.Manager.dll
-D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\NLog.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Otimizacao.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Newtonsoft.Json.dll
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\Otimizacao.pdb
@@ -81,7 +80,6 @@ D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ClearScript.pdb
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ClearScript.xml
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ClearScript.Manager.pdb
 D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\ClearScript.Manager.xml
-D:\GitHub\ConsoleComV8\ConsoleComV8\bin\Debug\NLog.xml
 D:\GitHub\ConsoleComV8\ConsoleComV8\obj\Debug\ConsoleComV8.csprojResolveAssemblyReference.cache
 D:\GitHub\ConsoleComV8\ConsoleComV8\obj\Debug\ConsoleComV8.exe
 D:\GitHub\ConsoleComV8\ConsoleComV8\obj\Debug\ConsoleComV8.pdb

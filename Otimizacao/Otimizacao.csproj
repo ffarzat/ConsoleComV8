@@ -40,9 +40,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Refs\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="NLog">
-      <HintPath>..\packages\NLog.4.0.1\lib\net45\NLog.dll</HintPath>
-    </Reference>
     <Reference Include="Rhetos.Utilities">
       <HintPath>..\Refs\Rhetos.Utilities.dll</HintPath>
     </Reference>
