@@ -779,7 +779,7 @@ namespace Otimizacao
 
             #region Codigo Vazio [sujeito inválido]
 
-            if (string.IsNullOrEmpty(sujeito.Codigo))
+            if (string.IsNullOrEmpty(sujeito.Codigo) | (!File.Exists(caminhoNovoAvaliado)))
             {
                 Console.WriteLine("              Codigo Vazio");
 
