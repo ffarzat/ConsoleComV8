@@ -801,8 +801,8 @@ namespace Otimizacao.Javascript
             catch (Exception ex)
             {
                 _timers[id] = false;
-                //Console.WriteLine("         Erro na execução do SetTimeout id {0}", id);
-                Console.WriteLine(ex);
+                Console.WriteLine("         Erro na execução do SetTimeout id {0}", id);
+                //Console.WriteLine(ex);
                 Monitor.Exit(_timers);
             }
         }
