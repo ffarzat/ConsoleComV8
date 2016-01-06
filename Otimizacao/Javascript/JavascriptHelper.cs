@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading;
 using ClearScript.Manager;
@@ -332,6 +333,7 @@ namespace Otimizacao.Javascript
         /// <param name="ast">árvore no formato do esprima</param>
         /// <param name="randonNode">Linha para excluir</param>
         /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
         public string ExecutarMutacaoExclusao(string ast, int randonNode)
         {
             try
