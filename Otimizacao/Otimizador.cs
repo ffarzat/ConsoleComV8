@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Threading;
-using NLog;
 using Otimizacao.Javascript;
 
 namespace Otimizacao
@@ -25,11 +24,6 @@ namespace Otimizacao
         /// GA ou HC por enquanto
         /// </summary>
         public string Heuristica { get; set; }
-
-        /// <summary>
-        /// NLog Logger
-        /// </summary>
-        private static Logger _logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// Timeout em segundos para avaliação de um individuo
@@ -174,9 +168,9 @@ namespace Otimizacao
             _caminhoScriptTestes = caminhoTestesJs;
             _caminhoBiblioteca = caminhoBibliotecaJs;
 
-            _logger.Info(string.Format("Iniciando Otimização do {0}", caminhoBibliotecaJs));
-            _logger.Info(string.Format("    SetTimeout {0}", _usarSetTimeout));
-            _logger.Info(string.Format("    Heuristica {0}", Heuristica));
+            Console.WriteLine(string.Format("Iniciando Otimização do {0}", caminhoBibliotecaJs));
+            Console.WriteLine(string.Format("    SetTimeout {0}", _usarSetTimeout));
+            Console.WriteLine(string.Format("    Heuristica {0}", Heuristica));
 
             var sw = new Stopwatch();
             sw.Start();
@@ -203,7 +197,7 @@ namespace Otimizacao
             #endregion
 
             sw.Stop();
-            _logger.Info("  Tempo total: {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
+            Console.WriteLine("  Tempo total: {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
 
             return otimizou;
         }
@@ -219,14 +213,14 @@ namespace Otimizacao
             var otimizado = false;
             var melhores = new List<Individuo>();
 
-            _logger.Info("      Avaliar {0} vizinhos", totalVizinhosExplorar);
+            Console.WriteLine("      Avaliar {0} vizinhos", totalVizinhosExplorar);
 
             CriarIndividuoOriginal(_caminhoBiblioteca);
 
             for (int i = 1; i < totalVizinhosExplorar -1; i++)
             {
                 //cria o vizinho
-                _logger.Info("      {0}", i);
+                Console.WriteLine("      {0}", i);
                 
                 Individuo c = MelhorIndividuo.Clone();
                 
@@ -241,7 +235,7 @@ namespace Otimizacao
 
                 if (fitvizinho < _fitnessMin)
                 {
-                    _logger.Info("      Encontrado. FIT Antigo {0} | FIT novo {1}", _fitnessMin, c.Fitness);
+                    Console.WriteLine("      Encontrado. FIT Antigo {0} | FIT novo {1}", _fitnessMin, c.Fitness);
                     MelhorIndividuo = c;
                     _fitnessMin = fitvizinho;
                     otimizado = true;
@@ -263,8 +257,8 @@ namespace Otimizacao
             }
 
 
-            _logger.Info("============================================================");
-            _logger.Info("  Houve otimizacao: {0}", otimizado);
+            Console.WriteLine("============================================================");
+            Console.WriteLine("  Houve otimizacao: {0}", otimizado);
 
             return otimizado;
         }
@@ -276,8 +270,8 @@ namespace Otimizacao
         private bool OtimizarUsandoGa()
         {
 
-            _logger.Info(string.Format("    Individuos {0}", _size));
-            _logger.Info(string.Format("    Geracoes {0}", _executarAte));
+            Console.WriteLine(string.Format("    Individuos {0}", _size));
+            Console.WriteLine(string.Format("    Geracoes {0}", _executarAte));
 
             CriarPrimeiraGeracao();
 
@@ -285,12 +279,12 @@ namespace Otimizacao
 
             
 
-            _logger.Info("Rodada {0} executada com sucesso", RodadaGlobalExterna);
+            Console.WriteLine("Rodada {0} executada com sucesso", RodadaGlobalExterna);
 
             var otimizou = MelhorIndividuo.Ast != _original.Ast;
 
-            _logger.Info("============================================================");
-            _logger.Info("  Houve otimizacao: {0}", otimizou);
+            Console.WriteLine("============================================================");
+            Console.WriteLine("  Houve otimizacao: {0}", otimizou);
 
             return otimizou;
         }
@@ -346,23 +340,23 @@ namespace Otimizacao
             for (int i = 0; i < _executarAte; i++)
             {
                 _generationCount = i;
-                _logger.Info(string.Format("Geracao {0}", i));
+                Console.WriteLine(string.Format("Geracao {0}", i));
 
                 var sw = new Stopwatch();
                 sw.Start();
-                _logger.Info("      Executando cruzamentos...");
+                Console.WriteLine("      Executando cruzamentos...");
 
                 Crossover();
 
-                _logger.Info("      Executando mutacoes...");
+                Console.WriteLine("      Executando mutacoes...");
 
                 Mutate();
 
-                _logger.Info("      Avaliando...");
+                Console.WriteLine("      Avaliando...");
 
                 ExecuteFitEvaluation();
 
-                _logger.Info("      Selecionando...");
+                Console.WriteLine("      Selecionando...");
 
                 Selection();
                 
@@ -370,8 +364,8 @@ namespace Otimizacao
                 
                 sw.Stop();
 
-                _logger.Info("Geração avaliada em : {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
-                _logger.Info("===================================");
+                Console.WriteLine("Geração avaliada em : {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
+                Console.WriteLine("===================================");
             }
             
         }
@@ -422,7 +416,7 @@ namespace Otimizacao
                 {
                     _fitnessMin = fitness;
                     MelhorIndividuo = c;
-                    _logger.Info("-> Bom! Valor={0}", _fitnessMin);
+                    Console.WriteLine("-> Bom! Valor={0}", _fitnessMin);
 
                     melhores.Add(c);
 
@@ -511,7 +505,7 @@ namespace Otimizacao
                 }
             }
             sw.Stop();
-            _logger.Info("      {0} crossover(s) executados em {1}", count, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
+            Console.WriteLine("      {0} crossover(s) executados em {1}", count, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
             
         }
 
@@ -539,7 +533,7 @@ namespace Otimizacao
                 }
             }
             sw.Stop();
-            _logger.Info("      {0} mutações executadas em {1}", count, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
+            Console.WriteLine("      {0} mutações executadas em {1}", count, sw.Elapsed.ToString(@"hh\:mm\:ss\.ffff"));
         }
 
         /// <summary>
@@ -550,12 +544,12 @@ namespace Otimizacao
             CriarIndividuoOriginal(_caminhoBiblioteca);
             
             
-            _logger.Info(string.Format("    Avaliando o original"));
+            Console.WriteLine(string.Format("    Avaliando o original"));
             AvaliarIndividuo(0,_original);
             _fitnessMin = _original.Fitness;
             _population.Add(_original);
 
-            _logger.Info(string.Format("    Criando a populaçao Inicial com {0} individuos",_size));
+            Console.WriteLine(string.Format("    Criando a populaçao Inicial com {0} individuos",_size));
             
             for (int i = 1; i < (_size); i++) 
             {
@@ -592,7 +586,7 @@ namespace Otimizacao
             while (_original.Fitness == Int64.MaxValue & contador < 50)
             {
 
-                _logger.Info("      Criando e V8engine - Tentativa {0}", contador);
+                Console.WriteLine("      Criando e V8engine - Tentativa {0}", contador);
 
                 try
                 {
@@ -627,8 +621,8 @@ namespace Otimizacao
                 }
                 catch (Exception ex)
                 {
-                    //_logger.Trace(ex);
-                    //_logger.Trace("Erro na criação do original");
+                    //Console.WriteLine(ex);
+                    //Console.WriteLine("Erro na criação do original");
 
                     if (jHelper != null)
                     {
@@ -637,7 +631,7 @@ namespace Otimizacao
 
                     //Dorme um minuto e tenta de novo
                     Thread.Sleep(60000);
-                    _logger.Info(" Falhou ao criar individuo. Tentando novamente.");
+                    Console.WriteLine(" Falhou ao criar individuo. Tentando novamente.");
 
                 }
 
@@ -669,7 +663,7 @@ namespace Otimizacao
                 while (novaAst == "" & totalMutacoes < 5)
                 {
                     if (totalMutacoes > 1)
-                        _logger.Trace("          Tentativa {0} de executar mutação", totalMutacoes);
+                        Console.WriteLine("          Tentativa {0} de executar mutação", totalMutacoes);
 
                     int no = Rand.Next(0, _total);
 
@@ -685,8 +679,8 @@ namespace Otimizacao
             }
             catch (Exception ex)
             {
-                _logger.Trace("          Erro na Mutação");
-                //_logger.Trace("          {0}", ex);
+                Console.WriteLine("          Erro na Mutação");
+                //Console.WriteLine("          {0}", ex);
 
                 sujeito.Ast = "";
                 sujeito.CriadoPor = Operador.Mutacao;
@@ -730,8 +724,8 @@ namespace Otimizacao
             }
             catch (Exception ex)
             {
-                _logger.Trace("          Erro ao executar cruzamento");
-                //_logger.Error(ex.ToString());
+                Console.WriteLine("          Erro ao executar cruzamento");
+                //Console.Error(ex.ToString());
             }
             finally
             {
@@ -763,7 +757,7 @@ namespace Otimizacao
 
             sujeito.Fitness = fits.Average();
 
-            _logger.Info(string.Format("            FIT:{0}     | CTs: {1}      | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
+            Console.WriteLine(string.Format("            FIT:{0}     | CTs: {1}      | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
 
             return sujeito.Fitness;
         }
@@ -785,15 +779,15 @@ namespace Otimizacao
 
             #region Codigo Vazio [sujeito inválido]
 
-            if (string.IsNullOrEmpty(sujeito.Codigo))
+            if (string.IsNullOrEmpty(sujeito.Codigo) | (!File.Exists(caminhoNovoAvaliado)))
             {
-                _logger.Info("              Codigo Vazio");
+                Console.WriteLine("              Codigo Vazio");
 
                 sujeito.Fitness = valorFitFalha;
                 sujeito.TestesComSucesso = 0;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
 
-                _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness,
+                Console.WriteLine(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness,
                                            sujeito.TestesComSucesso, sujeito.TempoExecucao));
 
                 CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
@@ -807,12 +801,12 @@ namespace Otimizacao
 
             if (indice > 0 & _original.Codigo.Equals(sujeito.Codigo))
             {
-                _logger.Info("              Igual ao Original");
+                Console.WriteLine("              Igual ao Original");
 
                 sujeito.TempoExecucao = _original.TempoExecucao;
                 sujeito.TestesComSucesso = _original.TestesComSucesso;
                 sujeito.Fitness = _original.Fitness;
-                _logger.Info(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness,
+                Console.WriteLine(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness,
                                            sujeito.TestesComSucesso, sujeito.TempoExecucao));
 
                 CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
@@ -832,7 +826,7 @@ namespace Otimizacao
                 jHelper.ConfigurarTimeOut(_timeout);
                 jHelper.ConfigurarMelhorFit(_fitnessMin);
 
-                //_logger.Trace("              Avaliando via testes");
+                //Console.WriteLine("              Avaliando via testes");
 
                 var avaliar =
                     new Thread(() => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
@@ -842,7 +836,7 @@ namespace Otimizacao
                 sw.Stop();
                 jHelper.Dispose();
 
-                //_logger.Info("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
+                //Console.WriteLine("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
 
                 if (!jHelper.ExecutouTestesAteFinal)
                     sujeito.Fitness = valorFitFalha;
@@ -855,13 +849,13 @@ namespace Otimizacao
             }
             catch (Exception ex)
             {
-                //_logger.Info("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
+                //Console.WriteLine("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
 
                 sujeito.Fitness = valorFitFalha;
                 sujeito.TestesComSucesso = jHelper != null ? jHelper.TestesComSucesso : 0;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
 
-                _logger.Trace(ex);
+                Console.WriteLine(ex);
 
                 if (jHelper != null)
                     jHelper.Dispose();
@@ -884,7 +878,7 @@ namespace Otimizacao
         /// <param name="tempoTotal"></param>
         private void CriarLinhaExcel(int indice, Individuo sujeito, int testesComSucesso, string tempoTotal)
         {
-            //_logger.Info("              Incluído no excel : {0}", indice);
+            //Console.WriteLine("              Incluído no excel : {0}", indice);
 
             #region Inclui no  CSV
 
@@ -963,8 +957,8 @@ namespace Otimizacao
             }
             catch (Exception ex)
             {
-                //_logger.Trace(ex);
-                _logger.Trace("AST invalida. Codigo nao gerado");
+                //Console.WriteLine(ex);
+                Console.WriteLine("AST invalida. Codigo nao gerado");
                 caminhoNovoAvaliado = "";
             }
             finally

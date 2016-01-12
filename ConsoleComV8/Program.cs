@@ -8,7 +8,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using ClearScript.Manager;
 using Microsoft.ClearScript.V8;
-using NLog;
 using Otimizacao;
 using Otimizacao.Javascript;
 
