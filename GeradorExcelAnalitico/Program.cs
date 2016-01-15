@@ -60,7 +60,7 @@ namespace GeradorExcelAnalitico
                 var hcDir = subdir.GetDirectories().FirstOrDefault(n => n.Name == "HC");
 
                 if (gaDir != null)
-                    ProcessarDiretorioGa(gaDir, subdir.Name);
+                    ProcessarDiretorioGa(gaDir, subdir);
 
                 
             }
@@ -71,7 +71,7 @@ namespace GeradorExcelAnalitico
         /// </summary>
         /// <param name="directoryGa"></param>
         /// <param name="biblioteca"></param>
-        private static void ProcessarDiretorioGa(DirectoryInfo directoryGa, string biblioteca)
+        private static void ProcessarDiretorioGa(DirectoryInfo directoryGa, DirectoryInfo biblioteca)
         {
             //pego o csv ou xsls
             var rodadas = new List<RodadaMapper>();
@@ -128,7 +128,7 @@ namespace GeradorExcelAnalitico
         /// <param name="instanceFile"></param>
         /// <param name="biblioteca"></param>
         /// <param name="algoritmo"></param>
-        private static List<RodadaMapper> RecuperarRodadasDoCsv(FileInfo instanceFile, string biblioteca, string algoritmo)
+        private static List<RodadaMapper> RecuperarRodadasDoCsv(FileInfo instanceFile, DirectoryInfo biblioteca, string algoritmo)
         {
             //Ler as rodadas
             var rodadas = new List<RodadaMapper>();
@@ -142,6 +142,8 @@ namespace GeradorExcelAnalitico
                 csv.SetDelimiters(",");
                 csv.HasFieldsEnclosedInQuotes = true;
 
+                var totalLinhas = ContarLinhas(biblioteca.GetFiles().First().FullName);
+
                 //Incluir ler o LOC e o caracteres original
 
                 while (!csv.EndOfData)
@@ -150,18 +152,30 @@ namespace GeradorExcelAnalitico
                     rodadas.Add(new RodadaMapper()
                         {
                             Algoritmo = algoritmo,
-                            Biblioteca = biblioteca,
+                            Biblioteca = biblioteca.Name,
                             Rodada = currentRow[0],
                             Individuo = currentRow[1],
                             Operacao = currentRow[2],
                             FitnessFinal = currentRow[3],
                             TempoFinalComUnload = currentRow[4],
-                            Testes = currentRow[5]
+                            Testes = currentRow[5],
+                            LocOriginal = totalLinhas
                         });
                 }
             }
 
             return rodadas;
+        }
+
+        /// <summary>
+        /// Conta o número de linhas de um txt
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private static int ContarLinhas(string path)
+        {
+            string[] lines = System.IO.File.ReadAllLines(path);
+            return lines.Count();
         }
 
         /// <summary>
