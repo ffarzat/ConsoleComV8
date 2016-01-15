@@ -74,7 +74,7 @@ namespace GeradorExcelAnalitico
         private static void ProcessarDiretorioGa(DirectoryInfo directoryGa, string biblioteca)
         {
             //pego o csv ou xsls
-
+            var rodadas = new List<RodadaMapper>();
             var instanceFile = directoryGa.GetFiles().FirstOrDefault();
 
             if (instanceFile == null)
@@ -85,9 +85,39 @@ namespace GeradorExcelAnalitico
 
             if (instanceFile.Extension == ".csv")
             {
-                var rodadas = RecuperarRodadasDoCsv(instanceFile, biblioteca, directoryGa.Name);
-                //TODO: processar as rodadas contra os detalhes
+                rodadas = RecuperarRodadasDoCsv(instanceFile, biblioteca, directoryGa.Name);
             }
+
+            Console.WriteLine("Processando {0} rodadas do algoritmo {1} da biblioteca {1}",rodadas.Count, "GA", biblioteca);
+            
+            foreach (var instanciaGa in rodadas)
+            {
+                if (instanciaGa.Operacao == "Clonagem")
+                {
+                    //não encontrou. Continua o original
+                    instanciaGa.TempoOriginalComUnload = instanciaGa.TempoFinalComUnload;
+                    instanciaGa.CaracteresOriginal = instanciaGa.CaracteresFinal;
+                    instanciaGa.LocOriginal = instanciaGa.LocOriginal;
+                }
+                else
+                {
+                    var diretorioInstancia = directoryGa.GetDirectories().FirstOrDefault(d => d.Name.Contains(instanciaGa.Rodada));
+
+                    if (diretorioInstancia != null)
+                    {
+
+                        //Pegar o valor do original dentro da instancia
+
+                        //Incluir os valores
+                    }    
+                }
+
+                
+
+                
+
+            }
+
 
             
         }
@@ -111,6 +141,8 @@ namespace GeradorExcelAnalitico
                 csv.TextFieldType = FieldType.Delimited;
                 csv.SetDelimiters(",");
                 csv.HasFieldsEnclosedInQuotes = true;
+
+                //Incluir ler o LOC e o caracteres original
 
                 while (!csv.EndOfData)
                 {
