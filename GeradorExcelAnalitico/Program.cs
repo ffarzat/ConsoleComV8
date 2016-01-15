@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,13 @@ namespace GeradorExcelAnalitico
                 Environment.Exit(-1);
             }
 
+            if (!Directory.Exists(fromDirectoryPath))
+            {
+                Console.WriteLine("Diretório do experimento não existe | {0}", fromDirectoryPath);
+                Environment.Exit(-1);
+            }
 
+            
 
 
         }
