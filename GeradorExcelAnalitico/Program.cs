@@ -60,7 +60,7 @@ namespace GeradorExcelAnalitico
                 var hcDir = subdir.GetDirectories().FirstOrDefault(n => n.Name == "HC");
 
                 if (gaDir != null)
-                    ProcessarDiretorioGa(gaDir);
+                    ProcessarDiretorioGa(gaDir, subdir.Name);
 
                 
             }
@@ -70,7 +70,8 @@ namespace GeradorExcelAnalitico
         /// Processa a roda do GA
         /// </summary>
         /// <param name="directoryGa"></param>
-        private static void ProcessarDiretorioGa(DirectoryInfo directoryGa)
+        /// <param name="biblioteca"></param>
+        private static void ProcessarDiretorioGa(DirectoryInfo directoryGa, string biblioteca)
         {
             //pego o csv ou xsls
 
@@ -84,26 +85,51 @@ namespace GeradorExcelAnalitico
 
             if (instanceFile.Extension == ".csv")
             {
-                //Ler as rodadas
-
-                using (var csv = new TextFieldParser(instanceFile.FullName))
-                {
-                    csv.ReadLine();
-                    csv.ReadLine();
-
-                    csv.TextFieldType = FieldType.Delimited;
-                    csv.SetDelimiters(",");
-                    csv.HasFieldsEnclosedInQuotes = true;
-
-                    while (!csv.EndOfData)
-                    {
-                        string[] currentRow = csv.ReadFields();
-                        Console.WriteLine("{0} - {1}", currentRow[0], currentRow[3]);
-                    }
-                }
+                var rodadas = RecuperarRodadasDoCsv(instanceFile, biblioteca, directoryGa.Name);
+                //TODO: processar as rodadas contra os detalhes
             }
 
             
+        }
+
+        /// <summary>
+        /// Lê o csv e retorna uma lista com as rodadas
+        /// </summary>
+        /// <param name="instanceFile"></param>
+        /// <param name="biblioteca"></param>
+        /// <param name="algoritmo"></param>
+        private static List<RodadaMapper> RecuperarRodadasDoCsv(FileInfo instanceFile, string biblioteca, string algoritmo)
+        {
+            //Ler as rodadas
+            var rodadas = new List<RodadaMapper>();
+
+            using (var csv = new TextFieldParser(instanceFile.FullName))
+            {
+                csv.ReadLine();
+                csv.ReadLine();
+
+                csv.TextFieldType = FieldType.Delimited;
+                csv.SetDelimiters(",");
+                csv.HasFieldsEnclosedInQuotes = true;
+
+                while (!csv.EndOfData)
+                {
+                    string[] currentRow = csv.ReadFields();
+                    rodadas.Add(new RodadaMapper()
+                        {
+                            Algoritmo = algoritmo,
+                            Biblioteca = biblioteca,
+                            Rodada = currentRow[0],
+                            Individuo = currentRow[1],
+                            Operacao = currentRow[2],
+                            FitnessFinal = currentRow[3],
+                            TempoFinalComUnload = currentRow[4],
+                            Testes = currentRow[5]
+                        });
+                }
+            }
+
+            return rodadas;
         }
 
         /// <summary>
