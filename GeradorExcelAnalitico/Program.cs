@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic.FileIO;
 
 namespace GeradorExcelAnalitico
 {
@@ -12,6 +13,11 @@ namespace GeradorExcelAnalitico
     /// </summary>
     class Program
     {
+        /// <summary>
+        /// Guarda o diretório raiz. Os exceis resultado ficarão gravados aqui
+        /// </summary>
+        private static string _baseDirectory;
+
         /// <summary>
         /// Principal
         /// </summary>
@@ -34,6 +40,7 @@ namespace GeradorExcelAnalitico
                 Environment.Exit(-1);
             }
 
+            _baseDirectory = fromDirectoryPath;
             ValidarDiretorios(fromDirectoryPath);
             ProcessarDiretorios(fromDirectoryPath);
         }
@@ -49,11 +56,54 @@ namespace GeradorExcelAnalitico
             {
                 Console.WriteLine("     Processando : {0}", subdir.Name);
 
-                //GA
+                var gaDir = subdir.GetDirectories().FirstOrDefault(n => n.Name == "GA");
+                var hcDir = subdir.GetDirectories().FirstOrDefault(n => n.Name == "HC");
 
-                //HC
+                if (gaDir != null)
+                    ProcessarDiretorioGa(gaDir);
+
                 
             }
+        }
+
+        /// <summary>
+        /// Processa a roda do GA
+        /// </summary>
+        /// <param name="directoryGa"></param>
+        private static void ProcessarDiretorioGa(DirectoryInfo directoryGa)
+        {
+            //pego o csv ou xsls
+
+            var instanceFile = directoryGa.GetFiles().FirstOrDefault();
+
+            if (instanceFile == null)
+            {
+                Console.WriteLine("Deveria existir um arquivo com as rodadas | {0}", directoryGa.FullName);
+                Environment.Exit(-1);
+            }
+
+            if (instanceFile.Extension == ".csv")
+            {
+                //Ler as rodadas
+
+                using (var csv = new TextFieldParser(instanceFile.FullName))
+                {
+                    csv.ReadLine();
+                    csv.ReadLine();
+
+                    csv.TextFieldType = FieldType.Delimited;
+                    csv.SetDelimiters(",");
+                    csv.HasFieldsEnclosedInQuotes = true;
+
+                    while (!csv.EndOfData)
+                    {
+                        string[] currentRow = csv.ReadFields();
+                        Console.WriteLine("{0} - {1}", currentRow[0], currentRow[3]);
+                    }
+                }
+            }
+
+            
         }
 
         /// <summary>
