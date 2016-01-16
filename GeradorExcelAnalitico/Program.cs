@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic.FileIO;
+using SearchOption = System.IO.SearchOption;
 
 namespace GeradorExcelAnalitico
 {
@@ -85,7 +86,7 @@ namespace GeradorExcelAnalitico
 
             if (instanceFile.Extension == ".csv")
             {
-                rodadas = RecuperarRodadasDoCsv(instanceFile, biblioteca, directoryGa.Name);
+                rodadas = RecuperarRodadasDoCsv(instanceFile, biblioteca, directoryGa);
             }
 
             Console.WriteLine("Processando {0} rodadas do algoritmo {1} da biblioteca {1}",rodadas.Count, "GA", biblioteca);
@@ -127,8 +128,8 @@ namespace GeradorExcelAnalitico
         /// </summary>
         /// <param name="instanceFile"></param>
         /// <param name="biblioteca"></param>
-        /// <param name="algoritmo"></param>
-        private static List<RodadaMapper> RecuperarRodadasDoCsv(FileInfo instanceFile, DirectoryInfo biblioteca, string algoritmo)
+        /// <param name="dirGa"></param>
+        private static List<RodadaMapper> RecuperarRodadasDoCsv(FileInfo instanceFile, DirectoryInfo biblioteca, DirectoryInfo dirGa)
         {
             //Ler as rodadas
             var rodadas = new List<RodadaMapper>();
@@ -142,16 +143,27 @@ namespace GeradorExcelAnalitico
                 csv.SetDelimiters(",");
                 csv.HasFieldsEnclosedInQuotes = true;
 
+                //Conta das linhas do original
                 var totalLinhas = ContarLinhas(biblioteca.GetFiles().First().FullName);
-
-                //Incluir ler o LOC e o caracteres original
+                //Conta Tokens do Original
+                
 
                 while (!csv.EndOfData)
                 {
                     string[] currentRow = csv.ReadFields();
+
+                    string bestFile = Path.GetFileName(currentRow[1]);
+                    int totalLinhasBest = 0;
+                    var fileList = dirGa.GetFiles(bestFile, SearchOption.AllDirectories);
+                    
+                    if(fileList.Count() == 1)
+                        totalLinhasBest = ContarLinhas(fileList.First().FullName);
+
+
+
                     rodadas.Add(new RodadaMapper()
                         {
-                            Algoritmo = algoritmo,
+                            Algoritmo = dirGa.Name,
                             Biblioteca = biblioteca.Name,
                             Rodada = currentRow[0],
                             Individuo = currentRow[1],
@@ -159,7 +171,8 @@ namespace GeradorExcelAnalitico
                             FitnessFinal = currentRow[3],
                             TempoFinalComUnload = currentRow[4],
                             Testes = currentRow[5],
-                            LocOriginal = totalLinhas
+                            LocOriginal = totalLinhas,
+                            LocFinal = totalLinhasBest
                         });
                 }
             }
@@ -176,6 +189,22 @@ namespace GeradorExcelAnalitico
         {
             string[] lines = System.IO.File.ReadAllLines(path);
             return lines.Count();
+        }
+
+        /// <summary>
+        /// Conta o número de caracteres de um arquivo texto
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static int GetNumOfCharsInFile(string filePath)
+        {
+            int count = 0;
+            using (var sr = new StreamReader(filePath))
+            {
+                while (sr.Read() != -1)
+                    count++;
+            }
+            return count;
         }
 
         /// <summary>
