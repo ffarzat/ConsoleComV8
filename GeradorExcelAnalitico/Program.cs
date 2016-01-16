@@ -146,7 +146,7 @@ namespace GeradorExcelAnalitico
                 //Conta das linhas do original
                 var totalLinhas = ContarLinhas(biblioteca.GetFiles().First().FullName);
                 //Conta Tokens do Original
-                
+                var totalchars = GetNumOfCharsInFile(biblioteca.GetFiles().First().FullName);
 
                 while (!csv.EndOfData)
                 {
@@ -154,11 +154,14 @@ namespace GeradorExcelAnalitico
 
                     string bestFile = Path.GetFileName(currentRow[1]);
                     int totalLinhasBest = 0;
+                    int totalcharsBest = 0;
                     var fileList = dirGa.GetFiles(bestFile, SearchOption.AllDirectories);
-                    
-                    if(fileList.Count() == 1)
-                        totalLinhasBest = ContarLinhas(fileList.First().FullName);
 
+                    if (fileList.Any())
+                    {
+                        totalLinhasBest = ContarLinhas(fileList.First().FullName);
+                        totalcharsBest = GetNumOfCharsInFile(fileList.First().FullName);
+                    }
 
 
                     rodadas.Add(new RodadaMapper()
@@ -172,7 +175,9 @@ namespace GeradorExcelAnalitico
                             TempoFinalComUnload = currentRow[4],
                             Testes = currentRow[5],
                             LocOriginal = totalLinhas,
-                            LocFinal = totalLinhasBest
+                            LocFinal = totalLinhasBest,
+                            CaracteresOriginal = totalchars,
+                            CaracteresFinal = totalcharsBest
                         });
                 }
             }
