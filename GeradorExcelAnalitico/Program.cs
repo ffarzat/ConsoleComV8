@@ -78,10 +78,10 @@ namespace GeradorExcelAnalitico
                 var hcDir = subdir.GetDirectories().FirstOrDefault(n => n.Name == "HC");
 
                 if (gaDir != null)
-                    ProcessarDiretorioGa(gaDir, subdir, resultsDirectory);
+                    ProcessarDiretorio(gaDir, subdir, resultsDirectory);
 
                 if (hcDir != null)
-                    ProcessarDiretorioGa(hcDir, subdir, resultsDirectory);
+                    ProcessarDiretorio(hcDir, subdir, resultsDirectory);
 
             }
         }
@@ -92,7 +92,7 @@ namespace GeradorExcelAnalitico
         /// <param name="directoryGa"></param>
         /// <param name="biblioteca"></param>
         /// <param name="resultsDirectory"></param>
-        private static void ProcessarDiretorioGa(DirectoryInfo directoryGa, DirectoryInfo biblioteca, string resultsDirectory)
+        private static void ProcessarDiretorio(DirectoryInfo directoryGa, DirectoryInfo biblioteca, string resultsDirectory)
         {
             //pego o csv ou xsls
             var rodadas = new List<RodadaMapper>();
