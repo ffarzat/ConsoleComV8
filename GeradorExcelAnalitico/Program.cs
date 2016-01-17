@@ -29,10 +29,18 @@ namespace GeradorExcelAnalitico
 
             //Diretório do experimento (raiz)
             var fromDirectoryPath = args[0];
+            var resultsDirectory = args[1];
+
 
             if(string.IsNullOrEmpty(fromDirectoryPath))
             {    
                 Console.WriteLine("Diretório do experimento não informado");
+                Environment.Exit(-1);
+            }
+
+            if (string.IsNullOrEmpty(resultsDirectory))
+            {
+                Console.WriteLine("Diretório para slavar os resultados não informado");
                 Environment.Exit(-1);
             }
 
@@ -42,16 +50,22 @@ namespace GeradorExcelAnalitico
                 Environment.Exit(-1);
             }
 
+            if (!Directory.Exists(resultsDirectory))
+            {
+                Directory.CreateDirectory(resultsDirectory);
+            }
+
             _baseDirectory = fromDirectoryPath;
             ValidarDiretorios(fromDirectoryPath);
-            ProcessarDiretorios(fromDirectoryPath);
+            ProcessarDiretorios(fromDirectoryPath, resultsDirectory);
         }
 
         /// <summary>
         /// Processa os arquivos em excel, conta os arquivos em Js e gera o relatório final
         /// </summary>
         /// <param name="fromDirectoryPath"></param>
-        private static void ProcessarDiretorios(string fromDirectoryPath)
+        /// <param name="resultsDirectory"></param>
+        private static void ProcessarDiretorios(string fromDirectoryPath, string resultsDirectory)
         {
             var dir = new DirectoryInfo(fromDirectoryPath);
             foreach (var subdir in dir.GetDirectories())
@@ -62,9 +76,8 @@ namespace GeradorExcelAnalitico
                 var hcDir = subdir.GetDirectories().FirstOrDefault(n => n.Name == "HC");
 
                 if (gaDir != null)
-                    ProcessarDiretorioGa(gaDir, subdir);
+                    ProcessarDiretorioGa(gaDir, subdir, resultsDirectory);
 
-                
             }
         }
 
@@ -73,7 +86,8 @@ namespace GeradorExcelAnalitico
         /// </summary>
         /// <param name="directoryGa"></param>
         /// <param name="biblioteca"></param>
-        private static void ProcessarDiretorioGa(DirectoryInfo directoryGa, DirectoryInfo biblioteca)
+        /// <param name="resultsDirectory"></param>
+        private static void ProcessarDiretorioGa(DirectoryInfo directoryGa, DirectoryInfo biblioteca, string resultsDirectory)
         {
             //pego o csv ou xsls
             var rodadas = new List<RodadaMapper>();
@@ -85,43 +99,42 @@ namespace GeradorExcelAnalitico
                 Environment.Exit(-1);
             }
 
+            Console.WriteLine("Processando {0} rodadas do algoritmo {1} da biblioteca {1}",rodadas.Count, "GA", biblioteca);
+
             if (instanceFile.Extension == ".csv")
             {
-                rodadas = RecuperarRodadasDoGANoCsv(instanceFile, biblioteca, directoryGa);
+                rodadas = RecuperarRodadasDoGaNoCsv(instanceFile, biblioteca, directoryGa);
             }
 
-            Console.WriteLine("Processando {0} rodadas do algoritmo {1} da biblioteca {1}",rodadas.Count, "GA", biblioteca);
-            
-            foreach (var instanciaGa in rodadas)
+            #region Exporta CSV
+
+            var myExport = new CsvExport();
+
+            foreach (var rodadaMapper in rodadas)
             {
-                if (instanciaGa.Operacao == "Clonagem")
-                {
-                    //não encontrou. Continua o original
-                    instanciaGa.TempoOriginalComUnload = instanciaGa.TempoFinalComUnload;
-                    instanciaGa.CaracteresOriginal = instanciaGa.CaracteresFinal;
-                    instanciaGa.LocOriginal = instanciaGa.LocOriginal;
-                }
-                else
-                {
-                    var diretorioInstancia = directoryGa.GetDirectories().FirstOrDefault(d => d.Name.Contains(instanciaGa.Rodada));
+                myExport.AddRow();
 
-                    if (diretorioInstancia != null)
-                    {
-
-                        //Pegar o valor do original dentro da instancia
-
-                        //Incluir os valores
-                    }    
-                }
-
-                
-
-                
+                myExport["Rodada"] = rodadaMapper.Rodada;
+                myExport["TempoOriginalUnload"] = rodadaMapper.TempoOriginalComUnload;
+                myExport["TempoFinalUnload"] = rodadaMapper.TempoFinalComUnload;
+                myExport["TempoOriginalMS"] = rodadaMapper.Fitness;
+                myExport["TempoFinalMS"] = rodadaMapper.FitnessFinal;
+                myExport["LOCOriginal"] = rodadaMapper.LocOriginal;
+                myExport["LOCFinal"] = rodadaMapper.LocFinal;
+                myExport["CaracteresOrginal"] = rodadaMapper.CaracteresOriginal;
+                myExport["CaracteresFinal"] = rodadaMapper.CaracteresFinal;
 
             }
 
+            var fileName = Path.Combine(resultsDirectory, biblioteca.Name + "GA.csv");
 
-            
+            if (File.Exists(fileName))
+                File.Delete(fileName);
+
+            myExport.ExportToFile(fileName);
+
+            #endregion
+
         }
 
         /// <summary>
@@ -130,7 +143,7 @@ namespace GeradorExcelAnalitico
         /// <param name="instanceFile"></param>
         /// <param name="biblioteca"></param>
         /// <param name="dirGa"></param>
-        private static List<RodadaMapper> RecuperarRodadasDoGANoCsv(FileInfo instanceFile, DirectoryInfo biblioteca, DirectoryInfo dirGa)
+        private static List<RodadaMapper> RecuperarRodadasDoGaNoCsv(FileInfo instanceFile, DirectoryInfo biblioteca, DirectoryInfo dirGa)
         {
 
             if (!File.Exists(biblioteca.GetFiles().First().FullName))
@@ -262,9 +275,9 @@ namespace GeradorExcelAnalitico
 
             double mediaTempo = tempos.Average(t => t.Ticks);
             long longAverageTicks = Convert.ToInt64(mediaTempo);
-            tempoOriginal = TimeSpan.FromTicks(longAverageTicks).ToString(@"hh\:mm\:ss\.ffff");
+            tempoOriginal = TimeSpan.FromTicks(longAverageTicks).ToString(@"hh\:mm\:ss\,ffff");
 
-            fitOrignal = fits.Average().ToString(CultureInfo.InvariantCulture);
+            fitOrignal = fits.Average().ToString();
 
             return tempoOriginal;
         }
