@@ -80,6 +80,9 @@ namespace GeradorExcelAnalitico
                 if (gaDir != null)
                     ProcessarDiretorioGa(gaDir, subdir, resultsDirectory);
 
+                if (hcDir != null)
+                    ProcessarDiretorioGa(hcDir, subdir, resultsDirectory);
+
             }
         }
 
@@ -101,7 +104,7 @@ namespace GeradorExcelAnalitico
                 Environment.Exit(-1);
             }
 
-            Console.WriteLine("         Algoritmo {0}", "GA");
+            Console.WriteLine("         Algoritmo {0}", directoryGa.Name);
             ConverterTodosExceis(directoryGa);
 
             if (instanceFile.Extension == ".csv")
@@ -132,7 +135,7 @@ namespace GeradorExcelAnalitico
 
             }
 
-            var fileName = Path.Combine(resultsDirectory, biblioteca.Name + "GA.csv");
+            var fileName = Path.Combine(resultsDirectory, biblioteca.Name + directoryGa.Name + ".csv");
 
             if (File.Exists(fileName))
                 File.Delete(fileName);
