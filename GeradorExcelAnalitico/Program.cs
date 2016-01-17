@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Excel;
 using Microsoft.VisualBasic.FileIO;
 using SearchOption = System.IO.SearchOption;
 
@@ -99,12 +101,14 @@ namespace GeradorExcelAnalitico
                 Environment.Exit(-1);
             }
 
-            Console.WriteLine("Processando {0} rodadas do algoritmo {1} da biblioteca {1}",rodadas.Count, "GA", biblioteca);
+            Console.WriteLine("         Algoritmo {0}", "GA");
+            ConverterTodosExceis(directoryGa);
 
             if (instanceFile.Extension == ".csv")
             {
                 rodadas = RecuperarRodadasDoGaNoCsv(instanceFile, biblioteca, directoryGa);
             }
+            
 
             #region Exporta CSV
 
@@ -123,6 +127,8 @@ namespace GeradorExcelAnalitico
                 myExport["LOCFinal"] = rodadaMapper.LocFinal;
                 myExport["CaracteresOrginal"] = rodadaMapper.CaracteresOriginal;
                 myExport["CaracteresFinal"] = rodadaMapper.CaracteresFinal;
+                myExport["Operacao"] = rodadaMapper.Operacao;
+                myExport["Arquivo"] = rodadaMapper.Individuo;
 
             }
 
@@ -134,6 +140,68 @@ namespace GeradorExcelAnalitico
             myExport.ExportToFile(fileName);
 
             #endregion
+
+        }
+
+        /// <summary>
+        /// Encontra os arquivos em excel, converte em csv e os apaga
+        /// </summary>
+        /// <param name="directoryGa"></param>
+        private static void ConverterTodosExceis(DirectoryInfo directoryGa)
+        {
+            var fileList = directoryGa.GetFiles("*.xlsx", SearchOption.AllDirectories);
+
+            Console.WriteLine("             Convertendo {0} arquivos em csv.", fileList.Count());
+
+            foreach (var fileInfo in fileList)
+            {
+                ConverterEmCsvEApagar(fileInfo);
+            }
+        }
+
+        /// <summary>
+        /// Converte o excel em csv e apaga o excel
+        /// </summary>
+        /// <param name="instanceFile"></param>
+        private static void ConverterEmCsvEApagar(FileInfo instanceFile)
+        {
+            var myExport = new CsvExport();
+
+            FileStream stream = File.Open(instanceFile.FullName, FileMode.Open, FileAccess.Read);
+
+            // Reading from a OpenXml Excel file (2007 format; *.xlsx)
+            IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+            
+            excelReader.IsFirstRowAsColumnNames = true;
+            var firstRow = false;
+
+            while (excelReader.Read())
+            {
+                if (firstRow)
+                {
+                    myExport.AddRow();
+
+                    myExport["Rodada"] = excelReader.GetString(0);
+                    myExport["Individuo"] = excelReader.GetString(1);
+                    myExport["Operacao"] = excelReader.GetString(2);
+                    myExport["Fitness"] = excelReader.GetString(3);
+                    myExport["Tempo"] = excelReader.GetString(4).Replace("31/12/1899 ", ""); //Bug na leitura do campo 
+                    myExport["Testes"] = excelReader.GetString(5);
+                }
+
+                firstRow = true;
+            }
+            
+            // Free resources (IExcelDataReader is IDisposable)
+            excelReader.Close();
+
+            string output = instanceFile.FullName.Replace("xlsx", "csv");
+            if (File.Exists(output))
+                File.Delete(output);
+
+            myExport.ExportToFile(output);
+
+            File.Delete(instanceFile.FullName);
 
         }
 
