@@ -217,6 +217,9 @@ namespace Otimizacao
 
             CriarIndividuoOriginal(_caminhoBiblioteca);
 
+            AvaliarIndividuo(0, MelhorIndividuo);
+
+            
             for (int i = 1; i < totalVizinhosExplorar -1; i++)
             {
                 //cria o vizinho
@@ -227,7 +230,7 @@ namespace Otimizacao
                 ExecutarMutacao(c); 
                 
                 //Avalia o vizinho e veja se melhorou
-                var fitvizinho = ExecutarTestesParaIndividuoEspecifico(i, c);
+                var fitvizinho = AvaliarIndividuo(i, c);
 
                 if (fitvizinho < 0)
                     fitvizinho = fitvizinho*-1;
