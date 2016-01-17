@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -86,7 +87,7 @@ namespace GeradorExcelAnalitico
 
             if (instanceFile.Extension == ".csv")
             {
-                rodadas = RecuperarRodadasDoCsv(instanceFile, biblioteca, directoryGa);
+                rodadas = RecuperarRodadasDoGANoCsv(instanceFile, biblioteca, directoryGa);
             }
 
             Console.WriteLine("Processando {0} rodadas do algoritmo {1} da biblioteca {1}",rodadas.Count, "GA", biblioteca);
@@ -129,7 +130,7 @@ namespace GeradorExcelAnalitico
         /// <param name="instanceFile"></param>
         /// <param name="biblioteca"></param>
         /// <param name="dirGa"></param>
-        private static List<RodadaMapper> RecuperarRodadasDoCsv(FileInfo instanceFile, DirectoryInfo biblioteca, DirectoryInfo dirGa)
+        private static List<RodadaMapper> RecuperarRodadasDoGANoCsv(FileInfo instanceFile, DirectoryInfo biblioteca, DirectoryInfo dirGa)
         {
 
             if (!File.Exists(biblioteca.GetFiles().First().FullName))
@@ -144,8 +145,8 @@ namespace GeradorExcelAnalitico
 
             using (var csv = new TextFieldParser(instanceFile.FullName))
             {
-               csv.ReadLine();
-               csv.ReadLine();
+                csv.ReadLine();
+                csv.ReadLine();
 
                 csv.TextFieldType = FieldType.Delimited;
                 csv.SetDelimiters(",");
@@ -155,22 +156,43 @@ namespace GeradorExcelAnalitico
                 var totalLinhas = ContarLinhas(biblioteca.GetFiles().First().FullName);
                 //Conta Tokens do Original
                 var totalchars = GetNumOfCharsInFile(biblioteca.GetFiles().First().FullName);
-                
 
                 while (!csv.EndOfData)
                 {
                     string[] currentRow = csv.ReadFields();
-
                     string bestFile = Path.GetFileName(currentRow[1]);
                     int totalLinhasBest = 0;
                     int totalcharsBest = 0;
+                    string tempoOriginal = "00:00:00,000";
+                    string fitOrignal = "00000";
+                    string tempoFinalComUnload = "";
+                    string fitFinal = "";
+                    //Tempo e fit originais
+                    tempoOriginal = RecuperarTempoMedioeFitOriginal(dirGa, currentRow[0], out fitOrignal);
+
+
                     var fileList = dirGa.GetFiles(bestFile, SearchOption.AllDirectories);
+                    //Se o arquivo melhorado existe, conta as linhas e os caracteres do mesmo
 
                     if (fileList.Any())
                     {
                         totalLinhasBest = ContarLinhas(fileList.First().FullName);
                         totalcharsBest = GetNumOfCharsInFile(fileList.First().FullName);
+                        tempoFinalComUnload = currentRow[4];
+                        fitFinal = currentRow[3];
                     }
+                    else
+                    {
+                        //Não houve melhor
+                        totalLinhasBest = totalLinhas;
+                        totalcharsBest = totalchars;
+                        tempoFinalComUnload = tempoOriginal;
+                        fitFinal = fitOrignal;
+                    }
+
+                    
+
+
 
 
                     rodadas.Add(new RodadaMapper()
@@ -180,8 +202,10 @@ namespace GeradorExcelAnalitico
                             Rodada = currentRow[0],
                             Individuo = currentRow[1],
                             Operacao = currentRow[2],
-                            FitnessFinal = currentRow[3],
-                            TempoFinalComUnload = currentRow[4],
+                            Fitness = fitOrignal,
+                            FitnessFinal = fitFinal,
+                            TempoOriginalComUnload = tempoOriginal,
+                            TempoFinalComUnload = tempoFinalComUnload,
                             Testes = currentRow[5],
                             LocOriginal = totalLinhas,
                             LocFinal = totalLinhasBest,
@@ -192,6 +216,57 @@ namespace GeradorExcelAnalitico
             }
 
             return rodadas;
+        }
+
+        /// <summary>
+        /// Ecnontra o csv da rodada em questão, pega o tempo médio do original e retorna
+        /// </summary>
+        /// <param name="dirGa"></param>
+        /// <param name="rodadaAlvo"></param>
+        /// <param name="fitOrignal"></param>
+        /// <returns></returns>
+        private static string RecuperarTempoMedioeFitOriginal(DirectoryInfo dirGa, string rodadaAlvo, out string fitOrignal)
+        {
+            var fileList = dirGa.GetDirectories().First(d => d.Name.Contains(rodadaAlvo + "_")).GetFiles("resultados.csv", SearchOption.AllDirectories);
+            var tempoOriginal = "0";
+            fitOrignal = "0";
+
+            var tempos = new List<TimeSpan>();
+            var fits = new List<double>();
+
+            if (fileList.Any())
+            {
+                using (var csv = new TextFieldParser(fileList.First().FullName))
+                {
+                    csv.ReadLine();
+                    csv.ReadLine();
+
+                    csv.TextFieldType = FieldType.Delimited;
+                    csv.SetDelimiters(",");
+                    csv.HasFieldsEnclosedInQuotes = true;
+                    
+                    //Geracao,Individuo,Operacao,Fitness,Tempo,Testes
+                    //nesse arquivo as 5 primeiras linhas são o orignal
+                    
+                    for (int i = 0; i < 5; i++)
+                    {
+                        string[] currentRow = csv.ReadFields();
+
+                        tempos.Add(TimeSpan.Parse(currentRow[4]));
+                        fits.Add(Double.Parse(currentRow[3]));
+                    }
+                    
+                        
+                }
+            }
+
+            double mediaTempo = tempos.Average(t => t.Ticks);
+            long longAverageTicks = Convert.ToInt64(mediaTempo);
+            tempoOriginal = TimeSpan.FromTicks(longAverageTicks).ToString(@"hh\:mm\:ss\.ffff");
+
+            fitOrignal = fits.Average().ToString(CultureInfo.InvariantCulture);
+
+            return tempoOriginal;
         }
 
         /// <summary>
