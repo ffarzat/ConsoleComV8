@@ -131,13 +131,21 @@ namespace GeradorExcelAnalitico
         /// <param name="dirGa"></param>
         private static List<RodadaMapper> RecuperarRodadasDoCsv(FileInfo instanceFile, DirectoryInfo biblioteca, DirectoryInfo dirGa)
         {
+
+            if (!File.Exists(biblioteca.GetFiles().First().FullName))
+            {
+                Console.WriteLine("Deveria existir o arquivo original da biblioteca aqui. | {0}", dirGa.FullName);
+                Environment.Exit(-1);
+            }
+
+
             //Ler as rodadas
             var rodadas = new List<RodadaMapper>();
 
             using (var csv = new TextFieldParser(instanceFile.FullName))
             {
-                csv.ReadLine();
-                csv.ReadLine();
+               csv.ReadLine();
+               csv.ReadLine();
 
                 csv.TextFieldType = FieldType.Delimited;
                 csv.SetDelimiters(",");
@@ -147,6 +155,7 @@ namespace GeradorExcelAnalitico
                 var totalLinhas = ContarLinhas(biblioteca.GetFiles().First().FullName);
                 //Conta Tokens do Original
                 var totalchars = GetNumOfCharsInFile(biblioteca.GetFiles().First().FullName);
+                
 
                 while (!csv.EndOfData)
                 {
