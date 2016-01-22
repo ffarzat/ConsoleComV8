@@ -18,11 +18,6 @@ namespace GeradorExcelAnalitico
     class Program
     {
         /// <summary>
-        /// Guarda o diretório raiz. Os exceis resultado ficarão gravados aqui
-        /// </summary>
-        private static string _baseDirectory;
-
-        /// <summary>
         /// Principal
         /// </summary>
         /// <param name="args"></param>
@@ -57,9 +52,10 @@ namespace GeradorExcelAnalitico
                 Directory.CreateDirectory(resultsDirectory);
             }
 
-            _baseDirectory = fromDirectoryPath;
             ValidarDiretorios(fromDirectoryPath);
             ProcessarDiretorios(fromDirectoryPath, resultsDirectory);
+            
+            Console.Read();
         }
 
         /// <summary>
@@ -397,7 +393,7 @@ namespace GeradorExcelAnalitico
                 if (subdir.GetDirectories().Count() !=2)
                 {
                     Console.WriteLine("Diretório da biblioteca fora do formato esperado");
-                    Environment.Exit(-1); 
+                    //Environment.Exit(-1); 
                 }
             }
         }
