@@ -169,12 +169,12 @@ namespace GeradorExcelAnalitico
                     if (rodadaHc !=null)
                     {
                         var diferencaTempoComUnload = (TimeSpan.Parse(rodadaHc.TempoOriginalComUnload) - TimeSpan.Parse(rodadaHc.TempoFinalComUnload));
-                        var tempofinal = diferencaTempoComUnload.ToString(@"s\,ffff");
+                        var tempofinal = Decimal.Parse(diferencaTempoComUnload.ToString(@"s\,ffff"));
 
                         string celulaHcTempoComUnload = "C" + (i + 2).ToString();
-                        ws.Cells[celulaHcTempoComUnload].Value = tempofinal;
                         ws.Cells[celulaHcTempoComUnload].Style.Numberformat.Format = null;
                         ws.Cells[celulaHcTempoComUnload].Style.Numberformat.Format = "###,###,##0.0000";
+                        ws.Cells[celulaHcTempoComUnload].Value = tempofinal;
                     }
 
                     #endregion
