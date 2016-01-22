@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Excel;
 using Microsoft.VisualBasic.FileIO;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
 using SearchOption = System.IO.SearchOption;
 
 namespace GeradorExcelAnalitico
@@ -60,8 +62,143 @@ namespace GeradorExcelAnalitico
             ValidarDiretorios(fromDirectoryPath);
             Bibliotecas = new List<BibliotecaMapper>();
             ProcessarDiretorios(fromDirectoryPath, resultsDirectory);
-            
+            ExportarPlanilhaEstatistica(resultsDirectory);
+
+
             //Console.Read();
+        }
+
+        /// <summary>
+        /// Cria a planilha com os resultados calculados
+        /// </summary>
+        /// <param name="resultsDirectory"></param>
+        private static void ExportarPlanilhaEstatistica(string resultsDirectory)
+        {
+            var excelAnalise = new FileInfo(resultsDirectory + @"\Analises.xlsx");
+
+            if(excelAnalise.Exists)
+                File.Delete(excelAnalise.FullName);
+
+            var pck = new ExcelPackage(excelAnalise);
+            Console.WriteLine("Montando planilha de Analises");
+
+            foreach (var biblioteca in Bibliotecas)
+            {
+                Console.WriteLine(" worksheet {0}", biblioteca.Nome);
+                
+                var ws = pck.Workbook.Worksheets.Add(biblioteca.Nome);
+                #region Formatar Planilha
+
+                ws.Cells["C1"].Value = "Tempo (secs)";
+                ws.Cells["C1"].AddComment("com descarregamento da engine", "ffarzat");
+                ws.Cells["C1:D1"].Merge = true;
+                ws.Cells["C1:D1"].Style.Font.Bold = true; 
+                ws.Cells["C1:D1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["F1"].Value = "Tempo (ms)";
+                ws.Cells["F1"].AddComment("Esse é o tempo que o QUnit retorna da execução lá dentro da V8", "ffarzat");
+                ws.Cells["F1:G1"].Merge = true;
+                ws.Cells["F1:G1"].Style.Font.Bold = true;
+                ws.Cells["F1:G1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["I1"].Value = "LOC";
+                ws.Cells["I1:J1"].Merge = true;
+                ws.Cells["I1:J1"].Style.Font.Bold = true;
+                ws.Cells["I1:J1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["L1"].Value = "Caracteres";
+                ws.Cells["L1:M1"].Merge = true;
+                ws.Cells["L1:M1"].Style.Font.Bold = true;
+                ws.Cells["L1:M1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                
+                ws.Cells["A2"].Value = "Rodadas";
+                ws.Cells["A2"].Style.Font.Bold = true; 
+                ws.Cells["A2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["A34"].Value = "Média";
+                ws.Cells["A34"].Style.Font.Bold = true;
+                ws.Cells["A34"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["A35"].Value = "Desvio Padrão";
+                ws.Cells["A35"].Style.Font.Bold = true;
+                ws.Cells["A35"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["C2"].Value = "HC";
+                ws.Cells["C2"].Style.Font.Bold = true;
+                ws.Cells["C2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["D2"].Value = "GA";
+                ws.Cells["D2"].Style.Font.Bold = true;
+                ws.Cells["D2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["F2"].Value = "HC";
+                ws.Cells["F2"].Style.Font.Bold = true;
+                ws.Cells["F2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["G2"].Value = "GA";
+                ws.Cells["G2"].Style.Font.Bold = true;
+                ws.Cells["G2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["I2"].Value = "HC";
+                ws.Cells["I2"].Style.Font.Bold = true;
+                ws.Cells["I2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["J2"].Value = "GA";
+                ws.Cells["J2"].Style.Font.Bold = true;
+                ws.Cells["J2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["L2"].Value = "HC";
+                ws.Cells["L2"].Style.Font.Bold = true;
+                ws.Cells["L2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["M2"].Value = "GA";
+                ws.Cells["M2"].Style.Font.Bold = true;
+                ws.Cells["M2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                #endregion
+
+                for (int i = 1; i < 31; i++)
+                {
+                    string celulaRodada = "A" + (i + 2).ToString();
+                    ws.Cells[celulaRodada].Value = i;
+
+                    var rodadaHc = biblioteca.Rodadas["HC"].FirstOrDefault(r => r.Rodada == i.ToString());
+                    var rodadaGa = biblioteca.Rodadas["GA"].FirstOrDefault(r => r.Rodada == i.ToString());
+
+                    #region HC
+                    if (rodadaHc !=null)
+                    {
+                        var diferencaTempoComUnload = (TimeSpan.Parse(rodadaHc.TempoOriginalComUnload) - TimeSpan.Parse(rodadaHc.TempoFinalComUnload));
+                        var tempofinal = diferencaTempoComUnload.ToString(@"s\,ffff");
+
+                        string celulaHcTempoComUnload = "C" + (i + 2).ToString();
+                        ws.Cells[celulaHcTempoComUnload].Value = tempofinal;
+                        ws.Cells[celulaHcTempoComUnload].Style.Numberformat.Format = null;
+                        ws.Cells[celulaHcTempoComUnload].Style.Numberformat.Format = "###,###,##0.0000";
+                    }
+
+                    #endregion
+
+                    #region GA
+                    if (rodadaGa !=null)
+                    {
+                        string celulaGaTempoComUnload = "D" + (i + 2).ToString();
+                    }
+
+                    #endregion
+
+                    #region Media e Desvio
+
+                    ws.Cells["C34"].Formula = "=AVERAGE(C3:C32)";
+
+                    #endregion
+                }
+
+
+                ws.Cells.AutoFitColumns();
+            }
+            
+            pck.Save();
         }
 
         /// <summary>
@@ -98,7 +235,6 @@ namespace GeradorExcelAnalitico
                 biblioteca.Rodadas.Add("HC", resultadoHc);
 
                 Bibliotecas.Add(biblioteca);
-
             }
         }
 
