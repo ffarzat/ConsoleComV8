@@ -18,6 +18,11 @@ namespace GeradorExcelAnalitico
     class Program
     {
         /// <summary>
+        /// Armazena o estado das rodadas por biblioteca
+        /// </summary>
+        public static List<BibliotecaMapper> Bibliotecas { get; set; }
+
+        /// <summary>
         /// Principal
         /// </summary>
         /// <param name="args"></param>
@@ -53,9 +58,10 @@ namespace GeradorExcelAnalitico
             }
 
             ValidarDiretorios(fromDirectoryPath);
+            Bibliotecas = new List<BibliotecaMapper>();
             ProcessarDiretorios(fromDirectoryPath, resultsDirectory);
             
-            Console.Read();
+            //Console.Read();
         }
 
         /// <summary>
@@ -66,18 +72,32 @@ namespace GeradorExcelAnalitico
         private static void ProcessarDiretorios(string fromDirectoryPath, string resultsDirectory)
         {
             var dir = new DirectoryInfo(fromDirectoryPath);
+            
             foreach (var subdir in dir.GetDirectories())
             {
                 Console.WriteLine("     Processando : {0}", subdir.Name);
 
                 var gaDir = subdir.GetDirectories().FirstOrDefault(n => n.Name == "GA");
                 var hcDir = subdir.GetDirectories().FirstOrDefault(n => n.Name == "HC");
+                var resultadoGa = new List<RodadaMapper>();
+                var resultadoHc = new List<RodadaMapper>();
 
                 if (gaDir != null)
-                    ProcessarDiretorio(gaDir, subdir, resultsDirectory);
+                {
+                    resultadoGa = ProcessarDiretorio(gaDir, subdir, resultsDirectory);
+                }
 
                 if (hcDir != null)
-                    ProcessarDiretorio(hcDir, subdir, resultsDirectory);
+                {
+                    resultadoHc = ProcessarDiretorio(hcDir, subdir, resultsDirectory);
+                }
+
+                var biblioteca = new BibliotecaMapper {Nome = subdir.Name};
+
+                biblioteca.Rodadas.Add("GA", resultadoGa);
+                biblioteca.Rodadas.Add("HC", resultadoHc);
+
+                Bibliotecas.Add(biblioteca);
 
             }
         }
@@ -88,7 +108,7 @@ namespace GeradorExcelAnalitico
         /// <param name="directoryGa"></param>
         /// <param name="biblioteca"></param>
         /// <param name="resultsDirectory"></param>
-        private static void ProcessarDiretorio(DirectoryInfo directoryGa, DirectoryInfo biblioteca, string resultsDirectory)
+        private static List<RodadaMapper> ProcessarDiretorio(DirectoryInfo directoryGa, DirectoryInfo biblioteca, string resultsDirectory)
         {
             //pego o csv ou xsls
             var rodadas = new List<RodadaMapper>();
@@ -140,6 +160,7 @@ namespace GeradorExcelAnalitico
 
             #endregion
 
+            return rodadas;
         }
 
         /// <summary>
