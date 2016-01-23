@@ -90,7 +90,7 @@ namespace GeradorExcelAnalitico
                 #region Formatar Planilha
 
                 ws.Cells["C1"].Value = "Tempo (secs)";
-                ws.Cells["C1"].AddComment("com descarregamento da engine", "ffarzat");
+                ws.Cells["C1"].AddComment("Tempo em segundos com descarregamento da engine. Cálculo: (Tempo Original - MelhorTempo)", "ffarzat");
                 ws.Cells["C1:D1"].Merge = true;
                 ws.Cells["C1:D1"].Style.Font.Bold = true; 
                 ws.Cells["C1:D1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
@@ -116,6 +116,7 @@ namespace GeradorExcelAnalitico
                 ws.Cells["A2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
                 ws.Cells["A34"].Value = "Média";
+                ws.Cells["A34"].AddComment("Aqui quanto maior melhor. Trata-se do valor da diferença média (Original - Melhor", "ffarzat");
                 ws.Cells["A34"].Style.Font.Bold = true;
                 ws.Cells["A34"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
@@ -169,12 +170,21 @@ namespace GeradorExcelAnalitico
                     if (rodadaHc !=null)
                     {
                         var diferencaTempoComUnload = (TimeSpan.Parse(rodadaHc.TempoOriginalComUnload) - TimeSpan.Parse(rodadaHc.TempoFinalComUnload));
-                        var tempofinal = Decimal.Parse(diferencaTempoComUnload.ToString(@"s\,ffff"));
+                        //var tempofinal = Decimal.Parse(diferencaTempoComUnload.ToString(@"s\,ffff"));
+                        var tempofinal = diferencaTempoComUnload.TotalSeconds;
 
-                        string celulaHcTempoComUnload = "C" + (i + 2).ToString();
-                        ws.Cells[celulaHcTempoComUnload].Style.Numberformat.Format = null;
-                        ws.Cells[celulaHcTempoComUnload].Style.Numberformat.Format = "###,###,##0.0000";
-                        ws.Cells[celulaHcTempoComUnload].Value = tempofinal;
+                        string celulaTempoComUnload = "C" + (i + 2).ToString();
+                        ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = null;
+                        ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = "###,###,##0.0000";
+                        ws.Cells[celulaTempoComUnload].Value = tempofinal;
+
+                        var diferencaTempo = (Decimal.Parse(rodadaHc.Fitness) - Decimal.Parse(rodadaHc.FitnessFinal));
+
+                        string celulaTempo = "F" + (i + 2).ToString();
+                        ws.Cells[celulaTempo].Style.Numberformat.Format = null;
+                        ws.Cells[celulaTempo].Style.Numberformat.Format = "###,###,##0.0";
+                        ws.Cells[celulaTempo].Value = diferencaTempo;
+
                     }
 
                     #endregion
@@ -182,14 +192,52 @@ namespace GeradorExcelAnalitico
                     #region GA
                     if (rodadaGa !=null)
                     {
-                        string celulaGaTempoComUnload = "D" + (i + 2).ToString();
+                        var diferencaTempoComUnload = (TimeSpan.Parse(rodadaGa.TempoOriginalComUnload) - TimeSpan.Parse(rodadaHc.TempoFinalComUnload));
+                        var tempofinal = Decimal.Parse(diferencaTempoComUnload.ToString(@"s\,ffff"));
+
+                        string celulaTempoComUnload = "D" + (i + 2).ToString();
+                        ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = null;
+                        ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = "###,###,##0.0000";
+                        ws.Cells[celulaTempoComUnload].Value = tempofinal;
+
+
+
+                        var diferencaTempo = (Decimal.Parse(rodadaGa.Fitness) - Decimal.Parse(rodadaGa.FitnessFinal));
+
+                        string celulaTempo = "G" + (i + 2).ToString();
+                        ws.Cells[celulaTempo].Style.Numberformat.Format = null;
+                        ws.Cells[celulaTempo].Style.Numberformat.Format = "###,###,##0.0";
+                        ws.Cells[celulaTempo].Value = diferencaTempo;
                     }
 
                     #endregion
 
                     #region Media e Desvio
 
+                    ws.Cells["C34"].Style.Numberformat.Format = "###,###,##0.0000";
                     ws.Cells["C34"].Formula = "=AVERAGE(C3:C32)";
+
+                    ws.Cells["D34"].Style.Numberformat.Format = "###,###,##0.0000";
+                    ws.Cells["D34"].Formula = "=AVERAGE(D3:D32)";
+
+                    ws.Cells["C35"].Style.Numberformat.Format = "###,###,##0.0000";
+                    ws.Cells["C35"].Formula = "=STDEV(C3:C32)";
+
+                    ws.Cells["D35"].Style.Numberformat.Format = "###,###,##0.0000";
+                    ws.Cells["D35"].Formula = "=STDEV(D3:D32)";
+
+
+                    ws.Cells["F34"].Style.Numberformat.Format = "###,###,##0.0000";
+                    ws.Cells["F34"].Formula = "=AVERAGE(F3:F32)";
+
+                    ws.Cells["G34"].Style.Numberformat.Format = "###,###,##0.0000";
+                    ws.Cells["G34"].Formula = "=AVERAGE(G3:G32)";
+
+                    ws.Cells["F35"].Style.Numberformat.Format = "###,###,##0.0000";
+                    ws.Cells["F35"].Formula = "=STDEV(F3:F32)";
+
+                    ws.Cells["G35"].Style.Numberformat.Format = "###,###,##0.0000";
+                    ws.Cells["G35"].Formula = "=STDEV(G3:G32)";
 
                     #endregion
                 }
