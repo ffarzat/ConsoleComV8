@@ -208,7 +208,7 @@ namespace Otimizacao
         /// <returns></returns>
         private bool OtimizarUsandoHc()
         {
-            var totalVizinhosExplorar = _size;
+            var totalVizinhosExplorar = _size * _executarAte;
             var moverNoPrimeiroMelhor = true;
             var otimizado = false;
             var melhores = new List<Individuo>();
