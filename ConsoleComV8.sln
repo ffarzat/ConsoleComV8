@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otimizacao", "Otimizacao\Ot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otimizacao.Testes", "Otimizacao.Testes\Otimizacao.Testes.csproj", "{B0A89072-5D6E-4CD3-A40C-832081BBB4DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorExcelAnalitico", "GeradorExcelAnalitico\GeradorExcelAnalitico.csproj", "{0BABEA83-D11C-4320-BFDE-C704AC8307FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{B0A89072-5D6E-4CD3-A40C-832081BBB4DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0A89072-5D6E-4CD3-A40C-832081BBB4DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0A89072-5D6E-4CD3-A40C-832081BBB4DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BABEA83-D11C-4320-BFDE-C704AC8307FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BABEA83-D11C-4320-BFDE-C704AC8307FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BABEA83-D11C-4320-BFDE-C704AC8307FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BABEA83-D11C-4320-BFDE-C704AC8307FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
