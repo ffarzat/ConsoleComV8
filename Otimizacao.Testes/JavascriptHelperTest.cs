@@ -95,10 +95,12 @@ namespace Otimizacao.Testes
         [Test]
         public void ExecutarTestesDoMoment()
         {
+            var sw = new Stopwatch();
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Moment"));
-
+            sw.Start();
             helper.ExecutarTestes("global.js", "core-test.js");
-
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
             helper.FalhasDosTestes.ForEach(Console.WriteLine);
             
             Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");
@@ -109,7 +111,10 @@ namespace Otimizacao.Testes
         [Test]
         public void ExecutarTestesDoMomentSemHelper()
         {
+            var sw = new Stopwatch();
             var engine = new V8ScriptEngine();
+
+            
 
             var quintCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Moment", "Qunit.js"));
             var codigoIndividuo = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "Moment", "global.js"));
@@ -118,7 +123,8 @@ namespace Otimizacao.Testes
             engine.AddHostType("Console", typeof(Console));
 
             engine.Execute("var GLOBAL = this;");
-
+            
+            sw.Start();
             engine.Execute(quintCode);
             engine.Execute(codigoIndividuo);
             engine.Execute(codigoTestes);
@@ -163,6 +169,8 @@ namespace Otimizacao.Testes
                                 QUnit.start();
                 ");
 
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
             //Assert.AreEqual(0, 57982);
         }
 

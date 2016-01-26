@@ -783,7 +783,7 @@ namespace Otimizacao
         private double ExecutarTestesParaIndividuoEspecifico(int indice, Individuo sujeito)
         {
             var sw = new Stopwatch();
-            sw.Start();
+            
 
             const long valorFitFalha = 120000;
 
@@ -839,7 +839,7 @@ namespace Otimizacao
                 jHelper.ConfigurarMelhorFit(_fitnessMin);
 
                 //Console.WriteLine("              Avaliando via testes");
-
+                sw.Start();
                 var avaliar =
                     new Thread(() => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
                 avaliar.Start();
