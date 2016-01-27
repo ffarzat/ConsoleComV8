@@ -6,6 +6,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DiffPlex;
+using DiffPlex.DiffBuilder;
+using DiffPlex.DiffBuilder.Model;
 using Excel;
 using Microsoft.VisualBasic.FileIO;
 using OfficeOpenXml;
@@ -63,8 +66,7 @@ namespace GeradorExcelAnalitico
             Bibliotecas = new List<BibliotecaMapper>();
             ProcessarDiretorios(fromDirectoryPath, resultsDirectory);
             ExportarPlanilhaEstatistica(resultsDirectory);
-
-
+            
             //Console.Read();
         }
 
@@ -82,11 +84,14 @@ namespace GeradorExcelAnalitico
             var pck = new ExcelPackage(excelAnalise);
             Console.WriteLine("Montando planilha de Analises");
 
+            //Guarda as linhas e 
+            var mudancasComputadas = new List<LinhaAlterada>();
             foreach (var biblioteca in Bibliotecas)
             {
                 Console.WriteLine(" worksheet {0}", biblioteca.Nome);
                 
                 var ws = pck.Workbook.Worksheets.Add(biblioteca.Nome);
+                
                 #region Formatar Planilha
 
                 ws.Cells["C1"].Value = "Tempo (secs)";
@@ -123,6 +128,20 @@ namespace GeradorExcelAnalitico
                 ws.Cells["A35"].Value = "Desvio Padrão";
                 ws.Cells["A35"].Style.Font.Bold = true;
                 ws.Cells["A35"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["A39"].Value = "Linha de Código";
+                ws.Cells["A39"].Style.Font.Bold = true;
+                ws.Cells["A39"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["B39"].Value = "Tipo de Alteração";
+                ws.Cells["B39"].Style.Font.Bold = true;
+                ws.Cells["B39"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["C39"].Value = "Frequência HC";
+                ws.Cells["C39"].AddComment("Quantas vezes apareceu no total dentro das 30 rodadas nos dois algortimos", "ffarzat");
+                ws.Cells["C39"].Style.Font.Bold = true;
+                ws.Cells["C39"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                
 
                 ws.Cells["C2"].Value = "HC";
                 ws.Cells["C2"].Style.Font.Bold = true;
@@ -198,6 +217,30 @@ namespace GeradorExcelAnalitico
                         ws.Cells[celulaTokens].Style.Numberformat.Format = "###,###,##0";
                         ws.Cells[celulaTokens].Value = diferencatokens;
 
+                        if (rodadaHc.Diferencas != null)
+                        {
+                            foreach (var linha in rodadaHc.Diferencas.Lines)
+                            {
+                                if (linha.Text.Trim().Equals(";"))
+                                    continue;
+                                
+                                if (linha.Type == ChangeType.Deleted || linha.Type == ChangeType.Modified || linha.Type == ChangeType.Inserted)
+                                {
+
+                                    var linhaAntiga = mudancasComputadas.FirstOrDefault(l => l.Linha == linha.Text);
+                                    if (linhaAntiga != null)
+                                        linhaAntiga.Frequencia++;
+                                    else
+                                        mudancasComputadas.Add(new LinhaAlterada()
+                                            {
+                                                Linha = linha.Text,
+                                                Frequencia = 1,
+                                                Alteracao = linha.Type.ToString()
+                                            });
+
+                                }
+                            }
+                        }
                     }
 
                     #endregion
@@ -235,6 +278,31 @@ namespace GeradorExcelAnalitico
                         ws.Cells[celulaTokens].Style.Numberformat.Format = null;
                         ws.Cells[celulaTokens].Style.Numberformat.Format = "###,###,##0";
                         ws.Cells[celulaTokens].Value = diferencatokens;
+
+                        if (rodadaGa.Diferencas != null)
+                        {
+                            foreach (var linha in rodadaGa.Diferencas.Lines)
+                            {
+                                if (linha.Text.Trim().Equals(";"))
+                                    continue;
+
+                                if (linha.Type == ChangeType.Deleted || linha.Type == ChangeType.Modified || linha.Type == ChangeType.Inserted)
+                                {
+
+                                    var linhaAntiga = mudancasComputadas.FirstOrDefault(l => l.Linha == linha.Text);
+                                    if (linhaAntiga != null)
+                                        linhaAntiga.Frequencia++;
+                                    else
+                                        mudancasComputadas.Add(new LinhaAlterada()
+                                        {
+                                            Linha = linha.Text,
+                                            Frequencia = 1,
+                                            Alteracao = linha.Type.ToString()
+                                        });
+
+                                }
+                            }
+                        }
                     }
 
                     #endregion
@@ -293,6 +361,32 @@ namespace GeradorExcelAnalitico
                     ws.Cells["M35"].Formula = "=STDEV(M3:M32)";
 
                     #endregion
+
+                    #region Mudanças computadas
+
+                    var contador = 40;
+                    
+                    foreach (var mudanca in mudancasComputadas)
+                    {
+                        string celulaAtual = "A" + contador.ToString();
+
+                        ws.Cells[celulaAtual].Value = mudanca.Linha;
+
+                        celulaAtual = "B" + contador.ToString();
+                        
+                        ws.Cells[celulaAtual].Value = mudanca.Alteracao;
+
+                        celulaAtual = "C" + contador.ToString();
+
+                        ws.Cells[celulaAtual].Value = mudanca.Frequencia;
+
+
+                        contador++;
+                    }
+
+
+                    #endregion
+
                 }
 
                 ws.Cells.AutoFitColumns();
@@ -493,6 +587,9 @@ namespace GeradorExcelAnalitico
                 var totalLinhas = ContarLinhas(biblioteca.GetFiles().First().FullName);
                 //Conta Tokens do Original
                 var totalchars = GetNumOfCharsInFile(biblioteca.GetFiles().First().FullName);
+                //Texto do Original
+                var textoOriginal = File.ReadAllText(biblioteca.GetFiles().First().FullName);
+
 
                 while (!csv.EndOfData)
                 {
@@ -504,6 +601,8 @@ namespace GeradorExcelAnalitico
                     string fitOrignal = "00000";
                     string tempoFinalComUnload = "";
                     string fitFinal = "";
+                    DiffPaneModel resultadoComparacao = null;
+
                     //Tempo e fit originais
                     tempoOriginal = RecuperarTempoMedioeFitOriginal(dirGa, currentRow[0], out fitOrignal);
 
@@ -517,6 +616,12 @@ namespace GeradorExcelAnalitico
                         totalcharsBest = GetNumOfCharsInFile(fileList.First().FullName);
                         tempoFinalComUnload = currentRow[4];
                         fitFinal = currentRow[3];
+
+                        var textoMelhor = File.ReadAllText(fileList.First().FullName);
+                        
+                        var d = new Differ();
+                        var builder = new InlineDiffBuilder(d);
+                        resultadoComparacao = builder.BuildDiffModel(textoOriginal, textoMelhor);
                     }
                     else
                     {
@@ -547,7 +652,8 @@ namespace GeradorExcelAnalitico
                             LocOriginal = totalLinhas,
                             LocFinal = totalLinhasBest,
                             CaracteresOriginal = totalchars,
-                            CaracteresFinal = totalcharsBest
+                            CaracteresFinal = totalcharsBest,
+                            Diferencas = resultadoComparacao
                         });
                 }
             }
