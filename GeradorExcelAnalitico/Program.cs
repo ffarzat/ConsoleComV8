@@ -98,8 +98,7 @@ namespace GeradorExcelAnalitico
                 
                 #region Formatar Planilha
 
-                ws.Cells["C1"].Value = "Tempo (secs)";
-                ws.Cells["C1"].AddComment("Tempo em segundos com descarregamento da engine. Valor de melhora (ou piora) percentual", "ffarzat");
+                ws.Cells["C1"].Value = "Tempo (%)";
                 ws.Cells["C1:D1"].Merge = true;
                 ws.Cells["C1:D1"].Style.Font.Bold = true; 
                 ws.Cells["C1:D1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
@@ -192,19 +191,19 @@ namespace GeradorExcelAnalitico
                     #region HC
                     if (rodadaHc !=null)
                     {
-                        var diferencaTempoComUnload = ((TimeSpan.Parse(rodadaHc.TempoOriginalComUnload).TotalSeconds / TimeSpan.Parse(rodadaHc.TempoFinalComUnload).TotalSeconds) -1) *100;
+                        var diferencaTempoComUnload = (Decimal.Parse(rodadaHc.Fitness) / Decimal.Parse(rodadaHc.FitnessFinal) - 1) * 100;
 
                         string celulaTempoComUnload = "C" + (i + 2).ToString();
                         ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = null;
                         ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = "###,###,##0.00";
-                        ws.Cells[celulaTempoComUnload].Value = diferencaTempoComUnload == 0 ? diferencaTempoComUnload : Double.Parse(diferencaTempoComUnload.ToString("#.##")); 
+                        ws.Cells[celulaTempoComUnload].Value = diferencaTempoComUnload == 0 ? diferencaTempoComUnload : Decimal.Parse(diferencaTempoComUnload.ToString("#.##")); 
 
-                        var diferencaTempo = (Decimal.Parse(rodadaHc.Fitness) - Decimal.Parse(rodadaHc.FitnessFinal));
+                        //var diferencaTempo = (Decimal.Parse(rodadaHc.Fitness) - Decimal.Parse(rodadaHc.FitnessFinal));
 
-                        string celulaTempo = "F" + (i + 2).ToString();
-                        ws.Cells[celulaTempo].Style.Numberformat.Format = null;
-                        ws.Cells[celulaTempo].Style.Numberformat.Format = "###,###,##0.0";
-                        ws.Cells[celulaTempo].Value = diferencaTempo == 0 ? diferencaTempo : Decimal.Parse(diferencaTempo.ToString("#.#"));
+                        //string celulaTempo = "F" + (i + 2).ToString();
+                        //ws.Cells[celulaTempo].Style.Numberformat.Format = null;
+                        //ws.Cells[celulaTempo].Style.Numberformat.Format = "###,###,##0.0";
+                        //ws.Cells[celulaTempo].Value = diferencaTempo == 0 ? diferencaTempo : Decimal.Parse(diferencaTempo.ToString("#.#"));
 
 
                         var diferencaLoc = rodadaHc.LocOriginal - rodadaHc.LocFinal;
@@ -252,21 +251,21 @@ namespace GeradorExcelAnalitico
                     #region GA
                     if (rodadaGa !=null)
                     {
-                        var diferencaTempoComUnload = ((TimeSpan.Parse(rodadaGa.TempoOriginalComUnload).TotalSeconds / TimeSpan.Parse(rodadaGa.TempoFinalComUnload).TotalSeconds) - 1) * 100;
+                        var diferencaTempoComUnload = (Decimal.Parse(rodadaGa.Fitness) / Decimal.Parse(rodadaGa.FitnessFinal) -1) *100;
 
                         string celulaTempoComUnload = "D" + (i + 2).ToString();
                         ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = null;
                         ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = "###,###,##0.00";
-                        ws.Cells[celulaTempoComUnload].Value = diferencaTempoComUnload == 0? diferencaTempoComUnload : Double.Parse(diferencaTempoComUnload.ToString("#.##")); 
+                        ws.Cells[celulaTempoComUnload].Value = diferencaTempoComUnload == 0 ? diferencaTempoComUnload : Decimal.Parse(diferencaTempoComUnload.ToString("#.##")); 
 
 
 
-                        var diferencaTempo = (Decimal.Parse(rodadaGa.Fitness) - Decimal.Parse(rodadaGa.FitnessFinal));
+                        //var diferencaTempo = (Decimal.Parse(rodadaGa.Fitness) - Decimal.Parse(rodadaGa.FitnessFinal));
 
-                        string celulaTempo = "G" + (i + 2).ToString();
-                        ws.Cells[celulaTempo].Style.Numberformat.Format = null;
-                        ws.Cells[celulaTempo].Style.Numberformat.Format = "###,###,##0.0";
-                        ws.Cells[celulaTempo].Value = diferencaTempo == 0 ? diferencaTempo : Decimal.Parse(diferencaTempo.ToString("#.#"));
+                        //string celulaTempo = "G" + (i + 2).ToString();
+                        //ws.Cells[celulaTempo].Style.Numberformat.Format = null;
+                        //ws.Cells[celulaTempo].Style.Numberformat.Format = "###,###,##0.0";
+                        //ws.Cells[celulaTempo].Value = diferencaTempo == 0 ? diferencaTempo : Decimal.Parse(diferencaTempo.ToString("#.#"));
 
 
                         var diferencaLoc = rodadaGa.LocOriginal - rodadaGa.LocFinal;
@@ -608,7 +607,7 @@ namespace GeradorExcelAnalitico
                     DiffPaneModel resultadoComparacao = null;
 
                     //Tempo e fit originais
-                    tempoOriginal = RecuperarTempoMedioeFitOriginal(dirGa, currentRow[0], out fitOrignal);
+                    tempoOriginal = RecuperarTempoMedioeFitOriginal(biblioteca, dirGa, currentRow[0], out fitOrignal);
 
 
                     var fileList = dirGa.GetFiles(bestFile, SearchOption.AllDirectories);
@@ -668,13 +667,14 @@ namespace GeradorExcelAnalitico
         /// <summary>
         /// Ecnontra o csv da rodada em questão, pega o tempo médio do original e retorna
         /// </summary>
+        /// <param name="biblioteca"></param>
         /// <param name="dirGa"></param>
         /// <param name="rodadaAlvo"></param>
         /// <param name="fitOrignal"></param>
         /// <returns></returns>
-        private static string RecuperarTempoMedioeFitOriginal(DirectoryInfo dirGa, string rodadaAlvo, out string fitOrignal)
+        private static string RecuperarTempoMedioeFitOriginal(DirectoryInfo biblioteca, DirectoryInfo dirGa, string rodadaAlvo, out string fitOrignal)
         {
-            var fileList = dirGa.GetDirectories().First(d => d.Name.Contains(rodadaAlvo + "_")).GetFiles("resultados.csv", SearchOption.AllDirectories);
+            var fileList = dirGa.GetDirectories().First(d => d.Name.Equals(rodadaAlvo + "_Resultados" + biblioteca.Name)).GetFiles("resultados.csv", SearchOption.AllDirectories);
             var tempoOriginal = "0";
             fitOrignal = "0";
 
