@@ -86,10 +86,14 @@ namespace GeradorExcelAnalitico
 
             //Guarda as linhas e 
             var mudancasComputadas = new List<LinhaAlterada>();
+
             foreach (var biblioteca in Bibliotecas)
             {
                 Console.WriteLine(" worksheet {0}", biblioteca.Nome);
-                
+
+                mudancasComputadas.Clear();
+                mudancasComputadas = new List<LinhaAlterada>();
+
                 var ws = pck.Workbook.Worksheets.Add(biblioteca.Nome);
                 
                 #region Formatar Planilha
@@ -118,16 +122,16 @@ namespace GeradorExcelAnalitico
                 
                 ws.Cells["A2"].Value = "Rodadas";
                 ws.Cells["A2"].Style.Font.Bold = true; 
-                ws.Cells["A2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                ws.Cells["A2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
 
                 ws.Cells["A34"].Value = "Média";
                 ws.Cells["A34"].AddComment("Aqui quanto maior melhor. Trata-se do valor da diferença média (Original - Melhor", "ffarzat");
                 ws.Cells["A34"].Style.Font.Bold = true;
-                ws.Cells["A34"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                ws.Cells["A34"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
 
                 ws.Cells["A35"].Value = "Desvio Padrão";
                 ws.Cells["A35"].Style.Font.Bold = true;
-                ws.Cells["A35"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                ws.Cells["A35"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
 
                 ws.Cells["A39"].Value = "Linha de Código";
                 ws.Cells["A39"].Style.Font.Bold = true;
@@ -137,7 +141,7 @@ namespace GeradorExcelAnalitico
                 ws.Cells["B39"].Style.Font.Bold = true;
                 ws.Cells["B39"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                ws.Cells["C39"].Value = "Frequência HC";
+                ws.Cells["C39"].Value = "Frequência";
                 ws.Cells["C39"].AddComment("Quantas vezes apareceu no total dentro das 30 rodadas nos dois algortimos", "ffarzat");
                 ws.Cells["C39"].Style.Font.Bold = true;
                 ws.Cells["C39"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
@@ -193,14 +197,14 @@ namespace GeradorExcelAnalitico
                         string celulaTempoComUnload = "C" + (i + 2).ToString();
                         ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = null;
                         ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = "###,###,##0.00";
-                        ws.Cells[celulaTempoComUnload].Value = diferencaTempoComUnload;
+                        ws.Cells[celulaTempoComUnload].Value = diferencaTempoComUnload == 0 ? diferencaTempoComUnload : Double.Parse(diferencaTempoComUnload.ToString("#.##")); 
 
                         var diferencaTempo = (Decimal.Parse(rodadaHc.Fitness) - Decimal.Parse(rodadaHc.FitnessFinal));
 
                         string celulaTempo = "F" + (i + 2).ToString();
                         ws.Cells[celulaTempo].Style.Numberformat.Format = null;
                         ws.Cells[celulaTempo].Style.Numberformat.Format = "###,###,##0.0";
-                        ws.Cells[celulaTempo].Value = diferencaTempo;
+                        ws.Cells[celulaTempo].Value = diferencaTempo == 0 ? diferencaTempo : Decimal.Parse(diferencaTempo.ToString("#.#"));
 
 
                         var diferencaLoc = rodadaHc.LocOriginal - rodadaHc.LocFinal;
@@ -253,7 +257,7 @@ namespace GeradorExcelAnalitico
                         string celulaTempoComUnload = "D" + (i + 2).ToString();
                         ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = null;
                         ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = "###,###,##0.00";
-                        ws.Cells[celulaTempoComUnload].Value = diferencaTempoComUnload;
+                        ws.Cells[celulaTempoComUnload].Value = diferencaTempoComUnload == 0? diferencaTempoComUnload : Double.Parse(diferencaTempoComUnload.ToString("#.##")); 
 
 
 
@@ -262,7 +266,7 @@ namespace GeradorExcelAnalitico
                         string celulaTempo = "G" + (i + 2).ToString();
                         ws.Cells[celulaTempo].Style.Numberformat.Format = null;
                         ws.Cells[celulaTempo].Style.Numberformat.Format = "###,###,##0.0";
-                        ws.Cells[celulaTempo].Value = diferencaTempo;
+                        ws.Cells[celulaTempo].Value = diferencaTempo == 0 ? diferencaTempo : Decimal.Parse(diferencaTempo.ToString("#.#"));
 
 
                         var diferencaLoc = rodadaGa.LocOriginal - rodadaGa.LocFinal;
@@ -366,7 +370,7 @@ namespace GeradorExcelAnalitico
 
                     var contador = 40;
                     
-                    foreach (var mudanca in mudancasComputadas)
+                    foreach (var mudanca in mudancasComputadas.OrderByDescending(m=> m.Frequencia))
                     {
                         string celulaAtual = "A" + contador.ToString();
 
