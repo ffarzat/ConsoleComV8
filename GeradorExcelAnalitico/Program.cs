@@ -103,21 +103,15 @@ namespace GeradorExcelAnalitico
                 ws.Cells["C1:D1"].Style.Font.Bold = true; 
                 ws.Cells["C1:D1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                ws.Cells["F1"].Value = "Tempo (ms)";
-                ws.Cells["F1"].AddComment("Esse é o tempo que o QUnit retorna da execução lá dentro da V8", "ffarzat");
+                ws.Cells["F1"].Value = "LOC";
                 ws.Cells["F1:G1"].Merge = true;
                 ws.Cells["F1:G1"].Style.Font.Bold = true;
                 ws.Cells["F1:G1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                ws.Cells["I1"].Value = "LOC";
+                ws.Cells["I1"].Value = "Caracteres";
                 ws.Cells["I1:J1"].Merge = true;
                 ws.Cells["I1:J1"].Style.Font.Bold = true;
                 ws.Cells["I1:J1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-
-                ws.Cells["L1"].Value = "Caracteres";
-                ws.Cells["L1:M1"].Merge = true;
-                ws.Cells["L1:M1"].Style.Font.Bold = true;
-                ws.Cells["L1:M1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
                 
                 ws.Cells["A2"].Value = "Rodadas";
                 ws.Cells["A2"].Style.Font.Bold = true; 
@@ -170,14 +164,6 @@ namespace GeradorExcelAnalitico
                 ws.Cells["J2"].Style.Font.Bold = true;
                 ws.Cells["J2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                ws.Cells["L2"].Value = "HC";
-                ws.Cells["L2"].Style.Font.Bold = true;
-                ws.Cells["L2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-
-                ws.Cells["M2"].Value = "GA";
-                ws.Cells["M2"].Style.Font.Bold = true;
-                ws.Cells["M2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-
                 #endregion
 
                 for (int i = 1; i < 31; i++)
@@ -198,24 +184,16 @@ namespace GeradorExcelAnalitico
                         ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = "###,###,##0.00";
                         ws.Cells[celulaTempoComUnload].Value = diferencaTempoComUnload == 0 ? diferencaTempoComUnload : Decimal.Parse(diferencaTempoComUnload.ToString("#.##")); 
 
-                        //var diferencaTempo = (Decimal.Parse(rodadaHc.Fitness) - Decimal.Parse(rodadaHc.FitnessFinal));
-
-                        //string celulaTempo = "F" + (i + 2).ToString();
-                        //ws.Cells[celulaTempo].Style.Numberformat.Format = null;
-                        //ws.Cells[celulaTempo].Style.Numberformat.Format = "###,###,##0.0";
-                        //ws.Cells[celulaTempo].Value = diferencaTempo == 0 ? diferencaTempo : Decimal.Parse(diferencaTempo.ToString("#.#"));
-
-
                         var diferencaLoc = rodadaHc.LocOriginal - rodadaHc.LocFinal;
 
-                        string celulaLoc = "I" + (i + 2).ToString();
+                        string celulaLoc = "F" + (i + 2).ToString();
                         ws.Cells[celulaLoc].Style.Numberformat.Format = null;
                         ws.Cells[celulaLoc].Style.Numberformat.Format = "###,###,##0";
                         ws.Cells[celulaLoc].Value = diferencaLoc;
 
                         var diferencatokens = rodadaHc.CaracteresOriginal - rodadaHc.CaracteresFinal;
 
-                        string celulaTokens = "L" + (i + 2).ToString();
+                        string celulaTokens = "I" + (i + 2).ToString();
                         ws.Cells[celulaTokens].Style.Numberformat.Format = null;
                         ws.Cells[celulaTokens].Style.Numberformat.Format = "###,###,##0";
                         ws.Cells[celulaTokens].Value = diferencatokens;
@@ -258,26 +236,16 @@ namespace GeradorExcelAnalitico
                         ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = "###,###,##0.00";
                         ws.Cells[celulaTempoComUnload].Value = diferencaTempoComUnload == 0 ? diferencaTempoComUnload : Decimal.Parse(diferencaTempoComUnload.ToString("#.##")); 
 
-
-
-                        //var diferencaTempo = (Decimal.Parse(rodadaGa.Fitness) - Decimal.Parse(rodadaGa.FitnessFinal));
-
-                        //string celulaTempo = "G" + (i + 2).ToString();
-                        //ws.Cells[celulaTempo].Style.Numberformat.Format = null;
-                        //ws.Cells[celulaTempo].Style.Numberformat.Format = "###,###,##0.0";
-                        //ws.Cells[celulaTempo].Value = diferencaTempo == 0 ? diferencaTempo : Decimal.Parse(diferencaTempo.ToString("#.#"));
-
-
                         var diferencaLoc = rodadaGa.LocOriginal - rodadaGa.LocFinal;
 
-                        string celulaLoc = "J" + (i + 2).ToString();
+                        string celulaLoc = "G" + (i + 2).ToString();
                         ws.Cells[celulaLoc].Style.Numberformat.Format = null;
                         ws.Cells[celulaLoc].Style.Numberformat.Format = "###,###,##0";
                         ws.Cells[celulaLoc].Value = diferencaLoc;
 
                         var diferencatokens = rodadaGa.CaracteresOriginal - rodadaGa.CaracteresFinal;
 
-                        string celulaTokens = "M" + (i + 2).ToString();
+                        string celulaTokens = "J" + (i + 2).ToString();
                         ws.Cells[celulaTokens].Style.Numberformat.Format = null;
                         ws.Cells[celulaTokens].Style.Numberformat.Format = "###,###,##0";
                         ws.Cells[celulaTokens].Value = diferencatokens;
@@ -324,17 +292,16 @@ namespace GeradorExcelAnalitico
                     ws.Cells["D35"].Style.Numberformat.Format = "###,###,##0.00";
                     ws.Cells["D35"].Formula = "=STDEV(D3:D32)";
 
-
-                    ws.Cells["F34"].Style.Numberformat.Format = "###,###,##0.00";
+                    ws.Cells["F34"].Style.Numberformat.Format = "###,###,##0.0";
                     ws.Cells["F34"].Formula = "=AVERAGE(F3:F32)";
 
-                    ws.Cells["G34"].Style.Numberformat.Format = "###,###,##0.00";
+                    ws.Cells["G34"].Style.Numberformat.Format = "###,###,##0.0";
                     ws.Cells["G34"].Formula = "=AVERAGE(G3:G32)";
 
-                    ws.Cells["F35"].Style.Numberformat.Format = "###,###,##0.00";
+                    ws.Cells["F35"].Style.Numberformat.Format = "###,###,##0.0";
                     ws.Cells["F35"].Formula = "=STDEV(F3:F32)";
 
-                    ws.Cells["G35"].Style.Numberformat.Format = "###,###,##0.00";
+                    ws.Cells["G35"].Style.Numberformat.Format = "###,###,##0.0";
                     ws.Cells["G35"].Formula = "=STDEV(G3:G32)";
 
 
@@ -349,19 +316,6 @@ namespace GeradorExcelAnalitico
 
                     ws.Cells["J35"].Style.Numberformat.Format = "###,###,##0.0";
                     ws.Cells["J35"].Formula = "=STDEV(J3:J32)";
-
-
-                    ws.Cells["L34"].Style.Numberformat.Format = "###,###,##0.0";
-                    ws.Cells["L34"].Formula = "=AVERAGE(L3:L32)";
-
-                    ws.Cells["M34"].Style.Numberformat.Format = "###,###,##0.0";
-                    ws.Cells["M34"].Formula = "=AVERAGE(M3:M32)";
-
-                    ws.Cells["L35"].Style.Numberformat.Format = "###,###,##0.0";
-                    ws.Cells["L35"].Formula = "=STDEV(L3:L32)";
-
-                    ws.Cells["M35"].Style.Numberformat.Format = "###,###,##0.0";
-                    ws.Cells["M35"].Formula = "=STDEV(M3:M32)";
 
                     #endregion
 
@@ -634,10 +588,6 @@ namespace GeradorExcelAnalitico
                         tempoFinalComUnload = tempoOriginal;
                         fitFinal = fitOrignal;
                     }
-
-                    
-
-
 
 
                     rodadas.Add(new RodadaMapper()
