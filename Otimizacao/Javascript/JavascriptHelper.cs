@@ -352,10 +352,8 @@ namespace Otimizacao.Javascript
 
                             if(counter > #randonNode)
                             {
-                                //javascriptHelper.Escrever('             Excluindo nó: {0}', JSON.stringify(node));
-                                node.type = 'EmptyStatement';
                                 this.break();
-                                return node;
+                                return { type = 'EmptyStatement'} ;
 
                             }
 
