@@ -71,4 +71,7 @@ x64/
 *.log
 *.vspscc
 *.vssscc
+*.exe
+*.pdb
+*.cache
 .builds
