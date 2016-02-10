@@ -352,7 +352,7 @@ namespace Otimizacao.Javascript
 
                             if(counter > #randonNode)
                             {
-                                node.type = EmptyStatement;
+                                node.type = 'EmptyStatement';
                                 this.break();
                                 //return { 'type': 'EmptyStatement'} ;
                                 return node;
