@@ -176,9 +176,14 @@ namespace Otimizacao
             sw.Start();
             if(Heuristica == "GA")
                 otimizou = OtimizarUsandoGa();
+            else if(Heuristica == "RD")
+                otimizou = OtimizarUsandoRd();
+            else
+                throw new ApplicationException(string.Format("Heurística ainda não definida. {0}", Heuristica));
+                
+            
 
-            if(Heuristica == "HC")
-                otimizou = OtimizarUsandoHc();
+
 
             #region Gera o CSV da rodada
 
@@ -203,10 +208,10 @@ namespace Otimizacao
         }
 
         /// <summary>
-        /// Usar HC para otimizar
+        /// Usar Ramdon para otimizar
         /// </summary>
         /// <returns></returns>
-        private bool OtimizarUsandoHc()
+        private bool OtimizarUsandoRd()
         {
             var totalVizinhosExplorar = _size * _executarAte;
             var moverNoPrimeiroMelhor = true;
