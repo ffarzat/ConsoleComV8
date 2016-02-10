@@ -12,10 +12,13 @@ namespace Otimizacao
 
         public string Codigo { get; set; }
 
-        public No(int indice, string codigo)
+        public string Tipo { get; set; }
+
+        public No(int indice, string codigo, string tipo)
         {
             Indice = indice;
             Codigo = codigo;
+            Tipo = tipo;
         }
     }
 }

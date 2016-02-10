@@ -449,7 +449,7 @@ namespace Otimizacao.Javascript
                             if(node.type == listaComTiposDeNos[0] || node.type == listaComTiposDeNos[1])
                             {
                                 counter++;
-                                Nos.Add(new No(indent, JSON.stringify(node)));
+                                Nos.Add(new No(indent, JSON.stringify(node)), node.type);
                             }
                                 indent++;
                         }
@@ -463,6 +463,9 @@ namespace Otimizacao.Javascript
 
                 Console.WriteLine(ex.ToString());
             }
+
+
+            //lista.ForEach(item => item.Codigo = this.GerarCodigo(item.Codigo));
 
 
             return lista;
