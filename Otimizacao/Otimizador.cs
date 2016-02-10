@@ -232,6 +232,8 @@ namespace Otimizacao
             //CallExpression
 
             string tipo = "CallExpression";
+            int ultimoIndiceIf = 0;
+            int ultimoIndiceCall = 0;
 
             for (int i = 1; i < totalVizinhosExplorar - 1; i++)
             {
@@ -239,15 +241,25 @@ namespace Otimizacao
                 #region cria o vizinho
                 Console.WriteLine("      {0}", i);
 
-                if (tipo == "CallExpression")
-                    tipo = "IfStatement";
-                else
-                    tipo = "CallExpression";
+                tipo = (tipo == "CallExpression") ? "IfStatement" : "CallExpression";
                 
           
                 Individuo c = MelhorIndividuo.Clone();
+                int no = 0;
 
-                ExecutarMutacao(c);
+                if (tipo == "IfStatement")
+                    no = _nosIf[ultimoIndiceIf];
+                else
+                    no = _nosCall[ultimoIndiceIf];
+
+                ExecutarMutacao(c, no);
+
+                if (tipo == "IfStatement")
+                    ultimoIndiceIf++;
+                else
+                    ultimoIndiceCall++;
+                
+  
 
                 #endregion
 
@@ -266,6 +278,10 @@ namespace Otimizacao
                     otimizado = true;
                     melhores.Add(c);
                 }
+
+                if (totalVizinhosPossiveis < i)
+                    break;
+
             }
 
             #region Cria diretorio dos resultados
@@ -300,10 +316,10 @@ namespace Otimizacao
             var jHelper = new JavascriptHelper(_diretorioFontes, false, false);
             jHelper.ConfigurarGeracao();
 
-            var totalif = jHelper.ContarNosPorTipo(clone.Ast, "IfStatement");
-            var totalCall = jHelper.ContarNosPorTipo(clone.Ast, "CallExpression");
+            _nosIf = jHelper.ContarNosPorTipo(clone.Ast, "IfStatement");
+            _nosCall = jHelper.ContarNosPorTipo(clone.Ast, "CallExpression");
 
-            return totalif.Count + totalCall.Count;
+            return _nosIf.Count + _nosCall.Count;
         }
 
         /// <summary>
@@ -749,7 +765,30 @@ namespace Otimizacao
         }
 
         /// <summary>
-        /// 
+        /// Executa uma mutação no individuo
+        /// </summary>
+        /// <param name="sujeito"> </param>
+        /// <param name="no"></param>
+        private void ExecutarMutacao(Individuo sujeito, int no)
+        {
+            JavascriptHelper jHelper = null;
+            jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+            jHelper.ConfigurarGeracao();
+            string novaAst = "";
+            
+            var executarMutacao = new Thread(() => novaAst = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no));
+            executarMutacao.Start();
+            executarMutacao.Join(_timeout * 1000); //timeout
+            
+            sujeito.Ast = novaAst;
+            sujeito.CriadoPor = Operador.Mutacao;
+            
+            jHelper.Dispose();
+    
+        }
+
+        /// <summary>
+        /// Executa o Cruzamento
         /// </summary>
         /// <param name="pai"></param>
         /// <param name="mae"></param>
