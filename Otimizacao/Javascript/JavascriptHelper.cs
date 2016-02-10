@@ -420,6 +420,46 @@ namespace Otimizacao.Javascript
         }
 
         /// <summary>
+        /// Conta o total de Nós de uma Ast
+        /// </summary>
+        /// <param name="ast">árvore no formato do esprima</param>
+        /// <param name="tipo">Tipo do nó</param>
+        /// <returns></returns>
+        public int ContarNosPorTipo(string ast, string tipo)
+        {
+            try
+            {
+                _engine.Execute(@"
+
+                    var ast = JSON.parse(#ast);
+                    var tipo = '#tipo';
+
+                    var indent = 0;
+                    var counter = 0;
+
+                    ObjEstraverse.replace(ast, {
+                        enter: function(node, parent) {
+                            if(node.type == tipo)
+                                counter++;
+                        }
+                    });
+
+                    javascriptHelper.TotalDeNos = counter;
+                    ".Replace("#ast", this.EncodeJsString(ast)).Replace("#tipo", tipo));
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.ToString());
+                return 0;
+            }
+
+
+            return TotalDeNos;
+        }
+
+
+        /// <summary>
         /// Exeucta um crossOver para gerar dois novos individuos trocando material entre o pai e mae
         /// </summary>
         /// <param name="astPai">Ast que representa o Pai</param>

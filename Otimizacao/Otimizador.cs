@@ -206,12 +206,103 @@ namespace Otimizacao
         }
 
         /// <summary>
+        /// Fatorial simples
+        /// </summary>
+        /// <param name="numero"></param>
+        /// <returns></returns>
+        private static long Fatorial(int numero)
+        {
+            if (numero == 0)
+            {
+                return 1;
+            }
+            return Fatorial(numero - 1) * numero;
+        }
+
+        /// <summary>
         /// Otimizar usando um HC que salta os vizinhos de IF e CALL
         /// </summary>
         /// <returns></returns>
         private bool OtimizarUsandoHc()
         {
-            return false;
+            var totalVizinhosExplorar = _size * _executarAte;
+            var otimizado = false;
+            var melhores = new List<Individuo>();
+
+            CriarIndividuoOriginal(_caminhoBiblioteca);
+
+            var totalVizinhosPossiveis = CalcularVizinhos(_original.Clone());
+
+            Console.WriteLine("      {0} nós para remover (IF, CALL).  ", totalVizinhosPossiveis);
+
+            Console.WriteLine("      Avaliar {0} vizinhos", totalVizinhosExplorar);
+
+            AvaliarIndividuo(0, MelhorIndividuo);
+
+            
+
+            for (int i = 1; i < totalVizinhosExplorar - 1; i++)
+            {
+                //cria o vizinho
+                Console.WriteLine("      {0}", i);
+
+                Individuo c = MelhorIndividuo.Clone();
+
+                ExecutarMutacao(c);
+
+                //Avalia o vizinho e veja se melhorou
+                var fitvizinho = AvaliarIndividuo(i, c);
+
+                if (fitvizinho < 0)
+                    fitvizinho = fitvizinho * -1;
+
+
+                if (fitvizinho < _fitnessMin)
+                {
+                    Console.WriteLine("      Encontrado. FIT Antigo {0} | FIT novo {1}", _fitnessMin, c.Fitness);
+                    MelhorIndividuo = c;
+                    _fitnessMin = fitvizinho;
+                    otimizado = true;
+                    melhores.Add(c);
+                }
+            }
+
+            #region Cria diretorio dos resultados
+            string generationResultPath = Path.Combine(_diretorioExecucao, "0");
+            Directory.CreateDirectory(generationResultPath);
+            Thread.Sleep(5);
+            #endregion
+
+            foreach (var individuo in melhores)
+            {
+                string generationBestPath = string.Format("{0}\\{1}.js", generationResultPath, individuo.Id);
+
+                File.WriteAllText(generationBestPath, individuo.Codigo);
+            }
+
+
+            Console.WriteLine("============================================================");
+            Console.WriteLine("  Houve otimizacao: {0}", otimizado);
+
+            return otimizado;
+        }
+
+        /// <summary>
+        /// Calculo o número de vizinhos
+        /// </summary>
+        /// <param name="clone"></param>
+        /// <returns></returns>
+        private int CalcularVizinhos(Individuo clone)
+        {
+            //IfStatement
+            //CallExpression
+            var jHelper = new JavascriptHelper(_diretorioFontes, false, false);
+            jHelper.ConfigurarGeracao();
+
+            var totalif = jHelper.ContarNosPorTipo(clone.Ast, "IfStatement");
+            var totalCall = jHelper.ContarNosPorTipo(clone.Ast, "CallExpression");
+
+            return totalif + totalCall;
         }
 
         /// <summary>
