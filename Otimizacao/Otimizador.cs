@@ -206,20 +206,6 @@ namespace Otimizacao
         }
 
         /// <summary>
-        /// Fatorial simples
-        /// </summary>
-        /// <param name="numero"></param>
-        /// <returns></returns>
-        private static long Fatorial(int numero)
-        {
-            if (numero == 0)
-            {
-                return 1;
-            }
-            return Fatorial(numero - 1) * numero;
-        }
-
-        /// <summary>
         /// Otimizar usando um HC que salta os vizinhos de IF e CALL
         /// </summary>
         /// <returns></returns>
@@ -238,7 +224,6 @@ namespace Otimizacao
             Console.WriteLine("      Avaliar {0} vizinhos", totalVizinhosExplorar);
 
             AvaliarIndividuo(0, MelhorIndividuo);
-
             
 
             for (int i = 1; i < totalVizinhosExplorar - 1; i++)
@@ -396,49 +381,6 @@ namespace Otimizacao
         }
 
         /// <summary>
-        /// Cria a planilha em disco
-        /// </summary>
-        private void CriarExcel()
-        {
-            //_excel.Workbook.Properties.Author = "Fabio Farzat";
-            //_excel.Workbook.Properties.Title = string.Format("Execucao do {0}", _caminhoBiblioteca);
-            //_excel.Workbook.Properties.Company = "www.vitalbusiness.com.br";
-
-            //_excel.Workbook.Worksheets.Add("Resultados");
-
-            ////Titulos
-            ////Planilha.Cells["A1:F1"].Style.Fill.PatternType = ExcelFillStyle.LightGrid;
-
-            //Planilha.InsertRow(1, 1);
-
-            //Planilha.Cells["A1"].Value = "Geracao";
-            //Planilha.Cells["B1"].Value = "Individuo";
-            //Planilha.Cells["C1"].Value = "Operacao";
-            //Planilha.Cells["D1"].Value = "Fitness";
-            //Planilha.Cells["E1"].Value = "Tempo";
-            //Planilha.Cells["F1"].Value = "Testes";
-
-
-            #region Gera o CSV inicial
-
-            //var myExport = new CsvExport();
-
-            //myExport.AddRow();
-            //myExport["Geracao"] = "";
-            //myExport["Individuo"] = "";
-            //myExport["Operacao"] = "";
-            //myExport["Fitness"] = "";
-            //myExport["Tempo"] = "";
-            //myExport["Testes"] = "";
-
-            //myExport.ExportToFile(Path.Combine(_diretorioExecucao, "resultados.csv"));
-
-            #endregion
-
-
-        }
-
-        /// <summary>
         /// Executa as rodadas configuradas
         /// </summary>
         private void ExecutarRodadas()
@@ -555,15 +497,6 @@ namespace Otimizacao
             }
 
             _fitnessAvg = ((double) _fitnessSum / _size);
-        }
-
-        /// <summary>
-        /// Gera uma página HTML com o diff entre o original e o novo melhor encontrado
-        /// </summary>
-        /// <param name="arquivo"></param>
-        private void GerarRelatorioHtml(string arquivo)
-        {
-            
         }
 
         /// <summary>
@@ -905,8 +838,6 @@ namespace Otimizacao
                 Console.WriteLine(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness,
                                            sujeito.TestesComSucesso, sujeito.TempoExecucao));
 
-                CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
-
                 return sujeito.Fitness;
             }
 
@@ -923,8 +854,6 @@ namespace Otimizacao
                 sujeito.Fitness = _original.Fitness;
                 Console.WriteLine(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness,
                                            sujeito.TestesComSucesso, sujeito.TempoExecucao));
-
-                CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
 
                 return sujeito.Fitness;
             }
@@ -978,66 +907,7 @@ namespace Otimizacao
 
             #endregion
 
-            CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
-
-
             return sujeito.Fitness;
-        }
-
-        /// <summary>
-        /// Inclui a linha no excel
-        /// </summary>
-        /// <param name="indice"></param>
-        /// <param name="sujeito"></param>
-        /// <param name="testesComSucesso"></param>
-        /// <param name="tempoTotal"></param>
-        private void CriarLinhaExcel(int indice, Individuo sujeito, int testesComSucesso, string tempoTotal)
-        {
-            //Console.WriteLine("              Incluído no excel : {0}", indice);
-
-            #region Inclui no  CSV
-
-            var myExport = new CsvExport();
-
-            myExport.AddRow();
-
-            myExport["Geracao"] = _generationCount;
-            myExport["Individuo"] = sujeito.Arquivo;
-            myExport["Operacao"] = sujeito.CriadoPor.ToString();
-            myExport["Fitness"] = sujeito.Fitness;
-            myExport["Tempo"] = tempoTotal;
-            myExport["Testes"] = testesComSucesso;
-
-            myExport.ExportToFile(Path.Combine(_diretorioExecucao, "resultados.csv"));
-
-            #endregion
-
-
-
-            //int indiceExcel = Planilha.Dimension.End.Row + 1;
-            //Planilha.InsertRow(indiceExcel, 1);
-
-            //Planilha.Cells["A" + indiceExcel].Value =_generationCount;
-            //Planilha.Cells["B" + indiceExcel].Value = sujeito.Arquivo;
-            //Planilha.Cells["C" + indiceExcel].Value = sujeito.CriadoPor.ToString();
-            //Planilha.Cells["D" + indiceExcel].Value = sujeito.Fitness;
-            //Planilha.Cells["E" + indiceExcel].Value = tempoTotal;
-            //Planilha.Cells["F" + indiceExcel].Value = testesComSucesso;
-
-            //var existingFile = new FileInfo(Path.Combine(_diretorioExecucao, "resultados.xlsx"));
-            //if (existingFile.Exists)
-            //{
-            //    existingFile.Delete();
-            //    Thread.Sleep(10);
-            //}
-
-            //var holdingstream = new MemoryStream();
-            //_excel.SaveAs(existingFile);
-            //holdingstream.SetLength(0);
-            //_excel.Stream.Position = 0;
-            //_excel.Stream.CopyTo(holdingstream);
-            //_excel.Load(holdingstream);
-
         }
 
         /// <summary>
