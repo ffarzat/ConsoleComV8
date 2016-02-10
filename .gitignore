@@ -74,4 +74,6 @@ x64/
 *.exe
 *.pdb
 *.cache
+*.txt
 .builds
+
