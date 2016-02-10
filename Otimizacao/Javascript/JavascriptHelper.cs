@@ -423,19 +423,22 @@ namespace Otimizacao.Javascript
         /// Conta o total de Nós de uma Ast
         /// </summary>
         /// <param name="ast">árvore no formato do esprima</param>
-        /// <param name="tipo">Tipo do nó</param>
+        /// <param name="listaComTiposDeNos">Tipo do nó</param>
         /// <returns></returns>
-        public List<int> ContarNosPorTipo(string ast, string tipo)
+        public List<No> ContarNosPorTipo(string ast, List<string> listaComTiposDeNos)
         {
-            var lista = new List<int>();
+            var lista = new List<No>();
 
             try
             {
                 _engine.AddHostObject("Nos", lista);
+                _engine.AddHostType("No", typeof(No));
+
+                _engine.AddHostObject("listaComTiposDeNos", listaComTiposDeNos);
+
                 _engine.Execute(@"
 
                     var ast = JSON.parse(#ast);
-                    var tipo = '#tipo';
 
                     var indent = 0;
                     var counter = 0;
@@ -443,17 +446,17 @@ namespace Otimizacao.Javascript
                     ObjEstraverse.replace(ast, {
                         enter: function(node, parent) {
 
-                            if(node.type == tipo)
+                            if(node.type == listaComTiposDeNos[0] || node.type == listaComTiposDeNos[1])
                             {
                                 counter++;
-                                Nos.Add(indent);
+                                Nos.Add(new No(indent, JSON.stringify(node)));
                             }
                                 indent++;
                         }
                     });
 
                     javascriptHelper.TotalDeNos = counter;
-                    ".Replace("#ast", this.EncodeJsString(ast)).Replace("#tipo", tipo));
+                    ".Replace("#ast", this.EncodeJsString(ast)));
             }
             catch (Exception ex)
             {

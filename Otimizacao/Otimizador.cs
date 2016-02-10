@@ -15,8 +15,8 @@ namespace Otimizacao
     public class Otimizador: IDisposable
     {
         //Guarda o indice dos nós por tipo
-        private static List<int> _nosIf;
-        private static List<int> _nosCall;
+        private static List<No> _nosParaMutacao;
+        
 
         /// <summary>
         /// Guarda qual das rodadas externas é a atual
@@ -220,9 +220,9 @@ namespace Otimizacao
 
             CriarIndividuoOriginal(_caminhoBiblioteca);
 
-            var totalVizinhosPossiveis = CalcularVizinhos(_original.Clone());
+            CalcularVizinhos(_original.Clone());
 
-            Console.WriteLine("      {0} nós para remover (IF, CALL).  ", totalVizinhosPossiveis);
+            Console.WriteLine("      {0} nós para remover (IF, CALL).  ", _nosParaMutacao.Count);
 
             Console.WriteLine("      Avaliar {0} vizinhos", totalVizinhosExplorar);
 
@@ -232,35 +232,27 @@ namespace Otimizacao
             //CallExpression
 
             string tipo = "CallExpression";
-            int ultimoIndiceIf = 0;
-            int ultimoIndiceCall = 0;
+            var r = new Random();
+            int no = 0;
+            int ultimoIndice = r.Next(0, _nosParaMutacao.Count);
 
             for (int i = 1; i < totalVizinhosExplorar - 1; i++)
             {
                 
                 #region cria o vizinho
-                Console.WriteLine("      {0}", i);
-
-                tipo = (tipo == "CallExpression") ? "IfStatement" : "CallExpression";
+                Console.WriteLine("      {0}-Nó:{1}", i, no);
                 
-          
-                Individuo c = MelhorIndividuo.Clone();
-                int no = 0;
+                Individuo c = MelhorIndividuo.Clone(); //Sempre usando o melhor
 
-                if (tipo == "IfStatement")
-                    no = _nosIf[ultimoIndiceIf];
-                else
-                    no = _nosCall[ultimoIndiceIf];
+                if (_nosParaMutacao.Count < ultimoIndice) //zera de novo
+                    ultimoIndice = 0;
+
+                no = _nosParaMutacao[ultimoIndice].Indice;
 
                 ExecutarMutacao(c, no);
 
-                if (tipo == "IfStatement")
-                    ultimoIndiceIf++;
-                else
-                    ultimoIndiceCall++;
+                ultimoIndice++;
                 
-  
-
                 #endregion
 
                 //Avalia o vizinho e veja se melhorou
@@ -277,9 +269,11 @@ namespace Otimizacao
                     _fitnessMin = fitvizinho;
                     otimizado = true;
                     melhores.Add(c);
+
+                    CalcularVizinhos(_original.Clone()); //recalculo os nós
                 }
 
-                if (totalVizinhosPossiveis < i)
+                if (_nosParaMutacao.Count < i) //se deu a volta completa pode parar
                     break;
 
             }
@@ -309,17 +303,21 @@ namespace Otimizacao
         /// </summary>
         /// <param name="clone"></param>
         /// <returns></returns>
-        private int CalcularVizinhos(Individuo clone)
+        private void CalcularVizinhos(Individuo clone)
         {
             //IfStatement
             //CallExpression
+            var lista = new List<string>()
+                {
+                    {"IfStatement"},
+                    {"CallExpression"}
+                };
+
             var jHelper = new JavascriptHelper(_diretorioFontes, false, false);
             jHelper.ConfigurarGeracao();
 
-            _nosIf = jHelper.ContarNosPorTipo(clone.Ast, "IfStatement");
-            _nosCall = jHelper.ContarNosPorTipo(clone.Ast, "CallExpression");
-
-            return _nosIf.Count + _nosCall.Count;
+            _nosParaMutacao = jHelper.ContarNosPorTipo(clone.Ast, lista);
+            
         }
 
         /// <summary>
