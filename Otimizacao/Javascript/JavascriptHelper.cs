@@ -425,10 +425,13 @@ namespace Otimizacao.Javascript
         /// <param name="ast">árvore no formato do esprima</param>
         /// <param name="tipo">Tipo do nó</param>
         /// <returns></returns>
-        public int ContarNosPorTipo(string ast, string tipo)
+        public List<int> ContarNosPorTipo(string ast, string tipo)
         {
+            var lista = new List<int>();
+
             try
             {
+                _engine.AddHostObject("Nos", lista);
                 _engine.Execute(@"
 
                     var ast = JSON.parse(#ast);
@@ -439,8 +442,13 @@ namespace Otimizacao.Javascript
 
                     ObjEstraverse.replace(ast, {
                         enter: function(node, parent) {
+
                             if(node.type == tipo)
+                            {
                                 counter++;
+                                Nos.Add(indent);
+                            }
+                                indent++;
                         }
                     });
 
@@ -451,11 +459,10 @@ namespace Otimizacao.Javascript
             {
 
                 Console.WriteLine(ex.ToString());
-                return 0;
             }
 
 
-            return TotalDeNos;
+            return lista;
         }
 
 

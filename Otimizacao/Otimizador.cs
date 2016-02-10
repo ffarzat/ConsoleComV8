@@ -14,6 +14,9 @@ namespace Otimizacao
     /// </summary>
     public class Otimizador: IDisposable
     {
+        //Guarda o indice dos nós por tipo
+        private static List<int> _nosIf;
+        private static List<int> _nosCall;
 
         /// <summary>
         /// Guarda qual das rodadas externas é a atual
@@ -224,16 +227,29 @@ namespace Otimizacao
             Console.WriteLine("      Avaliar {0} vizinhos", totalVizinhosExplorar);
 
             AvaliarIndividuo(0, MelhorIndividuo);
-            
+
+            //IfStatement
+            //CallExpression
+
+            string tipo = "CallExpression";
 
             for (int i = 1; i < totalVizinhosExplorar - 1; i++)
             {
-                //cria o vizinho
+                
+                #region cria o vizinho
                 Console.WriteLine("      {0}", i);
 
+                if (tipo == "CallExpression")
+                    tipo = "IfStatement";
+                else
+                    tipo = "CallExpression";
+                
+          
                 Individuo c = MelhorIndividuo.Clone();
 
                 ExecutarMutacao(c);
+
+                #endregion
 
                 //Avalia o vizinho e veja se melhorou
                 var fitvizinho = AvaliarIndividuo(i, c);
@@ -287,7 +303,7 @@ namespace Otimizacao
             var totalif = jHelper.ContarNosPorTipo(clone.Ast, "IfStatement");
             var totalCall = jHelper.ContarNosPorTipo(clone.Ast, "CallExpression");
 
-            return totalif + totalCall;
+            return totalif.Count + totalCall.Count;
         }
 
         /// <summary>
