@@ -43,8 +43,32 @@ Temporary Items
 .apdisk
 
 # Recycle Bin used on file shares
-Debug/
-ConsoleComV8/bin/Debug/ExecutionLog.txt
+[Bb]in/
+[Oo]bj/
+
+*.suo
+*.user
+*.sln.docstates
+
+[Dd]ebug/
+[Rr]elease/
+x64/
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
 *.pdb
-*.exe
-*.cache
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.log
+*.vspscc
+*.vssscc
+.builds
