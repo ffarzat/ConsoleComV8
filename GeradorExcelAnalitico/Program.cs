@@ -6,6 +6,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DiffPlex;
+using DiffPlex.DiffBuilder;
+using DiffPlex.DiffBuilder.Model;
 using Excel;
 using Microsoft.VisualBasic.FileIO;
 using OfficeOpenXml;
@@ -63,8 +66,7 @@ namespace GeradorExcelAnalitico
             Bibliotecas = new List<BibliotecaMapper>();
             ProcessarDiretorios(fromDirectoryPath, resultsDirectory);
             ExportarPlanilhaEstatistica(resultsDirectory);
-
-
+            
             //Console.Read();
         }
 
@@ -82,47 +84,61 @@ namespace GeradorExcelAnalitico
             var pck = new ExcelPackage(excelAnalise);
             Console.WriteLine("Montando planilha de Analises");
 
+            //Guarda as linhas e 
+            var mudancasComputadas = new List<LinhaAlterada>();
+
             foreach (var biblioteca in Bibliotecas)
             {
                 Console.WriteLine(" worksheet {0}", biblioteca.Nome);
-                
+
+                mudancasComputadas.Clear();
+                mudancasComputadas = new List<LinhaAlterada>();
+
                 var ws = pck.Workbook.Worksheets.Add(biblioteca.Nome);
+                
                 #region Formatar Planilha
 
-                ws.Cells["C1"].Value = "Tempo (secs)";
-                ws.Cells["C1"].AddComment("Tempo em segundos com descarregamento da engine. Valor de melhora (ou piora) percentual", "ffarzat");
+                ws.Cells["C1"].Value = "Tempo (%)";
                 ws.Cells["C1:D1"].Merge = true;
                 ws.Cells["C1:D1"].Style.Font.Bold = true; 
                 ws.Cells["C1:D1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                ws.Cells["F1"].Value = "Tempo (ms)";
-                ws.Cells["F1"].AddComment("Esse é o tempo que o QUnit retorna da execução lá dentro da V8", "ffarzat");
+                ws.Cells["F1"].Value = "LOC";
                 ws.Cells["F1:G1"].Merge = true;
                 ws.Cells["F1:G1"].Style.Font.Bold = true;
                 ws.Cells["F1:G1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                ws.Cells["I1"].Value = "LOC";
+                ws.Cells["I1"].Value = "Caracteres";
                 ws.Cells["I1:J1"].Merge = true;
                 ws.Cells["I1:J1"].Style.Font.Bold = true;
                 ws.Cells["I1:J1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-
-                ws.Cells["L1"].Value = "Caracteres";
-                ws.Cells["L1:M1"].Merge = true;
-                ws.Cells["L1:M1"].Style.Font.Bold = true;
-                ws.Cells["L1:M1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
                 
                 ws.Cells["A2"].Value = "Rodadas";
                 ws.Cells["A2"].Style.Font.Bold = true; 
-                ws.Cells["A2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                ws.Cells["A2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
 
                 ws.Cells["A34"].Value = "Média";
                 ws.Cells["A34"].AddComment("Aqui quanto maior melhor. Trata-se do valor da diferença média (Original - Melhor", "ffarzat");
                 ws.Cells["A34"].Style.Font.Bold = true;
-                ws.Cells["A34"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                ws.Cells["A34"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
 
                 ws.Cells["A35"].Value = "Desvio Padrão";
                 ws.Cells["A35"].Style.Font.Bold = true;
-                ws.Cells["A35"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                ws.Cells["A35"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+
+                ws.Cells["A39"].Value = "Linha de Código";
+                ws.Cells["A39"].Style.Font.Bold = true;
+                ws.Cells["A39"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["B39"].Value = "Tipo de Alteração";
+                ws.Cells["B39"].Style.Font.Bold = true;
+                ws.Cells["B39"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                ws.Cells["C39"].Value = "Frequência";
+                ws.Cells["C39"].AddComment("Quantas vezes apareceu no total dentro das 30 rodadas nos dois algortimos", "ffarzat");
+                ws.Cells["C39"].Style.Font.Bold = true;
+                ws.Cells["C39"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                
 
                 ws.Cells["C2"].Value = "HC";
                 ws.Cells["C2"].Style.Font.Bold = true;
@@ -148,14 +164,6 @@ namespace GeradorExcelAnalitico
                 ws.Cells["J2"].Style.Font.Bold = true;
                 ws.Cells["J2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                ws.Cells["L2"].Value = "HC";
-                ws.Cells["L2"].Style.Font.Bold = true;
-                ws.Cells["L2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-
-                ws.Cells["M2"].Value = "GA";
-                ws.Cells["M2"].Style.Font.Bold = true;
-                ws.Cells["M2"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-
                 #endregion
 
                 for (int i = 1; i < 31; i++)
@@ -169,35 +177,51 @@ namespace GeradorExcelAnalitico
                     #region HC
                     if (rodadaHc !=null)
                     {
-                        var diferencaTempoComUnload = ((TimeSpan.Parse(rodadaHc.TempoOriginalComUnload).TotalSeconds / TimeSpan.Parse(rodadaHc.TempoFinalComUnload).TotalSeconds) -1) *100;
+                        var diferencaTempoComUnload = (Decimal.Parse(rodadaHc.Fitness) / Decimal.Parse(rodadaHc.FitnessFinal) - 1) * 100;
 
                         string celulaTempoComUnload = "C" + (i + 2).ToString();
                         ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = null;
                         ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = "###,###,##0.00";
-                        ws.Cells[celulaTempoComUnload].Value = diferencaTempoComUnload;
-
-                        var diferencaTempo = (Decimal.Parse(rodadaHc.Fitness) - Decimal.Parse(rodadaHc.FitnessFinal));
-
-                        string celulaTempo = "F" + (i + 2).ToString();
-                        ws.Cells[celulaTempo].Style.Numberformat.Format = null;
-                        ws.Cells[celulaTempo].Style.Numberformat.Format = "###,###,##0.0";
-                        ws.Cells[celulaTempo].Value = diferencaTempo;
-
+                        ws.Cells[celulaTempoComUnload].Value = diferencaTempoComUnload == 0 ? diferencaTempoComUnload : Decimal.Parse(diferencaTempoComUnload.ToString("#.##")); 
 
                         var diferencaLoc = rodadaHc.LocOriginal - rodadaHc.LocFinal;
 
-                        string celulaLoc = "I" + (i + 2).ToString();
+                        string celulaLoc = "F" + (i + 2).ToString();
                         ws.Cells[celulaLoc].Style.Numberformat.Format = null;
                         ws.Cells[celulaLoc].Style.Numberformat.Format = "###,###,##0";
                         ws.Cells[celulaLoc].Value = diferencaLoc;
 
                         var diferencatokens = rodadaHc.CaracteresOriginal - rodadaHc.CaracteresFinal;
 
-                        string celulaTokens = "L" + (i + 2).ToString();
+                        string celulaTokens = "I" + (i + 2).ToString();
                         ws.Cells[celulaTokens].Style.Numberformat.Format = null;
                         ws.Cells[celulaTokens].Style.Numberformat.Format = "###,###,##0";
                         ws.Cells[celulaTokens].Value = diferencatokens;
 
+                        if (rodadaHc.Diferencas != null)
+                        {
+                            foreach (var linha in rodadaHc.Diferencas.Lines)
+                            {
+                                if (linha.Text.Trim().Equals(";"))
+                                    continue;
+                                
+                                if (linha.Type == ChangeType.Deleted || linha.Type == ChangeType.Modified || linha.Type == ChangeType.Inserted)
+                                {
+
+                                    var linhaAntiga = mudancasComputadas.FirstOrDefault(l => l.Linha == linha.Text);
+                                    if (linhaAntiga != null)
+                                        linhaAntiga.Frequencia++;
+                                    else
+                                        mudancasComputadas.Add(new LinhaAlterada()
+                                            {
+                                                Linha = linha.Text,
+                                                Frequencia = 1,
+                                                Alteracao = linha.Type.ToString()
+                                            });
+
+                                }
+                            }
+                        }
                     }
 
                     #endregion
@@ -205,36 +229,51 @@ namespace GeradorExcelAnalitico
                     #region GA
                     if (rodadaGa !=null)
                     {
-                        var diferencaTempoComUnload = ((TimeSpan.Parse(rodadaGa.TempoOriginalComUnload).TotalSeconds / TimeSpan.Parse(rodadaGa.TempoFinalComUnload).TotalSeconds) - 1) * 100;
+                        var diferencaTempoComUnload = (Decimal.Parse(rodadaGa.Fitness) / Decimal.Parse(rodadaGa.FitnessFinal) -1) *100;
 
                         string celulaTempoComUnload = "D" + (i + 2).ToString();
                         ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = null;
                         ws.Cells[celulaTempoComUnload].Style.Numberformat.Format = "###,###,##0.00";
-                        ws.Cells[celulaTempoComUnload].Value = diferencaTempoComUnload;
-
-
-
-                        var diferencaTempo = (Decimal.Parse(rodadaGa.Fitness) - Decimal.Parse(rodadaGa.FitnessFinal));
-
-                        string celulaTempo = "G" + (i + 2).ToString();
-                        ws.Cells[celulaTempo].Style.Numberformat.Format = null;
-                        ws.Cells[celulaTempo].Style.Numberformat.Format = "###,###,##0.0";
-                        ws.Cells[celulaTempo].Value = diferencaTempo;
-
+                        ws.Cells[celulaTempoComUnload].Value = diferencaTempoComUnload == 0 ? diferencaTempoComUnload : Decimal.Parse(diferencaTempoComUnload.ToString("#.##")); 
 
                         var diferencaLoc = rodadaGa.LocOriginal - rodadaGa.LocFinal;
 
-                        string celulaLoc = "J" + (i + 2).ToString();
+                        string celulaLoc = "G" + (i + 2).ToString();
                         ws.Cells[celulaLoc].Style.Numberformat.Format = null;
                         ws.Cells[celulaLoc].Style.Numberformat.Format = "###,###,##0";
                         ws.Cells[celulaLoc].Value = diferencaLoc;
 
                         var diferencatokens = rodadaGa.CaracteresOriginal - rodadaGa.CaracteresFinal;
 
-                        string celulaTokens = "M" + (i + 2).ToString();
+                        string celulaTokens = "J" + (i + 2).ToString();
                         ws.Cells[celulaTokens].Style.Numberformat.Format = null;
                         ws.Cells[celulaTokens].Style.Numberformat.Format = "###,###,##0";
                         ws.Cells[celulaTokens].Value = diferencatokens;
+
+                        if (rodadaGa.Diferencas != null)
+                        {
+                            foreach (var linha in rodadaGa.Diferencas.Lines)
+                            {
+                                if (linha.Text.Trim().Equals(";"))
+                                    continue;
+
+                                if (linha.Type == ChangeType.Deleted || linha.Type == ChangeType.Modified || linha.Type == ChangeType.Inserted)
+                                {
+
+                                    var linhaAntiga = mudancasComputadas.FirstOrDefault(l => l.Linha == linha.Text);
+                                    if (linhaAntiga != null)
+                                        linhaAntiga.Frequencia++;
+                                    else
+                                        mudancasComputadas.Add(new LinhaAlterada()
+                                        {
+                                            Linha = linha.Text,
+                                            Frequencia = 1,
+                                            Alteracao = linha.Type.ToString()
+                                        });
+
+                                }
+                            }
+                        }
                     }
 
                     #endregion
@@ -253,17 +292,16 @@ namespace GeradorExcelAnalitico
                     ws.Cells["D35"].Style.Numberformat.Format = "###,###,##0.00";
                     ws.Cells["D35"].Formula = "=STDEV(D3:D32)";
 
-
-                    ws.Cells["F34"].Style.Numberformat.Format = "###,###,##0.00";
+                    ws.Cells["F34"].Style.Numberformat.Format = "###,###,##0.0";
                     ws.Cells["F34"].Formula = "=AVERAGE(F3:F32)";
 
-                    ws.Cells["G34"].Style.Numberformat.Format = "###,###,##0.00";
+                    ws.Cells["G34"].Style.Numberformat.Format = "###,###,##0.0";
                     ws.Cells["G34"].Formula = "=AVERAGE(G3:G32)";
 
-                    ws.Cells["F35"].Style.Numberformat.Format = "###,###,##0.00";
+                    ws.Cells["F35"].Style.Numberformat.Format = "###,###,##0.0";
                     ws.Cells["F35"].Formula = "=STDEV(F3:F32)";
 
-                    ws.Cells["G35"].Style.Numberformat.Format = "###,###,##0.00";
+                    ws.Cells["G35"].Style.Numberformat.Format = "###,###,##0.0";
                     ws.Cells["G35"].Formula = "=STDEV(G3:G32)";
 
 
@@ -279,20 +317,33 @@ namespace GeradorExcelAnalitico
                     ws.Cells["J35"].Style.Numberformat.Format = "###,###,##0.0";
                     ws.Cells["J35"].Formula = "=STDEV(J3:J32)";
 
+                    #endregion
 
-                    ws.Cells["L34"].Style.Numberformat.Format = "###,###,##0.0";
-                    ws.Cells["L34"].Formula = "=AVERAGE(L3:L32)";
+                    #region Mudanças computadas
 
-                    ws.Cells["M34"].Style.Numberformat.Format = "###,###,##0.0";
-                    ws.Cells["M34"].Formula = "=AVERAGE(M3:M32)";
+                    var contador = 40;
+                    
+                    foreach (var mudanca in mudancasComputadas.OrderByDescending(m=> m.Frequencia))
+                    {
+                        string celulaAtual = "A" + contador.ToString();
 
-                    ws.Cells["L35"].Style.Numberformat.Format = "###,###,##0.0";
-                    ws.Cells["L35"].Formula = "=STDEV(L3:L32)";
+                        ws.Cells[celulaAtual].Value = mudanca.Linha;
 
-                    ws.Cells["M35"].Style.Numberformat.Format = "###,###,##0.0";
-                    ws.Cells["M35"].Formula = "=STDEV(M3:M32)";
+                        celulaAtual = "B" + contador.ToString();
+                        
+                        ws.Cells[celulaAtual].Value = mudanca.Alteracao;
+
+                        celulaAtual = "C" + contador.ToString();
+
+                        ws.Cells[celulaAtual].Value = mudanca.Frequencia;
+
+
+                        contador++;
+                    }
+
 
                     #endregion
+
                 }
 
                 ws.Cells.AutoFitColumns();
@@ -493,6 +544,9 @@ namespace GeradorExcelAnalitico
                 var totalLinhas = ContarLinhas(biblioteca.GetFiles().First().FullName);
                 //Conta Tokens do Original
                 var totalchars = GetNumOfCharsInFile(biblioteca.GetFiles().First().FullName);
+                //Texto do Original
+                var textoOriginal = File.ReadAllText(biblioteca.GetFiles().First().FullName);
+
 
                 while (!csv.EndOfData)
                 {
@@ -504,8 +558,10 @@ namespace GeradorExcelAnalitico
                     string fitOrignal = "00000";
                     string tempoFinalComUnload = "";
                     string fitFinal = "";
+                    DiffPaneModel resultadoComparacao = null;
+
                     //Tempo e fit originais
-                    tempoOriginal = RecuperarTempoMedioeFitOriginal(dirGa, currentRow[0], out fitOrignal);
+                    tempoOriginal = RecuperarTempoMedioeFitOriginal(biblioteca, dirGa, currentRow[0], out fitOrignal);
 
 
                     var fileList = dirGa.GetFiles(bestFile, SearchOption.AllDirectories);
@@ -517,6 +573,12 @@ namespace GeradorExcelAnalitico
                         totalcharsBest = GetNumOfCharsInFile(fileList.First().FullName);
                         tempoFinalComUnload = currentRow[4];
                         fitFinal = currentRow[3];
+
+                        var textoMelhor = File.ReadAllText(fileList.First().FullName);
+                        
+                        var d = new Differ();
+                        var builder = new InlineDiffBuilder(d);
+                        resultadoComparacao = builder.BuildDiffModel(textoOriginal, textoMelhor);
                     }
                     else
                     {
@@ -526,10 +588,6 @@ namespace GeradorExcelAnalitico
                         tempoFinalComUnload = tempoOriginal;
                         fitFinal = fitOrignal;
                     }
-
-                    
-
-
 
 
                     rodadas.Add(new RodadaMapper()
@@ -547,7 +605,8 @@ namespace GeradorExcelAnalitico
                             LocOriginal = totalLinhas,
                             LocFinal = totalLinhasBest,
                             CaracteresOriginal = totalchars,
-                            CaracteresFinal = totalcharsBest
+                            CaracteresFinal = totalcharsBest,
+                            Diferencas = resultadoComparacao
                         });
                 }
             }
@@ -558,13 +617,14 @@ namespace GeradorExcelAnalitico
         /// <summary>
         /// Ecnontra o csv da rodada em questão, pega o tempo médio do original e retorna
         /// </summary>
+        /// <param name="biblioteca"></param>
         /// <param name="dirGa"></param>
         /// <param name="rodadaAlvo"></param>
         /// <param name="fitOrignal"></param>
         /// <returns></returns>
-        private static string RecuperarTempoMedioeFitOriginal(DirectoryInfo dirGa, string rodadaAlvo, out string fitOrignal)
+        private static string RecuperarTempoMedioeFitOriginal(DirectoryInfo biblioteca, DirectoryInfo dirGa, string rodadaAlvo, out string fitOrignal)
         {
-            var fileList = dirGa.GetDirectories().First(d => d.Name.Contains(rodadaAlvo + "_")).GetFiles("resultados.csv", SearchOption.AllDirectories);
+            var fileList = dirGa.GetDirectories().First(d => d.Name.Equals(rodadaAlvo + "_Resultados" + biblioteca.Name)).GetFiles("resultados.csv", SearchOption.AllDirectories);
             var tempoOriginal = "0";
             fitOrignal = "0";
 

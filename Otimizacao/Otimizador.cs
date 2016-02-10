@@ -753,9 +753,18 @@ namespace Otimizacao
             const int total = 5;
             var fits = new double[total];
 
-            for (int i = 0; i < total; i++)
+            fits[0] = ExecutarTestesParaIndividuoEspecifico(indice, sujeito);
+
+            if (fits[0].Equals(120000))
+            {
+                sujeito.Fitness = 120000;
+                return 120000;
+            }
+
+            for (int i = 1; i < total; i++)
             {
                 fits[i] = ExecutarTestesParaIndividuoEspecifico(indice, sujeito);
+
             }
 
             sujeito.Fitness = fits.Average();
@@ -774,9 +783,9 @@ namespace Otimizacao
         private double ExecutarTestesParaIndividuoEspecifico(int indice, Individuo sujeito)
         {
             var sw = new Stopwatch();
-            sw.Start();
+            
 
-            const long valorFitFalha = Int64.MaxValue - 100;
+            const long valorFitFalha = 120000;
 
             var caminhoNovoAvaliado = GerarCodigo(sujeito);
 
@@ -830,7 +839,7 @@ namespace Otimizacao
                 jHelper.ConfigurarMelhorFit(_fitnessMin);
 
                 //Console.WriteLine("              Avaliando via testes");
-
+                sw.Start();
                 var avaliar =
                     new Thread(() => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
                 avaliar.Start();
@@ -845,7 +854,7 @@ namespace Otimizacao
                     sujeito.Fitness = valorFitFalha;
 
                 if (jHelper.ExecutouTestesAteFinal && jHelper.TestesComFalha > 0)
-                    sujeito.Fitness = valorFitFalha + jHelper.TestesComFalha;
+                    sujeito.Fitness = valorFitFalha; //+ jHelper.TestesComFalha;
 
                 sujeito.TestesComSucesso = jHelper.TestesComSucesso;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");

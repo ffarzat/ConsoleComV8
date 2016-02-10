@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DiffPlex.DiffBuilder.Model;
 
 namespace GeradorExcelAnalitico
 {
@@ -27,6 +28,8 @@ namespace GeradorExcelAnalitico
         public int LocFinal;
         public int CaracteresOriginal;
         public int CaracteresFinal;
+
+        public DiffPaneModel Diferencas;
 
 
     }
