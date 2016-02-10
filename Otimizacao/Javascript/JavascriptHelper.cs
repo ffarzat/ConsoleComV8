@@ -433,7 +433,7 @@ namespace Otimizacao.Javascript
                 _engine.AddHostObject("Nos", lista);
                 _engine.AddHostType("No", typeof(No));
 
-                _engine.AddHostObject("listaComTiposDeNos", listaComTiposDeNos);
+                //_engine.AddHostObject("listaComTiposDeNos", listaComTiposDeNos);
 
                 _engine.Execute(@"
 
@@ -445,7 +445,13 @@ namespace Otimizacao.Javascript
                     ObjEstraverse.replace(ast, {
                         enter: function(node, parent) {
 
-                            if(node.type == listaComTiposDeNos[0] || node.type == listaComTiposDeNos[1])
+                            if(node.type == 'CallExpression')
+                            {
+                                counter++;
+                                Nos.Add(new No( indent-1, JSON.stringify(parent), JSON.stringify(parent.type)));
+                            }
+
+                            if(node.type == 'IfStatement')
                             {
                                 counter++;
                                 Nos.Add(new No( indent, JSON.stringify(node), JSON.stringify(node.type)));

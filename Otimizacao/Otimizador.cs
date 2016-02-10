@@ -238,7 +238,7 @@ namespace Otimizacao
             for (int i = 1; i < totalVizinhosExplorar - 1; i++)
             {
 
-                if (_nosParaMutacao.Count == ultimoIndice) //zera de novo
+                if (_nosParaMutacao.Count <= ultimoIndice) //zera de novo
                     ultimoIndice = 0;
 
                 var no = _nosParaMutacao[ultimoIndice];
