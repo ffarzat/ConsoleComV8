@@ -232,26 +232,25 @@ namespace Otimizacao
             //CallExpression
 
             var r = new Random();
-            
+
             int ultimoIndice = r.Next(0, _nosParaMutacao.Count);
 
             for (int i = 1; i < totalVizinhosExplorar - 1; i++)
             {
-                
-                #region cria o vizinho
-                var no = _nosParaMutacao[ultimoIndice];
-                Console.WriteLine("      {0}|Nó:{1}|{2}", i, ultimoIndice, no.Tipo);
-                
-                Individuo c = MelhorIndividuo.Clone(); //Sempre usando o melhor
 
-                if (_nosParaMutacao.Count < ultimoIndice) //zera de novo
+                if (_nosParaMutacao.Count == ultimoIndice) //zera de novo
                     ultimoIndice = 0;
 
+                var no = _nosParaMutacao[ultimoIndice];
+
+                #region cria o vizinho
+                Console.WriteLine("      {0}|Nó:{1}|{2}", i, ultimoIndice, no.Tipo);
+                Individuo c = MelhorIndividuo.Clone(); //Sempre usando o melhor
+
                 ExecutarMutacao(c, no.Indice);
+                #endregion
 
                 ultimoIndice++;
-                
-                #endregion
 
                 //Avalia o vizinho e veja se melhorou
                 var fitvizinho = AvaliarIndividuo(i, c);
@@ -271,7 +270,7 @@ namespace Otimizacao
                     CalcularVizinhos(MelhorIndividuo.Clone()); //recalculo os nós
                 }
 
-                if (_nosParaMutacao.Count < i) //se deu a volta completa pode parar
+                if (_nosParaMutacao.Count == i) //se deu a volta completa pode parar
                     break;
 
             }
