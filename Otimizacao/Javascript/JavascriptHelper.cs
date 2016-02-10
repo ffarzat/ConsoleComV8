@@ -449,7 +449,7 @@ namespace Otimizacao.Javascript
                             if(node.type == listaComTiposDeNos[0] || node.type == listaComTiposDeNos[1])
                             {
                                 counter++;
-                                Nos.Add(new No(indent, JSON.stringify(node)), node.type);
+                                Nos.Add(new No( indent, JSON.stringify(node), JSON.stringify(node.type)));
                             }
                                 indent++;
                         }

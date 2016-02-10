@@ -15,7 +15,7 @@ namespace Otimizacao
     public class Otimizador: IDisposable
     {
         //Guarda o indice dos nós por tipo
-        private static List<No> _nosParaMutacao;
+        private static List<No> _nosParaMutacao = new List<No>();
         
 
         /// <summary>
@@ -240,7 +240,7 @@ namespace Otimizacao
                 
                 #region cria o vizinho
                 var no = _nosParaMutacao[ultimoIndice];
-                Console.WriteLine("      {0}|Nó:{1}|{2}", i, no, no.Tipo);
+                Console.WriteLine("      {0}|Nó:{1}|{2}", i, ultimoIndice, no.Tipo);
                 
                 Individuo c = MelhorIndividuo.Clone(); //Sempre usando o melhor
 
@@ -314,6 +314,8 @@ namespace Otimizacao
             var jHelper = new JavascriptHelper(_diretorioFontes, false, false);
             jHelper.ConfigurarGeracao();
 
+            _nosParaMutacao.Clear();
+            _nosParaMutacao = new List<No>();
             _nosParaMutacao = jHelper.ContarNosPorTipo(clone.Ast, lista);
             
         }
