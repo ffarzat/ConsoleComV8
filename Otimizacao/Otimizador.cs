@@ -178,13 +178,11 @@ namespace Otimizacao
                 otimizou = OtimizarUsandoGa();
             else if(Heuristica == "RD")
                 otimizou = OtimizarUsandoRd();
+            else if (Heuristica == "HC")
+                otimizou = OtimizarUsandoHc();
             else
                 throw new ApplicationException(string.Format("Heurística ainda não definida. {0}", Heuristica));
                 
-            
-
-
-
             #region Gera o CSV da rodada
 
             var myExport = new CsvExport();
@@ -205,6 +203,15 @@ namespace Otimizacao
             Console.WriteLine("  Tempo total: {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
 
             return otimizou;
+        }
+
+        /// <summary>
+        /// Otimizar usando um HC que salta os vizinhos de IF e CALL
+        /// </summary>
+        /// <returns></returns>
+        private bool OtimizarUsandoHc()
+        {
+            return false;
         }
 
         /// <summary>
