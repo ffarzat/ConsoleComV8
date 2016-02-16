@@ -890,6 +890,8 @@ namespace Otimizacao
                 Console.WriteLine(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness,
                                            sujeito.TestesComSucesso, sujeito.TempoExecucao));
 
+                CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
+
                 return sujeito.Fitness;
             }
 
@@ -906,6 +908,8 @@ namespace Otimizacao
                 sujeito.Fitness = _original.Fitness;
                 Console.WriteLine(string.Format("            FIT:{0}       | CTs: {1}            | T: {2}", sujeito.Fitness,
                                            sujeito.TestesComSucesso, sujeito.TempoExecucao));
+
+                CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
 
                 return sujeito.Fitness;
             }
@@ -958,6 +962,8 @@ namespace Otimizacao
             }
 
             #endregion
+
+            CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
 
             return sujeito.Fitness;
         }
@@ -1034,5 +1040,35 @@ namespace Otimizacao
         {
             Heuristica = heuristica;
         }
+
+        /// <summary>
+        /// Inclui a linha no excel
+        /// </summary>
+        /// <param name="indice"></param>
+        /// <param name="sujeito"></param>
+        /// <param name="testesComSucesso"></param>
+        /// <param name="tempoTotal"></param>
+        private void CriarLinhaExcel(int indice, Individuo sujeito, int testesComSucesso, string tempoTotal)
+        {
+
+            #region Inclui no  CSV
+
+            var myExport = new CsvExport();
+
+            myExport.AddRow();
+
+            myExport["Geracao"] = _generationCount;
+            myExport["Individuo"] = sujeito.Arquivo;
+            myExport["Operacao"] = sujeito.CriadoPor.ToString();
+            myExport["Fitness"] = sujeito.Fitness;
+            myExport["Tempo"] = tempoTotal;
+            myExport["Testes"] = testesComSucesso;
+
+            myExport.ExportToFile(Path.Combine(_diretorioExecucao, "resultados.csv"));
+
+            #endregion    
+        }
+
+
     }
 }
