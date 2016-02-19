@@ -202,6 +202,15 @@ namespace Otimizacao
 
             #endregion
 
+
+            #region limpa o diretório de execução.
+
+            var files = new DirectoryInfo(_diretorioExecucao).EnumerateFiles("*.js").ToList();
+
+            files.ForEach(f => f.Delete());
+
+            #endregion
+
             sw.Stop();
             Console.WriteLine("  Tempo total: {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
 
