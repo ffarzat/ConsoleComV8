@@ -55,6 +55,11 @@ namespace Otimizacao.Javascript
         public string JsonAst { get; set; }
 
         /// <summary>
+        /// String com o Json da função
+        /// </summary>
+        public string JsonNoBlockFuncao { get; set; }
+
+        /// <summary>
         /// Árvore tipada do Esprima
         /// </summary>
         public dynamic Program { get; set; }
@@ -366,6 +371,7 @@ namespace Otimizacao.Javascript
 
                     var indent = 0;
                     var counter = 0;
+
                     ObjEstraverse.replace(ast, {
                         enter: function(node, parent) {
                             
@@ -508,7 +514,6 @@ namespace Otimizacao.Javascript
                     var indent = 0;
                     var counter = 0;
 
-
                     traverse(ast, function(node) { //3
                            if (node.type === 'FunctionDeclaration' && node.id.name == '#nome') {
                                 javascriptHelper.JsonAst = JSON.stringify(node);
@@ -525,6 +530,75 @@ namespace Otimizacao.Javascript
                 Console.WriteLine(ex.ToString());
             }
 
+
+            return JsonAst;
+        }
+
+        /// <summary>
+        /// Atualiza a função dentro de um individuo
+        /// </summary>
+        /// <param name="ast"></param>
+        /// <param name="nomeFuncao"></param>
+        /// <param name="astFuncaoNova"></param>
+        public string AtualizarDeclaracaoFuncaoPeloNome(string ast, string nomeFuncao, string astFuncaoNova)
+        {
+            try
+            {
+
+                var js = @"
+
+                    var ast     = JSON.parse(#ast);
+                    var noNovo  = JSON.parse(#FuncaoNova);
+
+
+                    var indent = 0;
+                    var counter = 0;
+
+                    ObjEstraverse.traverse(ast, {
+                        enter: function(node, parent) {
+
+                            counter++;
+    
+                            if(node.type == 'Identifier' && node.name == '#nome' && parent.type == 'FunctionDeclaration')
+                            {
+                                this.break();
+                            }
+                            
+                        }
+                    });
+                    
+
+                    ObjEstraverse.replace(ast, {
+                        enter: function(node, parent) {
+                            indent++;
+                            if(indent == (counter-1))
+                            {
+                                this.break();
+                                return noNovo;
+                            }                            
+                        },
+                        leave: function(node, parent) {
+                            
+                        }
+                    });
+
+                    javascriptHelper.JsonAst = JSON.stringify(ast);".Replace("#ast", this.EncodeJsString(ast))
+                                                                    .Replace("#nome", nomeFuncao)
+                                                                    .Replace("#FuncaoNova", this.EncodeJsString(astFuncaoNova));
+
+                File.WriteAllText("js.txt", js);
+
+                _engine.Execute(js);
+            }
+            catch (ScriptEngineException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            
 
             return JsonAst;
         }
@@ -560,13 +634,13 @@ namespace Otimizacao.Javascript
                             if(node.type == 'CallExpression')
                             {
                                 counter++;
-                                Nos.Add(new No( indent-1, JSON.stringify(parent), JSON.stringify(parent.type)));
+                                Nos.Add(new No( indent-1, JSON.stringify(parent), JSON.stringify(parent.type), '' ));
                             }
 
                             if(node.type == 'IfStatement')
                             {
                                 counter++;
-                                Nos.Add(new No( indent, JSON.stringify(node), JSON.stringify(node.type)));
+                                Nos.Add(new No( indent, JSON.stringify(node), JSON.stringify(node.type), ''));
                             }
                                 indent++;
                         }

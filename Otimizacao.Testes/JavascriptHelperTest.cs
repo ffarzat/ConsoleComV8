@@ -88,7 +88,6 @@ namespace Otimizacao.Testes
             Assert.AreEqual(592, nos.Count);
         }
 
-
         /// <summary>
         /// Executa os testes de geração da AST
         /// </summary>

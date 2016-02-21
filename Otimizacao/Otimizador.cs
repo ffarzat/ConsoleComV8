@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Threading;
+using Newtonsoft.Json.Linq;
 using Otimizacao.Javascript;
 
 namespace Otimizacao
@@ -16,7 +17,8 @@ namespace Otimizacao
     {
         //Guarda o indice dos nós por tipo
         private static List<No> _nosParaMutacao = new List<No>();
-        
+
+        public static string NomeFuncaoAtual = "";
 
         /// <summary>
         /// Guarda qual das rodadas externas é a atual
@@ -183,6 +185,8 @@ namespace Otimizacao
                 otimizou = OtimizarUsandoRd();
             else if (Heuristica == "HC")
                 otimizou = OtimizarUsandoHc();
+            else if (Heuristica == "HCF")
+                otimizou = OtimizarUsandoHcPorFuncao();
             else
                 throw new ApplicationException(string.Format("Heurística ainda não definida. {0}", Heuristica));
                 
@@ -218,6 +222,120 @@ namespace Otimizacao
         }
 
         /// <summary>
+        /// Escopo do HC por função
+        /// </summary>
+        /// <returns></returns>
+        private bool OtimizarUsandoHcPorFuncao()
+        {
+            var totalVizinhosExplorar = _size * _executarAte;
+            var otimizado = false;
+            var melhores = new List<Individuo>();
+
+            CriarIndividuoOriginal(_caminhoBiblioteca);
+
+            var ast = DeterminarFuncaoMaisUsada(MelhorIndividuo.Clone());
+
+            var totalNos = CalcularTodosVizinhos(ast);
+
+            Console.WriteLine("      {0} nós para remover ", totalNos);
+
+            Console.WriteLine("      Avaliar {0} vizinhos", totalNos);
+
+            AvaliarIndividuo(0, MelhorIndividuo);
+
+            //IfStatement
+            //CallExpression
+
+            var r = new Random();
+
+            int ultimoIndice = r.Next(0, totalNos);
+
+            int control = 0;
+
+            for (int i = 0; i < totalVizinhosExplorar - 1; i++)
+            {
+
+                if (ultimoIndice == totalNos-1) //zera de novo
+                    ultimoIndice = 0;
+
+                #region cria o vizinho
+                Console.WriteLine("      {0}|Nó:{1}", i, ultimoIndice);
+                
+                Individuo c = MelhorIndividuo.Clone(); //Sempre usando o melhor
+
+                var novaFuncao = ExecutarMutacaoNaFuncao(ast, ultimoIndice);
+                c.Ast = AtualizarFuncao(c, NomeFuncaoAtual, novaFuncao);
+                c.CriadoPor = Operador.Mutacao;
+
+                #endregion
+
+                ultimoIndice++;
+                
+                //Avalia o vizinho e veja se melhorou
+                var fitvizinho = AvaliarIndividuo(i, c);
+
+                if (fitvizinho < 0)
+                    fitvizinho = fitvizinho * -1;
+
+
+                if (fitvizinho < _fitnessMin)
+                {
+                    Console.WriteLine("      Encontrado. FIT Antigo {0} | FIT novo {1}", _fitnessMin, c.Fitness);
+                    MelhorIndividuo = c;
+                    _fitnessMin = fitvizinho;
+                    otimizado = true;
+                    melhores.Add(c);
+
+                    ast = DeterminarFuncaoMaisUsada(MelhorIndividuo.Clone());
+
+                    control = 0;
+
+                    //CalcularVizinhos(ast); //recalculo os nós
+                }
+
+                if (i == totalVizinhosExplorar | (control == totalNos)) //se deu a volta completa pode parar
+                    break;
+
+
+                control++;
+
+            }
+
+            #region Cria diretorio dos resultados
+            string generationResultPath = Path.Combine(_diretorioExecucao, "0");
+            Directory.CreateDirectory(generationResultPath);
+            Thread.Sleep(5);
+            #endregion
+
+            foreach (var individuo in melhores)
+            {
+                string generationBestPath = string.Format("{0}\\{1}.js", generationResultPath, individuo.Id);
+
+                File.WriteAllText(generationBestPath, individuo.Codigo);
+            }
+
+
+            Console.WriteLine("============================================================");
+            Console.WriteLine("  Houve otimizacao: {0}", otimizado);
+
+            return otimizado;
+
+        }
+
+        /// <summary>
+        /// Calcular todos os vizinhos
+        /// </summary>
+        /// <param name="ast"></param>
+        private int CalcularTodosVizinhos(string ast)
+        {
+            var jHelper = new JavascriptHelper(_diretorioFontes, false, false);
+            jHelper.ConfigurarGeracao();
+
+            
+            return jHelper.ContarNos(ast);
+        }
+
+        /// <summary>
         /// Otimizar usando um HC que salta os vizinhos de IF e CALL
         /// </summary>
         /// <returns></returns>
@@ -229,7 +347,7 @@ namespace Otimizacao
 
             CriarIndividuoOriginal(_caminhoBiblioteca);
 
-            CalcularVizinhos(_original.Clone());
+            CalcularVizinhos(_original.Ast);
 
             Console.WriteLine("      {0} nós para remover (IF, CALL).  ", _nosParaMutacao.Count);
 
@@ -276,7 +394,7 @@ namespace Otimizacao
                     otimizado = true;
                     melhores.Add(c);
 
-                    CalcularVizinhos(MelhorIndividuo.Clone()); //recalculo os nós
+                    CalcularVizinhos(MelhorIndividuo.Ast); //recalculo os nós
                 }
 
                 if (_nosParaMutacao.Count == i) //se deu a volta completa pode parar
@@ -307,9 +425,9 @@ namespace Otimizacao
         /// <summary>
         /// Calculo o número de vizinhos
         /// </summary>
-        /// <param name="clone"></param>
+        /// <param name="ast"></param>
         /// <returns></returns>
-        private void CalcularVizinhos(Individuo clone)
+        private void CalcularVizinhos(string ast)
         {
             //IfStatement
             //CallExpression
@@ -324,12 +442,12 @@ namespace Otimizacao
 
             _nosParaMutacao.Clear();
             _nosParaMutacao = new List<No>();
-            _nosParaMutacao = jHelper.ContarNosPorTipo(clone.Ast, lista);
+            _nosParaMutacao = jHelper.ContarNosPorTipo(ast, lista);
             
         }
 
         /// <summary>
-        /// Retorna a árvore de nós
+        /// Retorna a árvore de nós da função mais utilizada no código
         /// </summary>
         /// <returns></returns>
         public string DeterminarFuncaoMaisUsada(Individuo clone)
@@ -338,9 +456,11 @@ namespace Otimizacao
             jHelper.ConfigurarGeracao();
             var nos = jHelper.ContarNosCallee(clone.Ast);
 
-            var funcao = nos.GroupBy(f => f.NomeFuncao).Select(n=> new {Funcao = n.Key, Total = n.Count()}).OrderByDescending(n=> n.Total).First();
+            var funcao = nos.GroupBy(f => f.NomeFuncao).Select(n=> new {Funcao = n.Key, Total = n.Count()}).OrderByDescending(n=> n.Total).ElementAt(1);
 
-            Console.WriteLine("Função {0} é a mais usada {1}x", funcao.Funcao, funcao.Total);
+            NomeFuncaoAtual = funcao.Funcao;
+
+            Console.WriteLine(" Função {0} é a mais usada {1}x", funcao.Funcao, funcao.Total);
 
             var astFuncao = jHelper.RecuperarDeclaracaoFuncaoPeloNome(clone.Ast, funcao.Funcao);
 
@@ -350,6 +470,25 @@ namespace Otimizacao
             return astFuncao;
 
         }
+
+        /// <summary>
+        /// Troca a função antiga pela ASTnova
+        /// </summary>
+        /// <returns></returns>
+        public string AtualizarFuncao(Individuo clone, string nomeFuncao, string astFuncaoNova)
+        {
+            var jHelper = new JavascriptHelper(_diretorioFontes, false, false);
+            jHelper.ConfigurarGeracao();
+
+            var astFuncao = jHelper.AtualizarDeclaracaoFuncaoPeloNome(clone.Ast, nomeFuncao, astFuncaoNova);
+
+            jHelper.Dispose();
+            jHelper = null;
+
+            return astFuncao;
+
+        }
+
 
         /// <summary>
         /// Usar Ramdon para otimizar
@@ -817,6 +956,28 @@ namespace Otimizacao
         }
 
         /// <summary>
+        /// Executa uma mutação no individuo
+        /// </summary>
+        /// <param name="ast"> </param>
+        /// <param name="no"></param>
+        public string ExecutarMutacaoNaFuncao(string ast, int no)
+        {
+            JavascriptHelper jHelper = null;
+            jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+            jHelper.ConfigurarGeracao();
+            string novaAst = "";
+
+            var executarMutacao = new Thread(() => novaAst = jHelper.ExecutarMutacaoExclusao(ast, no));
+            executarMutacao.Start();
+            executarMutacao.Join(_timeout * 1000); //timeout
+
+            jHelper.Dispose();
+
+            return novaAst;
+        }
+
+
+        /// <summary>
         /// Executa o Cruzamento
         /// </summary>
         /// <param name="pai"></param>
@@ -870,7 +1031,7 @@ namespace Otimizacao
         [HandleProcessCorruptedStateExceptions]
         private double AvaliarIndividuo(int indice, Individuo sujeito)
         {
-            const int total = 20;
+            const int total = 2;
             var fits = new double[total];
 
             fits[0] = ExecutarTestesParaIndividuoEspecifico(indice, sujeito);
@@ -881,14 +1042,13 @@ namespace Otimizacao
                 return 120000;
             }
 
-            for (int i = 1; i < total; i++)
+            for (int i = 0; i < total; i++)
             {
                 fits[i] = ExecutarTestesParaIndividuoEspecifico(indice, sujeito);
-
+                Console.WriteLine("             {0}-{1}", i, fits[i]);
             }
 
             sujeito.Fitness = fits.Average();
-
             Console.WriteLine(string.Format("            FIT:{0}     | CTs: {1}      | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
 
             return sujeito.Fitness;
@@ -1006,7 +1166,7 @@ namespace Otimizacao
         /// <param name="sujeito"></param>
         /// <returns></returns>
         [HandleProcessCorruptedStateExceptions]
-        private string GerarCodigo(Individuo sujeito)
+        public string GerarCodigo(Individuo sujeito)
         {
 
             var caminhoNovoAvaliado = string.Format("{0}\\{1}.js", _diretorioExecucao, sujeito.Id);

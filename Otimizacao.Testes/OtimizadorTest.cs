@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using Newtonsoft.Json.Linq;
 
 namespace Otimizacao.Testes
 {
@@ -72,6 +73,61 @@ namespace Otimizacao.Testes
 
             Assert.AreNotEqual("", ast);
         }
+
+        /// <summary>
+        /// Testa se realmente executa mutação em uma ast simples de função
+        /// </summary>
+        [Test]
+        public void ExecutarMutacaoNaFuncaoTest()
+        {
+
+            var otimizador = new Otimizador(1, 1, 1, "Require", "ResultadosMoment");
+            var otimizou = otimizador.Otimizar("global.js", "core-test.js");
+
+            var ast = otimizador.DeterminarFuncaoMaisUsada(otimizador.MelhorIndividuo);
+            var novaAst = otimizador.ExecutarMutacaoNaFuncao(ast, 10);
+
+            Assert.AreNotEqual(ast, novaAst);
+
+            File.WriteAllText("astFuncao.txt", JToken.Parse(ast).ToString());
+            File.WriteAllText("astNovaFuncao.txt", JToken.Parse(novaAst).ToString());
+
+        }
+
+        /// <summary>
+        /// Testa de mutacao dentro de funcao específica
+        /// </summary>
+        [Test]
+        public void AtualizarFuncaoTest()
+        {
+            var otimizador = new Otimizador(1, 1, 1, "Require", "ResultadosMoment");
+            var otimizou = otimizador.Otimizar("global.js", "core-test.js");
+
+            var ast = otimizador.DeterminarFuncaoMaisUsada(otimizador.MelhorIndividuo);
+            var novaAst = otimizador.ExecutarMutacaoNaFuncao(ast, 25);
+
+            Assert.AreNotEqual(ast, novaAst);
+
+            File.WriteAllText("astFuncao.txt", JToken.Parse(ast).ToString());
+            File.WriteAllText("astNovaFuncao.txt", JToken.Parse(novaAst).ToString());
+
+
+            string novaAstIndividuo = otimizador.AtualizarFuncao(otimizador.MelhorIndividuo, Otimizador.NomeFuncaoAtual, novaAst);
+
+            Assert.AreNotEqual(otimizador.MelhorIndividuo.Ast, novaAstIndividuo);
+
+            File.WriteAllText("astIndividuo.txt", JToken.Parse(otimizador.MelhorIndividuo.Ast).ToString());
+            File.WriteAllText("astNovoIndividuo.txt", JToken.Parse(novaAstIndividuo).ToString());
+
+            var c = otimizador.MelhorIndividuo.Clone();
+            c.Ast = novaAstIndividuo;
+            otimizador.GerarCodigo(c);
+
+            otimizador.GerarCodigo(otimizador.MelhorIndividuo);
+
+
+        }
+
 
     }
 }
