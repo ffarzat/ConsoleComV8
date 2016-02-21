@@ -59,5 +59,19 @@ namespace Otimizacao.Testes
             var otimizou = otimizador.Otimizar("underscore.js", "underscoreTests.js");
         }
 
+        /// <summary>
+        /// Testa a função que determina qual a function interna mais usada
+        /// </summary>
+        [Test]
+        public void DeterminarFuncaoMaisUsadaTest()
+        {
+            var otimizador = new Otimizador(1, 1, 1, "Require", "ResultadosMoment");
+            var otimizou = otimizador.Otimizar("global.js", "core-test.js");
+
+            var ast = otimizador.DeterminarFuncaoMaisUsada(otimizador.MelhorIndividuo);
+
+            Assert.AreNotEqual("", ast);
+        }
+
     }
 }

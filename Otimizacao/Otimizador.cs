@@ -329,6 +329,29 @@ namespace Otimizacao
         }
 
         /// <summary>
+        /// Retorna a árvore de nós
+        /// </summary>
+        /// <returns></returns>
+        public string DeterminarFuncaoMaisUsada(Individuo clone)
+        {
+            var jHelper = new JavascriptHelper(_diretorioFontes, false, false);
+            jHelper.ConfigurarGeracao();
+            var nos = jHelper.ContarNosCallee(clone.Ast);
+
+            var funcao = nos.GroupBy(f => f.NomeFuncao).Select(n=> new {Funcao = n.Key, Total = n.Count()}).OrderByDescending(n=> n.Total).First();
+
+            Console.WriteLine("Função {0} é a mais usada {1}x", funcao.Funcao, funcao.Total);
+
+            var astFuncao = jHelper.RecuperarDeclaracaoFuncaoPeloNome(clone.Ast, funcao.Funcao);
+
+            jHelper.Dispose();
+            jHelper = null;
+
+            return astFuncao;
+
+        }
+
+        /// <summary>
         /// Usar Ramdon para otimizar
         /// </summary>
         /// <returns></returns>

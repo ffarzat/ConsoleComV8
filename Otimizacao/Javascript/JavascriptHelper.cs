@@ -246,6 +246,25 @@ namespace Otimizacao.Javascript
             var ast = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"ast.js"));
             var code = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"code.js"));
             var keyword = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"keyword.js"));
+            var traverse = @"function traverse(node, func) {
+                                func(node);//1
+                                for (var key in node) { //2
+                                    if (node.hasOwnProperty(key)) { //3
+                                        var child = node[key];
+                                        if (typeof child === 'object' && child !== null) { //4
+
+                                            if (Array.isArray(child)) {
+                                                child.forEach(function(node) { //5
+                                                    traverse(node, func);
+                                                });
+                                            } else {
+                                                traverse(child, func); //6
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+";
 
             #endregion
 
@@ -264,6 +283,7 @@ namespace Otimizacao.Javascript
             _engine.Execute(ast);
             _engine.Execute(keyword);
             _engine.Execute(estraverse);
+
 
             _engine.Execute(@"
                             var Objutils = {};
@@ -285,6 +305,8 @@ namespace Otimizacao.Javascript
                                                     quotes: 'auto'
                                                 }
                                             };");
+
+            _engine.Execute(traverse);
 
             #endregion
         }
@@ -419,6 +441,96 @@ namespace Otimizacao.Javascript
         }
 
         /// <summary>
+        /// Conta os nós de chamada de funções
+        /// </summary>
+        /// <param name="ast">árvore no formato do esprima</param>
+        /// <returns></returns>
+        public List<No> ContarNosCallee(string ast)
+        {
+            var lista = new List<No>();
+
+            try
+            {
+                _engine.AddHostObject("Nos", lista);
+                _engine.AddHostType("No", typeof(No));
+
+                _engine.Execute(@"
+
+                    var ast = JSON.parse(#ast);
+
+                    var indent = 0;
+                    var counter = 0;
+
+
+                    traverse(ast, function(node) { //3
+                            if (node.type === 'CallExpression' && node.callee.type === 'Identifier') 
+                            {
+                                
+                                counter++;
+                                Nos.Add(new No( indent-1, JSON.stringify(node), 'CallExpression', node.callee.name));
+                               
+                            }
+                        });
+
+
+
+                    javascriptHelper.TotalDeNos = counter;
+                    ".Replace("#ast", this.EncodeJsString(ast)));
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.ToString());
+            }
+
+
+            //lista.ForEach(item => item.Codigo = this.GerarCodigo(item.Codigo));
+
+
+            return lista;
+        }
+
+        /// <summary>
+        /// Recupera os nós relativos a declaração da funcao porseu nome
+        /// </summary>
+        /// <param name="astGlobal"></param>
+        /// <param name="nomeFuncao"></param>
+        /// <returns></returns>
+        public string RecuperarDeclaracaoFuncaoPeloNome(string astGlobal, string nomeFuncao)
+        {
+
+            try
+            {
+                _engine.Execute(@"
+
+                    var ast = JSON.parse(#ast);
+
+                    var indent = 0;
+                    var counter = 0;
+
+
+                    traverse(ast, function(node) { //3
+                           if (node.type === 'FunctionDeclaration' && node.id.name == '#nome') {
+                                javascriptHelper.JsonAst = JSON.stringify(node);
+                            }
+                        });
+
+
+                    javascriptHelper.TotalDeNos = counter;
+                    ".Replace("#ast", this.EncodeJsString(astGlobal)).Replace("#nome", nomeFuncao));
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.ToString());
+            }
+
+
+            return JsonAst;
+        }
+
+
+        /// <summary>
         /// Conta o total de Nós de uma Ast
         /// </summary>
         /// <param name="ast">árvore no formato do esprima</param>
@@ -475,7 +587,6 @@ namespace Otimizacao.Javascript
 
             return lista;
         }
-
 
         /// <summary>
         /// Exeucta um crossOver para gerar dois novos individuos trocando material entre o pai e mae

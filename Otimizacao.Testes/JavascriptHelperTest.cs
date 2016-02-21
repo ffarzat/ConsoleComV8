@@ -68,6 +68,26 @@ namespace Otimizacao.Testes
             Assert.AreEqual(codigo, helper.Codigo, "Código Inválido");
         }
 
+        /// <summary>
+        /// Testa a função que conta os nós de CALL de funções
+        /// </summary>
+        [Test]
+        public void ContarNosCalleeTest()
+        {
+            const string diretorioExecucao = "Require";
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, diretorioExecucao), false, false);
+            helper.ConfigurarGeracao();
+
+            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "global.js"));
+            var astMoment = helper.GerarAst(scriptCode);
+
+            File.WriteAllText("astMoment.txt", helper.FormatarStringJson(astMoment));
+
+            var nos = helper.ContarNosCallee(astMoment);
+
+            Assert.AreEqual(592, nos.Count);
+        }
+
 
         /// <summary>
         /// Executa os testes de geração da AST
