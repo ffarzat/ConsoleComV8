@@ -472,6 +472,25 @@ namespace Otimizacao
         }
 
         /// <summary>
+        /// Lista de Funcoes com os detalhes para otimizaçao
+        /// </summary>
+        /// <returns></returns>
+        public List<Function> DeterminarListaDeFuncoes(Individuo clone)
+        {
+            var jHelper = new JavascriptHelper(_diretorioFontes, false, false);
+            jHelper.ConfigurarGeracao();
+            var nos = jHelper.ContarNosCallee(clone.Ast);
+
+            var funcoesEncontradas = nos.GroupBy(f => f.NomeFuncao).Select(n => new Function { Nome = n.Key, Total = n.Count(), Ast = jHelper.RecuperarDeclaracaoFuncaoPeloNome(clone.Ast, n.Key) }).OrderByDescending(n => n.Total).ToList();
+            
+            jHelper.Dispose();
+            jHelper = null;
+
+            return funcoesEncontradas;
+        }
+
+
+        /// <summary>
         /// Troca a função antiga pela ASTnova
         /// </summary>
         /// <returns></returns>

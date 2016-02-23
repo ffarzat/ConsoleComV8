@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CsvExport.cs" />
+    <Compile Include="Function.cs" />
     <Compile Include="Javascript\EasyTimer.cs" />
     <Compile Include="Javascript\Individuo.cs" />
     <Compile Include="Javascript\JavascriptHelper.cs" />
