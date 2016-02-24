@@ -254,45 +254,50 @@ namespace Otimizacao
             //Explorando os vizinhos
             for (int i = 0; i < totalVizinhosExplorar - 1; i++)
             {
-                
-                #region cria o vizinho
-                Console.WriteLine("      {0}|Nó:{1}|{2}", i, control, _nosParaMutacao[control].Tipo);
-                
-                Individuo c = MelhorIndividuo.Clone(); //Sempre usando o melhor
-
-                //var novaFuncao = ExecutarMutacaoNaFuncao(funcaoEmOtimizacao.Ast, control);
-                var novaFuncao = ExecutarMutacaoNaFuncao(funcaoEmOtimizacao.Ast, _nosParaMutacao[control].Indice);
-
-                c.Ast = AtualizarFuncao(c, funcaoEmOtimizacao.Nome, novaFuncao);
-                c.CriadoPor = Operador.Mutacao;
-
-                #endregion
-
-                #region Avalia o vizinho 
-                
-                var fitvizinho = AvaliarIndividuo(i, c);
-
-                if (fitvizinho < 0)
-                    fitvizinho = fitvizinho * -1;
-
-
-                if (fitvizinho < _fitnessMin)
+                if (_nosParaMutacao.Count > 0)
                 {
-                    Console.WriteLine("      Encontrado. FIT Antigo {0} | FIT novo {1}", _fitnessMin, c.Fitness);
-                    MelhorIndividuo = c;
-                    _fitnessMin = fitvizinho;
-                    otimizado = true;
-                    melhores.Add(c);
 
-                    funcaoEmOtimizacao.Ast = novaFuncao; //Atualizo a melhor nova função
+                    #region cria o vizinho
 
-                    control = 0;
+                    Console.WriteLine("      {0}|Nó:{1}|{2}", i, control, _nosParaMutacao[control].Tipo);
 
-                    //CalcularVizinhos(ast); //recalculo os nós
+                    Individuo c = MelhorIndividuo.Clone(); //Sempre usando o melhor
+
+                    //var novaFuncao = ExecutarMutacaoNaFuncao(funcaoEmOtimizacao.Ast, control);
+                    var novaFuncao = ExecutarMutacaoNaFuncao(funcaoEmOtimizacao.Ast, _nosParaMutacao[control].Indice);
+
+                    c.Ast = AtualizarFuncao(c, funcaoEmOtimizacao.Nome, novaFuncao);
+                    c.CriadoPor = Operador.Mutacao;
+
+                    #endregion
+
+                    #region Avalia o vizinho
+
+                    var fitvizinho = AvaliarIndividuo(i, c);
+
+                    if (fitvizinho < 0)
+                        fitvizinho = fitvizinho*-1;
+
+
+                    if (fitvizinho < _fitnessMin)
+                    {
+                        Console.WriteLine("      Encontrado. FIT Antigo {0} | FIT novo {1}", _fitnessMin, c.Fitness);
+                        MelhorIndividuo = c;
+                        _fitnessMin = fitvizinho;
+                        otimizado = true;
+                        melhores.Add(c);
+
+                        funcaoEmOtimizacao.Ast = novaFuncao; //Atualizo a melhor nova função
+
+                        control = 0;
+
+                        //CalcularVizinhos(ast); //recalculo os nós
+                    }
+
+                    #endregion
+
+                    control++;
                 }
-                #endregion
-
-                control++;
 
                 #region Critérios de parada
                 //Queimou o Orçamento global 
@@ -302,7 +307,7 @@ namespace Otimizacao
                 }
                 
                 //acabaram os nós na função atual?
-                if (control >= _nosParaMutacao.Count )
+                if (control == _nosParaMutacao.Count )
                 {
                     indiceFuncaoAtual++;
                     funcaoEmOtimizacao = funcoesOtimizar[indiceFuncaoAtual];
@@ -314,6 +319,7 @@ namespace Otimizacao
                 }
 
                 #endregion
+
             }
 
             #region Cria diretorio dos resultados
