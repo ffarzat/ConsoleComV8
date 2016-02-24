@@ -415,6 +415,7 @@ namespace Otimizacao.Javascript
         /// </summary>
         /// <param name="ast">árvore no formato do esprima</param>
         /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
         public int ContarNos(string ast)
         {
             try
@@ -451,6 +452,7 @@ namespace Otimizacao.Javascript
         /// </summary>
         /// <param name="ast">árvore no formato do esprima</param>
         /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
         public List<No> ContarNosCallee(string ast)
         {
             var lista = new List<No>();
@@ -502,6 +504,7 @@ namespace Otimizacao.Javascript
         /// <param name="astGlobal"></param>
         /// <param name="funcoes"></param>
         /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
         public Dictionary<string, string> RecuperarTodasAstDeFuncao(string astGlobal, List<string> funcoes)
         {
             var dicionario = new Dictionary<string, string>();
@@ -557,6 +560,7 @@ namespace Otimizacao.Javascript
         /// <param name="astGlobal"></param>
         /// <param name="nomeFuncao"></param>
         /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
         public string RecuperarDeclaracaoFuncaoPeloNome(string astGlobal, string nomeFuncao)
         {
 
@@ -594,6 +598,7 @@ namespace Otimizacao.Javascript
         /// <param name="ast"></param>
         /// <param name="nomeFuncao"></param>
         /// <param name="astFuncaoNova"></param>
+        [HandleProcessCorruptedStateExceptions]
         public string AtualizarDeclaracaoFuncaoPeloNome(string ast, string nomeFuncao, string astFuncaoNova)
         {
             try
@@ -664,6 +669,7 @@ namespace Otimizacao.Javascript
         /// <param name="ast">árvore no formato do esprima</param>
         /// <param name="listaComTiposDeNos">Tipo do nó</param>
         /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
         public List<No> ContarNosPorTipo(string ast, List<string> listaComTiposDeNos)
         {
             var lista = new List<No>();
@@ -726,6 +732,7 @@ namespace Otimizacao.Javascript
         /// <param name="astPrimeiroFilho">Pai com o nó da mãe</param>
         /// <param name="astSegundoFilho">Mãe com o nó do pai</param>
         /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
         public void ExecutarCrossOver(string astPai, string astMae, int randonNodePai, int randonNodeMae, out string astPrimeiroFilho, out string astSegundoFilho)
         {
             //var engine = _manager.GetEngine();
