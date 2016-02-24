@@ -15,6 +15,11 @@ namespace Otimizacao
     /// </summary>
     public class Otimizador: IDisposable
     {
+        /// <summary>
+        /// V8Engine Helper
+        /// </summary>
+        private JavascriptHelper _javascriptHelper;
+
         //Guarda o indice dos nós por tipo
         private static List<No> _nosParaMutacao = new List<No>();
 
@@ -180,6 +185,9 @@ namespace Otimizacao
             Console.WriteLine(string.Format("    SetTimeout {0}", _usarSetTimeout));
             Console.WriteLine(string.Format("    Heuristica {0}", Heuristica));
 
+            _javascriptHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+            _javascriptHelper.ConfigurarGeracao();
+
             var sw = new Stopwatch();
             sw.Start();
             if(Heuristica == "GA")
@@ -208,7 +216,6 @@ namespace Otimizacao
             myExport.ExportToFile("rodadas.csv");
 
             #endregion
-
 
             #region limpa o diretório de execução.
 
@@ -855,8 +862,6 @@ namespace Otimizacao
         [HandleProcessCorruptedStateExceptions]
         private void CriarIndividuoOriginal(string caminhoBibliotecaJs)
         {
-            JavascriptHelper jHelper = null;
-
             var caminho = string.Format("{0}\\{1}", _diretorioFontes, caminhoBibliotecaJs);
             var caminhoDestino = string.Format("{0}\\{1}", _diretorioExecucao, caminhoBibliotecaJs);
 
@@ -874,33 +879,30 @@ namespace Otimizacao
 
                 try
                 {
-                    jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-                    jHelper.ConfigurarGeracao();
+                    
 
                     var codigo = File.ReadAllText(caminho);
-                    var ast = jHelper.GerarAst(codigo);
+                    var ast = _javascriptHelper.GerarAst(codigo);
 
                     _original.Ast = ast;
 
 
-                    _original.Codigo = jHelper.GerarCodigo(_original.Ast);
+                    _original.Codigo = _javascriptHelper.GerarCodigo(_original.Ast);
                     File.WriteAllText(caminhoDestino, _original.Codigo);
 
-                    _total = jHelper.ContarNos(_original.Ast);
+                    _total = _javascriptHelper.ContarNos(_original.Ast);
 
                     var sw = new Stopwatch();
                     sw.Start();
-                    _original.Fitness = jHelper.ExecutarTestes(caminhoDestino, _caminhoScriptTestes);
+                    _original.Fitness = _javascriptHelper.ExecutarTestes(caminhoDestino, _caminhoScriptTestes);
                     sw.Stop();
                     _original.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
-                    _original.TestesComSucesso = jHelper.TestesComSucesso;
+                    _original.TestesComSucesso = _javascriptHelper.TestesComSucesso;
 
                     _fitnessMin = _original.Fitness;
 
                     MelhorIndividuo = _original;
-
-                    jHelper.Dispose();
-
+                    
                     break;
                 }
                 catch (Exception ex)
@@ -908,14 +910,13 @@ namespace Otimizacao
                     //Console.WriteLine(ex);
                     //Console.WriteLine("Erro na criação do original");
 
-                    if (jHelper != null)
-                    {
-                        jHelper.Dispose();
-                    }
-
                     //Dorme um minuto e tenta de novo
                     Thread.Sleep(60000);
                     Console.WriteLine(" Falhou ao criar individuo. Tentando novamente.");
+
+                    _javascriptHelper.Dispose();
+                    _javascriptHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+                    _javascriptHelper.ConfigurarGeracao();
 
                 }
 
