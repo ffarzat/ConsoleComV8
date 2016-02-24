@@ -237,6 +237,8 @@ namespace Otimizacao
 
             CriarIndividuoOriginal(_caminhoBiblioteca);
             AvaliarIndividuo(0, MelhorIndividuo);
+            _fitnessMin = MelhorIndividuo.Fitness;
+
             var funcoesOtimizar = DeterminarListaDeFuncoes(MelhorIndividuo.Clone());
             int indiceFuncaoAtual = 0;
             //IfStatement
