@@ -244,21 +244,25 @@ namespace Otimizacao
 
             var funcaoEmOtimizacao = funcoesOtimizar[indiceFuncaoAtual];
             var r = new Random();
-            var totalNos = CalcularTodosVizinhos(funcaoEmOtimizacao.Ast);
+            //var totalNos = CalcularTodosVizinhos(funcaoEmOtimizacao.Ast);
+            CalcularVizinhos(funcaoEmOtimizacao.Ast);// Atualiza a propriedade _nosParaMutacao
             int control = 0;
-
+            
             Console.WriteLine("     {0} é utlizada {1}x", funcaoEmOtimizacao.Nome, funcaoEmOtimizacao.Total);
+            Console.WriteLine("     {0} vizinhos para avaliar", _nosParaMutacao.Count);
             
             //Explorando os vizinhos
             for (int i = 0; i < totalVizinhosExplorar - 1; i++)
             {
                 
                 #region cria o vizinho
-                Console.WriteLine("      {0}|Nó:{1}", i, control);
+                Console.WriteLine("      {0}|Nó:{1}|{2}", i, control, _nosParaMutacao[control].Tipo);
                 
                 Individuo c = MelhorIndividuo.Clone(); //Sempre usando o melhor
 
-                var novaFuncao = ExecutarMutacaoNaFuncao(funcaoEmOtimizacao.Ast, control);
+                //var novaFuncao = ExecutarMutacaoNaFuncao(funcaoEmOtimizacao.Ast, control);
+                var novaFuncao = ExecutarMutacaoNaFuncao(funcaoEmOtimizacao.Ast, _nosParaMutacao[control].Indice);
+
                 c.Ast = AtualizarFuncao(c, funcaoEmOtimizacao.Nome, novaFuncao);
                 c.CriadoPor = Operador.Mutacao;
 
@@ -298,18 +302,18 @@ namespace Otimizacao
                 }
                 
                 //acabaram os nós na função atual?
-                if (control == totalNos -1)
+                if (control >= _nosParaMutacao.Count )
                 {
                     indiceFuncaoAtual++;
                     funcaoEmOtimizacao = funcoesOtimizar[indiceFuncaoAtual];
-                    totalNos = CalcularTodosVizinhos(funcaoEmOtimizacao.Ast);
+                    //totalNos = CalcularTodosVizinhos(funcaoEmOtimizacao.Ast);
+                    CalcularVizinhos(funcaoEmOtimizacao.Ast);
                     control = 0;
                     Console.WriteLine("     {0} é utlizada {1}x", funcaoEmOtimizacao.Nome, funcaoEmOtimizacao.Total);
+                    Console.WriteLine("     {0} vizinhos para avaliar", _nosParaMutacao.Count);
                 }
 
                 #endregion
-
-                
             }
 
             #region Cria diretorio dos resultados
@@ -1069,12 +1073,21 @@ namespace Otimizacao
 
             fits[0] = ExecutarTestesParaIndividuoEspecifico(indice, sujeito);
 
+            //Falhou em testes
             if (fits[0].Equals(120000))
             {
                 sujeito.Fitness = 120000;
                 return 120000;
             }
 
+            //Igual ao original
+            if (fits[0].Equals(_fitnessMin))
+            {
+                sujeito.Fitness = _fitnessMin;
+                return _fitnessMin;
+            }
+
+            //Realmente executar
             for (int i = 0; i < total; i++)
             {
                 fits[i] = ExecutarTestesParaIndividuoEspecifico(indice, sujeito);
