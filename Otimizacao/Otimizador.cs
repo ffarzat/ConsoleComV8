@@ -18,7 +18,10 @@ namespace Otimizacao
         //Guarda o indice dos nós por tipo
         private static List<No> _nosParaMutacao = new List<No>();
 
-        public static string NomeFuncaoAtual = "";
+        /// <summary>
+        /// Guarda a AST das funções da biblioteca
+        /// </summary>
+        private static Dictionary<string, string> _astDasFuncoes = new Dictionary<string, string>(); 
 
         /// <summary>
         /// Guarda qual das rodadas externas é a atual
@@ -230,48 +233,39 @@ namespace Otimizacao
             var totalVizinhosExplorar = _size * _executarAte;
             var otimizado = false;
             var melhores = new List<Individuo>();
+            Console.WriteLine("      Avaliar {0} vizinhos", totalVizinhosExplorar);
 
             CriarIndividuoOriginal(_caminhoBiblioteca);
-
-            var ast = DeterminarFuncaoMaisUsada(MelhorIndividuo.Clone());
-
-            var totalNos = CalcularTodosVizinhos(ast);
-
-            Console.WriteLine("      {0} nós para remover ", totalNos);
-
-            Console.WriteLine("      Avaliar {0} vizinhos", totalNos);
-
             AvaliarIndividuo(0, MelhorIndividuo);
-
+            var funcoesOtimizar = DeterminarListaDeFuncoes(MelhorIndividuo.Clone());
+            int indiceFuncaoAtual = 0;
             //IfStatement
             //CallExpression
 
+            var funcaoEmOtimizacao = funcoesOtimizar[indiceFuncaoAtual];
             var r = new Random();
-
-            int ultimoIndice = r.Next(0, totalNos);
-
+            var totalNos = CalcularTodosVizinhos(funcaoEmOtimizacao.Ast);
             int control = 0;
 
+            Console.WriteLine("     {0} é utlizada {1}x", funcaoEmOtimizacao.Nome, funcaoEmOtimizacao.Total);
+            
+            //Explorando os vizinhos
             for (int i = 0; i < totalVizinhosExplorar - 1; i++)
             {
-
-                if (ultimoIndice == totalNos-1) //zera de novo
-                    ultimoIndice = 0;
-
+                
                 #region cria o vizinho
-                Console.WriteLine("      {0}|Nó:{1}", i, ultimoIndice);
+                Console.WriteLine("      {0}|Nó:{1}", i, control);
                 
                 Individuo c = MelhorIndividuo.Clone(); //Sempre usando o melhor
 
-                var novaFuncao = ExecutarMutacaoNaFuncao(ast, ultimoIndice);
-                c.Ast = AtualizarFuncao(c, NomeFuncaoAtual, novaFuncao);
+                var novaFuncao = ExecutarMutacaoNaFuncao(funcaoEmOtimizacao.Ast, control);
+                c.Ast = AtualizarFuncao(c, funcaoEmOtimizacao.Nome, novaFuncao);
                 c.CriadoPor = Operador.Mutacao;
 
                 #endregion
 
-                ultimoIndice++;
+                #region Avalia o vizinho 
                 
-                //Avalia o vizinho e veja se melhorou
                 var fitvizinho = AvaliarIndividuo(i, c);
 
                 if (fitvizinho < 0)
@@ -286,19 +280,36 @@ namespace Otimizacao
                     otimizado = true;
                     melhores.Add(c);
 
-                    ast = DeterminarFuncaoMaisUsada(MelhorIndividuo.Clone());
+                    funcaoEmOtimizacao.Ast = novaFuncao; //Atualizo a melhor nova função
 
                     control = 0;
 
                     //CalcularVizinhos(ast); //recalculo os nós
                 }
-
-                if (i == totalVizinhosExplorar | (control == totalNos)) //se deu a volta completa pode parar
-                    break;
-
+                #endregion
 
                 control++;
 
+                #region Critérios de parada
+                //Queimou o Orçamento global 
+                if (i == totalVizinhosExplorar )
+                {
+                    break;
+                }
+                
+                //acabaram os nós na função atual?
+                if (control == totalNos -1)
+                {
+                    indiceFuncaoAtual++;
+                    funcaoEmOtimizacao = funcoesOtimizar[indiceFuncaoAtual];
+                    totalNos = CalcularTodosVizinhos(funcaoEmOtimizacao.Ast);
+                    control = 0;
+                    Console.WriteLine("     {0} é utlizada {1}x", funcaoEmOtimizacao.Nome, funcaoEmOtimizacao.Total);
+                }
+
+                #endregion
+
+                
             }
 
             #region Cria diretorio dos resultados
@@ -447,31 +458,6 @@ namespace Otimizacao
         }
 
         /// <summary>
-        /// Retorna a árvore de nós da função mais utilizada no código
-        /// </summary>
-        /// <returns></returns>
-        public string DeterminarFuncaoMaisUsada(Individuo clone)
-        {
-            var jHelper = new JavascriptHelper(_diretorioFontes, false, false);
-            jHelper.ConfigurarGeracao();
-            var nos = jHelper.ContarNosCallee(clone.Ast);
-
-            var funcao = nos.GroupBy(f => f.NomeFuncao).Select(n=> new {Funcao = n.Key, Total = n.Count()}).OrderByDescending(n=> n.Total).ElementAt(1);
-
-            NomeFuncaoAtual = funcao.Funcao;
-
-            Console.WriteLine(" Função {0} é a mais usada {1}x", funcao.Funcao, funcao.Total);
-
-            var astFuncao = jHelper.RecuperarDeclaracaoFuncaoPeloNome(clone.Ast, funcao.Funcao);
-
-            jHelper.Dispose();
-            jHelper = null;
-
-            return astFuncao;
-
-        }
-
-        /// <summary>
         /// Lista de Funcoes com os detalhes para otimizaçao
         /// </summary>
         /// <returns></returns>
@@ -481,12 +467,40 @@ namespace Otimizacao
             jHelper.ConfigurarGeracao();
             var nos = jHelper.ContarNosCallee(clone.Ast);
 
-            var funcoesEncontradas = nos.GroupBy(f => f.NomeFuncao).Select(n => new Function { Nome = n.Key, Total = n.Count(), Ast = jHelper.RecuperarDeclaracaoFuncaoPeloNome(clone.Ast, n.Key) }).OrderByDescending(n => n.Total).ToList();
+            var funcoesEncontradas = nos.GroupBy(f => f.NomeFuncao).Select(n => new Function { Nome = n.Key, Total = n.Count(), Ast = ""}).OrderByDescending(n => n.Total).ToList();
+
+            _astDasFuncoes = ProcessarAstDasFuncoes(funcoesEncontradas, clone);
+
+            foreach (var funcaoEncontrada in funcoesEncontradas)
+            {
+                //funcaoEncontrada.Ast = 
+                funcaoEncontrada.Ast =  _astDasFuncoes.ContainsKey(funcaoEncontrada.Nome) ? _astDasFuncoes[funcaoEncontrada.Nome] : "";
+            }
             
             jHelper.Dispose();
             jHelper = null;
 
             return funcoesEncontradas;
+        }
+
+        /// <summary>
+        /// Percorre a árvore e junta todos os functions declarations
+        /// </summary>
+        /// <param name="funcoesEncontradas"></param>
+        /// <param name="biblioteca"></param>
+        /// <returns></returns>
+        private Dictionary<string, string> ProcessarAstDasFuncoes(IEnumerable<Function> funcoesEncontradas, Individuo biblioteca)
+        {
+            var jHelper = new JavascriptHelper(_diretorioFontes, false, false);
+            jHelper.ConfigurarGeracao();
+
+            var listaDeNomes = funcoesEncontradas.Select(n => n.Nome).ToList();
+
+            var dicionarioResultado = jHelper.RecuperarTodasAstDeFuncao(biblioteca.Ast, listaDeNomes);
+            jHelper.Dispose();
+            jHelper = null;
+
+            return dicionarioResultado;
         }
 
 
@@ -1050,7 +1064,7 @@ namespace Otimizacao
         [HandleProcessCorruptedStateExceptions]
         private double AvaliarIndividuo(int indice, Individuo sujeito)
         {
-            const int total = 20;
+            const int total = 5;
             var fits = new double[total];
 
             fits[0] = ExecutarTestesParaIndividuoEspecifico(indice, sujeito);

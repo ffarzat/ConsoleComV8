@@ -69,9 +69,9 @@ namespace Otimizacao.Testes
             var otimizador = new Otimizador(1, 1, 1, "Require", "ResultadosMoment");
             var otimizou = otimizador.Otimizar("global.js", "core-test.js");
 
-            var ast = otimizador.DeterminarFuncaoMaisUsada(otimizador.MelhorIndividuo);
+            var lista = otimizador.DeterminarListaDeFuncoes(otimizador.MelhorIndividuo);
 
-            Assert.AreNotEqual("", ast);
+            Assert.AreEqual(141, lista.Count);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Otimizacao.Testes
             var otimizador = new Otimizador(1, 1, 1, "Require", "ResultadosMoment");
             var otimizou = otimizador.Otimizar("global.js", "core-test.js");
 
-            var ast = otimizador.DeterminarFuncaoMaisUsada(otimizador.MelhorIndividuo);
+            var ast = otimizador.DeterminarListaDeFuncoes(otimizador.MelhorIndividuo)[1].Ast;
             var novaAst = otimizador.ExecutarMutacaoNaFuncao(ast, 10);
 
             Assert.AreNotEqual(ast, novaAst);
@@ -103,16 +103,16 @@ namespace Otimizacao.Testes
             var otimizador = new Otimizador(1, 1, 1, "Require", "ResultadosMoment");
             var otimizou = otimizador.Otimizar("global.js", "core-test.js");
 
-            var ast = otimizador.DeterminarFuncaoMaisUsada(otimizador.MelhorIndividuo);
-            var novaAst = otimizador.ExecutarMutacaoNaFuncao(ast, 25);
+            var funcao = otimizador.DeterminarListaDeFuncoes(otimizador.MelhorIndividuo)[1];
+            var novaAst = otimizador.ExecutarMutacaoNaFuncao(funcao.Ast, 25);
 
-            Assert.AreNotEqual(ast, novaAst);
+            Assert.AreNotEqual(funcao.Ast, novaAst);
 
-            File.WriteAllText("astFuncao.txt", JToken.Parse(ast).ToString());
+            File.WriteAllText("astFuncao.txt", JToken.Parse(funcao.Ast).ToString());
             File.WriteAllText("astNovaFuncao.txt", JToken.Parse(novaAst).ToString());
 
 
-            string novaAstIndividuo = otimizador.AtualizarFuncao(otimizador.MelhorIndividuo, Otimizador.NomeFuncaoAtual, novaAst);
+            string novaAstIndividuo = otimizador.AtualizarFuncao(otimizador.MelhorIndividuo, funcao.Nome, novaAst);
 
             Assert.AreNotEqual(otimizador.MelhorIndividuo.Ast, novaAstIndividuo);
 

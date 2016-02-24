@@ -468,7 +468,7 @@ namespace Otimizacao.Javascript
                     var counter = 0;
 
 
-                    traverse(ast, function(node) { //3
+                    traverse(ast, function(node) { 
                             if (node.type === 'CallExpression' && node.callee.type === 'Identifier') 
                             {
                                 
@@ -497,6 +497,61 @@ namespace Otimizacao.Javascript
         }
 
         /// <summary>
+        /// Recupera os nós relativos a declaração de todas as funcoes do codigo
+        /// </summary>
+        /// <param name="astGlobal"></param>
+        /// <param name="funcoes"></param>
+        /// <returns></returns>
+        public Dictionary<string, string> RecuperarTodasAstDeFuncao(string astGlobal, List<string> funcoes)
+        {
+            var dicionario = new Dictionary<string, string>();
+
+            try
+            {
+                //_engine.AddHostObject("Funcoes", funcoes);
+                _engine.AddHostObject("Resultado", dicionario);
+
+                _engine.Execute(@"
+
+                    var ast = JSON.parse(#ast);
+
+                    traverse(ast, function(node) { 
+                            if (node.type === 'FunctionDeclaration' && 'id' in node) {
+                                var id = node.id;
+                                if('name' in id && typeof node['name'] != undefined)
+                                    Resultado.Add(node.id.name, JSON.stringify(node));
+                            }
+                    });
+
+/*
+                    ObjEstraverse.traverse(ast, {
+                        enter: function(node, parent) {
+                            
+                            if (node.type == 'Identifier' && parent.type == 'FunctionDeclaration') 
+                            {
+                                Resultado.Add(node.name, JSON.stringify(node));
+                            }
+                        }
+                    });
+
+*/
+
+                    ".Replace("#ast", this.EncodeJsString(astGlobal)));
+            }
+            catch (ScriptEngineException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+
+            return dicionario;
+        }
+
+        /// <summary>
         /// Recupera os nós relativos a declaração da funcao porseu nome
         /// </summary>
         /// <param name="astGlobal"></param>
@@ -511,23 +566,22 @@ namespace Otimizacao.Javascript
 
                     var ast = JSON.parse(#ast);
 
-                    var indent = 0;
-                    var counter = 0;
-
-                    traverse(ast, function(node) { //3
-                           if (node.type === 'FunctionDeclaration' && node.id.name == '#nome') {
+                    ObjEstraverse.traverse(ast, {
+                        enter: function(node, parent) {
+                            if (node.name == '#nome' && parent.type === 'FunctionDeclaration') {
                                 javascriptHelper.JsonAst = JSON.stringify(node);
+                                this.break();
                             }
-                        });
+                        }
+                    });
 
-
-                    javascriptHelper.TotalDeNos = counter;
                     ".Replace("#ast", this.EncodeJsString(astGlobal)).Replace("#nome", nomeFuncao));
             }
             catch (Exception ex)
             {
 
                 Console.WriteLine(ex.ToString());
+                JsonAst = "";
             }
 
 
