@@ -466,8 +466,18 @@ namespace Otimizacao
 
             _nosParaMutacao.Clear();
             _nosParaMutacao = new List<No>();
-            _nosParaMutacao = _javascriptHelper.ContarNosPorTipo(ast, lista);
-            
+
+            _javascriptHelper.ReiniciarEngine();
+
+            try
+            {
+                _nosParaMutacao = _javascriptHelper.ContarNosPorTipo(ast, lista);    
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao determinar quantos nós (por tipo) a função tem. {0}", ex.Message);
+                
+            }
         }
 
         /// <summary>
@@ -513,9 +523,17 @@ namespace Otimizacao
         /// <returns></returns>
         public string AtualizarFuncao(Individuo clone, string nomeFuncao, string astFuncaoNova)
         {
-            var astFuncao = _javascriptHelper.AtualizarDeclaracaoFuncaoPeloNome(clone.Ast, nomeFuncao, astFuncaoNova);
+            var astFuncao = "";
+            try
+            {
+                astFuncao = _javascriptHelper.AtualizarDeclaracaoFuncaoPeloNome(clone.Ast, nomeFuncao, astFuncaoNova);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao atualizar a função = {0}", ex.Message);
+            }
 
-            return astFuncao;
+             return astFuncao;
         }
 
 
@@ -970,6 +988,7 @@ namespace Otimizacao
         public string ExecutarMutacaoNaFuncao(string ast, int no)
         {
             string novaAst = "";
+            _javascriptHelper.ReiniciarEngine();
 
             var executarMutacao = new Thread(() => novaAst = _javascriptHelper.ExecutarMutacaoExclusao(ast, no));
             executarMutacao.Start();

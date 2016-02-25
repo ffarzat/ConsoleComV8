@@ -122,7 +122,12 @@ namespace Otimizacao.Javascript
         /// <summary>
         /// Total de Nós de um
         /// </summary>
-        public int TotalDeNos { get; set; } 
+        public int TotalDeNos { get; set; }
+
+        /// <summary>
+        /// Verifica se precisa registrar timeout ou não
+        /// </summary>
+        private bool SetTimeOutLigado { get; set; }
 
         /// <summary>
         /// Construtor, configura o Helper para posterior execuçao
@@ -156,6 +161,8 @@ namespace Otimizacao.Javascript
             _diretorioExecucao = diretorioJavascripts;
             _timeoutTestes = int.MaxValue;
             ExecutouTestesAteFinal = false;
+
+            SetTimeOutLigado = setTimeout;
 
             //O manager vai compilar e cachear as bibliotecas
             _manager = new RuntimeManager(new ManualManagerSettings() { MaxExecutableBytes = (1000000000 * 2), RuntimeMaxCount = int.MaxValue});
@@ -1218,6 +1225,21 @@ namespace Otimizacao.Javascript
             GC.Collect();
 
         }
+
+        /// <summary>
+        /// Serve para reiniciar a Engine e liberar memória
+        /// </summary>
+        public void ReiniciarEngine()
+        {
+            _engine.Interrupt();
+            _engine.Dispose();
+
+            _engine = _manager.GetEngine();
+
+            Carregar(_diretorioExecucao, SetTimeOutLigado, false);
+            ConfigurarGeracao();
+        }
+
 
         /// <summary>
         /// Timeout para execução dos testes em segundos
