@@ -358,11 +358,7 @@ namespace Otimizacao
         /// <param name="ast"></param>
         private int CalcularTodosVizinhos(string ast)
         {
-            var jHelper = new JavascriptHelper(_diretorioFontes, false, false);
-            jHelper.ConfigurarGeracao();
-
-            
-            return jHelper.ContarNos(ast);
+            return _javascriptHelper.ContarNos(ast);
         }
 
         /// <summary>
@@ -467,12 +463,10 @@ namespace Otimizacao
                     {"CallExpression"}
                 };
 
-            var jHelper = new JavascriptHelper(_diretorioFontes, false, false);
-            jHelper.ConfigurarGeracao();
 
             _nosParaMutacao.Clear();
             _nosParaMutacao = new List<No>();
-            _nosParaMutacao = jHelper.ContarNosPorTipo(ast, lista);
+            _nosParaMutacao = _javascriptHelper.ContarNosPorTipo(ast, lista);
             
         }
 
@@ -482,9 +476,7 @@ namespace Otimizacao
         /// <returns></returns>
         public List<Function> DeterminarListaDeFuncoes(Individuo clone)
         {
-            var jHelper = new JavascriptHelper(_diretorioFontes, false, false);
-            jHelper.ConfigurarGeracao();
-            var nos = jHelper.ContarNosCallee(clone.Ast);
+            var nos = _javascriptHelper.ContarNosCallee(clone.Ast);
 
             var funcoesEncontradas = nos.GroupBy(f => f.NomeFuncao).Select(n => new Function { Nome = n.Key, Total = n.Count(), Ast = ""}).OrderByDescending(n => n.Total).ToList();
 
@@ -496,9 +488,6 @@ namespace Otimizacao
                 funcaoEncontrada.Ast =  _astDasFuncoes.ContainsKey(funcaoEncontrada.Nome) ? _astDasFuncoes[funcaoEncontrada.Nome] : "";
             }
             
-            jHelper.Dispose();
-            jHelper = null;
-
             return funcoesEncontradas;
         }
 
@@ -510,18 +499,13 @@ namespace Otimizacao
         /// <returns></returns>
         private Dictionary<string, string> ProcessarAstDasFuncoes(IEnumerable<Function> funcoesEncontradas, Individuo biblioteca)
         {
-            var jHelper = new JavascriptHelper(_diretorioFontes, false, false);
-            jHelper.ConfigurarGeracao();
 
             var listaDeNomes = funcoesEncontradas.Select(n => n.Nome).ToList();
 
-            var dicionarioResultado = jHelper.RecuperarTodasAstDeFuncao(biblioteca.Ast, listaDeNomes);
-            jHelper.Dispose();
-            jHelper = null;
+            var dicionarioResultado = _javascriptHelper.RecuperarTodasAstDeFuncao(biblioteca.Ast, listaDeNomes);
 
             return dicionarioResultado;
         }
-
 
         /// <summary>
         /// Troca a função antiga pela ASTnova
@@ -529,16 +513,9 @@ namespace Otimizacao
         /// <returns></returns>
         public string AtualizarFuncao(Individuo clone, string nomeFuncao, string astFuncaoNova)
         {
-            var jHelper = new JavascriptHelper(_diretorioFontes, false, false);
-            jHelper.ConfigurarGeracao();
-
-            var astFuncao = jHelper.AtualizarDeclaracaoFuncaoPeloNome(clone.Ast, nomeFuncao, astFuncaoNova);
-
-            jHelper.Dispose();
-            jHelper = null;
+            var astFuncao = _javascriptHelper.AtualizarDeclaracaoFuncaoPeloNome(clone.Ast, nomeFuncao, astFuncaoNova);
 
             return astFuncao;
-
         }
 
 
@@ -921,10 +898,8 @@ namespace Otimizacao
                 }
 
                 contador++;
-
             }
 
-            
         }
 
         /// <summary>
@@ -934,13 +909,9 @@ namespace Otimizacao
         [HandleProcessCorruptedStateExceptions]
         private void ExecutarMutacao(Individuo sujeito)
         {
-            JavascriptHelper jHelper = null;
 
             try
             {
-                jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-                jHelper.ConfigurarGeracao();
-
                 int totalMutacoes = 1;
                 string novaAst = "";
 
@@ -952,7 +923,7 @@ namespace Otimizacao
 
                     int no = Rand.Next(0, _total);
 
-                    var avaliar = new Thread(() => novaAst = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no));
+                    var avaliar = new Thread(() => novaAst = _javascriptHelper.ExecutarMutacaoExclusao(sujeito.Ast, no));
                     avaliar.Start();
                     avaliar.Join(_timeout * 1000); //timeout
                     
@@ -970,11 +941,7 @@ namespace Otimizacao
                 sujeito.Ast = "";
                 sujeito.CriadoPor = Operador.Mutacao;
             }
-            finally
-            {
-                if (jHelper != null)
-                    jHelper.Dispose();
-            }
+
             
         }
 
@@ -985,20 +952,14 @@ namespace Otimizacao
         /// <param name="no"></param>
         private void ExecutarMutacao(Individuo sujeito, int no)
         {
-            JavascriptHelper jHelper = null;
-            jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-            jHelper.ConfigurarGeracao();
             string novaAst = "";
-            
-            var executarMutacao = new Thread(() => novaAst = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no));
+
+            var executarMutacao = new Thread(() => novaAst = _javascriptHelper.ExecutarMutacaoExclusao(sujeito.Ast, no));
             executarMutacao.Start();
             executarMutacao.Join(_timeout * 1000); //timeout
             
             sujeito.Ast = novaAst;
             sujeito.CriadoPor = Operador.Mutacao;
-            
-            jHelper.Dispose();
-    
         }
 
         /// <summary>
@@ -1008,16 +969,11 @@ namespace Otimizacao
         /// <param name="no"></param>
         public string ExecutarMutacaoNaFuncao(string ast, int no)
         {
-            JavascriptHelper jHelper = null;
-            jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-            jHelper.ConfigurarGeracao();
             string novaAst = "";
 
-            var executarMutacao = new Thread(() => novaAst = jHelper.ExecutarMutacaoExclusao(ast, no));
+            var executarMutacao = new Thread(() => novaAst = _javascriptHelper.ExecutarMutacaoExclusao(ast, no));
             executarMutacao.Start();
             executarMutacao.Join(_timeout * 1000); //timeout
-
-            jHelper.Dispose();
 
             return novaAst;
         }
@@ -1033,8 +989,6 @@ namespace Otimizacao
         [HandleProcessCorruptedStateExceptions]
         private void ExecutarCruzamento(Individuo pai, Individuo mae, out Individuo filhoPai, out Individuo filhoMae)
         {
-            JavascriptHelper jHelper = null;
-
             string c1 = "", c2 = "";
             
             filhoPai = pai.Clone();
@@ -1045,24 +999,16 @@ namespace Otimizacao
 
             try
             {
-                jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-                jHelper.ConfigurarGeracao();
-                
+               
                 var totalPai = Rand.Next(0, _total);
                 var totalMae = Rand.Next(0, _total);
-                jHelper.ExecutarCrossOver(pai.Ast, mae.Ast, totalPai, totalMae, out c1, out c2);
+                _javascriptHelper.ExecutarCrossOver(pai.Ast, mae.Ast, totalPai, totalMae, out c1, out c2);
             }
             catch (Exception ex)
             {
                 Console.WriteLine("          Erro ao executar cruzamento");
                 //Console.Error(ex.ToString());
             }
-            finally
-            {
-                if (jHelper != null)
-                    jHelper.Dispose();
-            }
-
 
             filhoPai.Ast = c1;
             filhoMae.Ast = c2;
@@ -1165,33 +1111,29 @@ namespace Otimizacao
 
             #region realmente executar os testes então
 
-            JavascriptHelper jHelper = null;
-
             try
             {
-                jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-                jHelper.ConfigurarTimeOut(_timeout);
-                jHelper.ConfigurarMelhorFit(_fitnessMin);
+                _javascriptHelper.ConfigurarTimeOut(_timeout);
+                _javascriptHelper.ConfigurarMelhorFit(_fitnessMin);
 
                 //Console.WriteLine("              Avaliando via testes");
                 sw.Start();
                 var avaliar =
-                    new Thread(() => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
+                    new Thread(() => sujeito.Fitness = _javascriptHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
                 avaliar.Start();
                 avaliar.Join(_timeout*1000); //timeout
 
                 sw.Stop();
-                jHelper.Dispose();
 
                 //Console.WriteLine("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
 
-                if (!jHelper.ExecutouTestesAteFinal)
+                if (!_javascriptHelper.ExecutouTestesAteFinal)
                     sujeito.Fitness = valorFitFalha;
 
-                if (jHelper.ExecutouTestesAteFinal && jHelper.TestesComFalha > 0)
+                if (_javascriptHelper.ExecutouTestesAteFinal && _javascriptHelper.TestesComFalha > 0)
                     sujeito.Fitness = valorFitFalha; //+ jHelper.TestesComFalha;
 
-                sujeito.TestesComSucesso = jHelper.TestesComSucesso;
+                sujeito.TestesComSucesso = _javascriptHelper.TestesComSucesso;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
             }
             catch (Exception ex)
@@ -1199,13 +1141,11 @@ namespace Otimizacao
                 //Console.WriteLine("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
 
                 sujeito.Fitness = valorFitFalha;
-                sujeito.TestesComSucesso = jHelper != null ? jHelper.TestesComSucesso : 0;
+                sujeito.TestesComSucesso = _javascriptHelper != null ? _javascriptHelper.TestesComSucesso : 0;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
 
                 Console.WriteLine(ex);
 
-                if (jHelper != null)
-                    jHelper.Dispose();
             }
 
             #endregion
@@ -1223,14 +1163,11 @@ namespace Otimizacao
         [HandleProcessCorruptedStateExceptions]
         public string GerarCodigo(Individuo sujeito)
         {
-
             var caminhoNovoAvaliado = string.Format("{0}\\{1}.js", _diretorioExecucao, sujeito.Id);
-            JavascriptHelper jHelper = null;
+
             try
             {
-                jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-                jHelper.ConfigurarGeracao();
-                sujeito.Codigo = jHelper.GerarCodigo(sujeito.Ast);
+                sujeito.Codigo = _javascriptHelper.GerarCodigo(sujeito.Ast);
 
                 if (!string.IsNullOrEmpty(sujeito.Codigo))
                 {
@@ -1241,20 +1178,12 @@ namespace Otimizacao
                 {
                     sujeito.Arquivo = "";
                 }
-
-
-
             }
             catch (Exception ex)
             {
                 //Console.WriteLine(ex);
                 Console.WriteLine("AST invalida. Codigo nao gerado");
                 caminhoNovoAvaliado = "";
-            }
-            finally
-            {
-                if (jHelper != null)
-                    jHelper.Dispose();
             }
 
             return caminhoNovoAvaliado;
