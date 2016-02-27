@@ -316,15 +316,23 @@ namespace Otimizacao
                 }
                 
                 //acabaram os nós na função atual?
-                if (control == _nosParaMutacao.Count )
+                if (control == _nosParaMutacao.Count)
                 {
                     indiceFuncaoAtual++;
-                    funcaoEmOtimizacao = funcoesOtimizar[indiceFuncaoAtual];
-                    //totalNos = CalcularTodosVizinhos(funcaoEmOtimizacao.Ast);
-                    CalcularVizinhos(funcaoEmOtimizacao.Ast);
-                    control = 0;
-                    Console.WriteLine("     {0} é utlizada {1}x", funcaoEmOtimizacao.Nome, funcaoEmOtimizacao.Total);
-                    Console.WriteLine("     {0} vizinhos para avaliar", _nosParaMutacao.Count);
+                    if (indiceFuncaoAtual < funcoesOtimizar.Count)
+                    {
+                        funcaoEmOtimizacao = funcoesOtimizar[indiceFuncaoAtual];
+                        //totalNos = CalcularTodosVizinhos(funcaoEmOtimizacao.Ast);
+                        CalcularVizinhos(funcaoEmOtimizacao.Ast);
+                        control = 0;
+                        Console.WriteLine("     {0} é utlizada {1}x", funcaoEmOtimizacao.Nome, funcaoEmOtimizacao.Total);
+                        Console.WriteLine("     {0} vizinhos para avaliar", _nosParaMutacao.Count);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    
                 }
 
                 #endregion
