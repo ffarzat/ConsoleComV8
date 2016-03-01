@@ -115,6 +115,9 @@
     <Content Include="Lodash\Qunit.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Melhor.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Moment\core-test.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

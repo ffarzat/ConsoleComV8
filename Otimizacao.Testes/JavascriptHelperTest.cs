@@ -127,6 +127,25 @@ namespace Otimizacao.Testes
             
         }
 
+        /// <summary>
+        /// Executa os testes do MomentJs
+        /// </summary>
+        [Test]
+        public void ExecutarTestesDoMelhorMoment()
+        {
+            var sw = new Stopwatch();
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Moment"));
+            sw.Start();
+            helper.ExecutarTestes("melhor.js", "core-test.js");
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
+            helper.FalhasDosTestes.ForEach(Console.WriteLine);
+
+            Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");
+            Assert.AreEqual(helper.TestesComSucesso, 57982);
+
+        }
+
         [Test]
         public void ExecutarTestesDoMomentSemHelper()
         {

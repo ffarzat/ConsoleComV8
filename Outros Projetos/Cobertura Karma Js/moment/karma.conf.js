@@ -17,7 +17,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       //'node_modules/qunit-extras/qunit-extras.js',
-      'global.js',
+      'Melhor.js',
       'core-test.js'
     ],
 
@@ -30,7 +30,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'global.js' : ['coverage']
+      'Melhor.js' : ['coverage']
     },
 
 
