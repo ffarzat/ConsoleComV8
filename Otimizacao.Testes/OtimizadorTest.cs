@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using Newtonsoft.Json.Linq;
+using Otimizacao.Javascript;
 
 namespace Otimizacao.Testes
 {
@@ -124,7 +125,34 @@ namespace Otimizacao.Testes
             otimizador.GerarCodigo(c);
 
             otimizador.GerarCodigo(otimizador.MelhorIndividuo);
+        }
 
+        /// <summary>
+        /// Testa se o otimizador executa a mutação direcionada e o individuo pára de passar nos testes
+        /// </summary>
+        [Test]
+        public void ExecutarTestesUnderscoreMutanteComFalha()
+        {
+            const string diretorioFontes = "Require";
+            var jhelper = new JavascriptHelper(diretorioFontes);
+            jhelper.ConfigurarGeracao();
+
+            var caminhoJs = string.Format("{0}\\{1}", diretorioFontes, "underscore.js");
+            var caminhoTestes = string.Format("{0}\\{1}", diretorioFontes, "underscoreTests.js");
+            
+            var codigo = File.ReadAllText(caminhoJs);
+            var ast = jhelper.GerarAst(codigo);
+
+            var fit = jhelper.ExecutarTestes(caminhoJs, caminhoTestes);
+            var novaAst = jhelper.ExecutarMutacaoExclusao(ast, 45);
+            var novoCodigo = jhelper.GerarCodigo(novaAst);
+            var caminhoNovoJs = string.Format("{0}\\{1}", diretorioFontes, "Novo.js");
+            File.WriteAllText(caminhoNovoJs, novoCodigo);
+
+            var novaFit = jhelper.ExecutarTestes(caminhoJs, caminhoTestes);
+
+            Assert.AreNotEqual(fit, novaFit);
+            Assert.Greater(jhelper.TestesComFalha, 0);
 
         }
 
