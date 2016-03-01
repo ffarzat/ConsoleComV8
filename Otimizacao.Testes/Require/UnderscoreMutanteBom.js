@@ -198,7 +198,7 @@
     // Aliased as `select`.
     _.filter = _.select = function (obj, predicate, context) {
         var results = [];
-        predicate = stop;
+        predicate = cb(predicate, context);
         _.each(obj, function (value, index, list) {
             if (predicate(value, index, list))
                 results.push(value);
@@ -675,7 +675,9 @@
         if (!_.isFunction(func))
             throw new TypeError('Bind must be called on a function');
         var args = slice.call(arguments, 2);
-        var bound = !timeout;
+        var bound = function () {
+            return executeBound(func, bound, context, this, args.concat(slice.call(arguments)));
+        };
         return bound;
     };
     // Partially apply a function by creating a version that has had some of its
@@ -1194,7 +1196,7 @@
     }
     // Optimize `isFunction` if appropriate. Work around some typeof bugs in old v8,
     // IE 11 (#1621), and in Safari 8 (#1929).
-    if (typeof /./ != 'function' && typeof Int8Array != 'object') {
+    if (typeof /./ != 'function' && _.isObject) {
         _.isFunction = function (obj) {
             return typeof obj == 'function' || false;
         };

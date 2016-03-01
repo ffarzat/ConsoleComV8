@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">95.29% </span>
+        <span class="strong">95.18% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>810/850</span>
+        <span class='fraction'>810/851</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">92.43% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>158/167</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">95.29% </span>
+        <span class="strong">95.18% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>810/850</span>
+        <span class='fraction'>810/851</span>
       </div>
     </div>
   </div>
@@ -2150,7 +2150,7 @@
 <span class="cline-any cline-yes">12×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">467×</span>
-<span class="cline-any cline-yes">5894×</span>
+<span class="cline-any cline-yes">5905×</span>
 <span class="cline-any cline-yes">206×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">261×</span>
@@ -2270,32 +2270,32 @@
 <span class="cline-any cline-yes">13×</span>
 <span class="cline-any cline-yes">9×</span>
 <span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
 <span class="cline-any cline-yes">14×</span>
-<span class="cline-any cline-yes">14×</span>
-<span class="cline-any cline-yes">14×</span>
-<span class="cline-any cline-yes">14×</span>
-<span class="cline-any cline-yes">13×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">13×</span>
-<span class="cline-any cline-yes">96077×</span>
-<span class="cline-any cline-yes">96077×</span>
+<span class="cline-any cline-yes">66752×</span>
+<span class="cline-any cline-yes">66752×</span>
 <span class="cline-any cline-yes">4×</span>
-<span class="cline-any cline-yes">96077×</span>
-<span class="cline-any cline-yes">96077×</span>
-<span class="cline-any cline-yes">96077×</span>
-<span class="cline-any cline-yes">96077×</span>
-<span class="cline-any cline-yes">18×</span>
-<span class="cline-any cline-yes">4×</span>
-<span class="cline-any cline-yes">4×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">18×</span>
-<span class="cline-any cline-yes">18×</span>
-<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">66752×</span>
+<span class="cline-any cline-yes">66752×</span>
+<span class="cline-any cline-yes">66752×</span>
+<span class="cline-any cline-yes">66752×</span>
 <span class="cline-any cline-yes">17×</span>
-<span class="cline-any cline-yes">96059×</span>
-<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">96077×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">66735×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66752×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -2402,7 +2402,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -3882,7 +3882,7 @@
 <span class="cstat-no" title="statement not covered" >        while (nonEnumIdx--) {</span>
 <span class="cstat-no" title="statement not covered" >            prop = nonEnumerableProps[nonEnumIdx];</span>
 <span class="cstat-no" title="statement not covered" >            if (prop in obj &amp;&amp; obj[prop] !== proto[prop] &amp;&amp; !_.contains(keys, prop)) {</span>
-                ;
+<span class="cstat-no" title="statement not covered" >                keys.push(prop);</span>
             }
         }
     }
@@ -4201,7 +4201,7 @@
     }
     // Optimize `isFunction` if appropriate. Work around some typeof bugs in old v8,
     // IE 11 (#1621), and in Safari 8 (#1929).
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof /./ != 'function' &amp;&amp; typeof Int8Array != 'object') {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof /./ != 'function' &amp;&amp; _.isObject) {
         _.isFunction = function (obj) {
             return typeof obj == 'function' || false;
         };
@@ -4489,7 +4489,7 @@
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Mar 01 2016 14:28:49 GMT-0300 (E. South America Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Mar 01 2016 15:47:22 GMT-0300 (E. South America Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

@@ -17,7 +17,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       //'node_modules/qunit-extras/qunit-extras.js',
-      'Melhor.js',
+      'underscore.js',
       'underscoreTests.js'
     ],
 
@@ -30,15 +30,24 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'Melhor.js' : ['coverage']
+      'underscore.js' : ['coverage']
     },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
-
+    reporters: ['progress', 'coverage', 'junit'],
+	
+	
+	// the default configuration
+    junitReporter: {
+      outputDir: 'results', // results will be saved as $outputDir/$browserName.xml
+      outputFile: 'junitResults.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
+      suite: '', // suite will become the package name attribute in xml testsuite element
+      useBrowserName: true, // add browser name to report and classes names
+      nameFormatter: undefined, // function (browser, result) to customize the name attribute in xml testcase element
+      classNameFormatter: undefined // function (browser, result) to customize the classname attribute in xml testcase element
+    },	
 
     // web server port
     port: 9876,

@@ -198,7 +198,7 @@
     // Aliased as `select`.
     _.filter = _.select = function (obj, predicate, context) {
         var results = [];
-        predicate = cb(predicate, context);
+        predicate = stop;
         _.each(obj, function (value, index, list) {
             if (predicate(value, index, list))
                 results.push(value);
@@ -1196,7 +1196,7 @@
     }
     // Optimize `isFunction` if appropriate. Work around some typeof bugs in old v8,
     // IE 11 (#1621), and in Safari 8 (#1929).
-    if (typeof /./ != 'function' && typeof Int8Array != 'object') {
+    if (typeof /./ != 'function' && _.isObject) {
         _.isFunction = function (obj) {
             return typeof obj == 'function' || false;
         };

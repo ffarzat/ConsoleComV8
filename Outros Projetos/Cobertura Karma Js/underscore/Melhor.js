@@ -877,7 +877,7 @@
         while (nonEnumIdx--) {
             prop = nonEnumerableProps[nonEnumIdx];
             if (prop in obj && obj[prop] !== proto[prop] && !_.contains(keys, prop)) {
-                ;
+                keys.push(prop);
             }
         }
     }
@@ -1196,7 +1196,7 @@
     }
     // Optimize `isFunction` if appropriate. Work around some typeof bugs in old v8,
     // IE 11 (#1621), and in Safari 8 (#1929).
-    if (typeof /./ != 'function' && typeof Int8Array != 'object') {
+    if (typeof /./ != 'function' && _.isObject) {
         _.isFunction = function (obj) {
             return typeof obj == 'function' || false;
         };

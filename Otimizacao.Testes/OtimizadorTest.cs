@@ -189,6 +189,8 @@ namespace Otimizacao.Testes
             Assert.Greater(fit, novaFit);
             Assert.AreEqual(0, jhelper.TestesComFalha);
 
+            Console.WriteLine("Antigo: {0} | Novo: {1}", fit, novaFit);
+
         }
 
 
