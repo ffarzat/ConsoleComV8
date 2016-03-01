@@ -163,6 +163,9 @@
     <Content Include="Require\underscore.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Require\UnderscoreMutanteBom.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Require\underscoreTests.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -133,8 +133,8 @@ namespace Otimizacao.Testes
         [Test]
         public void ExecutarTestesUnderscoreMutanteComFalha()
         {
-            const string diretorioFontes = "Require";
-            var jhelper = new JavascriptHelper(diretorioFontes);
+            var diretorioFontes = Path.Combine(Environment.CurrentDirectory, "Require");
+            var jhelper = new JavascriptHelper(diretorioFontes, true, true);
             jhelper.ConfigurarGeracao();
 
             var caminhoJs = string.Format("{0}\\{1}", diretorioFontes, "underscore.js");
@@ -144,15 +144,50 @@ namespace Otimizacao.Testes
             var ast = jhelper.GerarAst(codigo);
 
             var fit = jhelper.ExecutarTestes(caminhoJs, caminhoTestes);
-            var novaAst = jhelper.ExecutarMutacaoExclusao(ast, 45);
+            jhelper.ConfigurarMelhorFit(fit);
+            
+            jhelper.ReiniciarEngine();
+
+            var novaAst = jhelper.ExecutarMutacaoExclusao(ast, 1190); //continua válido mas falha nos testes [ 4 testes com falha]
+
             var novoCodigo = jhelper.GerarCodigo(novaAst);
             var caminhoNovoJs = string.Format("{0}\\{1}", diretorioFontes, "Novo.js");
             File.WriteAllText(caminhoNovoJs, novoCodigo);
 
-            var novaFit = jhelper.ExecutarTestes(caminhoJs, caminhoTestes);
+            var novaFit = jhelper.ExecutarTestes(caminhoNovoJs, caminhoTestes);
 
+            Assert.IsNotEmpty(novoCodigo);
             Assert.AreNotEqual(fit, novaFit);
             Assert.Greater(jhelper.TestesComFalha, 0);
+        }
+
+        /// <summary>
+        /// Testa se o otimizador executa a mutação direcionada e o individuo pára de passar nos testes
+        /// </summary>
+        [Test]
+        public void ExecutarTestesUnderscoreMutanteComSucesso()
+        {
+            var diretorioFontes = Path.Combine(Environment.CurrentDirectory, "Require");
+            var jhelper = new JavascriptHelper(diretorioFontes, true, true);
+            jhelper.ConfigurarGeracao();
+
+            var caminhoJs = string.Format("{0}\\{1}", diretorioFontes, "underscore.js");
+            var caminhoTestes = string.Format("{0}\\{1}", diretorioFontes, "underscoreTests.js");
+
+            var codigo = File.ReadAllText(caminhoJs);
+            var ast = jhelper.GerarAst(codigo);
+
+            var fit = jhelper.ExecutarTestes(caminhoJs, caminhoTestes);
+            jhelper.ConfigurarMelhorFit(fit);
+
+            jhelper.ReiniciarEngine();
+            
+            var caminhoNovoJs = string.Format("{0}\\{1}", diretorioFontes, "UnderscoreMutanteBom.js");
+
+            var novaFit = jhelper.ExecutarTestes(caminhoNovoJs, caminhoTestes);
+
+            Assert.Greater(fit, novaFit);
+            Assert.AreEqual(0, jhelper.TestesComFalha);
 
         }
 
