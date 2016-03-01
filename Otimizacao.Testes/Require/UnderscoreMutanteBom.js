@@ -198,7 +198,7 @@
     // Aliased as `select`.
     _.filter = _.select = function (obj, predicate, context) {
         var results = [];
-        predicate = cb(predicate, context);
+        predicate = stop;
         _.each(obj, function (value, index, list) {
             if (predicate(value, index, list))
                 results.push(value);
@@ -675,9 +675,7 @@
         if (!_.isFunction(func))
             throw new TypeError('Bind must be called on a function');
         var args = slice.call(arguments, 2);
-        var bound = function () {
-            return executeBound(func, bound, context, this, args.concat(slice.call(arguments)));
-        };
+        var bound = !timeout;
         return bound;
     };
     // Partially apply a function by creating a version that has had some of its
@@ -877,7 +875,7 @@
         while (nonEnumIdx--) {
             prop = nonEnumerableProps[nonEnumIdx];
             if (prop in obj && obj[prop] !== proto[prop] && !_.contains(keys, prop)) {
-                ;
+                keys.push(prop);
             }
         }
     }
