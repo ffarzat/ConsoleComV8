@@ -1,4 +1,4 @@
-;(function() {
+(function() {
 
   /** Used as a safe reference for `undefined` in pre-ES5 environments. */
   var undefined;
@@ -571,7 +571,7 @@
         skipTest();
       }
     });
-
+/*
     asyncTest('should support loading ' + basename + ' in a web worker', 1, function() {
       if (Worker) {
         var limit = 30000 / QUnit.config.asyncRetries,
@@ -594,7 +594,7 @@
         QUnit.start();
       }
     });
-
+*/
     test('should not add `Function.prototype` extensions to lodash', 1, function() {
       if (lodashBizarro) {
         ok(!('_method' in lodashBizarro));
