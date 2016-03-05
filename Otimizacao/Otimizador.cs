@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Threading;
+using Newtonsoft.Json.Linq;
 using Otimizacao.Javascript;
 
 namespace Otimizacao
@@ -14,6 +15,18 @@ namespace Otimizacao
     /// </summary>
     public class Otimizador: IDisposable
     {
+        /// <summary>
+        /// V8Engine Helper
+        /// </summary>
+        private JavascriptHelper _javascriptHelper;
+
+        //Guarda o indice dos nós por tipo
+        private static List<No> _nosParaMutacao = new List<No>();
+
+        /// <summary>
+        /// Guarda a AST das funções da biblioteca
+        /// </summary>
+        private static Dictionary<string, string> _astDasFuncoes = new Dictionary<string, string>(); 
 
         /// <summary>
         /// Guarda qual das rodadas externas é a atual
@@ -172,6 +185,9 @@ namespace Otimizacao
             Console.WriteLine(string.Format("    SetTimeout {0}", _usarSetTimeout));
             Console.WriteLine(string.Format("    Heuristica {0}", Heuristica));
 
+            _javascriptHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+            _javascriptHelper.ConfigurarGeracao();
+
             var sw = new Stopwatch();
             sw.Start();
             if(Heuristica == "GA")
@@ -180,6 +196,8 @@ namespace Otimizacao
                 otimizou = OtimizarUsandoRd();
             else if (Heuristica == "HC")
                 otimizou = OtimizarUsandoHc();
+            else if (Heuristica == "HCF")
+                otimizou = OtimizarUsandoHcPorFuncao();
             else
                 throw new ApplicationException(string.Format("Heurística ainda não definida. {0}", Heuristica));
                 
@@ -199,10 +217,156 @@ namespace Otimizacao
 
             #endregion
 
+            #region limpa o diretório de execução.
+
+            var files = new DirectoryInfo(_diretorioExecucao).EnumerateFiles("*.js").ToList();
+
+            files.ForEach(f => f.Delete());
+
+            #endregion
+
             sw.Stop();
             Console.WriteLine("  Tempo total: {0}", sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
 
             return otimizou;
+        }
+
+        /// <summary>
+        /// Escopo do HC por função
+        /// </summary>
+        /// <returns></returns>
+        private bool OtimizarUsandoHcPorFuncao()
+        {
+            var totalVizinhosExplorar = _size * _executarAte;
+            var otimizado = false;
+            var melhores = new List<Individuo>();
+            Console.WriteLine("      Avaliar {0} vizinhos", totalVizinhosExplorar);
+
+            CriarIndividuoOriginal(_caminhoBiblioteca);
+            AvaliarIndividuo(0, MelhorIndividuo);
+            _fitnessMin = MelhorIndividuo.Fitness;
+
+            var funcoesOtimizar = DeterminarListaDeFuncoes(MelhorIndividuo.Clone());
+            int indiceFuncaoAtual = 0;
+            //IfStatement
+            //CallExpression
+
+            var funcaoEmOtimizacao = funcoesOtimizar[indiceFuncaoAtual];
+            var r = new Random();
+            //var totalNos = CalcularTodosVizinhos(funcaoEmOtimizacao.Ast);
+            CalcularVizinhos(funcaoEmOtimizacao.Ast);// Atualiza a propriedade _nosParaMutacao
+            int control = 0;
+            
+            Console.WriteLine("     {0} é utlizada {1}x", funcaoEmOtimizacao.Nome, funcaoEmOtimizacao.Total);
+            Console.WriteLine("     {0} vizinhos para avaliar", _nosParaMutacao.Count);
+            
+            //Explorando os vizinhos
+            for (int i = 0; i < totalVizinhosExplorar - 1; i++)
+            {
+                if (_nosParaMutacao.Count > 0)
+                {
+
+                    #region cria o vizinho
+
+                    Console.WriteLine("      {0}|Nó:{1}|{2}", i, control, _nosParaMutacao[control].Tipo);
+
+                    Individuo c = MelhorIndividuo.Clone(); //Sempre usando o melhor
+
+                    //var novaFuncao = ExecutarMutacaoNaFuncao(funcaoEmOtimizacao.Ast, control);
+                    var novaFuncao = ExecutarMutacaoNaFuncao(funcaoEmOtimizacao.Ast, _nosParaMutacao[control].Indice);
+
+                    c.Ast = AtualizarFuncao(c, funcaoEmOtimizacao.Nome, novaFuncao);
+                    c.CriadoPor = Operador.Mutacao;
+
+                    #endregion
+
+                    #region Avalia o vizinho
+
+                    var fitvizinho = AvaliarIndividuo(i, c);
+
+                    if (fitvizinho < 0)
+                        fitvizinho = fitvizinho*-1;
+
+
+                    if (fitvizinho < _fitnessMin)
+                    {
+                        Console.WriteLine("      Encontrado. FIT Antigo {0} | FIT novo {1}", _fitnessMin, c.Fitness);
+                        MelhorIndividuo = c;
+                        _fitnessMin = fitvizinho;
+                        otimizado = true;
+                        melhores.Add(c);
+
+                        funcaoEmOtimizacao.Ast = novaFuncao; //Atualizo a melhor nova função
+
+                        control = 0;
+
+                        //CalcularVizinhos(ast); //recalculo os nós
+                    }
+
+                    #endregion
+
+                    control++;
+                }
+
+                #region Critérios de parada
+                //Queimou o Orçamento global 
+                if (i == totalVizinhosExplorar )
+                {
+                    break;
+                }
+                
+                //acabaram os nós na função atual?
+                if (control == _nosParaMutacao.Count)
+                {
+                    indiceFuncaoAtual++;
+                    if (indiceFuncaoAtual < funcoesOtimizar.Count)
+                    {
+                        funcaoEmOtimizacao = funcoesOtimizar[indiceFuncaoAtual];
+                        //totalNos = CalcularTodosVizinhos(funcaoEmOtimizacao.Ast);
+                        CalcularVizinhos(funcaoEmOtimizacao.Ast);
+                        control = 0;
+                        Console.WriteLine("     {0} é utlizada {1}x", funcaoEmOtimizacao.Nome, funcaoEmOtimizacao.Total);
+                        Console.WriteLine("     {0} vizinhos para avaliar", _nosParaMutacao.Count);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    
+                }
+
+                #endregion
+
+            }
+
+            #region Cria diretorio dos resultados
+            string generationResultPath = Path.Combine(_diretorioExecucao, "0");
+            Directory.CreateDirectory(generationResultPath);
+            Thread.Sleep(5);
+            #endregion
+
+            foreach (var individuo in melhores)
+            {
+                string generationBestPath = string.Format("{0}\\{1}.js", generationResultPath, individuo.Id);
+
+                File.WriteAllText(generationBestPath, individuo.Codigo);
+            }
+
+
+            Console.WriteLine("============================================================");
+            Console.WriteLine("  Houve otimizacao: {0}", otimizado);
+
+            return otimizado;
+
+        }
+
+        /// <summary>
+        /// Calcular todos os vizinhos
+        /// </summary>
+        /// <param name="ast"></param>
+        private int CalcularTodosVizinhos(string ast)
+        {
+            return _javascriptHelper.ContarNos(ast);
         }
 
         /// <summary>
@@ -211,8 +375,175 @@ namespace Otimizacao
         /// <returns></returns>
         private bool OtimizarUsandoHc()
         {
-            return false;
+            var totalVizinhosExplorar = _size * _executarAte;
+            var otimizado = false;
+            var melhores = new List<Individuo>();
+
+            CriarIndividuoOriginal(_caminhoBiblioteca);
+
+            CalcularVizinhos(_original.Ast);
+
+            Console.WriteLine("      {0} nós para remover (IF, CALL).  ", _nosParaMutacao.Count);
+
+            Console.WriteLine("      Avaliar {0} vizinhos", totalVizinhosExplorar);
+
+            AvaliarIndividuo(0, MelhorIndividuo);
+
+            //IfStatement
+            //CallExpression
+
+            var r = new Random();
+
+            int ultimoIndice = r.Next(0, _nosParaMutacao.Count);
+
+            for (int i = 1; i < totalVizinhosExplorar - 1; i++)
+            {
+
+                if (_nosParaMutacao.Count <= ultimoIndice) //zera de novo
+                    ultimoIndice = 0;
+
+                var no = _nosParaMutacao[ultimoIndice];
+
+                #region cria o vizinho
+                Console.WriteLine("      {0}|Nó:{1}|{2}", i, ultimoIndice, no.Tipo);
+                Individuo c = MelhorIndividuo.Clone(); //Sempre usando o melhor
+
+                ExecutarMutacao(c, no.Indice);
+                #endregion
+
+                ultimoIndice++;
+
+                //Avalia o vizinho e veja se melhorou
+                var fitvizinho = AvaliarIndividuo(i, c);
+
+                if (fitvizinho < 0)
+                    fitvizinho = fitvizinho * -1;
+
+
+                if (fitvizinho < _fitnessMin)
+                {
+                    Console.WriteLine("      Encontrado. FIT Antigo {0} | FIT novo {1}", _fitnessMin, c.Fitness);
+                    MelhorIndividuo = c;
+                    _fitnessMin = fitvizinho;
+                    otimizado = true;
+                    melhores.Add(c);
+
+                    CalcularVizinhos(MelhorIndividuo.Ast); //recalculo os nós
+                }
+
+                if (_nosParaMutacao.Count == i) //se deu a volta completa pode parar
+                    break;
+
+            }
+
+            #region Cria diretorio dos resultados
+            string generationResultPath = Path.Combine(_diretorioExecucao, "0");
+            Directory.CreateDirectory(generationResultPath);
+            Thread.Sleep(5);
+            #endregion
+
+            foreach (var individuo in melhores)
+            {
+                string generationBestPath = string.Format("{0}\\{1}.js", generationResultPath, individuo.Id);
+
+                File.WriteAllText(generationBestPath, individuo.Codigo);
+            }
+
+
+            Console.WriteLine("============================================================");
+            Console.WriteLine("  Houve otimizacao: {0}", otimizado);
+
+            return otimizado;
         }
+
+        /// <summary>
+        /// Calculo o número de vizinhos
+        /// </summary>
+        /// <param name="ast"></param>
+        /// <returns></returns>
+        private void CalcularVizinhos(string ast)
+        {
+            //IfStatement
+            //CallExpression
+            var lista = new List<string>()
+                {
+                    {"IfStatement"},
+                    {"CallExpression"}
+                };
+
+
+            _nosParaMutacao.Clear();
+            _nosParaMutacao = new List<No>();
+
+            _javascriptHelper.ReiniciarEngine();
+
+            try
+            {
+                _nosParaMutacao = _javascriptHelper.ContarNosPorTipo(ast, lista);    
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao determinar quantos nós (por tipo) a função tem. {0}", ex.Message);
+                
+            }
+        }
+
+        /// <summary>
+        /// Lista de Funcoes com os detalhes para otimizaçao
+        /// </summary>
+        /// <returns></returns>
+        public List<Function> DeterminarListaDeFuncoes(Individuo clone)
+        {
+            var nos = _javascriptHelper.ContarNosCallee(clone.Ast);
+
+            var funcoesEncontradas = nos.GroupBy(f => f.NomeFuncao).Select(n => new Function { Nome = n.Key, Total = n.Count(), Ast = ""}).OrderByDescending(n => n.Total).ToList();
+
+            _astDasFuncoes = ProcessarAstDasFuncoes(funcoesEncontradas, clone);
+
+            foreach (var funcaoEncontrada in funcoesEncontradas)
+            {
+                //funcaoEncontrada.Ast = 
+                funcaoEncontrada.Ast =  _astDasFuncoes.ContainsKey(funcaoEncontrada.Nome) ? _astDasFuncoes[funcaoEncontrada.Nome] : "";
+            }
+            
+            return funcoesEncontradas;
+        }
+
+        /// <summary>
+        /// Percorre a árvore e junta todos os functions declarations
+        /// </summary>
+        /// <param name="funcoesEncontradas"></param>
+        /// <param name="biblioteca"></param>
+        /// <returns></returns>
+        private Dictionary<string, string> ProcessarAstDasFuncoes(IEnumerable<Function> funcoesEncontradas, Individuo biblioteca)
+        {
+
+            var listaDeNomes = funcoesEncontradas.Select(n => n.Nome).ToList();
+
+            var dicionarioResultado = _javascriptHelper.RecuperarTodasAstDeFuncao(biblioteca.Ast, listaDeNomes);
+
+            return dicionarioResultado;
+        }
+
+        /// <summary>
+        /// Troca a função antiga pela ASTnova
+        /// </summary>
+        /// <returns></returns>
+        public string AtualizarFuncao(Individuo clone, string nomeFuncao, string astFuncaoNova)
+        {
+            var astFuncao = "";
+            try
+            {
+                astFuncao = _javascriptHelper.AtualizarDeclaracaoFuncaoPeloNome(clone.Ast, nomeFuncao, astFuncaoNova);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao atualizar a função = {0}", ex.Message);
+            }
+
+             return astFuncao;
+        }
+
 
         /// <summary>
         /// Usar Ramdon para otimizar
@@ -302,49 +633,6 @@ namespace Otimizacao
             Console.WriteLine("  Houve otimizacao: {0}", otimizou);
 
             return otimizou;
-        }
-
-        /// <summary>
-        /// Cria a planilha em disco
-        /// </summary>
-        private void CriarExcel()
-        {
-            //_excel.Workbook.Properties.Author = "Fabio Farzat";
-            //_excel.Workbook.Properties.Title = string.Format("Execucao do {0}", _caminhoBiblioteca);
-            //_excel.Workbook.Properties.Company = "www.vitalbusiness.com.br";
-
-            //_excel.Workbook.Worksheets.Add("Resultados");
-
-            ////Titulos
-            ////Planilha.Cells["A1:F1"].Style.Fill.PatternType = ExcelFillStyle.LightGrid;
-
-            //Planilha.InsertRow(1, 1);
-
-            //Planilha.Cells["A1"].Value = "Geracao";
-            //Planilha.Cells["B1"].Value = "Individuo";
-            //Planilha.Cells["C1"].Value = "Operacao";
-            //Planilha.Cells["D1"].Value = "Fitness";
-            //Planilha.Cells["E1"].Value = "Tempo";
-            //Planilha.Cells["F1"].Value = "Testes";
-
-
-            #region Gera o CSV inicial
-
-            //var myExport = new CsvExport();
-
-            //myExport.AddRow();
-            //myExport["Geracao"] = "";
-            //myExport["Individuo"] = "";
-            //myExport["Operacao"] = "";
-            //myExport["Fitness"] = "";
-            //myExport["Tempo"] = "";
-            //myExport["Testes"] = "";
-
-            //myExport.ExportToFile(Path.Combine(_diretorioExecucao, "resultados.csv"));
-
-            #endregion
-
-
         }
 
         /// <summary>
@@ -467,15 +755,6 @@ namespace Otimizacao
         }
 
         /// <summary>
-        /// Gera uma página HTML com o diff entre o original e o novo melhor encontrado
-        /// </summary>
-        /// <param name="arquivo"></param>
-        private void GerarRelatorioHtml(string arquivo)
-        {
-            
-        }
-
-        /// <summary>
         /// Avalia todos os individuos na geração
         /// </summary>
         private void ExecuteFitEvaluation()
@@ -586,8 +865,6 @@ namespace Otimizacao
         [HandleProcessCorruptedStateExceptions]
         private void CriarIndividuoOriginal(string caminhoBibliotecaJs)
         {
-            JavascriptHelper jHelper = null;
-
             var caminho = string.Format("{0}\\{1}", _diretorioFontes, caminhoBibliotecaJs);
             var caminhoDestino = string.Format("{0}\\{1}", _diretorioExecucao, caminhoBibliotecaJs);
 
@@ -605,33 +882,30 @@ namespace Otimizacao
 
                 try
                 {
-                    jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-                    jHelper.ConfigurarGeracao();
+                    
 
                     var codigo = File.ReadAllText(caminho);
-                    var ast = jHelper.GerarAst(codigo);
+                    var ast = _javascriptHelper.GerarAst(codigo);
 
                     _original.Ast = ast;
 
 
-                    _original.Codigo = jHelper.GerarCodigo(_original.Ast);
+                    _original.Codigo = _javascriptHelper.GerarCodigo(_original.Ast);
                     File.WriteAllText(caminhoDestino, _original.Codigo);
 
-                    _total = jHelper.ContarNos(_original.Ast);
+                    _total = _javascriptHelper.ContarNos(_original.Ast);
 
                     var sw = new Stopwatch();
                     sw.Start();
-                    _original.Fitness = jHelper.ExecutarTestes(caminhoDestino, _caminhoScriptTestes);
+                    _original.Fitness = _javascriptHelper.ExecutarTestes(caminhoDestino, _caminhoScriptTestes);
                     sw.Stop();
                     _original.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
-                    _original.TestesComSucesso = jHelper.TestesComSucesso;
+                    _original.TestesComSucesso = _javascriptHelper.TestesComSucesso;
 
                     _fitnessMin = _original.Fitness;
 
                     MelhorIndividuo = _original;
-
-                    jHelper.Dispose();
-
+                    
                     break;
                 }
                 catch (Exception ex)
@@ -639,22 +913,19 @@ namespace Otimizacao
                     //Console.WriteLine(ex);
                     //Console.WriteLine("Erro na criação do original");
 
-                    if (jHelper != null)
-                    {
-                        jHelper.Dispose();
-                    }
-
                     //Dorme um minuto e tenta de novo
                     Thread.Sleep(60000);
                     Console.WriteLine(" Falhou ao criar individuo. Tentando novamente.");
 
+                    _javascriptHelper.Dispose();
+                    _javascriptHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
+                    _javascriptHelper.ConfigurarGeracao();
+
                 }
 
                 contador++;
-
             }
 
-            
         }
 
         /// <summary>
@@ -664,13 +935,9 @@ namespace Otimizacao
         [HandleProcessCorruptedStateExceptions]
         private void ExecutarMutacao(Individuo sujeito)
         {
-            JavascriptHelper jHelper = null;
 
             try
             {
-                jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-                jHelper.ConfigurarGeracao();
-
                 int totalMutacoes = 1;
                 string novaAst = "";
 
@@ -682,7 +949,7 @@ namespace Otimizacao
 
                     int no = Rand.Next(0, _total);
 
-                    var avaliar = new Thread(() => novaAst = jHelper.ExecutarMutacaoExclusao(sujeito.Ast, no));
+                    var avaliar = new Thread(() => novaAst = _javascriptHelper.ExecutarMutacaoExclusao(sujeito.Ast, no));
                     avaliar.Start();
                     avaliar.Join(_timeout * 1000); //timeout
                     
@@ -700,16 +967,47 @@ namespace Otimizacao
                 sujeito.Ast = "";
                 sujeito.CriadoPor = Operador.Mutacao;
             }
-            finally
-            {
-                if (jHelper != null)
-                    jHelper.Dispose();
-            }
+
             
         }
 
         /// <summary>
-        /// 
+        /// Executa uma mutação no individuo
+        /// </summary>
+        /// <param name="sujeito"> </param>
+        /// <param name="no"></param>
+        private void ExecutarMutacao(Individuo sujeito, int no)
+        {
+            string novaAst = "";
+
+            var executarMutacao = new Thread(() => novaAst = _javascriptHelper.ExecutarMutacaoExclusao(sujeito.Ast, no));
+            executarMutacao.Start();
+            executarMutacao.Join(_timeout * 1000); //timeout
+            
+            sujeito.Ast = novaAst;
+            sujeito.CriadoPor = Operador.Mutacao;
+        }
+
+        /// <summary>
+        /// Executa uma mutação no individuo
+        /// </summary>
+        /// <param name="ast"> </param>
+        /// <param name="no"></param>
+        public string ExecutarMutacaoNaFuncao(string ast, int no)
+        {
+            string novaAst = "";
+            _javascriptHelper.ReiniciarEngine();
+
+            var executarMutacao = new Thread(() => novaAst = _javascriptHelper.ExecutarMutacaoExclusao(ast, no));
+            executarMutacao.Start();
+            executarMutacao.Join(_timeout * 1000); //timeout
+
+            return novaAst;
+        }
+
+
+        /// <summary>
+        /// Executa o Cruzamento
         /// </summary>
         /// <param name="pai"></param>
         /// <param name="mae"></param>
@@ -718,8 +1016,6 @@ namespace Otimizacao
         [HandleProcessCorruptedStateExceptions]
         private void ExecutarCruzamento(Individuo pai, Individuo mae, out Individuo filhoPai, out Individuo filhoMae)
         {
-            JavascriptHelper jHelper = null;
-
             string c1 = "", c2 = "";
             
             filhoPai = pai.Clone();
@@ -730,24 +1026,16 @@ namespace Otimizacao
 
             try
             {
-                jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-                jHelper.ConfigurarGeracao();
-                
+               
                 var totalPai = Rand.Next(0, _total);
                 var totalMae = Rand.Next(0, _total);
-                jHelper.ExecutarCrossOver(pai.Ast, mae.Ast, totalPai, totalMae, out c1, out c2);
+                _javascriptHelper.ExecutarCrossOver(pai.Ast, mae.Ast, totalPai, totalMae, out c1, out c2);
             }
             catch (Exception ex)
             {
                 Console.WriteLine("          Erro ao executar cruzamento");
                 //Console.Error(ex.ToString());
             }
-            finally
-            {
-                if (jHelper != null)
-                    jHelper.Dispose();
-            }
-
 
             filhoPai.Ast = c1;
             filhoMae.Ast = c2;
@@ -767,20 +1055,28 @@ namespace Otimizacao
 
             fits[0] = ExecutarTestesParaIndividuoEspecifico(indice, sujeito);
 
+            //Falhou em testes
             if (fits[0].Equals(120000))
             {
                 sujeito.Fitness = 120000;
                 return 120000;
             }
 
-            for (int i = 1; i < total; i++)
+            //Igual ao original
+            if (fits[0].Equals(_fitnessMin))
+            {
+                sujeito.Fitness = _fitnessMin;
+                return _fitnessMin;
+            }
+
+            //Realmente executar
+            for (int i = 0; i < total; i++)
             {
                 fits[i] = ExecutarTestesParaIndividuoEspecifico(indice, sujeito);
-
+                Console.WriteLine("             {0}-{1}", i, fits[i]);
             }
 
             sujeito.Fitness = fits.Average();
-
             Console.WriteLine(string.Format("            FIT:{0}     | CTs: {1}      | T: {2}", sujeito.Fitness, sujeito.TestesComSucesso, sujeito.TempoExecucao));
 
             return sujeito.Fitness;
@@ -842,33 +1138,29 @@ namespace Otimizacao
 
             #region realmente executar os testes então
 
-            JavascriptHelper jHelper = null;
-
             try
             {
-                jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-                jHelper.ConfigurarTimeOut(_timeout);
-                jHelper.ConfigurarMelhorFit(_fitnessMin);
+                _javascriptHelper.ConfigurarTimeOut(_timeout);
+                _javascriptHelper.ConfigurarMelhorFit(_fitnessMin);
 
                 //Console.WriteLine("              Avaliando via testes");
                 sw.Start();
                 var avaliar =
-                    new Thread(() => sujeito.Fitness = jHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
+                    new Thread(() => sujeito.Fitness = _javascriptHelper.ExecutarTestes(caminhoNovoAvaliado, _caminhoScriptTestes));
                 avaliar.Start();
                 avaliar.Join(_timeout*1000); //timeout
 
                 sw.Stop();
-                jHelper.Dispose();
 
                 //Console.WriteLine("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
 
-                if (!jHelper.ExecutouTestesAteFinal)
+                if (!_javascriptHelper.ExecutouTestesAteFinal)
                     sujeito.Fitness = valorFitFalha;
 
-                if (jHelper.ExecutouTestesAteFinal && jHelper.TestesComFalha > 0)
+                if (_javascriptHelper.ExecutouTestesAteFinal && _javascriptHelper.TestesComFalha > 0)
                     sujeito.Fitness = valorFitFalha; //+ jHelper.TestesComFalha;
 
-                sujeito.TestesComSucesso = jHelper.TestesComSucesso;
+                sujeito.TestesComSucesso = _javascriptHelper.TestesComSucesso;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
             }
             catch (Exception ex)
@@ -876,77 +1168,18 @@ namespace Otimizacao
                 //Console.WriteLine("              Executou até o final: {0}", jHelper.ExecutouTestesAteFinal);
 
                 sujeito.Fitness = valorFitFalha;
-                sujeito.TestesComSucesso = jHelper != null ? jHelper.TestesComSucesso : 0;
+                sujeito.TestesComSucesso = _javascriptHelper != null ? _javascriptHelper.TestesComSucesso : 0;
                 sujeito.TempoExecucao = sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff");
 
                 Console.WriteLine(ex);
 
-                if (jHelper != null)
-                    jHelper.Dispose();
             }
 
             #endregion
 
             CriarLinhaExcel(indice, sujeito, sujeito.TestesComSucesso, sujeito.TempoExecucao);
 
-
             return sujeito.Fitness;
-        }
-
-        /// <summary>
-        /// Inclui a linha no excel
-        /// </summary>
-        /// <param name="indice"></param>
-        /// <param name="sujeito"></param>
-        /// <param name="testesComSucesso"></param>
-        /// <param name="tempoTotal"></param>
-        private void CriarLinhaExcel(int indice, Individuo sujeito, int testesComSucesso, string tempoTotal)
-        {
-            //Console.WriteLine("              Incluído no excel : {0}", indice);
-
-            #region Inclui no  CSV
-
-            var myExport = new CsvExport();
-
-            myExport.AddRow();
-
-            myExport["Geracao"] = _generationCount;
-            myExport["Individuo"] = sujeito.Arquivo;
-            myExport["Operacao"] = sujeito.CriadoPor.ToString();
-            myExport["Fitness"] = sujeito.Fitness;
-            myExport["Tempo"] = tempoTotal;
-            myExport["Testes"] = testesComSucesso;
-
-            myExport.ExportToFile(Path.Combine(_diretorioExecucao, "resultados.csv"));
-
-            #endregion
-
-
-
-            //int indiceExcel = Planilha.Dimension.End.Row + 1;
-            //Planilha.InsertRow(indiceExcel, 1);
-
-            //Planilha.Cells["A" + indiceExcel].Value =_generationCount;
-            //Planilha.Cells["B" + indiceExcel].Value = sujeito.Arquivo;
-            //Planilha.Cells["C" + indiceExcel].Value = sujeito.CriadoPor.ToString();
-            //Planilha.Cells["D" + indiceExcel].Value = sujeito.Fitness;
-            //Planilha.Cells["E" + indiceExcel].Value = tempoTotal;
-            //Planilha.Cells["F" + indiceExcel].Value = testesComSucesso;
-
-            //var existingFile = new FileInfo(Path.Combine(_diretorioExecucao, "resultados.xlsx"));
-            //if (existingFile.Exists)
-            //{
-            //    existingFile.Delete();
-            //    Thread.Sleep(10);
-            //}
-
-            //var holdingstream = new MemoryStream();
-            //_excel.SaveAs(existingFile);
-            //holdingstream.SetLength(0);
-            //_excel.Stream.Position = 0;
-            //_excel.Stream.CopyTo(holdingstream);
-            //_excel.Load(holdingstream);
-
         }
 
         /// <summary>
@@ -955,16 +1188,13 @@ namespace Otimizacao
         /// <param name="sujeito"></param>
         /// <returns></returns>
         [HandleProcessCorruptedStateExceptions]
-        private string GerarCodigo(Individuo sujeito)
+        public string GerarCodigo(Individuo sujeito)
         {
-
             var caminhoNovoAvaliado = string.Format("{0}\\{1}.js", _diretorioExecucao, sujeito.Id);
-            JavascriptHelper jHelper = null;
+
             try
             {
-                jHelper = new JavascriptHelper(_diretorioFontes, _usarSetTimeout, false);
-                jHelper.ConfigurarGeracao();
-                sujeito.Codigo = jHelper.GerarCodigo(sujeito.Ast);
+                sujeito.Codigo = _javascriptHelper.GerarCodigo(sujeito.Ast);
 
                 if (!string.IsNullOrEmpty(sujeito.Codigo))
                 {
@@ -975,20 +1205,12 @@ namespace Otimizacao
                 {
                     sujeito.Arquivo = "";
                 }
-
-
-
             }
             catch (Exception ex)
             {
                 //Console.WriteLine(ex);
                 Console.WriteLine("AST invalida. Codigo nao gerado");
                 caminhoNovoAvaliado = "";
-            }
-            finally
-            {
-                if (jHelper != null)
-                    jHelper.Dispose();
             }
 
             return caminhoNovoAvaliado;
@@ -1021,5 +1243,35 @@ namespace Otimizacao
         {
             Heuristica = heuristica;
         }
+
+        /// <summary>
+        /// Inclui a linha no excel
+        /// </summary>
+        /// <param name="indice"></param>
+        /// <param name="sujeito"></param>
+        /// <param name="testesComSucesso"></param>
+        /// <param name="tempoTotal"></param>
+        private void CriarLinhaExcel(int indice, Individuo sujeito, int testesComSucesso, string tempoTotal)
+        {
+
+            #region Inclui no  CSV
+
+            var myExport = new CsvExport();
+
+            myExport.AddRow();
+
+            myExport["Geracao"] = _generationCount;
+            myExport["Individuo"] = sujeito.Arquivo;
+            myExport["Operacao"] = sujeito.CriadoPor.ToString();
+            myExport["Fitness"] = sujeito.Fitness;
+            myExport["Tempo"] = tempoTotal;
+            myExport["Testes"] = testesComSucesso;
+
+            myExport.ExportToFile(Path.Combine(_diretorioExecucao, "resultados.csv"));
+
+            #endregion    
+        }
+
+
     }
 }

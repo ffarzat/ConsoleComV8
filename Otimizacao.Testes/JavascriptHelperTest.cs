@@ -68,6 +68,25 @@ namespace Otimizacao.Testes
             Assert.AreEqual(codigo, helper.Codigo, "Código Inválido");
         }
 
+        /// <summary>
+        /// Testa a função que conta os nós de CALL de funções
+        /// </summary>
+        [Test]
+        public void ContarNosCalleeTest()
+        {
+            const string diretorioExecucao = "Require";
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, diretorioExecucao), false, false);
+            helper.ConfigurarGeracao();
+
+            var scriptCode = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, diretorioExecucao, "global.js"));
+            var astMoment = helper.GerarAst(scriptCode);
+
+            File.WriteAllText("astMoment.txt", helper.FormatarStringJson(astMoment));
+
+            var nos = helper.ContarNosCallee(astMoment);
+
+            Assert.AreEqual(592, nos.Count);
+        }
 
         /// <summary>
         /// Executa os testes de geração da AST
@@ -106,6 +125,25 @@ namespace Otimizacao.Testes
             Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");
             Assert.AreEqual(helper.TestesComSucesso, 57982);
             
+        }
+
+        /// <summary>
+        /// Executa os testes do MomentJs
+        /// </summary>
+        [Test]
+        public void ExecutarTestesDoMelhorMoment()
+        {
+            var sw = new Stopwatch();
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "Moment"));
+            sw.Start();
+            helper.ExecutarTestes("melhor.js", "core-test.js");
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
+            helper.FalhasDosTestes.ForEach(Console.WriteLine);
+
+            Assert.AreEqual(0, helper.TestesComFalha, "Não deveria ter falhado nenhum dos testes");
+            Assert.AreEqual(helper.TestesComSucesso, 57982);
+
         }
 
         [Test]

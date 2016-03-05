@@ -55,6 +55,11 @@ namespace Otimizacao.Javascript
         public string JsonAst { get; set; }
 
         /// <summary>
+        /// String com o Json da função
+        /// </summary>
+        public string JsonNoBlockFuncao { get; set; }
+
+        /// <summary>
         /// Árvore tipada do Esprima
         /// </summary>
         public dynamic Program { get; set; }
@@ -117,7 +122,12 @@ namespace Otimizacao.Javascript
         /// <summary>
         /// Total de Nós de um
         /// </summary>
-        public int TotalDeNos { get; set; } 
+        public int TotalDeNos { get; set; }
+
+        /// <summary>
+        /// Verifica se precisa registrar timeout ou não
+        /// </summary>
+        private bool SetTimeOutLigado { get; set; }
 
         /// <summary>
         /// Construtor, configura o Helper para posterior execuçao
@@ -151,6 +161,8 @@ namespace Otimizacao.Javascript
             _diretorioExecucao = diretorioJavascripts;
             _timeoutTestes = int.MaxValue;
             ExecutouTestesAteFinal = false;
+
+            SetTimeOutLigado = setTimeout;
 
             //O manager vai compilar e cachear as bibliotecas
             _manager = new RuntimeManager(new ManualManagerSettings() { MaxExecutableBytes = (1000000000 * 2), RuntimeMaxCount = int.MaxValue});
@@ -246,6 +258,25 @@ namespace Otimizacao.Javascript
             var ast = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"ast.js"));
             var code = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"code.js"));
             var keyword = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, _diretorioExecucao,"keyword.js"));
+            var traverse = @"function traverse(node, func) {
+                                func(node);//1
+                                for (var key in node) { //2
+                                    if (node.hasOwnProperty(key)) { //3
+                                        var child = node[key];
+                                        if (typeof child === 'object' && child !== null) { //4
+
+                                            if (Array.isArray(child)) {
+                                                child.forEach(function(node) { //5
+                                                    traverse(node, func);
+                                                });
+                                            } else {
+                                                traverse(child, func); //6
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+";
 
             #endregion
 
@@ -264,6 +295,7 @@ namespace Otimizacao.Javascript
             _engine.Execute(ast);
             _engine.Execute(keyword);
             _engine.Execute(estraverse);
+
 
             _engine.Execute(@"
                             var Objutils = {};
@@ -285,6 +317,8 @@ namespace Otimizacao.Javascript
                                                     quotes: 'auto'
                                                 }
                                             };");
+
+            _engine.Execute(traverse);
 
             #endregion
         }
@@ -344,6 +378,7 @@ namespace Otimizacao.Javascript
 
                     var indent = 0;
                     var counter = 0;
+
                     ObjEstraverse.replace(ast, {
                         enter: function(node, parent) {
                             
@@ -352,11 +387,10 @@ namespace Otimizacao.Javascript
 
                             if(counter > #randonNode)
                             {
-                                //javascriptHelper.Escrever('             Excluindo nó: {0}', JSON.stringify(node));
                                 node.type = 'EmptyStatement';
                                 this.break();
+                                //return { 'type': 'EmptyStatement'} ;
                                 return node;
-
                             }
 
                             counter++;
@@ -388,6 +422,7 @@ namespace Otimizacao.Javascript
         /// </summary>
         /// <param name="ast">árvore no formato do esprima</param>
         /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
         public int ContarNos(string ast)
         {
             try
@@ -420,6 +455,280 @@ namespace Otimizacao.Javascript
         }
 
         /// <summary>
+        /// Conta os nós de chamada de funções
+        /// </summary>
+        /// <param name="ast">árvore no formato do esprima</param>
+        /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
+        public List<No> ContarNosCallee(string ast)
+        {
+            var lista = new List<No>();
+
+            try
+            {
+                _engine.AddHostObject("Nos", lista);
+                _engine.AddHostType("No", typeof(No));
+
+                _engine.Execute(@"
+
+                    var ast = JSON.parse(#ast);
+
+                    var indent = 0;
+                    var counter = 0;
+
+
+                    traverse(ast, function(node) { 
+                            if (node.type === 'CallExpression' && node.callee.type === 'Identifier') 
+                            {
+                                
+                                counter++;
+                                Nos.Add(new No( indent-1, JSON.stringify(node), 'CallExpression', node.callee.name));
+                               
+                            }
+                        });
+
+
+
+                    javascriptHelper.TotalDeNos = counter;
+                    ".Replace("#ast", this.EncodeJsString(ast)));
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.ToString());
+            }
+
+
+            //lista.ForEach(item => item.Codigo = this.GerarCodigo(item.Codigo));
+
+
+            return lista;
+        }
+
+        /// <summary>
+        /// Recupera os nós relativos a declaração de todas as funcoes do codigo
+        /// </summary>
+        /// <param name="astGlobal"></param>
+        /// <param name="funcoes"></param>
+        /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
+        public Dictionary<string, string> RecuperarTodasAstDeFuncao(string astGlobal, List<string> funcoes)
+        {
+            var dicionario = new Dictionary<string, string>();
+
+            try
+            {
+                //_engine.AddHostObject("Funcoes", funcoes);
+                _engine.AddHostObject("Resultado", dicionario);
+
+                _engine.Execute(@"
+
+                    var ast = JSON.parse(#ast);
+
+                    traverse(ast, function(node) { 
+                            if (node.type === 'FunctionDeclaration' && 'id' in node) {
+                                var id = node.id;
+                                if('name' in id && typeof node['name'] != undefined)
+                                    Resultado.Add(node.id.name, JSON.stringify(node));
+                            }
+                    });
+
+/*
+                    ObjEstraverse.traverse(ast, {
+                        enter: function(node, parent) {
+                            
+                            if (node.type == 'Identifier' && parent.type == 'FunctionDeclaration') 
+                            {
+                                Resultado.Add(node.name, JSON.stringify(node));
+                            }
+                        }
+                    });
+
+*/
+
+                    ".Replace("#ast", this.EncodeJsString(astGlobal)));
+            }
+            catch (ScriptEngineException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+
+            return dicionario;
+        }
+
+        /// <summary>
+        /// Recupera os nós relativos a declaração da funcao porseu nome
+        /// </summary>
+        /// <param name="astGlobal"></param>
+        /// <param name="nomeFuncao"></param>
+        /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
+        public string RecuperarDeclaracaoFuncaoPeloNome(string astGlobal, string nomeFuncao)
+        {
+
+            try
+            {
+                _engine.Execute(@"
+
+                    var ast = JSON.parse(#ast);
+
+                    ObjEstraverse.traverse(ast, {
+                        enter: function(node, parent) {
+                            if (node.name == '#nome' && parent.type === 'FunctionDeclaration') {
+                                javascriptHelper.JsonAst = JSON.stringify(node);
+                                this.break();
+                            }
+                        }
+                    });
+
+                    ".Replace("#ast", this.EncodeJsString(astGlobal)).Replace("#nome", nomeFuncao));
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.ToString());
+                JsonAst = "";
+            }
+
+
+            return JsonAst;
+        }
+
+        /// <summary>
+        /// Atualiza a função dentro de um individuo
+        /// </summary>
+        /// <param name="ast"></param>
+        /// <param name="nomeFuncao"></param>
+        /// <param name="astFuncaoNova"></param>
+        [HandleProcessCorruptedStateExceptions]
+        public string AtualizarDeclaracaoFuncaoPeloNome(string ast, string nomeFuncao, string astFuncaoNova)
+        {
+            try
+            {
+
+                var js = @"
+
+                    var ast     = JSON.parse(#ast);
+                    var noNovo  = JSON.parse(#FuncaoNova);
+
+
+                    var indent = 0;
+                    var counter = 0;
+
+                    ObjEstraverse.traverse(ast, {
+                        enter: function(node, parent) {
+
+                            counter++;
+    
+                            if(node.type == 'Identifier' && node.name == '#nome' && parent.type == 'FunctionDeclaration')
+                            {
+                                this.break();
+                            }
+                            
+                        }
+                    });
+                    
+
+                    ObjEstraverse.replace(ast, {
+                        enter: function(node, parent) {
+                            indent++;
+                            if(indent == (counter-1))
+                            {
+                                this.break();
+                                return noNovo;
+                            }                            
+                        },
+                        leave: function(node, parent) {
+                            
+                        }
+                    });
+
+                    javascriptHelper.JsonAst = JSON.stringify(ast);".Replace("#ast", this.EncodeJsString(ast))
+                                                                    .Replace("#nome", nomeFuncao)
+                                                                    .Replace("#FuncaoNova", this.EncodeJsString(astFuncaoNova));
+
+                File.WriteAllText("js.txt", js);
+
+                _engine.Execute(js);
+            }
+            catch (ScriptEngineException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            
+
+            return JsonAst;
+        }
+
+
+        /// <summary>
+        /// Conta o total de Nós de uma Ast
+        /// </summary>
+        /// <param name="ast">árvore no formato do esprima</param>
+        /// <param name="listaComTiposDeNos">Tipo do nó</param>
+        /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
+        public List<No> ContarNosPorTipo(string ast, List<string> listaComTiposDeNos)
+        {
+            var lista = new List<No>();
+
+            try
+            {
+                _engine.AddHostObject("Nos", lista);
+                _engine.AddHostType("No", typeof(No));
+
+                //_engine.AddHostObject("listaComTiposDeNos", listaComTiposDeNos);
+
+                _engine.Execute(@"
+
+                    var ast = JSON.parse(#ast);
+
+                    var indent = 0;
+                    var counter = 0;
+
+                    ObjEstraverse.replace(ast, {
+                        enter: function(node, parent) {
+
+                            if(node.type == 'CallExpression')
+                            {
+                                counter++;
+                                Nos.Add(new No( indent-1, JSON.stringify(parent), JSON.stringify(parent.type), '' ));
+                            }
+
+                            if(node.type == 'IfStatement')
+                            {
+                                counter++;
+                                Nos.Add(new No( indent, JSON.stringify(node), JSON.stringify(node.type), ''));
+                            }
+                                indent++;
+                        }
+                    });
+
+                    javascriptHelper.TotalDeNos = counter;
+                    ".Replace("#ast", this.EncodeJsString(ast)));
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex.ToString());
+            }
+
+
+            //lista.ForEach(item => item.Codigo = this.GerarCodigo(item.Codigo));
+
+
+            return lista;
+        }
+
+        /// <summary>
         /// Exeucta um crossOver para gerar dois novos individuos trocando material entre o pai e mae
         /// </summary>
         /// <param name="astPai">Ast que representa o Pai</param>
@@ -429,6 +738,7 @@ namespace Otimizacao.Javascript
         /// <param name="astPrimeiroFilho">Pai com o nó da mãe</param>
         /// <param name="astSegundoFilho">Mãe com o nó do pai</param>
         /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
         public void ExecutarCrossOver(string astPai, string astMae, int randonNodePai, int randonNodeMae, out string astPrimeiroFilho, out string astSegundoFilho)
         {
             //var engine = _manager.GetEngine();
@@ -676,7 +986,8 @@ namespace Otimizacao.Javascript
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                //Console.WriteLine(ex.ToString());
+                Console.WriteLine("         Falhou nos testes");
                 return _fitTopValue + 1000;
             }
 
@@ -913,6 +1224,21 @@ namespace Otimizacao.Javascript
             GC.Collect();
 
         }
+
+        /// <summary>
+        /// Serve para reiniciar a Engine e liberar memória
+        /// </summary>
+        public void ReiniciarEngine()
+        {
+            _engine.Interrupt();
+            _engine.Dispose();
+
+            _engine = _manager.GetEngine();
+
+            Carregar(_diretorioExecucao, SetTimeOutLigado, false);
+            ConfigurarGeracao();
+        }
+
 
         /// <summary>
         /// Timeout para execução dos testes em segundos

@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome 48.0.2564 (Windows 8.1 0.0.0)" package="" timestamp="2016-03-01T18:48:47" id="0" hostname="Optmus" tests="198" errors="0" failures="0" time="10.276">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36"/>
+  </properties>
+  <testcase name="first" time="0.005" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="head" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="take" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="rest" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="tail" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="drop" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="initial" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="last" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="compact" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="flatten" time="5.68" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="without" time="0.003" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="sortedIndex" time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="uniq" time="0.003" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="unique" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="intersection" time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="union" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="difference" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="zip" time="0.003" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="unzip" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="object" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="indexOf" time="0.003" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="indexOf with NaN" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="indexOf with +- 0" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="lastIndexOf" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="lastIndexOf with NaN" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="lastIndexOf with +- 0" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="findIndex" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="findLastIndex" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="range" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Arrays"/>
+  <testcase name="map/flatten/reduce" time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Chaining"/>
+  <testcase name="select/reject/sortBy" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Chaining"/>
+  <testcase name="select/reject/sortBy in functional style" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Chaining"/>
+  <testcase name="reverse/concat/unshift/pop/map" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Chaining"/>
+  <testcase name="splice" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Chaining"/>
+  <testcase name="shift" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Chaining"/>
+  <testcase name="pop" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Chaining"/>
+  <testcase name="chaining works in small stages" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Chaining"/>
+  <testcase name="#1562: Engine proxies for chained functions" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Chaining"/>
+  <testcase name="each" time="0.007" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="forEach" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="lookupIterator with contexts" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="Iterating objects with sketchy length properties" time="0.008" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="Resistant to collection length and properties changing while iterating" time="0.011" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="map" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="collect" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="reduce" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="foldl" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="reduceRight" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="foldr" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="find" time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="detect" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="filter" time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="select" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="reject" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="every" time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="all" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="some" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="any" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="includes" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="include" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="contains" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="includes with NaN" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="includes with +- 0" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="invoke" time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="invoke w/ function reference" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="invoke when strings have a call method" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="pluck" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="where" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="findWhere" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="max" time="0.561" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="min" time="0.447" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="sortBy" time="0.003" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="groupBy" time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="indexBy" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="countBy" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="shuffle" time="0.004" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="sample" time="0.003" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="toArray" time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="size" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="partition" time="0.004" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="Can use various collection methods on NodeLists" time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Collections"/>
+  <testcase name="isEqual" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Cross Document"/>
+  <testcase name="isEmpty" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Cross Document"/>
+  <testcase name="isElement" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Cross Document"/>
+  <testcase name="isArguments" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Cross Document"/>
+  <testcase name="isObject" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Cross Document"/>
+  <testcase name="isArray" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Cross Document"/>
+  <testcase name="isString" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Cross Document"/>
+  <testcase name="isNumber" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Cross Document"/>
+  <testcase name="isBoolean" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Cross Document"/>
+  <testcase name="isFunction" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Cross Document"/>
+  <testcase name="isDate" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Cross Document"/>
+  <testcase name="isRegExp" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Cross Document"/>
+  <testcase name="isNaN" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Cross Document"/>
+  <testcase name="isNull" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Cross Document"/>
+  <testcase name="isUndefined" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Cross Document"/>
+  <testcase name="isError" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Cross Document"/>
+  <testcase name="bind" time="0.004" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="partial" time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="bindAll" time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="memoize" time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="delay" time="0.165" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="defer" time="0.064" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="throttle" time="0.079" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="throttle arguments" time="0.11" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="throttle once" time="0.077" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="throttle twice" time="0.077" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="more throttling" time="0.098" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="throttle repeatedly with results" time="0.314" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="throttle triggers trailing call when invoked repeatedly" time="0.158" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="throttle does not trigger leading call when leading is set to false" time="0.111" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="more throttle does not trigger leading call when leading is set to false" time="0.363" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="one more throttle with leading: false test" time="0.563" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="throttle does not trigger trailing call when trailing is set to false" time="0.206" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="throttle continues to function after system time is set backwards" time="0.215" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="throttle re-entrant" time="0.114" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="debounce" time="0.11" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="debounce asap" time="0.142" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="debounce asap recursively" time="0.109" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="debounce after system time is set backwards" time="0.213" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="debounce re-entrant" time="0.114" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="once" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="Recursive onced function." time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="wrap" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="negate" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="compose" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="after" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="before" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="iteratee" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Functions"/>
+  <testcase name="keys" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="allKeys" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="values" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="pairs" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="invert" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="functions" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="methods" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="extend" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="extendOwn" time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="pick" time="0.003" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="omit" time="0.003" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="defaults" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="clone" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="create" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isEqual" time="0.006" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isEmpty" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isElement" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isArguments" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isObject" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isArray" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isString" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isNumber" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isBoolean" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isFunction" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="#1929 Typed Array constructors are functions" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isDate" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isRegExp" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isFinite" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isNaN" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isNull" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isUndefined" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isError" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="tap" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="has" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="isMatch" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="matcher" time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="matcher " time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="findKey" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="mapObject" time="0.002" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Objects"/>
+  <testcase name="#750 - Return _ instance." time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="identity" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="constant" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="noop" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="property" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="propertyOf" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="random" time="0.006" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="now" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="uniqueId" time="0.006" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="times" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="mixin" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="_.escape" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="_.unescape" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="_.escape &amp; unescape" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="template" time="0.007" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="_.template provides the generated function source, when a SyntaxError occurs" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="_.template handles \u2028 &amp; \u2029" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="result calls functions and returns primitives" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="result returns a default value if object is null or undefined" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="result returns a default value if property of object is missing" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="result only returns the default value if the object does not have the property or is undefined" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="result does not return the default if the property of an object is found in the prototype" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="result does use the fallback when the result of invoking the property is undefined" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="result fallback can use a function" time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="_.templateSettings.variable" time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="#547 - _.templateSettings is unchanged by custom settings." time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="#556 - undefined template variables." time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="interpolate evaluates code only once." time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="#746 - _.template settings are not modified." time="0" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <testcase name="#779 - delimeters are applied to unescaped text." time="0.001" classname="Chrome_48_0_2564_(Windows_8_1_0_0_0).Utility"/>
+  <system-out>
+    <![CDATA[
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>
