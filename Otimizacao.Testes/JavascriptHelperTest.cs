@@ -247,6 +247,29 @@ namespace Otimizacao.Testes
         }
 
         /// <summary>
+        /// Executa os testes do uuid
+        /// </summary>
+        [Test]
+        public void ExecutarTestesUuid()
+        {
+            var sw = new Stopwatch();
+            var engine = new V8ScriptEngine();
+            
+            var bundesJs = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "uuid", "bundle.js"));
+            engine.AddHostType("Console", typeof(Console));
+            
+            engine.Execute("var GLOBAL = this;");
+
+            sw.Start();
+            engine.Execute(bundesJs);
+
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
+            //Assert.AreEqual(0, 57982);
+
+        }
+
+        /// <summary>
         /// Testa o procedimento de mutação (excluir um nó)
         /// </summary>
         [Test]

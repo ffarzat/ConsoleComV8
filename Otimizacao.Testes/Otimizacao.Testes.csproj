@@ -187,6 +187,9 @@
     <Content Include="underscore\underscoreTests.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="uuid\bundle.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="uuid\mocha.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
