@@ -1828,22 +1828,24 @@ Mocha.prototype.run = function(fn){
   var options = this.options;
   options.files = this.files;
   var runner = new exports.Runner(suite, options.delay);
-  var reporter = new this._reporter(runner, options);
+  //var reporter = new this._reporter(runner, options);
   runner.ignoreLeaks = false !== options.ignoreLeaks;
   runner.fullStackTrace = options.fullStackTrace;
   runner.asyncOnly = options.asyncOnly;
   if (options.grep) runner.grep(options.grep, options.invert);
   if (options.globals) runner.globals(options.globals);
-  if (options.growl) this._growl(runner, reporter);
+  //if (options.growl) this._growl(runner, reporter);
   if (options.useColors !== undefined) {
     exports.reporters.Base.useColors = options.useColors;
   }
   exports.reporters.Base.inlineDiffs = options.useInlineDiffs;
 
   function done(failures) {
-      if (reporter.done) {
+      /*
+	  if (reporter.done) {
           reporter.done(failures, fn);
       } else fn && fn(failures);
+	  */
   }
 
   return runner.run(done);
@@ -6549,8 +6551,6 @@ mocha.run = function(fn){
   if (query.fgrep) mocha.grep(query.fgrep);
   if (query.invert) mocha.invert();
 
-  /*
-  
   return Mocha.prototype.run.call(mocha, function(err){
     // The DOM Document is not available in Web Workers.
     var document = global.document;
@@ -6559,9 +6559,6 @@ mocha.run = function(fn){
     }
     if (fn) fn(err);
   });
-  
-  */
-  
 };
 
 /**

@@ -418,6 +418,15 @@ namespace Otimizacao.Javascript
         }
 
         /// <summary>
+        /// Executa um script qualquer na 
+        /// </summary>
+        /// <param name="codigo"></param>
+        public void ExecutarScriptAvulso(string codigo)
+        {
+            _engine.Execute(codigo);
+        }
+
+        /// <summary>
         /// Conta o total de Nós de uma Ast
         /// </summary>
         /// <param name="ast">árvore no formato do esprima</param>

@@ -253,15 +253,13 @@ namespace Otimizacao.Testes
         public void ExecutarTestesUuid()
         {
             var sw = new Stopwatch();
-            var engine = new V8ScriptEngine();
-            
-            var bundesJs = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "uuid", "bundle.js"));
-            engine.AddHostType("Console", typeof(Console));
-            
-            engine.Execute("var GLOBAL = this;");
 
+            var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "uuid"), true, true); 
+
+            var bundesJs = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "uuid", "bundle.js"));
+            
             sw.Start();
-            engine.Execute(bundesJs);
+            helper.ExecutarScriptAvulso(bundesJs);
 
             sw.Stop();
             Console.WriteLine(sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
