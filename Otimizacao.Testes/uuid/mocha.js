@@ -6352,7 +6352,7 @@ exports.stackTraceFilter = function() {
       ? { node: true }
       : { browser: true }
     , cwd = is.node
-      ? process.cwd() + slash
+      ? Environment.CurrentDirectory + slash
       : location.href.replace(/\/[^\/]*$/, '/');
 
   function isNodeModule (line) {
@@ -6541,14 +6541,14 @@ mocha.run = function(fn){
   var options = mocha.options;
   mocha.globals('location');
 
-  var query = Mocha.utils.parseQuery(global.location.search || '');
+  var query = Mocha.utils.parseQuery('');
   if (query.grep) mocha.grep(new RegExp(query.grep));
   if (query.fgrep) mocha.grep(query.fgrep);
   if (query.invert) mocha.invert();
 
   return Mocha.prototype.run.call(mocha, function(err){
     // The DOM Document is not available in Web Workers.
-    var document = global.document;
+    var document = false;
     if (document && document.getElementById('mocha') && options.noHighlighting !== true) {
       Mocha.utils.highlightTags('code');
     }

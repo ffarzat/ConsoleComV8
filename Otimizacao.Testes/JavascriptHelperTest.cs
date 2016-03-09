@@ -256,11 +256,12 @@ namespace Otimizacao.Testes
 
             var helper = new JavascriptHelper(Path.Combine(Environment.CurrentDirectory, "uuid"), true, true); 
 
-            var bundesJs = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "uuid", "bundle.js"));
+            var mocha = File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "uuid", "mocha.js"));
             
             sw.Start();
-            helper.ExecutarScriptAvulso(bundesJs);
-
+            helper.ExecutarScriptAvulso(mocha);
+            helper.ExecutarScriptAvulso("mocha.setup('qunit'); mocha.checkLeaks(); mocha.run();");
+            
             sw.Stop();
             Console.WriteLine(sw.Elapsed.ToString(@"hh\:mm\:ss\,ffff"));
             //Assert.AreEqual(0, 57982);

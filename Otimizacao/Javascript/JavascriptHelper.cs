@@ -191,6 +191,7 @@ namespace Otimizacao.Javascript
             _timers = new Dictionary<int, bool>();
 
             _engine.AddHostObject("javascriptHelper", this);
+            _engine.AddHostType("Environment", typeof(Environment));
             
             _engine.Execute(@"'use strict';
                         function console() {
